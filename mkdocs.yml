@@ -1,0 +1,70 @@
+site_name: FastAPI do Zero
+docs_dir: aulas
+repo_url: https://github.com/dunossauro/fastapi-do-zero
+repo_name: dunossauro/fastapi-do-zero
+edit_uri: tree/main/aulas
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+    - scheme: default
+      primary: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Modo noturno
+
+features:
+  - content.tabs.link
+  - search.suggest
+  - search.highlight
+  - search.share
+
+markdown_extensions:
+  - pymdownx.critic
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - footnotes
+  - admonition
+  - markdown.extensions.attr_list
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - md_in_html
+
+plugins:
+  - glightbox
+  - mkdocs-video
+  - search:
+      lang: pt
+  - git-authors
+  - git-revision-date-localized
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dunossauro
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/dunossauro
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/dunossauro
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/dunossauro
+    - icon: fontawesome/brands/tiktok
+      link: https://www.tiktok.com/@dunossauro
