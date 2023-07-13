@@ -18,6 +18,7 @@ mkdocs-git-revision-date-localized-plugin = "^1.2.0"
 
 [tool.taskipy.tasks]
 serve = "mkdocs serve --dev-addr localhost:8080"
+deploy = "mkdocs gh-deploy"
 
 [build-system]
 requires = ["poetry-core"]
