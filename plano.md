@@ -75,7 +75,6 @@ Também revisamos nossos endpoints, atualizando-os para que possam efetivamente 
 Tags: FastAPI, Python, API, Desenvolvimento Web, SQLAlchemy, Depends, Pydantic, Pytest, Fixtures, Endpoints, Banco de Dados, APIs RESTful, Desenvolvimento de APIs, Gerenciamento de Dependências, Teste de Software, Banco de Dados SQL, Integração de Banco de Dados, Testes Unitários.
 
 
-# [PARA REVISÃO]
 ## Aula 6: Autenticação e Autorização em FastAPI
 
 - Criação de rotas para registrar e logar usuários
@@ -84,9 +83,12 @@ Tags: FastAPI, Python, API, Desenvolvimento Web, SQLAlchemy, Depends, Pydantic, 
 
 ### Youtube
 
-Descrição: A segurança é fundamental em qualquer API. Neste vídeo, você aprenderá a implementar autenticação e autorização em seu projeto FastAPI. Vamos construir juntos rotas seguras para registrar e logar usuários.
+Descrição: Neste vídeo, vamos dar um passo além na segurança da nossa API. Vamos aprender como proteger endpoints específicos em FastAPI e como lidar com a autorização. Também vamos atualizar nossos testes para refletir essas mudanças. Se você deseja criar APIs robustas e seguras, esta aula é para você. Junte-se a nós nessa jornada de aprender FastAPI!
 
-Tags: FastAPI, Python, Autenticação FastAPI, Autorização FastAPI, Segurança em APIs, Desenvolvimento web com Python
+Tags:FastAPI, Python, Autenticação FastAPI, Autorização FastAPI, Proteção de endpoints FastAPI, Testes em FastAPI, Desenvolvimento Web com Python, APIs Rest com Python, Desenvolvimento Back-end com Python, JWT em FastAPI.
+
+
+# [PARA REVISÃO]
 
 ## Aula 7: Criando Rotas CRUD para Tarefas em FastAPI
 
