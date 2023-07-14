@@ -14,7 +14,7 @@ FastAPI é um framework Python moderno e rápido (alta performance) para constru
 
 Este curso foi criado com um propósito em mente: ajudar desenvolvedores, tanto iniciantes quanto experientes, a entender e utilizar o FastAPI para construir APIs. Durante as aulas, construiremos um projeto prático de gerenciamento de tarefas (um todo list), com autenticação de usuários e todas as operações CRUD (criar, ler, atualizar, deletar).
 
-{dizer que iremos usar as ferramentas mais atualizadas nesse momento (em 2023). As versões que quebraram retrocompatibilidade como o fastapi 0.100, o sqlalchemy 2.0 e o pydantic 2.0. E que também usaremos a versão 3.11 do python. Também mencionar que vamos usar o alembic}
+{dizer que iremos usar as ferramentas mais atualizadas nesse momento (em 2023). As versões que quebraram retrocompatibilidade como o fastapi 0.100, o sqlalchemy ORM 2.0 e o pydantic 2.0. E que também usaremos a versão 3.11 do python. Também mencionar que vamos usar o alembic para gerir migrações e a parte mais importante é que vamos usar o pytest, lidar com cobertura de código e testes a todo momento}
 
 
 ## O que você vai aprender?
