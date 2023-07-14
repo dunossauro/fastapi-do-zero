@@ -121,6 +121,7 @@ Tags: Python, FastAPI, API REST, Autenticação, JWT, JSON Web Tokens, Testes, P
 ## Aula 9: Criando Rotas CRUD para Tarefas em FastAPI
 
 - Criação das rotas para as operações CRUD das tarefas
+- Fazer com só o usuário dono da tarefa possa acessar e modificar suas tarefas
 - Escrita e execução dos testes para cada operação das tarefas
 
 ### Youtube
