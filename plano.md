@@ -88,6 +88,20 @@ Descrição: Neste vídeo, vamos dar um passo além na segurança da nossa API. 
 Tags:FastAPI, Python, Autenticação FastAPI, Autorização FastAPI, Proteção de endpoints FastAPI, Testes em FastAPI, Desenvolvimento Web com Python, APIs Rest com Python, Desenvolvimento Back-end com Python, JWT em FastAPI.
 
 
+
+## Aula 7: Refatoração em FastAPI: Implementando Routers e Variáveis de Ambiente
+
+- Reestruturar o projeto para facilitar sua manutenção
+- Criação de routers
+- Remover constante dos códigos
+
+### youtube
+
+Descrição: Neste vídeo, exploramos algumas das melhores práticas de desenvolvimento com o FastAPI, refatorando nossa aplicação para utilizar routers e variáveis de ambiente. Abordamos a criação e utilização de routers para organizar melhor nosso código e discutimos a importância de manter constantes sensíveis, como chaves secretas, fora do código, utilizando variáveis de ambiente. Se você está interessado em melhorar sua habilidade com o FastAPI e em entender algumas das melhores práticas de desenvolvimento, este vídeo é para você.
+
+Tags: FastAPI, Python, Desenvolvimento Web, API, Rest API, FastAPI Router, Variáveis de Ambiente, Refatoração, Melhores Práticas, Desenvolvimento Python, OpenAI, Pydantic, SQLAlchemy, Autenticação JWT, TDD, Clean Code
+
+
 # [PARA REVISÃO]
 
 ## Aula 7: Criando Rotas CRUD para Tarefas em FastAPI

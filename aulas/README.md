@@ -43,7 +43,8 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 3. [Configurando Banco de Dados e Gerenciando Migrações com Alembic](/03/){:target="_blank"}
 4. [Integrando Banco de Dados a API](/04/){:target="_blank"}
 5. [Autenticação e Autorização](/05/){:target="_blank"}
-6. ...
+6. [Refatorando a Estrutura do Projeto](/06/){:target="_blank"}
+7. ...
 
 ## Conclusão
 
