@@ -102,9 +102,23 @@ Descrição: Neste vídeo, exploramos algumas das melhores práticas de desenvol
 Tags: FastAPI, Python, Desenvolvimento Web, API, Rest API, FastAPI Router, Variáveis de Ambiente, Refatoração, Melhores Práticas, Desenvolvimento Python, OpenAI, Pydantic, SQLAlchemy, Autenticação JWT, TDD, Clean Code
 
 
+## Aula 8: Autenticação JWT e Testes de Casos de Borda
+
+
+- Testar os casos de autenticação de forma correta
+- Implementar o refresh do token
+- Introduzir testes que param o tempo com freezefun
+- Introduzir geração de modelos automática com factory-boy
+
+### youtube
+
+Descrição: Nesta aula, continuamos a desenvolver nossa API REST usando FastAPI e PyTest. Damos um grande passo em direção à segurança do nosso sistema implementando a autenticação JWT (JSON Web Tokens). Aprenda como criar tokens, refrescar tokens, e o que acontece quando esses tokens expiram. Além disso, reforçamos a importância dos testes automatizados, cobrindo vários cenários marginais. Acompanhe-nos nesta jornada para desenvolver uma API robusta e segura.
+
+Tags: Python, FastAPI, API REST, Autenticação, JWT, JSON Web Tokens, Testes, PyTest, TDD, Desenvolvimento de Software, Programação, Casos de Borda, Segurança de Aplicações, Backend, Desenvolvimento Backend, Desenvolvimento Web
+
 # [PARA REVISÃO]
 
-## Aula 7: Criando Rotas CRUD para Tarefas em FastAPI
+## Aula 9: Criando Rotas CRUD para Tarefas em FastAPI
 
 - Criação das rotas para as operações CRUD das tarefas
 - Escrita e execução dos testes para cada operação das tarefas
@@ -115,19 +129,7 @@ Descrição: Hoje, vamos focar em como criar rotas CRUD eficientes para as taref
 
 Tags: FastAPI, Python, CRUD FastAPI, API de Tarefas, Desenvolvimento de API, Desenvolvimento web com Python
 
-## Aula 8: Maximizando a Cobertura de Testes em FastAPI com Coverage
-
-- Introdução ao conceito de cobertura de testes e sua importância
-- Demonstração de como usar o coverage para medir a cobertura de testes
- - Revisão e melhoria dos testes com base na análise de cobertura
- 
-### Youtube
-
-Descrição: Testes são cruciais para garantir que sua API FastAPI funcione como esperado. Neste vídeo, ensinaremos você a usar a ferramenta 'coverage' para analisar a cobertura de seus testes e melhorar a qualidade do seu código.
-
-Tags: FastAPI, Python, Testes FastAPI, Coverage, TDD, Desenvolvimento web com Python
-
-## Aula 9: Dockerizando sua Aplicação FastAPI
+## Aula 10: Dockerizando sua Aplicação FastAPI
 
 - Explicação básica do Docker e sua utilidade
 - Escrita do Dockerfile para a aplicação
@@ -140,7 +142,7 @@ Descrição: Já ouviu falar sobre Docker mas nunca soube como usá-lo em seu pr
 
 Tags: FastAPI, Python, Docker, FastAPI com Docker, Deploy de API, Desenvolvimento web com Python
 
-## Aula 10: Automatizando Testes com GitHub Actions e FastAPI
+## Aula 11: Automatizando Testes com GitHub Actions e FastAPI
 
 - Introdução aos conceitos de CI/CD e sua importância
 - Explicação sobre o papel do Github Actions na CI/CD
@@ -153,7 +155,7 @@ Descrição: Continuando nosso curso de FastAPI, vamos automatizar nossos testes
 
 Tags: FastAPI, Python, GitHub Actions, CI/CD, Automatização de Testes, Desenvolvimento web com Python
 
-## Aula 11: Fazendo Deploy de sua Aplicação FastAPI com Fly.io
+## Aula 12: Fazendo Deploy de sua Aplicação FastAPI com Fly.io
 
 - Breve introdução ao Fly.io
 - Demonstração de como configurar e fazer o deploy da aplicação usando o Fly.io
@@ -165,7 +167,7 @@ Descrição: Estamos quase lá! Neste vídeo, vamos fazer deploy de nossa aplica
 
 Tags: FastAPI, Python, Fly.io, Deploy FastAPI, Deploy de API, Desenvolvimento web com Python
 
-## Aula 12: Conclusão do Curso de FastAPI - Revisão e Próximos Passos
+## Aula 13: Conclusão do Curso de FastAPI - Revisão e Próximos Passos
 
 - Revisão dos principais pontos aprendidos durante o curso
 - Discussão sobre possíveis extensões ou melhorias para o projeto
