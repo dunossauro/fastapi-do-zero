@@ -20,11 +20,11 @@
 - [ ] **Conteúdo!** - [até 15/07]
   - [x] Objetivo
   - [-] Estrutura
-	- [ ] Código final
-	- [-] Aulas
+	- [x] Código final
+	- [x] Aulas
 	  - [ ] Código de todas as aulas
-	  - [ ] Títulos das aulas
-	  - [ ] Conteúdo das aulas
+	  - [x] Títulos das aulas
+	  - [x] Conteúdo das aulas
 	  - [ ] Slides
 
 - [ ] **Produção!** - [até 22/07]
