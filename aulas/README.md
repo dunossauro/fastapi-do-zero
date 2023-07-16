@@ -1,37 +1,39 @@
 # [WIP] FastAPI do ZERO
 
-> Ainda está em uma fase bastante embrionária esse arquivo!
+**Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
-## Criando um Projeto com Bancos de Dados, Testes e Deploy
-
-Olá a todos e boas vindas ao curso "FastAPI do Zero: Criando um Projeto com Bancos de Dados, Testes e Deploy". Nessa aula vamos abordar o que você pode esperar aprender neste curso e como ele está estruturado. Então, sem mais delongas, vamos começar!
+Boas vindas à jornada de aprendizado mais empolgante que você vai embarcar: "FastAPI do Zero: Criando um Projeto com Bancos de Dados, Testes e Deploy". Este curso foi meticulosamente projetado para proporcionar a você uma experiência de aprendizado imersiva e prática, equipando-o(a) com as habilidades necessárias para se tornar um profissional altamente competente no desenvolvimento de APIs utilizando o poderoso framework FastAPI.
 
 ## O que é FastAPI?
 
-FastAPI é um framework Python moderno e rápido (alta performance) para construção de APIs, que é fácil de aprender e traz inúmeros benefícios. FastAPI aproveita as anotações de tipo Python para fornecer uma experiência incrivelmente eficiente para desenvolver APIs RESTful.
+FastAPI é um moderno e poderoso framework Python, construído com simplicidade, velocidade e eficiência em mente. Sua alta performance, juntamente com suas intuitivas anotações de tipo Python, oferece uma experiência de desenvolvimento incrivelmente eficiente, tornando a criação de APIs RESTful não apenas mais fácil, mas também mais divertida.
 
 ## Sobre o curso
 
-Este curso foi criado com um propósito em mente: ajudar desenvolvedores, tanto iniciantes quanto experientes, a entender e utilizar o FastAPI para construir APIs. Durante as aulas, construiremos um projeto prático de gerenciamento de tarefas (um todo list), com autenticação de usuários e todas as operações CRUD (criar, ler, atualizar, deletar).
+Este curso é uma combinação abrangente de teoria e prática, ideal tanto para iniciantes quanto para desenvolvedores experientes que desejam aprofundar seu conhecimento em FastAPI. 
 
-{dizer que iremos usar as ferramentas mais atualizadas nesse momento (em 2023). As versões que quebraram retrocompatibilidade como o fastapi 0.100, o sqlalchemy ORM 2.0 e o pydantic 2.0. E que também usaremos a versão 3.11 do python. Também mencionar que vamos usar o alembic para gerir migrações e a parte mais importante é que vamos usar o pytest, lidar com cobertura de código e testes a todo momento}
+Vamos, juntos, construir do zero um projeto prático de gerenciamento de tarefas (um todo list). Este projeto contará com autenticação de usuários e operações CRUD completas, permitindo a criação, leitura, atualização e exclusão de tarefas. A ideia aqui é fornecer uma experiência prática intensiva, para que você veja em tempo real como uma API é construída do começo ao fim.
 
+A grande novidade é que, para isso, usaremos as ferramentas mais modernas disponíveis no mercado em 2023: a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, e a versão 2.0 do SQLAlchemy ORM. Essas versões trouxeram diversas mudanças significativas, e nós vamos explorar todas elas. Também usaremos Python na versão 3.11, bem como o Alembic para gerenciamento de migrações. 
+
+Um aspecto essencial desse curso é o uso do pytest para a criação de testes. Ao longo das aulas, aprenderemos a lidar com cobertura de código e testes, garantindo que nossas APIs sejam robustas e confiáveis.
 
 ## O que você vai aprender?
 
-### Ao longo deste curso, vamos cobrir os seguintes tópicos:
+Aqui está uma visão geral dos tópicos que vamos abordar neste curso:
 
-1. Configura um ambiente de desenvolvimento para FastAPI: Para garantir que todos estão na mesma página, começaremos do zero, configurando nosso ambiente de desenvolvimento.
+1. **Configurando um ambiente de desenvolvimento para FastAPI**: Vamos começar do absoluto zero, criando e configurando nosso ambiente de desenvolvimento. 
 
-2. Primeiros Passos com FastAPI e TDD: Após a configuração do ambiente, começaremos a explorar a estrutura básica de um projeto FastAPI, juntamente com uma introdução ao Desenvolvimento Orientado a Testes (TDD).
+2. **Primeiros Passos com FastAPI e TDD**: Depois de configurar o ambiente, mergulharemos na estrutura básica de um projeto FastAPI e faremos uma introdução detalhada ao Test Driven Development (TDD).
 
-3. Modelagem de Dados com Pydantic e SQLAlchemy: Abordaremos como criar e manipular modelos de dados com Pydantic e SQLAlchemy, duas bibliotecas poderosas que tornam o FastAPI ainda mais eficaz.
+3. **Modelagem de Dados com Pydantic e SQLAlchemy**: Aprenderemos a criar e manipular modelos de dados utilizando Pydantic e SQLAlchemy, dois recursos que levam a eficiência do FastAPI a um outro nível.
 
-4. Autenticação e Autorização em FastAPI: Ensinar-lhe-emos a construir um sistema de autenticação para proteger suas rotas e garantir que apenas usuários autenticados possam acessar dados específicos.
+4. **Autenticação e Autorização em FastAPI**: Vamos construir um sistema de autenticação completo, para proteger nossas rotas e garantir que apenas usuários autenticados tenham acesso a certos dados.
 
-5. Testando sua Aplicação FastAPI: Uma introdução completa ao teste de sua aplicação FastAPI com o pytest e coverage.
+5. **Testando sua Aplicação FastAPI**: Faremos uma introdução detalhada aos testes de aplicação FastAPI, utilizando as bibliotecas pytest e coverage.
 
-6. Dockerizando e Fazendo Deploy de sua Aplicação FastAPI: Por fim, vamos cobrir como dockerizar sua aplicação FastAPI e como fazer o deploy dela usando Fly.io.
+6. **Dockerizando e Fazendo Deploy de sua Aplicação FastAPI**: Por fim, vamos aprender como "dockerizar" nossa aplicação FastAPI e fazer seu deploy utilizando Fly.io.
+
 
 ## Pré-requisitos
 
@@ -117,4 +119,4 @@ Os deploys das páginas estáticas geradas pelo MkDocs estão sendo feitos no [N
 
 ## Conclusão
 
-Estou muito animados para começar esta jornada com você. Se você está pronto para aprender como construir APIs web eficientes e testáveis, então este é o curso certo para você. Fique atento para a primeira aula, onde vamos configurar nosso ambiente de desenvolvimento e dar os primeiros passos com FastAPI e TDD!
+Estou animado para embarcar nesta jornada de aprendizado com você. Se você está pronto para aprender a construir APIs web eficientes e testáveis com FastAPI, este é definitivamente o curso para você. Estou ansioso para começar a primeira aula, onde vamos configurar nosso ambiente de desenvolvimento e dar nossos primeiros passos com FastAPI e TDD!
