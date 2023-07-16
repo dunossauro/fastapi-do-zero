@@ -2,21 +2,19 @@
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
-Boas vindas à jornada de aprendizado mais empolgante que você vai embarcar: "FastAPI do Zero: Criando um Projeto com Bancos de Dados, Testes e Deploy". Este curso foi meticulosamente projetado para proporcionar a você uma experiência de aprendizado imersiva e prática, equipando-o(a) com as habilidades necessárias para se tornar um profissional altamente competente no desenvolvimento de APIs utilizando o poderoso framework FastAPI.
+Boas vindas à jornada de aprendizado mais empolgante que você vai embarcar: "FastAPI do Zero: Criando um Projeto com Bancos de Dados, Testes e Deploy". Este curso tem como objetivo oferecer um entendimento prático do framework FastAPI, proporcionando as habilidades essenciais para o desenvolvimento eficiente de APIs. Como integração com banco de dados e como fazer testes!
 
 ## O que é FastAPI?
 
-FastAPI é um moderno e poderoso framework Python, construído com simplicidade, velocidade e eficiência em mente. Sua alta performance, juntamente com suas intuitivas anotações de tipo Python, oferece uma experiência de desenvolvimento incrivelmente eficiente, tornando a criação de APIs RESTful não apenas mais fácil, mas também mais divertida.
+FastAPI é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de alto desempenho com anotações de tipo Python facilita o desenvolvimento de APIs RESTful.
 
 ## Sobre o curso
 
-Este curso é uma combinação abrangente de teoria e prática, ideal tanto para iniciantes quanto para desenvolvedores experientes que desejam aprofundar seu conhecimento em FastAPI. 
+Este curso visa oferecer uma experiência prática completa, desde a configuração do ambiente de desenvolvimento até o deploy de uma aplicação FastAPI completa. O objetivo é que, ao final do curso, você tenha uma compreensão profunda do uso do FastAPI e das melhores práticas associadas.
 
-Vamos, juntos, construir do zero um projeto prático de gerenciamento de tarefas (um todo list). Este projeto contará com autenticação de usuários e operações CRUD completas, permitindo a criação, leitura, atualização e exclusão de tarefas. A ideia aqui é fornecer uma experiência prática intensiva, para que você veja em tempo real como uma API é construída do começo ao fim.
+Para isso, construiremos um projeto prático de gerenciamento de tarefas (uma lista de tarefas) do zero, incluindo a autenticação do usuário e operações CRUD completas. Nesse projeto, faremos uso das ferramentas mais recentes disponíveis em 2023, incluindo a versão 0.100 do FastAPI, a versão 2.0 do Pydantic e a versão 2.0 do SQLAlchemy ORM. Também usaremos o Python 3.11 e o Alembic para gerenciamento de migrações.
 
-A grande novidade é que, para isso, usaremos as ferramentas mais modernas disponíveis no mercado em 2023: a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, e a versão 2.0 do SQLAlchemy ORM. Essas versões trouxeram diversas mudanças significativas, e nós vamos explorar todas elas. Também usaremos Python na versão 3.11, bem como o Alembic para gerenciamento de migrações. 
-
-Um aspecto essencial desse curso é o uso do pytest para a criação de testes. Ao longo das aulas, aprenderemos a lidar com cobertura de código e testes, garantindo que nossas APIs sejam robustas e confiáveis.
+Este curso também dá ênfase à prática de testes, utilizando o pytest para garantir que as APIs que construímos sejam robustas e confiáveis.
 
 ## O que você vai aprender?
 
