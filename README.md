@@ -22,7 +22,7 @@
   - [-] Estrutura
 	- [x] Código final
 	- [x] Aulas
-	  - [ ] Código de todas as aulas
+	  - [x] Código de todas as aulas
 	  - [x] Títulos das aulas
 	  - [x] Conteúdo das aulas
 	  - [ ] Slides
