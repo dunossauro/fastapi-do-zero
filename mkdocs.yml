@@ -1,4 +1,5 @@
 site_name: FastAPI do Zero
+site_url: https://fastapidozero.dunossauro.com
 docs_dir: aulas
 repo_url: https://github.com/dunossauro/fastapi-do-zero
 repo_name: dunossauro/fastapi-do-zero
@@ -6,6 +7,8 @@ edit_uri: tree/main/aulas
 
 theme:
   name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   language: pt-BR
   palette:
     - scheme: slate
@@ -55,6 +58,8 @@ plugins:
       lang: pt
   - git-authors
   - git-revision-date-localized
+  - social:
+      cards_layout: default
 
 extra_css:
   - stylesheets/extra.css

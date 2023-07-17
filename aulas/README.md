@@ -1,3 +1,8 @@
+---
+title: FastAPI do Zero!
+description: Boas vindas ao nosso minicurso de FastAPI!
+---
+
 # [WIP] FastAPI do ZERO
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**

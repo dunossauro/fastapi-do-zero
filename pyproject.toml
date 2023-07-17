@@ -15,6 +15,8 @@ mkdocs-glightbox = "^0.3.4"
 mkdocs-video = "^1.5.0"
 mkdocs-git-authors-plugin = "^0.7.2"
 mkdocs-git-revision-date-localized-plugin = "^1.2.0"
+pillow = "^10.0.0"
+cairosvg = "^2.7.0"
 
 [tool.taskipy.tasks]
 serve = "mkdocs serve --dev-addr localhost:8080"
