@@ -37,6 +37,10 @@ Aqui está uma visão geral dos tópicos que vamos abordar neste curso:
 
 6. **Dockerizando e Fazendo Deploy de sua Aplicação FastAPI**: Por fim, vamos aprender como "dockerizar" nossa aplicação FastAPI e fazer seu deploy utilizando Fly.io.
 
+## 💰 Esse curso é gratuito?
+
+SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blank"} e com a [ajuda financeira](https://apoia.se/fastapi){:target="_blank"} de pessoas incríveis. Caso você sinta vontade de contribuir, você pode me pagar um café por pix (pix.dunossauro@gmail.com) ou apoiar a [campanha recorrente de financiamento coletivo da live de python](https://apoia.se/livedepython){:target="_blank"} que é o que paga as contas aqui de casa.
+
 
 ## Pré-requisitos
 
