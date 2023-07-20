@@ -5,6 +5,8 @@ theme: rose-pine
 
 # Estruturando o Projeto e Criando Rotas do CRUD
 
+> https://fastapidozero.dunossauro.com/02/
+
 ---
 
 # Objetivos dessa aula:
