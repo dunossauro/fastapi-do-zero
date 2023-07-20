@@ -118,6 +118,11 @@ Toda essa página foi feita usando as seguintes bibliotecas:
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MKDocs exibir os vídeos na página
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
 
+Para os slides:
+
+- [marp](https://marp.app/){:target="_blank"}: Onde preparei os slides
+- [Rose-Pine](https://github.com/rainbowflesh/Rose-Pine-For-Marp){:target="_blank"}: Tema que usei no marp
+
 ### 📁 Repositório
 O versionamento de tudo está sendo feito no [repositório do curso Github](https://github.com/dunossauro/fastapi-do-zero){:target="_blank"}
 
@@ -127,3 +132,11 @@ Os deploys das páginas estáticas geradas pelo MkDocs estão sendo feitos no [N
 ## Conclusão
 
 Estou animado para embarcar nesta jornada de aprendizado com você. Se você está pronto para aprender a construir APIs web eficientes e testáveis com FastAPI, este é definitivamente o curso para você. Estou ansioso para começar a primeira aula, onde vamos configurar nosso ambiente de desenvolvimento e dar nossos primeiros passos com FastAPI e TDD!
+
+## F.A.Q.
+
+Perguntas frequentes que me fizeram após os vídeos
+
+- Que papel de parede é esse? [É uma foto do Liam Wong](https://www.tumblr.com/liamwong){:target="_blank"}
+- Qual o tema no shell? Todo o meu tema do Gnome foi customizado com [Gradience](https://gradienceteam.github.io/){:target="_blank"} o tema é [Pretty In Purple](https://www.gnome-look.org/p/2031597){:target="_blank"}
+- Qual o tema do seu editor? [Rebecca](https://github.com/vic/rebecca-theme){:target="_blank"}
