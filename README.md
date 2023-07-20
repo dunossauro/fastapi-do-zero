@@ -9,8 +9,8 @@
 
 - [ ] **Parte audiovisual!**
   - [x] Tipografia
-  - [ ] Cores
-  - [ ] Identidade visual
+  - [x] Cores
+  - [x] Identidade visual
   - [ ] Fotos
 	- [ ] Thumbs
   - [ ] Animações - Precisa da identidade
@@ -19,7 +19,7 @@
 
 - [ ] **Conteúdo!** - [até 15/07]
   - [x] Objetivo
-  - [-] Estrutura
+  - [ ] Estrutura
 	- [x] Código final
 	- [x] Aulas
 	  - [x] Código de todas as aulas
