@@ -50,6 +50,10 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 	Caso você ainda não se sinta uma pessoa preparada, ou caiu aqui sem saber exatamente o que esperar. Temos um pequeno curso introdutório. Destinado aos primeiros passos com python.
 	![type:video](https://youtube.com/embed/yTQDbqmv8Ho)
 	
+	Também temos uma live focada em dicas para iniciar os estudos em python
+
+    ![type:video](https://www.youtube.com/embed/HSotf1Amess)
+
 	Ou então a leitura do [Pense em python](https://penseallen.github.io/PensePython2e/){:target="_blank"}
 
 ## Aulas
