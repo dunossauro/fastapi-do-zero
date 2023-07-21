@@ -112,6 +112,29 @@ def session():
     yield Session()
     Base.metadata.drop_all(engine)
 ```
+---
+
+### Eu sei, esse código é um pouco complexo de mais [0]
+
+1. Em `create_engine`: Mecanismo será usado para criar uma sessão de banco de dados
+     - `sqlite:///:memory:`: SQLite em memória
+     - `connect_args={'check_same_thread': False}`: o SQLite tem algumas limitações quando usado em diferentes threads
+	 - `poolclass=StaticPool`:  a mesma conexão será reutilizada para toda a duração do teste
+
+2. `sessionmaker`: Aqui estamos criando uma fábrica de sessões:
+	 - `bind=engine` nossa engine do banco
+     - `autocommit=False` para controlar quando as transações são commitadas
+	 - `autoflush=False` para que o SQLAlchemy não tente automaticamente flush a cada operação.
+
+---
+
+### Eu sei, esse código é um pouco complexo de mais [1]
+
+3. `Base.metadata.create_all(engine)`: Estamos criando todas as tabelas no banco de dados de teste. Isso é feito antes de cada teste que usa a fixture `session`.
+
+4. `yield Session()`: Estamos produzindo uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
+
+5. `Base.metadata.drop_all(engine)`: Finalmente, após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas. Isso garante que cada teste é executado contra um banco de dados limpo.
 
 ---
 
