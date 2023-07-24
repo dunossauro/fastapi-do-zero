@@ -86,6 +86,22 @@ class User(Base):
 
 ---
 
+O fluxo completo
+
+<div class="mermaid">
+graph LR
+  A[Aplicativo Python] -- utiliza --> B[SQLAlchemy ORM]
+  B -- fornece --> D[Session]
+  D -- interage com --> C[Modelos]
+  C -- mapeados para --> G[Tabelas no Banco de Dados]
+  D -- depende de --> E[Engine]
+  E -- conecta-se com --> F[Banco de Dados]
+  C -- associa-se a --> H[Metadata]
+  H -- mantém informações de --> G[Tabelas no Banco de Dados]
+</div>
+
+---
+
 ## Escrevendo testes para esse modelo
 
 ---
@@ -271,3 +287,8 @@ target_metadata = Base.metadata
 ```bash
 alembic revision --autogenerate -m "create users table"
 ```
+
+
+<!-- mermaid.js -->
+<script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
