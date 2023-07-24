@@ -61,6 +61,38 @@ poetry add pydantic-settings
 
 ---
 
+# Uma introdução ao SQLAlchemy
+
+---
+
+## A divisão das responsabilidades
+
+O SQLAlchemy é basicamente divido entre dois grandes componentes
+
+- **Core**: uma interface SQL abstrata, que possibilita a manipulação de bancos de dados relacionais de maneira segura, alinhada com as convenções do Python. Através do Core, é possível construir, analisar e executar instruções SQL, além de conectar-se a diversos tipos de bancos de dados utilizando a mesma API.
+
+- **ORM**: ORM, ou Mapeamento Objeto-Relacional, é uma técnica que facilita a comunicação entre o código orientado a objetos e bancos de dados relacionais. Com o ORM do SQLAlchemy, os desenvolvedores podem interagir com o banco de dados utilizando classes e objetos Python, eliminando a necessidade de escrever instruções SQL diretamente.
+
+---
+
+## Outros componentes importantes
+
+### Engine
+
+A 'Engine' do SQLAlchemy é o ponto de contato com o banco de dados, estabelecendo e gerenciando as conexões. Ela é instanciada através da função `create_engine()`, que recebe as credenciais do banco de dados, o endereço de conexão (URI) e configura o pool de conexões.
+
+### Session
+
+Quanto à persistência de dados e consultas ao banco de dados utilizando o ORM, a Session é a principal interface. Ela atua como um intermediário entre o aplicativo Python e o banco de dados, mediada pela Engine. A Session é encarregada de todas as transações, fornecendo uma API para conduzi-las.
+
+---
+
+# Antes de aprofundar nisso
+
+Vamos criar o modelo!
+
+---
+
 # Definindo nosso modelo de "user" com SQLalchemy
 
 no arquivo `fast_zero/models.py` vamos criar
@@ -86,10 +118,8 @@ class User(Base):
 
 ---
 
-O fluxo completo
-
-<div class="mermaid">
-graph LR
+<div class="mermaid" style="text-align: center;">
+graph
   A[Aplicativo Python] -- utiliza --> B[SQLAlchemy ORM]
   B -- fornece --> D[Session]
   D -- interage com --> C[Modelos]
