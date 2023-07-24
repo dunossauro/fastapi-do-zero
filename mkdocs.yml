@@ -60,6 +60,14 @@ plugins:
   - git-revision-date-localized
   - social:
       cards_layout: default
+  - with-pdf:
+      author: Eduardo Mendes (@dunossauro)
+      cover_title: FastAPI do zero
+      cover_subtitle: Uma introdução prática!
+      copyright: CC BY-NC-SA
+      toc_level: 6
+      enabled_if_env: ENABLE_PDF_EXPORT
+      toc_title: Índice
 
 extra_css:
   - stylesheets/extra.css
