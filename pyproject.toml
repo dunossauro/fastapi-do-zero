@@ -22,6 +22,7 @@ mkdocs-with-pdf = "^0.9.3"
 [tool.taskipy.tasks]
 serve = "mkdocs serve --dev-addr localhost:8080"
 deploy = "mkdocs gh-deploy"
+slides = "marp -I slides/brutos/ --html --theme slides/brutos/rose-pine.css --allow-local-files --pdf -o slides/pdf/"
 
 [build-system]
 requires = ["poetry-core"]
