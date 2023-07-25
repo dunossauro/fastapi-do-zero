@@ -317,7 +317,23 @@ target_metadata = Base.metadata
 ```bash
 alembic revision --autogenerate -m "create users table"
 ```
+---
 
+## Aplicando a migração
+
+```bash
+alembic upgrade head
+```
+
+---
+
+## commit
+
+```bash
+git add .
+git commit -m "Adicionada a primeira migração com Alembic. Criada tabela de usuários."
+git push
+```
 
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
