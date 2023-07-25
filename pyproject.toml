@@ -24,6 +24,7 @@ serve = "mkdocs serve --dev-addr localhost:8080"
 deploy = "mkdocs gh-deploy"
 slides = "marp -I slides/brutos/ --html --theme slides/brutos/rose-pine.css --allow-local-files --pdf -o slides/pdf/"
 slides_html = "marp -I slides/brutos --html --theme slides/brutos/rose-pine.css --allow-local-files -o slides/html"
+pdf = "ENABLE_PDF_EXPORT=1 mkdocs build"
 
 [build-system]
 requires = ["poetry-core"]
