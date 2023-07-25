@@ -58,18 +58,13 @@ def update_user(
     if current_user.id != user_id:
         raise HTTPException(status_code=400, detail='Not enough permissions')
 
-    db_user = session.scalar(select(User).where(User.id == user_id))
-
-    if db_user is None:
-        raise HTTPException(status_code=404, detail='User not found')
-
-    db_user.username = user.username
-    db_user.password = user.password
-    db_user.email = user.email
+    current_user.username = user.username
+    current_user.password = user.password
+    current_user.email = user.email
     session.commit()
-    session.refresh(db_user)
+    session.refresh(current_user)
 
-    return db_user
+    return current_user
 
 
 @app.delete('/users/{user_id}', response_model=Message)
@@ -81,12 +76,7 @@ def delete_user(
     if current_user.id != user_id:
         raise HTTPException(status_code=400, detail='Not enough permissions')
 
-    db_user = session.scalar(select(User).where(User.id == user_id))
-
-    if db_user is None:
-        raise HTTPException(status_code=404, detail='User not found')
-
-    session.delete(db_user)
+    session.delete(current_user)
     session.commit()
 
     return {'detail': 'User deleted'}
