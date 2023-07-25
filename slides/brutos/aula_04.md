@@ -131,3 +131,13 @@ def test_create_user(client):
 # Implementação dos outros endpoints
 
 ...
+
+---
+
+# Commit!
+
+```shell title="$ Execução no terminal!"
+git add .
+git commit -m "Atualizando endpoints para usar o banco de dados real"
+git push
+```
