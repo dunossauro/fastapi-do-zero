@@ -69,10 +69,9 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 5. [Autenticação e Autorização](/05/){:target="_blank"}
 6. [Refatorando a Estrutura do Projeto](/06/){:target="_blank"}
 7. [Tornando o sistema de autenticação robusto](/07/){:target="_blank"}
-8. [Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI](/08/){:target="_blank"}
-9. [Criando Rotas CRUD para Tarefas](/09/){:target="_blank"}
-10. [Dockerizando a aplicação](/10/){:target="_blank"}
-11. [Automatizando os testes com integração contínua](/11/){:target="_blank"}
+9. [Criando Rotas CRUD para Tarefas](/08/){:target="_blank"}
+10. [Dockerizando a aplicação](/09/){:target="_blank"}
+11. [Automatizando os testes com integração contínua](/10/){:target="_blank"}
 12. [Fazendo o deploy no fly.io](/11/){:target="_blank"}
 13. [Despedida](/12/){:target="_blank"}
 
