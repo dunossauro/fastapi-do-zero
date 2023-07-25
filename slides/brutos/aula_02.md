@@ -99,7 +99,7 @@ Um formato bastante parecido com um dicionário do python
 ---
 
 # De uma forma geral
-<div class="mermaid">
+<div class="mermaid" style="text-align: center;">
 sequenceDiagram
     participant Cliente
     participant Servidor
