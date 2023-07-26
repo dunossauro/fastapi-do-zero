@@ -5,6 +5,8 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # [WIP] FastAPI do ZERO
 
+> Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request!
+
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
 Boas vindas à jornada de aprendizado mais empolgante que você vai embarcar: "FastAPI do Zero: Criando um Projeto com Bancos de Dados, Testes e Deploy". Este curso tem como objetivo oferecer um entendimento prático do framework FastAPI, proporcionando as habilidades essenciais para o desenvolvimento eficiente de APIs. Como integração com banco de dados e como fazer testes!
@@ -41,6 +43,13 @@ Aqui está uma visão geral dos tópicos que vamos abordar neste curso:
 
 SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blank"} e com a [ajuda financeira](https://apoia.se/fastapi){:target="_blank"} de pessoas incríveis. Caso você sinta vontade de contribuir, você pode me pagar um café por pix (pix.dunossauro@gmail.com) ou apoiar a [campanha recorrente de financiamento coletivo da live de python](https://apoia.se/livedepython){:target="_blank"} que é o que paga as contas aqui de casa.
 
+## Onde o curso será disponibilizado?
+
+Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
+
+[**http://youtube.com/@dunossauro**](http://youtube.com/@dunossauro){:target="_blank"}
+
+> Aqui estará listada a playlist quando disponível!
 
 ## Pré-requisitos
 
