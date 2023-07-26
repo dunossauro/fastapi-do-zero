@@ -40,7 +40,7 @@ def verify_password(plain_password: str, hashed_password: str):
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 
-async def get_current_user(
+def get_current_user(
     session: Session = Depends(get_session),
     token: str = Depends(oauth2_scheme),
 ):
