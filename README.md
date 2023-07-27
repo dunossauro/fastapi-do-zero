@@ -14,7 +14,7 @@
   - [x] Tipografia
   - [x] Cores
   - [x] Identidade visual
-  - [ ] Fotos
+  - [x] Fotos
     - [ ] Thumbs
   - [ ] Animações - Precisa da identidade
   - [ ] Musica tema - Precisa da identidade
