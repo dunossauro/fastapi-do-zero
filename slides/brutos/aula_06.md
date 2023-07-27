@@ -14,7 +14,7 @@ Objetivos da Aula:
 - Mover coisas de altenticação para um arquivo chamado `fast_zero/auth.py`
 - Deixando em `fast_zero/secutiry.py` somente as validações de senha
 - Remover constantes usados em código (`SECRET_KEY`, `ALGORITHM` e `ACCESS_TOKEN_EXPIRE_MINUTES`) usando a classe Settings
-- Criar um routers específicos
+- Criar routers específicos
 ---
 
 # Parte 1
