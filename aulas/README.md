@@ -136,6 +136,8 @@ Toda essa página foi feita usando as seguintes bibliotecas:
 - [Python-Markdown](https://python-markdown.github.io/){:target="_blank"}: Extensão do Python para Markdown
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MKDocs exibir os vídeos na página
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
+- [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Pra criar a animação no topo dessa página
+- [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Pra exibir a animação do glaxnimate
 
 Para os slides:
 
