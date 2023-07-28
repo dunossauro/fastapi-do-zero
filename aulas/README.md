@@ -3,6 +3,9 @@ title: FastAPI do Zero!
 description: Boas vindas ao nosso minicurso de FastAPI!
 ---
 
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://lottie.host/31b0c1dc-5ff1-45df-b96c-fa1200c8c554/QTcdtW0332.json" background="transparent" speed="1" style="width: 300px; height: 300px; margin-left: auto; margin-right: auto;" loop autoplay></lottie-player>
+
 # [WIP] FastAPI do ZERO
 
 > Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request!
