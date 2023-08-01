@@ -88,7 +88,7 @@ def test_delete_user_wrong_user(client, user2, token):
     assert response.json() == {'detail': 'Not enough permissions'}
 
 
-def test_create_user_two_time(client):
+def test_create_user_two_times(client):
     json = {
         'username': 'alice',
         'email': 'alice@example.com',

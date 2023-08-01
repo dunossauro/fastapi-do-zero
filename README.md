@@ -14,11 +14,11 @@
   - [x] Tipografia
   - [x] Cores
   - [x] Identidade visual
-  - [ ] Fotos
+  - [x] Fotos
     - [ ] Thumbs
-  - [ ] Animações - Precisa da identidade
-  - [ ] Musica tema - Precisa da identidade
-  - [ ] Abertura - Precisa da identidade
+  - [x] Animações
+  - [x] Musica tema
+  - [x] Abertura
 
 - [ ] **Conteúdo!** - [até 15/07]
 

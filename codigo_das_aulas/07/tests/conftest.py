@@ -41,7 +41,7 @@ class UserFactory(factory.Factory):
         model = User
 
     id = factory.Sequence(lambda n: n)
-    username = factory.Sequence(lambda n: f'test{n}')
+    username = factory.LazyAttribute(lambda obj: f'test{obj.id}')
     email = factory.LazyAttribute(lambda obj: f'{obj.username}@test.com')
     password = factory.LazyAttribute(lambda obj: f'{obj.username}@example.com')
 
@@ -61,7 +61,7 @@ def user(session):
 
 
 @pytest.fixture
-def user2(session):
+def other_user(session):
     password = 'testtest'
     user = UserFactory(password=get_password_hash(password))
 

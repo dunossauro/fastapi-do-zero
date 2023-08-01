@@ -3,7 +3,12 @@ title: FastAPI do Zero!
 description: Boas vindas ao nosso minicurso de FastAPI!
 ---
 
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://raw.githubusercontent.com/dunossauro/fastapi-do-zero/main/stuff/anim_lottie.json" background="transparent" speed="1" style="margin-left: auto; margin-right: auto;" loop autoplay></lottie-player>
+
 # [WIP] FastAPI do ZERO
+
+> Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request!
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
@@ -41,6 +46,13 @@ Aqui está uma visão geral dos tópicos que vamos abordar neste curso:
 
 SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blank"} e com a [ajuda financeira](https://apoia.se/fastapi){:target="_blank"} de pessoas incríveis. Caso você sinta vontade de contribuir, você pode me pagar um café por pix (pix.dunossauro@gmail.com) ou apoiar a [campanha recorrente de financiamento coletivo da live de python](https://apoia.se/livedepython){:target="_blank"} que é o que paga as contas aqui de casa.
 
+## Onde o curso será disponibilizado?
+
+Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
+
+[**http://youtube.com/@dunossauro**](http://youtube.com/@dunossauro){:target="_blank"}
+
+> Aqui estará listada a playlist quando disponível!
 
 ## Pré-requisitos
 
@@ -124,6 +136,8 @@ Toda essa página foi feita usando as seguintes bibliotecas:
 - [Python-Markdown](https://python-markdown.github.io/){:target="_blank"}: Extensão do Python para Markdown
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MKDocs exibir os vídeos na página
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
+- [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Pra criar a animação no topo dessa página
+- [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Pra exibir a animação do glaxnimate
 
 Para os slides:
 
