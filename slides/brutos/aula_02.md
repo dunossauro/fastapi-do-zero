@@ -1,6 +1,12 @@
 ---
 marp: true
 theme: rose-pine
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
 ---
 
 # Estruturando o Projeto e Criando Rotas do CRUD
@@ -132,9 +138,11 @@ Quando falamos de operações de banco de dados, temos um acrônimo para essas o
 
 ---
 
-# Começaremos pelo Create / Post
+# A estrutura dos dados
 
-Criar um endpoint com fastapi que crie um usuário!
+Se quisermos criar um endpoint com fastapi que crie um usuário, precisamos definir como trocaremos essa mensagem.
+
+Imagino um JSON como esse:
 
 ```json
 {
@@ -143,6 +151,198 @@ Criar um endpoint com fastapi que crie um usuário!
     "password": "senha-do_dunossauro"
 }
 ```
+
+---
+
+# Pydantic e a validação de dados
+
+O Pydantic é uma biblioteca Python que oferece validação de dados e configurações usando anotações de tipos Python. Ela é utilizada extensivamente em FastAPI para lidar com a validação e serialização/desserialização de dados.
+
+O Pydantic tem um papel crucial ao trabalhar com JSON, pois permite a validação dos dados recebidos neste formato, assim como sua conversão para formatos nativos do Python e vice-versa.
+
+---
+
+## Dois conceitos importantes aqui
+
+- **Esquemas**: No contexto da programação, um esquema é uma representação estrutural de um objeto ou entidade. Por exemplo, no nosso caso, um usuário pode ser representado por um esquema que contém campos para nome de usuário, e-mail e senha. Esquemas são úteis porque permitem definir a estrutura de um objeto de uma maneira clara e reutilizável.
+
+- **Validação de dados**: Este é o processo de verificar se os dados recebidos estão em conformidade com as regras e restrições definidas. Por exemplo, se esperamos que o campo "email" contenha um endereço de e-mail válido, a validação de dados garantirá que os dados inseridos nesse campo de fato correspondam a um formato de e-mail válido.
+
+---
+
+# O pydantic fornece um schema para o json
+
+<div class="columns">
+
+<div>
+
+O json:
+
+```json
+{
+    "username": "joao123",
+    "email": "joao123@email.com",
+    "password": "segredo123"
+}
+```
+
+</div>
+
+<div>
+
+A classe do pydantic:
+
+```python
+from pydantic import BaseModel, EmailStr
+
+
+class UserSchema(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+```
+</div>
+
+</div>
+
+Vamos criar esse schema em um arquivo só de schemas `fast_zero/schemas.py` para fins de organização
+
+---
+
+# Dito isso, vamos implementar a criação do user
+
+---
+
+# A rota
+
+```python
+from fastapi import FastAPI
+from fast_zero.schemas import UserSchema
+
+# ...
+
+@app.post('/users/', status_code=201)
+def create_user(user: UserSchema):
+    return user
+```
+
+Alguns pontos:
+
+- `status_code=201`: é a resposta esperado de uma criação
+- `user: UserSchema`: diz ao endpoint qual o schema que desejamos receber
+
+---
+
+## Vamos ao swagger entender o que aconteceu
+
+> http://localhost:8000/docs
+
+---
+
+## Um problema!
+
+Quando retornamos a requisição, estando expondo a senha, temos que criar um novo schema de resposta para que isso não seja feito.
+
+Um schema que não expõe a senha:
+
+```python
+class UserPublic(BaseModel):
+    username: str
+    email: EmailStr
+```
+
+
+Usando esse schema como resposta do nosso endpoint:
+
+```python
+from fast_zero.schemas import UserSchema, UserPublic
+
+# código omitido
+
+@app.post('/users/', status_code=201, response_model=UserPublic)
+def create_user(user: UserSchema):
+    return user
+```
+
+---
+
+## Criando um banco de dados falso
+
+```python
+from fast_zero.schemas import UserSchema, UserPublic, UserDB
+
+# ...
+
+database = []  # provisório para estudo!
+
+
+@app.post('/users/', status_code=201, response_model=UserPublic)
+def create_user(user: UserSchema):
+    user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)
+	# Aqui precisamos criar um novo modelo que represente o banco
+	# Precisamos de um identificador para esse registro!
+
+    database.append(user_with_id)
+
+    return user
+```
+
+---
+
+### Criando schemas compatíveis
+
+Precisamos alterar nosso schema público para que ele tenha um id e também criar um schema que tenha o id e a senha para representar o banco de dados:
+
+```python
+class UserPublic(BaseModel):
+    id: int
+    username: str
+    email: EmailStr
+
+
+class UserDB(UserSchema):
+    id: int
+```
+
+---
+
+# Testando o enpoint
+
+```python
+def test_create_user():
+    response = client.post(
+        '/users/',
+        json={
+            'username': 'alice',
+            'email': 'alice@example.com',
+            'password': 'secret',
+        },
+    )
+    assert response.status_code == 201
+    assert response.json() == {
+        'username': 'alice',
+        'email': 'alice@example.com',
+        'id': 1,
+    }
+```
+
+---
+
+# Outros enpoints
+
+> Agora eu vou no freestyle, sem slides. Me deseje sorte!
+
+---
+
+## Commit
+
+```bash
+$ git status
+$ git add .
+$ git commit -m "Implementando rotas CRUD"
+$ git push
+```
+
 
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
