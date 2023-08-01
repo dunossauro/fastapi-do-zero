@@ -7,6 +7,7 @@ edit_uri: tree/main/aulas
 
 theme:
   name: material
+  custom_dir: aulas/overrides
   logo: assets/logo.svg
   favicon: assets/logo.svg
   language: pt-BR
@@ -56,7 +57,9 @@ plugins:
   - mkdocs-video
   - search:
       lang: pt
-  - git-authors
+  - git-authors:
+      show_email_address: false
+      show_line_count: true
   - git-revision-date-localized
   - social:
       cards_layout: default
