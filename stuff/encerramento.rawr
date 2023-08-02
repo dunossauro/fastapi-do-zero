@@ -1,0 +1,273 @@
+{
+    "animation": {
+        "__type__": "MainComposition",
+        "animation": {
+            "__type__": "AnimationContainer",
+            "first_frame": 0,
+            "last_frame": 900
+        },
+        "fps": 60,
+        "group_color": "#00000000",
+        "height": 1080,
+        "locked": false,
+        "name": "Animation",
+        "shapes": [
+            {
+                "__type__": "Layer",
+                "animation": {
+                    "__type__": "AnimationContainer",
+                    "first_frame": 0,
+                    "last_frame": 900
+                },
+                "group_color": "#00000000",
+                "locked": false,
+                "mask": {
+                    "__type__": "MaskSettings",
+                    "inverted": false,
+                    "mask": "NoMask"
+                },
+                "name": "Layer",
+                "opacity": {
+                    "value": 1
+                },
+                "parent": null,
+                "render": true,
+                "shapes": [
+                    {
+                        "__type__": "Group",
+                        "group_color": "#00000000",
+                        "locked": false,
+                        "name": "Rectangle",
+                        "opacity": {
+                            "value": 1
+                        },
+                        "shapes": [
+                            {
+                                "__type__": "Fill",
+                                "color": {
+                                    "value": "#a571fe"
+                                },
+                                "fill_rule": "NonZero",
+                                "group_color": "#00000000",
+                                "locked": false,
+                                "name": "Fill",
+                                "opacity": {
+                                    "value": 1
+                                },
+                                "use": null,
+                                "uuid": "e77e2732-b9e3-40db-8caf-de20a228b645",
+                                "visible": true
+                            },
+                            {
+                                "__type__": "Stroke",
+                                "cap": "ButtCap",
+                                "color": {
+                                    "value": "#ccc96f"
+                                },
+                                "group_color": "#00000000",
+                                "join": "MiterJoin",
+                                "locked": false,
+                                "miter_limit": 4,
+                                "name": "Stroke",
+                                "opacity": {
+                                    "value": 1
+                                },
+                                "use": null,
+                                "uuid": "39447d5a-b3a0-4a7c-9d3c-a402f3da9dbc",
+                                "visible": true,
+                                "width": {
+                                    "value": 1
+                                }
+                            },
+                            {
+                                "__type__": "Rect",
+                                "group_color": "#00000000",
+                                "locked": false,
+                                "name": "Rectangle",
+                                "position": {
+                                    "value": {
+                                        "x": 963.0282485875706,
+                                        "y": 545.0696798493408
+                                    }
+                                },
+                                "reversed": false,
+                                "rounded": {
+                                    "value": 0
+                                },
+                                "size": {
+                                    "value": {
+                                        "height": 1107.3747645951034,
+                                        "width": 1947.6007532956685
+                                    }
+                                },
+                                "uuid": "81d8da38-9865-42a6-9df0-c3e744327be9",
+                                "visible": true
+                            }
+                        ],
+                        "transform": {
+                            "__type__": "Transform",
+                            "anchor_point": {
+                                "value": {
+                                    "x": 963.0282485875706,
+                                    "y": 545.0696798493408
+                                }
+                            },
+                            "position": {
+                                "keyframes": [
+                                    {
+                                        "after": {
+                                            "x": 1,
+                                            "y": 1
+                                        },
+                                        "before": {
+                                            "x": 0,
+                                            "y": 0
+                                        },
+                                        "point_type": 0,
+                                        "tan_in": {
+                                            "x": 959.9999999999999,
+                                            "y": -554.1873822975517
+                                        },
+                                        "tan_out": {
+                                            "x": 959.9999999999999,
+                                            "y": -554.1873822975517
+                                        },
+                                        "time": 0,
+                                        "value": {
+                                            "x": 959.9999999999999,
+                                            "y": -554.1873822975517
+                                        }
+                                    },
+                                    {
+                                        "after": {
+                                            "x": 1,
+                                            "y": 1
+                                        },
+                                        "before": {
+                                            "x": 0,
+                                            "y": 0
+                                        },
+                                        "point_type": 0,
+                                        "tan_in": {
+                                            "x": 959.9999999999999,
+                                            "y": 540
+                                        },
+                                        "tan_out": {
+                                            "x": 959.9999999999999,
+                                            "y": 540
+                                        },
+                                        "time": 10,
+                                        "value": {
+                                            "x": 959.9999999999999,
+                                            "y": 540
+                                        }
+                                    }
+                                ]
+                            },
+                            "rotation": {
+                                "value": 0
+                            },
+                            "scale": {
+                                "value": {
+                                    "x": 1,
+                                    "y": 1
+                                }
+                            }
+                        },
+                        "uuid": "ce83e304-bf51-4693-921e-3b6dfdb2bcac",
+                        "visible": true
+                    }
+                ],
+                "transform": {
+                    "__type__": "Transform",
+                    "anchor_point": {
+                        "value": {
+                            "x": 960,
+                            "y": 540
+                        }
+                    },
+                    "position": {
+                        "value": {
+                            "x": 960,
+                            "y": 540
+                        }
+                    },
+                    "rotation": {
+                        "value": 0
+                    },
+                    "scale": {
+                        "value": {
+                            "x": 1,
+                            "y": 1
+                        }
+                    }
+                },
+                "uuid": "755a7ecb-9e3b-44d4-98ef-bed901d3948b",
+                "visible": true
+            }
+        ],
+        "uuid": "79374522-5c1c-4f82-a7be-daf11e9f1497",
+        "visible": true,
+        "width": 1920
+    },
+    "assets": {
+        "__type__": "Assets",
+        "colors": {
+            "__type__": "NamedColorList",
+            "name": "",
+            "uuid": "2fa39f16-3916-4e59-ab0f-aef07c6cd019",
+            "values": [
+            ]
+        },
+        "fonts": {
+            "__type__": "FontList",
+            "name": "",
+            "uuid": "7bec27b6-00f6-47a0-aae6-aff8070b6dd6",
+            "values": [
+            ]
+        },
+        "gradient_colors": {
+            "__type__": "GradientColorsList",
+            "name": "",
+            "uuid": "e84bcfb0-7415-4009-a4e1-58e554395a93",
+            "values": [
+            ]
+        },
+        "gradients": {
+            "__type__": "GradientList",
+            "name": "",
+            "uuid": "cfa2dce9-306e-4ac6-bda1-9740011052cb",
+            "values": [
+            ]
+        },
+        "images": {
+            "__type__": "BitmapList",
+            "name": "",
+            "uuid": "31ba6a60-0b75-4356-a057-c4fbb5935540",
+            "values": [
+            ]
+        },
+        "name": "",
+        "precompositions": {
+            "__type__": "PrecompositionList",
+            "name": "",
+            "uuid": "f0d510a7-6003-4e01-b147-a16afd3fa11c",
+            "values": [
+            ]
+        },
+        "uuid": "4104969c-4787-468a-b46c-5fe0124f3d4c"
+    },
+    "format": {
+        "format_version": 7,
+        "generator": "Glaxnimate",
+        "generator_version": "0.5.3"
+    },
+    "info": {
+        "author": "",
+        "description": "",
+        "keywords": [
+        ]
+    },
+    "metadata": {
+    }
+}
