@@ -141,19 +141,14 @@ A primeira coisa que temos que montar é uma fixture da sessão do banco
 import pytest
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import StaticPool
 
 from fast_zero.models import Base
 
 
 @pytest.fixture
 def session():
-    engine = create_engine(
-        'sqlite:///:memory:',
-        connect_args={'check_same_thread': False},
-        poolclass=StaticPool,
-    )
-    Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    engine = create_engine('sqlite:///:memory:')
+    Session = sessionmaker(bind=engine)
     Base.metadata.create_all(engine)
     yield Session()
     Base.metadata.drop_all(engine)
@@ -162,25 +157,19 @@ def session():
 
 ### Eu sei, esse código é um pouco complexo de mais [0]
 
-1. Em `create_engine`: Mecanismo será usado para criar uma sessão de banco de dados
-     - `sqlite:///:memory:`: SQLite em memória
-     - `connect_args={'check_same_thread': False}`: o SQLite tem algumas limitações quando usado em diferentes threads
-	 - `poolclass=StaticPool`:  a mesma conexão será reutilizada para toda a duração do teste
+1. `create_engine('sqlite:///:memory:')`: cria um mecanismo de banco de dados SQLite em memória usando SQLAlchemy. Este mecanismo será usado para criar uma sessão de banco de dados para nossos testes.
 
-2. `sessionmaker`: Aqui estamos criando uma fábrica de sessões:
-	 - `bind=engine` nossa engine do banco
-     - `autocommit=False` para controlar quando as transações são commitadas
-	 - `autoflush=False` para que o SQLAlchemy não tente automaticamente flush a cada operação.
+2. `Session = sessionmaker(bind=engine)`: cria uma fábrica de sessões para criar sessões de banco de dados para nossos testes.
+
+3. `Base.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
 
 ---
 
 ### Eu sei, esse código é um pouco complexo de mais [1]
 
-3. `Base.metadata.create_all(engine)`: Estamos criando todas as tabelas no banco de dados de teste. Isso é feito antes de cada teste que usa a fixture `session`.
+4. `yield Session()`: fornece uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
 
-4. `yield Session()`: Estamos produzindo uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
-
-5. `Base.metadata.drop_all(engine)`: Finalmente, após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas. Isso garante que cada teste é executado contra um banco de dados limpo.
+5. `Base.metadata.drop_all(engine)`: após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas, garantindo que cada teste seja executado contra um banco de dados limpo.
 
 ---
 

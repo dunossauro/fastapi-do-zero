@@ -1,16 +1,10 @@
-from fastapi.testclient import TestClient
-from fast_zero.app import app
-
-client = TestClient(app)
-
-
-def test_root_deve_retornar_200_e_ola_mundo():
+def test_root_deve_retornar_200_e_ola_mundo(client):
     response = client.get('/')
     assert response.status_code == 200
     assert response.json() == {'message': 'Olá Mundo!'}
 
 
-def test_create_user():
+def test_create_user(client):
     response = client.post(
         '/users/',
         json={
@@ -27,7 +21,7 @@ def test_create_user():
     }
 
 
-def test_read_users():
+def test_read_users(client):
     response = client.get('/users/')
     assert response.status_code == 200
     assert response.json() == {
@@ -41,7 +35,7 @@ def test_read_users():
     }
 
 
-def test_update_user():
+def test_update_user(client):
     response = client.put(
         '/users/1',
         json={
@@ -58,7 +52,7 @@ def test_update_user():
     }
 
 
-def test_delete_user():
+def test_delete_user(client):
     response = client.delete('/users/1')
     assert response.status_code == 200
     assert response.json() == {'detail': 'User deleted'}
