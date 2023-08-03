@@ -310,6 +310,7 @@ class UserDB(UserSchema):
 
 ```python
 def test_create_user():
+    client = TestClient(app)
     response = client.post(
         '/users/',
         json={
@@ -324,6 +325,27 @@ def test_create_user():
         'email': 'alice@example.com',
         'id': 1,
     }
+```
+
+---
+
+#### Não se repita (DRY)
+
+Você deve ter notado que a linha `client = TestClient(app)` está repetida na primeira linha dos dois testes que fizemos. Repetir código pode tornar o gerenciamento de testes mais complexo à medida que cresce, e é aqui que o princípio de "Não se repita" ([DRY](https://pt.wikipedia.org/wiki/Don't_repeat_yourself){:target="_blank"}) entra em jogo. DRY incentiva a redução da repetição, criando um código mais limpo e manutenível.
+
+---
+
+Neste caso, vamos criar uma fixture que retorna nosso `client`. Para fazer isso, precisamos criar o arquivo `tests/conftest.py`. O arquivo `conftest.py` é um arquivo especial reconhecido pelo pytest que permite definir fixtures que podem ser reutilizadas em diferentes módulos de teste dentro de um projeto. É uma forma de centralizar recursos comuns de teste.
+
+
+```python title="tests/conftest.py"
+import pytest
+from fastapi.testclient import TestClient
+from fast_zero.app import app
+
+@pytest.fixture
+def client():
+    return TestClient(app)
 ```
 
 ---
