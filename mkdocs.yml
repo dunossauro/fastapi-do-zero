@@ -4,13 +4,14 @@ docs_dir: aulas
 repo_url: https://github.com/dunossauro/fastapi-do-zero
 repo_name: dunossauro/fastapi-do-zero
 edit_uri: tree/main/aulas
-
 theme:
   name: material
   custom_dir: aulas/overrides
   logo: assets/logo.svg
   favicon: assets/logo.svg
   language: pt-BR
+  features:
+    - content.code.copy
   palette:
     - scheme: slate
       primary: deep purple
@@ -22,13 +23,11 @@ theme:
       toggle:
         icon: material/weather-night
         name: Modo noturno
-
 features:
   - content.tabs.link
   - search.suggest
   - search.highlight
   - search.share
-
 markdown_extensions:
   - pymdownx.critic
   - pymdownx.highlight:
@@ -51,7 +50,6 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - md_in_html
-
 plugins:
   - glightbox
   - mkdocs-video
@@ -71,10 +69,8 @@ plugins:
       toc_level: 6
       enabled_if_env: ENABLE_PDF_EXPORT
       toc_title: Índice
-
 extra_css:
   - stylesheets/extra.css
-
 extra:
   social:
     - icon: fontawesome/brands/github
