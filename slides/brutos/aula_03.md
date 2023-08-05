@@ -20,6 +20,10 @@ theme: rose-pine
 
 ---
 
+# Uma introdução ao SQLAlchemy
+
+---
+
 ## SQLalchemy
 
 O SQLAlchemy é um ORM. Ele permite que você trabalhe com bancos de dados SQL de maneira mais natural aos programadores Python. Em vez de escrever consultas SQL cruas, você pode usar métodos e atributos Python para manipular seus registros de banco de dados.
@@ -47,24 +51,6 @@ poetry add sqlalchemy
 
 ---
 
-# Configurações de ambiente e as 12 fatores
-
-Uma boa prática no desenvolvimento de aplicações é separar as configurações do código.
-
-Configurações, como credenciais de banco de dados, são propensas a mudanças entre ambientes diferentes (como desenvolvimento, teste e produção). 
-
-Misturá-las com o código pode tornar o processo de mudança entre esses ambientes complicado e propenso a erros.
-
-```bash
-poetry add pydantic-settings
-```
-
----
-
-# Uma introdução ao SQLAlchemy
-
----
-
 # Definindo nosso modelo de "user" com SQLalchemy
 
 no arquivo `fast_zero/models.py` vamos criar
@@ -87,6 +73,36 @@ class User(Base):
     password: Mapped[str]
     email: Mapped[str]
 ```
+
+---
+
+### Criando um teste para esse modelo
+
+```python
+from fast_zero.models import User
+
+def test_create_user():
+    user = User(username='test', email='test@test.com', password='secret')
+
+    assert user.password == 'secrete'
+```
+
+> Aqui temos uma bomba!
+
+---
+
+### O que esse teste testa?
+
+Aparentemente ele testa se uma classe pode ser instanciada **ou seja, NADA**.
+
+Precisamos garantir algumas coisas:
+
+1. Se é possível criar essa tabela
+    - `Metadata`!
+2. Se é possível buscar um `User` usando ela como base
+    - `Session`!
+
+Só que para isso precisamos conhecer alguns outros componentes importantes.
 
 ---
 
@@ -172,6 +188,20 @@ def test_create_user(session):
     user = session.scalar(select(User).where(User.username == 'alice'))
 
     assert user.username == 'alice'
+```
+
+---
+
+# Configurações de ambiente e as 12 fatores
+
+Uma boa prática no desenvolvimento de aplicações é separar as configurações do código.
+
+Configurações, como credenciais de banco de dados, são propensas a mudanças entre ambientes diferentes (como desenvolvimento, teste e produção). 
+
+Misturá-las com o código pode tornar o processo de mudança entre esses ambientes complicado e propenso a erros.
+
+```bash
+poetry add pydantic-settings
 ```
 
 ---
