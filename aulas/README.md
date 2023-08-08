@@ -30,7 +30,7 @@ Este curso também dá ênfase à prática de testes, utilizando o pytest para g
 
 Aqui está uma visão geral dos tópicos que vamos abordar neste curso:
 
-1. **Configurando um ambiente de desenvolvimento para FastAPI**: Vamos começar do absoluto zero, criando e configurando nosso ambiente de desenvolvimento. 
+1. **Configurando um ambiente de desenvolvimento para FastAPI**: Vamos começar do absoluto zero, criando e configurando nosso ambiente de desenvolvimento.
 
 2. **Primeiros Passos com FastAPI e TDD**: Depois de configurar o ambiente, mergulharemos na estrutura básica de um projeto FastAPI e faremos uma introdução detalhada ao Test Driven Development (TDD).
 
@@ -95,9 +95,9 @@ Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunos
 ![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/dunossauro.jpg){ align=left width="300" .shadow}
 <div markdown>
 
-Eu sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} a pouco mais de 6 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é python.
+Eu sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há pouco mais de 6 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
 
-Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande curso de fastAPI que estou montando. Espero que você se divirta ao máximo com a parte prática enquanto escrevo em mais detalhes todo o potencial teórico que lançarei no futuro!
+Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande curso de FastAPI que estou montando. Espero que você se divirta ao máximo com a parte prática enquanto escrevo em mais detalhes todo o potencial teórico que lançarei no futuro!
 
 [Caso queira saber mais sobre esse projeto completo](https://youtu.be/ikmFLkjxqFg){:target="_blank"}.
 </div>
@@ -123,7 +123,7 @@ Pontos de atenção:
 1. Um editor de texto ou IDE de sua escolha. Estou usando o [GNU/Emacs](https://www.gnu.org/software/emacs/){:target="_blank"} enquanto escrevo as aulas;
 2. Um terminal. Todos os exemplos do curso são executados e explicados no terminal. Você pode usar o que se sentir mais a vontade e for compatível com seu sistema operacional;
 3. Ter o interpretador Python instalado em uma versão igual ou superior a `3.11`
-4. Uma conta no [Github](https://github.com/){:target="_blank"}: para podermos testar com github Actions;
+4. Uma conta no [Github](https://github.com/){:target="_blank"}: para podermos testar com Github Actions;
 5. Uma conta no [Fly.io](https://fly.io/){:target="_blank"}: ferramenta que usaremos para fazer deploy.
 
 ## 🔧 Ferramentas de apoio
@@ -131,13 +131,13 @@ Pontos de atenção:
 Toda essa página foi feita usando as seguintes bibliotecas:
 
 - [MkDocs](https://www.mkdocs.org/){:target="_blank"}: Para geração das páginas estáticas usando Markdown
-- [Mkdocs-material](https://squidfunk.github.io/mkdocs-material/){:target="_blank"}: Tema para o MKDocs
-- [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/){:target="_blank"}: Extensões para MKDocs, como emojis, diagramas e blocos estilizados de código
+- [Mkdocs-material](https://squidfunk.github.io/mkdocs-material/){:target="_blank"}: Tema para o MkDocs
+- [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/){:target="_blank"}: Extensões para MkDocs, como emojis, diagramas e blocos estilizados de código
 - [Python-Markdown](https://python-markdown.github.io/){:target="_blank"}: Extensão do Python para Markdown
-- [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MKDocs exibir os vídeos na página
+- [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MkDocs exibir os vídeos na página
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
 - [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Pra criar a animação no topo dessa página
-- [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Pra exibir a animação do glaxnimate
+- [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Pra exibir a animação do Glaxnimate
 
 Para os slides:
 
