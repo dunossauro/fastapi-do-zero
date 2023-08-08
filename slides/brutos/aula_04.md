@@ -128,6 +128,29 @@ def test_create_user(client):
 
 ---
 
+## Erros!
+
+A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
+
+```python
+@pytest.fixture
+def session():
+    engine = create_engine(
+        'sqlite:///:memory:',
+        connect_args={'check_same_thread': False},
+        poolclass=StaticPool,
+    )
+    Base.metadata.create_all(engine)
+
+    Session = sessionmaker(bind=engine)
+
+    yield Session()
+
+    Base.metadata.drop_all(engine)
+```
+
+---
+
 # Implementação dos outros endpoints
 
 ...
