@@ -6,13 +6,13 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <lottie-player src="https://raw.githubusercontent.com/dunossauro/fastapi-do-zero/main/stuff/anim_lottie.json" background="transparent" speed="1" style="margin-left: auto; margin-right: auto;" loop autoplay></lottie-player>
 
-# [WIP] FastAPI do ZERO
+# FastAPI do ZERO
 
 > Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request!
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
-Boas vindas à jornada de aprendizado mais empolgante que você vai embarcar: "FastAPI do Zero: Criando um Projeto com Bancos de Dados, Testes e Deploy". Este curso tem como objetivo oferecer um entendimento prático do framework FastAPI, proporcionando as habilidades essenciais para o desenvolvimento eficiente de APIs. Como integração com banco de dados e como fazer testes!
+Boas-vindas à sua jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento eficiente de APIs. Exploraremos temas como integração com bancos de dados e implementação de testes, oferecendo uma base sólida para quem busca trabalhar com essa ferramenta. A abordagem é direta e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
 
 ## O que é FastAPI?
 
@@ -20,11 +20,13 @@ FastAPI é um framework Python moderno, projetado para simplicidade, velocidade 
 
 ## Sobre o curso
 
-Este curso visa oferecer uma experiência prática completa, desde a configuração do ambiente de desenvolvimento até o deploy de uma aplicação FastAPI completa. O objetivo é que, ao final do curso, você tenha uma compreensão profunda do uso do FastAPI e das melhores práticas associadas.
+Este curso foi desenvolvido para oferecer uma experiência prática no uso do FastAPI, uma das ferramentas mais modernas para construção de APIs. Ao longo do curso, o objetivo é que você obtenha uma compreensão das funcionalidades do FastAPI e de boas práticas associadas a ele.
 
-Para isso, construiremos um projeto prático de gerenciamento de tarefas (uma lista de tarefas) do zero, incluindo a autenticação do usuário e operações CRUD completas. Nesse projeto, faremos uso das ferramentas mais recentes disponíveis em 2023, incluindo a versão 0.100 do FastAPI, a versão 2.0 do Pydantic e a versão 2.0 do SQLAlchemy ORM. Também usaremos o Python 3.11 e o Alembic para gerenciamento de migrações.
+O projeto central do curso será a construção de um gerenciador de tarefas (uma lista de tarefas), começando do zero. Esse projeto incluirá a implementação da autenticação do usuário e das operações CRUD completas.
 
-Este curso também dá ênfase à prática de testes, utilizando o pytest para garantir que as APIs que construímos sejam robustas e confiáveis.
+Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2023, como a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, a versão 2.0 do SQLAlchemy ORM, além do Python 3.11 e do Alembic para gerenciamento de migrações.
+
+Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem tem como objetivo garantir que as APIs desenvolvidas sejam não apenas funcionais, mas também robustas e confiáveis.
 
 ## O que você vai aprender?
 
@@ -56,7 +58,7 @@ Esse material está em fase de desenvolvimento e todas as aulas estarão dispon�
 
 ## Pré-requisitos
 
-Para aproveitar ao máximo este curso, é recomendado que você tenha algum conhecimento prévio de Python. Além disso, algum entendimento básico de desenvolvimento web e APIs RESTful será útil, mas não essencial, pois {dizer que a ideia é fazer um projeto com foco prático, então você pode entender como as coisas são construídas até o fim do processo!}
+Para aproveitar ao máximo este curso, é recomendado que você tenha algum conhecimento prévio de Python. Além disso, algum entendimento básico de desenvolvimento web e APIs RESTful será útil, mas não essencial, pois a abordagem deste curso é prática e centrada em um projeto concreto. Através de exemplos reais e instruções passo a passo, você terá a oportunidade de acompanhar o processo de construção de uma aplicação real. Mesmo que os conceitos de desenvolvimento web sejam novos para você, a ênfase na aplicação prática e a estrutura detalhada do curso facilitarão o entendimento e a aplicação dessas habilidades até o fim do processo.
 
 ??? info "Caso esteja iniciando seus estudos em Python!"
 	Caso você ainda não se sinta uma pessoa preparada, ou caiu aqui sem saber exatamente o que esperar. Temos um pequeno curso introdutório. Destinado aos primeiros passos com python.
@@ -152,11 +154,21 @@ Os deploys das páginas estáticas geradas pelo MkDocs estão sendo feitos no [N
 
 ## Conclusão
 
-Estou animado para embarcar nesta jornada de aprendizado com você. Se você está pronto para aprender a construir APIs web eficientes e testáveis com FastAPI, este é definitivamente o curso para você. Estou ansioso para começar a primeira aula, onde vamos configurar nosso ambiente de desenvolvimento e dar nossos primeiros passos com FastAPI e TDD!
+Neste curso, a intenção é fornecer uma compreensão completa do framework FastAPI, utilizando-o para construir uma aplicação de gerenciamento de tarefas. O aprendizado será focado na prática, e cada conceito será acompanhado por exemplos e exercícios.
+
+A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.
+
+Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.
+
+Neste curso, a intenção é fornecer uma compreensão completa do framework FastAPI, utilizando-o para construir uma aplicação de gerenciamento de tarefas. O aprendizado será focado na prática, e cada conceito será acompanhado por exemplos e exercícios relevantes.
+
+A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.
+
+Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.
 
 ## F.A.Q.
 
-Perguntas frequentes que me fizeram após os vídeos
+Perguntas frequentes que me fizeram durante os vídeos
 
 - Que papel de parede é esse? [É uma foto do Liam Wong](https://www.tumblr.com/liamwong){:target="_blank"}
 - Qual o tema no shell? Todo o meu tema do Gnome foi customizado com [Gradience](https://gradienceteam.github.io/){:target="_blank"} o tema é [Pretty In Purple](https://www.gnome-look.org/p/2031597){:target="_blank"}
