@@ -261,6 +261,7 @@ extend-exclude = '(migrations/)'
 [tool.isort]
 profile = "black"
 line_length = 79  # Modelo da PEP-8
+extend_skip = ['migrations']
 
 [tool.taskipy.tasks]
 format = 'blue .  && isort .'
