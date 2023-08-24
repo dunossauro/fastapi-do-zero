@@ -34,6 +34,7 @@ exclude = ['.venv', 'migrations']
 [tool.isort]
 profile = "black"
 line_length = 79
+extend_skip = ['migrations']
 
 [tool.pytest.ini_options]
 pythonpath = "."
