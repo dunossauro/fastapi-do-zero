@@ -1,6 +1,12 @@
 ---
 marp: true
 theme: rose-pine
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
 ---
 
 # Integrando Banco de Dados a API
@@ -20,7 +26,13 @@ theme: rose-pine
 
 # Integrando SQLAlchemy à Nossa Aplicação FastAPI
 
-Para aqueles que não estão familiarizados, o SQLAlchemy é uma biblioteca Python que facilita a interação com um banco de dados SQL. Ele faz isso oferecendo uma forma de trabalhar com bancos de dados que aproveita a facilidade e o poder do Python, ao mesmo tempo em que mantém a eficiência e a flexibilidade dos bancos de dados SQL.
+A peça principal da nossa integração é a **sessão** do ORM. Ela precisa ser visível aos endpoints para que eles possam se comunicar com o banco.
+
+<div class="mermaid" style="text-align: center;">
+graph LR
+  Enpoint <--> Session
+  Session <--> id1[(Database)]
+</div>
 
 ---
 
@@ -30,11 +42,32 @@ Uma peça chave do SQLAlchemy é o conceito de uma "sessão". Se você é novo n
 
 ---
 
-1. **Mapa de Identidade**: Imagine que você esteja comprando frutas em uma loja online. Cada fruta que você adiciona ao seu carrinho recebe um código de barras único, para que a loja saiba exatamente qual fruta você quer. O Mapa de Identidade no SQLAlchemy é esse sistema de código de barras: ele garante que cada objeto na sessão seja único e facilmente identificável.
+1. **Repositório**: A sessão atua como um repositório. A ideia de um repositório é abstrair qualquer interação envolvendo persistência de dados.
 
-2. **Repositório**: A sessão também atua como um repositório. Isso significa que ela é como um porteiro: ela controla todas as comunicações entre o seu código Python e o banco de dados. Todos os comandos que você deseja enviar para o banco de dados devem passar pela sessão.
+3. **Unidade de Trabalho**: Cada objeto adicionado ou removido da sessão é reconhecido como uma **unidade**. Fazendo com que possam ser removidos ou adicionados na sessão ter intervir na conexão com o banco. 
 
-3. **Unidade de Trabalho**: Finalmente, a sessão age como uma unidade de trabalho. Isso significa que ela mantém o controle de todas as alterações que você quer fazer no banco de dados. Se você adicionar uma fruta ao seu carrinho e depois mudar de ideia e remover, a sessão lembrará de ambas as ações. Então, quando você finalmente decidir finalizar a compra, ela enviará todas as suas alterações para o banco de dados de uma só vez.
+2. **Mapeamento de Identidade**: É criado um cache para as entidades que já estão carregadas na sessão para evitar conexões desnecessárias.
+
+---
+
+# De uma forma visual
+
+<div class="mermaid" style="text-align: center;">
+graph
+  Enpoint --> Session
+  Session --> scalars
+  Session --> scalar
+  scalar --> Busca_Dado[Busca um dado]
+  scalars --> Busca_Dados[Busca N dados]
+  Session --> add
+  add --> ADD[Adiciona/Deleta um objeto]
+  Session --> delete
+  delete --> ADD[Adiciona/Deleta um objeto]
+  Session --> rollback
+  rollback --> D[Desfaz a UT]
+  Session --> commit
+  commit --> DB[DB / executa UTs]
+</div>
 
 ---
 
@@ -42,6 +75,7 @@ Uma peça chave do SQLAlchemy é o conceito de uma "sessão". Se você é novo n
 
 
 ```python
+# fast_zero/database.py
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
@@ -62,6 +96,32 @@ def get_session():
 Assim como a sessão SQLAlchemy, que implementa vários padrões arquiteturais importantes, FastAPI também usa um conceito de padrão arquitetural chamado "Injeção de Dependência".
 
 FastAPI fornece a função `Depends` para ajudar a declarar e gerenciar essas dependências. É uma maneira declarativa de dizer ao FastAPI: "Antes de executar esta função, execute primeiro essa outra função e passe-me o resultado". Isso é especialmente útil quando temos operações que precisam ser realizadas antes de cada request, como abrir uma sessão de banco de dados. 
+
+---
+
+<div class="columns">
+
+<div class="mermaid" style="text-align: center;">
+graph LR
+   código -- depende de --> sessão
+  subgraph Função
+  código
+  end
+</div>
+
+<div>
+
+```python
+def endpoint(
+    user: UserSchema,
+    session = Depends(get_session)
+):
+
+    session...
+```
+</div>
+
+</div>
 
 ---
 
@@ -92,6 +152,7 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
 
 ```python
+# tests/conftest.py
 @pytest.fixture
 def client(session):
     def get_session_override():
@@ -164,3 +225,7 @@ git add .
 git commit -m "Atualizando endpoints para usar o banco de dados real"
 git push
 ```
+
+<!-- mermaid.js -->
+<script src="https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
