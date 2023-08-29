@@ -34,6 +34,12 @@ Sobre a cadeia:
 - De-Esser: 60%
 - De-Breath: 84%, sensibilidade 7.0
 
+3. Render
+
+A1: 5,02dB
+A2: -4,68dB
+Master: 4,29dB
+
 
 ## Vídeo
 
