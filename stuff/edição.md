@@ -57,5 +57,10 @@ Master: 4,29dB
 4. Adicionar abertura e tela final!
 
 5. Render: 
-   - Redimensionar para 4k
+   - Saída: 3840 x 2160
+       ```
+       ab=192k acodec=aac channels=2 f=mp4 real_time=-1 scale=2 threads=0
+       vaapi_device=/dev/dri/renderD128 vb=30000k
+       vcodec=h264_vaapi vf=’format=nv12,hwupload’
+       ```
    - Procurar algo no MLT para não precisar renderizar no kdenlive
