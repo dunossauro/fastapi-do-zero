@@ -1,6 +1,6 @@
 # FastAPI do Zero: Criando um projeto com Bancos de dados, Testes e Deploy
 
-## Aula 1: Introdução ao Curso de FastAPI - O que você vai aprender?
+## Aula 00: Introdução ao Curso de FastAPI - O que você vai aprender?
 
 - Apresentação pessoal e do curso
 - Explicação do projeto e das tecnologias que serão usadas
@@ -14,7 +14,7 @@ Descrição: Boas-vindas à primeira aula prática do nosso curso "FastAPI do Ze
 Tags: FastAPI, Python, Curso de FastAPI, Introdução ao FastAPI, APIs com Python, Desenvolvimento web com Python, Configuração do ambiente FastAPI, Desenvolvimento Orientado por Testes, TDD com FastAPI, Pytest, Ruff, Blue, Isort, Taskipy, Poetry, Git, Hello World em FastAPI.
 
 
-## Aula 2: Configurando o Ambiente de Desenvolvimento para FastAPI
+## Aula 01: Configurando o Ambiente de Desenvolvimento para o FastAPI
 
 - Introdução ao ambiente de desenvolvimento (IDE, terminal, etc.)
 - Instalação do FastAPI e suas dependências
@@ -23,11 +23,11 @@ Tags: FastAPI, Python, Curso de FastAPI, Introdução ao FastAPI, APIs com Pytho
 
 ### Youtube
 
-Descrição: Continuamos nossa jornada no mundo do FastAPI neste vídeo, onde você aprenderá a verificar e corrigir erros de formatação no seu código usando ferramentas como taskipy, blue e ruff. Você também será apresentado à biblioteca pytest e como usá-la para escrever seu primeiro teste unitário em FastAPI. Finalmente, você verá como verificar a cobertura de teste do seu código com a biblioteca coverage e como visualizar esses resultados de uma forma mais intuitiva. Não esqueça de configurar seu repositório Git ao final da aula!
+Descrição: Iniciaremos nossa jornada no mundo do FastAPI neste vídeo, onde você aprenderá a verificar e corrigir erros de formatação no seu código usando ferramentas como taskipy, blue e ruff. Você também será apresentado à biblioteca pytest e como usá-la para escrever seu primeiro teste unitário em FastAPI. Finalmente, você verá como verificar a cobertura de teste do seu código com a biblioteca coverage e como visualizar esses resultados de uma forma mais intuitiva. Não esqueça de configurar seu repositório Git ao final da aula!
 
 Tags: FastAPI, Python, Taskipy, Blue, Ruff, Pytest, Testes Unitários, Coverage, Cobertura de Testes, Git, Ambiente de Desenvolvimento Python, Desenvolvimento web com Python, Desenvolvimento Orientado por Testes, Teste de API
 
-## Aula 3: Estruturando seu Projeto FastAPI e Criando Rotas CRUD
+## Aula 02: Estruturando seu Projeto FastAPI e Criando Rotas para CRUD
 
 - Entendimento dos verbos HTTP e códigos de resposta
 - Compreender a estrutura de um projeto FastAPI e como estruturar rotas CRUD (Criar, Ler, Atualizar, Deletar)
@@ -41,7 +41,7 @@ Descrição: Nesta Aula 3 do curso "FastAPI do Zero: Criando um Projeto com Banc
 
 Tags: FastAPI, Python, APIs, Desenvolvimento Web, Backend, HTTP, CRUD, Testes, Pydantic, Rotas CRUD, Verbos HTTP, Códigos de Resposta HTTP, Estrutura de Projetos FastAPI, Serialização de Dados, Validade de Dados, Desenvolvimento de Software, Programação.
 
-## Aula 4: Configurando Banco de Dados e Gerenciando Migrações com Alembic
+## Aula 03: Configurando Banco de Dados e Gerenciando Migrações com Alembic
 
 -  Introdução ao SQLAlchemy e Alembic
 -  Instalando SQLAlchemy e Alembic
@@ -56,7 +56,7 @@ Descrição: Boas-vindas à quarta aula do nosso curso "FastAPI do Zero: Criando
 
 Tags: FastAPI, Python, SQLAlchemy, Alembic, Gerenciamento de Banco de Dados com FastAPI, Migração de Dados com Alembic, Desenvolvimento Web com Python, Testes de Banco de Dados, Desenvolvimento Orientado por Testes, FastAPI do Zero.
 
-## Aula 5: Integrando Banco de Dados ao FastAPI
+## Aula 04: Integrando Banco de Dados ao FastAPI
 
 - Integrando SQLAlchemy à nossa aplicação FastAPI
 - Utilizando a função Depends para gerenciar dependências
@@ -75,7 +75,7 @@ Também revisamos nossos endpoints, atualizando-os para que possam efetivamente 
 Tags: FastAPI, Python, API, Desenvolvimento Web, SQLAlchemy, Depends, Pydantic, Pytest, Fixtures, Endpoints, Banco de Dados, APIs RESTful, Desenvolvimento de APIs, Gerenciamento de Dependências, Teste de Software, Banco de Dados SQL, Integração de Banco de Dados, Testes Unitários.
 
 
-## Aula 6: Autenticação e Autorização em FastAPI
+## Aula 05: Autenticação e Autorização em FastAPI
 
 - Criação de rotas para registrar e logar usuários
 - Implementação da autenticação e restrições de acesso
@@ -89,7 +89,7 @@ Tags:FastAPI, Python, Autenticação FastAPI, Autorização FastAPI, Proteção 
 
 
 
-## Aula 7: Refatoração em FastAPI: Implementando Routers e Variáveis de Ambiente
+## Aula 06: Refatoração em FastAPI: Implementando Routers e Variáveis de Ambiente
 
 - Reestruturar o projeto para facilitar sua manutenção
 - Criação de routers
@@ -102,7 +102,7 @@ Descrição: Neste vídeo, exploramos algumas das melhores práticas de desenvol
 Tags: FastAPI, Python, Desenvolvimento Web, API, Rest API, FastAPI Router, Variáveis de Ambiente, Refatoração, Melhores Práticas, Desenvolvimento Python, OpenAPI, Pydantic, SQLAlchemy, Autenticação JWT, TDD, Clean Code
 
 
-## Aula 8: Autenticação JWT e Testes de Casos de Borda
+## Aula 07: Autenticação JWT e Testes de Casos de Borda
 
 
 - Testar os casos de autenticação de forma correta
@@ -118,7 +118,7 @@ Tags: Python, FastAPI, API REST, Autenticação, JWT, JSON Web Tokens, Testes, P
 
 # [PARA REVISÃO]
 
-## Aula 9: Criando Rotas CRUD para Tarefas em FastAPI
+## Aula 08: Criando Rotas CRUD para Tarefas em FastAPI
 
 - Criação das rotas para as operações CRUD das tarefas
 - Fazer com só o usuário dono da tarefa possa acessar e modificar suas tarefas
@@ -130,7 +130,7 @@ Descrição: Hoje, vamos focar em como criar rotas CRUD eficientes para as taref
 
 Tags: FastAPI, Python, CRUD FastAPI, API de Tarefas, Desenvolvimento de API, Desenvolvimento web com Python
 
-## Aula 10: Dockerizando sua Aplicação FastAPI
+## Aula 09: Dockerizando sua Aplicação FastAPI
 
 - Explicação básica do Docker e sua utilidade
 - Escrita do Dockerfile para a aplicação
@@ -143,7 +143,7 @@ Descrição: Já ouviu falar sobre Docker mas nunca soube como usá-lo em seu pr
 
 Tags: FastAPI, Python, Docker, FastAPI com Docker, Deploy de API, Desenvolvimento web com Python
 
-## Aula 11: Automatizando Testes com GitHub Actions e FastAPI
+## Aula 10: Automatizando Testes com GitHub Actions e FastAPI
 
 - Introdução aos conceitos de CI/CD e sua importância
 - Explicação sobre o papel do Github Actions na CI/CD
@@ -156,7 +156,7 @@ Descrição: Continuando nosso curso de FastAPI, vamos automatizar nossos testes
 
 Tags: FastAPI, Python, GitHub Actions, CI/CD, Automatização de Testes, Desenvolvimento web com Python
 
-## Aula 12: Fazendo Deploy de sua Aplicação FastAPI com Fly.io
+## Aula 11: Fazendo Deploy de sua Aplicação FastAPI com Fly.io
 
 - Breve introdução ao Fly.io
 - Demonstração de como configurar e fazer o deploy da aplicação usando o Fly.io
@@ -168,7 +168,7 @@ Descrição: Estamos quase lá! Neste vídeo, vamos fazer deploy de nossa aplica
 
 Tags: FastAPI, Python, Fly.io, Deploy FastAPI, Deploy de API, Desenvolvimento web com Python
 
-## Aula 13: Conclusão do Curso de FastAPI - Revisão e Próximos Passos
+## Aula 12: Conclusão do Curso de FastAPI - Revisão e Próximos Passos
 
 - Revisão dos principais pontos aprendidos durante o curso
 - Discussão sobre possíveis extensões ou melhorias para o projeto
