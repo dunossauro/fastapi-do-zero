@@ -4,7 +4,7 @@
         "animation": {
             "__type__": "AnimationContainer",
             "first_frame": 0,
-            "last_frame": 900
+            "last_frame": 1200
         },
         "fps": 60,
         "group_color": "#00000000",
@@ -94,7 +94,7 @@
                 "animation": {
                     "__type__": "AnimationContainer",
                     "first_frame": 0,
-                    "last_frame": 900
+                    "last_frame": 1200
                 },
                 "group_color": "#00000000",
                 "locked": false,
@@ -876,7 +876,7 @@
                                             "x": 999.3673493408683,
                                             "y": 115.47679201977417
                                         },
-                                        "time": 900,
+                                        "time": 1200,
                                         "value": {
                                             "x": 999.3673493408683,
                                             "y": 115.47679201977417
@@ -930,7 +930,7 @@
                 "animation": {
                     "__type__": "AnimationContainer",
                     "first_frame": 0,
-                    "last_frame": 900
+                    "last_frame": 1200
                 },
                 "group_color": "#00000000",
                 "locked": false,
@@ -1712,7 +1712,7 @@
                                             "x": 245.27071563088248,
                                             "y": 117.58072328154446
                                         },
-                                        "time": 900,
+                                        "time": 1200,
                                         "value": {
                                             "x": 245.27071563088248,
                                             "y": 117.58072328154446
@@ -1766,7 +1766,7 @@
                 "animation": {
                     "__type__": "AnimationContainer",
                     "first_frame": 0,
-                    "last_frame": 900
+                    "last_frame": 1200
                 },
                 "group_color": "#00000000",
                 "locked": false,
@@ -1787,7 +1787,7 @@
                         "animation": {
                             "__type__": "AnimationContainer",
                             "first_frame": 0,
-                            "last_frame": 900
+                            "last_frame": 1200
                         },
                         "group_color": "#00000000",
                         "locked": false,
@@ -1917,7 +1917,7 @@
                                             "x": 1547.6485387409584,
                                             "y": 786.6354218396268
                                         },
-                                        "time": 60,
+                                        "time": 80,
                                         "value": {
                                             "x": 1547.6485387409584,
                                             "y": 786.6354218396268
@@ -1943,7 +1943,7 @@
                         "animation": {
                             "__type__": "AnimationContainer",
                             "first_frame": 0,
-                            "last_frame": 900
+                            "last_frame": 1200
                         },
                         "group_color": "#00000000",
                         "locked": false,
