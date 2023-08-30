@@ -177,6 +177,7 @@ Agora nosso teste
 
 ```python
 from sqlalchemy import select
+
 from fast_zero.models import User
 
 
@@ -268,7 +269,8 @@ alembic init migrations
 │  ├── __init__.py
 │  ├── app.py
 │  ├── models.py
-│  └── schemas.py
+│  ├── schemas.py
+│  └── settings.py
 ├── migrations
 │  ├── env.py
 │  ├── README
