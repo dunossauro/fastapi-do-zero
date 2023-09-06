@@ -44,7 +44,7 @@ No sentido mais geral, o `Session` estabelece todas as conversas com o banco de 
 
 1. **Repositório**: A sessão atua como um repositório. A ideia de um repositório é abstrair qualquer interação envolvendo persistência de dados.
 
-2. **Unidade de Trabalho**: Cada objeto adicionado ou removido da sessão é reconhecido como uma **unidade**. Fazendo com que possam ser removidos ou adicionados na sessão sem intervir na conexão com o banco.
+2. **Unidade de Trabalho**: Quando a sessão é aberta, todos os dados inseridos, modificados ou deletados não são feitos de imediato no banco de dados. Fazemos todas as modificações que queremos e executamos uma única ação.
 
 3. **Mapeamento de Identidade**: É criado um cache para as entidades que já estão carregadas na sessão para evitar conexões desnecessárias.
 
@@ -81,17 +81,18 @@ from sqlalchemy.orm import Session
 # Cria o pool de conexões
 engine = create_engine(Settings().DATABASE_URL)
 
-session =  Session(engine)  # Cria a sessão
+session = Session(engine)  # Cria a sessão
 
 session.add()      # Adiciona no banco
-session.delete()  # Remove do banco
+session.delete()   # Remove do banco
 
 session.scalars()  # Lista N objetos
-session.scalar()  # Lista 1 objeto
+session.scalar()   # Lista 1 objeto
 
-session.commit()  # Executa as UTs no banco
+session.commit()    # Executa as UTs no banco
 session.rollback()  # Desfaz as UTs
 
+session.begin()  # inicia a sessão
 session.close()  # Fecha a sessão
 ```
 
@@ -190,7 +191,7 @@ def create_user(user: UserSchema):
 
 ---
 
-## Criando a nossa sessão
+## Reutilizando a sessão
 
 
 ```python
