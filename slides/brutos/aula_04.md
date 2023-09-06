@@ -38,15 +38,15 @@ graph LR
 
 # Sessão
 
-Uma peça chave do SQLAlchemy é o conceito de uma "sessão". Se você é novo no mundo dos bancos de dados, pode pensar na sessão como um carrinho de compras virtual: conforme você navega pelo site (ou, neste caso, conforme seu código executa), você pode adicionar ou remover itens desse carrinho. No entanto, nenhuma alteração é realmente feita até que você decida finalizar a compra. No contexto do SQLAlchemy, "finalizar a compra" é equivalente a fazer o commit das suas alterações.
+No sentido mais geral, o `Session` estabelece todas as conversas com o banco de dados e representa uma “zona de retenção” para todos os objetos que você carregou ou associou a ele durante sua vida útil. Ele fornece o interface onde são feitas SELECT e outras consultas que retornarão e modificarão Objetos mapeados por ORM. Os próprios objetos ORM são mantidos dentro do Session, dentro de uma estrutura chamada mapa de identidade - um conjunto de dados estrutura que mantém cópias únicas de cada objeto, onde “único” significa “apenas um objeto com uma chave primária específica”. 
 
 ---
 
 1. **Repositório**: A sessão atua como um repositório. A ideia de um repositório é abstrair qualquer interação envolvendo persistência de dados.
 
-3. **Unidade de Trabalho**: Cada objeto adicionado ou removido da sessão é reconhecido como uma **unidade**. Fazendo com que possam ser removidos ou adicionados na sessão ter intervir na conexão com o banco. 
+2. **Unidade de Trabalho**: Cada objeto adicionado ou removido da sessão é reconhecido como uma **unidade**. Fazendo com que possam ser removidos ou adicionados na sessão sem intervir na conexão com o banco.
 
-2. **Mapeamento de Identidade**: É criado um cache para as entidades que já estão carregadas na sessão para evitar conexões desnecessárias.
+3. **Mapeamento de Identidade**: É criado um cache para as entidades que já estão carregadas na sessão para evitar conexões desnecessárias.
 
 ---
 
@@ -68,6 +68,125 @@ graph
   Session --> commit
   commit --> DB[DB / executa UTs]
 </div>
+
+---
+
+## O básico sobre uma sessão
+
+```python
+from fast_zero.settings import Settings
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+
+# Cria o pool de conexões
+engine = create_engine(Settings().DATABASE_URL)
+
+session =  Session(engine)  # Cria a sessão
+
+session.add()      # Adiciona no banco
+session.delete()  # Remove do banco
+
+session.scalars()  # Lista N objetos
+session.scalar()  # Lista 1 objeto
+
+session.commit()  # Executa as UTs no banco
+session.rollback()  # Desfaz as UTs
+
+session.close()  # Fecha a sessão
+```
+
+---
+
+# Entendendo o enpoint de cadastro
+
+Precisamos executar algumas operações para efetuar um cadastro:
+
+1. O `email` não pode existir na base de dados
+2. Se existir, devemos dizer que já está cadastrado com um erro
+3. Caso não exista, deve ser inserido na base de dados
+
+---
+
+## Abrindo mais as operações!
+
+Precisamos executar algumas operações para efetuar um cadastro:
+
+1. O `email` não pode existir na base de dados
+    - Fazer uma busca procurando o `email` fornecido
+        - `selecionar` na tabela de `Users` por email
+        - Fazer isso de forma escalar e buscando por 1
+2. Se existir, devemos dizer que já está cadastrado com um erro
+    - Retornar `HTTPException`
+3. Caso não exista, deve ser inserido na base de dados
+    - Pedir para adicionar na sessão (`add`)
+    - Fazer a persistência desse dado (`commit`)
+
+**Vamos fazer isso parte por parte!!**
+
+---
+
+## O `email` não pode existir na base de dados
+
+```python
+from sqlalchemy import create_engine, select
+from sqlalchemy.orm import Session
+from fast_zero.models import User
+from fast_zero.settings import Settings
+# ...
+
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema):
+    engine = create_engine(Settings().DATABASE_URL)
+
+    session = Session(engine)
+
+    db_user = session.scalar(
+        select(User).where(User.email == user.email)
+    )
+    
+    if db_user: return 'ERRROOOO'
+```
+
+---
+
+## Se existir, devemos dizer que já está cadastrado com um erro
+
+```python
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema):
+    # ...
+    
+    raise HTTPException(
+            status_code=400, detail='Username already registered'
+    )
+```
+
+---
+
+### Caso não exista, deve ser inserido na base de dados
+
+```python
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema):
+    # ...
+
+    db_user = User(
+        username=user.username, password=user.password, email=user.email
+    )
+    session.add(db_user)
+    session.commit()
+    session.refresh(db_user)
+
+    return db_user
+```
+
+> Não esquecer de testar no swagger e mostar o banco!
+
+---
+
+# Não se repita (DRY)
+
+> Injeção de dependência com Depends
 
 ---
 
