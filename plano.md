@@ -14,7 +14,7 @@ Descrição: Boas-vindas à primeira aula prática do nosso curso "FastAPI do Ze
 Tags: FastAPI, Python, Curso de FastAPI, Introdução ao FastAPI, APIs com Python, Desenvolvimento web com Python, Configuração do ambiente FastAPI, Desenvolvimento Orientado por Testes, TDD com FastAPI, Pytest, Ruff, Blue, Isort, Taskipy, Poetry, Git, Hello World em FastAPI.
 
 
-## Aula 01: Configurando o Ambiente de Desenvolvimento para o FastAPI
+## Aula 01: Configurando o Ambiente de Desenvolvimento para o FastAPI [OK]
 
 - Introdução ao ambiente de desenvolvimento (IDE, terminal, etc.)
 - Instalação do FastAPI e suas dependências
@@ -27,7 +27,7 @@ Descrição: Iniciaremos nossa jornada no mundo do FastAPI neste vídeo, onde vo
 
 Tags: FastAPI, Python, Taskipy, Blue, Ruff, Pytest, Testes Unitários, Coverage, Cobertura de Testes, Git, Ambiente de Desenvolvimento Python, Desenvolvimento web com Python, Desenvolvimento Orientado por Testes, Teste de API
 
-## Aula 02: Estruturando seu Projeto FastAPI e Criando Rotas para CRUD
+## Aula 02: Estruturando seu Projeto FastAPI e Criando Rotas para CRUD [OK]
 
 - Entendimento dos verbos HTTP e códigos de resposta
 - Compreender a estrutura de um projeto FastAPI e como estruturar rotas CRUD (Criar, Ler, Atualizar, Deletar)
@@ -41,7 +41,7 @@ Descrição: Nesta Aula 3 do curso "FastAPI do Zero: Criando um Projeto com Banc
 
 Tags: FastAPI, Python, APIs, Desenvolvimento Web, Backend, HTTP, CRUD, Testes, Pydantic, Rotas CRUD, Verbos HTTP, Códigos de Resposta HTTP, Estrutura de Projetos FastAPI, Serialização de Dados, Validade de Dados, Desenvolvimento de Software, Programação.
 
-## Aula 03: Configurando Banco de Dados e Gerenciando Migrações com Alembic
+## Aula 03: Configurando Banco de Dados e Gerenciando Migrações com Alembic [OK]
 
 -  Introdução ao SQLAlchemy e Alembic
 -  Instalando SQLAlchemy e Alembic
@@ -115,8 +115,6 @@ Tags: FastAPI, Python, Desenvolvimento Web, API, Rest API, FastAPI Router, Vari�
 Descrição: Nesta aula, continuamos a desenvolver nossa API REST usando FastAPI e PyTest. Damos um grande passo em direção à segurança do nosso sistema implementando a autenticação JWT (JSON Web Tokens). Aprenda como criar tokens, refrescar tokens, e o que acontece quando esses tokens expiram. Além disso, reforçamos a importância dos testes automatizados, cobrindo vários cenários marginais. Acompanhe-nos nesta jornada para desenvolver uma API robusta e segura.
 
 Tags: Python, FastAPI, API REST, Autenticação, JWT, JSON Web Tokens, Testes, PyTest, TDD, Desenvolvimento de Software, Programação, Casos de Borda, Segurança de Aplicações, Backend, Desenvolvimento Backend, Desenvolvimento Web
-
-# [PARA REVISÃO]
 
 ## Aula 08: Criando Rotas CRUD para Tarefas em FastAPI
 
