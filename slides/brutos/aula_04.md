@@ -54,7 +54,7 @@ No sentido mais geral, o `Session` estabelece todas as conversas com o banco de 
 
 <div class="mermaid" style="text-align: center;">
 graph
-  Enpoint --> Session
+  Enpoint ---> Session
   Session --> scalars
   Session --> scalar
   scalar --> Busca_Dado[Busca um dado]
@@ -63,6 +63,8 @@ graph
   add --> ADD[Adiciona/Deleta um objeto]
   Session --> delete
   delete --> ADD[Adiciona/Deleta um objeto]
+  Session --> refresh
+  refresh --> RF[Atualizada o objeto na sessão]
   Session --> rollback
   rollback --> D[Desfaz a UT]
   Session --> commit
@@ -83,11 +85,12 @@ engine = create_engine(Settings().DATABASE_URL)
 
 session = Session(engine)  # Cria a sessão
 
-session.add()      # Adiciona no banco
-session.delete()   # Remove do banco
+session.add(obj)      # Adiciona no banco
+session.delete(obj)   # Remove do banco
+session.refresh(obj)  # Atualiza o objeto com a sessão
 
-session.scalars()  # Lista N objetos
-session.scalar()   # Lista 1 objeto
+session.scalars(query)  # Lista N objetos
+session.scalar(query)   # Lista 1 objeto
 
 session.commit()    # Executa as UTs no banco
 session.rollback()  # Desfaz as UTs
@@ -187,12 +190,13 @@ def create_user(user: UserSchema):
 
 # Não se repita (DRY)
 
-> Injeção de dependência com Depends
+> Não acople e TESTE!
 
 ---
 
 ## Reutilizando a sessão
 
+Uma das formas de reutilizar, seria cria uma função para obtermos a sessão
 
 ```python
 # fast_zero/database.py
@@ -208,6 +212,37 @@ def get_session():
     with Session(engine) as session:
         yield session
 ```
+
+---
+
+## Usando a função!
+
+Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evitando a repetição do código da sessão em todos os endpoints:
+
+```python
+from fast_zero.database import get_session
+# ...
+
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema):
+    session = get_session()
+
+    db_user = session.scalar(
+        select(User).where(User.email == user.email)
+    )
+    # ...
+```
+
+---
+
+# Acoplamento
+
+Embora esteja bom, não tenhamos muita coisa que fuja da nossa lógica, somente a invocação de `get_session`. A chamada está acoplada. Isso traz dois problemas:
+
+1. **Encapsulamento**: é complicado de escrever testes!
+2. **Dependência**: o enpoint tem que conhecer a chamada da sessão
+
+Mas, nem tudo está perdido!
 
 ---
 
