@@ -11,17 +11,336 @@ theme: rose-pine
 
 ## Objetivos dessa aula:
 
-- Um entendimento básico sobre JWT
-- Implementar autenticação de usuários com JWT.
-- Adicionar lógica de autorização aos endpoints de atualização e deleção.
-- Utilizar a biblioteca Bcrypt para encriptar as senhas dos usuários.
+- Armazenamento seguro de senhas
+- Autenticação via JWT
+- Autorização via JWT
+- Testes e fixtures
 
 
 ---
 
-## JWT
+# Armazenas senhas de forma segura
 
-O JWT é um padrão (RFC 7519) que define uma maneira compacta e autônoma de transmitir informações entre as partes de maneira segura. Essas informações são transmitidas como um objeto JSON que é digitalmente assinado usando um segredo (com o algoritmo HMAC) ou um par de chaves pública/privada usando RSA ou ECDSA.
+Nossas senhas estão sendo armazenadas de forma limpa no banco de dados. Isso pode nos trazer diversos problemas:
+
+- Erros eventuais: Uma simples alteração do schema e a senha estará exposta
+- Vazamento de banco de dados:
+    - Caso alguém consiga acesso ao banco de dados, pode ver as senhas
+    - Pessoas costumam usar as mesmas senhas em N lugares
+    
+> https://monitor.firefox.com
+
+---
+
+# Armazenas senhas de forma segura
+
+Para isso vamos armazenas somente o hash das senhas e criar duas funções para controlar esse fluxo:
+
+```bash
+poetry add passlib[bcrypt]
+```
+
+`Passlib` é uma biblioteca criada especialmente para manipular hashs de senhas.
+
+---
+
+# Funções para gerenciar o hash
+
+Vamos criar um novo arquivo no nosso pacote para gerenciar a parte de segurança. `security.py`:
+
+```py
+# security.py
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
+
+
+def get_password_hash(password: str):
+    return pwd_context.hash(password)
+
+
+def verify_password(plain_password: str, hashed_password: str):
+    return pwd_context.verify(plain_password, hashed_password)	
+```
+
+---
+
+# Alterando o endpoint de cadastro
+
+Agora precisamos alterar o endpoint de criação de users para sempre armazenar o hash da senha:
+
+```py
+# app.py
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema, session: Session = Depends(get_session)):
+    # ...
+
+    hashed_password = get_password_hash(user.password)
+
+    db_user = User(
+        email=user.email,
+        username=user.username,
+        password=hashed_password,
+    )
+
+    # ...
+```
+---
+
+# Teste
+
+Em teoria, todos os testes devem continuar passando pois não validamos a senha em nenhum momento:
+
+```bash
+task test
+```
+
+---
+
+# Parte 2: Autenticação via JWT 
+
+---
+
+# Autenticação via JWT
+
+A ideia por trás da autenticação é dizer (comprovar) que você é você. No sentido de garantir que para usar a aplicação, você conhece as suas credenciais (email e senha no nosso caso).
+
+<div class="mermaid" style="text-align: center;">
+sequenceDiagram
+  participant Cliente as Cliente
+  participant Servidor as Servidor
+  Cliente ->> Servidor: Envia credenciais (e-mail e senha)
+  Servidor -->> Cliente: Verifica as credenciais
+  Servidor ->> Cliente: Envia token JWT
+  Cliente ->> Servidor: Envio de credrênciais erradas
+  Servidor ->> Cliente: Retorna um erro!
+</div>
+
+---
+
+## O JWT
+
+O JWT é um padrão (RFC 7519) que define uma maneira compacta e autônoma de transmitir informações entre as partes de maneira segura. Essas informações são transmitidas como um objeto JSON que é digitalmente assinado usando um segredo ( geralmente com o algoritmo HMAC)
+
+---
+
+## O JWT
+
+De forma simples, o JWT (Json Web Token) é uma forma de assinatura do servidor. O token diz que o cliente foi autenticado com a assinatura **desse** servidor. Ele é divido em 3 partes:
+
+<div class="mermaid" style="text-align: center;">
+flowchart LR
+   JWT --> Header
+   JWT --> Payload
+   JWT --> Assinatura
+   Header --> A[Algorítimo + Tipo de token]
+   Payload --> B[Dados que serão usados para assinatura]
+   Assinatura --> C[Aplicação do algorítimo + Chave secreta da apliicação]
+</div>
+
+---
+
+# Geração de tokens JWT com Python
+
+Existem diversas bibliotecas para geração de tokens, vamos usar o `python-jose`.
+
+```bash
+poetry add python-jose[cryptography]
+```
+
+JOSE: Javascript Object Singin and Encryption
+
+---
+
+# Olhando os tokens mais de perto
+
+```py
+from jose import jwt
+
+jwt.encode(dados, key)   # Os dados devem ser um dict, retorna o token
+
+jwt.decode(token, key)    # Isso retorna o dict dos dados
+```
+
+---
+
+## Sobre a chave
+
+A chave deve ser secreta, ela é o que define em conjunto com o algorítimo que foi assinado pelo nosso servidor. O Python tem uma biblioteca embutida que gera segredos:
+
+```py
+import secrets
+
+secretes.token_hex()   # Retorna um token randômico
+```
+
+---
+
+# investigando o token gerado
+
+> https://jwt.io/#debugger-io
+
+Aqui podemos ver o token e validar a integridade da assinatura.
+
+---
+
+# Botando os tokens em ação
+
+Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que gere o token para ela. Vamos chama-lo de `/token`. Alguns pontos:
+
+1. Precisamos de um schema de credenciais e um schema para o token
+2. Validar se o email existe e se sua senha bate com o hash
+    - Caso não batam, retornar um erro
+3. Retornar um Token com uma duração de tempo! (30 minutos?)
+
+---
+
+# Materiais para implementação
+
+1. Precisamos de um schema de credenciais e um schema para o token
+    - Para schema de credenciais, o FastAPI conta com o `Oauth2passwordRequestForm`
+    - Para o retorno, vamos criar um novo Schema chamado `Token`
+2. Validar se o email existe e se sua senha bate com o hash
+    - Para isso podemos injetar a `Session` com `Depends`
+3. Retornar um Token com uma duração de tempo! (30 minutos?)
+    - Para isso podemos usar o `datetime.timedelta` 
+---
+
+# Criando o endpoint
+
+Nosso esqueleto inicial
+
+```py
+# app.py
+@app.post('/token')
+def login_for_access_token(
+    session: Session = Depends(get_session),
+):
+    user = session.scalar(select(User).where(User.email == form_data.username))
+
+    if not user or not verify_password(form_data.password, user.password):
+        raise HTTPException(
+            status_code=400, detail='Incorrect email or password'
+        )
+```
+---
+
+## O schema do token
+
+```py
+# schemas.py
+class Token(BaseModel):
+    access_token: str  # O token JWT que vamos gerar
+    token_type: str    # O modelo que o cliente deve usar para Autorização
+```
+
+---
+
+# A geração do token
+
+Agora que já temos o schema e o esqueleto do endpoint, podemos criar nossa função de criação de token em `security.py`:
+
+```py
+from datetime import datetime, timedelta
+
+from jose import jwt
+
+SECRET_KEY = 'your-secret-key'  # Isso é privisório, vamos ajustar!
+
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    
+    # Adiciona um tempo de 30 minutos para expiração 
+    expire = datetime.utcnow() + timedelta(minutes=30)
+    to_encode.update({'exp': expire})
+    
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY)
+    return encoded_jwt
+```
+---
+
+# Testando a geração de tokens
+
+```py
+from jose import jwt
+
+from fast_zero.security import create_access_token, SECRET_KEY
+
+
+def test_jwt():
+    data = {'test': 'test'}
+    token = create_access_token(data)
+
+    decoded = jwt.decode(token, SECRET_KEY)
+
+    assert decoded['test'] == data['test']
+    assert decoded['exp']  # Testa se o valor de exp foi adicionado ao token
+```
+---
+
+# De volta ao endpoint `/token`
+
+```py
+from fastapi.security import OAuth2PasswordRequestForm
+from fast_zero.schemas import ..., Token, ...
+from fast_zero.security import create_access_token, ...
+
+@app.post('/token', response_model=Token)
+def login_for_access_token(
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    session: Session = Depends(get_session),
+):
+    # ...
+    access_token = create_access_token(data={'sub': user.email})
+
+    return {'access_token': access_token, 'token_type': 'Bearer'}
+```
+
+Esse código inicialmente não irá funcionar!
+
+---
+
+## O uso de formulários
+
+Quando usamos formulários no FastAPI, como `OAuth2PasswordRequestForm`, precisamos instalar uma biblioteca para multipart:
+
+```bash
+poetry add python-multipart
+```
+
+Agora podemos executar e ver o formulário no swagger
+
+---
+
+# Testando o endpoint `/token`
+
+```py
+# test_app.py
+def test_get_token(client, user):
+    response = client.post(
+        '/token',
+        data={'username': user.email, 'password': user.password},
+    )
+    token = response.json()
+
+    assert response.status_code == 200
+    assert token['token_type'] == 'Bearer'
+    assert 'access_token' in token
+```
+
+---
+
+# Parte 3: Autorização
+
+---
+
+Slides antigos!
+
+---
+
+## O JWT
+
+O JWT é um padrão (RFC 7519) que define uma maneira compacta e autônoma de transmitir informações entre as partes de maneira segura. Essas informações são transmitidas como um objeto JSON que é digitalmente assinado usando um segredo ( geralmente com o algoritmo HMAC)
 
 
 ---
