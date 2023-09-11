@@ -19,7 +19,7 @@ theme: rose-pine
 
 ---
 
-# Armazenas senhas de forma segura
+# Armazenamento senhas de forma segura
 
 Nossas senhas estão sendo armazenadas de forma limpa no banco de dados. Isso pode nos trazer diversos problemas:
 
@@ -34,7 +34,7 @@ Nossas senhas estão sendo armazenadas de forma limpa no banco de dados. Isso po
 
 # Armazenas senhas de forma segura
 
-Para isso vamos armazenas somente o hash das senhas e criar duas funções para controlar esse fluxo:
+Para isso vamos armazenar somente o hash das senhas e criar duas funções para controlar esse fluxo:
 
 ```bash
 poetry add passlib[bcrypt]
@@ -89,7 +89,7 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
 # Teste
 
-Em teoria, todos os testes devem continuar passando pois não validamos a senha em nenhum momento:
+Em teoria, todos os testes devem continuar passando, pois não validamos a senha em nenhum momento:
 
 ```bash
 task test
@@ -120,7 +120,7 @@ sequenceDiagram
 
 ## O JWT
 
-O JWT é um padrão (RFC 7519) que define uma maneira compacta e autônoma de transmitir informações entre as partes de maneira segura. Essas informações são transmitidas como um objeto JSON que é digitalmente assinado usando um segredo ( geralmente com o algoritmo HMAC)
+O JWT é um padrão (RFC 7519) que define uma maneira compacta e autônoma de transmitir informações entre as partes de maneira segura. Essas informações são transmitidas como um objeto JSON que é digitalmente assinado usando um segredo (geralmente com o algoritmo HMAC)
 
 ---
 
@@ -135,14 +135,14 @@ flowchart LR
    JWT --> Assinatura
    Header --> A[Algorítimo + Tipo de token]
    Payload --> B[Dados que serão usados para assinatura]
-   Assinatura --> C[Aplicação do algorítimo + Chave secreta da apliicação]
+   Assinatura --> C[Aplicação do algorítimo + Chave secreta da aplicação]
 </div>
 
 ---
 
 # Geração de tokens JWT com Python
 
-Existem diversas bibliotecas para geração de tokens, vamos usar o `python-jose`.
+Existem diversas bibliotecas para geração de tokens, usemos o `python-jose`.
 
 ```bash
 poetry add python-jose[cryptography]
@@ -186,7 +186,7 @@ Aqui podemos ver o token e validar a integridade da assinatura.
 
 # Botando os tokens em ação
 
-Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que gere o token para ela. Vamos chama-lo de `/token`. Alguns pontos:
+Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que gere o token para ela. Vamos chamá-lo de `/token`. Alguns pontos:
 
 1. Precisamos de um schema de credenciais e um schema para o token
 2. Validar se o email existe e se sua senha bate com o hash
@@ -332,7 +332,7 @@ def test_get_token(client, user):
 
 # Problema!
 
-A fixture de `User` que estamos criando salva a senha limpa. Isso da erro na hora de comparar se a senha está correta na criação do token.
+A fixture de `User` que estamos criando salva a senha limpa. Isso dá erro na hora de comparar se a senha está correta na criação do token.
 
 ```python
 # conftest.py
@@ -561,7 +561,7 @@ def update_user(
 
 ## Testes
 
-Para simplificar, vamos criar uma nova fixture para gerar um token
+Para simplificar, criaremos uma nova fixture para gerar um token
 
 ```py
 @pytest.fixture
@@ -597,7 +597,7 @@ def test_update_user(client, user, token):
 ```
 ---
 
-# Para terminar...
+# Para terminar…
 
 Precisamos fazer isso no endpoint de GET e no de DELETE
 
@@ -614,3 +614,5 @@ git commit -m "Protege os endpoints GET, PUT e DELETE com autenticação"
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
+
+
