@@ -120,12 +120,6 @@ sequenceDiagram
 
 ## O JWT
 
-O JWT é um padrão (RFC 7519) que define uma maneira compacta e autônoma de transmitir informações entre as partes de maneira segura. Essas informações são transmitidas como um objeto JSON que é digitalmente assinado usando um segredo (geralmente com o algoritmo HMAC)
-
----
-
-## O JWT
-
 De forma simples, o JWT (Json Web Token) é uma forma de assinatura do servidor. O token diz que o cliente foi autenticado com a assinatura **desse** servidor. Ele é divido em 3 partes:
 
 <div class="mermaid" style="text-align: center;">
