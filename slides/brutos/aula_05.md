@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Autenticação e Autorização com JWT
+# Autenticação e Autorização
 
 > https://fastapidozero.dunossauro.com/05/
 
@@ -12,10 +12,9 @@ theme: rose-pine
 ## Objetivos dessa aula:
 
 - Armazenamento seguro de senhas
-- Autenticação via JWT
-- Autorização via JWT
+- Autenticação
+- Autorização
 - Testes e fixtures
-
 
 ---
 
@@ -40,7 +39,8 @@ Para isso vamos armazenar somente o hash das senhas e criar duas funções para 
 poetry add passlib[bcrypt]
 ```
 
-`Passlib` é uma biblioteca criada especialmente para manipular hashs de senhas.
+- `Passlib` é uma biblioteca criada especialmente para manipular hashs de senhas.
+- `Bcrypt` é um algorítimo de hash
 
 ---
 
@@ -52,7 +52,7 @@ Vamos criar um novo arquivo no nosso pacote para gerenciar a parte de segurança
 # security.py
 from passlib.context import CryptContext
 
-pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
+pwd_context = CryptContext(schemes=['bcrypt'])
 
 
 def get_password_hash(password: str):
@@ -75,12 +75,10 @@ Agora precisamos alterar o endpoint de criação de users para sempre armazenar 
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     # ...
 
-    hashed_password = get_password_hash(user.password)
-
     db_user = User(
         email=user.email,
         username=user.username,
-        password=hashed_password,
+        password=get_password_hash(user.password),
     )
 
     # ...
@@ -97,11 +95,11 @@ task test
 
 ---
 
-# Parte 2: Autenticação via JWT 
+# Parte 2: Autenticação
 
 ---
 
-# Autenticação via JWT
+# Autenticação
 
 A ideia por trás da autenticação é dizer (comprovar) que você é você. No sentido de garantir que para usar a aplicação, você conhece as suas credenciais (email e senha no nosso caso).
 
@@ -109,7 +107,7 @@ A ideia por trás da autenticação é dizer (comprovar) que você é você. No 
 sequenceDiagram
   participant Cliente as Cliente
   participant Servidor as Servidor
-  Cliente ->> Servidor: Envia credenciais (e-mail e senha)
+  Cliente ->> Servidor: Envia credenciais (e-mail e senha) via formulário OAuth2
   Servidor -->> Cliente: Verifica as credenciais
   Servidor ->> Cliente: Envia token JWT
   Cliente ->> Servidor: Envio de credrênciais erradas
@@ -118,9 +116,98 @@ sequenceDiagram
 
 ---
 
-## O JWT
+# Criando o endpoint
 
-De forma simples, o JWT (Json Web Token) é uma forma de assinatura do servidor. O token diz que o cliente foi autenticado com a assinatura **desse** servidor. Ele é divido em 3 partes:
+Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que receba as credenciais. Vamos chamá-lo de `/token`.
+
+Alguns pontos:
+
+1. Precisamos de um schema de credenciais e um schema para o token
+2. Validar se o email existe e se sua senha bate com o hash
+    - Caso não batam, retornar um erro
+3. Retornar um Token com uma duração de tempo! (30 minutos?)
+
+---
+
+# Materiais para implementação
+
+1. Precisamos de um schema de credenciais e um schema para o token
+    - Para schema de credenciais, o FastAPI conta com o `OAuth2PasswordRequestForm`
+    - Para o retorno, vamos criar um novo Schema chamado `Token`
+2. Validar se o email existe e se sua senha bate com o hash
+    - Para isso podemos injetar a `Session` com `Depends`
+3. Retornar um Token com uma duração de tempo! (30 minutos?)
+    - Para isso podemos usar o `datetime.timedelta` 
+---
+
+# OAuth2
+
+OAuth2 É um protocolo aberto para autorização. O FastAPI disponibiliza alguns schemas prontos para usar OAuth2, como o `OAuth2PasswordRequestForm`. Traduzindo de forma literal: "Formulário de Requisição de Senha OAuth2"   
+
+```py
+# app.py
+from fastapi.security import OAuth2PasswordRequestForm
+
+# ...
+
+@app.post('/token')
+def login_for_access_token(
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    session: Session = Depends(get_session),
+):
+    ...
+```
+
+> Mostrar como isso ficará no [Swagger](localhost:8000/docs)!
+
+---
+
+## O uso de formulários
+
+Quando usamos formulários no FastAPI, como `OAuth2PasswordRequestForm`, precisamos instalar uma biblioteca para multipart:
+
+```bash
+poetry add python-multipart
+```
+
+---
+
+# Validando os dados!
+
+```py
+# app.py
+@app.post('/token')
+def login_for_access_token(
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    session: Session = Depends(get_session),
+):
+    user = session.scalar(select(User).where(User.email == form_data.username))
+
+    if not user or not verify_passwordform_data.password, user.password):
+        raise HTTPException(
+            status_code=400, detail='Incorrect email or password'
+        )
+```
+
+---
+
+# Criando o endpoint
+
+Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que receba as credenciais. Vamos chamá-lo de `/token`.
+
+Alguns pontos:
+
+1. ~~Precisamos de um schema de credenciais~~ e um schema para o token
+2. ~~Validar se o email existe e se sua senha bate com o hash~~
+3. Retornar um Token com uma duração de tempo! (30 minutos?)
+
+---
+
+## O Token JWT
+
+De forma simples, o JWT (Json Web Token) é uma forma de assinatura do servidor.
+
+O token diz que o cliente foi autenticado com a assinatura **desse** servidor. Ele é divido em 3 partes:
 
 <div class="mermaid" style="text-align: center;">
 flowchart LR
@@ -176,47 +263,6 @@ secretes.token_hex()   # Retorna um token randômico
 
 Aqui podemos ver o token e validar a integridade da assinatura.
 
----
-
-# Botando os tokens em ação
-
-Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que gere o token para ela. Vamos chamá-lo de `/token`. Alguns pontos:
-
-1. Precisamos de um schema de credenciais e um schema para o token
-2. Validar se o email existe e se sua senha bate com o hash
-    - Caso não batam, retornar um erro
-3. Retornar um Token com uma duração de tempo! (30 minutos?)
-
----
-
-# Materiais para implementação
-
-1. Precisamos de um schema de credenciais e um schema para o token
-    - Para schema de credenciais, o FastAPI conta com o `Oauth2passwordRequestForm`
-    - Para o retorno, vamos criar um novo Schema chamado `Token`
-2. Validar se o email existe e se sua senha bate com o hash
-    - Para isso podemos injetar a `Session` com `Depends`
-3. Retornar um Token com uma duração de tempo! (30 minutos?)
-    - Para isso podemos usar o `datetime.timedelta` 
----
-
-# Criando o endpoint
-
-Nosso esqueleto inicial
-
-```py
-# app.py
-@app.post('/token')
-def login_for_access_token(
-    session: Session = Depends(get_session),
-):
-    user = session.scalar(select(User).where(User.email == ???.username))
-
-    if not user or not verify_password(???.password, user.password):
-        raise HTTPException(
-            status_code=400, detail='Incorrect email or password'
-        )
-```
 ---
 
 ## O schema do token
@@ -276,7 +322,7 @@ def test_jwt():
 # De volta ao endpoint `/token`
 
 ```py
-from fastapi.security import OAuth2PasswordRequestForm
+# app.py
 from fast_zero.schemas import ..., Token, ...
 from fast_zero.security import create_access_token, ...
 
@@ -290,20 +336,6 @@ def login_for_access_token(
 
     return {'access_token': access_token, 'token_type': 'Bearer'}
 ```
-
-Esse código inicialmente não irá funcionar!
-
----
-
-## O uso de formulários
-
-Quando usamos formulários no FastAPI, como `OAuth2PasswordRequestForm`, precisamos instalar uma biblioteca para multipart:
-
-```bash
-poetry add python-multipart
-```
-
-Agora podemos executar e ver o formulário no swagger
 
 ---
 
@@ -372,7 +404,7 @@ def user(session):
 
 ---
 
-Com isso, todos os testes devem voltar a passar:
+#### Com isso, todos os testes devem voltar a passar:
 
 ```bash
 tests/test_app.py::test_get_token PASSED
@@ -470,53 +502,6 @@ Caso esteja tudo correto com o token:
 ```py
 async def get_current_user(...):
     # ...
-    user = session.scalar(
-        select(User).where(User.email == token_data.username)
-    )
-
-    if user is None:
-        raise credentials_exception
-
-    return user
-```
-
----
-
-### O código todo, caso eu me perca :)
-
-```py
-from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
-from passlib.context import CryptContext
-from sqlalchemy import select
-from sqlalchemy.orm import Session
-
-from fast_zero.database import get_session
-from fast_zero.models import User
-from fast_zero.schemas import TokenData
-# ...
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-async def get_current_user(
-    session: Session = Depends(get_session),
-    token: str = Depends(oauth2_scheme),
-):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail='Could not validate credentials',
-        headers={'WWW-Authenticate': 'Bearer'},
-    )
-
-    try:
-        payload = jwt.decode(token, SECRET_KEY)
-        username: str = payload.get('sub')
-        if not username:
-            raise credentials_exception
-        token_data = TokenData(username=username)
-    except JWTError:
-        raise credentials_exception
-
     user = session.scalar(
         select(User).where(User.email == token_data.username)
     )
