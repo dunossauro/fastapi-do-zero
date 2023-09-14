@@ -20,7 +20,7 @@
   - [x] Musica tema
   - [x] Abertura
 
-- [ ] **Conteúdo!** - [até 15/07]
+- [ ] **Conteúdo!**
 
   - [x] Objetivo
   - [ ] Estrutura
@@ -31,12 +31,12 @@
       - [x] Conteúdo das aulas
       - [ ] Slides
 
-- [ ] **Produção!** - [até 22/07]
+- [ ] **Produção!**
 
   - [ ] Captação
   - [ ] Armazenamento
 
-- [ ] **Pós produção** - [até 05/08]
+- [ ] **Pós produção**
 
   - [ ] Tratamento de áudio
   - [ ] Edição
@@ -45,7 +45,7 @@
 
 - [ ] **Finalização!**
   - [ ] Uploads no Youtube
-  - [ ] Descrição dos vídeos para youtube
-  - [ ] Tags
-  - [ ] Título
-  - [ ] Criar a playlist
+  - [x] Descrição dos vídeos para youtube
+  - [x] Tags
+  - [x] Título
+  - [x] Criar a playlist
