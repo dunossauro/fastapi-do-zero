@@ -462,6 +462,72 @@ async def get_current_user(
 ):
     ...
 ```
+
+---
+
+Só com essa exigência de receber o token, podemos aplicar isso em nosso endpoint de listagem.
+
+```py
+# app.py
+@app.get('/users/', response_model=UserList)
+def list_users(
+    session: Session = Depends(get_session),
+    current_user=Depends(get_current_user),
+):
+    database = session.scalars(select(User)).all()
+    return {'users': database}
+```
+
+> Mostar o cadeado no Swagger!
+
+---
+
+# Porém
+
+Ao rodar os testes...
+
+---
+
+Precisamos de um token para enviar aos endpoints agora!
+
+```py
+@pytest.fixture
+def token(client, user):
+    response = client.post(
+        '/token',
+        data={'username': user.email, 'password': user.clean_password},
+    )
+    return response.json()['access_token']
+```
+
+---
+
+Agora podemos enviar o token no cabeçalho da requisição
+
+```
+def test_read_users(client: TestClient, token):
+    response = client.get(
+        '/users/', headers={'Authorization': f'Bearer {token}'}
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        'users': [
+            {
+                'id': 1,
+                'username': 'test',
+                'email': 'test@test.com',
+            },
+        ],
+    }
+```
+
+---
+
+# Funciona,
+
+maaaaaaaaaasssssssssss não validamos o payload do token ainda!
+
 ---
 
 # A validação do JWT
@@ -479,22 +545,11 @@ async def get_current_user(...):
         username: str = payload.get('sub')
         if not username:
             raise credentials_exception
-        token_data = TokenData(username=username)  # Vamos criar isso!
     except JWTError:
         raise credentials_exception
     
     # ...
 ```
----
-
-# O schema para os dados do Token
-
-```py
-class TokenData(BaseModel):
-    username: str | None = None
-```
-
-
 ---
 
 Caso esteja tudo correto com o token:
@@ -503,7 +558,7 @@ Caso esteja tudo correto com o token:
 async def get_current_user(...):
     # ...
     user = session.scalar(
-        select(User).where(User.email == token_data.username)
+        select(User).where(User.email == username)
     )
 
     if user is None:
@@ -538,22 +593,6 @@ def update_user(
 
 ---
 
-## Testes
-
-Para simplificar, criaremos uma nova fixture para gerar um token
-
-```py
-@pytest.fixture
-def token(client, user):
-    response = client.post(
-        '/token',
-        data={'username': user.email, 'password': user.clean_password},
-    )
-    return response.json()['access_token']
-```
-
----
-
 ### Alteração do teste
 
 ```py
@@ -578,7 +617,7 @@ def test_update_user(client, user, token):
 
 # Para terminar…
 
-Precisamos fazer isso no endpoint de GET e no de DELETE
+Precisamos fazer isso no endpoint de DELETE
 
 ---
 
@@ -593,5 +632,4 @@ git commit -m "Protege os endpoints GET, PUT e DELETE com autenticação"
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-
 
