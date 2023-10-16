@@ -18,10 +18,10 @@ Cadeia -> 4k -> Carla [isso é mesmo necessário?] -> ninja
 ## Audio
 
 1. O áudio deve ser removido do vídeo sem equalização usando o vmh:
-
-	```bash
-	vmh extract-audio <video>.MOV --no-eq
-	```
+   
+   ```bash
+   vmh extract-audio <video>.MOV --no-eq
+   ```
 
 2. Após isso deve ser jogado na cadeira de processamento [parte manual]
 
@@ -30,8 +30,11 @@ audio -> noise supressor -> Mouth De-Clicker -> De-Esser -> De-Breath -> out
 Sobre a cadeia:
 
 - noise supressor: Default
+
 - Mouth De-Clicker: 40%
+
 - De-Esser: 60%
+
 - De-Breath: 84%, sensibilidade 7.0
 
 3. Render
@@ -40,16 +43,16 @@ A1: 5,02dB
 A2: -4,68dB
 Master: 4,29dB
 
-
 ## Vídeo
 
 1. Devem ser colocados na timeline do kdenlive .MOV e o .wav e salvar o arquivo.
 
 2. Processo de cortes com o VMH:
+   
    ```bash
    vmh kdenlive \
-	   <aula_XX>.kdenlive <video>.MOV <cuts_aula_XX>.kdenlive \
-	   <eq_audio_xx>.wav -d tiny
+       <aula_XX>.kdenlive <video>.MOV <cuts_aula_XX>.kdenlive \
+       <eq_audio_xx>.wav -d tiny
    ```
 
 3. Editar os cortes
@@ -57,10 +60,12 @@ Master: 4,29dB
 4. Adicionar abertura e tela final!
 
 5. Render: 
+   
    - Saída: 3840 x 2160
-       ```
-       ab=192k acodec=aac channels=2 f=mp4 real_time=-1 scale=2 threads=0
-       vaapi_device=/dev/dri/renderD128 vb=30000k
-       vcodec=h264_vaapi vf=’format=nv12,hwupload’
-       ```
+     
+     ```bash
+	 ab=160k acodec=aac channels=2 f=mp4
+	 rc=constqp real_time=-1 scale=2
+	 threads=0 vcodec=av1_nvenc vq=15 vqp=15
+     ```
    - Procurar algo no MLT para não precisar renderizar no kdenlive
