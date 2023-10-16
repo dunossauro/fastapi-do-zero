@@ -154,12 +154,6 @@ Os deploys das páginas estáticas geradas pelo MkDocs estão sendo feitos no [N
 
 ## Conclusão
 
-Neste curso, a intenção é fornecer uma compreensão completa do framework FastAPI, utilizando-o para construir uma aplicação de gerenciamento de tarefas. O aprendizado será focado na prática, e cada conceito será acompanhado por exemplos e exercícios.
-
-A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.
-
-Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.
-
 Neste curso, a intenção é fornecer uma compreensão completa do framework FastAPI, utilizando-o para construir uma aplicação de gerenciamento de tarefas. O aprendizado será focado na prática, e cada conceito será acompanhado por exemplos e exercícios relevantes.
 
 A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.
