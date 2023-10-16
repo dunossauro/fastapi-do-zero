@@ -18,7 +18,7 @@ Cadeia -> 4k -> Carla [isso é mesmo necessário?] -> ninja
 ## Audio
 
 1. O áudio deve ser removido do vídeo sem equalização usando o vmh:
-   
+
    ```bash
    vmh extract-audio <video>.MOV --no-eq
    ```
