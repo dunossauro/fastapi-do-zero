@@ -504,7 +504,8 @@ def token(client, user):
 
 Agora podemos enviar o token no cabeçalho da requisição
 
-```
+```py
+# test_app.py
 def test_read_users(client: TestClient, token):
     response = client.get(
         '/users/', headers={'Authorization': f'Bearer {token}'}
