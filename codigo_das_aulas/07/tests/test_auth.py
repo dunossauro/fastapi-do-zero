@@ -53,7 +53,7 @@ def test_token_expiry(client, user):
         assert response.status_code == 200
         token = response.json()['access_token']
 
-    with freeze_time('2023-07-14 13:00:00'):
+    with freeze_time('2023-07-14 12:31:00'):
         response = client.post(
             '/refresh_token',
             headers={'Authorization': f'Bearer {token}'},
