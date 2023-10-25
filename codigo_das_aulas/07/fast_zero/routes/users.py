@@ -54,7 +54,7 @@ def update_user(
         raise HTTPException(status_code=404, detail='User not found')
 
     db_user.username = user.username
-    db_user.password = user.password
+    db_user.password = get_password_hash(user.password)
     db_user.email = user.email
     session.commit()
     session.refresh(db_user)
