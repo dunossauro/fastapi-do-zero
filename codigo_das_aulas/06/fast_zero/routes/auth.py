@@ -10,7 +10,7 @@ from fast_zero.models import User
 from fast_zero.schemas import Token
 from fast_zero.security import create_access_token, verify_password
 
-router = APIRouter(tags=['token'])
+router = APIRouter(prefix='/auth', tags=['auth'])
 OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
 Session = Annotated[Session, Depends(get_session)]
 
