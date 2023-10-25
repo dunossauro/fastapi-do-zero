@@ -59,7 +59,7 @@ def update_user(
         raise HTTPException(status_code=400, detail='Not enough permissions')
 
     current_user.username = user.username
-    current_user.password = user.password
+    current_user.password = get_password_hash(user.password)
     current_user.email = user.email
     session.commit()
     session.refresh(current_user)
