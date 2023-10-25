@@ -13,7 +13,6 @@ Descrição: Boas-vindas à primeira aula prática do nosso curso "FastAPI do Ze
 
 Tags: FastAPI, Python, Curso de FastAPI, Introdução ao FastAPI, APIs com Python, Desenvolvimento web com Python, Configuração do ambiente FastAPI, Desenvolvimento Orientado por Testes, TDD com FastAPI, Pytest, Ruff, Blue, Isort, Taskipy, Poetry, Git, Hello World em FastAPI.
 
-
 ## Aula 01: Configurando o Ambiente de Desenvolvimento para o FastAPI [OK]
 
 - Introdução ao ambiente de desenvolvimento (IDE, terminal, etc.)
@@ -43,12 +42,12 @@ Tags: FastAPI, Python, APIs, Desenvolvimento Web, Backend, HTTP, CRUD, Testes, P
 
 ## Aula 03: Configurando Banco de Dados e Gerenciando Migrações com Alembic [OK]
 
--  Introdução ao SQLAlchemy e Alembic
--  Instalando SQLAlchemy e Alembic
--  Configurando e criando o banco de dados
--  Criando e localizando tabelas utilizando SQLAlchemy
--  Testando a criação de tabelas
--  Gerenciando migrações do banco de dados com Alembic
+- Introdução ao SQLAlchemy e Alembic
+- Instalando SQLAlchemy e Alembic
+- Configurando e criando o banco de dados
+- Criando e localizando tabelas utilizando SQLAlchemy
+- Testando a criação de tabelas
+- Gerenciando migrações do banco de dados com Alembic
 
 ### Youtube
 
@@ -56,7 +55,7 @@ Descrição: Boas-vindas à quarta aula do nosso curso "FastAPI do Zero: Criando
 
 Tags: FastAPI, Python, SQLAlchemy, Alembic, Gerenciamento de Banco de Dados com FastAPI, Migração de Dados com Alembic, Desenvolvimento Web com Python, Testes de Banco de Dados, Desenvolvimento Orientado por Testes, FastAPI do Zero.
 
-## Aula 04: Integrando Banco de Dados ao FastAPI
+## Aula 04: Integrando Banco de Dados ao FastAPI [OK]
 
 - Integrando SQLAlchemy à nossa aplicação FastAPI
 - Utilizando a função Depends para gerenciar dependências
@@ -74,7 +73,6 @@ Também revisamos nossos endpoints, atualizando-os para que possam efetivamente 
 
 Tags: FastAPI, Python, API, Desenvolvimento Web, SQLAlchemy, Depends, Pydantic, Pytest, Fixtures, Endpoints, Banco de Dados, APIs RESTful, Desenvolvimento de APIs, Gerenciamento de Dependências, Teste de Software, Banco de Dados SQL, Integração de Banco de Dados, Testes Unitários.
 
-
 ## Aula 05: Autenticação e Autorização em FastAPI
 
 - Criação de rotas para registrar e logar usuários
@@ -86,8 +84,6 @@ Tags: FastAPI, Python, API, Desenvolvimento Web, SQLAlchemy, Depends, Pydantic, 
 Descrição: Neste vídeo, vamos dar um passo além na segurança da nossa API. Vamos aprender como proteger endpoints específicos em FastAPI e como lidar com a autorização. Também vamos atualizar nossos testes para refletir essas mudanças. Se você deseja criar APIs robustas e seguras, esta aula é para você. Junte-se a nós nessa jornada de aprender FastAPI!
 
 Tags:FastAPI, Python, Autenticação FastAPI, Autorização FastAPI, Proteção de endpoints FastAPI, Testes em FastAPI, Desenvolvimento Web com Python, APIs Rest com Python, Desenvolvimento Back-end com Python, JWT em FastAPI.
-
-
 
 ## Aula 06: Refatoração em FastAPI: Implementando Routers e Variáveis de Ambiente
 
@@ -101,9 +97,7 @@ Descrição: Neste vídeo, exploramos algumas das melhores práticas de desenvol
 
 Tags: FastAPI, Python, Desenvolvimento Web, API, Rest API, FastAPI Router, Variáveis de Ambiente, Refatoração, Melhores Práticas, Desenvolvimento Python, OpenAPI, Pydantic, SQLAlchemy, Autenticação JWT, TDD, Clean Code
 
-
 ## Aula 07: Autenticação JWT e Testes de Casos de Borda
-
 
 - Testar os casos de autenticação de forma correta
 - Implementar o refresh do token
@@ -145,8 +139,7 @@ Tags: FastAPI, Python, Docker, FastAPI com Docker, Deploy de API, Desenvolviment
 
 - Introdução aos conceitos de CI/CD e sua importância
 - Explicação sobre o papel do Github Actions na CI/CD
--Configuração do Github Actions para executar testes automaticamente em cada push
-
+  -Configuração do Github Actions para executar testes automaticamente em cada push
 
 ### Youtube
 
