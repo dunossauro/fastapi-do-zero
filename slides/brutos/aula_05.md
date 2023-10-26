@@ -83,6 +83,30 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
     # ...
 ```
+
+---
+
+# Alterando o endpoint de Update
+
+Como agora as senhas estão sendo encriptadas durante o cadastro, caso o `User` altere a senha no endpoint de update, a senha precisa ser encriptada também:
+
+```python
+@app.put('/users/{user_id}', response_model=UserPublic)
+def update_user(
+    user_id: int,
+    user: UserSchema,
+    session: Session = Depends(get_session),
+    current_user: User = Depends(get_current_user),
+):
+	# ...
+    current_user.username = user.username
+    current_user.password = get_password_hash(user.password)
+    current_user.email = user.email
+    session.commit()
+    session.refresh(current_user)
+    return current_user
+```
+
 ---
 
 # Teste
