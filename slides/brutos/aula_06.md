@@ -70,10 +70,12 @@ from fastapi import APIRouter
 
 # outros imports
 
-router = APIRouter(tags=['token'])
+router = APIRouter(prefix='/auth', tags=['auth'])
 
 
 @router.post('/token', response_model=Token)
+def login_for_access_token(form_data: OAuth2Form, session: Session):
+    #...
 ```
 
 ---
@@ -116,6 +118,25 @@ task test
 
 ---
 
+# Um pequeno problema
+
+Como inserimos o prefixo no router de autorização, a url para acessar o token também mudou. Foi de `/token` para `/auth/token`, isso precisa ser contemplado no redirecionamento do Bearer token do JWT.
+
+> Mostrar o erro no swagger: [localhost:8000/docs](localhost:8000/docs)
+
+---
+
+# Validação do token
+
+Para corrigir o redirecionamento, precisamos alterar o objeto `OAuth2PasswordBearer` em `security.py`
+
+```py
+# security.py
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/token')
+```
+
+---
+
 # Parte 2
 
 Reestruturando os testes
@@ -137,6 +158,31 @@ Da mesma forma que dividimos as responsabilidades do app nos routers, também po
 ```shell title="$ Execução no terminal!"
 task test
 ```
+
+---
+
+# SIM, eles não funcionam
+
+> Mas por que???
+
+---
+
+### Ajustando a fixture de `token`
+
+A alteração da fixture de `token` é igual que fizemos em `/tests/test_auth.py`, precisamos somente corrigir o novo endereço do router no arquivo `/tests/conftest.py`:
+
+```py
+@pytest.fixture
+def token(client, user):
+    response = client.post(
+        '/auth/token',
+        data={'username': user.email, 'password': user.clean_password},
+    )
+    return response.json()['access_token']
+```
+
+Fazendo assim com que os testes que dependem dessa fixture passem a funcionar.
+
 
 ---
 
