@@ -12,6 +12,10 @@ theme:
   language: pt-BR
   features:
     - content.code.copy
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+    - search.share
   palette:
     - scheme: slate
       primary: deep purple
@@ -23,11 +27,6 @@ theme:
       toggle:
         icon: material/weather-night
         name: Modo noturno
-features:
-  - content.tabs.link
-  - search.suggest
-  - search.highlight
-  - search.share
 markdown_extensions:
   - pymdownx.critic
   - pymdownx.highlight:
@@ -59,8 +58,7 @@ plugins:
       show_email_address: false
       show_line_count: true
   - git-revision-date-localized
-  - social:
-      cards_layout: default
+  - social
   - with-pdf:
       author: Eduardo Mendes (@dunossauro)
       cover_title: FastAPI do zero
