@@ -1,8 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
-slides/brutos/*.html
-
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -126,6 +124,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+#.env
 .venv
 env/
 venv/

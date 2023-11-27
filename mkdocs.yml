@@ -39,6 +39,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details
+  - pymdownx.keys
   - footnotes
   - admonition
   - markdown.extensions.attr_list
