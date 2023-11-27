@@ -91,7 +91,7 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 
 ### 🦖 Quem vai ministrar essas aulas?
 
-Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunossauro](https:/dunossauro.com){:target="_blank"}.
+Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunossauro](https://dunossauro.com){:target="_blank"}.
 
 <div class="sbs" markdown>
 ![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/dunossauro.jpg){ align=left width="300" .shadow}
