@@ -8,7 +8,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
-> Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos](https://github.com/dunossauro/fastapi-do-zero/issues)
+> Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
@@ -104,6 +104,10 @@ Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande c
 [Caso queira saber mais sobre esse projeto completo](https://youtu.be/ikmFLkjxqFg){:target="_blank"}.
 </div>
 </div>
+
+## Contribuidores do material em texto
+
+[@adorilson](https://github.com/adorilson){:target="_blank"}, [@alphabraga](https://github.com/alphabraga){:target="_blank"}, [@bugelseif](https://github.com/bugelseif){:target="_blank"}, [@gbpagano](https://github.com/gbpagano){:target="_blank"}, [@henriqueccda](https://github.com/henriqueccda){:target="_blank"}, [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"}, [@ig0r-ferreira](https://github.com/ig0r-ferreira){:target="_blank"}, [@ivansantiagojr](https://github.com/ivansantiagojr){:target="_blank"}, [@jlplautz](https://github.com/jlplautz){:target="_blank"}, [@julioformiga](https://github.com/julioformiga){:target="_blank"}, [@matheusalmeida28](https://github.com/matheusalmeida28){:target="_blank"}, [@ricardo-emanuel01](https://github.com/ricardo-emanuel01){:target="_blank"}, [@rodbv](https://github.com/rodbv){:target="_blank"}, [@vcwild](https://github.com/vcwild){:target="_blank"}, [@williangl](https://github.com/williangl){:target="_blank"}
 
 ## 📖 Licença
 
