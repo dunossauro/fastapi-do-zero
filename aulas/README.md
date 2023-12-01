@@ -8,7 +8,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
-> Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos](https://github.com/dunossauro/fastapi-do-zero/issues)
+> Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
