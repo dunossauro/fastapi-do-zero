@@ -6,7 +6,6 @@ repo_name: dunossauro/fastapi-do-zero
 edit_uri: tree/main/aulas
 theme:
   name: material
-  custom_dir: aulas/overrides
   logo: assets/logo.svg
   favicon: assets/logo.svg
   language: pt-BR
