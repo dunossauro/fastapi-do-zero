@@ -76,18 +76,18 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 
 ## Aulas
 
-1. [Configurando o Ambiente de Desenvolvimento](/01/){:target="_blank"}
-2. [Estruturando seu Projeto e Criando Rotas CRUD](/02/){:target="_blank"}
-3. [Configurando Banco de Dados e Gerenciando Migrações com Alembic](/03/){:target="_blank"}
-4. [Integrando Banco de Dados a API](/04/){:target="_blank"}
-5. [Autenticação e Autorização](/05/){:target="_blank"}
-6. [Refatorando a Estrutura do Projeto](/06/){:target="_blank"}
-7. [Tornando o sistema de autenticação robusto](/07/){:target="_blank"}
-9. [Criando Rotas CRUD para Tarefas](/08/){:target="_blank"}
-10. [Dockerizando a aplicação](/09/){:target="_blank"}
-11. [Automatizando os testes com integração contínua](/10/){:target="_blank"}
-12. [Fazendo o deploy no fly.io](/11/){:target="_blank"}
-13. [Despedida](/12/){:target="_blank"}
+1. [Configurando o Ambiente de Desenvolvimento](01.md){:target="_blank"}
+2. [Estruturando seu Projeto e Criando Rotas CRUD](02.md){:target="_blank"}
+3. [Configurando Banco de Dados e Gerenciando Migrações com Alembic](03.md){:target="_blank"}
+4. [Integrando Banco de Dados a API](04.md){:target="_blank"}
+5. [Autenticação e Autorização](05.md){:target="_blank"}
+6. [Refatorando a Estrutura do Projeto](06.md){:target="_blank"}
+7. [Tornando o sistema de autenticação robusto](07.md){:target="_blank"}
+8. [Criando Rotas CRUD para Tarefas](08.md){:target="_blank"}
+9. [Dockerizando a aplicação](09.md){:target="_blank"}
+10. [Automatizando os testes com integração contínua](10.md){:target="_blank"}
+11. [Fazendo o deploy no fly.io](11.md){:target="_blank"}
+12. [Despedida](12.md){:target="_blank"}
 
 ### 🦖 Quem vai ministrar essas aulas?
 
