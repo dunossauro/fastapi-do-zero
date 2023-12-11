@@ -8,11 +8,11 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
-> Esse material ainda está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
+> Esse material está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
-Boas-vindas à sua jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento eficiente de APIs. Exploraremos temas como integração com bancos de dados e implementação de testes, oferecendo uma base sólida para quem busca trabalhar com essa ferramenta. A abordagem é direta e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
+Boas-vindas à sua jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento eficiente de APIs. Exploraremos temas como integração com bancos de dados e implementação de testes, oferecendo uma base sólida para quem visa trabalhar com essa ferramenta. A abordagem é direta e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
 
 ## O que é FastAPI?
 
@@ -26,23 +26,23 @@ O projeto central do curso será a construção de um gerenciador de tarefas (um
 
 Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2023, como a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, a versão 2.0 do SQLAlchemy ORM, além do Python 3.11 e do Alembic para gerenciamento de migrações.
 
-Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem tem como objetivo garantir que as APIs desenvolvidas sejam não apenas funcionais, mas também robustas e confiáveis.
+Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem planeja garantir que as APIs desenvolvidas sejam não apenas funcionais, mas também robustas e confiáveis.
 
 ## O que você vai aprender?
 
-Aqui está uma visão geral dos tópicos que vamos abordar neste curso:
+Aqui está uma visão geral dos tópicos que abordaremos neste curso:
 
-1. **Configurando um ambiente de desenvolvimento para FastAPI**: Vamos começar do absoluto zero, criando e configurando nosso ambiente de desenvolvimento.
+1. **Configurando um ambiente de desenvolvimento para FastAPI**: começaremos do absoluto zero, criando e configurando nosso ambiente de desenvolvimento.
 
-2. **Primeiros Passos com FastAPI e TDD**: Depois de configurar o ambiente, mergulharemos na estrutura básica de um projeto FastAPI e faremos uma introdução detalhada ao Test Driven Development (TDD).
+2. **Primeiros Passos com FastAPI e TDD**: após configurar o ambiente, mergulharemos na estrutura básica de um projeto FastAPI e faremos uma introdução detalhada ao Test Driven Development (TDD).
 
-3. **Modelagem de Dados com Pydantic e SQLAlchemy**: Aprenderemos a criar e manipular modelos de dados utilizando Pydantic e SQLAlchemy, dois recursos que levam a eficiência do FastAPI a um outro nível.
+3. **Modelagem de Dados com Pydantic e SQLAlchemy**: aprenderemos a criar e manipular modelos de dados utilizando Pydantic e SQLAlchemy, dois recursos que levam a eficiência do FastAPI a outro nível.
 
-4. **Autenticação e Autorização em FastAPI**: Vamos construir um sistema de autenticação completo, para proteger nossas rotas e garantir que apenas usuários autenticados tenham acesso a certos dados.
+4. **Autenticação e Autorização em FastAPI**: construiremos um sistema de autenticação completo, para proteger nossas rotas e garantir que apenas usuários autenticados tenham acesso a certos dados.
 
-5. **Testando sua Aplicação FastAPI**: Faremos uma introdução detalhada aos testes de aplicação FastAPI, utilizando as bibliotecas pytest e coverage.
+5. **Testando sua Aplicação FastAPI**: faremos uma introdução detalhada aos testes de aplicação FastAPI, utilizando as bibliotecas pytest e coverage.
 
-6. **Dockerizando e Fazendo Deploy de sua Aplicação FastAPI**: Por fim, vamos aprender como "dockerizar" nossa aplicação FastAPI e fazer seu deploy utilizando Fly.io.
+6. **Dockerizando e Fazendo Deploy de sua Aplicação FastAPI**: por fim, aprenderemos como "dockerizar" nossa aplicação FastAPI e fazer seu deploy utilizando Fly.io.
 
 ## 💰 Esse curso é gratuito?
 
@@ -58,7 +58,7 @@ Esse material está em fase de desenvolvimento e todas as aulas estarão dispon�
 
 ## Pré-requisitos
 
-Para aproveitar ao máximo este curso, é recomendado que você tenha algum conhecimento prévio de Python. Além disso, algum entendimento básico de desenvolvimento web e APIs RESTful será útil, mas não essencial, pois a abordagem deste curso é prática e centrada em um projeto concreto. Através de exemplos reais e instruções passo a passo, você terá a oportunidade de acompanhar o processo de construção de uma aplicação real. Mesmo que os conceitos de desenvolvimento web sejam novos para você, a ênfase na aplicação prática e a estrutura detalhada do curso facilitarão o entendimento e a aplicação dessas habilidades até o fim do processo.
+Para aproveitar ao máximo este curso, é recomendado que você tenha algum conhecimento prévio de Python. Além disso, algum entendimento básico de desenvolvimento web e APIs RESTful será útil, mas não essencial, pois a abordagem deste curso é prática e centrada em um projeto concreto. Por meio de exemplos reais e instruções passo a passo, você terá a oportunidade de acompanhar o processo de construção de uma aplicação real. Mesmo que os conceitos de desenvolvimento web sejam novos para você, a ênfase na aplicação prática e a estrutura detalhada do curso facilitarão o entendimento e a aplicação dessas habilidades até o fim do processo.
 
 ??? info "Caso esteja iniciando seus estudos em Python!"
 	Caso você ainda não se sinta uma pessoa preparada, ou caiu aqui sem saber exatamente o que esperar. Temos um pequeno curso introdutório. Destinado aos primeiros passos com python.
@@ -97,7 +97,7 @@ Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunos
 ![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/dunossauro.jpg){ align=left width="300" .shadow}
 <div markdown>
 
-Eu sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há pouco mais de 6 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
+Sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há pouco mais de 6 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
 
 Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande curso de FastAPI que estou montando. Espero que você se divirta ao máximo com a parte prática enquanto escrevo em mais detalhes todo o potencial teórico que lançarei no futuro!
 
@@ -113,7 +113,7 @@ Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande c
 
 Todo esse curso foi escrito e produzido por Eduardo Mendes ([@dunossauro](https://dunossauro.com/){:target="_blank"}).
 
-Todo esse material é gratuito e está sob licença Creative Commons [BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/){:target="_blank"}. O que quer dizer que:
+Todo esse material é gratuito e está sob licença Creative Commons [BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/){:target="_blank"}. O que significa que:
 
 - Você pode copiar e reproduzir esse material em qualquer meio e em qualquer formato;
 - Você pode adaptar esse material e construir outros materiais usando esse material.
@@ -166,7 +166,7 @@ Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API e
 
 ## F.A.Q.
 
-Perguntas frequentes que me fizeram durante os vídeos
+Perguntas frequentes que me fizeram durante os vídeos:
 
 - Que papel de parede é esse? [É uma foto do Liam Wong](https://www.tumblr.com/liamwong){:target="_blank"}
 - Qual o tema no shell? Todo o meu tema do Gnome foi customizado com [Gradience](https://gradienceteam.github.io/){:target="_blank"} o tema é [Pretty In Purple](https://www.gnome-look.org/p/2031597){:target="_blank"}
