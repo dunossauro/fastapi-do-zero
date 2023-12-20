@@ -20,11 +20,11 @@ cairosvg = "^2.7.0"
 mkdocs-with-pdf = "^0.9.3"
 
 [tool.taskipy.tasks]
-serve = "mkdocs serve --dev-addr localhost:8080"
-deploy = "mkdocs gh-deploy"
-slides = "marp -I slides/brutos/ --html --theme slides/brutos/rose-pine.css --allow-local-files --pdf -o slides/pdf/"
-slides_html = "marp -I slides/brutos --html --theme slides/brutos/rose-pine.css --allow-local-files -o slides/html"
-pdf = "ENABLE_PDF_EXPORT=1 mkdocs build"
+serve = {cmd="mkdocs serve --dev-addr localhost:8080", help="Executa o servidor local do mkdocs"}
+deploy = {cmd="mkdocs gh-deploy", help="Faz o deploy da página em produção"}
+slides = {cmd="marp -I slides/brutos/ --html --theme slides/brutos/rose-pine.css --allow-local-files --pdf -o slides/pdf/", help="Gera os slides em pdf"}
+slides_html = {cmd="marp -I slides/brutos --html --theme slides/brutos/rose-pine.css --allow-local-files -o slides/html", help="Gera os slides em html (formato usado nas aulas)"}
+pdf = {cmd="ENABLE_PDF_EXPORT=1 mkdocs build", help="Cria um pdf único de todo o curso (não otimizado ainda)"}
 
 [build-system]
 requires = ["poetry-core"]
