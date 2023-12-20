@@ -10,7 +10,7 @@ from fast_zero.routes.auth import get_current_user
 from fast_zero.schemas import Message, UserList, UserPublic, UserSchema
 from fast_zero.security import get_password_hash
 
-router = APIRouter(prefix='/users')
+router = APIRouter(prefix='/users', tags=['user'])
 Session = Annotated[Session, Depends(get_session)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
