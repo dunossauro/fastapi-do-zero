@@ -168,6 +168,8 @@ A jornada começará com a configuração do ambiente de desenvolvimento e intro
 
 Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.
 
+Nos vemos na primeira aula. ❤
+
 ## F.A.Q.
 
 Perguntas frequentes que me fizeram durante os vídeos:
