@@ -8,15 +8,13 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
-> Esse material está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
-
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
-Boas-vindas à sua jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento eficiente de APIs. Exploraremos temas como integração com bancos de dados e implementação de testes, oferecendo uma base sólida para quem visa trabalhar com essa ferramenta. A abordagem é direta e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
+Boas-vindas à nossa jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento de APIs usando FastAPI. Exploraremos temas como integração com bancos de dados, implementação de testes e um sistema básico de autenticação, oferecendo uma base sólida para quem visa trabalhar com essa ferramenta. A abordagem é prática e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
 
 ## O que é FastAPI?
 
-FastAPI é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de alto desempenho com anotações de tipo Python facilita o desenvolvimento de APIs RESTful.
+[FastAPI](https://fastapi.tiangolo.com/){:target="_blank"} é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de diversas funcionalidades modernas do Python como anotações de tipo e suporte a concorrência, facilitando o desenvolvimento de APIs.
 
 ## Sobre o curso
 
@@ -24,7 +22,7 @@ Este curso foi desenvolvido para oferecer uma experiência prática no uso do Fa
 
 O projeto central do curso será a construção de um gerenciador de tarefas (uma lista de tarefas), começando do zero. Esse projeto incluirá a implementação da autenticação do usuário e das operações CRUD completas.
 
-Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2023, como a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, a versão 2.0 do SQLAlchemy ORM, além do Python 3.11 e do Alembic para gerenciamento de migrações.
+Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2024, como a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, a versão 2.0 do SQLAlchemy ORM, além do Python 3.11 e do Alembic para gerenciamento de migrações.
 
 Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem planeja garantir que as APIs desenvolvidas sejam não apenas funcionais, mas também robustas e confiáveis.
 
