@@ -88,10 +88,10 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 6. [Refatorando a Estrutura do Projeto](06.md){:target="_blank"}
 7. [Tornando o sistema de autenticação robusto](07.md){:target="_blank"}
 8. [Criando Rotas CRUD para Tarefas](08.md){:target="_blank"}
-9. [Dockerizando a aplicação](09.md){:target="_blank"}
+9. [Dockerizando a nossa aplicação e introduzindo o PostgreSQL](09.md){:target="_blank"}
 10. [Automatizando os testes com integração contínua](10.md){:target="_blank"}
-11. [Fazendo o deploy no fly.io](11.md){:target="_blank"}
-12. [Despedida](12.md){:target="_blank"}
+11. [Fazendo o deploy no Fly.io](11.md){:target="_blank"}
+12. [Despedida e próximos passos](12.md){:target="_blank"}
 
 ### 🦖 Quem vai ministrar essas aulas?
 
@@ -101,7 +101,7 @@ Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunos
 ![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/dunossauro.jpg){ align=left width="300" .shadow}
 <div markdown>
 
-Sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há pouco mais de 6 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
+Sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há quase 7 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
 
 Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande curso de FastAPI que estou montando. Espero que você se divirta ao máximo com a parte prática enquanto escrevo em mais detalhes todo o potencial teórico que lançarei no futuro!
 
