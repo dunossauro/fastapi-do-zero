@@ -12,11 +12,11 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 **Construindo um Projeto com Bancos de Dados, Testes e Deploy**
 
-Boas-vindas à sua jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento eficiente de APIs. Exploraremos temas como integração com bancos de dados e implementação de testes, oferecendo uma base sólida para quem visa trabalhar com essa ferramenta. A abordagem é direta e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
+Boas-vindas à nossa jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento de APIs usando FastAPI. Exploraremos temas como integração com bancos de dados, implementação de testes e um sistema básico de autenticação, oferecendo uma base sólida para quem visa trabalhar com essa ferramenta. A abordagem é prática e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
 
 ## O que é FastAPI?
 
-FastAPI é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de alto desempenho com anotações de tipo Python facilita o desenvolvimento de APIs RESTful.
+[FastAPI](https://fastapi.tiangolo.com/){:target="_blank"} é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de diversas funcionalidades modernas do Python como anotações de tipo e suporte a concorrência, facilitando o desenvolvimento de APIs.
 
 ## Sobre o curso
 
@@ -24,7 +24,7 @@ Este curso foi desenvolvido para oferecer uma experiência prática no uso do Fa
 
 O projeto central do curso será a construção de um gerenciador de tarefas (uma lista de tarefas), começando do zero. Esse projeto incluirá a implementação da autenticação do usuário e das operações CRUD completas.
 
-Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2023, como a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, a versão 2.0 do SQLAlchemy ORM, além do Python 3.11 e do Alembic para gerenciamento de migrações.
+Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2024, como a versão 0.100 do FastAPI, a versão 2.0 do Pydantic, a versão 2.0 do SQLAlchemy ORM, além do Python 3.11 e do Alembic para gerenciamento de migrações.
 
 Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem planeja garantir que as APIs desenvolvidas sejam não apenas funcionais, mas também robustas e confiáveis.
 
@@ -50,11 +50,17 @@ SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blan
 
 ## Onde o curso será disponibilizado?
 
-Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
+Esse material será disponibilizado de três formas diferentes:
 
-[**http://youtube.com/@dunossauro**](http://youtube.com/@dunossauro){:target="_blank"}
+1. Em livro texto: todo o material está disponível nessa página;
+2. Em formato de vídeo: todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler;
+3. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. **Datas ainda não definidas!**.
 
-> Aqui estará listada a playlist quando disponível!
+> Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
+
+> [**http://youtube.com/@dunossauro**](http://youtube.com/@dunossauro){:target="_blank"}
+
+> Os links para as playlists dos vídeos e das aulas ao vivo estão aqui quando disponibilizadas!
 
 ## Pré-requisitos
 
@@ -84,10 +90,10 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 6. [Refatorando a Estrutura do Projeto](06.md){:target="_blank"}
 7. [Tornando o sistema de autenticação robusto](07.md){:target="_blank"}
 8. [Criando Rotas CRUD para Tarefas](08.md){:target="_blank"}
-9. [Dockerizando a aplicação](09.md){:target="_blank"}
+9. [Dockerizando a nossa aplicação e introduzindo o PostgreSQL](09.md){:target="_blank"}
 10. [Automatizando os testes com integração contínua](10.md){:target="_blank"}
-11. [Fazendo o deploy no fly.io](11.md){:target="_blank"}
-12. [Despedida](12.md){:target="_blank"}
+11. [Fazendo o deploy no Fly.io](11.md){:target="_blank"}
+12. [Despedida e próximos passos](12.md){:target="_blank"}
 
 ### 🦖 Quem vai ministrar essas aulas?
 
@@ -97,7 +103,7 @@ Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunos
 ![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/dunossauro.jpg){ align=left width="300" .shadow}
 <div markdown>
 
-Sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há pouco mais de 6 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
+Sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há quase 7 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
 
 Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande curso de FastAPI que estou montando. Espero que você se divirta ao máximo com a parte prática enquanto escrevo em mais detalhes todo o potencial teórico que lançarei no futuro!
 
@@ -163,6 +169,8 @@ Neste curso, a intenção é fornecer uma compreensão completa do framework Fas
 A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.
 
 Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.
+
+Nos vemos na primeira aula. ❤
 
 ## F.A.Q.
 
