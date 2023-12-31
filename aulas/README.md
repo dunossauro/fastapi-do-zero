@@ -10,9 +10,9 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 > Esse material está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
 
-**Construindo um Projeto com Bancos de Dados, Testes e Deploy**
+Olá, boas vindas ao curso de FastAPI!
 
-Boas-vindas à nossa jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento de APIs usando FastAPI. Exploraremos temas como integração com bancos de dados, implementação de testes e um sistema básico de autenticação, oferecendo uma base sólida para quem visa trabalhar com essa ferramenta. A abordagem é prática e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
+A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação. Tudo isso para oferecer uma boa base para quem quer trabalhar com essa tecnologia. A nossa forma de apresentar o curso é prática e cheia de informações. Ela busca trazer o que precisa para criar os nossos próprios projetos.
 
 ## O que é FastAPI?
 
