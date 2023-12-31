@@ -10,9 +10,9 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 > Esse material está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
 
-**Construindo um Projeto com Bancos de Dados, Testes e Deploy**
+Olá, boas vindas ao curso de FastAPI!
 
-Boas-vindas à nossa jornada de aprendizado com o framework FastAPI! Neste curso, o foco é proporcionar um entendimento prático das habilidades essenciais para o desenvolvimento de APIs usando FastAPI. Exploraremos temas como integração com bancos de dados, implementação de testes e um sistema básico de autenticação, oferecendo uma base sólida para quem visa trabalhar com essa ferramenta. A abordagem é prática e informativa, visando nos equipar com o conhecimento necessário para começar a criar nossos próprios projetos.
+A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação. Tudo isso para oferecer uma boa base para quem quer trabalhar com essa tecnologia. A nossa forma de apresentar o curso é prática e cheia de informações. Ela busca trazer o que precisa para criar os nossos próprios projetos.
 
 ## O que é FastAPI?
 
@@ -111,9 +111,13 @@ Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande c
 </div>
 </div>
 
-## Contribuidores do material em texto
+## :face_with_monocle: Revisão e contribuições
 
-[@adorilson](https://github.com/adorilson){:target="_blank"}, [@alphabraga](https://github.com/alphabraga){:target="_blank"}, [@bugelseif](https://github.com/bugelseif){:target="_blank"}, [@gbpagano](https://github.com/gbpagano){:target="_blank"}, [@henriqueccda](https://github.com/henriqueccda){:target="_blank"}, [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"}, [@ig0r-ferreira](https://github.com/ig0r-ferreira){:target="_blank"}, [@ivansantiagojr](https://github.com/ivansantiagojr){:target="_blank"}, [@jlplautz](https://github.com/jlplautz){:target="_blank"}, [@julioformiga](https://github.com/julioformiga){:target="_blank"}, [@matheusalmeida28](https://github.com/matheusalmeida28){:target="_blank"}, [@ricardo-emanuel01](https://github.com/ricardo-emanuel01){:target="_blank"}, [@rodbv](https://github.com/rodbv){:target="_blank"}, [@rodrigosbarretos](https://github.com/rodrigosbarretos){:target="_blank"}, [@taconi](https://github.com/taconi){:target="_blank"}, [@vcwild](https://github.com/vcwild){:target="_blank"}, [@williangl](https://github.com/williangl){:target="_blank"}
+Esse material contou com a revisão e contribuições inestimáveis de pessoas incríveis:
+
+[@adorilson](https://github.com/adorilson){:target="_blank"}, [@alphabraga](https://github.com/alphabraga){:target="_blank"}, [@bugelseif](https://github.com/bugelseif){:target="_blank"}, [@gbpagano](https://github.com/gbpagano){:target="_blank"}, [@henriqueccda](https://github.com/henriqueccda){:target="_blank"}, [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"}, [@ig0r-ferreira](https://github.com/ig0r-ferreira){:target="_blank"}, [@ivansantiagojr](https://github.com/ivansantiagojr){:target="_blank"}, [@jlplautz](https://github.com/jlplautz){:target="_blank"}, [@julioformiga](https://github.com/julioformiga){:target="_blank"}, [@lbmendes](https://github.com/lbmendes){:target="_blank"}, [@matheusalmeida28](https://github.com/matheusalmeida28){:target="_blank"}, [@me15degrees](https://github.com/me15degrees){:target="_blank"}, [@ricardo-emanuel01](https://github.com/ricardo-emanuel01){:target="_blank"}, [@rodbv](https://github.com/rodbv){:target="_blank"}, [@rodrigosbarretos](https://github.com/rodrigosbarretos){:target="_blank"}, [@taconi](https://github.com/taconi){:target="_blank"}, [@vcwild](https://github.com/vcwild){:target="_blank"}, [@williangl](https://github.com/williangl){:target="_blank"}
+
+{++**Muito obrigado!**++} :heart:
 
 ## 📖 Licença
 
