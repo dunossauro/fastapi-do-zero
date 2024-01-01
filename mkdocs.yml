@@ -4,12 +4,14 @@ docs_dir: aulas
 repo_url: https://github.com/dunossauro/fastapi-do-zero
 repo_name: dunossauro/fastapi-do-zero
 edit_uri: tree/main/aulas
+
 theme:
   name: material
   logo: assets/logo.svg
   favicon: assets/logo.svg
   language: pt-BR
   features:
+    - content.code.annotate
     - content.code.copy
     - content.tabs.link
     - search.suggest
@@ -26,10 +28,13 @@ theme:
       toggle:
         icon: material/weather-night
         name: Modo noturno
+
 markdown_extensions:
   - pymdownx.critic
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences:
