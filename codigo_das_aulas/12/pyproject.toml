@@ -14,6 +14,10 @@ pydantic = {extras = ["email"], version = "^2.0.2"}
 sqlalchemy = "^2.0.18"
 pydantic-settings = "^2.0.1"
 alembic = "^1.11.1"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-multipart = "^0.0.6"
+psycopg2-binary = "^2.9.9"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -23,6 +27,8 @@ taskipy = "^1.11.0"
 blue = "^0.9.1"
 ruff = "^0.0.278"
 httpx = "^0.24.1"
+factory-boy = "^3.2.1"
+freezegun = "^1.2.2"
 
 [tool.ruff]
 line-length = 79

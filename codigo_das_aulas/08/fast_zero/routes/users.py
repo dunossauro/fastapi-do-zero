@@ -35,7 +35,9 @@ def create_user(user: UserSchema, session: Session):
 
 
 @router.get('/', response_model=UserList)
-def read_users(session: Session, skip: int = 0, limit: int = 100):
+def read_users(
+    session: Session, skip: int = 0, limit: int = 100
+):
     users = session.scalars(select(User).offset(skip).limit(limit)).all()
     return {'users': users}
 
@@ -50,21 +52,35 @@ def update_user(
     if current_user.id != user_id:
         raise HTTPException(status_code=400, detail='Not enough permissions')
 
-    current_user.username = user.username
-    current_user.password = get_password_hash(user.password)
-    current_user.email = user.email
-    session.commit()
-    session.refresh(current_user)
+    db_user = session.scalar(select(User).where(User.id == user_id))
 
-    return current_user
+    if db_user is None:
+        raise HTTPException(status_code=404, detail='User not found')
+
+    db_user.username = user.username
+    db_user.password = get_password_hash(user.password)
+    db_user.email = user.email
+    session.commit()
+    session.refresh(db_user)
+
+    return db_user
 
 
 @router.delete('/{user_id}', response_model=Message)
-def delete_user(user_id: int, session: Session, current_user: CurrentUser):
+def delete_user(
+    user_id: int,
+    session: Session,
+    current_user: CurrentUser,
+):
     if current_user.id != user_id:
         raise HTTPException(status_code=400, detail='Not enough permissions')
 
-    session.delete(current_user)
+    db_user = session.scalar(select(User).where(User.id == user_id))
+
+    if db_user is None:
+        raise HTTPException(status_code=404, detail='User not found')
+
+    session.delete(db_user)
     session.commit()
 
     return {'detail': 'User deleted'}

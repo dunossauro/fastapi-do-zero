@@ -14,7 +14,7 @@ from fast_zero.security import (
     verify_password,
 )
 
-router = APIRouter(prefix='/auth', tags=['token'])
+router = APIRouter(prefix='/auth', tags=['auth'])
 OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
 Session = Annotated[Session, Depends(get_session)]
 
@@ -39,7 +39,9 @@ def login_for_access_token(form_data: OAuth2Form, session: Session):
 
 
 @router.post('/refresh_token', response_model=Token)
-def refresh_access_token(user: Annotated[User, Depends(get_current_user)]):
+def refresh_access_token(
+    user: User = Depends(get_current_user),
+):
     new_access_token = create_access_token(data={'sub': user.email})
 
     return {'access_token': new_access_token, 'token_type': 'bearer'}

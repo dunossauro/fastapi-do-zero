@@ -14,9 +14,6 @@ pydantic = {extras = ["email"], version = "^2.0.2"}
 sqlalchemy = "^2.0.18"
 pydantic-settings = "^2.0.1"
 alembic = "^1.11.1"
-python-jose = {extras = ["cryptography"], version = "^3.3.0"}
-passlib = {extras = ["bcrypt"], version = "^1.7.4"}
-python-multipart = "^0.0.6"
 
 
 [tool.poetry.group.dev.dependencies]
