@@ -1,660 +1,386 @@
 ---
 marp: true
 theme: rose-pine
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
 ---
 
-# Autenticação e Autorização
+# Integrando Banco de Dados a API
 
-> https://fastapidozero.dunossauro.com/05/
+> https://fastapidozero.dunossauro.com/04/
 
 ---
 
 ## Objetivos dessa aula:
 
-- Armazenamento seguro de senhas
-- Autenticação
-- Autorização
-- Testes e fixtures
+- Integrando SQLAlchemy à nossa aplicação FastAPI
+- Utilizando a função Depends para gerenciar dependências
+- Modificando endpoints para interagir com o banco de dados
+- Testando os novos endpoints com Pytest e fixtures
 
 ---
 
-# Armazenamento senhas de forma segura
+# Integrando SQLAlchemy à Nossa Aplicação FastAPI
 
-Nossas senhas estão sendo armazenadas de forma limpa no banco de dados. Isso pode nos trazer diversos problemas:
+A peça principal da nossa integração é a **sessão** do ORM. Ela precisa ser visível aos endpoints para que eles possam se comunicar com o banco.
 
-- Erros eventuais: Uma simples alteração do schema e a senha estará exposta
-- Vazamento de banco de dados:
-    - Caso alguém consiga acesso ao banco de dados, pode ver as senhas
-    - Pessoas costumam usar as mesmas senhas em N lugares
-    
-> https://monitor.firefox.com
+<div class="mermaid" style="text-align: center;">
+graph LR
+  Enpoint <--> Session
+  Session <--> id1[(Database)]
+</div>
 
 ---
 
-# Armazenas senhas de forma segura
+# Sessão
 
-Para isso vamos armazenar somente o hash das senhas e criar duas funções para controlar esse fluxo:
+No sentido mais geral, o `Session` estabelece todas as conversas com o banco de dados e representa uma “zona de retenção” para todos os objetos que você carregou ou associou a ele durante sua vida útil. Ele fornece o interface onde são feitas SELECT e outras consultas que retornarão e modificarão Objetos mapeados por ORM. Os próprios objetos ORM são mantidos dentro do Session, dentro de uma estrutura chamada mapa de identidade - um conjunto de dados estrutura que mantém cópias únicas de cada objeto, onde “único” significa “apenas um objeto com uma chave primária específica”. 
 
-```bash
-poetry add passlib[bcrypt]
+---
+
+1. **Repositório**: A sessão atua como um repositório. A ideia de um repositório é abstrair qualquer interação envolvendo persistência de dados.
+
+2. **Unidade de Trabalho**: Quando a sessão é aberta, todos os dados inseridos, modificados ou deletados não são feitos de imediato no banco de dados. Fazemos todas as modificações que queremos e executamos uma única ação.
+
+3. **Mapeamento de Identidade**: É criado um cache para as entidades que já estão carregadas na sessão para evitar conexões desnecessárias.
+
+---
+
+# De uma forma visual
+
+<div class="mermaid" style="text-align: center;">
+graph
+  Enpoint ---> Session
+  Session --> scalars
+  Session --> scalar
+  scalar --> Busca_Dado[Busca um dado]
+  scalars --> Busca_Dados[Busca N dados]
+  Session --> add
+  add --> ADD[Adiciona/Deleta um objeto]
+  Session --> delete
+  delete --> ADD[Adiciona/Deleta um objeto]
+  Session --> refresh
+  refresh --> RF[Atualizada o objeto na sessão]
+  Session --> rollback
+  rollback --> D[Desfaz a UT]
+  Session --> commit
+  commit --> DB[DB / executa UTs]
+</div>
+
+---
+
+## O básico sobre uma sessão
+
+```python
+from fast_zero.settings import Settings
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+
+# Cria o pool de conexões
+engine = create_engine(Settings().DATABASE_URL)
+
+session = Session(engine)  # Cria a sessão
+
+session.add(obj)      # Adiciona no banco
+session.delete(obj)   # Remove do banco
+session.refresh(obj)  # Atualiza o objeto com a sessão
+
+session.scalars(query)  # Lista N objetos
+session.scalar(query)   # Lista 1 objeto
+
+session.commit()    # Executa as UTs no banco
+session.rollback()  # Desfaz as UTs
+
+session.begin()  # inicia a sessão
+session.close()  # Fecha a sessão
 ```
 
-- `Passlib` é uma biblioteca criada especialmente para manipular hashs de senhas.
-- `Bcrypt` é um algorítimo de hash
+---
+
+# Entendendo o enpoint de cadastro
+
+Precisamos executar algumas operações para efetuar um cadastro:
+
+1. O `email` não pode existir na base de dados
+2. Se existir, devemos dizer que já está cadastrado com um erro
+3. Caso não exista, deve ser inserido na base de dados
 
 ---
 
-# Funções para gerenciar o hash
+## Abrindo mais as operações!
 
-Vamos criar um novo arquivo no nosso pacote para gerenciar a parte de segurança. `security.py`:
+Precisamos executar algumas operações para efetuar um cadastro:
 
-```py
-# security.py
-from passlib.context import CryptContext
+1. O `email` não pode existir na base de dados
+    - Fazer uma busca procurando o `email` fornecido
+        - `selecionar` na tabela de `Users` por email
+        - Fazer isso de forma escalar e buscando por 1
+2. Se existir, devemos dizer que já está cadastrado com um erro
+    - Retornar `HTTPException`
+3. Caso não exista, deve ser inserido na base de dados
+    - Pedir para adicionar na sessão (`add`)
+    - Fazer a persistência desse dado (`commit`)
 
-pwd_context = CryptContext(schemes=['bcrypt'])
-
-
-def get_password_hash(password: str):
-    return pwd_context.hash(password)
-
-
-def verify_password(plain_password: str, hashed_password: str):
-    return pwd_context.verify(plain_password, hashed_password)	
-```
+**Vamos fazer isso parte por parte!!**
 
 ---
 
-# Alterando o endpoint de cadastro
+## O `email` não pode existir na base de dados
 
-Agora precisamos alterar o endpoint de criação de users para sempre armazenar o hash da senha:
+```python
+from sqlalchemy import create_engine, select
+from sqlalchemy.orm import Session
+from fast_zero.models import User
+from fast_zero.settings import Settings
+# ...
 
-```py
-# app.py
 @app.post('/users/', response_model=UserPublic, status_code=201)
-def create_user(user: UserSchema, session: Session = Depends(get_session)):
+def create_user(user: UserSchema):
+    engine = create_engine(Settings().DATABASE_URL)
+
+    session = Session(engine)
+
+    db_user = session.scalar(
+        select(User).where(User.email == user.email)
+    )
+    
+    if db_user: return 'ERRROOOO'
+```
+
+---
+
+## Se existir, devemos dizer que já está cadastrado com um erro
+
+```python
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema):
+    # ...
+    
+    raise HTTPException(
+            status_code=400, detail='Username already registered'
+    )
+```
+
+---
+
+### Caso não exista, deve ser inserido na base de dados
+
+```python
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema):
     # ...
 
     db_user = User(
-        email=user.email,
-        username=user.username,
-        password=get_password_hash(user.password),
+        username=user.username, password=user.password, email=user.email
     )
+    session.add(db_user)
+    session.commit()
+    session.refresh(db_user)
 
-    # ...
+    return db_user
 ```
+
+> Não esquecer de testar no swagger e mostar o banco!
 
 ---
 
-# Alterando o endpoint de Update
+# Não se repita (DRY)
 
-Como agora as senhas estão sendo encriptadas durante o cadastro, caso o `User` altere a senha no endpoint de update, a senha precisa ser encriptada também:
+> Não acople e TESTE!
+
+---
+
+## Reutilizando a sessão
+
+Uma das formas de reutilizar, seria cria uma função para obtermos a sessão
 
 ```python
-@app.put('/users/{user_id}', response_model=UserPublic)
-def update_user(
-    user_id: int,
-    user: UserSchema,
-    session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
-):
-	# ...
-    current_user.username = user.username
-    current_user.password = get_password_hash(user.password)
-    current_user.email = user.email
-    session.commit()
-    session.refresh(current_user)
-    return current_user
-```
-
----
-
-# Teste
-
-Em teoria, todos os testes devem continuar passando, pois não validamos a senha em nenhum momento:
-
-```bash
-task test
-```
-
----
-
-# Parte 2: Autenticação
-
----
-
-# Autenticação
-
-A ideia por trás da autenticação é dizer (comprovar) que você é você. No sentido de garantir que para usar a aplicação, você conhece as suas credenciais (email e senha no nosso caso).
-
-<div class="mermaid" style="text-align: center;">
-sequenceDiagram
-  participant Cliente as Cliente
-  participant Servidor as Servidor
-  Cliente ->> Servidor: Envia credenciais (e-mail e senha) via formulário OAuth2
-  Servidor -->> Cliente: Verifica as credenciais
-  Servidor ->> Cliente: Envia token JWT
-  Cliente ->> Servidor: Envio de credrênciais erradas
-  Servidor ->> Cliente: Retorna um erro!
-</div>
-
----
-
-# Criando o endpoint
-
-Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que receba as credenciais. Vamos chamá-lo de `/token`.
-
-Alguns pontos:
-
-1. Precisamos de um schema de credenciais e um schema para o token
-2. Validar se o email existe e se sua senha bate com o hash
-    - Caso não batam, retornar um erro
-3. Retornar um Token com uma duração de tempo! (30 minutos?)
-
----
-
-# Materiais para implementação
-
-1. Precisamos de um schema de credenciais e um schema para o token
-    - Para schema de credenciais, o FastAPI conta com o `OAuth2PasswordRequestForm`
-    - Para o retorno, vamos criar um novo Schema chamado `Token`
-2. Validar se o email existe e se sua senha bate com o hash
-    - Para isso podemos injetar a `Session` com `Depends`
-3. Retornar um Token com uma duração de tempo! (30 minutos?)
-    - Para isso podemos usar o `datetime.timedelta` 
----
-
-# OAuth2
-
-OAuth2 É um protocolo aberto para autorização. O FastAPI disponibiliza alguns schemas prontos para usar OAuth2, como o `OAuth2PasswordRequestForm`. Traduzindo de forma literal: "Formulário de Requisição de Senha OAuth2"   
-
-```py
-# app.py
-from fastapi.security import OAuth2PasswordRequestForm
-
-# ...
-
-@app.post('/token')
-def login_for_access_token(
-    form_data: OAuth2PasswordRequestForm = Depends(),
-    session: Session = Depends(get_session),
-):
-    ...
-```
-
-> Mostrar como isso ficará no [Swagger](localhost:8000/docs)!
-
----
-
-## O uso de formulários
-
-Quando usamos formulários no FastAPI, como `OAuth2PasswordRequestForm`, precisamos instalar uma biblioteca para multipart:
-
-```bash
-poetry add python-multipart
-```
-
----
-
-# Validando os dados!
-
-```py
-# app.py
-@app.post('/token')
-def login_for_access_token(
-    form_data: OAuth2PasswordRequestForm = Depends(),
-    session: Session = Depends(get_session),
-):
-    user = session.scalar(select(User).where(User.email == form_data.username))
-
-    if not user or not verify_passwordform_data.password, user.password):
-        raise HTTPException(
-            status_code=400, detail='Incorrect email or password'
-        )
-```
-
----
-
-# Criando o endpoint
-
-Para que os clientes se autentiquem na nossa aplicação, precisamos criar um endpoint que receba as credenciais. Vamos chamá-lo de `/token`.
-
-Alguns pontos:
-
-1. ~~Precisamos de um schema de credenciais~~ e um schema para o token
-2. ~~Validar se o email existe e se sua senha bate com o hash~~
-3. Retornar um Token com uma duração de tempo! (30 minutos?)
-
----
-
-## O Token JWT
-
-De forma simples, o JWT (Json Web Token) é uma forma de assinatura do servidor.
-
-O token diz que o cliente foi autenticado com a assinatura **desse** servidor. Ele é divido em 3 partes:
-
-<div class="mermaid" style="text-align: center;">
-flowchart LR
-   JWT --> Header
-   JWT --> Payload
-   JWT --> Assinatura
-   Header --> A[Algorítimo + Tipo de token]
-   Payload --> B[Dados que serão usados para assinatura]
-   Assinatura --> C[Aplicação do algorítimo + Chave secreta da aplicação]
-</div>
-
----
-
-# Geração de tokens JWT com Python
-
-Existem diversas bibliotecas para geração de tokens, usemos o `python-jose`.
-
-```bash
-poetry add python-jose[cryptography]
-```
-
-JOSE: Javascript Object Singin and Encryption
-
----
-
-# Olhando os tokens mais de perto
-
-```py
-from jose import jwt
-
-jwt.encode(dados, key)   # Os dados devem ser um dict, retorna o token
-
-jwt.decode(token, key)    # Isso retorna o dict dos dados
-```
-
----
-
-## Sobre a chave
-
-A chave deve ser secreta, ela é o que define em conjunto com o algorítimo que foi assinado pelo nosso servidor. O Python tem uma biblioteca embutida que gera segredos:
-
-```py
-import secrets
-
-secretes.token_hex()   # Retorna um token randômico
-```
-
----
-
-# investigando o token gerado
-
-> https://jwt.io/#debugger-io
-
-Aqui podemos ver o token e validar a integridade da assinatura.
-
----
-
-## O schema do token
-
-```py
-# schemas.py
-class Token(BaseModel):
-    access_token: str  # O token JWT que vamos gerar
-    token_type: str    # O modelo que o cliente deve usar para Autorização
-```
-
----
-
-# A geração do token
-
-Agora que já temos o schema e o esqueleto do endpoint, podemos criar nossa função de criação de token em `security.py`:
-
-```py
-from datetime import datetime, timedelta
-
-from jose import jwt
-
-SECRET_KEY = 'your-secret-key'  # Isso é privisório, vamos ajustar!
-
-def create_access_token(data: dict):
-    to_encode = data.copy()
-
-    # Adiciona um tempo de 30 minutos para expiração
-    expire = datetime.utcnow() + timedelta(minutes=30)
-    to_encode.update({'exp': expire})
-
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY)
-    return encoded_jwt
-```
----
-
-# Testando a geração de tokens
-
-```py
-# tests/test_security.py
-from jose import jwt
-
-from fast_zero.security import create_access_token, SECRET_KEY
-
-
-def test_jwt():
-    data = {'test': 'test'}
-    token = create_access_token(data)
-
-    decoded = jwt.decode(token, SECRET_KEY)
-
-    assert decoded['test'] == data['test']
-    assert decoded['exp']  # Testa se o valor de exp foi adicionado ao token
-```
----
-
-# De volta ao endpoint `/token`
-
-```py
-# app.py
-from fast_zero.schemas import ..., Token, ...
-from fast_zero.security import create_access_token, ...
-
-@app.post('/token', response_model=Token)
-def login_for_access_token(
-    form_data: OAuth2PasswordRequestForm = Depends(),
-    session: Session = Depends(get_session),
-):
-    # ...
-    access_token = create_access_token(data={'sub': user.email})
-
-    return {'access_token': access_token, 'token_type': 'Bearer'}
-```
-
----
-
-# Testando o endpoint `/token`
-
-```py
-# test_app.py
-def test_get_token(client, user):
-    response = client.post(
-        '/token',
-        data={'username': user.email, 'password': user.password},
-    )
-    token = response.json()
-
-    assert response.status_code == 200
-    assert token['token_type'] == 'Bearer'
-    assert 'access_token' in token
-```
----
-
-# Problema!
-
-A fixture de `User` que estamos criando salva a senha limpa. Isso dá erro na hora de comparar se a senha está correta na criação do token.
-
-```python
-# conftest.py
-from fast_zero.security import get_password_hash
-# ...
-@pytest.fixture
-def user(session):
-    user = User(
-        username='test',
-        email='test@test.com',
-        password=get_password_hash('testtest'),  # Criando com a senha suja!
-    )
-    session.add(user)
-    session.commit()
-    session.refresh(user)
-
-    return user
-```
----
-
-# Problema 2!
-
-Embora a senha agora consiga ser comparada, a senha que enviamos na requisição está indo suja também.
-
-```python
-# confitest.py
-@pytest.fixture
-def user(session):
-    password = 'testtest'
-    user = User(
-        username='test',
-        email='test@test.com',
-        password=get_password_hash(password),
-    )
-    session.add(user)
-    session.commit()
-    session.refresh(user)
-
-    user.clean_password = password
-
-    return user
-```
-
----
-
-#### Com isso, todos os testes devem voltar a passar:
-
-```bash
-tests/test_app.py::test_get_token PASSED
-tests/test_app.py::test_root_deve_retornar_200_e_ola_mundo PASSED
-tests/test_app.py::test_create_user PASSED
-tests/test_app.py::test_read_users_empty PASSED
-tests/test_app.py::test_read_users PASSED
-tests/test_app.py::test_update_user PASSED
-tests/test_app.py::test_delete_user PASSED
-tests/test_models.py::test_create_user PASSED
-tests/test_security.py::test_jwt PASSED
-```
-
-
----
-
-# Parte 3: Autorização
-
----
-
-# Autorização
-
-A ideia por trás da autorização é garantir que somente pessoas autorizadas possam executar determinadas operações. Como:
-
-- Alterar (PUT): Queremos garantir que o cliente possa alterar somente sua conta
-- Deletar: Queremos garantir que o cliente possa deletar somente a sua conta
-
----
-
-# Autorização
-
-Agora que temos os tokens, podemos garantir que só clientes com uma conta já criada e logada possam ter acesso aos endpoints.
-
-- Listar: Somente se estiver logado
-- Deletar: Somente se a conta for sua
-- Alterar: Somente se a conta for sua
-
----
-
-Assim como nos formulários, o FastAPI também conta com um validador de Tokens passados nos cabeçalhos: `OAuth2PasswordBearer`
-
-```py
-# security.py
-from fastapi.security import OAuth2PasswordBearer
+# fast_zero/database.py
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-from fast_zero.database import get_session
+from fast_zero.settings import Settings
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+engine = create_engine(Settings().DATABASE_URL)
 
 
-async def get_current_user(
-    session: Session = Depends(get_session),
-    token: str = Depends(oauth2_scheme),
-):
-    ...
+def get_session():
+    with Session(engine) as session:
+        yield session
 ```
 
 ---
 
-Só com essa exigência de receber o token, podemos aplicar isso em nosso endpoint de listagem.
+## Usando a função!
 
-```py
-# app.py
-@app.get('/users/', response_model=UserList)
-def list_users(
-    session: Session = Depends(get_session),
-    current_user=Depends(get_current_user),
-):
-    database = session.scalars(select(User)).all()
-    return {'users': database}
-```
-
-> Mostar o cadeado no Swagger!
-
----
-
-# Porém
-
-Ao rodar os testes...
-
----
-
-Precisamos de um token para enviar aos endpoints agora!
-
-```py
-@pytest.fixture
-def token(client, user):
-    response = client.post(
-        '/token',
-        data={'username': user.email, 'password': user.clean_password},
-    )
-    return response.json()['access_token']
-```
-
----
-
-Agora podemos enviar o token no cabeçalho da requisição
-
-```py
-# test_app.py
-def test_read_users(client: TestClient, token):
-    response = client.get(
-        '/users/', headers={'Authorization': f'Bearer {token}'}
-    )
-
-    assert response.status_code == 200
-    assert response.json() == {
-        'users': [
-            {
-                'id': 1,
-                'username': 'test',
-                'email': 'test@test.com',
-            },
-        ],
-    }
-```
-
----
-
-# Funciona,
-
-maaaaaaaaaasssssssssss não validamos o payload do token ainda!
-
----
-
-# A validação do JWT
-
-```py
-async def get_current_user(...):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail='Could not validate credentials',
-        headers={'WWW-Authenticate': 'Bearer'},
-    )
-
-    try:
-        payload = jwt.decode(token, SECRET_KEY)
-        username: str = payload.get('sub')
-        if not username:
-            raise credentials_exception
-    except JWTError:
-        raise credentials_exception
-    
-    # ...
-```
----
-
-Caso esteja tudo correto com o token:
-
-```py
-async def get_current_user(...):
-    # ...
-    user = session.scalar(
-        select(User).where(User.email == username)
-    )
-
-    if user is None:
-        raise credentials_exception
-
-    return user
-```
-
----
-
-Com isso podemos alterar os endpoints para depender do usuário corrente:
+Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evitando a repetição do código da sessão em todos os endpoints:
 
 ```python
-@app.put('/users/{user_id}', response_model=UserPublic)
-def update_user(
-    user_id: int,
-    user: UserSchema,
-    session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
-):
-    if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+from fast_zero.database import get_session
+# ...
 
-    current_user.username = user.username
-    current_user.password = user.password
-    current_user.email = user.email
-    session.commit()
-    session.refresh(current_user)
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema):
+    session = get_session()
 
-    return current_user
+    db_user = session.scalar(
+        select(User).where(User.email == user.email)
+    )
+    # ...
 ```
 
 ---
 
-### Alteração do teste
+# Acoplamento
 
-```py
-def test_update_user(client, user, token):
-    response = client.put(
-        f'/users/{user.id}',
-        headers={'Authorization': f'Bearer {token}'},
+Embora esteja bom, não tenhamos muita coisa que fuja da nossa lógica, somente a invocação de `get_session`. A chamada está acoplada. Isso traz dois problemas:
+
+1. **Encapsulamento**: é complicado de escrever testes!
+2. **Dependência**: o enpoint tem que conhecer a chamada da sessão
+
+Mas, nem tudo está perdido!
+
+---
+
+## Gerenciando Dependências com FastAPI
+
+Assim como a sessão SQLAlchemy, que implementa vários padrões arquiteturais importantes, FastAPI também usa um conceito de padrão arquitetural chamado "Injeção de Dependência".
+
+FastAPI fornece a função `Depends` para ajudar a declarar e gerenciar essas dependências. É uma maneira declarativa de dizer ao FastAPI: "Antes de executar esta função, execute primeiro essa outra função e passe-me o resultado". Isso é especialmente útil quando temos operações que precisam ser realizadas antes de cada request, como abrir uma sessão de banco de dados. 
+
+---
+
+<div class="columns">
+
+<div class="mermaid" style="text-align: center;">
+graph LR
+   código -- depende de --> sessão
+  subgraph Função
+  código
+  end
+</div>
+
+<div>
+
+```python
+def endpoint(
+    user: UserSchema,
+    session = Depends(get_session)
+):
+
+    session...
+```
+</div>
+
+</div>
+
+---
+
+## Implementando o banco nos endpoints
+
+```python
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+# ...
+
+@app.post('/users/', response_model=UserPublic, status_code=201)
+def create_user(user: UserSchema, session: Session = Depends(get_session)):
+    db_user = session.scalar(
+        select(User).where(User.username == user.username)
+    )
+    if db_user:
+        raise HTTPException(
+            status_code=400, detail='Username already registered'
+        )
+    # ...
+```
+
+---
+
+## Criando uma estrutura para usar a sessão de testes
+
+
+```python
+# tests/conftest.py
+@pytest.fixture
+def client(session):
+    def get_session_override():
+        return session
+
+    with TestClient(app) as client:
+        app.dependency_overrides[get_session] = get_session_override
+        yield client
+
+    app.dependency_overrides.clear()
+```
+
+---
+
+## Alterando nosso teste
+
+```python
+def test_create_user(client):
+    response = client.post(
+        '/users',
         json={
-            'username': 'bob',
-            'email': 'bob@test.com',
-            'password': 'mynewpassword',
+            'username': 'alice',
+            'email': 'alice@example.com',
+            'password': 'secret',
         },
     )
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json() == {
-        'username': 'bob',
-        'email': 'bob@test.com',
+        'username': 'alice',
+        'email': 'alice@example.com',
         'id': 1,
     }
 ```
+
 ---
 
-# Para terminar…
+## Erros!
 
-Precisamos fazer isso no endpoint de DELETE
+A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
+
+```python
+@pytest.fixture
+def session():
+    engine = create_engine(
+        'sqlite:///:memory:',
+        connect_args={'check_same_thread': False},
+        poolclass=StaticPool,
+    )
+    Base.metadata.create_all(engine)
+
+    Session = sessionmaker(bind=engine)
+
+    yield Session()
+
+    Base.metadata.drop_all(engine)
+```
+
+---
+
+# Implementação dos outros endpoints
+
+...
 
 ---
 
 # Commit!
 
 ```shell title="$ Execução no terminal!"
-git status
 git add .
-git commit -m "Protege os endpoints GET, PUT e DELETE com autenticação"
+git commit -m "Atualizando endpoints para usar o banco de dados real"
+git push
 ```
 
 <!-- mermaid.js -->
-<script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
+<script src="https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-
