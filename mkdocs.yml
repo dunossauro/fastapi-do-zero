@@ -54,6 +54,7 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - md_in_html
+
 plugins:
   - glightbox
   - mkdocs-video
@@ -72,8 +73,13 @@ plugins:
       toc_level: 6
       enabled_if_env: ENABLE_PDF_EXPORT
       toc_title: Índice
+  - exclude:
+      glob:
+        - "wip.md"
+
 extra_css:
   - stylesheets/extra.css
+
 extra:
   social:
     - icon: fontawesome/brands/github
