@@ -76,6 +76,7 @@ plugins:
   - exclude:
       glob:
         - "wip.md"
+  - unused_files
 
 extra_css:
   - stylesheets/extra.css

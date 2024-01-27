@@ -932,6 +932,20 @@ files = [
 ]
 
 [[package]]
+name = "mkdocs-unused-files"
+version = "0.2.0"
+description = "An MkDocs plugin to find unused (orphaned) files in your project."
+optional = false
+python-versions = ">=2.7"
+files = [
+    {file = "mkdocs_unused_files-0.2.0-py3-none-any.whl", hash = "sha256:64cdd014a194ac3c40c42b55443fca3574555e96d61c55d09b9f0b73c481aefe"},
+]
+
+[package.dependencies]
+beautifulsoup4 = ">=4.12.0"
+mkdocs = ">=1.0.4"
+
+[[package]]
 name = "mkdocs-video"
 version = "1.5.0"
 description = ""
@@ -1675,4 +1689,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "d7844f11de2ff23010b16989becfd81f95f8fb1cf07c82f473b26e3248c9ef4b"
+content-hash = "5d0367e6e4009f3f3d798bdda5b2d692b764a4b5695fbc3c41e1c1f3f4249580"
