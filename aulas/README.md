@@ -101,7 +101,7 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunossauro](https://dunossauro.com){:target="_blank"}.
 
 <div class="sbs" markdown>
-![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/dunossauro.jpg){ align=left width="300" .shadow}
+![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/readme/dunossauro.jpg){ align=left width="300" .shadow}
 <div markdown>
 
 Sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há quase 7 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
