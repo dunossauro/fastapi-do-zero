@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from .schemas import Message
+
+from fast_zero.schemas import Message
 
 app = FastAPI()
 
