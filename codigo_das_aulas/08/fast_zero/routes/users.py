@@ -83,4 +83,4 @@ def delete_user(
     session.delete(db_user)
     session.commit()
 
-    return {'detail': 'User deleted'}
+    return {'message': 'User deleted'}

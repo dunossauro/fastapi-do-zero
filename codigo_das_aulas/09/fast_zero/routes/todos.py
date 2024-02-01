@@ -74,7 +74,7 @@ def delete_todo(todo_id: int, session: Session, user: CurrentUser):
     session.delete(todo)
     session.commit()
 
-    return {'detail': 'Task has been deleted successfully.'}
+    return {'message': 'Task has been deleted successfully.'}
 
 
 @router.patch('/{todo_id}', response_model=TodoPublic)
