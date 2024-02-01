@@ -9,7 +9,7 @@ from fast_zero.schemas import Message, UserList, UserPublic, UserSchema
 app = FastAPI()
 
 
-@app.get('/')
+@app.get('/', status_code=200, response_model=Message)
 def read_root():
     return {'message': 'Olá Mundo!'}
 
@@ -71,4 +71,4 @@ def delete_user(user_id: int, session: Session = Depends(get_session)):
     session.delete(db_user)
     session.commit()
 
-    return {'detail': 'User deleted'}
+    return {'message': 'User deleted'}

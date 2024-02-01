@@ -16,7 +16,7 @@ from fast_zero.security import (
 app = FastAPI()
 
 
-@app.get('/')
+@app.get('/', status_code=200, response_model=Message)
 def read_root():
     return {'message': 'Olá Mundo!'}
 
@@ -79,7 +79,7 @@ def delete_user(
     session.delete(current_user)
     session.commit()
 
-    return {'detail': 'User deleted'}
+    return {'message': 'User deleted'}
 
 
 @app.post('/token', response_model=Token)

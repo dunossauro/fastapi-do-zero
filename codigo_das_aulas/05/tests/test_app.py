@@ -61,4 +61,4 @@ def test_update_user(client, user):
 def test_delete_user(client, user):
     response = client.delete('/users/1')
     assert response.status_code == 200
-    assert response.json() == {'detail': 'User deleted'}
+    assert response.json() == {'message': 'User deleted'}

@@ -54,4 +54,4 @@ def test_delete_user(client, user, token):
         headers={'Authorization': f'Bearer {token}'},
     )
     assert response.status_code == 200
-    assert response.json() == {'detail': 'User deleted'}
+    assert response.json() == {'message': 'User deleted'}
