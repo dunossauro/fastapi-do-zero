@@ -26,8 +26,6 @@ taskipy = "^1.11.0"
 blue = "^0.9.1"
 ruff = "^0.0.278"
 httpx = "^0.24.1"
-factory-boy = "^3.2.1"
-freezegun = "^1.2.2"
 
 [tool.ruff]
 line-length = 79

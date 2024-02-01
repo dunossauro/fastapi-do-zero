@@ -51,7 +51,7 @@ def update_user(
         raise HTTPException(status_code=400, detail='Not enough permissions')
 
     current_user.username = user.username
-    current_user.password = user.password
+    current_user.password = get_password_hash(user.password)
     current_user.email = user.email
     session.commit()
     session.refresh(current_user)
@@ -67,4 +67,4 @@ def delete_user(user_id: int, session: Session, current_user: CurrentUser):
     session.delete(current_user)
     session.commit()
 
-    return {'detail': 'User deleted'}
+    return {'message': 'User deleted'}

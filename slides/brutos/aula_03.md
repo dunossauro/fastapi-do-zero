@@ -1,342 +1,370 @@
 ---
 marp: true
 theme: rose-pine
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
 ---
 
-# Configurando o Banco de Dados e Gerenciando Migrações com Alembic
+# Estruturando o Projeto e Criando Rotas do CRUD
 
-> https://fastapidozero.dunossauro.com/03/
+> https://fastapidozero.dunossauro.com/02/
 
 ---
 
 # Objetivos dessa aula:
 
--  Introdução ao SQLAlchemy e Alembic
--  Instalando SQLAlchemy e Alembic
--  Configurando e criando o banco de dados
--  Criando e localizando tabelas utilizando SQLAlchemy
--  Testando a criação de tabelas
--  Gerenciando migrações do banco de dados com Alembic
+- Entendimento dos verbos HTTP, JSON e códigos de resposta
+- Compreender a estrutura de um projeto FastAPI e como estruturar rotas CRUD (Criar, Ler, Atualizar, Deletar)
+- Aprender sobre a biblioteca Pydantic e sua utilidade na validação e serialização de dados
+- Implementação de rotas CRUD em FastAPI
+- Escrita e execução de testes para validar o comportamento das rotas
 
 ---
 
-# Uma introdução ao SQLAlchemy
+# O que é uma API?
+
+Acrônimo de Application Programming Interface (Interface de Programação de Aplicações), uma API é um conjunto de regras e protocolos que permitem a comunicação entre diferentes softwares.
+
+As APIs servem como uma ponte entre diferentes programas, permitindo que eles se comuniquem e compartilhem informações de maneira eficiente e segura.
 
 ---
 
-## SQLalchemy
+# A arquitetura
 
-O SQLAlchemy é um ORM. Ele permite que você trabalhe com bancos de dados SQL de maneira mais natural aos programadores Python. Em vez de escrever consultas SQL cruas, você pode usar métodos e atributos Python para manipular seus registros de banco de dados.
+O que queremos dizer com cliente servidor
 
-ORM significa Mapeamento Objeto-Relacional. É uma técnica de programação que vincula (ou mapeia) objetos a registros de banco de dados. Em outras palavras, um ORM permite que você interaja com seu banco de dados, como se você estivesse trabalhando com objetos Python.
+<div class="mermaid">
+flowchart LR
+   Cliente --> Servidor
+   Servidor --> Cliente
+</div>
 
-
----
-
-## Mas por que usaríamos um ORM?
-
-- Abstração de banco de dados: ORMs permitem que você mude de um tipo de banco de dados para outro com poucas alterações no código.
-
-- Segurança: ORMs geralmente lidam com escapar de consultas e prevenir injeções SQL, um tipo comum de vulnerabilidade de segurança.
-
-- Eficiência no desenvolvimento: ORMs podem gerar automaticamente esquemas, realizar migrações e outras tarefas que seriam demoradas para fazer manualmente.
+Existe uma aplicação que "Serve" e uma que é cliente de quem serve
 
 ---
 
-## Instalação do SQLalchemy
+# O que é HTTP?
 
-```bash
-poetry add sqlalchemy
-```
+HTTP, ou Hypertext Transfer Protocol, é o protocolo fundamental na web para a transferência de dados e comunicação entre clientes e servidores.
 
----
-
-# Definindo nosso modelo de "user" com SQLalchemy
-
-no arquivo `fast_zero/models.py` vamos criar
+Por exemplo, quando chamamos a rota *ou endpoint* `/` da nossa aplicação no teste
 
 ```python
-from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
-
-
-class Base(DeclarativeBase):
-    pass
-
-
-class User(Base):
-    __tablename__ = 'users'
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    username: Mapped[str]
-    password: Mapped[str]
-    email: Mapped[str]
+def test_root_deve_retornar_200_e_ola_mundo():
+    client.get('/')
 ```
 
 ---
 
-### Criando um teste para esse modelo
+# Tipos de requisição HTTP
+
+Os verbos HTTP indicam a ação desejada a ser executada em um determinado recurso. Os verbos mais comuns são:
+
+- GET: Recupera recursos
+- POST: Cria um novo recurso
+- PUT: Atualiza um recurso existente
+- PATCH: Atualiza parte de um recurso
+- DELETE: Exclui um recurso
+
+---
+
+# Tipos de resposta HTTP
+
+As respostas dadas pela API no HTTP vem com códigos para explicar o que aconteceu
+
+- 200 OK: A solicitação foi bem-sucedida
+- 201 Created: A solicitação foi bem-sucedida e um novo recurso foi criado
+- 404 Not Found: O recurso solicitado não pôde ser encontrado
+
 
 ```python
-from fast_zero.models import User
-
-def test_create_user():
-    user = User(username='test', email='test@test.com', password='secret')
-
-    assert user.password == 'secrete'
+def test_root_deve_retornar_200_e_ola_mundo():
+    response = client.get('/')
+    assert response.status_code == 200
 ```
 
-> Aqui temos uma bomba!
+---
+
+# Os dados
+
+Quando estamos falando de APIs modernas, estamos quase sempre falando sobre JSON
+
+```json
+def test_root_deve_retornar_200_e_ola_mundo():
+    response = client.get('/')
+    assert response.status_code == 200
+    assert response.json() == {'message': 'Olá Mundo!'}
+```
+
+Um formato bastante parecido com um dicionário do python
 
 ---
 
-### O que esse teste testa?
-
-Aparentemente ele testa se uma classe pode ser instanciada **ou seja, NADA**.
-
-Precisamos garantir algumas coisas:
-
-1. Se é possível criar essa tabela
-    - `Metadata`!
-2. Se é possível buscar um `User` usando ela como base
-    - `Session`!
-
-Só que para isso precisamos conhecer alguns outros componentes importantes.
-
----
-
-## Outros componentes importantes
-
-### Engine
-
-A 'Engine' do SQLAlchemy é o ponto de contato com o banco de dados, estabelecendo e gerenciando as conexões. Ela é instanciada através da função `create_engine()`, que recebe as credenciais do banco de dados, o endereço de conexão (URI) e configura o pool de conexões.
-
-### Session
-
-Quanto à persistência de dados e consultas ao banco de dados utilizando o ORM, a Session é a principal interface. Ela atua como um intermediário entre o aplicativo Python e o banco de dados, mediada pela Engine. A Session é encarregada de todas as transações, fornecendo uma API para conduzi-las.
-
----
-
+# De uma forma geral
 <div class="mermaid" style="text-align: center;">
-graph
-  A[Aplicativo Python] -- utiliza --> B[SQLAlchemy ORM]
-  B -- fornece --> D[Session]
-  D -- interage com --> C[Modelos]
-  C -- mapeados para --> G[Tabelas no Banco de Dados]
-  D -- depende de --> E[Engine]
-  E -- conecta-se com --> F[Banco de Dados]
-  C -- associa-se a --> H[Metadata]
-  H -- mantém informações de --> G[Tabelas no Banco de Dados]
+sequenceDiagram
+    participant Cliente
+    participant Servidor
+    Cliente->>Servidor: Requisição HTTP (GET, POST, PUT, DELETE)
+    Note right of Servidor: Processa a requisição
+    Servidor-->>Cliente: Resposta HTTP (Código de Status)
+    Note left of Cliente: Processa a resposta
+    Cliente->>Servidor: Requisição HTTP com JSON (POST, PUT)
+    Note right of Servidor: Processa a requisição e o JSON
+    Servidor-->>Cliente: Resposta HTTP com JSON
+    Note left of Cliente: Processa a resposta e o JSON
 </div>
 
 ---
 
-## Escrevendo testes para esse modelo
+# O que vamos criar nessa aula?
+
+Endpoints para cadastro, recuperação, alteração e deleção de usuários
 
 ---
-A primeira coisa que temos que montar é uma fixture da sessão do banco
+
+# Quando a API e o Banco de dados se encontram
+
+Quando falamos de operações de banco de dados, temos um acrônimo para essas operações chamado CRUD:
+
+- **C**reate (Criar): Adicionar novos registros ao banco de dados. No HTTP, essa ação geralmente é associada ao verbo POST.
+- **R**ead (Ler): Recuperar registros existentes do banco de dados. No HTTP, essa ação geralmente é associada ao verbo GET.
+- **U**pdate (Atualizar): Modificar registros existentes no banco de dados. No HTTP, essa ação geralmente é associada ao verbo PUT ou PATCH.
+- **D**elete (Excluir): Remover registros existentes do banco de dados. No HTTP, essa ação geralmente é associada ao verbo DELETE.
+
+---
+
+# A estrutura dos dados
+
+Se quisermos criar um endpoint com fastapi que crie um usuário, precisamos definir como trocaremos essa mensagem.
+
+Imagino um JSON como esse:
+
+```json
+{
+    "username": "dunossauro",
+    "email": "dunossauro@email.com",
+    "password": "senha-do_dunossauro"
+}
+```
+
+---
+
+# Pydantic e a validação de dados
+
+O Pydantic é uma biblioteca Python que oferece validação de dados e configurações usando anotações de tipos Python. Ela é utilizada extensivamente em FastAPI para lidar com a validação e serialização/desserialização de dados.
+
+O Pydantic tem um papel crucial ao trabalhar com JSON, pois permite a validação dos dados recebidos neste formato, assim como sua conversão para formatos nativos do Python e vice-versa.
+
+---
+
+## Dois conceitos importantes aqui
+
+- **Esquemas**: No contexto da programação, um esquema é uma representação estrutural de um objeto ou entidade. Por exemplo, no nosso caso, um usuário pode ser representado por um esquema que contém campos para nome de usuário, e-mail e senha. Esquemas são úteis porque permitem definir a estrutura de um objeto de uma maneira clara e reutilizável.
+
+- **Validação de dados**: Este é o processo de verificar se os dados recebidos estão em conformidade com as regras e restrições definidas. Por exemplo, se esperamos que o campo "email" contenha um endereço de e-mail válido, a validação de dados garantirá que os dados inseridos nesse campo de fato correspondam a um formato de e-mail válido.
+
+---
+
+# O pydantic fornece um schema para o json
+
+<div class="columns">
+
+<div>
+
+O json:
+
+```json
+{
+    "username": "joao123",
+    "email": "joao123@email.com",
+    "password": "segredo123"
+}
+```
+
+</div>
+
+<div>
+
+A classe do pydantic:
 
 ```python
+from pydantic import BaseModel, EmailStr
+
+
+class UserSchema(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+```
+</div>
+
+</div>
+
+Vamos criar esse schema em um arquivo só de schemas `fast_zero/schemas.py` para fins de organização
+
+---
+
+# Dito isso, vamos implementar a criação do user
+
+---
+
+# A rota
+
+```python
+from fastapi import FastAPI
+from fast_zero.schemas import UserSchema
+
+# ...
+
+@app.post('/users/', status_code=201)
+def create_user(user: UserSchema):
+    return user
+```
+
+Alguns pontos:
+
+- `status_code=201`: é a resposta esperado de uma criação
+- `user: UserSchema`: diz ao endpoint qual o schema que desejamos receber
+
+---
+
+## Vamos ao swagger entender o que aconteceu
+
+> http://localhost:8000/docs
+
+---
+
+## Um problema!
+
+Quando retornamos a requisição, estando expondo a senha, temos que criar um novo schema de resposta para que isso não seja feito.
+
+Um schema que não expõe a senha:
+
+```python
+class UserPublic(BaseModel):
+    username: str
+    email: EmailStr
+```
+
+
+Usando esse schema como resposta do nosso endpoint:
+
+```python
+from fast_zero.schemas import UserSchema, UserPublic
+
+# código omitido
+
+@app.post('/users/', status_code=201, response_model=UserPublic)
+def create_user(user: UserSchema):
+    return user
+```
+
+---
+
+## Criando um banco de dados falso
+
+```python
+from fast_zero.schemas import UserSchema, UserPublic, UserDB
+
+# ...
+
+database = []  # provisório para estudo!
+
+
+@app.post('/users/', status_code=201, response_model=UserPublic)
+def create_user(user: UserSchema):
+    user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)
+	# Aqui precisamos criar um novo modelo que represente o banco
+	# Precisamos de um identificador para esse registro!
+
+    database.append(user_with_id)
+
+    return user
+```
+
+---
+
+### Criando schemas compatíveis
+
+Precisamos alterar nosso schema público para que ele tenha um id e também criar um schema que tenha o id e a senha para representar o banco de dados:
+
+```python
+class UserPublic(BaseModel):
+    id: int
+    username: str
+    email: EmailStr
+
+
+class UserDB(UserSchema):
+    id: int
+```
+
+---
+
+# Testando o enpoint
+
+```python
+def test_create_user():
+    client = TestClient(app)
+    response = client.post(
+        '/users/',
+        json={
+            'username': 'alice',
+            'email': 'alice@example.com',
+            'password': 'secret',
+        },
+    )
+    assert response.status_code == 201
+    assert response.json() == {
+        'username': 'alice',
+        'email': 'alice@example.com',
+        'id': 1,
+    }
+```
+
+---
+
+#### Não se repita (DRY)
+
+Você deve ter notado que a linha `client = TestClient(app)` está repetida na primeira linha dos dois testes que fizemos. Repetir código pode tornar o gerenciamento de testes mais complexo à medida que cresce, e é aqui que o princípio de "Não se repita" ([DRY](https://pt.wikipedia.org/wiki/Don't_repeat_yourself){:target="_blank"}) entra em jogo. DRY incentiva a redução da repetição, criando um código mais limpo e manutenível.
+
+---
+
+Neste caso, vamos criar uma fixture que retorna nosso `client`. Para fazer isso, precisamos criar o arquivo `tests/conftest.py`. O arquivo `conftest.py` é um arquivo especial reconhecido pelo pytest que permite definir fixtures que podem ser reutilizadas em diferentes módulos de teste dentro de um projeto. É uma forma de centralizar recursos comuns de teste.
+
+
+```python title="tests/conftest.py"
 import pytest
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import sessionmaker
-
-from fast_zero.models import Base
-
+from fastapi.testclient import TestClient
+from fast_zero.app import app
 
 @pytest.fixture
-def session():
-    engine = create_engine('sqlite:///:memory:')
-    Session = sessionmaker(bind=engine)
-    Base.metadata.create_all(engine)
-    yield Session()
-    Base.metadata.drop_all(engine)
-```
----
-
-### Eu sei, esse código é um pouco complexo de mais [0]
-
-1. `create_engine('sqlite:///:memory:')`: cria um mecanismo de banco de dados SQLite em memória usando SQLAlchemy. Este mecanismo será usado para criar uma sessão de banco de dados para nossos testes.
-
-2. `Session = sessionmaker(bind=engine)`: cria uma fábrica de sessões para criar sessões de banco de dados para nossos testes.
-
-3. `Base.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
-
----
-
-### Eu sei, esse código é um pouco complexo de mais [1]
-
-4. `yield Session()`: fornece uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
-
-5. `Base.metadata.drop_all(engine)`: após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas, garantindo que cada teste seja executado contra um banco de dados limpo.
-
----
-
-Agora nosso teste
-
-```python
-from sqlalchemy import select
-from fast_zero.models import User
-
-
-def test_create_user(session):
-    new_user = User(username='alice', password='secret', email='teste@test')
-    session.add(new_user)
-    session.commit()
-
-    user = session.scalar(select(User).where(User.username == 'alice'))
-
-    assert user.username == 'alice'
+def client():
+    return TestClient(app)
 ```
 
 ---
 
-# Configurações de ambiente e as 12 fatores
+# Outros enpoints
 
-Uma boa prática no desenvolvimento de aplicações é separar as configurações do código.
+> Agora eu vou no freestyle, sem slides. Me deseje sorte!
 
-Configurações, como credenciais de banco de dados, são propensas a mudanças entre ambientes diferentes (como desenvolvimento, teste e produção). 
+---
 
-Misturá-las com o código pode tornar o processo de mudança entre esses ambientes complicado e propenso a erros.
+## Commit
 
 ```bash
-poetry add pydantic-settings
+$ git status
+$ git add .
+$ git commit -m "Implementando rotas CRUD"
+$ git push
 ```
 
----
-
-# Configuração do ambiente do banco de dados
-
-
-```python
-from pydantic_settings import BaseSettings, SettingsConfigDict
-
-
-class Settings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_file='.env', env_file_encoding='utf-8'
-    )
-
-    DATABASE_URL: str
-```
-
----
-
-# `.env`
-
-Esse configuração permite que usemos arquivos `.env` para não inserir dados do banco no código fonte
-
-```env
-DATABASE_URL="sqlite:///database.db"
-```
-
-Não podemos esquecer de adicionar essa base de dados no `.gitignore`
-
-```
-echo 'database.db' >> .gitignore
-```
-
-
----
-
-# Migrações
-
-Antes de avançarmos, é importante entender o que são migrações de banco de dados e por que são úteis.
-
-As migrações são uma maneira de fazer alterações ou atualizações no banco de dados, como adicionar uma tabela ou uma coluna a uma tabela, ou alterar o tipo de dados de uma coluna. Elas são extremamente úteis, pois nos permitem manter o controle de todas as alterações feitas no esquema do banco de dados ao longo do tempo. Elas também nos permitem reverter para uma versão anterior do esquema do banco de dados, se necessário.
-
----
-
-## Instalação e configuração do alembic
-
-```bash
-poetry add alembic
-
-alembic init migrations
-```
-
----
-
-## Isso criará uma estrutura de pastas nova
-
-```
-.
-├── .env
-├── alembic.ini
-├── fast_zero
-│  ├── __init__.py
-│  ├── app.py
-│  ├── models.py
-│  └── schemas.py
-├── migrations
-│  ├── env.py
-│  ├── README
-│  ├── script.py.mako
-│  └── versions
-├── poetry.lock
-├── pyproject.toml
-├── README.md
-└── tests
-   ├── __init__.py
-   ├── conftest.py
-   ├── test_app.py
-   └── test_db.py
-```
-
----
-
-## Configurando a migração automática
-
-Com o Alembic devidamente instalado e iniciado, agora é o momento de gerar nossa primeira migração. Mas, antes disso, precisamos garantir que o Alembic consiga acessar nossas configurações e modelos corretamente. Para isso, vamos fazer algumas alterações no arquivo `migrations/env.py`.
-
-Neste arquivo, precisamos:
-
-1. Importar as `Settings` do nosso arquivo `settings.py` e a `Base` dos nossos modelos.
-2. Configurar a URL do SQLAlchemy para ser a mesma que definimos em `Settings`.
-3. Verificar a existência do arquivo de configuração do Alembic e, se presente, lê-lo.
-4. Definir os metadados de destino como `Base.metadata`, que é o que o Alembic utilizará para gerar automaticamente as migrações.
-
----
-
-```python
-from alembic import context
-from fast_zero.settings import Settings
-from fast_zero.models import Base
-
-config = context.config
-config.set_main_option('sqlalchemy.url', Settings().DATABASE_URL)
-
-if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
-
-target_metadata = Base.metadata
-```
-
----
-
-# Gerando a migração
-
-```bash
-alembic revision --autogenerate -m "create users table"
-```
----
-
-## Aplicando a migração
-
-```bash
-alembic upgrade head
-```
-
----
-
-## commit
-
-```bash
-git add .
-git commit -m "Adicionada a primeira migração com Alembic. Criada tabela de usuários."
-git push
-```
 
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>

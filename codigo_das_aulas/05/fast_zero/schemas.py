@@ -1,4 +1,8 @@
-from pydantic import BaseModel, ConfigDict, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
+
+
+class Message(BaseModel):
+    message: str
 
 
 class UserSchema(BaseModel):
@@ -16,16 +20,3 @@ class UserPublic(BaseModel):
 
 class UserList(BaseModel):
     users: list[UserPublic]
-
-
-class Message(BaseModel):
-    detail: str
-
-
-class Token(BaseModel):
-    access_token: str
-    token_type: str
-
-
-class TokenData(BaseModel):
-    username: str | None = None
