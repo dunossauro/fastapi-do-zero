@@ -49,7 +49,7 @@ def update_user(
 ):
 
     db_user = session.scalar(select(User).where(User.id == user_id))
-    if db_user is None:
+    if not db_user:
         raise HTTPException(status_code=404, detail='User not found')
 
     db_user.username = user.username
@@ -65,7 +65,7 @@ def update_user(
 def delete_user(user_id: int, session: Session = Depends(get_session)):
     db_user = session.scalar(select(User).where(User.id == user_id))
 
-    if db_user is None:
+    if not db_user:
         raise HTTPException(status_code=404, detail='User not found')
 
     session.delete(db_user)
