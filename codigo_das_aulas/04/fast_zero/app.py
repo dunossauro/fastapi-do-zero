@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from fast_zero.schemas import Message, UserSchema, UserPublic, UserDB, UserList
+
+from fast_zero.schemas import Message, UserDB, UserList, UserPublic, UserSchema
 
 app = FastAPI()
 

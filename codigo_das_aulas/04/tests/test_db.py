@@ -1,4 +1,5 @@
 from sqlalchemy import select
+
 from fast_zero.models import User
 
 
