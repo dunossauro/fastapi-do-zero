@@ -4,7 +4,7 @@ from fast_zero.models import TodoState
 
 
 class Message(BaseModel):
-    detail: str
+    message: str
 
 
 class UserSchema(BaseModel):
