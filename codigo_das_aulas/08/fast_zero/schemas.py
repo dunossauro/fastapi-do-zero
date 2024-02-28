@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict, EmailStr
 
 
 class Message(BaseModel):
-    detail: str
+    message: str
 
 
 class UserSchema(BaseModel):
