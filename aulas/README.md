@@ -10,7 +10,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 > Esse material está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
 
-> Algumas aulas já estão em suas versões finais outas ainda faltam ser revisadas em questões de texto/funcionalidades. Caso queria acompanhar as revisões, elas estão acontecendo [nessa issue](https://github.com/dunossauro/fastapi-do-zero/issues/67){:target="_blank"}.
+> Algumas aulas já estão em suas versões finais outras ainda faltam ser revisadas em questões de texto/funcionalidades. Caso queria acompanhar as revisões, elas estão acontecendo [nessa issue](https://github.com/dunossauro/fastapi-do-zero/issues/67){:target="_blank"}.
 
 Olá, boas vindas ao curso de FastAPI!
 
