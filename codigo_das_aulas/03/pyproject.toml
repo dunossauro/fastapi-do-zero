@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.11"
 uvicorn = "^0.25.0"
 fastapi = "^0.109.0"
-pydantic = {extras = ["email"], version = "^2.6.0"}
+pydantic = { extras = ["email"], version = "^2.6.0" }
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"
@@ -36,7 +36,7 @@ pythonpath = "."
 extend-exclude = '(migrations/)'
 
 [tool.taskipy.tasks]
-lint = 'ruff . && blue --check . --diff && isort --check . --diff'
+lint = 'ruff check . && blue --check . --diff && isort --check . --diff'
 format = 'blue .  && isort .'
 run = 'uvicorn fast_zero.app:app --reload'
 pre_test = 'task lint'
