@@ -4,13 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["dunossauro <mendesxeduardo@gmail.com>"]
 readme = "README.md"
-packages = [{include = "fast_zero"}]
+packages = [{ include = "fast_zero" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.100.0"
 uvicorn = "^0.22.0"
-pydantic = {extras = ["email"], version = "^2.0.2"}
+pydantic = { extras = ["email"], version = "^2.0.2" }
 sqlalchemy = "^2.0.18"
 pydantic-settings = "^2.0.1"
 alembic = "^1.11.1"
@@ -40,7 +40,7 @@ pythonpath = "."
 extend-exclude = '(migrations/)'
 
 [tool.taskipy.tasks]
-lint = 'ruff . && blue --check . --diff && isort --check . --diff'
+lint = 'ruff check . && blue --check . --diff && isort --check . --diff'
 format = 'blue .  && isort .'
 run = 'uvicorn fast_zero.app:app --reload'
 pre_test = 'task lint'
