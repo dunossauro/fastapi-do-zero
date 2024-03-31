@@ -8,13 +8,13 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
-> Esse material está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
-
-> Algumas aulas já estão em suas versões finais outras ainda faltam ser revisadas em questões de texto/funcionalidades. Caso queria acompanhar as revisões, elas estão acontecendo [nessa issue](https://github.com/dunossauro/fastapi-do-zero/issues/67){:target="_blank"}.
-
 Olá, boas vindas ao curso de FastAPI!
 
 A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação. Tudo isso para oferecer uma boa base para quem quer trabalhar com essa tecnologia. A nossa forma de apresentar o curso é prática e cheia de informações. Ela busca trazer o que precisa para criar os nossos próprios projetos.
+
+> Esse material em texto está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
+
+> Algumas aulas já estão em suas versões finais outras ainda faltam ser revisadas em questões de texto/funcionalidades. Caso queria acompanhar as revisões, elas estão acontecendo [nessa issue](https://github.com/dunossauro/fastapi-do-zero/issues/67){:target="_blank"}.
 
 ## O que é FastAPI?
 
@@ -56,7 +56,7 @@ Esse material será disponibilizado de três formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
 2. Em formato de vídeo: todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler;
-3. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. **Datas ainda não definidas!**.
+3. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [datas](/aulas/sincronas/)
 
 > Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
 
