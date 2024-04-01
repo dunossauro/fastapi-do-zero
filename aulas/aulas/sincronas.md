@@ -4,7 +4,7 @@ Faremos 14 encontros para as aulas síncronas em formato de live no meu canal do
 
 ## Como vai funcionar?
 
-Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre as 20:00h e 21:30. Com chat aberto para tirar dúvidas enquanto a aula acontece. O material base é o que está disposto [neste site](https://fastapidozero.dunossauro.com/){:target="_blank"}.
+Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre às 20:00h e 21:30. Com chat aberto para tirar dúvidas enquanto a aula acontece. O material base é o que está disposto [neste site](https://fastapidozero.dunossauro.com/){:target="_blank"}.
 
 ## Agenda
 
