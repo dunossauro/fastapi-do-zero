@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -14,7 +16,7 @@ def read_root():
     return {'message': 'Olá Mundo!'}
 
 
-@app.post('/users/', response_model=UserPublic, status_code=201)
+@app.post('/users/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(
         select(User).where(User.username == user.username)
@@ -47,7 +49,6 @@ def read_users(
 def update_user(
     user_id: int, user: UserSchema, session: Session = Depends(get_session)
 ):
-
     db_user = session.scalar(select(User).where(User.id == user_id))
     if not db_user:
         raise HTTPException(status_code=404, detail='User not found')

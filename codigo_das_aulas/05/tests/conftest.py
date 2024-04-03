@@ -9,7 +9,7 @@ from fast_zero.database import get_session
 from fast_zero.models import Base, User
 
 
-@pytest.fixture
+@pytest.fixture()
 def session():
     engine = create_engine(
         'sqlite:///:memory:',
@@ -22,7 +22,7 @@ def session():
     Base.metadata.drop_all(engine)
 
 
-@pytest.fixture
+@pytest.fixture()
 def client(session):
     def get_session_override():
         return session
@@ -34,7 +34,7 @@ def client(session):
     app.dependency_overrides.clear()
 
 
-@pytest.fixture
+@pytest.fixture()
 def user(session):
     user = User(username='Teste', email='teste@test.com', password='testtest')
     session.add(user)
