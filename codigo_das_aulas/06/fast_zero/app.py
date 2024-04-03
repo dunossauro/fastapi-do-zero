@@ -27,7 +27,9 @@ def read_root():
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(select(User).where(User.email == user.email))
     if db_user:
-        raise HTTPException(status_code=400, detail='Email already registered')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='Email already registered'
+        )
 
     hashed_password = get_password_hash(user.password)
 
@@ -58,7 +60,9 @@ def update_user(
     current_user: User = Depends(get_current_user),
 ):
     if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST, detail='Not enough permissions'
+        )
 
     current_user.username = user.username
     current_user.password = get_password_hash(user.password)
@@ -76,7 +80,9 @@ def delete_user(
     current_user: User = Depends(get_current_user),
 ):
     if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST, detail='Not enough permissions'
+        )
 
     session.delete(current_user)
     session.commit()
@@ -93,12 +99,14 @@ def login_for_access_token(
 
     if not user:
         raise HTTPException(
-            status_code=400, detail='Incorrect email or password'
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Incorrect email or password'
         )
 
     if not verify_password(form_data.password, user.password):
         raise HTTPException(
-            status_code=400, detail='Incorrect email or password'
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Incorrect email or password'
         )
 
     access_token = create_access_token(data={'sub': user.email})

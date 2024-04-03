@@ -1,3 +1,4 @@
+from http import HTTPStatus
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -15,11 +16,14 @@ Session = Annotated[Session, Depends(get_session)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
-@router.post('/', response_model=UserPublic, status_code=201)
+@router.post('/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema, session: Session):
     db_user = session.scalar(select(User).where(User.email == user.email))
     if db_user:
-        raise HTTPException(status_code=400, detail='Email already registered')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Email already registered'
+        )
 
     hashed_password = get_password_hash(user.password)
 
@@ -48,12 +52,17 @@ def update_user(
     current_user: CurrentUser,
 ):
     if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Not enough permissions'
+        )
 
     db_user = session.scalar(select(User).where(User.id == user_id))
 
     if db_user is None:
-        raise HTTPException(status_code=404, detail='User not found')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+        )
 
     db_user.username = user.username
     db_user.password = get_password_hash(user.password)
@@ -71,12 +80,16 @@ def delete_user(
     current_user: CurrentUser,
 ):
     if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST, detail='Not enough permissions'
+        )
 
     db_user = session.scalar(select(User).where(User.id == user_id))
 
     if db_user is None:
-        raise HTTPException(status_code=404, detail='User not found')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+        )
 
     session.delete(db_user)
     session.commit()

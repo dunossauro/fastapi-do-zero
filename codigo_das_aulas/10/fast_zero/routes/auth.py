@@ -1,3 +1,4 @@
+from http import HTTPStatus
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -25,12 +26,14 @@ def login_for_access_token(form_data: OAuth2Form, session: Session):
 
     if not user:
         raise HTTPException(
-            status_code=400, detail='Incorrect email or password'
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Incorrect email or password',
         )
 
     if not verify_password(form_data.password, user.password):
         raise HTTPException(
-            status_code=400, detail='Incorrect email or password'
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Incorrect email or password',
         )
 
     access_token = create_access_token(data={'sub': user.email})
