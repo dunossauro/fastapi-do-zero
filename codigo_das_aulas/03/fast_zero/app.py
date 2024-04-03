@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from fastapi import FastAPI, HTTPException
 
 from fast_zero.schemas import Message, UserDB, UserList, UserPublic, UserSchema
@@ -13,7 +15,7 @@ def read_root():
 database = []  # Lista provisória para fins de estudo
 
 
-@app.post('/users/', status_code=201, response_model=UserPublic)
+@app.post('/users/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema):
     user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)
 
