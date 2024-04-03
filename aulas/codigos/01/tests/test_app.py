@@ -1,15 +1,18 @@
-from fast_zero.app import app  # (2)!
 from fastapi.testclient import TestClient  # (1)!
+
+from fast_zero.app import app  # (2)!
 
 client = TestClient(app)  # (3)!
 
+
 from http import HTTPStatus  # (6)!
 
-from fast_zero.app import app
 from fastapi.testclient import TestClient
 
+from fast_zero.app import app
 
-def test_root_deve_retornar_200_e_ola_mundo():   # (1)!
+
+def test_root_deve_retornar_200_e_ola_mundo():  # (1)!
     client = TestClient(app)  # (2)!
 
     response = client.get('/')  # (3)!
@@ -20,8 +23,9 @@ def test_root_deve_retornar_200_e_ola_mundo():   # (1)!
 
 from http import HTTPStatus
 
-from fast_zero.app import app
 from fastapi.testclient import TestClient
+
+from fast_zero.app import app
 
 
 def test_root_deve_retornar_200_e_ola_mundo():
