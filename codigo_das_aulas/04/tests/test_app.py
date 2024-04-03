@@ -1,6 +1,10 @@
-def test_root_deve_retornar_200_e_ola_mundo(client):
+from http import HTTPStatus
+
+
+def test_root_deve_retornar_ok_e_ola_mundo(client):
     response = client.get('/')
-    assert response.status_code == 200
+
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'Olá Mundo!'}
 
 
@@ -13,7 +17,7 @@ def test_create_user(client):
             'password': 'secret',
         },
     )
-    assert response.status_code == 201
+    assert response.status_code == HTTPStatus.CREATED
     assert response.json() == {
         'username': 'alice',
         'email': 'alice@example.com',
@@ -23,7 +27,7 @@ def test_create_user(client):
 
 def test_read_users(client):
     response = client.get('/users/')
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         'users': [
             {
@@ -44,7 +48,7 @@ def test_update_user(client):
             'password': 'mynewpassword',
         },
     )
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         'username': 'bob',
         'email': 'bob@example.com',
@@ -54,5 +58,6 @@ def test_update_user(client):
 
 def test_delete_user(client):
     response = client.delete('/users/1')
-    assert response.status_code == 200
+
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'User deleted'}
