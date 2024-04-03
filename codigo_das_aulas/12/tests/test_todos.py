@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from fast_zero.models import TodoState
 from tests.factories import TodoFactory
 
@@ -126,7 +128,7 @@ def test_delete_todo(session, client, user, token):
         f'/todos/{todo.id}', headers={'Authorization': f'Bearer {token}'}
     )
 
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {'detail': 'Task has been deleted successfully.'}
 
 
@@ -135,7 +137,7 @@ def test_delete_todo_error(client, token):
         f'/todos/{10}', headers={'Authorization': f'Bearer {token}'}
     )
 
-    assert response.status_code == 404
+    assert response.status_code == HTTPStatus.NOT_FOUND
     assert response.json() == {'detail': 'Task not found.'}
 
 
@@ -145,7 +147,7 @@ def test_patch_todo_error(client, token):
         json={},
         headers={'Authorization': f'Bearer {token}'},
     )
-    assert response.status_code == 404
+    assert response.status_code == HTTPStatus.NOT_FOUND
     assert response.json() == {'detail': 'Task not found.'}
 
 
@@ -160,5 +162,5 @@ def test_patch_todo(session, client, user, token):
         json={'title': 'teste!'},
         headers={'Authorization': f'Bearer {token}'},
     )
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert response.json()['title'] == 'teste!'

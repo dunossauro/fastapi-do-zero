@@ -11,7 +11,7 @@ from fast_zero.settings import Settings
 from tests.factories import UserFactory
 
 
-@pytest.fixture
+@pytest.fixture()
 def session():
     engine = create_engine(Settings().DATABASE_URL)
     Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -23,7 +23,7 @@ def session():
     Base.metadata.drop_all(engine)
 
 
-@pytest.fixture
+@pytest.fixture()
 def client(session):
     def get_session_override():
         return session
@@ -35,7 +35,7 @@ def client(session):
     app.dependency_overrides.clear()
 
 
-@pytest.fixture
+@pytest.fixture()
 def user(session):
     password = 'testtest'
     user = UserFactory(password=get_password_hash(password))
@@ -49,7 +49,7 @@ def user(session):
     return user
 
 
-@pytest.fixture
+@pytest.fixture()
 def user2(session):
     password = 'testtest'
     user = UserFactory(id=2, password=get_password_hash(password))
@@ -63,7 +63,7 @@ def user2(session):
     return user
 
 
-@pytest.fixture
+@pytest.fixture()
 def token(client, user):
     response = client.post(
         '/auth/token',
