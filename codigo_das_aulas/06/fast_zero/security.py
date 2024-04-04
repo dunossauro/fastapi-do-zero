@@ -6,12 +6,13 @@ from jwt import DecodeError, decode, encode
 from passlib.context import CryptContext
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+from zoneinfo import ZoneInfo
 
 from fast_zero.database import get_session
 from fast_zero.models import User
 from fast_zero.schemas import TokenData
 
-SECRET_KEY = 'your-secret-key'  # Isso é privisório, vamos ajustar!
+SECRET_KEY = 'your-secret-key'  # Isso é provisório, vamos ajustar!
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
@@ -19,7 +20,9 @@ pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 def create_access_token(data: dict):
     to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expire = datetime.now(tz=ZoneInfo('UTC')) + timedelta(
+        minutes=ACCESS_TOKEN_EXPIRE_MINUTES
+    )
     to_encode.update({'exp': expire})
     encoded_jwt = encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
