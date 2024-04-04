@@ -26,7 +26,7 @@ def create_user(user: UserSchema):
     ...
 
 
-from fast_zero.schemas import Message, UserSchema, UserPublic
+from fast_zero.schemas import Message, UserPublic, UserSchema
 
 # Código omitido
 
@@ -40,7 +40,7 @@ def create_user(user: UserSchema):
     return user
 
 
-from fast_zero.schemas import Message, UserSchema, UserPublic, UserDB
+from fast_zero.schemas import Message, UserDB, UserPublic, UserSchema
 
 # código omitido
 

@@ -23,3 +23,14 @@ class UserDB(UserSchema):
 
 class UserList(BaseModel):
     users: list[UserPublic]
+
+
+class UserSchema(BaseModel):
+    username: str
+    email: str
+    password: str
+
+
+class UserPublic(BaseModel):
+    username: str
+    email: str

@@ -6,13 +6,12 @@ from fast_zero.schemas import Message, UserDB, UserList, UserPublic, UserSchema
 
 app = FastAPI()
 
+database = []  # Lista provisória para fins de estudo
 
-@app.get('/', status_code=200, response_model=Message)
+
+@app.get('/', status_code=HTTPStatus.OK, response_model=Message)
 def read_root():
     return {'message': 'Olá Mundo!'}
-
-
-database = []  # Lista provisória para fins de estudo
 
 
 @app.post('/users/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
