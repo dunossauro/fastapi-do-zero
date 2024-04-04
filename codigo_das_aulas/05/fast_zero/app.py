@@ -11,7 +11,7 @@ from fast_zero.schemas import Message, UserList, UserPublic, UserSchema
 app = FastAPI()
 
 
-@app.get('/', status_code=200, response_model=Message)
+@app.get('/', status_code=HTTPStatus.OK, response_model=Message)
 def read_root():
     return {'message': 'Olá Mundo!'}
 
@@ -24,7 +24,8 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
     if db_user:
         raise HTTPException(
-            status_code=400, detail='Username already registered'
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Username already registered',
         )
 
     db_user = User(
@@ -49,6 +50,7 @@ def read_users(
 def update_user(
     user_id: int, user: UserSchema, session: Session = Depends(get_session)
 ):
+
     db_user = session.scalar(select(User).where(User.id == user_id))
     if not db_user:
         raise HTTPException(

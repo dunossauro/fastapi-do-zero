@@ -10,19 +10,6 @@ from fast_zero.models import Base, User
 
 
 @pytest.fixture()
-def session():
-    engine = create_engine(
-        'sqlite:///:memory:',
-        connect_args={'check_same_thread': False},
-        poolclass=StaticPool,
-    )
-    Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    Base.metadata.create_all(engine)
-    yield Session()
-    Base.metadata.drop_all(engine)
-
-
-@pytest.fixture()
 def client(session):
     def get_session_override():
         return session
@@ -32,6 +19,22 @@ def client(session):
         yield client
 
     app.dependency_overrides.clear()
+
+
+@pytest.fixture()
+def session():
+    engine = create_engine(
+        'sqlite:///:memory:',
+        connect_args={'check_same_thread': False},
+        poolclass=StaticPool,
+    )
+    Base.metadata.create_all(engine)
+
+    Session = sessionmaker(bind=engine)
+
+    yield Session()
+
+    Base.metadata.drop_all(engine)
 
 
 @pytest.fixture()

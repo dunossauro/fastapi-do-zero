@@ -5,6 +5,7 @@ from fast_zero.schemas import UserPublic
 
 def test_root_deve_retornar_ok_e_ola_mundo(client):
     response = client.get('/')
+
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'Olá Mundo!'}
 
@@ -27,7 +28,7 @@ def test_create_user(client):
 
 
 def test_read_users(client):
-    response = client.get('/users/')
+    response = client.get('/users')
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'users': []}
 
@@ -57,5 +58,6 @@ def test_update_user(client, user):
 
 def test_delete_user(client, user):
     response = client.delete('/users/1')
+
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'User deleted'}
