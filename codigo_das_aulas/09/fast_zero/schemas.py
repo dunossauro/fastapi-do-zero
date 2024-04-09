@@ -39,11 +39,14 @@ class TodoSchema(BaseModel):
     state: TodoState
 
 
-class TodoPublic(TodoSchema):
+class TodoPublic(BaseModel):
     id: int
+    title: str
+    description: str
+    state: TodoState
 
 
-class ListTodos(BaseModel):
+class TodoList(BaseModel):
     todos: list[TodoPublic]
 
 
