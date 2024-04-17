@@ -1,13 +1,12 @@
 from datetime import datetime, timedelta
-from typing import Annotated
 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jwt import DecodeError, ExpiredSignatureError, decode, encode
 from passlib.context import CryptContext
-from passlib.exc import UnknownHashError
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+from zoneinfo import ZoneInfo
 
 from fast_zero.database import get_session
 from fast_zero.models import User
@@ -16,12 +15,11 @@ from fast_zero.settings import Settings
 
 settings = Settings()
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/token')
 
 
-def create_access_token(data: dict[str, str | datetime]) -> str:
+def create_access_token(data: dict):
     to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(
+    expire = datetime.now(tz=ZoneInfo('UTC')) + timedelta(
         minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
     )
     to_encode.update({'exp': expire})
@@ -31,21 +29,21 @@ def create_access_token(data: dict[str, str | datetime]) -> str:
     return encoded_jwt
 
 
-def get_password_hash(password: str) -> str:
+def get_password_hash(password: str):
     return pwd_context.hash(password)
 
 
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    try:
-        return pwd_context.verify(plain_password, hashed_password)
-    except UnknownHashError:
-        return False
+def verify_password(plain_password: str, hashed_password: str):
+    return pwd_context.verify(plain_password, hashed_password)
 
 
-def get_current_user(
-    session: Annotated[Session, Depends(get_session)],
-    token: Annotated[str, Depends(oauth2_scheme)],
-) -> User:
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/token')
+
+
+async def get_current_user(
+    session: Session = Depends(get_session),
+    token: str = Depends(oauth2_scheme),
+):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail='Could not validate credentials',

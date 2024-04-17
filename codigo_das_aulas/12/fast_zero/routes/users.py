@@ -1,3 +1,4 @@
+from http import HTTPStatus
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -10,16 +11,18 @@ from fast_zero.routes.auth import get_current_user
 from fast_zero.schemas import Message, UserList, UserPublic, UserSchema
 from fast_zero.security import get_password_hash
 
-router = APIRouter(prefix='/users', tags=['user'])
+router = APIRouter(prefix='/users', tags=['users'])
 Session = Annotated[Session, Depends(get_session)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
-@router.post('/', response_model=UserPublic, status_code=201)
+@router.post('/', response_model=UserPublic, status_code=HTTPStatus.CREATED)
 def create_user(user: UserSchema, session: Session):
     db_user = session.scalar(select(User).where(User.email == user.email))
     if db_user:
-        raise HTTPException(status_code=400, detail='Email already registered')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST, detail='Email already registered'
+        )
 
     hashed_password = get_password_hash(user.password)
 
@@ -48,7 +51,9 @@ def update_user(
     current_user: CurrentUser,
 ):
     if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST, detail='Not enough permissions'
+        )
 
     current_user.username = user.username
     current_user.password = user.password
@@ -62,7 +67,10 @@ def update_user(
 @router.delete('/{user_id}', response_model=Message)
 def delete_user(user_id: int, session: Session, current_user: CurrentUser):
     if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Not enough permissions'
+        )
 
     session.delete(current_user)
     session.commit()

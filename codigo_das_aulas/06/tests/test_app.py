@@ -1,14 +1,12 @@
-from fastapi.testclient import TestClient
+from http import HTTPStatus
 
-from fast_zero.app import app
 from fast_zero.schemas import UserPublic
 
-client = TestClient(app)
 
-
-def test_root_deve_retornar_200_e_ola_mundo():
+def test_root_deve_retornar_ok_e_ola_mundo(client):
     response = client.get('/')
-    assert response.status_code == 200
+
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'Olá Mundo!'}
 
 
@@ -21,7 +19,7 @@ def test_create_user(client):
             'password': 'secret',
         },
     )
-    assert response.status_code == 201
+    assert response.status_code == HTTPStatus.CREATED
     assert response.json() == {
         'username': 'alice',
         'email': 'alice@example.com',
@@ -30,8 +28,8 @@ def test_create_user(client):
 
 
 def test_read_users(client):
-    response = client.get('/users/')
-    assert response.status_code == 200
+    response = client.get('/users')
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {'users': []}
 
 
@@ -51,11 +49,11 @@ def test_update_user(client, user, token):
             'password': 'mynewpassword',
         },
     )
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         'username': 'bob',
         'email': 'bob@example.com',
-        'id': 1,
+        'id': user.id,
     }
 
 
@@ -64,7 +62,8 @@ def test_delete_user(client, user, token):
         f'/users/{user.id}',
         headers={'Authorization': f'Bearer {token}'},
     )
-    assert response.status_code == 200
+
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'User deleted'}
 
 
@@ -75,6 +74,6 @@ def test_get_token(client, user):
     )
     token = response.json()
 
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert 'access_token' in token
     assert 'token_type' in token

@@ -1,3 +1,4 @@
+from http import HTTPStatus
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -37,7 +38,7 @@ def create_todo(todo: TodoSchema, user: CurrentUser, session: Session):
 
 
 @router.get('/', response_model=ListTodos)
-def list_todos(
+def list_todos(  # noqa
     session: Session,
     user: CurrentUser,
     title: str = Query(None),
@@ -69,7 +70,9 @@ def delete_todo(todo_id: int, session: Session, user: CurrentUser):
     )
 
     if not todo:
-        raise HTTPException(status_code=404, detail='Task not found.')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
+        )
 
     session.delete(todo)
     session.commit()
@@ -86,7 +89,9 @@ def patch_todo(
     )
 
     if not db_todo:
-        raise HTTPException(status_code=404, detail='Task not found.')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
+        )
 
     for key, value in todo.model_dump(exclude_unset=True).items():
         setattr(db_todo, key, value)

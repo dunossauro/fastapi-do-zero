@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   fastzero_database:
     image: postgres
@@ -23,7 +21,6 @@ services:
     depends_on:
       - fastzero_database
     environment:
-      DATABASE_URL: postgresql://app_user:app_password@fastzero_database:5432/app_db
-
+      DATABASE_URL: postgresql+psycopg://app_user:app_password@fastzero_database:5432/app_db
 volumes:
   pgdata:
