@@ -44,13 +44,13 @@ from fast_zero.schemas import Message, UserDB, UserPublic, UserSchema
 
 # código omitido
 
-database = []  # Lista provisória para fins de estudo
+database = []  #(1)!
 
 # código omitido
 
 @app.post('/users/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema):
-    user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)  #(1)!
+    user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)  #(2)!
 
     database.append(user_with_id)
 
