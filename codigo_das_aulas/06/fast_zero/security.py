@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
+from http import HTTPStatus
 
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from jwt import DecodeError, decode, encode
 from passlib.context import CryptContext
@@ -44,7 +45,7 @@ async def get_current_user(
     token: str = Depends(oauth2_scheme),
 ):
     credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
+        status_code=HTTPStatus.UNAUTHORIZED,
         detail='Could not validate credentials',
         headers={'WWW-Authenticate': 'Bearer'},
     )

@@ -497,7 +497,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl=<span class="hljs-string">&quot;to
 <h1 id="a-valida%C3%A7%C3%A3o-do-jwt">A validação do JWT</h1>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-py"><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_current_user</span>(<span class="hljs-params">...</span>):
     credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
+        status_code=HTTPStatus.UNAUTHORIZED,
         detail=<span class="hljs-string">&#x27;Could not validate credentials&#x27;</span>,
         headers={<span class="hljs-string">&#x27;WWW-Authenticate&#x27;</span>: <span class="hljs-string">&#x27;Bearer&#x27;</span>},
     )
