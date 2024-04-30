@@ -34,8 +34,8 @@ pythonpath = "."
 addopts = '-p no:warnings'
 
 [tool.taskipy.tasks]
-lint = 'ruff check .; ruff check . --diff'
-format = 'ruff check . --fix; ruff format .'
+lint = 'ruff check --diff && ruff check'
+format = 'ruff format && ruff check --fix'
 run = 'uvicorn fast_zero.app:app --reload'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
