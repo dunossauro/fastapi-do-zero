@@ -4,7 +4,7 @@
 	pyenv local {{full_version}}  # (1)!
 	```
 
-	1. Essa era a maior versão do 3.11 quando escrevi
+	1. Essa era a maior versão do {{short_version}} quando escrevi
 
 	Esse comando criará um arquivo oculto chamado `.python-version` na raiz do nosso projeto:
 
