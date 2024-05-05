@@ -7,8 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-uvicorn = "^0.25.0"
-fastapi = "^0.109.0"
+fastapi = "^0.111.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"
@@ -36,7 +35,7 @@ addopts = '-p no:warnings'
 [tool.taskipy.tasks]
 lint = 'ruff check .; ruff check . --diff'
 format = 'ruff check . --fix; ruff format .'
-run = 'uvicorn fast_zero.app:app --reload'
+run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
