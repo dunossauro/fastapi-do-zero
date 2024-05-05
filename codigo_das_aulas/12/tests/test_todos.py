@@ -1,18 +1,7 @@
 from http import HTTPStatus
 
-import factory.fuzzy
-
-from fast_zero.models import Todo, TodoState
-
-
-class TodoFactory(factory.Factory):
-    class Meta:
-        model = Todo
-
-    title = factory.Faker('text')
-    description = factory.Faker('text')
-    state = factory.fuzzy.FuzzyChoice(TodoState)
-    user_id = 1
+from fast_zero.models import TodoState
+from tests.factories import TodoFactory
 
 
 def test_create_todo(client, token):
@@ -171,7 +160,7 @@ def test_patch_todo(session, client, user, token):
 
 
 def test_delete_todo(session, client, user, token):
-    todo = TodoFactory(id=1, user_id=user.id)
+    todo = TodoFactory(user_id=user.id)
 
     session.add(todo)
     session.commit()
