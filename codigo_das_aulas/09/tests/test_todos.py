@@ -171,7 +171,7 @@ def test_patch_todo(session, client, user, token):
 
 
 def test_delete_todo(session, client, user, token):
-    todo = TodoFactory(id=1, user_id=user.id)
+    todo = TodoFactory(user_id=user.id)
 
     session.add(todo)
     session.commit()
