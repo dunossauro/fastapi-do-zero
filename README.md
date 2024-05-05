@@ -29,7 +29,7 @@ As Aulas estão dividas em:
 
 #### Sobre o ambiente
 
-Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `1.7.1`:
+Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `1.8.2`:
 
 ```bash
 pipx install poetry==1.8.2
