@@ -7,8 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-uvicorn = "^0.25.0"
-fastapi = "^0.109.0"
+fastapi = "^0.111.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"

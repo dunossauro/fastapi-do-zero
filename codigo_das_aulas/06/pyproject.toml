@@ -8,8 +8,7 @@ packages = [{include = "fast_zero"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.100.0"
-uvicorn = "^0.22.0"
+fastapi = "^0.111.0"
 pydantic = {extras = ["email"], version = "^2.0.2"}
 sqlalchemy = "^2.0.18"
 pydantic-settings = "^2.0.1"
@@ -44,7 +43,7 @@ addopts = '-p no:warnings'
 [tool.taskipy.tasks]
 lint = 'ruff check .; ruff check . --diff'
 format = 'ruff check . --fix; ruff format .'
-run = 'uvicorn fast_zero.app:app --reload'
+run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
