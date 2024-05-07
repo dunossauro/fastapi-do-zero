@@ -12,7 +12,10 @@ Olá, boas vindas ao curso de FastAPI!
 
 A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação. Tudo isso para oferecer uma boa base para quem quer trabalhar com essa tecnologia. A nossa forma de apresentar o curso é prática e cheia de informações. Ela busca trazer o que precisa para criar os nossos próprios projetos.
 
-> Esse material em texto está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
+!!! example "Datas das aulas"
+    As datas das aulas síncronas (ao vivo e com a turma) [já estão disponíveis nesse link](aulas/sincronas.md){:target="_blank"}.
+
+> Esse material em **texto** está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
 
 > Algumas aulas já estão em suas versões finais outras ainda faltam ser revisadas em questões de texto/funcionalidades. Caso queria acompanhar as revisões, elas estão acontecendo [nessa issue](https://github.com/dunossauro/fastapi-do-zero/issues/67){:target="_blank"}.
 
@@ -55,8 +58,8 @@ SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blan
 Esse material será disponibilizado de três formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
-2. Em formato de vídeo: todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler;
-3. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [**Datas já disponíveis**](aulas/sincronas.md)
+2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [**Datas já disponíveis**](aulas/sincronas.md)
+3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler;
 
 > Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
 
@@ -97,6 +100,8 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 11. [Automatizando os testes com integração contínua](11.md){:target="_blank"}
 12. [Fazendo o deploy no Fly.io](12.md){:target="_blank"}
 13. [Despedida e próximos passos](13.md){:target="_blank"}
+
+Após todas as aulas, se você sentir que ainda quer evoluir mais e testar seus conhecimentos, [temos um projeto final](14.md){:target="_blank"} para avaliar o quanto você aprendeu.
 
 ### 🦖 Quem vai ministrar essas aulas?
 

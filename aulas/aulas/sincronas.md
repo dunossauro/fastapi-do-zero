@@ -32,6 +32,9 @@ Agenda com as datas:
 - [Google Agenda](https://calendar.google.com/calendar/u/0?cid=NmQwNGZkNmVjNzY2MjViY2QyNjU4NzVmZGM1ZTQ2NzBhMDAxYzYwZjUzYmM5NmI1OTZhNDMzOTRiOGM3OGNhMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
 
 
+Caso queira conversar e tirar dúvidas com as pessoas que também estão/irão fazer o curso, temos um grupo no [Telegram](https://t.me/fastapicomdunossauro){:target="_blank"}.
+
+
 ## O que será necessário para acompanhar?
 
 1. Um link com internet para participar das lives
