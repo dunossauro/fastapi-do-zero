@@ -69,7 +69,21 @@ Esse material será disponibilizado de três formas diferentes:
 
 ## Pré-requisitos
 
-Para aproveitar ao máximo este curso, é recomendado que você tenha algum conhecimento prévio de Python. Além disso, algum entendimento básico de desenvolvimento web e APIs RESTful será útil, mas não essencial, pois a abordagem deste curso é prática e centrada em um projeto concreto. Por meio de exemplos reais e instruções passo a passo, você terá a oportunidade de acompanhar o processo de construção de uma aplicação real. Mesmo que os conceitos de desenvolvimento web sejam novos para você, a ênfase na aplicação prática e a estrutura detalhada do curso facilitarão o entendimento e a aplicação dessas habilidades até o fim do processo.
+Para aproveitar ao máximo este curso, é recomendado que você já tenha algum conhecimento prévio em python, se pudesse listar o que considero importante para não se perder, os tópicos em python importantes são:
+
+- O funcionamento de funções: como criar e usar [referência](https://youtu.be/0yXPQZvlgrk){:target="_blank"};
+- O funcionamento das estruturas de dados: como listas, dicionários e etc;
+- Uma pitada sobre objetos: saber o que são métodos e atributos [referência](https://youtu.be/BALM_oJcJL4){:target="_blank"};
+- Classes de dados: o funcionamento básico das dataclasses [referência](https://youtu.be/NtZY3AmsBSk){:target="_blank"}.
+
+> As referências servem como base caso você ainda não tenha estudado esses assuntos
+
+Alguns outros tópicos não relativos a python também serão abordados. Então é interessante que você tenha algum entendimento básico sobre: 
+
+- Desenvolvimento Web e APIs RESTful: não essencial, pois iremos abordar, mas o quanto mais você souber melhor para acompanhar;
+- Banco de dados / SQL: Um conhecimento básico sobre criação e busca de dados usando SQL já o suficiente, embora esse tópico também seja como o anterior, quanto mais você souber melhor;
+- git: não nos aprofundaremos nesse tópico durante o curso, mas usaremos operações básicas de git (como commit e push);
+- docker: também não nos aprofundaremos nesse tópico e ele só será abordado nas aulas finais. Mas, também, só usaremos comandos básicos de docker e docker-compose.
 
 ??? info "Caso esteja iniciando seus estudos em Python!"
 	Caso você ainda não se sinta uma pessoa preparada, ou caiu aqui sem saber exatamente o que esperar. Temos um pequeno curso introdutório. Destinado aos primeiros passos com python.
