@@ -58,8 +58,8 @@ SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blan
 Esse material será disponibilizado de três formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
-2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [**Datas já disponíveis**](aulas/sincronas.md)
-3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler;
+2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [**Datas já disponíveis**](aulas/sincronas.md);
+3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler.
 
 > Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
 
