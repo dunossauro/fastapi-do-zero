@@ -4,6 +4,8 @@
 wip.py
 wip.md
 slides/brutos/*.html
+*.db
+*.bd
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
