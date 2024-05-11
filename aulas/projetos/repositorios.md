@@ -19,3 +19,6 @@ O objetivo dessa página é unir todos os repositórios de pessoas que fizeram o
 | [fastapi-do-zero](https://github.com/RWallan/fastapi-do-zero)      | [@RWallan](https://github.com/RWallan)                     | Tentando implementar o curso com Async                                  |
 | [fastapi-do-zero](https://github.com/gylmonteiro/study_fast_api)   | [@gylmonteiro](https://github.com/gylmonteiro)             | Estudos inicias com fastapi                                             |
 | [crono_task_backend](https://github.com/mau-me/crono_task_backend) | [@mau-me](https://github.com/mau-me)                       | App para gerenciamento de tasks, com o backend baseado no fast_zero     |
+| [fast_zero](https://github.com/navegantes/fast_zero.git)           | [@navegantes](https://github.com/navegantes)               | Mais uma ferramenta de paito pra caixinha                               |
+| [fast_zero](https://github.com/willrockoliv/fast_zero)             | [@willrockoliv](https://github.com/willrockoliv)           | Projeto incrível @dunossauro! Muito obrigado!!                          |
+
