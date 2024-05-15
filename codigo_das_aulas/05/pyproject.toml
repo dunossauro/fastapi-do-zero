@@ -10,7 +10,7 @@ packages = [{include = "fast_zero"}]
 python = "^3.11"
 fastapi = "^0.111.0"
 pydantic = {extras = ["email"], version = "^2.0.2"}
-sqlalchemy = "^2.0.18"
+sqlalchemy = {extras = ["mypy"], version = "^2.0.30"}
 pydantic-settings = "^2.0.1"
 alembic = "^1.11.1"
 
