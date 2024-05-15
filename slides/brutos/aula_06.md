@@ -408,7 +408,7 @@ def user(session):
 Embora a senha agora consiga ser comparada, a senha que enviamos na requisição está indo suja também.
 
 ```python
-# confitest.py
+# conftest.py
 @pytest.fixture
 def user(session):
     password = 'testtest'
