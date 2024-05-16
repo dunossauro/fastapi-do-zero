@@ -22,5 +22,6 @@ services:
       - fastzero_database
     environment:
       DATABASE_URL: postgresql+psycopg://app_user:app_password@fastzero_database:5432/app_db
+
 volumes:
   pgdata:
