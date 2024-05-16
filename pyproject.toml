@@ -21,6 +21,7 @@ mkdocs-with-pdf = "^0.9.3"
 mkdocs-exclude = "^1.0.2"
 mkdocs-exclude-unused-files = "^1.3.0"
 mkdocs-macros-plugin = "^1.0.5"
+invoke = "^2.2.0"
 
 [tool.poetry.group.snippets.dependencies]
 ruff = "^0.3.5"
