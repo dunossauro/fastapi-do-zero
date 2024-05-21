@@ -7,6 +7,7 @@ from tomllib import loads
 def update_project(c):
     c.run('poetry update')
 
+
 @task
 def lint_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
@@ -14,6 +15,17 @@ def lint_sub(c):
         print(path)
         with c.cd(str(path)):
             c.run(f'poetry run task lint')
+
+
+@task
+def test_docker_build(c):
+    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
+    for path in code_path:
+        print(path)
+        with c.cd(str(path)):
+            if (path / 'docker-compose.yml').exists():
+                c.run('docker compose build')
+
 
 @task
 def test_sub(c):
@@ -31,8 +43,9 @@ def update_sub(c):
     for path in sorted(code_path):
         toml = path / 'pyproject.toml'
         toml_tables = loads(toml.read_text())
-        dependencies = toml_tables['tool']['poetry']['dependencies']
-        dev_dependencies = toml_tables['tool']['poetry']['group']['dev']['dependencies']
+        poetry_toml = toml_tables['tool']['poetry']
+        dependencies = poetry_toml['dependencies']
+        dev_dependencies = poetry_toml['group']['dev']['dependencies']
 
         print(path)
         with c.cd(str(path)):
@@ -59,4 +72,4 @@ def update_sub(c):
                     c.run(f'poetry add {dep}@latest')
 
             for dep in dev_dependencies:
-                    c.run(f'poetry add --group dev {dep}@latest')
+                c.run(f'poetry add --group dev {dep}@latest')
