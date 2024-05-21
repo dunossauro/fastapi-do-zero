@@ -4,6 +4,10 @@ ENV POETRY_VIRTUALENVS_CREATE=false
 WORKDIR app/
 COPY . .
 
+RUN apt-get update && apt-get install -y \
+    build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN pip install poetry
 
 RUN poetry config installer.max-workers 10
