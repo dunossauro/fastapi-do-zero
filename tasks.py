@@ -1,4 +1,5 @@
 from invoke import task
+from rich import print
 from pathlib import Path
 from tomllib import loads
 
@@ -11,7 +12,7 @@ def update_project(c):
 @task
 def lint_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in code_path:
+    for path in sorted(code_path):
         print(path)
         with c.cd(str(path)):
             c.run(f'poetry run task lint')
@@ -20,7 +21,7 @@ def lint_sub(c):
 @task
 def test_docker_build(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in code_path:
+    for path in sorted(code_path):
         print(path)
         with c.cd(str(path)):
             if (path / 'docker-compose.yml').exists():
@@ -30,9 +31,10 @@ def test_docker_build(c):
 @task
 def test_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in code_path:
+    for path in sorted(code_path):
         print(path)
         with c.cd(str(path)):
+            c.run(f'poetry install')
             c.run(f'poetry run task test')
 
 
