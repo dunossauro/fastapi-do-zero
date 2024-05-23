@@ -53,7 +53,7 @@ def test_list_todos_pagination_should_return_2_todos(
 def test_list_todos_filter_title_should_return_5_todos(
     session, user, client, token
 ):
-    exptected_todos = 5
+    expected_todos = 5
     session.bulk_save_objects(
         TodoFactory.create_batch(5, user_id=user.id, title='Test todo 1')
     )
@@ -64,13 +64,13 @@ def test_list_todos_filter_title_should_return_5_todos(
         headers={'Authorization': f'Bearer {token}'},
     )
 
-    assert len(response.json()['todos']) == exptected_todos
+    assert len(response.json()['todos']) == expected_todos
 
 
 def test_list_todos_filter_description_should_return_5_todos(
     session, user, client, token
 ):
-    exptected_todos = 5
+    expected_todos = 5
     session.bulk_save_objects(
         TodoFactory.create_batch(5, user_id=user.id, description='description')
     )
@@ -81,13 +81,13 @@ def test_list_todos_filter_description_should_return_5_todos(
         headers={'Authorization': f'Bearer {token}'},
     )
 
-    assert len(response.json()['todos']) == exptected_todos
+    assert len(response.json()['todos']) == expected_todos
 
 
 def test_list_todos_filter_state_should_return_5_todos(
     session, user, client, token
 ):
-    exptected_todos = 5
+    expected_todos = 5
     session.bulk_save_objects(
         TodoFactory.create_batch(5, user_id=user.id, state=TodoState.draft)
     )
@@ -98,13 +98,13 @@ def test_list_todos_filter_state_should_return_5_todos(
         headers={'Authorization': f'Bearer {token}'},
     )
 
-    assert len(response.json()['todos']) == exptected_todos
+    assert len(response.json()['todos']) == expected_todos
 
 
 def test_list_todos_filter_combined_should_return_5_todos(
     session, user, client, token
 ):
-    exptect_todos = 5
+    expected_todos = 5
     session.bulk_save_objects(
         TodoFactory.create_batch(
             5,
@@ -131,7 +131,7 @@ def test_list_todos_filter_combined_should_return_5_todos(
         headers={'Authorization': f'Bearer {token}'},
     )
 
-    assert len(response.json()['todos']) == exptect_todos
+    assert len(response.json()['todos']) == expected_todos
 
 
 def test_patch_todo_error(client, token):
