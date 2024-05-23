@@ -29,3 +29,6 @@ jobs:
 
       - name: Roda os dockers dos códigos de aulas
         run: poetry run invoke test-docker-build
+
+      - name: Roda os typos dos códigos de aulas
+        run: poetry run invoke typos-sub
