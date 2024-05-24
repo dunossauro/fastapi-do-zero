@@ -6,7 +6,21 @@ from tomllib import loads
 
 @task
 def update_project(c):
-    c.run('poetry update')
+    c.run('rm -rf .venv')
+    toml = Path('.') / 'pyproject.toml'
+    toml_tables = loads(toml.read_text())
+    poetry_toml = toml_tables['tool']['poetry']
+    dependencies = poetry_toml['dependencies']
+
+    if (Path('.') / 'poetry.lock').exists():
+        c.run('rm poetry.lock')
+
+    for dep in sorted(dependencies):
+        if dep == 'python':
+            ...
+
+        else:
+            c.run(f'poetry add {dep}@latest')
 
 
 @task

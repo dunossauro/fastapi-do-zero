@@ -1215,13 +1215,13 @@ pyyaml = ">=5.1"
 
 [[package]]
 name = "mkdocs-git-authors-plugin"
-version = "0.8.0"
+version = "0.9.0"
 description = "Mkdocs plugin to display git authors of a page"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "mkdocs-git-authors-plugin-0.8.0.tar.gz", hash = "sha256:10dfc57fb10d5c3aceb0e5cdea199ac3a7588979f26484eba46d935dc1044c26"},
-    {file = "mkdocs_git_authors_plugin-0.8.0-py3-none-any.whl", hash = "sha256:0614f4f87d31eabd0a0d607c9e0532608fc593997ebee282ec564ee6dc1c041e"},
+    {file = "mkdocs_git_authors_plugin-0.9.0-py3-none-any.whl", hash = "sha256:380730a05eeb947a7e84be05fdb1c5ae2a7bc70fd9f6eda941f187c87ae37052"},
+    {file = "mkdocs_git_authors_plugin-0.9.0.tar.gz", hash = "sha256:6161f63b87064481a48d9ad01c23e43c3e758930c3a9cc167fe482909ceb9eac"},
 ]
 
 [package.dependencies]
@@ -1246,13 +1246,13 @@ pytz = "*"
 
 [[package]]
 name = "mkdocs-glightbox"
-version = "0.3.7"
+version = "0.4.0"
 description = "MkDocs plugin supports image lightbox with GLightbox."
 optional = false
 python-versions = "*"
 files = [
-    {file = "mkdocs-glightbox-0.3.7.tar.gz", hash = "sha256:4e890140a97dd4ad128cb92174384bd0ac33adec3304bbd2b7c48d0847685c4f"},
-    {file = "mkdocs_glightbox-0.3.7-py3-none-any.whl", hash = "sha256:9659631a9829d93d8fb0ce3a20a10261c258605ba4dc87a3b7b5d847b93a276d"},
+    {file = "mkdocs-glightbox-0.4.0.tar.gz", hash = "sha256:392b34207bf95991071a16d5f8916d1d2f2cd5d5bb59ae2997485ccd778c70d9"},
+    {file = "mkdocs_glightbox-0.4.0-py3-none-any.whl", hash = "sha256:e0107beee75d3eb7380ac06ea2d6eac94c999eaa49f8c3cbab0e7be2ac006ccf"},
 ]
 
 [[package]]
@@ -2750,4 +2750,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "beb8f14692b4cb7a3b11caffd5b17d9db01214e575134903bfb772b6337e4d5e"
+content-hash = "f2fbf272671bcd1e6c0fb9036b8babb2f570ad381eee8414d52b7799cdbda49f"
