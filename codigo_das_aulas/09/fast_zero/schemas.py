@@ -53,4 +53,4 @@ class TodoList(BaseModel):
 class TodoUpdate(BaseModel):
     title: str | None = None
     description: str | None = None
-    completed: str | None = None
+    state: TodoState | None = None
