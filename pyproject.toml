@@ -9,7 +9,7 @@ packages = [{include = "fastapi-do-zero"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 mkdocs = "^1.5.3"
-mkdocs-material = "^9.5.15"
+mkdocs-material = "^9.5.24"
 taskipy = "^1.12.2"
 mkdocs-glightbox = "^0.3.7"
 mkdocs-video = "^1.5.0"
