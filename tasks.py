@@ -3,6 +3,39 @@ from rich import print
 from pathlib import Path
 from tomllib import loads
 
+migration_05 = """CREATE TABLE alembic_version (
+	version_num VARCHAR(32) NOT NULL, 
+	CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
+);
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	username VARCHAR NOT NULL, 
+	password VARCHAR NOT NULL, 
+	email VARCHAR NOT NULL, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email), 
+	UNIQUE (username)
+);
+"""
+
+# WIP: Ajustar o esperado dessa migração no código
+migration_09 = """CREATE TABLE alembic_version (
+	version_num VARCHAR(32) NOT NULL, 
+	CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
+);
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	username VARCHAR NOT NULL, 
+	password VARCHAR NOT NULL, 
+	email VARCHAR NOT NULL, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email), 
+	UNIQUE (username)
+);
+"""
+
 
 @task
 def update_project(c):
@@ -29,7 +62,7 @@ def typos_sub(c):
     for path in sorted(code_path):
         print(path)
         with c.cd(str(path)):
-            c.run(f'poetry run typos .')
+            c.run('poetry run typos .')
 
 
 @task
@@ -38,7 +71,7 @@ def lint_sub(c):
     for path in sorted(code_path):
         print(path)
         with c.cd(str(path)):
-            c.run(f'poetry run task lint')
+            c.run('poetry run task lint')
 
 
 @task
@@ -57,9 +90,18 @@ def test_sub(c):
     for path in sorted(code_path):
         print(path)
         with c.cd(str(path)):
-            c.run(f'poetry install')
-            c.run(f'poetry run task test')
+            c.run('poetry install')
+            c.run('poetry run task test')
 
+            if int(path.parts[-1]) >= 5:
+                c.run('alembic upgrade head')
+                schema = c.run('sqlite3 database.db ".schema"')
+                assert schema.stdout == migration_05
+
+            elif int(path.parts[-1]) >= 9:
+                c.run('alembic upgrade head')
+                schema = c.run('sqlite3 database.db ".schema"')
+                assert schema.stdout == migration_09
 
 @task
 def update_sub(c):
@@ -74,7 +116,7 @@ def update_sub(c):
 
         print(path)
         with c.cd(str(path)):
-            c.run(f'poetry update')
+            c.run('poetry update')
             c.run('rm -rf .venv')
             if (path / 'poetry.lock').exists():
                 c.run('rm poetry.lock')
@@ -82,13 +124,13 @@ def update_sub(c):
             for dep in sorted(dependencies):
                 print(dep, path)
                 if dep == 'pydantic':
-                    c.run(f'poetry add "pydantic[email]@latest"')
+                    c.run('poetry add "pydantic[email]@latest"')
 
                 elif dep == 'passlib':
-                    c.run(f'poetry add "passlib[bcrypt]@latest"')
+                    c.run('poetry add "passlib[bcrypt]@latest"')
 
                 elif dep == 'psycopg':
-                    c.run(f'poetry add "psycopg[binary]@latest"')
+                    c.run('poetry add "psycopg[binary]@latest"')
 
                 elif dep == 'python':
                     ...
