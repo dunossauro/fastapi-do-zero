@@ -15,6 +15,11 @@ jobs:
       - name: Copia os arquivos do repo
         uses: actions/checkout@v4
 
+      - name: instala o sqlite3
+        run: apt update
+
+      - name: instala o sqlite3
+        run: apt install sqlite3
 
       - name: Instalar o python
         uses: actions/setup-python@v5
