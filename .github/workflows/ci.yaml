@@ -16,10 +16,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: instala o sqlite3
-        run: apt update
+        run: sudo apt update
 
       - name: instala o sqlite3
-        run: apt install sqlite3
+        run: sudo apt install sqlite3
 
       - name: Instalar o python
         uses: actions/setup-python@v5
