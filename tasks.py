@@ -19,20 +19,14 @@ CREATE TABLE users (
 );
 """
 
-# WIP: Ajustar o esperado dessa migração no código
-migration_09 = """CREATE TABLE alembic_version (
-	version_num VARCHAR(32) NOT NULL, 
-	CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
-);
-CREATE TABLE users (
+migration_09 = migration_05 + """CREATE TABLE todos (
 	id INTEGER NOT NULL, 
-	username VARCHAR NOT NULL, 
-	password VARCHAR NOT NULL, 
-	email VARCHAR NOT NULL, 
-	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP) NOT NULL, 
+	title VARCHAR NOT NULL, 
+	description VARCHAR NOT NULL, 
+	state VARCHAR(5) NOT NULL, 
+	user_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	UNIQUE (email), 
-	UNIQUE (username)
+	FOREIGN KEY(user_id) REFERENCES users (id)
 );
 """
 
