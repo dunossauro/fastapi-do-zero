@@ -120,8 +120,9 @@ def update_sub(c):
                 if dep == 'pydantic':
                     c.run('poetry add "pydantic[email]@latest"')
 
-                elif dep == 'passlib':
-                    c.run('poetry add "passlib[bcrypt]@latest"')
+                elif dep == 'pwdlib':
+                    c.run('poetry add "pwdlib[argon2]@latest"')
+
 
                 elif dep == 'psycopg':
                     c.run('poetry add "psycopg[binary]@latest"')
