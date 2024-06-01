@@ -93,15 +93,15 @@ def test_sub(c):
             c.run('poetry install')
             c.run('poetry run task test')
 
-            if int(path.parts[-1]) >= 5:
-                c.run('alembic upgrade head')
-                schema = c.run('sqlite3 database.db ".schema"')
-                assert schema.stdout == migration_05
-
-            elif int(path.parts[-1]) >= 9:
+            if int(path.parts[-1]) >= 9:
                 c.run('alembic upgrade head')
                 schema = c.run('sqlite3 database.db ".schema"')
                 assert schema.stdout == migration_09
+
+            elif int(path.parts[-1]) >= 4:
+                c.run('alembic upgrade head')
+                schema = c.run('sqlite3 database.db ".schema"')
+                assert schema.stdout == migration_05
 
 @task
 def update_sub(c):
