@@ -74,7 +74,7 @@ def test_docker_build(c):
     for path in sorted(code_path):
         print(path)
         with c.cd(str(path)):
-            if (path / 'docker-compose.yml').exists():
+            if (path / 'compose.yaml').exists():
                 c.run('docker compose build')
 
 

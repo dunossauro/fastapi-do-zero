@@ -13,9 +13,7 @@ services:
   fastzero_app:
     image: fastzero_app
     entrypoint: ./entrypoint.sh
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "8000:8000"
     depends_on:
