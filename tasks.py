@@ -1,6 +1,8 @@
+from contextlib import contextmanager
+from pathlib import Path
+
 from invoke import task
 from rich import print
-from pathlib import Path
 from tomllib import loads
 
 migration_05 = """CREATE TABLE alembic_version (
@@ -17,7 +19,7 @@ CREATE TABLE users (
 	UNIQUE (email), 
 	UNIQUE (username)
 );
-"""
+"""  # noqa
 
 migration_09 = migration_05 + """CREATE TABLE todos (
 	id INTEGER NOT NULL, 
@@ -28,7 +30,56 @@ migration_09 = migration_05 + """CREATE TABLE todos (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(user_id) REFERENCES users (id)
 );
+"""  # noqa
+
+dotenv = """DATABASE_URL="postgresql+psycopg://app_user:app_password@localhost:5432/app_db"
+SECRET_KEY="your-secret-key"
+ALGORITHM="HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES=30
 """
+
+fake_dotenv = """DATABASE_URL="sqlite:///database.db"
+SECRET_KEY="your-secret-key"
+ALGORITHM="HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+"""
+
+
+@contextmanager
+def env_file(path: Path):
+    with open(path / '.env', 'w', encoding='utf-8') as file:
+        file.write(fake_dotenv)
+
+    yield
+
+    with open(path / '.env', 'w', encoding='utf-8') as file:
+        file.write(dotenv)
+
+
+@task
+def test_migrations(c):
+    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
+    for path in sorted(code_path):
+        print(path)
+        database = path / 'database.db'
+
+        if database.exists():
+            database.unlink()
+
+        with c.cd(str(path)):
+            if int(path.parts[-1]) >= 9: # noqa
+                c.run('poetry install')
+
+                with env_file(path):
+                    c.run('alembic upgrade head')
+                    schema = c.run('sqlite3 database.db ".schema"')
+                    assert schema.stdout == migration_09
+
+            elif int(path.parts[-1]) >= 4: # noqa
+                c.run('poetry install')
+                c.run('alembic upgrade head')
+                schema = c.run('sqlite3 database.db ".schema"')
+                assert schema.stdout == migration_05
 
 
 @task
@@ -97,15 +148,6 @@ def test_sub(c):
             c.run('poetry install')
             c.run('poetry run task test')
 
-            if int(path.parts[-1]) >= 9:
-                c.run('alembic upgrade head')
-                schema = c.run('sqlite3 database.db ".schema"')
-                assert schema.stdout == migration_09
-
-            elif int(path.parts[-1]) >= 4:
-                c.run('alembic upgrade head')
-                schema = c.run('sqlite3 database.db ".schema"')
-                assert schema.stdout == migration_05
 
 @task
 def update_sub(c):
@@ -132,7 +174,6 @@ def update_sub(c):
 
                 elif dep == 'pwdlib':
                     c.run('poetry add "pwdlib[argon2]@latest"')
-
 
                 elif dep == 'psycopg':
                     c.run('poetry add "psycopg[binary]@latest"')

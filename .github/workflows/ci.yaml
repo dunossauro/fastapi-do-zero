@@ -43,3 +43,6 @@ jobs:
 
       - name: Roda os typos dos códigos de aulas
         run: poetry run invoke typos-sub
+
+      - name: Testa as migrações
+        run: poetry run invoke test-migrations
