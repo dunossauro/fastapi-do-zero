@@ -21,4 +21,11 @@ O objetivo dessa página é unir todos os repositórios de pessoas que fizeram o
 | [crono_task_backend](https://github.com/mau-me/crono_task_backend) | [@mau-me](https://github.com/mau-me)                       | App para gerenciamento de tasks, com o backend baseado no fast_zero     |
 | [fast_zero](https://github.com/navegantes/fast_zero.git)           | [@navegantes](https://github.com/navegantes)               | Mais uma ferramenta de paito pra caixinha                               |
 | [fast_zero](https://github.com/willrockoliv/fast_zero)             | [@willrockoliv](https://github.com/willrockoliv)           | Projeto incrível @dunossauro! Muito obrigado!!                          |
-
+| [fastapi-training](https://github.com/Brunoliy/fastapi-training) | [@Brunoliy](https://github.com/willrockoliv) | Implementação do material do curso sem alterações |
+| [backend-portfolio](https://github.com/stherzada/backend-portfolio) | [@stherzada](https://github.com/stherzada) | Implementação do curso e aprimorando aprendizado no backend ✨ |
+| [fast_zero](https://github.com/lbmendes/fast_zero) | [@lbmendes](https://github.com/lbmendes) | Usando a VM gratis da OCI para fazer o Curso |
+| [fast_zero](https://github.com/vilmarspies/fast_zero) | [@vilmarspies](https://github.com/vilmarspies) | Implementação do material do curso sem alterações |
+| [fast_zero](https://github.com/RogerPatriota/fast_zero) | [@RogerPatriota](https://github.com/RogerPatriota) | Implementação do material do curso sem alterações |
+| [fast-zero](https://github.com/machadoah/fast-zero) | [@machadoah](https://github.com/machadoah) | Aprendendo FastAPI 🐍 ✨ |
+|[fast_zero](https://github.com/FabricioPython/fast_zero) |[@FabricioPython](https://github.com/FabricioPython)| Curtindo FastAPI :heart_eyes: |
+| [fast_api](https://github.com/JunioHorniche/fast_api) | [@juniohorniche](https://github.com/JunioHorniche) | Massa demais esse conteúdo 😍 |
