@@ -47,12 +47,12 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 @contextmanager
 def env_file(path: Path):
-    with open(path / '.env', 'w', encoding='urf-8') as file:
+    with open(path / '.env', 'w', encoding='utf-8') as file:
         file.write(fake_dotenv)
 
     yield
 
-    with open(path / '.env', 'w', encoding='urf-8') as file:
+    with open(path / '.env', 'w', encoding='utf-8') as file:
         file.write(dotenv)
 
 
