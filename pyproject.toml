@@ -26,6 +26,7 @@ rich = "^13.7.1"
 typos = "^1.22.0"
 fastapi = "^0.111.0"
 ruff = "^0.4.7"
+mkdocs-quiz = "^0.0.41"
 
 [tool.poetry.group.snippets.dependencies]
 pytest = "^8.1.1"

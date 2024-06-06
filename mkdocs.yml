@@ -78,6 +78,7 @@ plugins:
       glob:
         - "wip.md"
   - exclude-unused-files
+  - mkdocs_quiz
 
 extra_css:
   - stylesheets/extra.css

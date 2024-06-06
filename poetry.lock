@@ -1317,6 +1317,20 @@ files = [
 ]
 
 [[package]]
+name = "mkdocs-quiz"
+version = "0.0.41"
+description = "A mkdocs plugin to create a quiz in your markdown document."
+optional = false
+python-versions = "*"
+files = [
+    {file = "mkdocs_quiz-0.0.41-py3-none-any.whl", hash = "sha256:b83992ef5ba3b62e2cd804b8e8a382514e19a2374e732836274f7e0d9b0ff0ce"},
+    {file = "mkdocs_quiz-0.0.41.tar.gz", hash = "sha256:9c9b18d9112068bf3f776e333aadf087c62f62a418ab67207b60a3e1751ba748"},
+]
+
+[package.dependencies]
+mkdocs = "*"
+
+[[package]]
 name = "mkdocs-video"
 version = "1.5.0"
 description = ""
@@ -2750,4 +2764,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "53582b357f201b7e8b1a1119fb33d5c2b3676f2f4e0a4eea809b265635c1e38f"
+content-hash = "9464dc129ebc351e4dc83ef8b4d62259f916c0469444e9ab0a46f0275b7963f5"
