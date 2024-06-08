@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy import or_, select
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from fast_zero.database import get_session
@@ -22,7 +22,7 @@ CurrentUser = Annotated[User, Depends(get_current_user)]
 def create_user(user: UserSchema, session: Session):
     db_user = session.scalar(
         select(User).where(
-            or_(User.username == user.username, User.email == user.email)
+            (User.username == user.username) | (User.email == user.email)
         )
     )
 
