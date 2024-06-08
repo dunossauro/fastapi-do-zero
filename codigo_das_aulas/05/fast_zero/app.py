@@ -1,7 +1,7 @@
 from http import HTTPStatus
 
 from fastapi import Depends, FastAPI, HTTPException
-from sqlalchemy import or_, select
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from fast_zero.database import get_session
@@ -20,7 +20,7 @@ def read_root():
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(
         select(User).where(
-            or_(User.username == user.username, User.email == user.email)
+            (User.username == user.username) | (User.email == user.email)
         )
     )
 
