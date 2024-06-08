@@ -15,10 +15,6 @@ A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando
 !!! example "Datas das aulas"
     As datas das aulas síncronas (ao vivo e com a turma) [já estão disponíveis nesse link](aulas/sincronas.md){:target="_blank"}.
 
-> Esse material em **texto** está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
-
-> Algumas aulas já estão em suas versões finais outras ainda faltam ser revisadas em questões de texto/funcionalidades. Caso queria acompanhar as revisões, elas estão acontecendo [nessa issue](https://github.com/dunossauro/fastapi-do-zero/issues/67){:target="_blank"}.
-
 ## O que é FastAPI?
 
 [FastAPI](https://fastapi.tiangolo.com/){:target="_blank"} é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de diversas funcionalidades modernas do Python como anotações de tipo e suporte a concorrência, facilitando o desenvolvimento de APIs.
