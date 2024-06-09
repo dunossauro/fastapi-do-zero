@@ -95,3 +95,6 @@ extra:
       link: https://instagram.com/dunossauro
     - icon: fontawesome/brands/tiktok
       link: https://www.tiktok.com/@dunossauro
+
+hooks:
+  - hooks/quiz_hook.py
