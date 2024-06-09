@@ -46,18 +46,19 @@ def format_quiz(source, *args, **kwargs):
 
 
 def on_page_markdown(markdown_text, *args, **kwargs):
-    md = markdown.markdown(
-        markdown_text,
-        extensions=['pymdownx.superfences'],
-        extension_configs={
-            'pymdownx.superfences': {
-                'custom_fences': [
-                    {'name': 'quiz', 'class': 'quiz', 'format': format_quiz}
-                ]
-            }
-        },
-    )
-    return md
+    if '```quiz' in markdown_text:
+        md = markdown.markdown(
+            markdown_text,
+            extensions=['pymdownx.superfences'],
+            extension_configs={
+                'pymdownx.superfences': {
+                    'custom_fences': [
+                        {'name': 'quiz', 'class': 'quiz', 'format': format_quiz}
+                    ]
+                }
+            },
+        )
+        return md
 
 
 def on_page_content(html, *args, **kwargs):
