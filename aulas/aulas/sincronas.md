@@ -8,22 +8,22 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 
 ## Agenda
 
-| N | Aula | Data |
-| ------ | --------- | ------- |
-| 00    | Abertura e apresentação do curso | 11/06 |
-| 01    | Configurando o Ambiente de Desenvolvimento | 13/06 |
-| 02    | Introdução ao desenvolvimento WEB | 18/06 |
-| 03    | Estruturando o Projeto e Criando Rotas CRUD | 20/06 |
-| 04    | Configurando o Banco de Dados e Gerenciando Migrações com Alembic | 25/06 |
-| 05    | Integrando Banco de Dados a API | 27/06 |
-| 06    | Autenticação e Autorização com JWT | 02/07 |
-| 07    | Refatorando a Estrutura do Projeto | 04/07 |
-| 08    | Tornando o sistema de autenticação robusto | 09/07 |
-| 09    | Criando Rotas CRUD para Gerenciamento de Tarefas | 11/07 |
-| 10    | Dockerizando a nossa aplicação e introduzindo o PostgreSQL | 16/07 |
-| 11    | Automatizando os testes com Integração Contínua (CI) | 18/07 |
-| 12    | Fazendo deploy no Fly.io | 23/07 |
-| 13    | Despedida e próximos passos | 25/07 |
+| N  | Aula                                                              | Data  | Link                                            |
+|----|-------------------------------------------------------------------|-------|-------------------------------------------------|
+| 00 | Abertura e apresentação do curso                                  | 11/06 | [Aula 00](https://youtube.com/live/QShMRcicxnE) |
+| 01 | Configurando o Ambiente de Desenvolvimento                        | 13/06 |                                                 |
+| 02 | Introdução ao desenvolvimento WEB                                 | 18/06 |                                                 |
+| 03 | Estruturando o Projeto e Criando Rotas CRUD                       | 20/06 |                                                 |
+| 04 | Configurando o Banco de Dados e Gerenciando Migrações com Alembic | 25/06 |                                                 |
+| 05 | Integrando Banco de Dados a API                                   | 27/06 |                                                 |
+| 06 | Autenticação e Autorização com JWT                                | 02/07 |                                                 |
+| 07 | Refatorando a Estrutura do Projeto                                | 04/07 |                                                 |
+| 08 | Tornando o sistema de autenticação robusto                        | 09/07 |                                                 |
+| 09 | Criando Rotas CRUD para Gerenciamento de Tarefas                  | 11/07 |                                                 |
+| 10 | Dockerizando a nossa aplicação e introduzindo o PostgreSQL        | 16/07 |                                                 |
+| 11 | Automatizando os testes com Integração Contínua (CI)              | 18/07 |                                                 |
+| 12 | Fazendo deploy no Fly.io                                          | 23/07 |                                                 |
+| 13 | Despedida e próximos passos                                       | 25/07 |                                                 |
 
 Agenda com as datas:
 

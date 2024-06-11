@@ -54,14 +54,13 @@ SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blan
 Esse material será disponibilizado de três formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
+
 2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [**Datas já disponíveis**](aulas/sincronas.md);
-3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler.
 
-> Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
+    **Playlist das Aulas síncronas (Ao vivo)**:
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-> [**http://youtube.com/@dunossauro**](http://youtube.com/@dunossauro){:target="_blank"}
-
-> Os links para as playlists dos vídeos e das aulas ao vivo estão aqui quando disponibilizadas!
+3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler. (**Vídeos ainda não disponíveis**)
 
 ## Pré-requisitos
 
