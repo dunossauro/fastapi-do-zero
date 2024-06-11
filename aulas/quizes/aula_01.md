@@ -67,13 +67,27 @@ answer: arrange, assert, act
 content:
 <?/quiz?>
 
-<?quiz?>
-question: 09 - Dentro do nosso teste, qual a função da chamada "client.get('/')"?
-answer: assert
-answer: arrange
-answer-correct: act
-content:
-<?/quiz?>
+```quiz
+{
+    "questao": "09 - Dentro do nosso teste, qual a função da chamada na linha em destaque?",
+	"opcoes": {
+		"a": "assert",
+		"b": "arrange",
+		"c": "act",
+	},
+	"correta": "c",
+	"code" : """
+```python hl_lines="4"
+def test_root_deve_retornar_ok_e_ola_mundo():
+    client = TestClient(app)
+
+    response = client.get('/')
+
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'message': 'Olá Mundo!'}
+```"""
+}
+```
 
 <?quiz?>
 question: 10 - Na cobertura de testes, o que quer dizer "Stmts"?
