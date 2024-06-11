@@ -8,6 +8,12 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
+??? tip "Caso prefira ver a abertura em vídeo"
+	Esse aula ainda não está disponível em formato de vídeo, somente em texto!
+	![type:video](https://www.youtube.com/embed/QShMRcicxnE)
+
+	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_00.pdf){ .md-button }
+
 Olá, boas vindas ao curso de FastAPI!
 
 A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação. Tudo isso para oferecer uma boa base para quem quer trabalhar com essa tecnologia. A nossa forma de apresentar o curso é prática e cheia de informações. Ela busca trazer o que precisa para criar os nossos próprios projetos.
