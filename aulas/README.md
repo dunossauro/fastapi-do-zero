@@ -9,7 +9,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 # FastAPI do ZERO
 
 ??? tip "Caso prefira ver a abertura em vídeo"
-	Esse aula ainda não está disponível em formato de vídeo, somente em texto!
+	Esse aula ainda não está disponível em formato de vídeo, somente em live!
 	![type:video](https://www.youtube.com/embed/QShMRcicxnE)
 
 	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_00.pdf){ .md-button }
