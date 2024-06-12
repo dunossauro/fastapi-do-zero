@@ -29,3 +29,7 @@ O objetivo dessa página é unir todos os repositórios de pessoas que fizeram o
 | [fast-zero](https://github.com/machadoah/fast-zero) | [@machadoah](https://github.com/machadoah) | Aprendendo FastAPI 🐍 ✨ |
 |[fast_zero](https://github.com/FabricioPython/fast_zero) |[@FabricioPython](https://github.com/FabricioPython)| Curtindo FastAPI :heart_eyes: |
 | [fast_api](https://github.com/JunioHorniche/fast_api) | [@juniohorniche](https://github.com/JunioHorniche) | Massa demais esse conteúdo 😍 |
+|[fast_zero](https://codeberg.org/taconi/fast_zero) |[@taconi](https://github.com/taconi)| Com [`hatch`](https://hatch.pypa.io/latest/), `async`, [`podman`](https://podman.io/), [`Woodpecker CI`](https://woodpecker-ci.org/) e hospedado no [`Codeberg`](https://codeberg.org/)|
+|[fastapi-do-zero](https://github.com/joceliovieira/fastapi-do-zero)|[@joceliovieira](https://github.com/joceliovieira/)|Repo com material pessoal (notas, códigos, etc), sem clone do repo oficial|
+|[curso-fastapi-webdev](https://github.com/joaobugelli/curso-fastapi-webdev) | [@joaobugelli](https://github.com/joaobugelli) | Parabéns pelo conteúdo e material excelentes! Você é demais Duno!|
+|[notas-musicais-api](https://github.com/rochamatcomp/notas-musicais-api)|[@rochamatcomp](https://github.com/rochamatcomp/)|API para o [Notas musicais](https://github.com/dunossauro/notas-musicais)|
