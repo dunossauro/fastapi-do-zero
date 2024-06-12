@@ -367,5 +367,5 @@ $ git push
 
 
 <!-- mermaid.js -->
-<script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
