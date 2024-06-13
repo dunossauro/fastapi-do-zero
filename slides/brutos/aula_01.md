@@ -109,9 +109,11 @@ pipx install poetry
 
 ---
 
-# Pyenv + poetry no Windows
+# Instalação das ferramentas externas
 
-> link do vídeo!
+Isso pode te ajudar a ter menos dificuldade, caso trave em algum lugar
+
+> https://fastapidozero.dunossauro.com/apendices/instalacoes/
 
 ---
 
