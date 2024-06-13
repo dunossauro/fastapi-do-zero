@@ -10,8 +10,8 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 
 | N  | Aula                                                              | Data  | Link                                            |
 |----|-------------------------------------------------------------------|-------|-------------------------------------------------|
-| 00 | Abertura e apresentação do curso                                  | 11/06 | [Aula 00](https://youtube.com/live/QShMRcicxnE) |
-| 01 | Configurando o Ambiente de Desenvolvimento                        | 13/06 |                                                 |
+| 00 | Abertura e apresentação do curso                                  | 11/06 | [Aula 00](https://youtu.be/QShMRcicxnE?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP) |
+| 01 | Configurando o Ambiente de Desenvolvimento                        | 13/06 | [Aula 01](https://youtu.be/-Pi5AmOfL2s?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP)                                                |
 | 02 | Introdução ao desenvolvimento WEB                                 | 18/06 |                                                 |
 | 03 | Estruturando o Projeto e Criando Rotas CRUD                       | 20/06 |                                                 |
 | 04 | Configurando o Banco de Dados e Gerenciando Migrações com Alembic | 25/06 |                                                 |
