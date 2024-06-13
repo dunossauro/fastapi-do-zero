@@ -83,14 +83,4 @@ answer: Forbidden
 content:
 <?/quiz?>
 
-<?quiz?>
-question: 10 - O código 422 de resposta significa:
-answer: Not Found
-answer: OK
-answer-correct: Unprocessable Entity
-answer: Bad Request
-answer: Forbidden
-content:
-<?/quiz?>
-
 {% include "templates/mais_quiz.md" %}
