@@ -83,4 +83,10 @@ answer: Forbidden
 content:
 <?/quiz?>
 
-{% include "templates/mais_quiz.md" %}
+<?quiz?>
+question: 10 - Qual a função do pydantic?
+answer-correct: Validar os dados que saem da API
+answer-correct: Validar os dados que entram na API
+answer-correct: Documentação automática
+content:
+<?/quiz?>
