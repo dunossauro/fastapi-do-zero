@@ -147,3 +147,12 @@ blockquote p {
 blockquote p a {
     font-size: 30px;
 }
+
+div.mermaid {
+    text-align: center;
+}
+
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
