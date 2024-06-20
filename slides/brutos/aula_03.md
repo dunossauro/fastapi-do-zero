@@ -477,6 +477,17 @@ def test_update_user(client):
 
 ---
 
+# Antes de terminar
+
+Um pedido carinhoso!
+
+Assistam as lives sobre migrações e sobre SQLAlchemy para se prepararem melhor para absorver o conteúdo da próxima aula!
+
+- [Live sobre SQLAlchemy - #258](https://youtu.be/t4C1c62Z4Ag)
+- [Live sobre Migrações - #211](https://youtu.be/yQtqkq9UkDA)
+
+---
+
 ## Commit
 
 ```bash
