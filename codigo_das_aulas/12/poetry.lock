@@ -414,13 +414,13 @@ websockets = ["websocket-client (>=1.3.0)"]
 
 [[package]]
 name = "email-validator"
-version = "2.1.2"
+version = "2.2.0"
 description = "A robust email address syntax and deliverability validation library."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "email_validator-2.1.2-py3-none-any.whl", hash = "sha256:d89f6324e13b1e39889eab7f9ca2f91dc9aebb6fa50a6d8bd4329ab50f251115"},
-    {file = "email_validator-2.1.2.tar.gz", hash = "sha256:14c0f3d343c4beda37400421b39fa411bbe33a75df20825df73ad53e06a9f04c"},
+    {file = "email_validator-2.2.0-py3-none-any.whl", hash = "sha256:561977c2d73ce3611850a06fa56b414621e0c8faa9d66f2611407d87465da631"},
+    {file = "email_validator-2.2.0.tar.gz", hash = "sha256:cb690f344c617a714f22e66ae771445a1ceb46821152df8e165c5f9a364582b7"},
 ]
 
 [package.dependencies]
@@ -447,13 +447,13 @@ doc = ["Sphinx", "sphinx-rtd-theme", "sphinxcontrib-spelling"]
 
 [[package]]
 name = "faker"
-version = "25.8.0"
+version = "25.9.0"
 description = "Faker is a Python package that generates fake data for you."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Faker-25.8.0-py3-none-any.whl", hash = "sha256:4c40b34a9c569018d4f9d6366d71a4da8a883d5ddf2b23197be5370f29b7e1b6"},
-    {file = "Faker-25.8.0.tar.gz", hash = "sha256:bdec5f2fb057d244ebef6e0ed318fea4dcbdf32c3a1a010766fc45f5d68fc68d"},
+    {file = "Faker-25.9.0-py3-none-any.whl", hash = "sha256:f86d3c66a83c2f25a9d3217d1c456ecbb2b186a78b645aa6038b49907f6fa31a"},
+    {file = "Faker-25.9.0.tar.gz", hash = "sha256:5a4cad0cbff4d38cb8c4ba565c3cb6ff12c76c00a80b7503c2ba23d6312cfe60"},
 ]
 
 [package.dependencies]
@@ -1644,13 +1644,13 @@ tomli = {version = ">=2.0.1,<3.0.0", markers = "python_version >= \"3.7\" and py
 
 [[package]]
 name = "testcontainers"
-version = "4.5.1"
+version = "4.6.0"
 description = "Python library for throwaway instances of anything that can run in a Docker container"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "testcontainers-4.5.1-py3-none-any.whl", hash = "sha256:0cbcb92932f00f9a60ee7bb815cab9e5a716a8258a8c7185751df6afef098dce"},
-    {file = "testcontainers-4.5.1.tar.gz", hash = "sha256:a8476d2b34953206840be5513645544d5a5942672010906c67dc0987dcffc208"},
+    {file = "testcontainers-4.6.0-py3-none-any.whl", hash = "sha256:043c556b96de308ed1af8965515eb9dfb3dffc96dea0a0e4e1c08968693d56ce"},
+    {file = "testcontainers-4.6.0.tar.gz", hash = "sha256:dbe8a6e6c5e7282d39cc26a0c294070461249dea21de42cc371c177420f38af8"},
 ]
 
 [package.dependencies]
@@ -2158,4 +2158,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "90c1122678dd847a19bb15b0d687369a37eeb04095b6763d3e9f0632a4551665"
+content-hash = "2d8f9c41b5062db61929cee622fd7807bb66c1703496961107a7bfc06ddecc9b"
