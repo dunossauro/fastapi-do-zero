@@ -18,7 +18,6 @@ answer: 301
 content:
 <?/quiz?>
 
-
 <?quiz?>
 question: 03 - Quando um schema não é respeitado pelo cliente, qual o status retornado?
 answer: 500
@@ -55,7 +54,6 @@ def client():
 }
 ```
 
-
 <?quiz?>
 question: 06 - Qual código de resposta deve ser enviado quando o recurso requerido não for encontrado?
 answer: 201
@@ -87,4 +85,38 @@ class UserList(BaseModel):
 }
 ```
 
-{% include "templates/mais_quiz.md" %}
+<?quiz?>
+question: 08 - HTTPException tem a função de:
+answer: Criar um erro de servidor
+answer-correct: Retornar um erro ao cliente
+answer: Fazer uma validação HTTP
+content:
+<?/quiz?>
+
+<?quiz?>
+question: 09 - 'users/{user_id}' permite:
+answer-correct: Parametrizar a URL
+answer-correct: Pedir por um recurso com id específico
+answer-correct: Aumentar a flexibilidade dos endpoints
+content:
+<?/quiz?>
+
+```quiz
+{
+    "questao": "10 - Qual a função desse bloco de código nos endpoints de PUT E DELETE?",
+	"opcoes": {
+		'a': 'Garantir que só sejam chamados id válidos',
+		'b': 'Montar um novo schema do pydantic',
+		'c': 'Dizer ao cliente que o schema dele tem um erro',
+		'c': 'Criar um erro de servidor',
+	},
+	"correta": "a",
+	"code" : """
+```python
+if user_id > len(database) or user_id < 1:
+	raise HTTPException(
+		status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+	)
+```"""
+}
+```
