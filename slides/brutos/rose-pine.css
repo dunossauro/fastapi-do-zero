@@ -153,8 +153,8 @@ div.mermaid {
 }
 
 img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .columns {
