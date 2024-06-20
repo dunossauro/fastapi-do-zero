@@ -1,17 +1,11 @@
 ---
 marp: true
 theme: rose-pine
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
 ---
 
 # Estruturando o Projeto e Criando Rotas do CRUD
 
-> https://fastapidozero.dunossauro.com/02/
+> https://fastapidozero.dunossauro.com/03/
 
 ---
 
