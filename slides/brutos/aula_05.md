@@ -1,17 +1,11 @@
 ---
 marp: true
 theme: rose-pine
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
 ---
 
 # Integrando Banco de Dados a API
 
-> https://fastapidozero.dunossauro.com/04/
+> https://fastapidozero.dunossauro.com/05/
 
 ---
 
@@ -37,6 +31,8 @@ graph LR
 ---
 
 # Sessão
+
+> TODO: Bullets
 
 No sentido mais geral, o `Session` estabelece todas as conversas com o banco de dados e representa uma “zona de retenção” para todos os objetos que você carregou ou associou a ele durante sua vida útil. Ele fornece o interface onde são feitas SELECT e outras consultas que retornarão e modificarão Objetos mapeados por ORM. Os próprios objetos ORM são mantidos dentro do Session, dentro de uma estrutura chamada mapa de identidade - um conjunto de dados estrutura que mantém cópias únicas de cada objeto, onde “único” significa “apenas um objeto com uma chave primária específica”. 
 
@@ -103,6 +99,8 @@ session.close()  # Fecha a sessão
 
 # Entendendo o enpoint de cadastro
 
+> TODO: Alterar aqui
+
 Precisamos executar algumas operações para efetuar um cadastro:
 
 1. O `email` não pode existir na base de dados
@@ -112,6 +110,8 @@ Precisamos executar algumas operações para efetuar um cadastro:
 ---
 
 ## Abrindo mais as operações!
+
+> TODO: Quebrar o problema em mais partes | Resolver o caso do email
 
 Precisamos executar algumas operações para efetuar um cadastro:
 
@@ -130,6 +130,8 @@ Precisamos executar algumas operações para efetuar um cadastro:
 ---
 
 ## O `email` não pode existir na base de dados
+
+> TODO: Alterar para o OR
 
 ```python
 from sqlalchemy import create_engine, select
@@ -154,6 +156,8 @@ def create_user(user: UserSchema):
 ---
 
 ## Se existir, devemos dizer que já está cadastrado com um erro
+
+> TODO: erros específicos para operações específicas
 
 ```python
 @app.post('/users/', response_model=UserPublic, status_code=201)
@@ -248,6 +252,8 @@ Mas, nem tudo está perdido!
 
 ## Gerenciando Dependências com FastAPI
 
+> TODO: Bullets
+
 Assim como a sessão SQLAlchemy, que implementa vários padrões arquiteturais importantes, FastAPI também usa um conceito de padrão arquitetural chamado "Injeção de Dependência".
 
 FastAPI fornece a função `Depends` para ajudar a declarar e gerenciar essas dependências. É uma maneira declarativa de dizer ao FastAPI: "Antes de executar esta função, execute primeiro essa outra função e passe-me o resultado". Isso é especialmente útil quando temos operações que precisam ser realizadas antes de cada request, como abrir uma sessão de banco de dados. 
@@ -281,6 +287,8 @@ def endpoint(
 ---
 
 ## Implementando o banco nos endpoints
+
+> TODO: Atualizar o código com OR
 
 ```python
 from fastapi import Depends, FastAPI, HTTPException
@@ -345,6 +353,8 @@ def test_create_user(client):
 ---
 
 ## Erros!
+
+> TODO: Atualizar para registry
 
 A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
 
