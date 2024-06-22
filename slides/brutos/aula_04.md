@@ -150,7 +150,9 @@ graph
 
 ## Escrevendo testes para esse modelo
 
+
 ---
+
 A primeira coisa que temos que montar é uma fixture da sessão do banco
 
 ```python
@@ -158,16 +160,18 @@ import pytest
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
-from fast_zero.models import Base
+from fast_zero.models import table_registry
 
 
-@pytest.fixture
+@pytest.fixture()
 def session():
     engine = create_engine('sqlite:///:memory:')
-    Session = sessionmaker(bind=engine)
-    Base.metadata.create_all(engine)
-    yield Session()
-    Base.metadata.drop_all(engine)
+    table_registry.metadata.create_all(engine)
+
+    with Session(engine) as session:
+        yield session
+
+    table_registry.metadata.drop_all(engine)
 ```
 ---
 
@@ -177,7 +181,7 @@ def session():
 
 2. `Session = sessionmaker(bind=engine)`: cria uma fábrica de sessões para criar sessões de banco de dados para nossos testes.
 
-3. `Base.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
+3. `table_registry.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
 
 ---
 
@@ -185,7 +189,7 @@ def session():
 
 4. `yield Session()`: fornece uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
 
-5. `Base.metadata.drop_all(engine)`: após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas, garantindo que cada teste seja executado contra um banco de dados limpo.
+5. `table_registry.metadata.drop_all(engine)`: após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas, garantindo que cada teste seja executado contra um banco de dados limpo.
 
 ---
 
@@ -253,16 +257,15 @@ Não podemos esquecer de adicionar essa base de dados no `.gitignore`
 echo 'database.db' >> .gitignore
 ```
 
-
 ---
 
 # Migrações
 
-> TODO: Bullets
-
 Antes de avançarmos, é importante entender o que são migrações de banco de dados e por que são úteis.
 
-As migrações são uma maneira de fazer alterações ou atualizações no banco de dados, como adicionar uma tabela ou uma coluna a uma tabela, ou alterar o tipo de dados de uma coluna. Elas são extremamente úteis, pois nos permitem manter o controle de todas as alterações feitas no esquema do banco de dados ao longo do tempo. Elas também nos permitem reverter para uma versão anterior do esquema do banco de dados, se necessário.
+- Banco de dados evolutivo
+- O banco acompanha as alterações do código
+- Reverter alterações no schema do banco
 
 ---
 
@@ -306,23 +309,19 @@ alembic init migrations
 
 ## Configurando a migração automática
 
-> TODO: reescrever
+Vamos fazer algumas alterações no arquivo `migrations/env.py` para que nossa configurações de banco de dados sejam passadas ao alembic:
 
-Com o Alembic devidamente instalado e iniciado, agora é o momento de gerar nossa primeira migração. Mas, antes disso, precisamos garantir que o Alembic consiga acessar nossas configurações e modelos corretamente. Para isso, vamos fazer algumas alterações no arquivo `migrations/env.py`.
-
-Neste arquivo, precisamos:
-
-1. Importar as `Settings` do nosso arquivo `settings.py` e a `Base` dos nossos modelos.
+1. Importar as `Settings` do nosso arquivo `settings.py` e a `table_registry` dos nossos modelos.
 2. Configurar a URL do SQLAlchemy para ser a mesma que definimos em `Settings`.
 3. Verificar a existência do arquivo de configuração do Alembic e, se presente, lê-lo.
-4. Definir os metadados de destino como `Base.metadata`, que é o que o Alembic utilizará para gerar automaticamente as migrações.
+4. Definir os metadados de destino como `table_registry.metadata`, que é o que o Alembic utilizará para gerar automaticamente as migrações.
 
 ---
 
 ```python
 from alembic import context
 from fast_zero.settings import Settings
-from fast_zero.models import Base
+from fast_zero.models import table_registry
 
 config = context.config
 config.set_main_option('sqlalchemy.url', Settings().DATABASE_URL)
@@ -330,7 +329,7 @@ config.set_main_option('sqlalchemy.url', Settings().DATABASE_URL)
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-target_metadata = Base.metadata
+target_metadata = table_registry.metadata
 ```
 
 ---
