@@ -221,6 +221,8 @@ def get_session():
 
 ## Usando a função!
 
+> TODO: Atualizar para o OR
+
 Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evitando a repetição do código da sessão em todos os endpoints:
 
 ```python
@@ -379,7 +381,7 @@ def session():
 
 # Implementação dos outros endpoints
 
-...
+> TODO: Fazer os pontos importantes
 
 ---
 
