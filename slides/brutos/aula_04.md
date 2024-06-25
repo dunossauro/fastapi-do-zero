@@ -95,6 +95,8 @@ class User:
 
 ### Criando um teste para esse modelo
 
+Vamos criar um arquivo novo para testes de banco de dados: `tests/test_db.py`
+
 ```python
 from fast_zero.models import User
 
@@ -153,7 +155,7 @@ graph
 
 ---
 
-A primeira coisa que temos que montar é uma fixture da sessão do banco
+A primeira coisa que temos que montar é uma fixture da sessão do banco em `tests/conftest.py`
 
 ```python
 import pytest
@@ -230,6 +232,7 @@ poetry add pydantic-settings
 
 
 ```python
+#fast_zero/settings.py
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
