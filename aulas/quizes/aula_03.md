@@ -67,8 +67,8 @@ content:
 {
     "questao": "07 - Sobre o relacionamento dos schemas, qual seria a resposta esperada pelo cliente em UserList?",
 	"opcoes": {
-		"a": '{"username": "string", "email": "e@mail.com"}',
-		"b": '[{"username": "string", "email": "e@mail.com"}]',
+		"a": '{"user": {"username": "string", "email": "e@mail.com"}}',
+		"b": '{"user": [{"username": "string", "email": "e@mail.com"}]}',
 		"c": "As duas estão corretas",
 	},
 	"correta": "b",
