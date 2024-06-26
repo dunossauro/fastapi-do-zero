@@ -30,13 +30,7 @@ graph LR
 
 ---
 
-# Sessão
-
-> TODO: Bullets
-
-No sentido mais geral, o `Session` estabelece todas as conversas com o banco de dados e representa uma “zona de retenção” para todos os objetos que você carregou ou associou a ele durante sua vida útil. Ele fornece o interface onde são feitas SELECT e outras consultas que retornarão e modificarão Objetos mapeados por ORM. Os próprios objetos ORM são mantidos dentro do Session, dentro de uma estrutura chamada mapa de identidade - um conjunto de dados estrutura que mantém cópias únicas de cada objeto, onde “único” significa “apenas um objeto com uma chave primária específica”. 
-
----
+## Padrões da sessão
 
 1. **Repositório**: A sessão atua como um repositório. A ideia de um repositório é abstrair qualquer interação envolvendo persistência de dados.
 
@@ -99,26 +93,21 @@ session.close()  # Fecha a sessão
 
 # Entendendo o enpoint de cadastro
 
-> TODO: Alterar aqui
-
 Precisamos executar algumas operações para efetuar um cadastro:
 
 1. O `email` não pode existir na base de dados
-2. Se existir, devemos dizer que já está cadastrado com um erro
-3. Caso não exista, deve ser inserido na base de dados
+2. O `username` não pode existir na base de dados
+3. Se existir (1 ou 2), devemos dizer que já está cadastrado com um erro
+4. Caso não exista, deve ser inserido na base de dados
 
 ---
 
 ## Abrindo mais as operações!
 
-> TODO: Quebrar o problema em mais partes | Resolver o caso do email
-
 Precisamos executar algumas operações para efetuar um cadastro:
 
-1. O `email` não pode existir na base de dados
-    - Fazer uma busca procurando o `email` fornecido
-        - `selecionar` na tabela de `Users` por email
-        - Fazer isso de forma escalar e buscando por 1
+1. Os dados unique não podem ser "readicionados"
+   - Checar se username e email já não existem
 2. Se existir, devemos dizer que já está cadastrado com um erro
     - Retornar `HTTPException`
 3. Caso não exista, deve ser inserido na base de dados
@@ -129,9 +118,7 @@ Precisamos executar algumas operações para efetuar um cadastro:
 
 ---
 
-## O `email` não pode existir na base de dados
-
-> TODO: Alterar para o OR
+## Checando valores únicos
 
 ```python
 from sqlalchemy import create_engine, select
@@ -147,7 +134,9 @@ def create_user(user: UserSchema):
     session = Session(engine)
 
     db_user = session.scalar(
-        select(User).where(User.email == user.email)
+        select(User).where(
+            (User.email == user.email) | (User.username == user.username)
+        )
     )
     
     if db_user: return 'ERRROOOO'
@@ -155,18 +144,24 @@ def create_user(user: UserSchema):
 
 ---
 
-## Se existir, devemos dizer que já está cadastrado com um erro
-
-> TODO: erros específicos para operações específicas
+## Caso exista
 
 ```python
 @app.post('/users/', response_model=UserPublic, status_code=201)
 def create_user(user: UserSchema):
     # ...
     
-    raise HTTPException(
-            status_code=400, detail='Username already registered'
-    )
+    if db_user:
+        if db_user.username == user.username:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Username already exists',
+            )
+        elif db_user.email == user.email:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Email already exists',
+            )
 ```
 
 ---
@@ -221,10 +216,6 @@ def get_session():
 
 ## Usando a função!
 
-> TODO: Atualizar para o OR
-
-Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evitando a repetição do código da sessão em todos os endpoints:
-
 ```python
 from fast_zero.database import get_session
 # ...
@@ -234,10 +225,14 @@ def create_user(user: UserSchema):
     session = get_session()
 
     db_user = session.scalar(
-        select(User).where(User.email == user.email)
+        select(User).where(
+            (User.email == user.email) | (User.username == user.username)
+        )
     )
     # ...
 ```
+
+Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evitando a repetição do código da sessão em todos os endpoints
 
 ---
 
@@ -395,4 +390,10 @@ git push
 
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
+<script>
+	let config = {
+		startOnLoad: true,
+		theme: 'dark'
+	}
+    mermaid.initialize(config);
+</script>
