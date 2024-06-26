@@ -249,13 +249,23 @@ Mas, nem tudo está perdido!
 
 ## Gerenciando Dependências com FastAPI
 
-> TODO: Bullets
+Assim como a sessão SQLAlchemy, que implementa vários padrões arquiteturais importantes, FastAPI também usa um conceito de padrão chamado "Injeção de Dependência". Por meio do objeto `Depends`.
 
-Assim como a sessão SQLAlchemy, que implementa vários padrões arquiteturais importantes, FastAPI também usa um conceito de padrão arquitetural chamado "Injeção de Dependência".
+É uma maneira declarativa de dizer ao FastAPI:
 
-FastAPI fornece a função `Depends` para ajudar a declarar e gerenciar essas dependências. É uma maneira declarativa de dizer ao FastAPI: "Antes de executar esta função, execute primeiro essa outra função e passe-me o resultado". Isso é especialmente útil quando temos operações que precisam ser realizadas antes de cada request, como abrir uma sessão de banco de dados. 
+"Antes de executar esta função, execute primeiro essa outra função e passe o resultado para o parâmetro".
+
+<div class="mermaid" style="text-align: center;">
+graph LR
+   código -- depende de --> sessão
+  subgraph Função
+  código
+  end
+</div>
 
 ---
+
+# No código
 
 <div class="columns">
 
@@ -285,8 +295,6 @@ def endpoint(
 
 ## Implementando o banco nos endpoints
 
-> TODO: Atualizar o código com OR
-
 ```python
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy import select
@@ -297,13 +305,13 @@ from sqlalchemy.orm import Session
 @app.post('/users/', response_model=UserPublic, status_code=201)
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(
-        select(User).where(User.username == user.username)
-    )
-    if db_user:
-        raise HTTPException(
-            status_code=400, detail='Username already registered'
+        select(User).where(
+            (User.username == user.username) | (User.email == user.email)
         )
-    # ...
+    )
+
+    if db_user:
+        # ...
 ```
 
 ---
@@ -347,15 +355,17 @@ def test_create_user(client):
     }
 ```
 
+> **Executar esse teste!**
+
 ---
 
 ## Erros!
 
-> TODO: Atualizar para registry
-
 A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
 
 ```python
+from sqlalchemy.pool import StaticPool
+# ...
 @pytest.fixture
 def session():
     engine = create_engine(
@@ -363,20 +373,189 @@ def session():
         connect_args={'check_same_thread': False},
         poolclass=StaticPool,
     )
-    Base.metadata.create_all(engine)
 
-    Session = sessionmaker(bind=engine)
+    table_registry.metadata.create_all(engine)
 
-    yield Session()
+	with Session(engine) as session:
+        yield session
 
-    Base.metadata.drop_all(engine)
+    table_registry.metadata.drop_all(engine)
 ```
 
 ---
 
-# Implementação dos outros endpoints
+# Endpoint de /GET
 
-> TODO: Fazer os pontos importantes
+```python
+@app.get('/users/', response_model=UserList)
+def read_users(
+    skip: int = 0, limit: int = 100, session: Session = Depends(get_session)
+):
+    users = session.scalars(select(User).offset(skip).limit(limit)).all()
+    return {'users': users}
+```
+
+- `skip` e `limit`: são parâmetros de query
+- Entrar no swagger: http://127.0.0.1:8000/docs
+
+---
+
+# Testando o /GET
+
+```python
+def test_read_users(client):
+    response = client.get('/users')
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'users': []}
+```
+
+---
+
+# Uma nova fixture
+
+```python
+from fast_zero.models import User, table_registry
+
+# ...
+
+@pytest.fixture()
+def user(session):
+    user = User(username='Teste', email='teste@test.com', password='testtest')
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+
+    return user
+```
+
+---
+
+# Um novo teste para /GET
+
+```python
+from fast_zero.schemas import UserPublic
+# ...
+
+def test_read_users_with_users(client, user):
+    user_schema = UserPublic.model_validate(user).model_dump()
+    response = client.get('/users/')
+    assert response.json() == {'users': [user_schema]}
+```
+
+`Schema.model_validate(obj)` faz a conversão de um objeto qualquer para um modelo do pydantic
+
+---
+
+# Conversão do SQLA com Pydantic
+
+```python
+from pydantic import BaseModel, ConfigDict, EmailStr
+# ...
+class UserPublic(BaseModel):
+    id: int
+    username: str
+    email: EmailStr
+    model_config = ConfigDict(from_attributes=True)
+```
+
+`model_config` recebe uma configuração adicional com `ConfigDict`. Dizemos para tentar encontrar os atributos de `UserPublic` no objeto passado em `model_validate`.
+
+---
+
+## Endpoints /PUT e /DELETE
+
+A primeira coisa que esses endpoints devem fazer é verificar se o registro existe:
+
+```python
+def put_ou_delete():
+    db_user = session.scalar(select(User).where(User.id == user_id))
+
+    if not db_user:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+        )
+```
+
+---
+
+## Enpoint de /PUT
+
+```python
+@app.put('/users/{user_id}', response_model=UserPublic)
+def update_user(
+    user_id: int, user: UserSchema, session: Session = Depends(get_session)
+):
+	# Validação
+
+    db_user.username = user.username
+    db_user.password = user.password
+    db_user.email = user.email
+    session.commit()
+    session.refresh(db_user)
+
+    return db_user
+```
+
+---
+## Enpoint de /DELETE
+
+```python
+@app.delete('/users/{user_id}', response_model=Message)
+def delete_user(user_id: int, session: Session = Depends(get_session)):
+	# Validação
+    session.delete(db_user)
+    session.commit()
+
+    return {'message': 'User deleted'}
+```
+
+---
+
+## Teste para o /PUT
+
+```python
+def test_update_user(client, user):
+    response = client.put(
+        '/users/1',
+        json={
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {
+        'username': 'bob',
+        'email': 'bob@example.com',
+        'id': 1,
+    }
+```
+
+---
+
+## Teste para o /DELETE
+
+```python
+def test_delete_user(client, user):
+    response = client.delete('/users/1')
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'message': 'User deleted'}
+```
+
+---
+
+# Exercícios:
+
+1. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `400`
+2. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o e-mail já foi registrado. Validando o erro `400`
+3. Atualizar os testes criados nos exercícios 1 e 2 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios) para suportarem o banco de dados
+4. Implementar o banco de dados para o endpoint de listagem por id, criado no exercício 3 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios)
+
+---
+
+# Quiz
+
+> https://fastapidozero.dunossauro.com/quizes/aula_05/
 
 ---
 
