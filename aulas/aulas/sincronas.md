@@ -15,7 +15,7 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 | 02 | Introdução ao desenvolvimento WEB                                 | 18/06 | [Aula 02](https://youtu.be/2zCrXGc4QME?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 03 | Estruturando o Projeto e Criando Rotas CRUD                       | 20/06 | [Aula 03](https://youtu.be/WnhDgVLYfx0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 04 | Configurando o Banco de Dados e Gerenciando Migrações com Alembic | 25/06 | [Aula 04](https://youtu.be/_87z5b4szW4?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 05 | Integrando Banco de Dados a API                                   | 27/06 |                                                                                                   |
+| 05 | Integrando Banco de Dados a API                                   | 27/06 | [Aula 05](https://youtu.be/6pXA6zg6hT0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 06 | Autenticação e Autorização com JWT                                | 02/07 |                                                                                                   |
 | 07 | Refatorando a Estrutura do Projeto                                | 04/07 |                                                                                                   |
 | 08 | Tornando o sistema de autenticação robusto                        | 09/07 |                                                                                                   |
@@ -28,7 +28,6 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 Agenda com as datas:
 
 - [iCal](https://calendar.google.com/calendar/ical/6d04fd6ec76625bcd265875fdc5e4670a001c60f53bc96b596a43394b8c78ca0%40group.calendar.google.com/public/basic.ics)
-
 - [Google Agenda](https://calendar.google.com/calendar/u/0?cid=NmQwNGZkNmVjNzY2MjViY2QyNjU4NzVmZGM1ZTQ2NzBhMDAxYzYwZjUzYmM5NmI1OTZhNDMzOTRiOGM3OGNhMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
 
 
