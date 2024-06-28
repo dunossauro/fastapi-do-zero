@@ -1,17 +1,11 @@
 ---
 marp: true
 theme: rose-pine
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
 ---
 
 # Integrando Banco de Dados a API
 
-> https://fastapidozero.dunossauro.com/04/
+> https://fastapidozero.dunossauro.com/05/
 
 ---
 
@@ -36,11 +30,7 @@ graph LR
 
 ---
 
-# Sessão
-
-No sentido mais geral, o `Session` estabelece todas as conversas com o banco de dados e representa uma “zona de retenção” para todos os objetos que você carregou ou associou a ele durante sua vida útil. Ele fornece o interface onde são feitas SELECT e outras consultas que retornarão e modificarão Objetos mapeados por ORM. Os próprios objetos ORM são mantidos dentro do Session, dentro de uma estrutura chamada mapa de identidade - um conjunto de dados estrutura que mantém cópias únicas de cada objeto, onde “único” significa “apenas um objeto com uma chave primária específica”. 
-
----
+## Padrões da sessão
 
 1. **Repositório**: A sessão atua como um repositório. A ideia de um repositório é abstrair qualquer interação envolvendo persistência de dados.
 
@@ -106,8 +96,9 @@ session.close()  # Fecha a sessão
 Precisamos executar algumas operações para efetuar um cadastro:
 
 1. O `email` não pode existir na base de dados
-2. Se existir, devemos dizer que já está cadastrado com um erro
-3. Caso não exista, deve ser inserido na base de dados
+2. O `username` não pode existir na base de dados
+3. Se existir (1 ou 2), devemos dizer que já está cadastrado com um erro
+4. Caso não exista, deve ser inserido na base de dados
 
 ---
 
@@ -115,10 +106,8 @@ Precisamos executar algumas operações para efetuar um cadastro:
 
 Precisamos executar algumas operações para efetuar um cadastro:
 
-1. O `email` não pode existir na base de dados
-    - Fazer uma busca procurando o `email` fornecido
-        - `selecionar` na tabela de `Users` por email
-        - Fazer isso de forma escalar e buscando por 1
+1. Os dados unique não podem ser "readicionados"
+   - Checar se username e email já não existem
 2. Se existir, devemos dizer que já está cadastrado com um erro
     - Retornar `HTTPException`
 3. Caso não exista, deve ser inserido na base de dados
@@ -129,7 +118,7 @@ Precisamos executar algumas operações para efetuar um cadastro:
 
 ---
 
-## O `email` não pode existir na base de dados
+## Checando valores únicos
 
 ```python
 from sqlalchemy import create_engine, select
@@ -145,7 +134,9 @@ def create_user(user: UserSchema):
     session = Session(engine)
 
     db_user = session.scalar(
-        select(User).where(User.email == user.email)
+        select(User).where(
+            (User.email == user.email) | (User.username == user.username)
+        )
     )
     
     if db_user: return 'ERRROOOO'
@@ -153,16 +144,24 @@ def create_user(user: UserSchema):
 
 ---
 
-## Se existir, devemos dizer que já está cadastrado com um erro
+## Caso exista
 
 ```python
 @app.post('/users/', response_model=UserPublic, status_code=201)
 def create_user(user: UserSchema):
     # ...
     
-    raise HTTPException(
-            status_code=400, detail='Username already registered'
-    )
+    if db_user:
+        if db_user.username == user.username:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Username already exists',
+            )
+        elif db_user.email == user.email:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Email already exists',
+            )
 ```
 
 ---
@@ -217,8 +216,6 @@ def get_session():
 
 ## Usando a função!
 
-Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evitando a repetição do código da sessão em todos os endpoints:
-
 ```python
 from fast_zero.database import get_session
 # ...
@@ -228,10 +225,14 @@ def create_user(user: UserSchema):
     session = get_session()
 
     db_user = session.scalar(
-        select(User).where(User.email == user.email)
+        select(User).where(
+            (User.email == user.email) | (User.username == user.username)
+        )
     )
     # ...
 ```
+
+Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evitando a repetição do código da sessão em todos os endpoints
 
 ---
 
@@ -248,11 +249,23 @@ Mas, nem tudo está perdido!
 
 ## Gerenciando Dependências com FastAPI
 
-Assim como a sessão SQLAlchemy, que implementa vários padrões arquiteturais importantes, FastAPI também usa um conceito de padrão arquitetural chamado "Injeção de Dependência".
+Assim como a sessão SQLAlchemy, que implementa vários padrões arquiteturais importantes, FastAPI também usa um conceito de padrão chamado "Injeção de Dependência". Por meio do objeto `Depends`.
 
-FastAPI fornece a função `Depends` para ajudar a declarar e gerenciar essas dependências. É uma maneira declarativa de dizer ao FastAPI: "Antes de executar esta função, execute primeiro essa outra função e passe-me o resultado". Isso é especialmente útil quando temos operações que precisam ser realizadas antes de cada request, como abrir uma sessão de banco de dados. 
+É uma maneira declarativa de dizer ao FastAPI:
+
+"Antes de executar esta função, execute primeiro essa outra função e passe o resultado para o parâmetro".
+
+<div class="mermaid" style="text-align: center;">
+graph LR
+   código -- depende de --> sessão
+  subgraph Função
+  código
+  end
+</div>
 
 ---
+
+# No código
 
 <div class="columns">
 
@@ -292,13 +305,13 @@ from sqlalchemy.orm import Session
 @app.post('/users/', response_model=UserPublic, status_code=201)
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(
-        select(User).where(User.username == user.username)
-    )
-    if db_user:
-        raise HTTPException(
-            status_code=400, detail='Username already registered'
+        select(User).where(
+            (User.username == user.username) | (User.email == user.email)
         )
-    # ...
+    )
+
+    if db_user:
+        # ...
 ```
 
 ---
@@ -342,6 +355,8 @@ def test_create_user(client):
     }
 ```
 
+> **Executar esse teste!**
+
 ---
 
 ## Erros!
@@ -349,6 +364,8 @@ def test_create_user(client):
 A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
 
 ```python
+from sqlalchemy.pool import StaticPool
+# ...
 @pytest.fixture
 def session():
     engine = create_engine(
@@ -356,20 +373,189 @@ def session():
         connect_args={'check_same_thread': False},
         poolclass=StaticPool,
     )
-    Base.metadata.create_all(engine)
 
-    Session = sessionmaker(bind=engine)
+    table_registry.metadata.create_all(engine)
 
-    yield Session()
+	with Session(engine) as session:
+        yield session
 
-    Base.metadata.drop_all(engine)
+    table_registry.metadata.drop_all(engine)
 ```
 
 ---
 
-# Implementação dos outros endpoints
+# Endpoint de /GET
 
-...
+```python
+@app.get('/users/', response_model=UserList)
+def read_users(
+    skip: int = 0, limit: int = 100, session: Session = Depends(get_session)
+):
+    users = session.scalars(select(User).offset(skip).limit(limit)).all()
+    return {'users': users}
+```
+
+- `skip` e `limit`: são parâmetros de query
+- Entrar no swagger: http://127.0.0.1:8000/docs
+
+---
+
+# Testando o /GET
+
+```python
+def test_read_users(client):
+    response = client.get('/users')
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'users': []}
+```
+
+---
+
+# Uma nova fixture
+
+```python
+from fast_zero.models import User, table_registry
+
+# ...
+
+@pytest.fixture()
+def user(session):
+    user = User(username='Teste', email='teste@test.com', password='testtest')
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+
+    return user
+```
+
+---
+
+# Um novo teste para /GET
+
+```python
+from fast_zero.schemas import UserPublic
+# ...
+
+def test_read_users_with_users(client, user):
+    user_schema = UserPublic.model_validate(user).model_dump()
+    response = client.get('/users/')
+    assert response.json() == {'users': [user_schema]}
+```
+
+`Schema.model_validate(obj)` faz a conversão de um objeto qualquer para um modelo do pydantic
+
+---
+
+# Conversão do SQLA com Pydantic
+
+```python
+from pydantic import BaseModel, ConfigDict, EmailStr
+# ...
+class UserPublic(BaseModel):
+    id: int
+    username: str
+    email: EmailStr
+    model_config = ConfigDict(from_attributes=True)
+```
+
+`model_config` recebe uma configuração adicional com `ConfigDict`. Dizemos para tentar encontrar os atributos de `UserPublic` no objeto passado em `model_validate`.
+
+---
+
+## Endpoints /PUT e /DELETE
+
+A primeira coisa que esses endpoints devem fazer é verificar se o registro existe:
+
+```python
+def put_ou_delete():
+    db_user = session.scalar(select(User).where(User.id == user_id))
+
+    if not db_user:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+        )
+```
+
+---
+
+## Enpoint de /PUT
+
+```python
+@app.put('/users/{user_id}', response_model=UserPublic)
+def update_user(
+    user_id: int, user: UserSchema, session: Session = Depends(get_session)
+):
+	# Validação
+
+    db_user.username = user.username
+    db_user.password = user.password
+    db_user.email = user.email
+    session.commit()
+    session.refresh(db_user)
+
+    return db_user
+```
+
+---
+## Enpoint de /DELETE
+
+```python
+@app.delete('/users/{user_id}', response_model=Message)
+def delete_user(user_id: int, session: Session = Depends(get_session)):
+	# Validação
+    session.delete(db_user)
+    session.commit()
+
+    return {'message': 'User deleted'}
+```
+
+---
+
+## Teste para o /PUT
+
+```python
+def test_update_user(client, user):
+    response = client.put(
+        '/users/1',
+        json={
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {
+        'username': 'bob',
+        'email': 'bob@example.com',
+        'id': 1,
+    }
+```
+
+---
+
+## Teste para o /DELETE
+
+```python
+def test_delete_user(client, user):
+    response = client.delete('/users/1')
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'message': 'User deleted'}
+```
+
+---
+
+# Exercícios:
+
+1. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `400`
+2. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o e-mail já foi registrado. Validando o erro `400`
+3. Atualizar os testes criados nos exercícios 1 e 2 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios) para suportarem o banco de dados
+4. Implementar o banco de dados para o endpoint de listagem por id, criado no exercício 3 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios)
+
+---
+
+# Quiz
+
+> https://fastapidozero.dunossauro.com/quizes/aula_05/
 
 ---
 
@@ -383,4 +569,10 @@ git push
 
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
+<script>
+	let config = {
+		startOnLoad: true,
+		theme: 'dark'
+	}
+    mermaid.initialize(config);
+</script>

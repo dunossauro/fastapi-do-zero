@@ -56,6 +56,7 @@ markdown_extensions:
   - md_in_html
 
 plugins:
+  - macros
   - glightbox
   - mkdocs-video
   - search:
@@ -77,6 +78,7 @@ plugins:
       glob:
         - "wip.md"
   - exclude-unused-files
+  - mkdocs_quiz
 
 extra_css:
   - stylesheets/extra.css
@@ -93,3 +95,6 @@ extra:
       link: https://instagram.com/dunossauro
     - icon: fontawesome/brands/tiktok
       link: https://www.tiktok.com/@dunossauro
+
+hooks:
+  - hooks/quiz_hook.py

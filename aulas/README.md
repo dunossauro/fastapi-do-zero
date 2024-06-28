@@ -8,13 +8,18 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
-> Esse material está em fase de desenvolvimento. Caso encontre algum erro, ficarei extremamente feliz que você me notifique ou envie um Pull Request! [Problemas já conhecidos.](https://github.com/dunossauro/fastapi-do-zero/issues){:target="_blank"}
+??? tip "Caso prefira ver a abertura em vídeo"
+	Esse aula ainda não está disponível em formato de vídeo, somente em live!
+	![type:video](https://www.youtube.com/embed/QShMRcicxnE)
 
-> Algumas aulas já estão em suas versões finais outras ainda faltam ser revisadas em questões de texto/funcionalidades. Caso queria acompanhar as revisões, elas estão acontecendo [nessa issue](https://github.com/dunossauro/fastapi-do-zero/issues/67){:target="_blank"}.
+	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_00.pdf){ .md-button }
 
 Olá, boas vindas ao curso de FastAPI!
 
 A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação. Tudo isso para oferecer uma boa base para quem quer trabalhar com essa tecnologia. A nossa forma de apresentar o curso é prática e cheia de informações. Ela busca trazer o que precisa para criar os nossos próprios projetos.
+
+!!! example "Datas das aulas"
+    As datas das aulas síncronas (ao vivo e com a turma) [já estão disponíveis nesse link](aulas/sincronas.md){:target="_blank"}.
 
 ## O que é FastAPI?
 
@@ -55,18 +60,31 @@ SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blan
 Esse material será disponibilizado de três formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
-2. Em formato de vídeo: todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler;
-3. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. **Datas ainda não definidas!**.
 
-> Esse material está em fase de desenvolvimento e todas as aulas estarão disponíveis no meu canal do YouTube. Você pode conferir outros materiais disponíveis por lá enquanto os vídeos não saem, ou se inscrever para ser notificado quando os vídeos saírem!
+2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [**Datas já disponíveis**](aulas/sincronas.md);
 
-> [**http://youtube.com/@dunossauro**](http://youtube.com/@dunossauro){:target="_blank"}
+    **Playlist das Aulas síncronas (Ao vivo)**:
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-> Os links para as playlists dos vídeos e das aulas ao vivo estão aqui quando disponibilizadas!
+3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler. (**Vídeos ainda não disponíveis**)
 
 ## Pré-requisitos
 
-Para aproveitar ao máximo este curso, é recomendado que você tenha algum conhecimento prévio de Python. Além disso, algum entendimento básico de desenvolvimento web e APIs RESTful será útil, mas não essencial, pois a abordagem deste curso é prática e centrada em um projeto concreto. Por meio de exemplos reais e instruções passo a passo, você terá a oportunidade de acompanhar o processo de construção de uma aplicação real. Mesmo que os conceitos de desenvolvimento web sejam novos para você, a ênfase na aplicação prática e a estrutura detalhada do curso facilitarão o entendimento e a aplicação dessas habilidades até o fim do processo.
+Para aproveitar ao máximo este curso, é recomendado que você já tenha algum conhecimento prévio em python, se pudesse listar o que considero importante para não se perder, os tópicos em python importantes são:
+
+- O funcionamento de funções: como criar e usar [referência](https://youtu.be/0yXPQZvlgrk){:target="_blank"};
+- O funcionamento das estruturas de dados: como listas, dicionários e etc;
+- Uma pitada sobre objetos: saber o que são métodos e atributos [referência](https://youtu.be/BALM_oJcJL4){:target="_blank"};
+- Classes de dados: o funcionamento básico das dataclasses [referência](https://youtu.be/NtZY3AmsBSk){:target="_blank"}.
+
+> As referências servem como base caso você ainda não tenha estudado esses assuntos
+
+Alguns outros tópicos não relativos a python também serão abordados. Então é interessante que você tenha algum entendimento básico sobre: 
+
+- Desenvolvimento Web e APIs RESTful: não essencial, pois iremos abordar, mas o quanto mais você souber melhor para acompanhar;
+- Banco de dados / SQL: Um conhecimento básico sobre criação e busca de dados usando SQL já o suficiente, embora esse tópico também seja como o anterior, quanto mais você souber melhor;
+- git: não nos aprofundaremos nesse tópico durante o curso, mas usaremos operações básicas de git (como commit e push);
+- docker: também não nos aprofundaremos nesse tópico e ele só será abordado nas aulas finais. Mas, também, só usaremos comandos básicos de docker e docker-compose.
 
 ??? info "Caso esteja iniciando seus estudos em Python!"
 	Caso você ainda não se sinta uma pessoa preparada, ou caiu aqui sem saber exatamente o que esperar. Temos um pequeno curso introdutório. Destinado aos primeiros passos com python.
@@ -98,6 +116,8 @@ Para aproveitar ao máximo este curso, é recomendado que você tenha algum conh
 12. [Fazendo o deploy no Fly.io](12.md){:target="_blank"}
 13. [Despedida e próximos passos](13.md){:target="_blank"}
 
+Após todas as aulas, se você sentir que ainda quer evoluir mais e testar seus conhecimentos, [temos um projeto final](14.md){:target="_blank"} para avaliar o quanto você aprendeu.
+
 ### 🦖 Quem vai ministrar essas aulas?
 
 Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunossauro](https://dunossauro.com){:target="_blank"}.
@@ -118,7 +138,7 @@ Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande c
 
 Esse material contou com a revisão e contribuições inestimáveis de pessoas incríveis:
 
-[@adorilson](https://github.com/adorilson){:target="_blank"}, [@aguynaldo](https://github.com/aguynaldo){:target="blank"}, [@alphabraga](https://github.com/alphabraga){:target="_blank"}, [@azmovi](https://github.com/azmovi){:target="_blank"}, [@bugelseif](https://github.com/bugelseif){:target="_blank"}, [@gabrielhardcore](https://github.com/gabrielhardcore){:target="_blank"}, [@gbpagano](https://github.com/gbpagano){:target="_blank"}, [@henriqueccda](https://github.com/henriqueccda){:target="_blank"}, [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"}, [@ig0r-ferreira](https://github.com/ig0r-ferreira){:target="_blank"}, [@ivansantiagojr](https://github.com/ivansantiagojr){:target="_blank"}, [@jlplautz](https://github.com/jlplautz){:target="_blank"}, [@jonathanscheibel](https://github.com/jonathanscheibel){:target="_blank"}, [@julioformiga](https://github.com/julioformiga){:target="_blank"}, [@lbmendes](https://github.com/lbmendes){:target="_blank"}, [@lucasmpavelski](http://github.com/lucasmpavelski){:target="_blank"}, [@matheusalmeida28](https://github.com/matheusalmeida28){:target="_blank"}, [@me15degrees](https://github.com/me15degrees){:target="_blank"}, [@mmaachado](https://github.com/mmaachado){:target="_blank"}, [@ricardo-emanuel01](https://github.com/ricardo-emanuel01){:target="_blank"}, [@rodbv](https://github.com/rodbv){:target="_blank"}, [@rodrigosbarretos](https://github.com/rodrigosbarretos){:target="_blank"}, [@taconi](https://github.com/taconi){:target="_blank"}, [@vcwild](https://github.com/vcwild){:target="_blank"}, [@williangl](https://github.com/williangl){:target="_blank"}
+[@adorilson](https://github.com/adorilson){:target="_blank"}, [@aguynaldo](https://github.com/aguynaldo){:target="blank"}, [@alphabraga](https://github.com/alphabraga){:target="_blank"}, [@andrespp](https://github.com/andrespp){:target="_blank"}, [@azmovi](https://github.com/azmovi){:target="_blank"}, [@bugelseif](https://github.com/bugelseif){:target="_blank"}, [@gabrielhardcore](https://github.com/gabrielhardcore){:target="_blank"}, [@gbpagano](https://github.com/gbpagano){:target="_blank"}, [@henriqueccda](https://github.com/henriqueccda){:target="_blank"}, [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"}, [@ig0r-ferreira](https://github.com/ig0r-ferreira){:target="_blank"}, [@itsGab](https://github.com/itsGab){:target="_blank"}, [@ivansantiagojr](https://github.com/ivansantiagojr){:target="_blank"}, [@jlplautz](https://github.com/jlplautz){:target="_blank"}, [@jonathanscheibel](https://github.com/jonathanscheibel){:target="_blank"}, [@julioformiga](https://github.com/julioformiga){:target="_blank"}, [@lbmendes](https://github.com/lbmendes){:target="_blank"}, [@lucasmpavelski](http://github.com/lucasmpavelski){:target="_blank"}, [@matheusalmeida28](https://github.com/matheusalmeida28){:target="_blank"}, [@me15degrees](https://github.com/me15degrees){:target="_blank"}, [@mmaachado](https://github.com/mmaachado){:target="_blank"}, [@ricardo-emanuel01](https://github.com/ricardo-emanuel01){:target="_blank"}, [@rodbv](https://github.com/rodbv){:target="_blank"}, [@rodrigosbarretos](https://github.com/rodrigosbarretos){:target="_blank"}, [@taconi](https://github.com/taconi){:target="_blank"}, [@vcwild](https://github.com/vcwild){:target="_blank"}, [@williangl](https://github.com/williangl){:target="_blank"}
 
 {++**Muito obrigado!**++} :heart:
 

@@ -408,7 +408,7 @@ def user(session):
 Embora a senha agora consiga ser comparada, a senha que enviamos na requisição está indo suja também.
 
 ```python
-# confitest.py
+# conftest.py
 @pytest.fixture
 def user(session):
     password = 'testtest'
@@ -560,7 +560,7 @@ maaaaaaaaaasssssssssss não validamos o payload do token ainda!
 ```py
 async def get_current_user(...):
     credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
+        status_code=HTTPStatus.UNAUTHORIZED,
         detail='Could not validate credentials',
         headers={'WWW-Authenticate': 'Bearer'},
     )

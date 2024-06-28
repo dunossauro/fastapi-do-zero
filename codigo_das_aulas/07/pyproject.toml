@@ -2,50 +2,47 @@
 name = "fast-zero"
 version = "0.1.0"
 description = ""
-authors = ["dunossauro <mendesxeduardo@gmail.com>"]
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "fast_zero"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.100.0"
-uvicorn = "^0.22.0"
-pydantic = {extras = ["email"], version = "^2.0.2"}
-sqlalchemy = "^2.0.18"
-pydantic-settings = "^2.0.1"
-alembic = "^1.11.1"
-passlib = {extras = ["bcrypt"], version = "^1.7.4"}
-python-multipart = "^0.0.6"
+python = "^3.12"
+fastapi = "^0.111.0"
+pydantic = {extras = ["email"], version = "^2.7.4"}
+sqlalchemy = "^2.0.31"
+pydantic-settings = "^2.3.4"
+alembic = "^1.13.2"
 pyjwt = "^2.8.0"
-
+python-multipart = "^0.0.9"
+pwdlib = {extras = ["argon2"], version = "^0.2.0"}
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.0"
-pytest-cov = "^4.1.0"
-taskipy = "^1.11.0"
-blue = "^0.9.1"
-ruff = "^0.0.278"
-httpx = "^0.24.1"
+pytest = "^8.2.2"
+pytest-cov = "^5.0.0"
+taskipy = "^1.13.0"
+ruff = "^0.4.10"
+httpx = "^0.27.0"
 
 [tool.ruff]
 line-length = 79
-exclude = ['.venv', 'migrations']
+extend-exclude = ['migrations']
 
-[tool.isort]
-profile = "black"
-line_length = 79
-extend_skip = ['migrations']
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
 
 [tool.pytest.ini_options]
 pythonpath = "."
-
-[tool.blue]
-extend-exclude = '(migrations/)'
+addopts = '-p no:warnings'
 
 [tool.taskipy.tasks]
-lint = 'ruff . && blue --check . --diff && isort --check . --diff'
-format = 'blue .  && isort .'
-run = 'uvicorn fast_zero.app:app --reload'
+lint = 'ruff check .; ruff check . --diff'
+format = 'ruff check . --fix; ruff format .'
+run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'

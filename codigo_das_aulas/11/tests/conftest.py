@@ -1,29 +1,27 @@
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import Session
+from testcontainers.postgres import PostgresContainer
 
 from fast_zero.app import app
 from fast_zero.database import get_session
-from fast_zero.models import Base
+from fast_zero.models import table_registry
 from fast_zero.security import get_password_hash
-from fast_zero.settings import Settings
 from tests.factories import UserFactory
 
 
-@pytest.fixture
-def session():
-    engine = create_engine(Settings().DATABASE_URL)
-    Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    Base.metadata.create_all(engine)
-    with Session() as session:
-        yield session
-        session.rollback()
+@pytest.fixture(scope='session')
+def engine():
+    with PostgresContainer('postgres:16', driver='psycopg') as postgres:
 
-    Base.metadata.drop_all(engine)
+        _engine = create_engine(postgres.get_connection_url())
+
+        with _engine.begin():
+            yield _engine
 
 
-@pytest.fixture
+@pytest.fixture()
 def client(session):
     def get_session_override():
         return session
@@ -35,7 +33,18 @@ def client(session):
     app.dependency_overrides.clear()
 
 
-@pytest.fixture
+@pytest.fixture()
+def session(engine):
+    table_registry.metadata.create_all(engine)
+
+    with Session(engine) as session:
+        yield session
+        session.rollback()
+
+    table_registry.metadata.drop_all(engine)
+
+
+@pytest.fixture()
 def user(session):
     password = 'testtest'
     user = UserFactory(password=get_password_hash(password))
@@ -49,10 +58,10 @@ def user(session):
     return user
 
 
-@pytest.fixture
-def user2(session):
+@pytest.fixture()
+def other_user(session):
     password = 'testtest'
-    user = UserFactory(id=2, password=get_password_hash(password))
+    user = UserFactory(password=get_password_hash(password))
 
     session.add(user)
     session.commit()
@@ -63,7 +72,7 @@ def user2(session):
     return user
 
 
-@pytest.fixture
+@pytest.fixture()
 def token(client, user):
     response = client.post(
         '/auth/token',

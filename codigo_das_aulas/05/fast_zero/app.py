@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -9,25 +11,35 @@ from fast_zero.schemas import Message, UserList, UserPublic, UserSchema
 app = FastAPI()
 
 
-@app.get('/', status_code=200, response_model=Message)
+@app.get('/', status_code=HTTPStatus.OK, response_model=Message)
 def read_root():
     return {'message': 'Olá Mundo!'}
 
 
-@app.post('/users/', response_model=UserPublic, status_code=201)
+@app.post('/users/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(
-        select(User).where(User.username == user.username)
+        select(User).where(
+            (User.username == user.username) | (User.email == user.email)
+        )
     )
 
     if db_user:
-        raise HTTPException(
-            status_code=400, detail='Username already registered'
-        )
+        if db_user.username == user.username:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Username already exists',
+            )
+        elif db_user.email == user.email:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Email already exists',
+            )
 
     db_user = User(
         username=user.username, password=user.password, email=user.email
     )
+
     session.add(db_user)
     session.commit()
     session.refresh(db_user)
@@ -47,10 +59,11 @@ def read_users(
 def update_user(
     user_id: int, user: UserSchema, session: Session = Depends(get_session)
 ):
-
     db_user = session.scalar(select(User).where(User.id == user_id))
     if not db_user:
-        raise HTTPException(status_code=404, detail='User not found')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+        )
 
     db_user.username = user.username
     db_user.password = user.password
@@ -66,7 +79,9 @@ def delete_user(user_id: int, session: Session = Depends(get_session)):
     db_user = session.scalar(select(User).where(User.id == user_id))
 
     if not db_user:
-        raise HTTPException(status_code=404, detail='User not found')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+        )
 
     session.delete(db_user)
     session.commit()

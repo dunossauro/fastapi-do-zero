@@ -1,0 +1,48 @@
+name: ci
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copia os arquivos do repo
+        uses: actions/checkout@v4
+
+      - name: Atualização do sistema
+        run: sudo apt update
+
+      - name: instala o sqlite3
+        run: sudo apt install sqlite3
+
+      - name: Instalar o python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Instalar dependências do projeto
+        run: poetry install --no-root
+
+      - name: Roda os linters dos códigos de aulas
+        run: poetry run invoke lint-sub
+
+      - name: Roda os testes dos códigos de aulas
+        run: poetry run invoke test-sub
+
+      - name: Roda os dockers dos códigos de aulas
+        run: poetry run invoke test-docker-build
+
+      - name: Roda os typos dos códigos de aulas
+        run: poetry run invoke typos-sub
+
+      - name: Testa as migrações
+        run: poetry run invoke test-migrations

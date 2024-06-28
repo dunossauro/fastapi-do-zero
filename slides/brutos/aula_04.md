@@ -3,9 +3,9 @@ marp: true
 theme: rose-pine
 ---
 
-# Configurando o Banco de Dados e Gerenciando Migrações com Alembic
+# Configurando o Banco de Dados e gerenciando Migrações com Alembic
 
-> https://fastapidozero.dunossauro.com/03/
+> https://fastapidozero.dunossauro.com/04/
 
 ---
 
@@ -51,32 +51,51 @@ poetry add sqlalchemy
 
 ---
 
-# Definindo nosso modelo de "user" com SQLalchemy
+### Definindo nosso modelo de "user" com SQLalchemy
 
 no arquivo `fast_zero/models.py` vamos criar
 
 ```python
-from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
+from datetime import datetime
+from sqlalchemy.orm import Mapped, registry
+
+table_registry = registry()
 
 
-class Base(DeclarativeBase):
-    pass
-
-
-class User(Base):
+@table_registry.mapped_as_dataclass
+class User:
     __tablename__ = 'users'
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int]
     username: Mapped[str]
     password: Mapped[str]
     email: Mapped[str]
+    created_at: Mapped[datetime]
+```
+
+---
+
+# Restrições em colunas
+
+```python
+@table_registry.mapped_as_dataclass
+class User:
+    __tablename__ = 'users'
+
+    id: Mapped[int] = mapped_column(init=False, primary_key=True)
+    username: Mapped[str] = mapped_column(unique=True)
+    password: Mapped[str]
+    email: Mapped[str] = mapped_column(unique=True)
+    created_at: Mapped[datetime] = mapped_column(
+        init=False, server_default=func.now()
+    )
 ```
 
 ---
 
 ### Criando um teste para esse modelo
+
+Vamos criar um arquivo novo para testes de banco de dados: `tests/test_db.py`
 
 ```python
 from fast_zero.models import User
@@ -120,8 +139,7 @@ Quanto à persistência de dados e consultas ao banco de dados utilizando o ORM,
 
 <div class="mermaid" style="text-align: center;">
 graph
-  A[Aplicativo Python] -- utiliza --> B[SQLAlchemy ORM]
-  B -- fornece --> D[Session]
+  B[SQLAlchemy ORM] -- fornece --> D[Session]
   D -- interage com --> C[Modelos]
   C -- mapeados para --> G[Tabelas no Banco de Dados]
   D -- depende de --> E[Engine]
@@ -134,24 +152,28 @@ graph
 
 ## Escrevendo testes para esse modelo
 
+
 ---
-A primeira coisa que temos que montar é uma fixture da sessão do banco
+
+A primeira coisa que temos que montar é uma fixture da sessão do banco em `tests/conftest.py`
 
 ```python
 import pytest
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
-from fast_zero.models import Base
+from fast_zero.models import table_registry
 
 
-@pytest.fixture
+@pytest.fixture()
 def session():
     engine = create_engine('sqlite:///:memory:')
-    Session = sessionmaker(bind=engine)
-    Base.metadata.create_all(engine)
-    yield Session()
-    Base.metadata.drop_all(engine)
+    table_registry.metadata.create_all(engine)
+
+    with Session(engine) as session:
+        yield session
+
+    table_registry.metadata.drop_all(engine)
 ```
 ---
 
@@ -161,7 +183,7 @@ def session():
 
 2. `Session = sessionmaker(bind=engine)`: cria uma fábrica de sessões para criar sessões de banco de dados para nossos testes.
 
-3. `Base.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
+3. `table_registry.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
 
 ---
 
@@ -169,7 +191,7 @@ def session():
 
 4. `yield Session()`: fornece uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
 
-5. `Base.metadata.drop_all(engine)`: após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas, garantindo que cada teste seja executado contra um banco de dados limpo.
+5. `table_registry.metadata.drop_all(engine)`: após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas, garantindo que cada teste seja executado contra um banco de dados limpo.
 
 ---
 
@@ -192,7 +214,7 @@ def test_create_user(session):
 
 ---
 
-# Configurações de ambiente e as 12 fatores
+## Configurações de ambiente e as 12 fatores
 
 Uma boa prática no desenvolvimento de aplicações é separar as configurações do código.
 
@@ -206,10 +228,11 @@ poetry add pydantic-settings
 
 ---
 
-# Configuração do ambiente do banco de dados
+## Configuração do ambiente do banco de dados
 
 
 ```python
+#fast_zero/settings.py
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -237,14 +260,15 @@ Não podemos esquecer de adicionar essa base de dados no `.gitignore`
 echo 'database.db' >> .gitignore
 ```
 
-
 ---
 
 # Migrações
 
 Antes de avançarmos, é importante entender o que são migrações de banco de dados e por que são úteis.
 
-As migrações são uma maneira de fazer alterações ou atualizações no banco de dados, como adicionar uma tabela ou uma coluna a uma tabela, ou alterar o tipo de dados de uma coluna. Elas são extremamente úteis, pois nos permitem manter o controle de todas as alterações feitas no esquema do banco de dados ao longo do tempo. Elas também nos permitem reverter para uma versão anterior do esquema do banco de dados, se necessário.
+- Banco de dados evolutivo
+- O banco acompanha as alterações do código
+- Reverter alterações no schema do banco
 
 ---
 
@@ -263,13 +287,13 @@ alembic init migrations
 ```
 .
 ├── .env
-├── alembic.ini
+├── alembic.ini     <-
 ├── fast_zero
 │  ├── __init__.py
 │  ├── app.py
 │  ├── models.py
 │  └── schemas.py
-├── migrations
+├── migrations      <-
 │  ├── env.py
 │  ├── README
 │  ├── script.py.mako
@@ -288,21 +312,19 @@ alembic init migrations
 
 ## Configurando a migração automática
 
-Com o Alembic devidamente instalado e iniciado, agora é o momento de gerar nossa primeira migração. Mas, antes disso, precisamos garantir que o Alembic consiga acessar nossas configurações e modelos corretamente. Para isso, vamos fazer algumas alterações no arquivo `migrations/env.py`.
+Vamos fazer algumas alterações no arquivo `migrations/env.py` para que nossa configurações de banco de dados sejam passadas ao alembic:
 
-Neste arquivo, precisamos:
-
-1. Importar as `Settings` do nosso arquivo `settings.py` e a `Base` dos nossos modelos.
+1. Importar as `Settings` do nosso arquivo `settings.py` e a `table_registry` dos nossos modelos.
 2. Configurar a URL do SQLAlchemy para ser a mesma que definimos em `Settings`.
 3. Verificar a existência do arquivo de configuração do Alembic e, se presente, lê-lo.
-4. Definir os metadados de destino como `Base.metadata`, que é o que o Alembic utilizará para gerar automaticamente as migrações.
+4. Definir os metadados de destino como `table_registry.metadata`, que é o que o Alembic utilizará para gerar automaticamente as migrações.
 
 ---
 
 ```python
 from alembic import context
 from fast_zero.settings import Settings
-from fast_zero.models import Base
+from fast_zero.models import table_registry
 
 config = context.config
 config.set_main_option('sqlalchemy.url', Settings().DATABASE_URL)
@@ -310,7 +332,7 @@ config.set_main_option('sqlalchemy.url', Settings().DATABASE_URL)
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-target_metadata = Base.metadata
+target_metadata = table_registry.metadata
 ```
 
 ---
@@ -327,6 +349,27 @@ alembic revision --autogenerate -m "create users table"
 ```bash
 alembic upgrade head
 ```
+
+---
+
+# Exercícios
+
+1. Fazer uma alteração no modelo (tabela `User`) e adicionar um campo chamado `updated_at`:
+    - Esse campo deve ser mapeado para o tipo `datetime`
+	- Esse campo não deve ser inicializado por padrão `init=False`
+	- O valor padrão deve ser `now`
+	- Toda vez que a tabela for atualizada esse campo deve ser atualizado:
+	    ```python
+		mapped_column(onupdate=func.now())
+		```
+---
+
+## Exercícios + Quiz
+
+2. Criar uma nova migração autogerada com alembic
+3. Aplicar essa migração ao banco de dados
+
+> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_04/) da aula
 
 ---
 

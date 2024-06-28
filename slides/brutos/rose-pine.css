@@ -61,7 +61,7 @@ a {
 }
 p {
     font-size: 20pt;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text);
 }
 code {
@@ -72,10 +72,10 @@ text {
     color: var(--text);
 }
 ul {
-    color: var(--subtle);
+    color: var(--text);
 }
 li {
-    color: var(--subtle);
+    color: var(--text);
 }
 img {
     background-color: var(--highlight-low);
@@ -135,4 +135,30 @@ marp-pre {
 }
 .hljs-meta {
     color: var(--subtle);
+}
+
+blockquote  {
+    font-size: 20px;
+}
+blockquote p {
+    font-size: 20px;
+}
+
+blockquote p a {
+    font-size: 30px;
+}
+
+div.mermaid {
+    text-align: center;
+}
+
+img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
 }
