@@ -643,10 +643,56 @@ def test_update_user(client, user, token):
 ```
 ---
 
+## O endpoint de DELETE
+
+```python
+@app.delete('/users/{user_id}', response_model=Message)
+def delete_user(
+    user_id: int,
+    session: Session = Depends(get_session),
+    current_user: User = Depends(get_current_user),
+):
+    if current_user.id != user_id:
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail='Not enough permissions'
+        )
+    # ...
+```
+
+---
+
+## Atualização do teste de DELETE
+
+```python
+def test_delete_user(client, user, token):
+    response = client.delete(
+        f'/users/{user.id}',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'message': 'User deleted'}
+```
+
+---
+
+## Teste para token inválido
+
+```python
+# test_security.py
+def test_jwt_invalid_token(client):
+    response = client.delete(
+        '/users/1', headers={'Authorization': 'Bearer token-invalido'}
+    )
+
+    assert response.status_code == HTTPStatus.UNAUTHORIZED
+    assert response.json() == {'detail': 'Could not validate credentials'}
+```
+
+---
+
 # TODOs
 
-- Endpoint de DELETE
-- Teste do DELETE
 - Quiz
 - Exercício
 
