@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Autenticação e Autorização
 
-> https://fastapidozero.dunossauro.com/05/
+> https://fastapidozero.dunossauro.com/06/
 
 ---
 
@@ -36,23 +36,22 @@ Nossas senhas estão sendo armazenadas de forma limpa no banco de dados. Isso po
 Para isso vamos armazenar somente o hash das senhas e criar duas funções para controlar esse fluxo:
 
 ```bash
-poetry add passlib[bcrypt]
+poetry add "pwdlib[argon2]"
 ```
 
-- `Passlib` é uma biblioteca criada especialmente para manipular hashs de senhas.
-- `Bcrypt` é um algorítimo de hash
+- `pwdlib` é uma biblioteca criada especialmente para manipular hashs de senhas.
+- `argon2` é um algorítimo de hash
 
 ---
 
-# Funções para gerenciar o hash
+## Funções para gerenciar o hash
 
 Vamos criar um novo arquivo no nosso pacote para gerenciar a parte de segurança. `security.py`:
 
 ```py
-# security.py
-from passlib.context import CryptContext
+from pwdlib import PasswordHash
 
-pwd_context = CryptContext(schemes=['bcrypt'])
+pwd_context = PasswordHash.recommended()
 
 
 def get_password_hash(password: str):
@@ -60,7 +59,7 @@ def get_password_hash(password: str):
 
 
 def verify_password(plain_password: str, hashed_password: str):
-    return pwd_context.verify(plain_password, hashed_password)	
+    return pwd_context.verify(plain_password, hashed_password)
 ```
 
 ---
@@ -88,24 +87,24 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
 # Alterando o endpoint de Update
 
-Como agora as senhas estão sendo encriptadas durante o cadastro, caso o `User` altere a senha no endpoint de update, a senha precisa ser encriptada também:
-
 ```python
 @app.put('/users/{user_id}', response_model=UserPublic)
 def update_user(
     user_id: int,
     user: UserSchema,
     session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
 ):
-	# ...
-    current_user.username = user.username
-    current_user.password = get_password_hash(user.password)
-    current_user.email = user.email
+    # ...
+    db_user.username = user.username
+    db_user.password = get_password_hash(user.password)
+    db_user.email = user.email
     session.commit()
-    session.refresh(current_user)
-    return current_user
+    session.refresh(db_user)
+
+    return db_user
 ```
+
+Como agora as senhas estão sendo encriptadas durante o cadastro, caso o `User` altere a senha no endpoint de update, a senha precisa ser encriptada também
 
 ---
 
@@ -164,9 +163,7 @@ Alguns pontos:
     - Para isso podemos usar o `datetime.timedelta` 
 ---
 
-# OAuth2
-
-OAuth2 É um protocolo aberto para autorização. O FastAPI disponibiliza alguns schemas prontos para usar OAuth2, como o `OAuth2PasswordRequestForm`. Traduzindo de forma literal: "Formulário de Requisição de Senha OAuth2"   
+## OAuth2
 
 ```py
 # app.py
@@ -181,6 +178,13 @@ def login_for_access_token(
 ):
     ...
 ```
+
+OAuth2 É um protocolo aberto para autorização. O FastAPI disponibiliza alguns schemas prontos para usar OAuth2, como o `OAuth2PasswordRequestForm`. Traduzindo de forma literal: "Formulário de Requisição de Senha OAuth2"
+
+---
+
+# Vamos ver como o Form é documentado
+
 
 > Mostrar como isso ficará no [Swagger](localhost:8000/docs)!
 
@@ -198,8 +202,7 @@ poetry add python-multipart
 
 # Validando os dados!
 
-```py
-# app.py
+```python
 @app.post('/token')
 def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
@@ -207,10 +210,11 @@ def login_for_access_token(
 ):
     user = session.scalar(select(User).where(User.email == form_data.username))
 
-    if not user or not verify_passwordform_data.password, user.password):
+    if not user or not verify_password(form_data.password, user.password):
         raise HTTPException(
             status_code=400, detail='Incorrect email or password'
         )
+    # ...
 ```
 
 ---
@@ -247,20 +251,18 @@ flowchart LR
 
 # Geração de tokens JWT com Python
 
-Existem diversas bibliotecas para geração de tokens, usemos o `python-jose`.
+Existem diversas bibliotecas para geração de tokens, usemos o `pyjwt`.
 
 ```bash
-poetry add python-jose[cryptography]
+poetry add pyjwt
 ```
-
-JOSE: Javascript Object Singin and Encryption
 
 ---
 
 # Olhando os tokens mais de perto
 
 ```py
-from jose import jwt
+import jwt
 
 jwt.encode(dados, key)   # Os dados devem ser um dict, retorna o token
 
@@ -276,12 +278,12 @@ A chave deve ser secreta, ela é o que define em conjunto com o algorítimo que 
 ```py
 import secrets
 
-secretes.token_hex()   # Retorna um token randômico
+secrets.token_hex()   # Retorna um token randômico
 ```
 
 ---
 
-# investigando o token gerado
+# Investigando o token gerado
 
 > https://jwt.io/#debugger-io
 
@@ -300,25 +302,28 @@ class Token(BaseModel):
 
 ---
 
-# A geração do token
+### A geração do token
 
-Agora que já temos o schema e o esqueleto do endpoint, podemos criar nossa função de criação de token em `security.py`:
-
-```py
+```python
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
-from jose import jwt
+from jwt import encode
 
 SECRET_KEY = 'your-secret-key'  # Isso é privisório, vamos ajustar!
+ALGORITHM = 'HS256'
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 def create_access_token(data: dict):
     to_encode = data.copy()
 
     # Adiciona um tempo de 30 minutos para expiração
-    expire = datetime.utcnow() + timedelta(minutes=30)
+    expire = datetime.now(tz=ZoneInfo('UTC')) + timedelta(
+        minutes=ACCESS_TOKEN_EXPIRE_MINUTES
+    )
     to_encode.update({'exp': expire})
 
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY)
+    encoded_jwt = encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 ```
 ---
@@ -327,7 +332,7 @@ def create_access_token(data: dict):
 
 ```py
 # tests/test_security.py
-from jose import jwt
+from jwt import decode
 
 from fast_zero.security import create_access_token, SECRET_KEY
 
@@ -336,7 +341,7 @@ def test_jwt():
     data = {'test': 'test'}
     token = create_access_token(data)
 
-    decoded = jwt.decode(token, SECRET_KEY)
+    decoded = decode(token, SECRET_KEY)
 
     assert decoded['test'] == data['test']
     assert decoded['exp']  # Testa se o valor de exp foi adicionado ao token
@@ -374,18 +379,15 @@ def test_get_token(client, user):
     )
     token = response.json()
 
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert token['token_type'] == 'Bearer'
     assert 'access_token' in token
 ```
 ---
 
-# Problema!
-
-A fixture de `User` que estamos criando salva a senha limpa. Isso dá erro na hora de comparar se a senha está correta na criação do token.
+## Problema!
 
 ```python
-# conftest.py
 from fast_zero.security import get_password_hash
 # ...
 @pytest.fixture
@@ -393,7 +395,8 @@ def user(session):
     user = User(
         username='test',
         email='test@test.com',
-        password=get_password_hash('testtest'),  # Criando com a senha suja!
+        # Criando com a senha suja!
+        password=get_password_hash('testtest'),
     )
     session.add(user)
     session.commit()
@@ -401,11 +404,12 @@ def user(session):
 
     return user
 ```
+
+A fixture de `User` que estamos criando salva a senha limpa. Isso dá erro na hora de comparar se a senha está correta na criação do token.
+
 ---
 
-# Problema 2!
-
-Embora a senha agora consiga ser comparada, a senha que enviamos na requisição está indo suja também.
+## Problema 2!
 
 ```python
 # conftest.py
@@ -421,10 +425,12 @@ def user(session):
     session.commit()
     session.refresh(user)
 
-    user.clean_password = password
+    user.clean_password = password  # hack!
 
     return user
 ```
+
+Embora a senha agora consiga ser comparada, a senha que enviamos na requisição está indo suja também.
 
 ---
 
@@ -432,7 +438,7 @@ def user(session):
 
 ```bash
 tests/test_app.py::test_get_token PASSED
-tests/test_app.py::test_root_deve_retornar_200_e_ola_mundo PASSED
+tests/test_app.py::test_root_deve_retornar_ok_e_ola_mundo PASSED
 tests/test_app.py::test_create_user PASSED
 tests/test_app.py::test_read_users_empty PASSED
 tests/test_app.py::test_read_users PASSED
@@ -470,8 +476,7 @@ Agora que temos os tokens, podemos garantir que só clientes com uma conta já c
 
 Assim como nos formulários, o FastAPI também conta com um validador de Tokens passados nos cabeçalhos: `OAuth2PasswordBearer`
 
-```py
-# security.py
+```python
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
@@ -479,8 +484,7 @@ from fast_zero.database import get_session
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-
-async def get_current_user(
+def get_current_user(
     session: Session = Depends(get_session),
     token: str = Depends(oauth2_scheme),
 ):
@@ -491,8 +495,7 @@ async def get_current_user(
 
 Só com essa exigência de receber o token, podemos aplicar isso em nosso endpoint de listagem.
 
-```py
-# app.py
+```python
 @app.get('/users/', response_model=UserList)
 def list_users(
     session: Session = Depends(get_session),
@@ -535,7 +538,7 @@ def test_read_users(client: TestClient, token):
         '/users/', headers={'Authorization': f'Bearer {token}'}
     )
 
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         'users': [
             {
@@ -557,8 +560,8 @@ maaaaaaaaaasssssssssss não validamos o payload do token ainda!
 
 # A validação do JWT
 
-```py
-async def get_current_user(...):
+```python
+def get_current_user(...):
     credentials_exception = HTTPException(
         status_code=HTTPStatus.UNAUTHORIZED,
         detail='Could not validate credentials',
@@ -572,15 +575,15 @@ async def get_current_user(...):
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    
     # ...
 ```
+
 ---
 
 Caso esteja tudo correto com o token:
 
 ```py
-async def get_current_user(...):
+def get_current_user(...):
     # ...
     user = session.scalar(
         select(User).where(User.email == username)
@@ -620,7 +623,7 @@ def update_user(
 
 ### Alteração do teste
 
-```py
+```python
 def test_update_user(client, user, token):
     response = client.put(
         f'/users/{user.id}',
@@ -631,7 +634,7 @@ def test_update_user(client, user, token):
             'password': 'mynewpassword',
         },
     )
-    assert response.status_code == 200
+    assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         'username': 'bob',
         'email': 'bob@test.com',
@@ -640,9 +643,12 @@ def test_update_user(client, user, token):
 ```
 ---
 
-# Para terminar…
+# TODOs
 
-Precisamos fazer isso no endpoint de DELETE
+- Endpoint de DELETE
+- Teste do DELETE
+- Quiz
+- Exercício
 
 ---
 
