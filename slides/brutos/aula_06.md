@@ -27,7 +27,7 @@ Nossas senhas estão sendo armazenadas de forma limpa no banco de dados. Isso po
     - Caso alguém consiga acesso ao banco de dados, pode ver as senhas
     - Pessoas costumam usar as mesmas senhas em N lugares
     
-> https://monitor.firefox.com
+> https://haveibeenpwned.com/
 
 ---
 
@@ -691,10 +691,17 @@ def test_jwt_invalid_token(client):
 
 ---
 
-# TODOs
+## Exercícios
 
-- Quiz
-- Exercício
+1. Faça um teste para cobrir o cenário que levanta exception `credentials_exception` na autenticação caso o `User` não seja encontrado. Ao olhar a cobertura de `security.py` você vai notar que esse contexto não está coberto.
+
+2. Reveja os testes criados até a aula 5 e veja se eles ainda fazem sentido (testes envolvendo 400)
+
+---
+
+# Quiz
+
+Não se esqueça de responder ao [Quiz](https://fastapidozero.dunossauro.com/quizes/aula_06/) dessa aula também!
 
 ---
 
