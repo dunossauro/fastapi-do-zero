@@ -28,9 +28,11 @@ Routers
 
 ## Routers
 
-> TODO: Bullets
+O FastAPI nos fornece um recurso útil chamado routers:
 
-O FastAPI nos fornece um recurso útil chamado routers, que nos permite organizar e agrupar diferentes rotas em nossa aplicação. Em outras palavras, um router é um "subaplicativo" FastAPI que pode ser montado em uma aplicação principal.
+- Nos permite organizar e agrupar diferentes rotas em nossa aplicação.
+- Organização por domínios
+- Um "subaplicativo" FastAPI que pode ser montado em uma aplicação principal.
 
 Ao usar routers, podemos manter nosso código mais organizado e legível, especialmente à medida que nossa aplicação cresce e adicionamos mais rotas.
 
@@ -277,16 +279,10 @@ Movendo as constantes para variáveis de ambiente
 
 ---
 
-### O problema
-
-> TODO: slide grande
-
-Conforme mencionamos na aula sobre os 12 fatores, é uma boa prática manter as constantes que podem mudar dependendo do ambiente em variáveis de ambiente. Isso torna o seu projeto mais seguro e modular, pois você pode alterar essas constantes sem ter que modificar o código-fonte.
-
-Por exemplo, temos estas constantes em nosso módulo `security.py`:
+### O problema com os 12 fatores
 
 ```python
-SECRET_KEY = 'your-secret-key'  # Isso é provisório, vamos ajustar!
+SECRET_KEY = 'your-secret-key'
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 ```
@@ -314,7 +310,7 @@ class Settings(BaseSettings):
 
 ---
 
-## Adicionando estes valores ao nosso arquivo `.env`.
+### Adicionando estes valores ao nosso arquivo `.env`.
 
 
 ```shell
