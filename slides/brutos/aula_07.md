@@ -5,16 +5,19 @@ theme: rose-pine
 
 # Refatorando a Estrutura do Projeto
 
-> https://fastapidozero.dunossauro.com/06/
+> https://fastapidozero.dunossauro.com/07/
 
 ---
-Objetivos da Aula:
+
+## Objetivos da Aula
 
 - **Reestruturar o projeto para facilitar sua manutenção**
 - Mover coisas de altenticação para um arquivo chamado `fast_zero/auth.py`
 - Deixando em `fast_zero/secutiry.py` somente as validações de senha
-- Remover constantes usados em código (`SECRET_KEY`, `ALGORITHM` e `ACCESS_TOKEN_EXPIRE_MINUTES`) usando a classe Settings
+- Remover constantes do código
 - Criar routers específicos
+- Testes
+
 ---
 
 # Parte 1
@@ -25,6 +28,8 @@ Routers
 
 ## Routers
 
+> TODO: Bullets
+
 O FastAPI nos fornece um recurso útil chamado routers, que nos permite organizar e agrupar diferentes rotas em nossa aplicação. Em outras palavras, um router é um "subaplicativo" FastAPI que pode ser montado em uma aplicação principal.
 
 Ao usar routers, podemos manter nosso código mais organizado e legível, especialmente à medida que nossa aplicação cresce e adicionamos mais rotas.
@@ -33,9 +38,11 @@ Ao usar routers, podemos manter nosso código mais organizado e legível, especi
 
 ### Criando um router para Users
 
+> TODO: bullets?
+
 A ideia é mover tudo que é referente a users para um arquivo único que vamos chamar de `fast_zero/routes/users.py`
 
-```python title="fast_zero/routes/users.py"
+```python
 from fastapi import APIRouter
 
 # imports ...
@@ -51,8 +58,7 @@ Criamos uma instância do APIRouter com o prefixo '/users'. Isso nos permitirá 
 
 Temos que alterar nossos endpoints. Agora o decorador deixa de ser `@app` e vira `@router`. Como já criamos os prefixos, as URLs não precisam mais iniciar com `/users`
 
-
-```python title="fast_zero/routes/users.py"
+```python
 @router.post('/', response_model=UserPublic, status_code=201)
 @router.get('/', response_model=UserList)
 @router.put('/{user_id}', response_model=UserPublic)
@@ -62,8 +68,6 @@ Temos que alterar nossos endpoints. Agora o decorador deixa de ser `@app` e vira
 ---
 
 ## Um router para Auth
-
-Da mesma forma podemos criar um router para a rota de autenticação em `fast_zero/routers/auth.py`
 
 ```python
 from fastapi import APIRouter
@@ -82,9 +86,7 @@ def login_for_access_token(form_data: OAuth2Form, session: Session):
 
 # Juntando os routers no APP
 
-O FastAPI oferece uma maneira fácil e direta de incluir routers em nossa aplicação principal. Isso nos permite organizar nossos endpoints de maneira eficiente e manter nosso arquivo `app.py` focado apenas em suas responsabilidades principais.
-
-```python title="fast_zero/fast_zero/app.py" linenums="1"
+```python
 from fastapi import FastAPI
 
 from fast_zero.routes import auth, users
@@ -112,7 +114,7 @@ def read_root():
 
 E ver se tudo continua indo bem!
 
-```shell title="$ Execução no terminal!"
+```shell
 task test
 ```
 
@@ -130,7 +132,7 @@ Como inserimos o prefixo no router de autorização, a url para acessar o token 
 
 Para corrigir o redirecionamento, precisamos alterar o objeto `OAuth2PasswordBearer` em `security.py`
 
-```py
+```python
 # security.py
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/token')
 ```
@@ -155,7 +157,7 @@ Da mesma forma que dividimos as responsabilidades do app nos routers, também po
 
 # Claro, precisamos executar os testes de novo
 
-```shell title="$ Execução no terminal!"
+```shell
 task test
 ```
 
@@ -171,7 +173,7 @@ task test
 
 A alteração da fixture de `token` é igual que fizemos em `/tests/test_auth.py`, precisamos somente corrigir o novo endereço do router no arquivo `/tests/conftest.py`:
 
-```py
+```python
 @pytest.fixture
 def token(client, user):
     response = client.post(
@@ -210,7 +212,7 @@ O tipo `Annotated` nos permite combinar um tipo e os metadados associados a ele 
 
 Veja o exemplo a seguir:
 
-```py title="fast_zero/routes/users.py"
+```python
 from typing import Annotated
 
 Session = Annotated[Session, Depends(get_session)]
@@ -221,7 +223,7 @@ CurrentUser = Annotated[User, Depends(get_current_user)]
 
 ### Simplificando Users
 
-```python title="fast_zero/routes/users.py"
+```python
 @router.post('/', response_model=UserPublic, status_code=201)
 def create_user(user: UserSchema, session: Session):
 # ...
@@ -248,7 +250,7 @@ def delete_user(user_id: int, session: Session, current_user: CurrentUser):
 
 ### Simplificando Auth
 
-```python title="fast_zero/routers/auth.py"
+```python
 from typing import Annotated
 
 # ...
@@ -265,7 +267,7 @@ def login_for_access_token(form_data: OAuth2Form, session: Session):
 
 # Claro, precisamos executar os testes de novo
 
-```shell title="$ Execução no terminal!"
+```shell
 task test
 ```
 
@@ -277,6 +279,8 @@ Movendo as constantes para variáveis de ambiente
 ---
 
 ### O problema
+
+> TODO: slide grande
 
 Conforme mencionamos na aula sobre os 12 fatores, é uma boa prática manter as constantes que podem mudar dependendo do ambiente em variáveis de ambiente. Isso torna o seu projeto mais seguro e modular, pois você pode alterar essas constantes sem ter que modificar o código-fonte.
 
@@ -294,9 +298,7 @@ Estes valores não devem estar diretamente no código-fonte, então vamos movê-
 
 ### Adicionando as constantes a Settings
 
-Já temos uma classe ideal para fazer isso em `zero_app/settings.py`. Vamos alterar essa classe para incluir estas constantes.
-
-```python title="zero_app/settings.py" linenums="1"
+```python
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -316,7 +318,7 @@ class Settings(BaseSettings):
 ## Adicionando estes valores ao nosso arquivo `.env`.
 
 
-```shell title=".env" linenums="1"
+```shell
 DATABASE_URL="sqlite:///database.db"
 SECRET_KEY="your-secret-key"
 ALGORITHM="HS256"
@@ -330,7 +332,7 @@ Com isso, podemos alterar o nosso código em `zero_app/security.py` para ler as 
 ## Alterando o arquivo de security
 
 
-```python title="zero_app/security.py"
+```python
 from fast_zero.settings import Settings
 
 settings = Settings()
@@ -353,16 +355,24 @@ def create_access_token(data: dict):
 
 # Claro, precisamos executar os testes de novo
 
-```shell title="$ Execução no terminal!"
+```shell
 task test
 ```
 
 ---
 
+# Exercicio e quiz
+
+Migre os endpoints e testes criados nos exercícios anteriores para os locais corretos na nova estrutura da aplicação.
+
+> Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_07/)
+
+---
+
 # Commit!
 
-```shell title="$ Execução no terminal!"
+```shell
 git add .
-git commit -m "Refatorando estrutura do projeto: Criado routers para Users e Auth;\
+git commit -m "Refatorando estrutura do projeto: Criado routers para Users e Auth;
 movido constantes para variáveis de ambiente."
 ```
