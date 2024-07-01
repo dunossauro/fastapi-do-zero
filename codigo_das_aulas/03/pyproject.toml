@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.111.0"
-pydantic = {extras = ["email"], version = "^2.7.4"}
+pydantic = {extras = ["email"], version = "^2.8.0"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
