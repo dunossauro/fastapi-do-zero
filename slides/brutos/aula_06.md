@@ -124,8 +124,6 @@ task test
 
 # Autenticação
 
-A ideia por trás da autenticação é dizer (comprovar) que você é você. No sentido de garantir que para usar a aplicação, você conhece as suas credenciais (email e senha no nosso caso).
-
 <div class="mermaid" style="text-align: center;">
 sequenceDiagram
   participant Cliente as Cliente
@@ -136,6 +134,8 @@ sequenceDiagram
   Cliente ->> Servidor: Envio de credrênciais erradas
   Servidor ->> Cliente: Retorna um erro!
 </div>
+
+A ideia por trás da autenticação é dizer (comprovar) que você é você. No sentido de garantir que para usar a aplicação, você conhece as suas credenciais (email e senha no nosso caso).
 
 ---
 
