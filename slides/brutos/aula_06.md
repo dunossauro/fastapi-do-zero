@@ -249,6 +249,23 @@ flowchart LR
 
 ---
 
+## O payload e as claims
+
+```json
+{
+    "sub": "teste@test.com",
+    "exp": 1690258153
+}
+```
+
+Onde as chaves deste exemplo:
+
+- `sub`: identifica o "assunto" (subject), basicamente uma forma de identificar o cliente. Pode ser um id, um uuid, email, ...
+- `exp`: tempo de expiração do token. O backend vai usar esse dado para validar se o token ainda é válido ou existe a necessidade de uma atualização do token.
+
+
+---
+
 # Geração de tokens JWT com Python
 
 Existem diversas bibliotecas para geração de tokens, usemos o `pyjwt`.
