@@ -38,8 +38,6 @@ Ao usar routers, podemos manter nosso código mais organizado e legível, especi
 
 ### Criando um router para Users
 
-> TODO: bullets?
-
 A ideia é mover tudo que é referente a users para um arquivo único que vamos chamar de `fast_zero/routes/users.py`
 
 ```python
@@ -50,7 +48,8 @@ from fastapi import APIRouter
 router = APIRouter(prefix='/users', tags=['users'])
 ```
 
-Criamos uma instância do APIRouter com o prefixo '/users'. Isso nos permitirá definir as rotas relacionadas aos usuários neste router, em vez de no aplicativo principal. O parâmetro `tags` ajuda na organização e documentação das rotas, associando-as a uma tag específica (neste caso, 'users'), que será exibida na interface de documentação automática gerada pelo FastAPI.
+- `prefix`: o prefixo adiciona o `/users` em todos os endpoints do router
+- `tags`: agrupa os endpoints na documentação
 
 ---
 
@@ -124,7 +123,7 @@ task test
 
 Como inserimos o prefixo no router de autorização, a url para acessar o token também mudou. Foi de `/token` para `/auth/token`, isso precisa ser contemplado no redirecionamento do Bearer token do JWT.
 
-> Mostrar o erro no swagger: [localhost:8000/docs](localhost:8000/docs)
+> Mostrar o erro no [swagger](localhost:8000/docs)
 
 ---
 
@@ -373,6 +372,7 @@ Migre os endpoints e testes criados nos exercícios anteriores para os locais co
 
 ```shell
 git add .
-git commit -m "Refatorando estrutura do projeto: Criado routers para Users e Auth;
-movido constantes para variáveis de ambiente."
+git commit -m "Refatorando estrutura do projeto
+- Criado routers para Users e Auth
+- Movendo constantes para variáveis de ambiente."
 ```
