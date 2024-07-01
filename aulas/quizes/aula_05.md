@@ -4,7 +4,7 @@
 {
     "questao": '01 - Qual a função de adicionarmos a função "Depends" no seguinte código:',
 	"opcoes": {
-		"a": "Inidicar que a função depende de algo",
+		"a": "Indicar que a função depende de algo",
 		"b": "Documentar no schema os dados que são requeridos para chamar o endpoint",
 		"c": "Executar a função 'get_session' e passar seu resultado para função",
 		"d": "Indicar que a função 'get_session' tem que ser executada antes da 'create_user'",
