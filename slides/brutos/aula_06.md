@@ -491,8 +491,6 @@ Agora que temos os tokens, podemos garantir que só clientes com uma conta já c
 
 ---
 
-Assim como nos formulários, o FastAPI também conta com um validador de Tokens passados nos cabeçalhos: `OAuth2PasswordBearer`
-
 ```python
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
@@ -507,6 +505,9 @@ def get_current_user(
 ):
     ...
 ```
+
+Assim como nos formulários, o FastAPI também conta com um validador de Tokens passados nos cabeçalhos: `OAuth2PasswordBearer`
+
 
 ---
 
