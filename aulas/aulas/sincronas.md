@@ -16,7 +16,7 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 | 03 | Estruturando o Projeto e Criando Rotas CRUD                       | 20/06 | [Aula 03](https://youtu.be/WnhDgVLYfx0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 04 | Configurando o Banco de Dados e Gerenciando Migrações com Alembic | 25/06 | [Aula 04](https://youtu.be/_87z5b4szW4?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 05 | Integrando Banco de Dados a API                                   | 27/06 | [Aula 05](https://youtu.be/6pXA6zg6hT0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 06 | Autenticação e Autorização com JWT                                | 02/07 |                                                                                                   |
+| 06 | Autenticação e Autorização com JWT                                | 02/07 | [Aula 06](https://youtu.be/STt-lARdLSM?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 07 | Refatorando a Estrutura do Projeto                                | 04/07 |                                                                                                   |
 | 08 | Tornando o sistema de autenticação robusto                        | 09/07 |                                                                                                   |
 | 09 | Criando Rotas CRUD para Gerenciamento de Tarefas                  | 11/07 |                                                                                                   |
