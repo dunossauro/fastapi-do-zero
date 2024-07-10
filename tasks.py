@@ -150,6 +150,15 @@ def test_sub(c):
 
 
 @task
+def command_sub(c, cmd):
+    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
+    for path in sorted(code_path):
+        print(path)
+        with c.cd(str(path)):
+            c.run(cmd)
+
+
+@task
 def update_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
 
