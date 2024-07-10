@@ -11,7 +11,7 @@ from fast_zero.security import get_password_hash
 from tests.factories import UserFactory
 
 
-@pytest.fixture()
+@pytest.fixture
 def client(session):
     def get_session_override():
         return session
@@ -23,7 +23,7 @@ def client(session):
     app.dependency_overrides.clear()
 
 
-@pytest.fixture()
+@pytest.fixture
 def session():
     engine = create_engine(
         'sqlite:///:memory:',
@@ -38,7 +38,7 @@ def session():
     table_registry.metadata.drop_all(engine)
 
 
-@pytest.fixture()
+@pytest.fixture
 def user(session):
     password = 'testtest'
     user = UserFactory(password=get_password_hash(password))
@@ -52,7 +52,7 @@ def user(session):
     return user
 
 
-@pytest.fixture()
+@pytest.fixture
 def other_user(session):
     password = 'testtest'
     user = UserFactory(password=get_password_hash(password))
@@ -66,7 +66,7 @@ def other_user(session):
     return user
 
 
-@pytest.fixture()
+@pytest.fixture
 def token(client, user):
     response = client.post(
         '/auth/token',
