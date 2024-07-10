@@ -23,9 +23,9 @@ mkdocs-exclude-unused-files = "^1.4.0"
 mkdocs-macros-plugin = "^1.0.5"
 invoke = "^2.2.0"
 rich = "^13.7.1"
-typos = "^1.22.9"
+typos = "^1.23.1"
 fastapi = "^0.111.0"
-ruff = "^0.5.0"
+ruff = "^0.5.1"
 mkdocs-quiz = "^0.0.41"
 
 [tool.poetry.group.snippets.dependencies]
