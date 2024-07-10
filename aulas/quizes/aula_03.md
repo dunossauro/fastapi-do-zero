@@ -47,7 +47,7 @@ content:
 	"correta": "b",
 	"code" : """
 ```python
-@pytest.fixture()
+@pytest.fixture
 def client():
     return TestClient(app)
 ```"""

@@ -418,7 +418,7 @@ from fast_zero.models import User, table_registry
 
 # ...
 
-@pytest.fixture()
+@pytest.fixture
 def user(session):
     user = User(username='Teste', email='teste@test.com', password='testtest')
     session.add(user)

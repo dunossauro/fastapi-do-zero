@@ -54,7 +54,7 @@ app.dependency_overrides.clear()
 	"correta": "e",
 	"code" : """
 ```python
-@pytest.fixture()
+@pytest.fixture
 def session():
     engine = create_engine(
         'sqlite:///:memory:',

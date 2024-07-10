@@ -165,7 +165,7 @@ from sqlalchemy.orm import sessionmaker
 from fast_zero.models import table_registry
 
 
-@pytest.fixture()
+@pytest.fixture
 def session():
     engine = create_engine('sqlite:///:memory:')
     table_registry.metadata.create_all(engine)

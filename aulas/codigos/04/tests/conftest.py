@@ -7,12 +7,12 @@ from fast_zero.app import app
 from fast_zero.models import Base
 
 
-@pytest.fixture()
+@pytest.fixture
 def client():
     return TestClient(app)
 
 
-@pytest.fixture()
+@pytest.fixture
 def session():
     engine = create_engine('sqlite:///:memory:')
     Session = sessionmaker(bind=engine)
