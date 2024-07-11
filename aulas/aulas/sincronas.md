@@ -18,8 +18,8 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 | 05 | Integrando Banco de Dados a API                                   | 27/06 | [Aula 05](https://youtu.be/6pXA6zg6hT0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 06 | Autenticação e Autorização com JWT                                | 02/07 | [Aula 06](https://youtu.be/STt-lARdLSM?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 07 | Refatorando a Estrutura do Projeto                                | 04/07 | [Aula 07](https://youtu.be/nGqvdJ4Z-iA?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 08 | Aula reservada para tirar dúvidas                                 | 09/07 | [Aula 08](https://youtu.be/yPhw5muNCjo?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}  |
-| 09 | Tornando o sistema de autenticação robusto                        | 11/07 |                                                                                                   |
+| 08 | Aula reservada para tirar dúvidas                                 | 09/07 | [Aula 08](https://youtu.be/yPhw5muNCjo?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
+| 09 | Tornando o sistema de autenticação robusto                        | 11/07 | [Aula 09](https://youtu.be/JzJYWQ6wBAE?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 10 | Criando Rotas CRUD para Gerenciamento de Tarefas                  | 16/07 |                                                                                                   |
 | 11 | Dockerizando a nossa aplicação e introduzindo o PostgreSQL        | 18/07 |                                                                                                   |
 | 12 | Automatizando os testes com Integração Contínua (CI)              | 23/07 |                                                                                                   |
