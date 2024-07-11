@@ -164,7 +164,6 @@ def other_user(session):
 
 ---
 
-
 ## Alterando o teste de put para esse cenário
 
 ```python
@@ -207,11 +206,135 @@ def test_delete_user_wrong_user(client, other_user, token):
 
 ## Sobre o tempo do token
 
-TODO:
+Quando geramos o token, ele tem a claim 'exp' que é ferente a validade do token.
 
-- Claim exp
-- ExpiredSignatureError
-- freezegun
+<div class="columns">
+
+<div>
+
+```json
+{
+    "exp": 1690258153,
+    "sub": "dudu@dudu.du"
+}
+```
+
+</div>
+
+<div>
+
+```python
+def create_access_token(data: dict):
+    expire = datetime.now(
+        tz=ZoneInfo('UTC')
+    ) + timedelta( # 30m
+        minutes=ACCESS_TOKEN_EXPIRE_MINUTES
+    )
+```
+
+</div>
+</div>
+
+---
+
+## O sistema do token
+
+<div class="mermaid">
+sequenceDiagram
+    participant Cliente
+    participant Server
+    Cliente->>Server: /auth/token (Cria um token)
+	Server-->>Server: Cria um token com exp de 30 minutos
+	Server->>Cliente: Retorna o token com sub e exp
+    Cliente->>Server: PUT /users/ + token
+	Server-->>Server: Valida o token
+	Server->>Cliente: Retorna a operação
+</div>
+
+---
+
+## O tempo de duração
+
+<div class="mermaid">
+sequenceDiagram
+    participant Cliente
+    participant Server
+    Cliente->>Server: PUT /users/ + token
+	Server-->>Server: Token expirado
+	Server->>Cliente: UNAUTHORIZED - 401
+</div>
+
+Esse fluxo ainda não está implementado
+
+---
+
+## Precisamos "viajar no tempo"
+
+Para isso temos a "arma do tempo" o `freezegun`, uma biblioteca que ajuda a pausar o tempo durante os testes:
+
+```shell
+poetry add freezegun
+```
+
+---
+
+## Usando o freezegun
+
+```python
+from freezegun import freeze_time
+
+
+def test_token_expired_after_time(client, user):
+    # Para o tempo nessa data e hora
+    with freeze_time('2023-07-14 12:00:00'):
+        response = client.post(
+            '/auth/token',
+            data={'username': user.email, 'password': user.clean_password},
+        )
+        assert response.status_code == HTTPStatus.OK
+        token = response.json()['access_token']
+```
+
+---
+
+## Viajando no tempo
+
+```python
+def test_token_expired_after_time(client, user):
+    # ...
+    with freeze_time('2023-07-14 12:31:00'):
+        response = client.put(
+            f'/users/{user.id}',
+            headers={'Authorization': f'Bearer {token}'},
+            json={
+                'username': 'wrongwrong',
+                'email': 'wrong@wrong.com',
+                'password': 'wrong',
+            },
+        )
+        assert response.status_code == HTTPStatus.UNAUTHORIZED
+        assert response.json() == {'detail': 'Could not validate credentials'}
+```
+
+---
+
+## A validação da expiração
+
+```python
+def get_current_user(
+    try:
+        payload = decode(
+            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
+        )
+        username: str = payload.get('sub')
+        if not username:
+            raise credentials_exception
+        token_data = TokenData(username=username)
+    except DecodeError:
+        raise credentials_exception
+    except ExpiredSignatureError:
+        raise credentials_exception
+```
 
 ---
 
@@ -221,10 +344,39 @@ TODO:
 
 ---
 
-TODO:
+## Algumas coisas não foram cobertas
 
+Os nossos testes não cobrem os casos onde temos:
 - Senha incorreta
 - Email inexistente
+
+---
+
+## Testando a senha incorreta
+
+```python
+def test_token_wrong_password(client, user):
+    response = client.post(
+        '/auth/token',
+        data={'username': user.email, 'password': 'wrong_password'}
+    )
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.json() == {'detail': 'Incorrect email or password'}
+```
+
+---
+
+## Testando o user inexistente
+
+```python
+def test_token_inexistent_user(client):
+    response = client.post(
+        '/auth/token',
+        data={'username': 'no_user@no_domain.com', 'password': 'testtest'},
+    )
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.json() == {'detail': 'Incorrect email or password'}
+```
 
 ---
 
@@ -234,10 +386,67 @@ TODO:
 
 ---
 
-TODO:
+## O que acontece quando o exp vence?
 
-- Implementar o código
-- Implementar o teste
+É necessario que o cliente renove o token de tempos em tempos para que ele não perca a validade e possa continuar usando a aplicação sem logar novamente.
+
+```python
+# fast_zero/routes/auth.py
+
+@router.post('/refresh_token', response_model=Token)
+def refresh_access_token(
+    user: User = Depends(get_current_user),
+):
+    new_access_token = create_access_token(data={'sub': user.email})
+
+    return {'access_token': new_access_token, 'token_type': 'bearer'}
+```
+
+---
+
+## O teste para o refresh
+
+Ver se o refresh faz mesmo refresh :)
+
+```python
+def test_refresh_token(client, user, token):
+    response = client.post(
+        '/auth/refresh_token',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    data = response.json()
+
+    assert response.status_code == HTTPStatus.OK
+    assert 'access_token' in data
+    assert 'token_type' in data
+    assert data['token_type'] == 'bearer'
+```
+
+---
+
+## Testando o fluxo de refresh
+
+Não se pode dar refresh depois que o token fica inválido
+
+```python
+def test_token_expired_dont_refresh(client, user):
+    with freeze_time('2023-07-14 12:00:00'):
+        response = client.post(
+            '/auth/token',
+            data={'username': user.email, 'password': user.clean_password},
+        )
+        assert response.status_code == HTTPStatus.OK
+        token = response.json()['access_token']
+
+    with freeze_time('2023-07-14 12:31:00'):
+        response = client.post(
+            '/auth/refresh_token',
+            headers={'Authorization': f'Bearer {token}'},
+        )
+        assert response.status_code == HTTPStatus.UNAUTHORIZED
+        assert response.json() == {'detail': 'Could not validate credentials'}
+```
 
 ---
 
@@ -253,3 +462,7 @@ Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/
 git add .
 git commit -m "Implementando o reresh do token e testes de autorização"
 ```
+
+<!-- mermaid.js -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
