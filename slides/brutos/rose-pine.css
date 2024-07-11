@@ -136,6 +136,9 @@ marp-pre {
 .hljs-meta {
     color: var(--subtle);
 }
+.hljs-subst{
+    color: var(--subtle);
+}
 
 blockquote  {
     font-size: 20px;
