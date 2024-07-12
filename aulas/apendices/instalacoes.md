@@ -2,7 +2,7 @@
 
 Durante as aulas síncronas, diversas dúvidas sobre a configuração e instalação das ferramentas fora do python foram levantadas. A ideia dessa página é te auxiliar nas instalações.
 
-São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na [página de configuração do projeto](/01/#instalacao-do-python){:target="_blank"}. A ideia é agrupar todas as instalações um único lugar.
+São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}. A ideia é agrupar todas as instalações um único lugar.
 
 ## Pyenv no Windows
 Para instalar o pyenv você precisa abrir seu terminal como administrado e executar o comando:
@@ -45,7 +45,7 @@ Após isso reinicie o shell para que a variável de ambiente seja carregada.
 
 ## Instalação do Python via pyenv
 
-Agora, com o pyenv instalado, você pode instalar a versão do python que usaremos no curso. Como descrito na [página de configuração do projeto](/01/#instalacao-do-python){:target="_blank"}:
+Agora, com o pyenv instalado, você pode instalar a versão do python que usaremos no curso. Como descrito na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}:
 
 ```shell title="$ Execução no terminal!"
 pyenv install 3.12.3
