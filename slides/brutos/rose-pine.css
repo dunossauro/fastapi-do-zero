@@ -27,10 +27,7 @@ palette in :root
     --highlight-muted: #403d52;
     --highlight-high: #524f67;
 
-    font-family: Pier Sans, ui-sans-serif, system-ui, -apple-system,
-        BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
-        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol,
-        "Noto Color Emoji";
+    font-family: "OpenDyslexicRegular";
     font-weight: initial;
 
     background-color: var(--base);
@@ -91,6 +88,14 @@ mjx-container {
 marp-pre {
     background-color: var(--overlay);
     border-color: var(--highlight-high);
+}
+
+code {
+    font-family: "OpenDyslexicRegular";
+}
+
+pre > code {
+    font-family: "OpenDyslexicRegular";
 }
 
 /* Code blok */

@@ -292,6 +292,36 @@ TODO:
 - quiz
 - commit
 
+---
+
+# Exercícios
+
+1. Adicione os campos `created_at` e `updated_at` na tabela `Todo`
+   - Eles devem ser `init=False`
+   - Deve usar `func.now()` para criação
+   - O campo `updated_at` deve ter `onupdate`
+
+2. Criar uma migração para que os novos campos sejam versionados e também aplicar a migração
+3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API.
+
+---
+
+# Quiz
+
+Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_09/) dessa aula
+
+---
+
+# Commit
+
+```bash
+git add .
+git commit -m "Implementado os endpoints de tarefas"
+```
+
+
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
+<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
+<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">
