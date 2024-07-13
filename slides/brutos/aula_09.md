@@ -269,28 +269,341 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import select
 from fast_zero.schemas import TodoList, TodoPublic, TodoSchema
 # ...
-@router.get('/', response_model=TodoList)
-def list_todos(
+@router.get('/', response_model=???)
+def list_todos(  # noqa
     session: Session,
     user: CurrentUser,
-    title: str = Query(None),
-    description: str = Query(None),
-    state: str = Query(None),
-    offset: int = Query(None),
-    limit: int = Query(None),
+    title: str | None = None,
+    description: str | None = None,
+    state: str | None = None,
+    offset: int | None = None,
+    limit: int | None = None,
 ): ...
+```
+---
+
+### Vamos olhar o swagger
+
+> http://127.0.0.1:8000/docs#/todos/list_todos_todos__get
+
+---
+
+## Pegando os valores da query
+
+```python
+@router.get('/', response_model=TodoList)  # implementar
+def list_todos(...):
+    query = select(Todo).where(Todo.user_id == user.id)
+
+    if title:  # o título contém
+        query = query.filter(Todo.title.contains(title))
+
+    if description: # a descrição contém
+        query = query.filter(Todo.description.contains(description))
+
+    if state:  # o estado é igual
+        query = query.filter(Todo.state == state)
+
+    todos = session.scalars(query.offset(offset).limit(limit)).all()
+
+    return {'todos': todos}
 ```
 
 ---
 
-TODO:
+## O schema
 
-- adicionar o código do get
-- Fazer testes exaustivos no get
-- patch e teste
-- delete e teste
-- quiz
-- commit
+```python
+class TodoList(BaseModel):
+    todos: list[TodoPublic]
+```
+
+---
+
+## Testes para o GET
+
+- Devemos testar os parâmetros dos paths
+- Pra validar os filtros, precisamos de N 'todos'
+- Factory-boy vai nos ajudar aqui!
+
+---
+
+## O factory
+
+```python
+# tests/test_todos.py
+import factory.fuzzy
+from fast_zero.models import Todo, TodoState
+# ...
+class TodoFactory(factory.Factory):
+    class Meta:
+        model = Todo
+
+    title = factory.Faker('text')
+    description = factory.Faker('text')
+    state = factory.fuzzy.FuzzyChoice(TodoState)
+    user_id = 1
+```
+
+- [`FuzzyChoice`](https://factoryboy.readthedocs.io/en/stable/fuzzy.html#fuzzychoice): Fuzzy é uma forma de escolher randomicamente algo, no caso um TodoState
+
+---
+
+### O primeiro teste
+
+```python
+def test_list_todos_should_return_5_todos(session, client, user, token):
+    expected_todos = 5
+    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
+    session.commit()
+
+    response = client.get(
+        '/todos/',  # sem query
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### ofset e limit
+
+```python
+def test_list_todos_pagination_should_return_2_todos(
+    session, user, client, token
+):
+    expected_todos = 2
+    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
+    session.commit()
+
+    response = client.get(
+        '/todos/?offset=1&limit=2',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### Por título
+
+```python
+def test_list_todos_filter_title_should_return_5_todos(
+    session, user, client, token
+):
+    expected_todos = 5
+    session.bulk_save_objects(
+        TodoFactory.create_batch(5, user_id=user.id, title='Test todo 1')
+    )
+    session.commit()
+
+    response = client.get(
+        '/todos/?title=Test todo 1',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### Filtro por descrição
+
+```python
+def test_list_todos_filter_description_should_return_5_todos(
+    session, user, client, token
+):
+    expected_todos = 5
+    session.bulk_save_objects(
+        TodoFactory.create_batch(5, user_id=user.id, description='description')
+    )
+    session.commit()
+
+    response = client.get(
+        '/todos/?description=desc',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### Filtro por estado
+
+```python
+def test_list_todos_filter_state_should_return_5_todos(
+    session, user, client, token
+):
+    expected_todos = 5
+    session.bulk_save_objects(
+        TodoFactory.create_batch(5, user_id=user.id, state=TodoState.draft)
+    )
+    session.commit()
+
+    response = client.get(
+        '/todos/?state=draft',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+## As outras operações
+
+> Não podemos esquecer xD
+
+---
+
+### O Delete
+
+```python
+@router.delete('/{todo_id}', response_model=Message)
+def delete_todo(todo_id: int, session: Session, user: CurrentUser):
+    todo = session.scalar(
+        select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
+    )
+
+    if not todo:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
+        )
+
+    session.delete(todo)
+    session.commit()
+
+    return {'message': 'Task has been deleted successfully.'}
+```
+
+---
+
+### Testando o delete
+
+<div class="columns">
+
+<div>
+
+```python
+def test_delete_todo(session, client, user, token):
+    todo = TodoFactory(user_id=user.id)
+
+    session.add(todo)
+    session.commit()
+
+    response = client.delete(
+        f'/todos/{todo.id}', headers={'Authorization': f'Bearer {token}'}
+    )
+
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {
+        'message': 'Task has been deleted successfully.'
+    }
+```
+
+</div>
+
+<div>
+
+```python
+def test_delete_todo_error(client, token):
+    response = client.delete(
+        f'/todos/{10}', headers={'Authorization': f'Bearer {token}'}
+    )
+
+    assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'Task not found.'}
+```
+
+</div>
+
+</div>
+
+---
+
+## O Patch
+
+O `Patch`, diferente do verbo `PUT` permite que somente os dados a serem alterados sejam enviados. Para isso precisamos de um novo schema:
+
+```python
+class TodoUpdate(BaseModel):
+    title: str | None = None
+    description: str | None = None
+    state: TodoState | None = None
+```
+
+---
+
+### O endpoint
+
+```python
+@router.patch('/{todo_id}', response_model=TodoPublic)
+def patch_todo(
+    todo_id: int, session: Session, user: CurrentUser, todo: TodoUpdate
+):
+    db_todo = session.scalar(
+        select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
+    )
+
+    if not db_todo:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
+        )
+
+    for key, value in todo.model_dump(exclude_unset=True).items():
+        setattr(db_todo, key, value)
+
+    session.add(db_todo)
+    session.commit()
+    session.refresh(db_todo)
+
+    return db_todo
+```
+---
+
+### Testando o patch
+
+<div class="columns">
+
+<div>
+
+```python
+def test_patch_todo(session, client, user, token):
+    todo = TodoFactory(user_id=user.id)
+
+    session.add(todo)
+    session.commit()
+
+    response = client.patch(
+        f'/todos/{todo.id}',
+        json={'title': 'teste!'},
+        headers={'Authorization': f'Bearer {token}'},
+    )
+    assert response.status_code == HTTPStatus.OK
+    assert response.json()['title'] == 'teste!'
+```
+
+</div>
+
+<div>
+
+```python
+def test_patch_todo_error(client, token):
+    response = client.patch(
+        '/todos/10',
+        json={},
+        headers={'Authorization': f'Bearer {token}'},
+    )
+    assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'Task not found.'}
+```
+
+</div>
+
+</div>
 
 ---
 
