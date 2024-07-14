@@ -10,7 +10,6 @@ content:
   A classe `TodoState` define estados de tarefas (rascunho, pendente, etc.) com nomes claros, facilitando o código e garantindo segurança e agilidade na manutenção.
 <?/quiz?>
 
-
 <?quiz?>
 question: 02 - Qual o significado da relação `user: Mapped[User] = relationship(...)` em nosso modelo?
 answer: Define conexão entre usuários e tarefas (N:N) com lista inicializada e acesso bidirecional.
@@ -20,7 +19,6 @@ answer: Estabelece relação entre usuários e tarefas (1:N) com lista inicializ
 content:
   A relação `user: Mapped[User] = relationship(...)` define uma conexão 1:N entre usuários e tarefas, permitindo que um usuário tenha várias tarefas e cada tarefa esteja ligada a um único usuário. A lista de tarefas não é inicializada automaticamente e as entidades podem se acessar mutuamente.
 <?/quiz?>
-
 
 <?quiz?>
 question: 03 - Qual o significado do parâmetro de consulta `state: str | None = None` no endpoint de busca?
@@ -41,7 +39,6 @@ answer: Permite a geração de dados de teste aleatórios e realistas para difer
 content:
   O `FuzzyChoice` do Factory Boy gera valores aleatórios a partir de um conjunto predefinido, criando objetos de teste com dados realistas e facilitando testes de unidade robustos.
 <?/quiz?>
-
 
 <?quiz?>
 question: 05 - Por qual razão usamos `# noqa` no endpoint `list_todos`:
