@@ -29,13 +29,24 @@ theme: rose-pine
 
 TODO: Uma breve explicação sobre docker
 
-Recomendar o curso do Jeff
+Cruso gratuito sobre docker da [linuxtips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
 
 ---
 
 ## PostgreSQL
 
-TODO: Uma breve explicação sobre o postgres e a motivação de mudar pra ele em produção.
+Um Banco de Dados Relacional de código aberto.
+
+- `Escalabilidade`: SQLite não é ideal para aplicações em larga escala ou com grande volume de dados. PostgreSQL foi projetado para lidar com uma grande quantidade de dados e requisições.
+- `Concorrência`: diferentemente do SQLite, que tem limitações para gravações simultâneas, o PostgreSQL suporta múltiplas operações simultâneas.
+- `Funcionalidades avançadas`: PostgreSQL vem com várias extensões e funcionalidades que o SQLite pode não oferecer.
+
+---
+
+## Nota importante
+
+> Embora para o escopo da nossa aplicação e os objetivos de aprendizado o SQLite pudesse ser suficiente, é sempre bom nos prepararmos para cenários de produção real. A adoção de PostgreSQL nos dá uma prévia das práticas do mundo real e garante que nossa aplicação possa escalar sem grandes modificações de infraestrutura.
+
 
 ---
 
@@ -298,7 +309,9 @@ docker run -it --name fastzeroapp -p 8000:8000 fast_zero:latest
 
 ## Docker compose
 
-TODO: Explicações rápidas sobre o compose
+A ideia do docker compose é criar um único arquivo `yaml` que reúna todos os containers necessários para executar a aplicação.
+
+Dessa forma podemos gerenciar todos os os containers com um único comando o `docker compose`.
 
 ---
 
@@ -355,7 +368,7 @@ Não ... migrações ...
 
 ## Entrypoint
 
-TODO: Falar sobre a função do entrypoint
+A ideia do entrypoint é alterar o comando `CMD` para executar um script bash.
 
 ```bash
 #!/bin/sh
@@ -366,6 +379,8 @@ poetry run alembic upgrade head
 # Inicia a aplicação
 poetry run uvicorn --host 0.0.0.0 --port 8000 fast_zero.app:app
 ```
+
+Assim que o container for inciado, ele executará esse script.
 
 ---
 
