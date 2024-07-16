@@ -262,7 +262,7 @@ alembic upgrade head
 ## Endpoint de GET
 
 ```python
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends
 from sqlalchemy import select
 from fast_zero.schemas import TodoList, TodoPublic, TodoSchema
 # ...
