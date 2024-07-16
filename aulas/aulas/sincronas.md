@@ -8,23 +8,23 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 
 ## Agenda
 
-| N  | Aula                                                              | Data  | Link                                                                                              |
-|----|-------------------------------------------------------------------|-------|---------------------------------------------------------------------------------------------------|
-| 00 | Abertura e apresentação do curso                                  | 11/06 | [Aula 00](https://youtu.be/QShMRcicxnE?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 01 | Configurando o Ambiente de Desenvolvimento                        | 13/06 | [Aula 01](https://youtu.be/-Pi5AmOfL2s?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 02 | Introdução ao desenvolvimento WEB                                 | 18/06 | [Aula 02](https://youtu.be/2zCrXGc4QME?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 03 | Estruturando o Projeto e Criando Rotas CRUD                       | 20/06 | [Aula 03](https://youtu.be/WnhDgVLYfx0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 04 | Configurando o Banco de Dados e Gerenciando Migrações com Alembic | 25/06 | [Aula 04](https://youtu.be/_87z5b4szW4?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 05 | Integrando Banco de Dados a API                                   | 27/06 | [Aula 05](https://youtu.be/6pXA6zg6hT0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 06 | Autenticação e Autorização com JWT                                | 02/07 | [Aula 06](https://youtu.be/STt-lARdLSM?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 07 | Refatorando a Estrutura do Projeto                                | 04/07 | [Aula 07](https://youtu.be/nGqvdJ4Z-iA?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 08 | Aula reservada para tirar dúvidas                                 | 09/07 | [Aula 08](https://youtu.be/yPhw5muNCjo?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 09 | Tornando o sistema de autenticação robusto                        | 11/07 | [Aula 09](https://youtu.be/JzJYWQ6wBAE?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
-| 10 | Criando Rotas CRUD para Gerenciamento de Tarefas                  | 16/07 |                                                                                                   |
-| 11 | Dockerizando a nossa aplicação e introduzindo o PostgreSQL        | 18/07 |                                                                                                   |
-| 12 | Automatizando os testes com Integração Contínua (CI)              | 23/07 |                                                                                                   |
-| 13 | Fazendo deploy no Fly.io                                          | 25/07 |                                                                                                   |
-| 14 | Despedida e próximos passos                                       | 30/07 |                                                                                                   |
+| N  | Aula                                                              | Data  | Link                                                                                                   |
+|----|-------------------------------------------------------------------|-------|--------------------------------------------------------------------------------------------------------|
+| 00 | Abertura e apresentação do curso                                  | 11/06 | [Aula 00](https://youtu.be/QShMRcicxnE?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 01 | Configurando o Ambiente de Desenvolvimento                        | 13/06 | [Aula 01](https://youtu.be/-Pi5AmOfL2s?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 02 | Introdução ao desenvolvimento WEB                                 | 18/06 | [Aula 02](https://youtu.be/2zCrXGc4QME?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 03 | Estruturando o Projeto e Criando Rotas CRUD                       | 20/06 | [Aula 03](https://youtu.be/WnhDgVLYfx0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 04 | Configurando o Banco de Dados e Gerenciando Migrações com Alembic | 25/06 | [Aula 04](https://youtu.be/_87z5b4szW4?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 05 | Integrando Banco de Dados a API                                   | 27/06 | [Aula 05](https://youtu.be/6pXA6zg6hT0?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 06 | Autenticação e Autorização com JWT                                | 02/07 | [Aula 06](https://youtu.be/STt-lARdLSM?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 07 | Refatorando a Estrutura do Projeto                                | 04/07 | [Aula 07](https://youtu.be/nGqvdJ4Z-iA?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| S  | Aula reservada para tirar dúvidas                                 | 09/07 | [Aula dúvidas](https://youtu.be/yPhw5muNCjo?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
+| 08 | Tornando o sistema de autenticação robusto                        | 11/07 | [Aula 08](https://youtu.be/JzJYWQ6wBAE?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 09 | Criando Rotas CRUD para Gerenciamento de Tarefas                  | 16/07 | [Aula 09](https://youtu.be/yrTVzukvOJM?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
+| 10 | Dockerizando a nossa aplicação e introduzindo o PostgreSQL        | 18/07 |                                                                                                        |
+| 11 | Automatizando os testes com Integração Contínua (CI)              | 23/07 |                                                                                                        |
+| 12 | Fazendo deploy no Fly.io                                          | 25/07 |                                                                                                        |
+| 13 | Despedida e próximos passos                                       | 30/07 |                                                                                                        |
 
 Agenda com as datas:
 
