@@ -89,11 +89,8 @@ class TodoSchema(BaseModel):
     description: str
     state: TodoState
 	
-class TodoPublic(BaseModel):
+class TodoPublic(TodoSchema):
     id: int
-    title: str
-    description: str
-    state: TodoState
 ```
 
 </div>
@@ -149,9 +146,9 @@ def create_todo(
 
 ---
 
-## A tabela no banco de dados
+## Parte 2
 
-> Parte 2
+> A tabela dos todos
 
 ---
 
@@ -256,9 +253,9 @@ alembic upgrade head
 
 ---
 
-# Relacionando tabelas
+# Parte 3
 
-> TODO: Será que precisamos????
+> O endpoint de GET
 
 ---
 
@@ -453,9 +450,9 @@ def test_list_todos_filter_state_should_return_5_todos(
 
 ---
 
-## As outras operações
+## Parte 4
 
-> Não podemos esquecer xD
+> O delete
 
 ---
 
@@ -483,14 +480,9 @@ def delete_todo(todo_id: int, session: Session, user: CurrentUser):
 
 ### Testando o delete
 
-<div class="columns">
-
-<div>
-
 ```python
 def test_delete_todo(session, client, user, token):
     todo = TodoFactory(user_id=user.id)
-
     session.add(todo)
     session.commit()
 
@@ -499,14 +491,8 @@ def test_delete_todo(session, client, user, token):
     )
 
     assert response.status_code == HTTPStatus.OK
-    assert response.json() == {
-        'message': 'Task has been deleted successfully.'
-    }
+    assert response.json() == {'message': 'Task has been deleted successfully.'}
 ```
-
-</div>
-
-<div>
 
 ```python
 def test_delete_todo_error(client, token):
@@ -518,9 +504,11 @@ def test_delete_todo_error(client, token):
     assert response.json() == {'detail': 'Task not found.'}
 ```
 
-</div>
+---
 
-</div>
+# Parte 5
+
+> O endpoint de alteração via Patch
 
 ---
 
