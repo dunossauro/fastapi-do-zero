@@ -607,7 +607,7 @@ def get_current_user(...):
         select(User).where(User.email == username)
     )
 
-    if user is None:
+    if not user:
         raise credentials_exception
 
     return user

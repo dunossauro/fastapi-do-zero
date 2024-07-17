@@ -68,7 +68,7 @@ async def get_current_user(
         select(User).where(User.email == token_data.username)
     )
 
-    if user is None:
+    if not user:
         raise credentials_exception
 
     return user
