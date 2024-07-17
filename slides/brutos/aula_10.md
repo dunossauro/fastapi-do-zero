@@ -27,9 +27,13 @@ theme: rose-pine
 
 ## Docker
 
-TODO: Uma breve explicação sobre docker
+Docker é uma ferramenta para criar containers.
 
-Cruso gratuito sobre docker da [linuxtips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
+Containers são formas de **isolar as dependências**. Da mesma forma que fazemos com o ambiente virtual. Que isolam as dependências do python.
+
+No caso dos containers Docker, estamos falando de isolamento de ferramentas do sistema operacional. Isolamos programas e ambientes de forma completa
+
+> Cruso gratuito sobre docker da [linuxtips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
 
 ---
 
