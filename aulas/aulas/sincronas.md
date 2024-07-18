@@ -21,7 +21,7 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 | S  | Aula reservada para tirar dúvidas                                 | 09/07 | [Aula dúvidas](https://youtu.be/yPhw5muNCjo?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"} |
 | 08 | Tornando o sistema de autenticação robusto                        | 11/07 | [Aula 08](https://youtu.be/JzJYWQ6wBAE?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
 | 09 | Criando Rotas CRUD para Gerenciamento de Tarefas                  | 16/07 | [Aula 09](https://youtu.be/yrTVzukvOJM?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
-| 10 | Dockerizando a nossa aplicação e introduzindo o PostgreSQL        | 18/07 |                                                                                                        |
+| 10 | Dockerizando a nossa aplicação e introduzindo o PostgreSQL        | 18/07 | [Aula 10](https://youtu.be/bpBbbUgmdMs?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
 | 11 | Automatizando os testes com Integração Contínua (CI)              | 23/07 |                                                                                                        |
 | 12 | Fazendo deploy no Fly.io                                          | 25/07 |                                                                                                        |
 | 13 | Despedida e próximos passos                                       | 30/07 |                                                                                                        |
