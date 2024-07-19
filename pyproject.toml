@@ -25,7 +25,7 @@ invoke = "^2.2.0"
 rich = "^13.7.1"
 typos = "^1.23.2"
 fastapi = "^0.111.1"
-ruff = "^0.5.2"
+ruff = "^0.5.3"
 mkdocs-quiz = "^0.0.41"
 
 [tool.poetry.group.snippets.dependencies]
