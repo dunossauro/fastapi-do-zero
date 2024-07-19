@@ -19,31 +19,37 @@ theme: rose-pine
 
 ## Integração contínua (CI)
 
-> TODO: Um blah sobre CI
+Integração Contínua (CI) é uma prática de desenvolvimento que envolve a integração regular do código-fonte ao repositório principal, acompanhada de testes automatizados para garantir a qualidade.
 
----
-
-## Fluxo de integração contínua
-
-> TODO: Montar o fluxo
+<div class="mermaid">
+flowchart LR
+  pull_request --> id0["Cria um ambiente"]
+  push --> id0
+  id0 --> Testes
+  Testes --> passa{passa?}
+  passa --> sim
+  sim --> id2["Integra normalmente"]
+  passa --> não
+  não --> id1["Envia uma notificação"]
+</div>
 
 ---
 
 ## Github Actions
 
-> TODO: Um blah sobre actions
+Entre as ferramentas disponíveis para CI, o [GitHub Actions](https://github.com/features/actions) é um serviço do GitHub que automatiza workflows dentro do seu repositório. Você pode configurar o GitHub Actions para executar ações específicas — como testes automatizados — cada vez que um novo código é commitado no repositório.
 
 ---
 
-## Nosso workflow
+### Nosso workflow
 
 <div class="mermaid">
-flowchart LR
+flowchart RL
     Push -- Inicia --> Ubuntu
     Ubuntu -- Execute os --> Passos
 	Ubuntu --> Z[Configure as variáveis de ambiente]
 	subgraph Passos
-      A[Instale a versão 3.11 do Python] --> B[Copie os arquivos do repositório para o ambiente]
+      A[Instale a versão 3.12 do Python] --> B[Copie os arquivos do repositório para o ambiente]
 	  B --> C[Instale o Poetry]
 	  C --> D[Instale as dependência do projeto com Poetry]
 	  D --> E[Poetry execute os testes do projeto]
@@ -94,7 +100,12 @@ Para executar nossos testes no workflow, precisamos seguir alguns passos essenci
 3. Instalar as dependências do projeto
 4. Executar os testes
 
-> TODO: diagraminha
+<div class="mermaid">
+flowchart LR
+   Python["1: Python instalado"] --> Poetry["2: Poetry instalado"]
+   Poetry --> Deps["3: Instalar as dependências via Poetry"]
+   Deps --> Testes["4: Executar os testes via Poetry"]
+</div>
 
 ---
 
@@ -105,7 +116,7 @@ Para executar nossos testes no workflow, precisamos seguir alguns passos essenci
       - name: Instalar o python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Instalar o poetry
         run: pipx install poetry
@@ -154,7 +165,7 @@ jobs:
       - name: Instalar o python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       # continua com os passos anteriormente definidos
 ```
@@ -208,6 +219,8 @@ git add .
 git commit -m "Adicionando as variáveis de ambiente para o CI"
 git push
 ```
+
+> [Caso contrário](http://localhost:8080/11/#definindo-secrets-no-repositorio)
 
 ---
 
