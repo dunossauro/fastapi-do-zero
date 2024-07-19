@@ -103,6 +103,9 @@ marp-pre {
 /* } */
 
 /* Code blok */
+.hljs-bullet {
+    color: var(--text);
+}
 .hljs-comment {
     color: var(--muted);
 }
