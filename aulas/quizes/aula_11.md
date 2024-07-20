@@ -12,56 +12,53 @@ content:
 <?quiz?>
 question: 02 - O que é o Github Actions?
 answer: Uma aplicação que executa os testes localmente
-answer-correct: Um serviço do github para CI
 answer: Um test runner como o pytest
 answer: Forma de integrar o github com outras aplicações
+answer-correct: Um serviço do github para CI
 content:
 <?/quiz?>
 
 <?quiz?>
 question: 03 - O que é um workflow de CI?
-answer: 
 answer-correct: Uma lista de passos que o CI deve executar
-answer: 
-answer: 
+answer-correct: Uma automação executada sempre código é adicionado ao respositório
+answer: Uma forma de versionar software como o git
+answer: Passos que serão executados antes do commit
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 04 - Quando o trigger de CI é ativado?
-answer: 
-answer-correct: Sempre que fazemos um push ou criamos um pr
-answer: 
-answer: 
+question: 04 - Quando o nosso trigger de CI é ativado?
+answer-correct: Sempre que fazemos um push
+answer-correct: Sempre que criamos um pull request
+answer: Sempre que um commit é feito
+answer: Sempre que uma issue é aberta
 content:
 <?/quiz?>
 
 <?quiz?>
 question: 05 - Nos steps, o que quer dizer "uses"?
-answer: 
 answer-correct: Diz que vamos usar uma action pronta
-answer: 
-answer: 
+answer: Diz que vamos executar uma instrução de shell
+answer: Que vamos fazer a instalação de um componente no workflow
+answer: Fazer checkout do código do repositório
 content:
 <?/quiz?>
 
 <?quiz?>
 question: 06 - Nos steps, o que quer dizer "run"?
-answer: 
+answer: Que vamos usar uma action pronta do github
+answer: Serve para dizer que vamos usar um passo
+answer: Definir uma variável de ambiente
 answer-correct: Diz que vamos executar uma instrução de shell
-answer: 
-answer: 
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 07 - Qual a função das secrets no arquivo yaml?
-answer: 
+question: 07 - Qual a função das "secrets" no arquivo yaml?
+answer: Criar variáveis de ambiente
 answer-correct: Não expor dados sensíveis no arquivo de ci
-answer: 
-answer: 
+answer: Substituir variáveis ​​com valores dinâmicos
+answer: Organizar o código YAML
 content:
 <?/quiz?>
-
-
-{% include "templates/mais_quiz.md" %}
