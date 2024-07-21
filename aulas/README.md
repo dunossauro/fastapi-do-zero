@@ -12,7 +12,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 {%set link = "QShMRcicxnE" %}
 
 
-??? tip "Caso prefira ver a aula em vídeo"
+??? tip "Caso prefira ver a apresentação do curso em vídeo"
 	Esse aula ainda não está disponível em formato de vídeo, somente em texto ou live!
 	![type:video](https://www.youtube.com/embed/{{link}})
 
