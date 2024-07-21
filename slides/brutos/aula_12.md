@@ -19,15 +19,43 @@ theme: rose-pine
 
 ---
 
-## Fly.io
+## Deploy
 
-> Um blah sobre o fly
+A ultima parte do processo do código, **colocar em produção**.
+
+No caso da nossa API, é "soltar ela no mundo" para que as outras pessoas usar. Liberar na internet.
 
 ---
 
-## PaaS
+## Fly.io
 
-> Um blah sobre o PaaS
+O Fly.io é uma plataforma de deploy que nos permite fazer o lançamento nossas aplicações na nuvem e que oferece serviços para diversas linguagens de programação e frameworks como Python e Django, PHP e Laravel, Ruby e Rails, Elixir e Phoenix, etc.
+
+Ao mesmo tempo, em que permite que o deploy de aplicações em containers docker também possam ser utilizadas, como é o nosso caso. Além disso, o Fly disponibiliza bancos de dados para serem usados em nossas aplicações, como PostgreSQL e Redis.
+
+---
+
+## Mas, Fly.io?
+
+A ideia de usar o fly.io é que ele oferece uma plataforma simplificada para deploy. Sendo necessário nos preocuparmos somente o container Docker da nossa aplicação.
+
+O restante das configurações fica a encargo deles.
+
+---
+
+## PaaS - Platform as a service
+
+Uma plataforma como serviço significa que contratamos um serviço de plataforma.
+
+Por plataforma entenda que o serviço contratado vai cuidar de:
+
+- Segurança
+- Rede
+- Disponibilidade
+- Atualizações / Manutenção
+- ...
+
+Entregamos container ao serviço e damos "play"
 
 ---
 
@@ -41,20 +69,15 @@ Obrigado de mais Kátia Nakamura <3 <3 <3
 
 ---
 
-## Deploy
-
-> Um blah sobre o Deploy
-
----
-
 ## Flyctl
 
-> Um blah sobre o flyctl
-
+O flyctl é um CLI do fly que podemos usar para fazer as funções administrativas da aplicação pelo terminal:
 
 ```bash
 flyctl version
 ```
+
+> Caso precise instalar o [flyctl](https://fly.io/docs/flyctl/)
 
 ---
 
