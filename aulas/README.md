@@ -8,11 +8,17 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 # FastAPI do ZERO
 
-??? tip "Caso prefira ver a abertura em vídeo"
-	Esse aula ainda não está disponível em formato de vídeo, somente em live!
-	![type:video](https://www.youtube.com/embed/QShMRcicxnE)
+{%set aula = "00" %}
+{%set link = "QShMRcicxnE" %}
 
-	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_00.pdf){ .md-button }
+
+??? tip "Caso prefira ver a aula em vídeo"
+	Esse aula ainda não está disponível em formato de vídeo, somente em texto ou live!
+	![type:video](https://www.youtube.com/embed/{{link}})
+
+	[Aula :fontawesome-brands-youtube:](https://youtu.be/{{link}}?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){ .md-button }
+	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_{{aula}}.pdf){ .md-button }
+
 
 Olá, boas vindas ao curso de FastAPI!
 
