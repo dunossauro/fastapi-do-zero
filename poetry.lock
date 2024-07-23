@@ -1280,13 +1280,13 @@ test = ["mkdocs-include-markdown-plugin", "mkdocs-macros-test", "mkdocs-material
 
 [[package]]
 name = "mkdocs-material"
-version = "9.5.29"
+version = "9.5.30"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "mkdocs_material-9.5.29-py3-none-any.whl", hash = "sha256:afc1f508e2662ded95f0a35a329e8a5acd73ee88ca07ba73836eb6fcdae5d8b4"},
-    {file = "mkdocs_material-9.5.29.tar.gz", hash = "sha256:3e977598ec15a4ddad5c4dfc9e08edab6023edb51e88f0729bd27be77e3d322a"},
+    {file = "mkdocs_material-9.5.30-py3-none-any.whl", hash = "sha256:fc070689c5250a180e9b9d79d8491ef9a3a7acb240db0728728d6c31eeb131d4"},
+    {file = "mkdocs_material-9.5.30.tar.gz", hash = "sha256:3fd417dd42d679e3ba08b9e2d72cd8b8af142cc4a3969676ad6b00993dd182ec"},
 ]
 
 [package.dependencies]
@@ -2222,21 +2222,21 @@ files = [
 
 [[package]]
 name = "typos"
-version = "1.23.2"
+version = "1.23.3"
 description = "Source Code Spelling Correction"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "typos-1.23.2-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:b1549225f26cbcb6640e87999f20496287751428c71a7650e6afe3143e39112f"},
-    {file = "typos-1.23.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:290c6628b60f570999dfcdcf0ce5c90f195cceba160a1b16316eebd5c68129f2"},
-    {file = "typos-1.23.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0461d8e33c9ba51518203ef59df19b0945293626ce620652650927f3e3b1a9af"},
-    {file = "typos-1.23.2-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:2873d83a562725c841e6ee3ee03865ebcee7a1b5add57ca7a88578cb752c7f4a"},
-    {file = "typos-1.23.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:16ea2a308f731729711b660e0c68753047e6b9937d8d97bd6e1d1c274303ad36"},
-    {file = "typos-1.23.2-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:2dcd035661c1a45688fd0ffb14fd242bf8907996e12a8cbf8166bec0a6b360e5"},
-    {file = "typos-1.23.2-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:38da8651809e86de5cd338a68552688ab10fb45056d86c1f90a36f7911d29bd4"},
-    {file = "typos-1.23.2-py3-none-win32.whl", hash = "sha256:de20d68507126f2577c7dca88ec8d52364e8c519218d72791edcfe256622948a"},
-    {file = "typos-1.23.2-py3-none-win_amd64.whl", hash = "sha256:85f0877de4c4024fc846a08ece5a8f56dd85ab69d42d23608c29783e1d6899ed"},
-    {file = "typos-1.23.2.tar.gz", hash = "sha256:2a7b0c3523140f1c32ed91e46171a925d3748735648381cec4f6b992217d4167"},
+    {file = "typos-1.23.3-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:64eb857fd5d9fbceddf84f14dcb102355e95f79e61639c96b76a81f6526fe589"},
+    {file = "typos-1.23.3-py3-none-macosx_11_0_arm64.whl", hash = "sha256:3413933c235362f3a9dc99ea02acfbe096ac451f0828cf8e0617e9ea859add31"},
+    {file = "typos-1.23.3-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5633d7baccc9ee5f3c0a2675c3eed6369983845994d6582f70bb2dd30b55bd64"},
+    {file = "typos-1.23.3-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:07cb89e916ed3114ac5980e4df4cca936d4305f13944fa4821afdf319b24b1e2"},
+    {file = "typos-1.23.3-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4f3887869fe4a16f203a749b97d32dac763d3b8bf2a71728d20726e8f1aee33e"},
+    {file = "typos-1.23.3-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:eb2bf8c347e82687fa97f5208ded28377fcf4c0cdd685f5323b22cb756bd70d3"},
+    {file = "typos-1.23.3-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:4286ca8b7cda18e83e7e8be6aa2b37306b75138a7b0cbf3384f983a5772c0cdb"},
+    {file = "typos-1.23.3-py3-none-win32.whl", hash = "sha256:a0bd7a04f476126cb7a2e4d5c11c1083d1d68657e3349817cdb757ce110cf265"},
+    {file = "typos-1.23.3-py3-none-win_amd64.whl", hash = "sha256:372139f46e57f18943e2b83d12dc9f4533a93618f0aac8d59684479628e5e576"},
+    {file = "typos-1.23.3.tar.gz", hash = "sha256:2bcbfc32660170b2b4797a5613c4ce269fba2eef30d47d0a08ea0be57ddd3b99"},
 ]
 
 [[package]]
@@ -2649,4 +2649,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "74665851e07b6cd291ab26999f0b152ebfb5340e7f987d779752a3cff128eaf9"
+content-hash = "a92489f586572b59bf9c05db2e5380c7afa20dd9fac4c2315a88817cbe51d501"
