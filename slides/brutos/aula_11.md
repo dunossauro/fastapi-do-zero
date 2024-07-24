@@ -192,7 +192,7 @@ git push
 gh secret set -f .env
 ```
 
-> [Caso contrário](http://localhost:8080/11/#definindo-secrets-no-repositorio)
+> [Caso contrário](https://fastapidozero.dunossauro.com/11/#definindo-secrets-no-repositorio)
 
 ---
 
@@ -220,13 +220,11 @@ git commit -m "Adicionando as variáveis de ambiente para o CI"
 git push
 ```
 
-> [Caso contrário](http://localhost:8080/11/#definindo-secrets-no-repositorio)
-
 ---
 
 ## Quiz
 
-Não esqueça de responder o [quiz](http://localhost:8080/quizes/aula_11/)!
+Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_11/)!
 
 
 <!-- mermaid.js -->
