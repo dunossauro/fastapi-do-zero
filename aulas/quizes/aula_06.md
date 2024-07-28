@@ -78,7 +78,7 @@ content:
 question: 08 - Qual a função da 'secret_key'?
 answer: Usar como base para criptografar a senha do cliente com Argon2
 answer: Usar como base para geração do HTTPS
-answer-correct: Ussar como base para assinar o Token com HS256
+answer-correct: Usar como base para assinar o Token com HS256
 content:
 <?/quiz?>
 

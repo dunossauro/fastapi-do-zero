@@ -144,7 +144,7 @@ content:
 
 <?quiz?>
 question: 10 - Quando usamos 'model_config' em um schema do Pydantic estamos:
-answer-correct: Alterando o comportamento de 'model_validade'
+answer-correct: Alterando o comportamento de 'model_validate'
 answer: Adicionando mais um campo de validação
 answer: Alterando a estrutura do modelo
 content:
