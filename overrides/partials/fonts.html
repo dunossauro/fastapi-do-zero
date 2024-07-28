@@ -1,0 +1,19 @@
+<div class="md-header__option">
+    <div class="md-select">
+	{% set icon = config.fonts.icon or "material/format-font" %}
+	<button class="md-header__button md-icon" aria-label="Selecione a fonte">
+	    {% include ".icons/" ~ icon ~ ".svg" %}
+	</button>
+	<div class="md-select__inner">
+	    <ul class="md-select__list">
+		{% for preference in config.fonts.preferences %}
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="{{ preference.text }}" data-code="{{ preference.code }}" data-src="{{ preference.src }}" class="md-select__link">
+			{{ preference.text }}
+		    </a>
+		</li>
+		{% endfor %}
+	    </ul>
+	</div>
+    </div>
+</div>
