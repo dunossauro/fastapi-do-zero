@@ -96,7 +96,7 @@ task run
 
 Desta forma, ao acessar o endpoint pela API, temos a junção de templates e estáticos acontecendo:
 
-![](/assets/apendices/ola_mundo_com_templates.png){: .center .shadow }
+![](../assets/apendices/ola_mundo_com_templates.png){: .center .shadow }
 
 
 ## Asyncio
