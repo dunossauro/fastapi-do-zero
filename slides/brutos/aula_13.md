@@ -53,13 +53,13 @@ Coisas que não vimos nesse curso mas que são bastante interessantes:
 
 ## Próximos passos com web
 
-> TODO: Explicar algumas coisas
+Alguns tópicos e seus exemplos
 
-- Logs: 
-- Rastreamento: 
-- Métricas: 
-- Monitoramento: 
-- Cache: 
+- Logs: Armazenamento de eventos que ocorrem na aplicação
+- Rastreamento: Qual o caminho percorrido por uma requisição
+- Métricas: Quantas pessoas estão usando?
+- Monitoramento: Quando determinado evento ocorrer, envie um email
+- Cache: Não fazer uso exaustivo do banco de dados.
 
 ---
 
@@ -75,6 +75,30 @@ Coisas que não cobrimos no curso, mas que já foram abordadas na Live de Python
 
 ---
 
-## Um beijo
+## Acabou? Ainda não!
 
-> TODO: Fazer o jabá!
+Embora esse seja o fim das aulas síncronas, ainda teremos as aulas assíncronas (vídeos) que sairão em algum momento esse ano.
+
+---
+
+## Apoie o projeto!
+
+Esse material gratuito só existe graças a campanha de financiamento coletivo da Live de Python:
+
+[https://apoia.se/livedepython](https://apoia.se/livedepython).
+
+Você pode me pagar um café via pix: **pix.dunossauro@gmail.com**
+
+### Acompanhe as lives de Python!
+
+---
+
+## Um beijo <3
+
+Se quiser falar comigo: https://dunossauro.com
+
+Minhas outras redes:
+- Mastodon: https://bolha.us/@dunossauro
+- PixelFed: http://bolha.photos/@dunossauro
+- Github: https://github.com/dunossauro
+- Codeberg: https://codeberg.org/dunossauro
