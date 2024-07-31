@@ -1,12 +1,12 @@
 # B - Próximos passos
 
-Esse apêndice se destina a mostrar alguns exemplos de código da página de despedida/próximos passos. Alguns exemplos simples de como fazer algumas tarefas que não dizemos durante o curso.
+Esse apêndice se destina a mostrar alguns exemplos de código da página de despedida/próximos passos. Alguns exemplos simples de como fazer algumas tarefas que não trabalhamos durante o curso.
 
 ## Templates
 
-O FastAPI conta com um recurso de carregamento de arquivos estáticos, como css e js. E também permite a renderização de templates com [jinja](https://jinja.palletsprojects.com/en/3.1.x/){:target="_blank"}.
+O FastAPI conta com um recurso de carregamento de arquivos estáticos, como CSS e JS. E também permite a renderização de templates com [jinja](https://jinja.palletsprojects.com/en/3.1.x/){:target="_blank"}.
 
-Os templates são formas de passar informações para o html diretamente dos endpoints. Mas, vamos começar pela estrutura. Criaremos dois diretórios. Um para os templates e um para os arquivos estáticos:
+Os templates são formas de passar informações para o HTML diretamente dos endpoints. Mas, comecemos pela estrutura. Criaremos dois diretórios. Um para os templates e um para os arquivos estáticos:Os templates são formas de passar informações para o HTML diretamente dos endpoints. Mas, comecemos pela estrutura. Criaremos dois diretórios. Um para os templates e um para os arquivos estáticos:
 
 ```python title="Estrutura dos arquivos"
 .
@@ -96,7 +96,7 @@ task run
 
 Desta forma, ao acessar o endpoint pela API, temos a junção de templates e estáticos acontecendo:
 
-![](/assets/apendices/ola_mundo_com_templates.png){: .center .shadow }
+![](../assets/apendices/ola_mundo_com_templates.png){: .center .shadow }
 
 
 ## Asyncio
@@ -118,6 +118,7 @@ async def home():#(1)!
     await sleep(1)#(2)!
     return {'message': 'Olá mundo!'}
 ```
+
 1. Criação de uma função assíncrona
 2. Contexto de escalonamento usando `await`
 
@@ -153,7 +154,7 @@ async def test_async():
 
 ## Tarefas em segundo plano (Background)
 
-Tarefas em segundo plano...
+> TODO: adicionar explicação a esse tópico
 
 ```python title="app.py"
 from time import sleep
@@ -180,7 +181,7 @@ def segundo_plano(tempo: int, task: BackgroundTasks):#(2)!
 
 ## Eventos de ciclo de vida
 
-Os eventos de ciclo de vida são formas de iniciar ou testar alguma condição antes da aplicação ser de fato inicializada. Você pode criar validações, como saber se outra aplicação está de pé. Configurar coisas antes da aplicação ser iniciada, como iniciar o banco de dados, etc...
+Os eventos de ciclo de vida são formas de iniciar ou testar alguma condição antes da aplicação ser de fato inicializada. Você pode criar validações, como saber se outra aplicação está de pé, configurar coisas antes da aplicação ser iniciada, como iniciar o banco de dados, etc.
 
 Da mesma forma alguns casos para antes da aplicação ser finalizada também podem ser criadas. Como garantir que todas as [tarefas em segundo plano](#tarefas-em-segundo-plano-background) estejam de fato finalizadas antes da aplicação parar de rodar.
 

@@ -24,7 +24,7 @@ Nossos encontros acontecerão as terças e quintas com duração de 1h30m. Entre
 | 10 | Dockerizando a nossa aplicação e introduzindo o PostgreSQL        | 18/07 | [Aula 10](https://youtu.be/bpBbbUgmdMs?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
 | 11 | Automatizando os testes com Integração Contínua (CI)              | 23/07 | [Aula 11](https://youtu.be/xb_jtnYiPUQ?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
 | 12 | Fazendo deploy no Fly.io                                          | 25/07 | [Aula 12](https://youtu.be/Xt7A5QnsSeo?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
-| 13 | Despedida e próximos passos                                       | 30/07 |                                                                                                        |
+| 13 | Despedida e próximos passos                                       | 30/07 | [Aula 13](https://youtu.be/33vn7dxg37U?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){:target="_blank"}      |
 
 Agenda com as datas:
 
