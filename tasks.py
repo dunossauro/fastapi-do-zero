@@ -178,6 +178,8 @@ def update_sub(c):
 
             for dep in sorted(dependencies):
                 print(dep, path)
+                if dep == 'fastapi':
+                    c.run('poetry add "fastapi[standard]@latest"')
                 if dep == 'pydantic':
                     c.run('poetry add "pydantic[email]@latest"')
 
