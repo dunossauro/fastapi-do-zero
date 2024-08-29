@@ -24,8 +24,6 @@ Olá, boas vindas ao curso de FastAPI!
 
 A nossa intenção neste curso é facilitar o aprender a desenvolver APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação. Tudo isso para oferecer uma boa base para quem quer trabalhar com essa tecnologia. A nossa forma de apresentar o curso é prática e cheia de informações. Ela busca trazer o que precisa para criar os nossos próprios projetos.
 
-!!! example "Datas das aulas"
-    As datas das aulas síncronas (ao vivo e com a turma) [já estão disponíveis nesse link](aulas/sincronas.md){:target="_blank"}.
 
 ## O que é FastAPI?
 
