@@ -5,6 +5,22 @@ from invoke import task
 from rich import print
 from tomllib import loads
 
+migration_04 = """CREATE TABLE alembic_version (
+	version_num VARCHAR(32) NOT NULL, 
+	CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
+);
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	username VARCHAR NOT NULL, 
+	password VARCHAR NOT NULL, 
+	email VARCHAR NOT NULL, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP) NOT NULL, updated_at DATETIME DEFAULT (CURRENT_TIMESTAMP) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email), 
+	UNIQUE (username)
+);
+""" # noqa
+
 migration_05 = """CREATE TABLE alembic_version (
 	version_num VARCHAR(32) NOT NULL, 
 	CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
@@ -75,7 +91,13 @@ def test_migrations(c):
                     schema = c.run('sqlite3 database.db ".schema"')
                     assert schema.stdout == migration_09
 
-            elif int(path.parts[-1]) >= 4: # noqa
+            elif int(path.parts[-1]) == 4: # noqa
+                c.run('poetry install')
+                c.run('alembic upgrade head')
+                schema = c.run('sqlite3 database.db ".schema"')
+                assert schema.stdout == migration_04
+
+            elif int(path.parts[-1]) >= 5: # noqa
                 c.run('poetry install')
                 c.run('alembic upgrade head')
                 schema = c.run('sqlite3 database.db ".schema"')
