@@ -6,4 +6,4 @@
 [Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_{{aula}}.pdf){ .md-button }
 [Código :fontawesome-solid-code:](https://github.com/dunossauro/fastapi-do-zero/tree/main/codigo_das_aulas/{{aula}}){ .md-button }
 [Quiz :material-comment-question:](quizes/aula_{{aula}}.md){ .md-button }
-[Exercícios](exercicios_resolvidos/aula_{{aula}}.md){ .md-button }
+[Exercícios :material-notebook:](exercicios_resolvidos/aula_{{aula}}.md){ .md-button }
