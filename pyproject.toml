@@ -8,8 +8,8 @@ packages = [{include = "fastapi-do-zero"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-mkdocs = "^1.6.0"
-mkdocs-material = "^9.5.33"
+mkdocs = "^1.6.1"
+mkdocs-material = "^9.5.34"
 taskipy = "^1.13.0"
 mkdocs-glightbox = "^0.4.0"
 mkdocs-video = "^1.5.0"
@@ -23,9 +23,9 @@ mkdocs-exclude-unused-files = "^1.4.0"
 mkdocs-macros-plugin = "^1.0.5"
 invoke = "^2.2.0"
 rich = "^13.8.0"
-typos = "^1.24.1"
-fastapi = "^0.112.2"
-ruff = "^0.6.2"
+typos = "^1.24.5"
+fastapi = "^0.113.0"
+ruff = "^0.6.4"
 mkdocs-quiz = "^0.0.41"
 
 [tool.poetry.group.snippets.dependencies]
