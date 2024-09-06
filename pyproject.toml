@@ -24,7 +24,7 @@ mkdocs-macros-plugin = "^1.0.5"
 invoke = "^2.2.0"
 rich = "^13.8.0"
 typos = "^1.24.5"
-fastapi = "^0.113.0"
+fastapi = "^0.114.0"
 ruff = "^0.6.4"
 mkdocs-quiz = "^0.0.41"
 
