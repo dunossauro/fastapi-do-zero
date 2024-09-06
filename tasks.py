@@ -171,22 +171,22 @@ def update_sub(c):
 
         print(path)
         with c.cd(str(path)):
-            c.run('poetry update')
             c.run('rm -rf .venv')
             if (path / 'poetry.lock').exists():
                 c.run('rm poetry.lock')
 
             for dep in sorted(dependencies):
                 print(dep, path)
-                if dep == 'fastapi':
+                if dep in 'fastapi':
                     c.run('poetry add "fastapi[standard]@latest"')
-                if dep == 'pydantic':
+
+                elif dep in 'pydantic':
                     c.run('poetry add "pydantic[email]@latest"')
 
-                elif dep == 'pwdlib':
+                elif dep in'pwdlib':
                     c.run('poetry add "pwdlib[argon2]@latest"')
 
-                elif dep == 'psycopg':
+                elif dep in 'psycopg':
                     c.run('poetry add "psycopg[binary]@latest"')
 
                 elif dep == 'python':
@@ -197,3 +197,5 @@ def update_sub(c):
 
             for dep in dev_dependencies:
                 c.run(f'poetry add --group dev {dep}@latest')
+
+            c.run('poetry install')
