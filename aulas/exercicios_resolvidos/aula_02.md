@@ -33,7 +33,7 @@ def read_root():
 
 O teste que faz a validação do valor retornado pelo endpoint não precisa ser muito robusto. A ideia principal do exercício é somente validar se estamos retornando o "Olá Mundo" em formato de HTML:
 
-```python
+```python title="Implementação do teste"
 from http import HTTPStatus
 
 from fastapi.testclient import TestClient
