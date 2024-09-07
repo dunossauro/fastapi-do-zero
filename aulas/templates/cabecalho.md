@@ -6,4 +6,4 @@
 [Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_{{aula}}.pdf){ .md-button }
 [Código :fontawesome-solid-code:](https://github.com/dunossauro/fastapi-do-zero/tree/main/codigo_das_aulas/{{aula}}){ .md-button }
 [Quiz :material-comment-question:](quizes/aula_{{aula}}.md){ .md-button }
-{% if aula in ["01","02","03","04", "05"] %}[Exercícios :material-notebook:](exercicios_resolvidos/aula_{{aula}}.md){ .md-button }{% endif %}
+{% if aula in ["01","02","03","04", "05", "06"] %}[Exercícios :material-notebook:](exercicios_resolvidos/aula_{{aula}}.md){ .md-button }{% endif %}
