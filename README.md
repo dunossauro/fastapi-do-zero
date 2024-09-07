@@ -35,16 +35,22 @@ Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento d
 pipx install poetry==1.8.3
 ```
 
-A versão usada do python é a versão 3.12.2:
+A versão usada do python é a versão 3.12.5:
 
 ```
-pyenv local 3.12.2
+pyenv local 3.12.5
 ```
 
 para configurar todo o ambiente basta executar:
 
 ```bash
 poetry install
+```
+
+para ativar o ambiente virtual:
+
+```bash
+poetry shell
 ```
 
 #### Sobre os comandos
@@ -60,8 +66,8 @@ slides_html Gera os slides em html (formato usado nas aulas)
 pdf         Cria um pdf único de todo o curso (não otimizado ainda)
 ```
 
-Para executar qualquer comando, basta usar: `task <comando>`
+Para executar qualquer comando, basta usar: `task <comando>`, como por exemplo `task serve`.
 
 #### Sobre os slides
 
-Todos os slides foram feitos usando marp. Versão do marp usada: `3.2.1`. O tema `rose-pine` está dentro da pasta dos slides brutos.
+Todos os slides foram feitos usando marp. Versão do marp usada: `3.4.0`. O tema `rose-pine` está dentro da pasta dos slides brutos.
