@@ -93,6 +93,7 @@ fonts:
 
 extra_javascript:
   - assets/javascripts/extra.js
+  - https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js
 
 extra_css:
   - stylesheets/extra.css
