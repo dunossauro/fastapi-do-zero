@@ -1,6 +1,6 @@
 # FastAPI do Zero
 
-Esse é o repositório do material sobre FastAPI disponível em: [fastapidozero.dunossauro.com](https://fastapidozero.dunossauro.com).
+O site gerado por esse repositório está disponível em: [fastapidozero.dunossauro.com](https://fastapidozero.dunossauro.com).
 
 > O objetivo final desse curso é que ele também seja disponibilizado em vídeo quando a escrita do material terminar. Nos vemos no youtube em breve!
 
