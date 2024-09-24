@@ -6,7 +6,7 @@ Esse apêndice se destina a mostrar alguns exemplos de código da página de des
 
 O FastAPI conta com um recurso de carregamento de arquivos estáticos, como CSS e JS. E também permite a renderização de templates com [jinja](https://jinja.palletsprojects.com/en/3.1.x/){:target="_blank"}.
 
-Os templates são formas de passar informações para o HTML diretamente dos endpoints. Mas, comecemos pela estrutura. Criaremos dois diretórios. Um para os templates e um para os arquivos estáticos:Os templates são formas de passar informações para o HTML diretamente dos endpoints. Mas, comecemos pela estrutura. Criaremos dois diretórios. Um para os templates e um para os arquivos estáticos:
+Os templates são formas de passar informações para o HTML diretamente dos endpoints. Mas, comecemos pela estrutura. Criaremos dois diretórios. Um para os templates e um para os arquivos estáticos:
 
 ```python title="Estrutura dos arquivos"
 .
