@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from fast_zero.database import get_session
 from fast_zero.models import Todo, User
 from fast_zero.schemas import (
+    FilterTodo,
     Message,
     TodoList,
     TodoPublic,
@@ -44,27 +45,27 @@ def create_todo(
 
 
 @router.get('/', response_model=TodoList)
-def list_todos(  # noqa
+def list_todos(
     session: Session,
     user: CurrentUser,
-    title: str = Query(None),
-    description: str = Query(None),
-    state: str = Query(None),
-    offset: int = Query(None),
-    limit: int = Query(None),
+    todo_filter: Annotated[FilterTodo, Query()],
 ):
     query = select(Todo).where(Todo.user_id == user.id)
 
-    if title:
-        query = query.filter(Todo.title.contains(title))
+    if todo_filter.title:
+        query = query.filter(Todo.title.contains(todo_filter.title))
 
-    if description:
-        query = query.filter(Todo.description.contains(description))
+    if todo_filter.description:
+        query = query.filter(
+            Todo.description.contains(todo_filter.description)
+        )
 
-    if state:
-        query = query.filter(Todo.state == state)
+    if todo_filter.state:
+        query = query.filter(Todo.state == todo_filter.state)
 
-    todos = session.scalars(query.offset(offset).limit(limit)).all()
+    todos = session.scalars(
+        query.offset(todo_filter.offset).limit(todo_filter.limit)
+    ).all()
 
     return {'todos': todos}
 

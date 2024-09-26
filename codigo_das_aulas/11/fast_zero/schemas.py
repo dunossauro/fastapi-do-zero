@@ -51,3 +51,14 @@ class TodoUpdate(BaseModel):
     title: str | None = None
     description: str | None = None
     state: TodoState | None = None
+
+
+class FilterPage(BaseModel):
+    offset: int = 0
+    limit: int = 100
+
+
+class FilterTodo(FilterPage):
+    title: str | None = None
+    description: str | None = None
+    state: TodoState | None = None
