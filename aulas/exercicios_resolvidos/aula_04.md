@@ -33,6 +33,55 @@ class User:
 
 ## Exercício 02
 
+Altere o evento de testes (`mock_db_time`) para ser contemplado no mock o campo `updated_at` na validação do teste.
+
+### Solução
+
+A ideia é adicionar mais um campo na verificação do modelo, para que o update também esteja um horário determinístico:
+
+```python hl_lines="7 8"
+@contextmanager
+def mock_db_time(*, model, time=datetime(2024, 1, 1)):
+
+    def fake_time_handler(mapper, connection, target):
+        if hasattr(target, 'created_at'):
+            target.created_at = time
+        if hasattr(target, 'updated_at'):
+            target.updated_at = time
+
+    event.listen(model, 'before_insert', fake_time_handler)
+
+    yield time
+
+    event.remove(model, 'before_insert', fake_time_handler)
+```
+
+Com a alteração do modelo, o teste também passará a falhar. Isso pode ser modificado adicionando o campo `updated_at` no dicionário de validação:
+
+```python hl_lines="17"
+def test_create_user(session):
+    with mock_db_time(model=User) as time:
+        new_user = User(
+            username='alice', password='secret', email='teste@test'
+        )
+        session.add(new_user)
+        session.commit()
+
+        user = session.scalar(select(User).where(User.username == 'alice'))
+
+    assert asdict(user) == {
+        'id': 1,
+        'username': 'alice',
+        'password': 'secret',
+        'email': 'teste@test',
+        'created_at': time,
+        'updated_at': time,
+    }
+```
+
+
+## Exercício 03
+
 Criar uma nova migração autogerada com alembic.
 
 ### Solução
@@ -90,7 +139,7 @@ def downgrade() -> None:
 1. Adiciona a coluna `updated_at` na tabela `users`
 2. Remove a coluna `updated_at` na tabela `users`
 
-## Exercício 03
+## Exercício 04
 
 Aplicar essa migração ao banco de dados
 
