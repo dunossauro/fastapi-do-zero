@@ -42,7 +42,6 @@ def session():
 
 @contextmanager
 def _mock_db_time(*, model, time=datetime(2024, 1, 1)):
-
     def fake_time_handler(mapper, connection, target):
         if hasattr(target, 'created_at'):
             target.created_at = time
