@@ -140,3 +140,43 @@ def test_create_todo(client, token, mock_db_time):
         'updated_at': time.isoformat()
     }
 ```
+
+## Exercício 04
+
+Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no `Todo` de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.
+
+### Solução
+
+Esse exercício é um pouco mais trabalhoso que os demais. Vamos dividir ele em etapas:
+
+1. Devemos ter o tempo determinístico (`mock_db_time`) para poder validar o json
+2. Devemos criar um todo com dados aleatórios (`TodoFactory`)
+3. Devemos ter um token e um usuário criado
+
+
+No final das contas, algo parecido (não necessariamente idêntico) a isso:
+
+```python
+def test_list_todos_should_return_all_expected_fields__exercicio(
+    session, client, user, token, mock_db_time
+):
+    with mock_db_time(model=Todo) as time:
+        todo = TodoFactory.create(user_id=user.id)
+        session.add(todo)
+        session.commit()
+
+    session.refresh(todo)
+    response = client.get(
+        '/todos/',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert response.json()['todos'] == [{
+        'created_at': time.isoformat(),
+        'updated_at': time.isoformat(),
+        'description': todo.description,
+        'id': todo.id,
+        'state': todo.state,
+        'title': todo.title,
+    }]
+```
