@@ -35,8 +35,6 @@ theme: rose-pine
 
 > https://fastapidozero.dunossauro.com/14/
 
-> PS: Entrega até 30 de agosto
-
 ---
 
 ## Próximos passos com o framework

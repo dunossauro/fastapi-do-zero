@@ -16,6 +16,7 @@ theme: rose-pine
 -  Configurando e criando o banco de dados
 -  Criando e localizando tabelas utilizando SQLAlchemy
 -  Testando a criação de tabelas
+-  Eventos do SQLAlchemy
 -  Gerenciando migrações do banco de dados com Alembic
 
 ---
@@ -366,8 +367,9 @@ alembic upgrade head
 
 ## Exercícios + Quiz
 
-2. Criar uma nova migração autogerada com alembic
-3. Aplicar essa migração ao banco de dados
+2. Altere o evento de testes (`mock_db_time`) para ser contemplado no mock o campo `updated_at` na validação do teste.
+3. Criar uma nova migração autogerada com alembic
+4. Aplicar essa migração ao banco de dados
 
 > Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_04/) da aula
 

@@ -598,12 +598,13 @@ def test_patch_todo_error(client, token):
 # Exercícios
 
 1. Adicione os campos `created_at` e `updated_at` na tabela `Todo`
-   - Eles devem ser `init=False`
-   - Deve usar `func.now()` para criação
-   - O campo `updated_at` deve ter `onupdate`
+	- Eles devem ser `init=False`
+	- Deve usar `func.now()` para criação
+	- O campo `updated_at` deve ter `onupdate`
 
 2. Criar uma migração para que os novos campos sejam versionados e também aplicar a migração
-3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API.
+3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API. Essa alteração deve ser refletida nos testes também!
+4. Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no `Todo` de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.
 
 ---
 

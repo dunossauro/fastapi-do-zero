@@ -143,7 +143,7 @@ isso vai nos gerar essa estrutura:
 Para que a versão que instalamos com pyenv seja usada em nosso projeto criado com poetry, devemos dizer ao pyenv qual versão do python será usada nesse diretório:
 
 ```shell title="$ Execução no terminal!"
-pyenv local 3.12.3  # Essa era a maior versão do 3.12 quando escrevi
+pyenv local 3.12.6  # Essa era a maior versão do 3.12 quando escrevi
 ```
 
 Em conjunto com essa instrução, devemos dizer ao poetry que usaremos essa versão em nosso projeto. Para isso vamos alterar o arquivo de configuração do projeto o `pyproject.toml` na raiz do projeto:
@@ -168,7 +168,7 @@ poetry install
 Para instalar o fastapi
 
 ```bash
-poetry add fastapi
+poetry add fastapi[standard]
 ```
 
 ---

@@ -450,6 +450,12 @@ def test_token_expired_dont_refresh(client, user):
 
 ---
 
+# Exercício
+
+O endpoint de PUTusa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como other_user. Atualize o teste para usar essa nova fixture.
+
+---
+
 # Quiz
 
 Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_08/) dessa aula!

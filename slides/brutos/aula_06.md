@@ -190,16 +190,6 @@ OAuth2 É um protocolo aberto para autorização. O FastAPI disponibiliza alguns
 
 ---
 
-## O uso de formulários
-
-Quando usamos formulários no FastAPI, como `OAuth2PasswordRequestForm`, precisamos instalar uma biblioteca para multipart:
-
-```bash
-poetry add python-multipart
-```
-
----
-
 # Validando os dados!
 
 ```python
@@ -713,7 +703,9 @@ def test_jwt_invalid_token(client):
 
 1. Faça um teste para cobrir o cenário que levanta exception `credentials_exception` na autenticação caso o `User` não seja encontrado. Ao olhar a cobertura de `security.py` você vai notar que esse contexto não está coberto.
 
-2. Reveja os testes criados até a aula 5 e veja se eles ainda fazem sentido (testes envolvendo 400)
+2. Faça um teste para cobrir o cenário que levanta exception credentials_exception na autenticação caso o email seja enviado, mas não exista um User correspondente cadastrado na base de dados. Ao olhar a cobertura de security.py você vai notar que esse contexto não está coberto.
+
+3. Reveja os testes criados até a aula 5 e veja se eles ainda fazem sentido (testes envolvendo 400)
 
 ---
 

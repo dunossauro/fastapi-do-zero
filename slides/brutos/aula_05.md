@@ -485,7 +485,7 @@ def put_ou_delete():
 def update_user(
     user_id: int, user: UserSchema, session: Session = Depends(get_session)
 ):
-	# Validação
+    # Validação
 
     db_user.username = user.username
     db_user.password = user.password
@@ -502,7 +502,7 @@ def update_user(
 ```python
 @app.delete('/users/{user_id}', response_model=Message)
 def delete_user(user_id: int, session: Session = Depends(get_session)):
-	# Validação
+    # Validação
     session.delete(db_user)
     session.commit()
 

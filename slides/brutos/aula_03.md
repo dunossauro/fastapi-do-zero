@@ -164,12 +164,6 @@ class UserSchema(BaseModel):
     password: str
 ```
 
-Para usar essa validação, podemos instalar uma extensão do pydantic:
-
-```bash
-poetry add "pydantic[email]"
-```
-
 ---
 
 # Dito tudo isso
