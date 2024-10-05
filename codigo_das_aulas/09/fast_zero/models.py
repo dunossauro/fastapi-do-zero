@@ -49,3 +49,11 @@ class Todo:
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
 
     user: Mapped[User] = relationship(init=False, back_populates='todos')
+
+    # Exercício 01
+    created_at: Mapped[datetime] = mapped_column(
+        init=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        init=False, server_default=func.now(), onupdate=func.now()
+    )
