@@ -1,6 +1,9 @@
+from contextlib import contextmanager
+from datetime import datetime
+
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.orm import Session
 from testcontainers.postgres import PostgresContainer
 
@@ -14,6 +17,7 @@ from tests.factories import UserFactory
 @pytest.fixture(scope='session')
 def engine():
     with PostgresContainer('postgres:16', driver='psycopg') as postgres:
+
         _engine = create_engine(postgres.get_connection_url())
 
         with _engine.begin():
@@ -41,6 +45,27 @@ def session(engine):
         session.rollback()
 
     table_registry.metadata.drop_all(engine)
+
+
+@contextmanager
+def _mock_db_time(*, model, time=datetime(2024, 1, 1)):
+
+    def fake_time_handler(mapper, connection, target):
+        if hasattr(target, 'created_at'):
+            target.created_at = time
+        if hasattr(target, 'updated_at'):
+            target.updated_at = time
+
+    event.listen(model, 'before_insert', fake_time_handler)
+
+    yield time
+
+    event.remove(model, 'before_insert', fake_time_handler)
+
+
+@pytest.fixture
+def mock_db_time():
+    return _mock_db_time
 
 
 @pytest.fixture

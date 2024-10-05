@@ -31,6 +31,11 @@ class User:
         init=False, back_populates='user', cascade='all, delete-orphan'
     )
 
+    # Exercício
+    updated_at: Mapped[datetime] = mapped_column(
+        init=False, server_default=func.now(), onupdate=func.now()
+    )
+
 
 @table_registry.mapped_as_dataclass
 class Todo:
