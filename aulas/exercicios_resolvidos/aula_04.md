@@ -41,7 +41,7 @@ A ideia é adicionar mais um campo na verificação do modelo, para que o update
 
 ```python hl_lines="7 8"
 @contextmanager
-def mock_db_time(*, model, time=datetime(2024, 1, 1)):
+def _mock_db_time(*, model, time=datetime(2024, 1, 1)):
 
     def fake_time_handler(mapper, connection, target):
         if hasattr(target, 'created_at'):
@@ -59,7 +59,7 @@ def mock_db_time(*, model, time=datetime(2024, 1, 1)):
 Com a alteração do modelo, o teste também passará a falhar. Isso pode ser modificado adicionando o campo `updated_at` no dicionário de validação:
 
 ```python hl_lines="17"
-def test_create_user(session):
+def test_create_user(session, mock_db_time):
     with mock_db_time(model=User) as time:
         new_user = User(
             username='alice', password='secret', email='teste@test'
