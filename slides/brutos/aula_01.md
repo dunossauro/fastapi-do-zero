@@ -43,6 +43,7 @@ Materiais de qualidades e de pessoas incrível que fazem material aberto como eu
 
 1. [Curso de git do teomewhy](https://www.youtube.com/playlist?list=PLvlkVRRKOYFQ3cfYPjLeQ0KvrQ8bG5H11)
 2. [Curso de Docker da LinuxTips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
+3. [Ajuda para configurar o ambiente - Apêndice A](https://fastapidozero.dunossauro.com/apendices/a_instalacoes/)
 
 ---
 
@@ -53,6 +54,8 @@ Ferramentas incríveis que tornam o gerenciamento mais simples:
 7. O [pipx](https://github.com/pypa/pipx) pode te ajudar bastante nesses momentos de instalações globais
 8. O [ignr](https://github.com/Antrikshy/ignr.py) para criar nosso gitignore
 7. O [gh](https://cli.github.com/) para criar o repositório e fazer alterações sem precisar acessar a página do github
+
+> Presentes no apêndice A também :)
 
 ---
 
@@ -71,7 +74,7 @@ pyenv install 3.12:latest
 
 # Pyenv
 
-Pyenv é uma aplicação externa ao python que você instale diferentes versões do python no sistema e as isola.
+Pyenv é uma aplicação externa ao python que permite a instalação de diferentes versões do python no sistema e as isola.
 
 Na computação, chamamos esse conceito de [shim](https://en.wikipedia.org/wiki/Shim_(computing)). Uma camada, onde toda vez que o python for chamado, ele redirecionará a chamada do python ao pyenv. Uma espécie de "proxy".
 
@@ -150,7 +153,7 @@ Em conjunto com essa instrução, devemos dizer ao poetry que usaremos essa vers
 
 ```toml title="pyproject.toml" linenums="9"
 [tool.poetry.dependencies]
-python = "3.12.*"  # .* quer dizer qualquer versão da 3.11
+python = "3.12.*"  # .* quer dizer qualquer versão da 3.12
 ```
 
 ---
@@ -193,7 +196,7 @@ python -i fastzero/app.py
 
 ## Nosso olá mundo [1]
 
-```python {1}
+```python
 from fastapi import FastAPI
 
 app = FastAPI()

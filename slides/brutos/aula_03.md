@@ -220,7 +220,7 @@ from fast_zero.schemas import UserSchema, UserPublic
 
 # código omitido
 
-@app.post('/users/', status_code=201, response_model=UserPublic)
+@app.post('/users/', status_code=status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema):
     return user
 ```
@@ -237,7 +237,7 @@ from fast_zero.schemas import UserSchema, UserPublic, UserDB
 database = []  # provisório para estudo!
 
 
-@app.post('/users/', status_code=201, response_model=UserPublic)
+@app.post('/users/', status_code=status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema):
     user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)
 	# Aqui precisamos criar um novo modelo que represente o banco
@@ -280,7 +280,7 @@ def test_create_user():
             'password': 'secret',
         },
     )
-    assert response.status_code == 201
+    assert response.status_code == HTTPStatus.CREATED
     assert response.json() == {
         'username': 'alice',
         'email': 'alice@example.com',
@@ -459,7 +459,7 @@ def test_update_user(client):
 
 1. Escrever um teste para o erro de `404` (NOT FOUND) para o endpoint de PUT;
 2. Escrever um teste para o erro de `404` (NOT FOUND) para o endpoint de DELETE;
-3. Crie um endpoint GET para pegar um único recurso como `users/{id}` e faça seus testes.
+3. Crie um endpoint GET para pegar um único recurso como `users/{id}` e faça seus testes para `200` e `404`.
 
 > Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_03/) da aula
 
