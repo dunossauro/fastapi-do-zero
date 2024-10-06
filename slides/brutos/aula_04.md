@@ -141,7 +141,9 @@ Quanto à persistência de dados e consultas ao banco de dados utilizando o ORM,
 <div class="mermaid" style="text-align: center;">
 graph
   B[SQLAlchemy ORM] -- fornece --> D[Session]
+  D -- eventos --> D
   D -- interage com --> C[Modelos]
+  C -- eventos --> C
   C -- mapeados para --> G[Tabelas no Banco de Dados]
   D -- depende de --> E[Engine]
   E -- conecta-se com --> F[Banco de Dados]
@@ -182,15 +184,15 @@ def session():
 
 1. `create_engine('sqlite:///:memory:')`: cria um mecanismo de banco de dados SQLite em memória usando SQLAlchemy. Este mecanismo será usado para criar uma sessão de banco de dados para nossos testes.
 
-2. `Session = sessionmaker(bind=engine)`: cria uma fábrica de sessões para criar sessões de banco de dados para nossos testes.
+2. `table_registry.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
 
-3. `table_registry.metadata.create_all(engine)`: cria todas as tabelas no banco de dados de teste antes de cada teste que usa a fixture `session`.
+3. `with Session(engine) as session`: cria uma sessão `Session` para que os testes possam se comunicar com o banco de dadosvia `engine`.
 
 ---
 
 ### Eu sei, esse código é um pouco complexo de mais [1]
 
-4. `yield Session()`: fornece uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
+4. `yield session`: fornece uma instância de Session que será injetada em cada teste que solicita a fixture `session`. Essa sessão será usada para interagir com o banco de dados de teste.
 
 5. `table_registry.metadata.drop_all(engine)`: após cada teste que usa a fixture `session`, todas as tabelas do banco de dados de teste são eliminadas, garantindo que cada teste seja executado contra um banco de dados limpo.
 
@@ -211,6 +213,169 @@ def test_create_user(session):
     user = session.scalar(select(User).where(User.username == 'alice'))
 
     assert user.username == 'alice'
+```
+
+---
+
+## Um sucesso, mas nem tanto
+
+Temos um problema nesse teste que pode tornar ele complicado de validar. Validamos somente o nome `alice`, mas não validamos o objeto todo. Isso é um tanto quanto complicado. Pois para validar o objeto inteiro, precisamos saber a que horas ele foi criado, por conta do campo `init=False`.
+
+Ele inviabiliza o envido de um dado determinístico ao objeto.
+
+---
+
+## Eventos do ORM
+
+Para atuar em cenários assim, podemos "roubar nos testes" usando eventos do SQLAlchemy.
+
+<div class="columns">
+<div class="mermaid" style="text-align: center;">
+flowchart TD
+   subgraph Operação
+     direction LR
+     A[Hook] --> B[Operação]
+     B --> C[Hook]
+   end
+</div>
+
+<div class="mermaid" style="text-align: center;">
+flowchart TD
+   commit --> Z["Inserir registro no banco (operação)"]
+   subgraph Z["Inserir registro no banco (operação)"]
+     direction LR
+     A[Hook - before_insert] --> B[insert]
+   end
+</div>
+</div>
+
+A ideia por trás dos eventos é fazer alguma operação antes ou depois de alguma operação.
+
+---
+
+### Exemplo de evento
+
+Chamamos o objeto `event` do SQLalchemy para "ouvir" uma operação:
+
+```python
+from sqlalchemy import event
+
+
+def hook(mapper, connection, target):
+   ...
+
+
+event.listen(User, 'before_insert', hook)
+```
+
+Nesse caso, estamos ouvindo `before_insert`. O que significa que ele executará a função `hook` antes de inserir no banco de fato.
+
+---
+
+### Nosso evento para manipular o campo de data
+
+```python
+from contextlib import contextmanager
+from datetime import datetime
+from sqlalchemy import create_engine, event
+
+# ...
+
+@contextmanager
+def _mock_db_time(*, model, time=datetime(2024, 1, 1)):
+
+    def fake_time_hook(mapper, connection, target):
+        if hasattr(target, 'created_at'):
+            target.created_at = time
+
+    event.listen(model, 'before_insert', fake_time_hook)
+
+    yield time
+
+    event.remove(model, 'before_insert', fake_time_hook)
+```
+
+---
+
+### O que de fato esse evento vai fazer?
+
+```python
+@contextmanager
+def _mock_db_time(*, model, time=datetime(2024, 1, 1)):
+
+    def fake_time_hook(mapper, connection, target):
+        if hasattr(target, 'created_at'):
+            target.created_at = time
+
+    event.listen(model, 'before_insert', fake_time_hook)
+
+    yield time
+
+    event.remove(model, 'before_insert', fake_time_hook)
+```
+
+Antes de executar o insert a função `fake_time_hook` vai alterar o `created_at` para o valor default do parâmetro `time`. Fazendo que o ele não use o valor padrão do datetime do db.
+
+O `contextmanager` faz com que a função possa ser usada com o bloco `with`.
+
+---
+
+### Transformando em uma fixture
+
+Agora que temos a função gerenciadora de contexto, para evitar o sistema de importação durante os testes, podemos criar uma fixture para ele.
+
+De forma bem simples, somente retornando a função `_mock_db_time`:
+
+```python title="tests/conftest.py"
+@pytest.fixture
+def mock_db_time():
+    return _mock_db_time
+```
+
+Dessa forma podemos fazer a chamada direta no teste.
+
+---
+
+### Fazendo o teste do objeto completo
+
+```python
+from dataclasses import asdict
+from sqlalchemy import select
+from fast_zero.models import User
+
+def test_create_user(session, mock_db_time):
+    with mock_db_time(model=User) as time: #(1)!
+        new_user = User(
+            username='alice', password='secret', email='teste@test'
+        )
+        session.add(new_user)
+        session.commit()
+
+	user = session.scalar(select(User).where(User.username == 'alice'))
+
+    assert asdict(user) == { #(2)!
+        'id': 1,
+        'username': 'alice',
+        'password': 'secret',
+        'email': 'teste@test',
+        'created_at': time,  #(3)!
+    }
+```
+
+---
+
+### A validação completa
+
+Dessa forma todos os campos, até os que são manipulados diretamente pelo ORM podem ser testados.
+
+```python
+    assert asdict(user) ==
+        'id': 1,
+        'username': 'alice',
+        'password': 'secret',
+        'email': 'teste@test',
+        'created_at': time,
+    }
 ```
 
 ---
@@ -384,7 +549,7 @@ git push
 ```
 
 <!-- mermaid.js -->
-<script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
+<script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
 <script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
 <link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">
