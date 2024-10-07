@@ -77,7 +77,7 @@ def user(session):
     session.commit()
     session.refresh(user)
 
-    user.clean_password = 'testtest'
+    user.clean_password = password
 
     return user
 
