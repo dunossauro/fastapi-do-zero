@@ -16,6 +16,7 @@ theme: rose-pine
 - Deixando em `fast_zero/secutiry.py` somente as validações de senha
 - Remover constantes do código
 - Criar routers específicos
+- Criação de um modelo pydantic para querys
 - Testes
 
 ---
@@ -85,7 +86,7 @@ def login_for_access_token(form_data: OAuth2Form, session: Session):
 
 ---
 
-# Juntando os routers no APP
+## Juntando os routers no APP
 
 ```python
 from fastapi import FastAPI
@@ -105,13 +106,13 @@ def read_root():
 
 ---
 
-# Uma pausa para acessar o swagger agora!
+## Uma pausa para acessar o swagger agora!
 
 > http://localhost:8000
 
 ---
 
-# Outra pausa para rodar os testes
+## Outra pausa para rodar os testes
 
 E ver se tudo continua indo bem!
 
@@ -121,7 +122,7 @@ task test
 
 ---
 
-# Um pequeno problema
+## Um pequeno problema
 
 Como inserimos o prefixo no router de autorização, a url para acessar o token também mudou. Foi de `/token` para `/auth/token`, isso precisa ser contemplado no redirecionamento do Bearer token do JWT.
 
@@ -129,7 +130,7 @@ Como inserimos o prefixo no router de autorização, a url para acessar o token 
 
 ---
 
-# Validação do token
+## Validação do token
 
 Para corrigir o redirecionamento, precisamos alterar o objeto `OAuth2PasswordBearer` em `security.py`
 
@@ -156,7 +157,7 @@ Da mesma forma que dividimos as responsabilidades do app nos routers, também po
 
 ---
 
-# Claro, precisamos executar os testes de novo
+## Claro, precisamos executar os testes de novo
 
 ```shell
 task test
@@ -164,7 +165,7 @@ task test
 
 ---
 
-# SIM, eles não funcionam
+## SIM, eles não funcionam
 
 > Mas por que???
 
@@ -195,7 +196,7 @@ Usando o tipo `Annotated` para simplificar definições
 
 ---
 
-# O tipo Annotated
+## O tipo Annotated
 
 O FastAPI suporta um recurso fascinante da biblioteca nativa `typing`, conhecido como `Annotated`. Esse recurso prova ser especialmente útil quando buscamos simplificar a utilização de dependências.
 
@@ -207,7 +208,7 @@ session: Session = Depends(get_session)
 
 ---
 
-# O tipo Annotated
+## O tipo Annotated
 
 O tipo `Annotated` nos permite combinar um tipo e os metadados associados a ele em uma única definição. Através da aplicação do FastAPI, podemos utilizar o `Depends` no campo dos metadados. Isso nos permite encapsular o tipo da variável e o `Depends` em uma única entidade, facilitando a definição dos endpoints.
 
@@ -266,7 +267,7 @@ def login_for_access_token(form_data: OAuth2Form, session: Session):
 
 ---
 
-# Claro, precisamos executar os testes de novo
+## Claro, precisamos executar os testes de novo
 
 ```shell
 task test
@@ -348,11 +349,66 @@ def create_access_token(data: dict):
 
 ---
 
-# Claro, precisamos executar os testes de novo
+## Claro, precisamos executar os testes de novo
 
 ```shell
 task test
 ```
+
+---
+
+# Parte 5
+
+Criando um modelo Pydantic para querystrings
+
+---
+
+## Annotated e mais funcionalidades
+
+Agora que conhecemos o tipo `Annotated`, podemos introduzir um novo conceito para as querystrings. No endpoint de listagem, estamos passando parâmetros específicos na URL para paginar a quantidade de objetos.
+
+Com `skip` e `offset`. Reduzindo a quantidade de objetos na resposta:
+
+```py title="fast_zero/routers/users.py" hl_lines="3 5"
+@app.get('/', response_model=UserList)
+def read_users(
+    skip: int = 0, limit: int = 100, session: Session = Depends(get_session)
+):
+    users = session.scalars(select(User).offset(skip).limit(limit)).all()
+    return {'users': users}
+```
+
+---
+
+## Pydantic e querystrings
+
+Embora isso não seja efetivamente um problema, uma boa pratica de organização é seria um modelo do pydantic especializado em filtros, como:
+
+
+```python
+# fast_zero/schemas.py
+class FilterPage(BaseModel):
+    offset: int = 0
+    limit: int = 100
+```
+
+Dessa forma, qualquer endpoint que precisar paginar resultados podem se beneficiar desse modelo.
+
+---
+
+## O typo Query
+
+Uma das formas de remover a declaração de todos os parâmetros explicitamente da query no endpoint é usar nosso modelo com o objeto `Query` do FastAPI.
+
+```py title="fast_zero/routers/users.py" hl_lines="1 6 16"
+from fastapi import APIRouter, Depends, HTTPException, Query
+
+@router.get('/', response_model=UserList)
+def read_users(session: Session, filter_users: Annotated[FilterPage, Query()]):
+    ...
+```
+
+A junção de `Annotated` e `Query()` faz com que o modelo do pydantic transforme seus parâmetros em querystrings.
 
 ---
 
