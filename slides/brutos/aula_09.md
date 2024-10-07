@@ -259,6 +259,24 @@ alembic upgrade head
 
 ---
 
+## A querystring
+
+Como agora temos vários parâmetros de query como `title`, `description` e `state`, podemos criar um modelo como esse:
+
+```python
+# fast_zero/schemas.py
+class FilterTodo(FilterPage):
+    title: str | None = None
+    description: str | None = None
+    state: TodoState | None = None
+```
+
+Uma coisa interessante de observar nesse modelo é que ele usa `FilterPage` como base, para que além dos campos propostos, tenhamos o `limit` e `offset` também.
+
+
+
+---
+
 ## Endpoint de GET
 
 ```python
@@ -267,14 +285,10 @@ from sqlalchemy import select
 from fast_zero.schemas import TodoList, TodoPublic, TodoSchema
 # ...
 @router.get('/', response_model=???)
-def list_todos(  # noqa
+def list_todos(
     session: Session,
     user: CurrentUser,
-    title: str | None = None,
-    description: str | None = None,
-    state: str | None = None,
-    offset: int | None = None,
-    limit: int | None = None,
+    todo_filter: Annotated[FilterTodo, Query()],
 ): ...
 ```
 ---
@@ -603,6 +617,11 @@ def test_patch_todo_error(client, token):
 	- O campo `updated_at` deve ter `onupdate`
 
 2. Criar uma migração para que os novos campos sejam versionados e também aplicar a migração
+
+---
+
+# Exercícios
+
 3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API. Essa alteração deve ser refletida nos testes também!
 4. Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no `Todo` de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.
 
