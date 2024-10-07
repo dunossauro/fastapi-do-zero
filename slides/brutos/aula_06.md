@@ -200,10 +200,17 @@ def login_for_access_token(
 ):
     user = session.scalar(select(User).where(User.email == form_data.username))
 
-    if not user or not verify_password(form_data.password, user.password):
-        raise HTTPException(
-            status_code=400, detail='Incorrect email or password'
-        )
+    if db_user:
+        if db_user.username == user.username:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Username already exists',
+            )
+        elif db_user.email == user.email:
+            raise HTTPException(
+                status_code=HTTPStatus.BAD_REQUEST,
+                detail='Email already exists',
+            )
     # ...
 ```
 
@@ -616,7 +623,9 @@ def update_user(
     current_user: User = Depends(get_current_user),
 ):
     if current_user.id != user_id:
-        raise HTTPException(status_code=400, detail='Not enough permissions')
+        raise HTTPException(
+            status_code=HTTPStatus.FORBIDDEN, detail='Not enough permissions'
+        )
 
     current_user.username = user.username
     current_user.password = user.password
@@ -651,6 +660,25 @@ def test_update_user(client, user, token):
 ```
 ---
 
+## O teste de integridade também deve ser atualizado
+
+```python
+def test_update_integrity_error(client, user, token):
+    # ... bloco de código omitido
+    # Alterando o user das fixture para fausto
+    response_update = client.put(
+        f'/users/{user.id}',
+        headers={'Authorization': f'Bearer {token}'},
+        json={
+            'username': 'fausto',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+```
+
+---
+
 ## O endpoint de DELETE
 
 ```python
@@ -663,7 +691,7 @@ def delete_user(
     if current_user.id != user_id:
         raise HTTPException(
             status_code=HTTPStatus.FORBIDDEN,
-			detail='Not enough permissions',
+            detail='Not enough permissions',
         )
     # ...
 ```
