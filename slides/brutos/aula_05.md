@@ -544,6 +544,108 @@ def test_delete_user(client, user):
 
 ---
 
+## Um caso não pensado
+
+E se os campos marcados como `unique=True` forem sobrescritos em um update?
+
+Por exemplo:
+
+- `User(username='fausto', ...)` entra na base
+- `User(username='faustino', ...)` entra na base
+- `User(username='faustino', ...)` que mudar seu username para `fausto`
+
+Isso vai dar um erro de `integridade` no banco de dados!
+
+---
+
+## Vamos testar esse cenário?
+
+```python title="tests/test_app.py" hl_lines="1"
+def test_update_integrity_error(client, user):
+    # Inserindo fausto
+    client.post(
+        '/users',
+        json={
+            'username': 'fausto',
+            'email': 'fausto@example.com',
+            'password': 'secret',
+        },
+    )
+
+    # Alterando o user das fixture para fausto
+    response_update = client.put(
+        f'/users/{user.id}',
+        json={
+            'username': 'fausto',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+```
+
+---
+
+### Executando os testes
+
+```
+FAILED tests/test_app.py::test_update_integrity_error - sqlalchemy.exc.IntegrityError:
+(sqlite3.IntegrityError) UNIQUE constraint failed: users.username
+[SQL: UPDATE users SET username=?, password=?, email=? WHERE users.id = ?]
+[parameters: ('fausto', 'mynewpassword', 'bob@example.com', 1)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!
+```
+
+O erro le disse que temos um problema de integridade: falha na restrição `UNIQUE`: users.username.
+
+Isso acontece, pois temos a restrição `UNIQUE` no campo username da tabela users. Quando adicionamos o mesmo nome a um registro que já existia, causamos um erro de integridade.
+
+---
+
+### Resolvendo o problema no endpoint
+
+```python title="fast_zero/app.py" hl_lines="1 25-29"
+from sqlalchemy.exc import IntegrityError
+# ...
+@app.put('/users/{user_id}', response_model=UserPublic)
+def update_user(...):
+    # Validação!
+    try: # Tente inserir
+        db_user.username = user.username
+        db_user.password = user.password
+        db_user.email = user.email
+        session.commit()
+        session.refresh(db_user)
+
+        return db_user
+
+    except IntegrityError: # Se esse erro, conflito!
+        raise HTTPException(
+            status_code=HTTPStatus.CONFLICT,
+            detail='Username or Email already exists'
+        )
+```
+
+---
+
+### Ajustando o teste dos faustos
+
+Vamos confirmar se temos mesmo um conflito:
+
+```python
+def test_update_integrity_error(client, user):
+    # ...
+
+    assert response_update.status_code == HTTPStatus.CONFLICT
+    assert response_update.json() == {
+        'detail': 'Username or Email already exists'
+    }
+```
+
+Agora tudo foi coberto com sucesso :)
+
+---
+
 # Exercícios:
 
 1. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `400`
