@@ -8,7 +8,7 @@ packages = [{include = "fast_zero"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = {extras = ["standard"], version = "^0.115.0"}
+fastapi = {extras = ["standard"], version = "^0.115.2"}
 sqlalchemy = "^2.0.35"
 pydantic-settings = "^2.5.2"
 alembic = "^1.13.3"
@@ -24,7 +24,7 @@ ruff = "^0.6.9"
 httpx = "^0.27.2"
 factory-boy = "^3.3.1"
 freezegun = "^1.5.1"
-testcontainers = "^4.8.1"
+testcontainers = "^4.8.2"
 
 [tool.ruff]
 line-length = 79
