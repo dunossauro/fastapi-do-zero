@@ -48,18 +48,18 @@ Após isso reinicie o shell para que a variável de ambiente seja carregada.
 Agora, com o pyenv instalado, você pode instalar a versão do python que usaremos no curso. Como descrito na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}:
 
 ```shell title="$ Execução no terminal!"
-pyenv install 3.12.3
+pyenv install 3.13.0
 ```
 
 A seguinte mensagem deve aparecer na tela:
 
 ```{.powershell .no-copy}
 :: [Info] ::  Mirror: https://www.python.org/ftp/python
-:: [Downloading] ::  3.12.3 ...
-:: [Downloading] ::  From https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
-:: [Downloading] ::  To   C:\Users\vagrant\.pyenv\pyenv-win\install_cache\python-3.12.3-amd64.exe
-:: [Installing] ::  3.12.3 ...
-:: [Info] :: completed! 3.12.3
+:: [Downloading] ::  3.13.0 ...
+:: [Downloading] ::  From https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe
+:: [Downloading] ::  To   C:\Users\vagrant\.pyenv\pyenv-win\install_cache\python-3.13.0-amd64.exe
+:: [Installing] ::  3.13.0 ...
+:: [Info] :: completed! 3.13.0
 ```
 
 #### Configurando a versão no pyenv
@@ -67,7 +67,7 @@ A seguinte mensagem deve aparecer na tela:
 Agora com versão instalada, devemos dizer ao shim, qual versão será usada globalmente. Podemos executar esse comando:
 
 ```shell title="$ Execução no terminal!"
-pyenv global 3.12.3
+pyenv global 3.13.0
 ```
 
 Esse comando não costuma exibir nenhuma mensagem em caso de sucesso, se nada foi retornado, significa que tudo ocorreu como esperado.
@@ -76,7 +76,7 @@ Para testar se a versão foi definida, podemos chamar o python no terminal:
 
 ```shell title="$ Execução no terminal!"
 python --version
-Python 3.12.3 #(1)!
+Python 3.13.0 #(1)!
 ```
 
 1. Responde que a versão correta foi setada!
