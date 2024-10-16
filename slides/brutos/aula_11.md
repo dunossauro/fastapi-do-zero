@@ -49,7 +49,7 @@ flowchart RL
     Ubuntu -- Execute os --> Passos
 	Ubuntu --> Z[Configure as variáveis de ambiente]
 	subgraph Passos
-      A[Instale a versão 3.12 do Python] --> B[Copie os arquivos do repositório para o ambiente]
+      A[Instale a versão 3.13 do Python] --> B[Copie os arquivos do repositório para o ambiente]
 	  B --> C[Instale o Poetry]
 	  C --> D[Instale as dependência do projeto com Poetry]
 	  D --> E[Poetry execute os testes do projeto]
@@ -72,7 +72,7 @@ jobs:
       - name: Instalar o python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
 ```
 
 ---
@@ -116,7 +116,7 @@ flowchart LR
       - name: Instalar o python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
 
       - name: Instalar o poetry
         run: pipx install poetry
@@ -165,7 +165,7 @@ jobs:
       - name: Instalar o python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
 
       # continua com os passos anteriormente definidos
 ```

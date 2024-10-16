@@ -274,7 +274,7 @@ Agora a session faz tudo que precisa fazer, mas sem a responsabilidade do inicia
 ## Criando a imagem do nosso projeto
 
 ```docker
-FROM python:3.12-slim
+FROM python:3.13-slim
 ENV POETRY_VIRTUALENVS_CREATE=false
 
 WORKDIR app/
