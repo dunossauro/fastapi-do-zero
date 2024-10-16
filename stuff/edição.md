@@ -11,9 +11,14 @@ Por padrão usarei a configuração tiny do [VMH](https://github.com/dunossauro/
 
 ## Captação
 
-- ProRes LT
+- Encode: ProRes LT
+- Camera:
+  - iso: 200
+  - Abertura: F1.8
+  - speed: 1/40
 
 Cadeia -> 4k -> Carla [isso é mesmo necessário?] -> ninja
+
 
 ## Audio
 
