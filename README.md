@@ -29,16 +29,16 @@ As Aulas estão dividas em:
 
 #### Sobre o ambiente
 
-Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `1.8.3`:
+Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `1.8.4`:
 
 ```bash
-pipx install poetry==1.8.3
+pipx install poetry==1.8.4
 ```
 
-A versão usada do python é a versão 3.12.5:
+A versão usada do python é a versão 3.13.0:
 
 ```
-pyenv local 3.12.5
+pyenv local 3.13.0
 ```
 
 para configurar todo o ambiente basta executar:
