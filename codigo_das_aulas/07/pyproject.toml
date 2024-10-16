@@ -6,8 +6,8 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-fastapi = {extras = ["standard"], version = "^0.115.0"}
+python = "^3.11"
+fastapi = {extras = ["standard"], version = "^0.115.2"}
 sqlalchemy = "^2.0.35"
 pydantic-settings = "^2.5.2"
 alembic = "^1.13.3"
