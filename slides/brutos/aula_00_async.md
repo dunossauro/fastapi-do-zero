@@ -147,7 +147,7 @@ h1 {
 
 De diversas formas:
 
-- Pela campanha de financiamento da Live de Python no apoia.se
+- Pela campanha de financiamento da Live de Python no [https://apoia.se/livedepython](https://apoia.se/livedepython)
 - Pelo clube de membros do youtube
 - Pelo pix (pix.dunossauro@gmail.com)
 
@@ -219,7 +219,7 @@ Sei que existem estilos diferentes de estudo que funcionam melhor para cada pess
 
 - Dar uma lida no material antes, para aproveitar melhor as lives e tirar dúvidas
 - Fazer os quizes e os exercícios
-- Postar suas dúvidas no nosso grupo do telegram
+- Postar suas dúvidas no nosso grupo do curso [telegram](https://t.me/fastapicomdunossauro)
 
 ---
 
@@ -259,6 +259,3 @@ p {
 ### https://fastapidozero.dunossauro.com/
 
 Nos vemos na primeira aula!
-
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">
