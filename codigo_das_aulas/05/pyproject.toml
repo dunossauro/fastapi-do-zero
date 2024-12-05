@@ -8,17 +8,17 @@ packages = [{include = "fast_zero"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = {extras = ["standard"], version = "^0.115.5"}
+fastapi = {extras = ["standard"], version = "^0.115.6"}
 sqlalchemy = "^2.0.36"
 pydantic-settings = "^2.6.1"
 alembic = "^1.14.0"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.3"
+pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
-taskipy = "^1.14.0"
-ruff = "^0.7.4"
-httpx = "^0.27.2"
+taskipy = "^1.14.1"
+ruff = "^0.8.1"
+httpx = "^0.28.0"
 
 [tool.ruff]
 line-length = 79

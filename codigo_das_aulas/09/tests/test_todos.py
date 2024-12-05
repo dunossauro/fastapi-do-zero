@@ -22,7 +22,7 @@ def test_create_todo(client, token, mock_db_time):
         'description': 'Test todo description',
         'state': 'draft',
         'created_at': time.isoformat(),
-        'updated_at': time.isoformat()
+        'updated_at': time.isoformat(),
     }
 
 
@@ -202,11 +202,13 @@ def test_list_todos_should_return_all_expected_fields__exercicio(
         headers={'Authorization': f'Bearer {token}'},
     )
 
-    assert response.json()['todos'] == [{
-        'created_at': time.isoformat(),
-        'updated_at': time.isoformat(),
-        'description': todo.description,
-        'id': todo.id,
-        'state': todo.state,
-        'title': todo.title,
-    }]
+    assert response.json()['todos'] == [
+        {
+            'created_at': time.isoformat(),
+            'updated_at': time.isoformat(),
+            'description': todo.description,
+            'id': todo.id,
+            'state': todo.state,
+            'title': todo.title,
+        }
+    ]

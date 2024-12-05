@@ -17,7 +17,6 @@ from tests.factories import UserFactory
 @pytest.fixture(scope='session')
 def engine():
     with PostgresContainer('postgres:16', driver='psycopg') as postgres:
-
         _engine = create_engine(postgres.get_connection_url())
 
         with _engine.begin():
@@ -49,7 +48,6 @@ def session(engine):
 
 @contextmanager
 def _mock_db_time(*, model, time=datetime(2024, 1, 1)):
-
     def fake_time_handler(mapper, connection, target):
         if hasattr(target, 'created_at'):
             target.created_at = time

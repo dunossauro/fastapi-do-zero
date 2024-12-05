@@ -93,7 +93,7 @@ def update_user(
     except IntegrityError:
         raise HTTPException(
             status_code=HTTPStatus.CONFLICT,
-            detail='Username or Email already exists'
+            detail='Username or Email already exists',
         )
 
 
