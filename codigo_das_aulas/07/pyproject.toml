@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.11"
 fastapi = {extras = ["standard"], version = "^0.115.6"}
 sqlalchemy = "^2.0.36"
-pydantic-settings = "^2.7.0"
+pydantic-settings = "^2.7.1"
 alembic = "^1.14.0"
 pyjwt = "^2.10.1"
 pwdlib = {extras = ["argon2"], version = "^0.2.1"}
@@ -18,7 +18,7 @@ pwdlib = {extras = ["argon2"], version = "^0.2.1"}
 pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
 taskipy = "^1.14.1"
-ruff = "^0.8.4"
+ruff = "^0.8.5"
 httpx = "^0.28.1"
 
 [tool.ruff]
