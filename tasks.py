@@ -109,13 +109,14 @@ def update_project(c):
     c.run('rm -rf .venv')
     toml = Path('.') / 'pyproject.toml'
     toml_tables = loads(toml.read_text())
-    poetry_toml = toml_tables['tool']['poetry']
-    dependencies = poetry_toml['dependencies']
+    toml_project = toml_tables['project']
+    dependencies = toml_project['dependencies']
 
     if (Path('.') / 'poetry.lock').exists():
         c.run('rm poetry.lock')
 
     for dep in sorted(dependencies):
+        dep = dep.split()[0]
         if dep == 'python':
             ...
 
