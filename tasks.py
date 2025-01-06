@@ -188,8 +188,10 @@ def update_sub(c):
     for path in sorted(code_path):
         toml = path / 'pyproject.toml'
         toml_tables = loads(toml.read_text())
+        toml_project = toml_tables['project']
+        dependencies = toml_project['dependencies']
+
         poetry_toml = toml_tables['tool']['poetry']
-        dependencies = poetry_toml['dependencies']
         dev_dependencies = poetry_toml['group']['dev']['dependencies']
 
         print(path)
@@ -199,7 +201,9 @@ def update_sub(c):
                 c.run('rm poetry.lock')
 
             for dep in sorted(dependencies):
+                dep = dep.split()[0]
                 print(dep, path)
+
                 if dep in 'fastapi':
                     c.run('poetry add "fastapi[standard]@latest"')
 

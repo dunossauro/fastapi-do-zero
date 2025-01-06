@@ -1,19 +1,21 @@
-[tool.poetry]
-name = "fast-zero"
+[project]
+name = "fast_zero"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = [
+    {name = "dunossauro",email = "mendesxeduardo@gmail.com"}
+]
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.11"
-fastapi = {extras = ["standard"], version = "^0.115.6"}
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastapi[standard] (>=0.115.6,<0.116.0)"
+]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
 taskipy = "^1.14.1"
-ruff = "^0.8.5"
+ruff = "^0.8.6"
 httpx = "^0.28.1"
 
 [tool.ruff]
@@ -41,5 +43,5 @@ test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
