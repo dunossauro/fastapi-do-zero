@@ -2135,7 +2135,7 @@
 <details class="tip">
 <summary>Descobrindo o seu endereço local usando python</summary>
 <p>Caso não esteja familiarizado com o terminal ou ferramentas para descobrir seu endereço IP:</p>
-<div class="language-py highlight"><span class="filename">&gt;&gt;&gt; Terminal interativo!</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">socket</span>
+<div class="language-py highlight"><span class="filename">&gt;&gt;&gt; Terminal interativo!</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s2">"8.8.8.8"</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
@@ -2257,7 +2257,7 @@
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-5">5</a></span>
 <span class="normal"><a href="#__codelineno-7-6">6</a></span>
 <span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-</span></span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+</span></span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Quando realizamos a requisição via navegador, o verbo padrão é o GET. Por isso, obtemos na tela a mensagem <code>{'message': 'Olá Mundo!'}</code>.</p>
@@ -2281,7 +2281,7 @@
 <span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-8-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="k">def</span> <span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
@@ -2297,7 +2297,7 @@
 <span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-9-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="k">def</span> <span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
@@ -2312,7 +2312,7 @@
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-5">5</a></span>
 <span class="normal"><a href="#__codelineno-10-6">6</a></span>
 <span class="normal"><a href="#__codelineno-10-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-</span></span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+</span></span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 </div>
@@ -2320,7 +2320,7 @@
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-5">5</a></span>
 <span class="normal"><a href="#__codelineno-11-6">6</a></span>
 <span class="normal"><a href="#__codelineno-11-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
-</span></span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+</span></span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 </div>
@@ -2365,14 +2365,14 @@
 <span class="normal"><a href="#__codelineno-12-14">14</a></span>
 <span class="normal"><a href="#__codelineno-12-15">15</a></span>
 <span class="normal"><a href="#__codelineno-12-16">16</a></span>
-<span class="normal"><a href="#__codelineno-12-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="hll"><span class="kn">from</span> <span class="nn">fastapi.responses</span> <span class="kn">import</span> <span class="n">HTMLResponse</span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.responses</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTMLResponse</span>
 </span></span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">HTMLResponse</span><span class="p">)</span>
-</span></span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+</span></span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>    <span class="k">return</span> <span class="s2">"""</span>
 </span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="s2">    &lt;html&gt;</span>
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="s2">      &lt;head&gt;</span>
@@ -2397,7 +2397,7 @@
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">aula_00.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
 <span class="normal"><a href="#__codelineno-13-2">2</a></span>
 <span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-</span></span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+</span></span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Quando utilizamos o decorador <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code>, estamos instruindo nossa API que, para chamadas de método <code>GET</code> no endpoint <code>/</code>, a função <code>read_root</code> será executada. O resultado dessa função, neste caso <code>{'message': 'Olá Mundo!'}</code>, é o que será retornado ao cliente.</p>
@@ -2520,10 +2520,10 @@
 <span class="normal"><a href="#__codelineno-18-2">2</a></span>
 <span class="normal"><a href="#__codelineno-18-3">3</a></span>
 <span class="normal"><a href="#__codelineno-18-4">4</a></span>
-<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Message</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 </span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Para iniciar o desenvolvimento com schemas no contexto do FastAPI, podemos criar um arquivo chamado <code>fast_zero/schemas.py</code> e definir a classe <code>Message</code>. Vale ressaltar que o Pydantic é uma dependência integrada do FastAPI (não precisa ser instalado), refletindo a importância dessa biblioteca no processo de validação de dados e na geração de documentação automática para APIs, como a documentação OpenAPI.</p>
@@ -2540,17 +2540,17 @@
 <span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-19-10">10</a></span>
 <span class="normal"><a href="#__codelineno-19-11">11</a></span>
-<span class="normal"><a href="#__codelineno-19-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">HTTPStatus</span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="kn">from</span> <span class="nn">fast_zero.schemas</span> <span class="kn">import</span> <span class="n">Message</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a>
 </span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 </span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a>
 </span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a>
 </span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Message</span><span class="p">)</span>
-</span></span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+</span></span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Com essa abordagem, ao iniciar o servidor (<code>task run</code>) e acessar a Swagger UI em <a href="http://127.0.0.1:8000/docs" target="_blank">http://127.0.0.1:8000/docs</a>, observamos uma evolução significativa na documentação. Um novo campo <code>Schemas</code> é exibido, destacando a estrutura do modelo <code>Message</code> que definimos:</p>

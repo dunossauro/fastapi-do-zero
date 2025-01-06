@@ -1442,7 +1442,7 @@
 <p>
     </p><div class="quiz"><h3>07 - Qual a função do `exclude_unset=True` no código abaixo?</h3>
     <div class="highlight"><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">'/</span><span class="si">{todo_id}</span><span class="s1">'</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">TodoPublic</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">patch_todo</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">patch_todo</span><span class="p">(</span>
     <span class="n">todo_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">CurrentUser</span><span class="p">,</span> <span class="n">todo</span><span class="p">:</span> <span class="n">TodoUpdate</span>
 <span class="p">):</span>
     <span class="c1"># ...</span>

@@ -2077,7 +2077,7 @@
 <p><a class="md-button" href="https://youtu.be/ZOSWdktsKf0"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"></path></svg></span> Link direto</a></p>
 </details>
 <p>Para instalar o Poetry, você pode seguir as instruções presentes na <a href="https://python-poetry.org/docs/#installation" target="_blank">documentação oficial</a> do Poetry para o seu sistema operacional. Alternativamente, se você optou por usar o <a href="https://pipx.pypa.io/stable/">pipx</a>, pode instalar o Poetry com o seguinte comando:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pipx<span class="w"> </span>install<span class="w"> </span><span class="nv">poetry</span><span class="o">==</span><span class="m">1</span>.8.5
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pipx<span class="w"> </span>install<span class="w"> </span>poetry
 </span></code></pre></div>
 <details class="question">
 <summary>Caso queira usar o pipx e não o tenha instalado no seu ambiente</summary>
@@ -2114,11 +2114,13 @@
 <p>Esse arquivo fará com que toda vez que o terminal for aberto nesse diretório, o pyenv use a versão descrita no arquivo quando o python interpretador for chamado.</p>
 <p>Em conjunto com essa instrução, devemos dizer ao poetry que usaremos exatamente a versão <code>3.11</code> em nosso projeto. Para isso alteraremos o arquivo de configuração do projeto o <code>pyproject.toml</code> na raiz do projeto:</p>
 <div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-17-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="k">[tool.poetry.dependencies]</span>
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="n">python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.11.*"</span><span class="w">  </span><span class="c1"># (1)!</span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="k">[project]</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="c1"># ...</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;=3.11,&lt;4.0"</span><span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div></td></tr></table></div>
 <ol>
-<li><code>.*</code> quer dizer qualquer versão da 3.11</li>
+<li>Qualquer versão maior ou igual a 3.11 e menor que 4.0</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -2134,11 +2136,13 @@
 <p>Esse arquivo fará com que toda vez que o terminal for aberto nesse diretório, o pyenv use a versão descrita no arquivo quando o python interpretador for chamado.</p>
 <p>Em conjunto com essa instrução, devemos dizer ao poetry que usaremos exatamente a versão <code>3.12</code> em nosso projeto. Para isso alteraremos o arquivo de configuração do projeto o <code>pyproject.toml</code> na raiz do projeto:</p>
 <div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-20-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="k">[tool.poetry.dependencies]</span>
-</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="n">python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.12.*"</span><span class="w">  </span><span class="c1"># (1)!</span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="k">[project]</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="c1"># ...</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;=3.12,&lt;4.0"</span><span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div></td></tr></table></div>
 <ol>
-<li><code>.*</code> quer dizer qualquer versão da 3.12</li>
+<li>Qualquer versão maior ou igual a 3.12 e menor que 4.0</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -2154,11 +2158,13 @@
 <p>Esse arquivo fará com que toda vez que o terminal for aberto nesse diretório, o pyenv use a versão descrita no arquivo quando o python interpretador for chamado.</p>
 <p>Em conjunto com essa instrução, devemos dizer ao poetry que usaremos exatamente a versão <code>3.13</code> em nosso projeto. Para isso alteraremos o arquivo de configuração do projeto o <code>pyproject.toml</code> na raiz do projeto:</p>
 <div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-23-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="k">[tool.poetry.dependencies]</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="n">python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.13.*"</span><span class="w">  </span><span class="c1"># (1)!</span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span>
+<span class="normal"><a href="#__codelineno-23-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="k">[project]</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="c1"># ...</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;=3.13,&lt;4.0"</span><span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div></td></tr></table></div>
 <ol>
-<li><code>.*</code> quer dizer qualquer versão da 3.13</li>
+<li>Qualquer versão maior ou igual a 3.13 e menor que 4.0</li>
 </ol>
 </div>
 </div>
@@ -2175,7 +2181,7 @@
 <h2 id="primeira-execucao-de-um-hello-world">Primeira Execução de um "Hello, World!"</h2>
 <p>Uma coisa bastante interessante sobre o FastAPI é que ele é um framework web baseado em funções. Da mesma forma em que criamos funções tradicionalmente em python, podemos estender essas funções para que elas sejam servidas pelo servidor. Por exemplo:</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
-<span class="normal"><a href="#__codelineno-25-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Essa função em python basicamente retorna um dicionário com uma chave chamada <code class="language-python highlight"><span class="s1">'message'</span></code> e uma mensagem <code class="language-python highlight"><span class="s1">'Olá Mundo!'</span></code>. Se adicionarmos essa função em novo arquivo chamado <code>app.py</code> no diretório <code>fast_zero</code>. Podemos fazer a chamada dela pelo terminal interativo (<strong>REPL</strong>):</p>
@@ -2200,12 +2206,12 @@
 <span class="normal"><a href="#__codelineno-29-4">4</a></span>
 <span class="normal"><a href="#__codelineno-29-5">5</a></span>
 <span class="normal"><a href="#__codelineno-29-6">6</a></span>
-<span class="normal"><a href="#__codelineno-29-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span> <span class="c1"># (1)!</span>
+<span class="normal"><a href="#__codelineno-29-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span> <span class="c1"># (1)!</span>
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>  <span class="c1"># (2)!</span>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a>
 </span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>  <span class="c1"># (3)!</span>
-</span></span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>  <span class="c1"># (4)!</span>
+</span></span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>  <span class="c1"># (4)!</span>
 </span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span> <span class="c1"># (5)!</span>
 </span></code></pre></div></td></tr></table></div>
 <ol>
@@ -2217,7 +2223,7 @@
 </ol>
 <p>A linha em destaque <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> expõem a nossa função para ser servida pelo FastAPI. Dizendo que quando um cliente acessar o nosso endereço de rede no caminho <code>/</code>, usando o método HTTP GET<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, a função será executada. Desta maneira, temos todo o código necessário para criar nossa primeira aplicação web com FastAPI.</p>
 <p>Antes de iniciarmos nossa aplicação, temos que fazer um passo importante, habilitar o ambiente virtual, para que o python consiga enxergar nossas dependências instaladas. O poetry tem um comando específico para isso:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>poetry<span class="w"> </span>shell
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>poetry<span class="w"> </span>env<span class="w"> </span>activate
 </span></code></pre></div>
 <p>Agora com o ambiente virtual ativo, podemos iniciar nosso servidor FastAPI para iniciar nossa aplicação:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>fastapi<span class="w"> </span>dev<span class="w"> </span>fast_zero/app.py
@@ -2352,11 +2358,11 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <p>Para configurar o ruff montamos a configuração em 3 <a href="https://toml.io/pt/v1.0.0#tabela" target="_blank">tabelas</a> distintas no arquivo <code>pyproject.toml</code>. Uma para as configurações globais, uma para o linter e uma para o formatador.</p>
 <p><strong>Configuração global</strong></p>
 <p>Na configuração global do Ruff queremos alterar somente duas coisas. O comprimento de linha para 79 caracteres (conforme sugerido na <a href="https://peps.python.org/pep-0008/" target="_blank">PEP-8</a>) e em seguida, informaremos que o diretório de migrações de banco de dados será ignorado na checagem e na formatação:</p>
-<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-20">20</a></span>
-<span class="normal"><a href="#__codelineno-39-21">21</a></span>
-<span class="normal"><a href="#__codelineno-39-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-20"><a id="__codelineno-39-20" name="__codelineno-39-20"></a><span class="k">[tool.ruff]</span>
-</span><span id="__span-39-21"><a id="__codelineno-39-21" name="__codelineno-39-21"></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span>
-</span><span id="__span-39-22"><a id="__codelineno-39-22" name="__codelineno-39-22"></a><span class="n">extend-exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'migrations'</span><span class="p">]</span>
+<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-21">21</a></span>
+<span class="normal"><a href="#__codelineno-39-22">22</a></span>
+<span class="normal"><a href="#__codelineno-39-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-21"><a id="__codelineno-39-21" name="__codelineno-39-21"></a><span class="k">[tool.ruff]</span>
+</span><span id="__span-39-22"><a id="__codelineno-39-22" name="__codelineno-39-22"></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span>
+</span><span id="__span-39-23"><a id="__codelineno-39-23" name="__codelineno-39-23"></a><span class="n">extend-exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'migrations'</span><span class="p">]</span>
 </span></code></pre></div></td></tr></table></div>
 <details class="example" open="open">
 <summary>Nota sobre "migrations"</summary>
@@ -2372,52 +2378,52 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <li><code>PL</code> (<a href="https://pylint.pycqa.org/en/latest/index.html" target="_blank">Pylint</a>): Como o <code>F</code>, também procura por erros em relação a boas práticas de código</li>
 <li><code>PT</code> (<a href="https://pypi.org/project/flake8-pytest-style/" target="_blank">flake8-pytest</a>): Checagem de boas práticas do Pytest</li>
 </ul>
-<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-24">24</a></span>
-<span class="normal"><a href="#__codelineno-40-25">25</a></span>
-<span class="normal"><a href="#__codelineno-40-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-24"><a id="__codelineno-40-24" name="__codelineno-40-24"></a><span class="k">[tool.ruff.lint]</span>
-</span><span id="__span-40-25"><a id="__codelineno-40-25" name="__codelineno-40-25"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-40-26"><a id="__codelineno-40-26" name="__codelineno-40-26"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'I'</span><span class="p">,</span><span class="w"> </span><span class="s1">'F'</span><span class="p">,</span><span class="w"> </span><span class="s1">'E'</span><span class="p">,</span><span class="w"> </span><span class="s1">'W'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PL'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PT'</span><span class="p">]</span>
+<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-25">25</a></span>
+<span class="normal"><a href="#__codelineno-40-26">26</a></span>
+<span class="normal"><a href="#__codelineno-40-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-25"><a id="__codelineno-40-25" name="__codelineno-40-25"></a><span class="k">[tool.ruff.lint]</span>
+</span><span id="__span-40-26"><a id="__codelineno-40-26" name="__codelineno-40-26"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-40-27"><a id="__codelineno-40-27" name="__codelineno-40-27"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'I'</span><span class="p">,</span><span class="w"> </span><span class="s1">'F'</span><span class="p">,</span><span class="w"> </span><span class="s1">'E'</span><span class="p">,</span><span class="w"> </span><span class="s1">'W'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PL'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PT'</span><span class="p">]</span>
 </span></code></pre></div></td></tr></table></div>
 <blockquote>
 <p>Para mais informações sobre a configuração e sobre os códigos do ruff e dos projetos do PyCQA, você pode checar a <a href="https://docs.astral.sh/ruff/rules" target="_blank">documentação do ruff</a> ou as documentações originais dos projetos <a href="https://github.com/PyCQA" target="_blank">PyQCA</a>.</p>
 </blockquote>
 <p><strong>Formatter</strong></p>
 <p>A formatação do Ruff praticamente não precisa ser alterada. Pois ele vai seguir as boas práticas e usar a configuração global de <code>79</code> caracteres por linha. A única alteração que farei é o uso de aspas simples <code>'</code> no lugar de aspas duplas <code>"</code>:</p>
-<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-28">28</a></span>
-<span class="normal"><a href="#__codelineno-41-29">29</a></span>
-<span class="normal"><a href="#__codelineno-41-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-28"><a id="__codelineno-41-28" name="__codelineno-41-28"></a><span class="k">[tool.ruff.format]</span>
-</span><span id="__span-41-29"><a id="__codelineno-41-29" name="__codelineno-41-29"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-41-30"><a id="__codelineno-41-30" name="__codelineno-41-30"></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'single'</span>
+<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-29">29</a></span>
+<span class="normal"><a href="#__codelineno-41-30">30</a></span>
+<span class="normal"><a href="#__codelineno-41-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-29"><a id="__codelineno-41-29" name="__codelineno-41-29"></a><span class="k">[tool.ruff.format]</span>
+</span><span id="__span-41-30"><a id="__codelineno-41-30" name="__codelineno-41-30"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-41-31"><a id="__codelineno-41-31" name="__codelineno-41-31"></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'single'</span>
 </span></code></pre></div></td></tr></table></div>
 <blockquote>
 <p>Lembrando que a opção de usar aspas simples é totalmente pessoal, você pode usar aspas duplas se quiser.</p>
 </blockquote>
 <h3 id="pytest">pytest</h3>
 <p>O <a href="https://docs.pytest.org/" target="_blank">Pytest</a> é uma framework de testes, que usaremos para escrever e executar nossos testes. O configuraremos para reconhecer o caminho base para execução dos testes na raiz do projeto <code>.</code>:</p>
-<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-32">32</a></span>
-<span class="normal"><a href="#__codelineno-42-33">33</a></span>
-<span class="normal"><a href="#__codelineno-42-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-32"><a id="__codelineno-42-32" name="__codelineno-42-32"></a><span class="k">[tool.pytest.ini_options]</span>
-</span><span id="__span-42-33"><a id="__codelineno-42-33" name="__codelineno-42-33"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
-</span><span id="__span-42-34"><a id="__codelineno-42-34" name="__codelineno-42-34"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings'</span>
+<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-33">33</a></span>
+<span class="normal"><a href="#__codelineno-42-34">34</a></span>
+<span class="normal"><a href="#__codelineno-42-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-33"><a id="__codelineno-42-33" name="__codelineno-42-33"></a><span class="k">[tool.pytest.ini_options]</span>
+</span><span id="__span-42-34"><a id="__codelineno-42-34" name="__codelineno-42-34"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
+</span><span id="__span-42-35"><a id="__codelineno-42-35" name="__codelineno-42-35"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings'</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Na segunda linha dizemos para o pytest adicionar a opção <code>no:warnings</code>. Para ter uma visualização mais limpa dos testes, caso alguma biblioteca exiba uma mensagem de warning, isso será suprimido pelo pytest.</p>
 <h3 id="taskipy">Taskipy</h3>
 <p>A ideia do <a href="https://github.com/taskipy/taskipy" target="_blank">Taskipy</a> é ser um executor de tarefas (<em>task runner</em>) complementar em nossa aplicação. No lugar de ter que lembrar comandos como o do fastapi, que vimos na execução da aplicação, que tal substituir ele simplesmente por <code>task run</code>?</p>
 <p>Isso funcionaria para qualquer comando complicado em nossa aplicação. Simplificando as chamadas e também para não termos que lembrar de como executar todos os comandos de cabeça.</p>
 <p>Alguns comandos que criaremos agora no início:</p>
-<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-36">36</a></span>
-<span class="normal"><a href="#__codelineno-43-37">37</a></span>
+<div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-37">37</a></span>
 <span class="normal"><a href="#__codelineno-43-38">38</a></span>
 <span class="normal"><a href="#__codelineno-43-39">39</a></span>
 <span class="normal"><a href="#__codelineno-43-40">40</a></span>
 <span class="normal"><a href="#__codelineno-43-41">41</a></span>
-<span class="normal"><a href="#__codelineno-43-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-36"><a id="__codelineno-43-36" name="__codelineno-43-36"></a><span class="k">[tool.taskipy.tasks]</span>
-</span><span id="__span-43-37"><a id="__codelineno-43-37" name="__codelineno-43-37"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check .; ruff check . --diff'</span>
-</span><span id="__span-43-38"><a id="__codelineno-43-38" name="__codelineno-43-38"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check . --fix; ruff format .'</span>
-</span><span id="__span-43-39"><a id="__codelineno-43-39" name="__codelineno-43-39"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
-</span><span id="__span-43-40"><a id="__codelineno-43-40" name="__codelineno-43-40"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
-</span><span id="__span-43-41"><a id="__codelineno-43-41" name="__codelineno-43-41"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x --cov=fast_zero -vv'</span>
-</span><span id="__span-43-42"><a id="__codelineno-43-42" name="__codelineno-43-42"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html'</span>
+<span class="normal"><a href="#__codelineno-43-42">42</a></span>
+<span class="normal"><a href="#__codelineno-43-43">43</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-37"><a id="__codelineno-43-37" name="__codelineno-43-37"></a><span class="k">[tool.taskipy.tasks]</span>
+</span><span id="__span-43-38"><a id="__codelineno-43-38" name="__codelineno-43-38"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check .; ruff check . --diff'</span>
+</span><span id="__span-43-39"><a id="__codelineno-43-39" name="__codelineno-43-39"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check . --fix; ruff format .'</span>
+</span><span id="__span-43-40"><a id="__codelineno-43-40" name="__codelineno-43-40"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
+</span><span id="__span-43-41"><a id="__codelineno-43-41" name="__codelineno-43-41"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
+</span><span id="__span-43-42"><a id="__codelineno-43-42" name="__codelineno-43-42"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x --cov=fast_zero -vv'</span>
+</span><span id="__span-43-43"><a id="__codelineno-43-43" name="__codelineno-43-43"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html'</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Os comandos definidos fazem o seguinte:</p>
 <ul>
@@ -2489,51 +2495,55 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <span class="normal"><a href="#__codelineno-44-42">42</a></span>
 <span class="normal"><a href="#__codelineno-44-43">43</a></span>
 <span class="normal"><a href="#__codelineno-44-44">44</a></span>
-<span class="normal"><a href="#__codelineno-44-45">45</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="k">[tool.poetry]</span>
-</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fast-zero"</span>
+<span class="normal"><a href="#__codelineno-44-45">45</a></span>
+<span class="normal"><a href="#__codelineno-44-46">46</a></span>
+<span class="normal"><a href="#__codelineno-44-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="k">[project]</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fast_zero"</span>
 </span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.1.0"</span>
 </span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4"></a><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
-</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5"></a><span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"Your Name &lt;you@example.com&gt;"</span><span class="p">]</span>
-</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6"></a><span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"README.md"</span>
-</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7"></a>
-</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8"></a><span class="k">[tool.poetry.dependencies]</span>
-</span><span id="__span-44-9"><a id="__codelineno-44-9" name="__codelineno-44-9"></a><span class="n">python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.12.*"</span><span class="w"> </span><span class="c1"># ou "3.11.*"</span>
-</span><span id="__span-44-10"><a id="__codelineno-44-10" name="__codelineno-44-10"></a><span class="n">fastapi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^0.115.0"</span>
-</span><span id="__span-44-11"><a id="__codelineno-44-11" name="__codelineno-44-11"></a>
-</span><span id="__span-44-12"><a id="__codelineno-44-12" name="__codelineno-44-12"></a><span class="k">[tool.poetry.group.dev.dependencies]</span>
-</span><span id="__span-44-13"><a id="__codelineno-44-13" name="__codelineno-44-13"></a><span class="n">pytest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^8.3.2"</span>
-</span><span id="__span-44-14"><a id="__codelineno-44-14" name="__codelineno-44-14"></a><span class="n">pytest-cov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^5.0.0"</span>
-</span><span id="__span-44-15"><a id="__codelineno-44-15" name="__codelineno-44-15"></a><span class="n">taskipy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^1.13.0"</span>
-</span><span id="__span-44-16"><a id="__codelineno-44-16" name="__codelineno-44-16"></a><span class="n">ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^0.6.4"</span>
-</span><span id="__span-44-17"><a id="__codelineno-44-17" name="__codelineno-44-17"></a><span class="n">httpx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^0.27.2"</span>
-</span><span id="__span-44-18"><a id="__codelineno-44-18" name="__codelineno-44-18"></a>
-</span><span id="__span-44-19"><a id="__codelineno-44-19" name="__codelineno-44-19"></a><span class="k">[tool.ruff]</span>
-</span><span id="__span-44-20"><a id="__codelineno-44-20" name="__codelineno-44-20"></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span>
-</span><span id="__span-44-21"><a id="__codelineno-44-21" name="__codelineno-44-21"></a><span class="n">extend-exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'migrations'</span><span class="p">]</span>
-</span><span id="__span-44-22"><a id="__codelineno-44-22" name="__codelineno-44-22"></a>
-</span><span id="__span-44-23"><a id="__codelineno-44-23" name="__codelineno-44-23"></a><span class="k">[tool.ruff.lint]</span>
-</span><span id="__span-44-24"><a id="__codelineno-44-24" name="__codelineno-44-24"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-44-25"><a id="__codelineno-44-25" name="__codelineno-44-25"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'I'</span><span class="p">,</span><span class="w"> </span><span class="s1">'F'</span><span class="p">,</span><span class="w"> </span><span class="s1">'E'</span><span class="p">,</span><span class="w"> </span><span class="s1">'W'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PL'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PT'</span><span class="p">]</span>
-</span><span id="__span-44-26"><a id="__codelineno-44-26" name="__codelineno-44-26"></a>
-</span><span id="__span-44-27"><a id="__codelineno-44-27" name="__codelineno-44-27"></a><span class="k">[tool.ruff.format]</span>
-</span><span id="__span-44-28"><a id="__codelineno-44-28" name="__codelineno-44-28"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-44-29"><a id="__codelineno-44-29" name="__codelineno-44-29"></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'single'</span>
-</span><span id="__span-44-30"><a id="__codelineno-44-30" name="__codelineno-44-30"></a>
-</span><span id="__span-44-31"><a id="__codelineno-44-31" name="__codelineno-44-31"></a><span class="k">[tool.pytest.ini_options]</span>
-</span><span id="__span-44-32"><a id="__codelineno-44-32" name="__codelineno-44-32"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
-</span><span id="__span-44-33"><a id="__codelineno-44-33" name="__codelineno-44-33"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings'</span>
-</span><span id="__span-44-34"><a id="__codelineno-44-34" name="__codelineno-44-34"></a>
-</span><span id="__span-44-35"><a id="__codelineno-44-35" name="__codelineno-44-35"></a><span class="k">[tool.taskipy.tasks]</span>
-</span><span id="__span-44-36"><a id="__codelineno-44-36" name="__codelineno-44-36"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check .; ruff check . --diff'</span>
-</span><span id="__span-44-37"><a id="__codelineno-44-37" name="__codelineno-44-37"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check . --fix; ruff format .'</span>
-</span><span id="__span-44-38"><a id="__codelineno-44-38" name="__codelineno-44-38"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
-</span><span id="__span-44-39"><a id="__codelineno-44-39" name="__codelineno-44-39"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
-</span><span id="__span-44-40"><a id="__codelineno-44-40" name="__codelineno-44-40"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x --cov=fast_zero -vv'</span>
-</span><span id="__span-44-41"><a id="__codelineno-44-41" name="__codelineno-44-41"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html'</span>
-</span><span id="__span-44-42"><a id="__codelineno-44-42" name="__codelineno-44-42"></a>
-</span><span id="__span-44-43"><a id="__codelineno-44-43" name="__codelineno-44-43"></a><span class="k">[build-system]</span>
-</span><span id="__span-44-44"><a id="__codelineno-44-44" name="__codelineno-44-44"></a><span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"poetry-core"</span><span class="p">]</span>
-</span><span id="__span-44-45"><a id="__codelineno-44-45" name="__codelineno-44-45"></a><span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"poetry.core.masonry.api"</span>
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5"></a><span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6"></a><span class="w">    </span><span class="p">{</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"dunossauro"</span><span class="p">,</span><span class="n">email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"mendesxeduardo@gmail.com"</span><span class="p">}</span>
+</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7"></a><span class="p">]</span>
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8"></a><span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"README.md"</span>
+</span><span id="__span-44-9"><a id="__codelineno-44-9" name="__codelineno-44-9"></a><span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;=3.11,&lt;4.0"</span>
+</span><span id="__span-44-10"><a id="__codelineno-44-10" name="__codelineno-44-10"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-44-11"><a id="__codelineno-44-11" name="__codelineno-44-11"></a><span class="w">    </span><span class="s2">"fastapi[standard] (&gt;=0.115.6,&lt;0.116.0)"</span>
+</span><span id="__span-44-12"><a id="__codelineno-44-12" name="__codelineno-44-12"></a><span class="p">]</span>
+</span><span id="__span-44-13"><a id="__codelineno-44-13" name="__codelineno-44-13"></a>
+</span><span id="__span-44-14"><a id="__codelineno-44-14" name="__codelineno-44-14"></a><span class="k">[tool.poetry.group.dev.dependencies]</span>
+</span><span id="__span-44-15"><a id="__codelineno-44-15" name="__codelineno-44-15"></a><span class="n">pytest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^8.3.4"</span>
+</span><span id="__span-44-16"><a id="__codelineno-44-16" name="__codelineno-44-16"></a><span class="n">pytest-cov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^6.0.0"</span>
+</span><span id="__span-44-17"><a id="__codelineno-44-17" name="__codelineno-44-17"></a><span class="n">taskipy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^1.14.1"</span>
+</span><span id="__span-44-18"><a id="__codelineno-44-18" name="__codelineno-44-18"></a><span class="n">ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^0.8.6"</span>
+</span><span id="__span-44-19"><a id="__codelineno-44-19" name="__codelineno-44-19"></a><span class="n">httpx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^0.28.1"</span>
+</span><span id="__span-44-20"><a id="__codelineno-44-20" name="__codelineno-44-20"></a>
+</span><span id="__span-44-21"><a id="__codelineno-44-21" name="__codelineno-44-21"></a><span class="k">[tool.ruff]</span>
+</span><span id="__span-44-22"><a id="__codelineno-44-22" name="__codelineno-44-22"></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span>
+</span><span id="__span-44-23"><a id="__codelineno-44-23" name="__codelineno-44-23"></a><span class="n">extend-exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'migrations'</span><span class="p">]</span>
+</span><span id="__span-44-24"><a id="__codelineno-44-24" name="__codelineno-44-24"></a>
+</span><span id="__span-44-25"><a id="__codelineno-44-25" name="__codelineno-44-25"></a><span class="k">[tool.ruff.lint]</span>
+</span><span id="__span-44-26"><a id="__codelineno-44-26" name="__codelineno-44-26"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-44-27"><a id="__codelineno-44-27" name="__codelineno-44-27"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'I'</span><span class="p">,</span><span class="w"> </span><span class="s1">'F'</span><span class="p">,</span><span class="w"> </span><span class="s1">'E'</span><span class="p">,</span><span class="w"> </span><span class="s1">'W'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PL'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PT'</span><span class="p">]</span>
+</span><span id="__span-44-28"><a id="__codelineno-44-28" name="__codelineno-44-28"></a>
+</span><span id="__span-44-29"><a id="__codelineno-44-29" name="__codelineno-44-29"></a><span class="k">[tool.ruff.format]</span>
+</span><span id="__span-44-30"><a id="__codelineno-44-30" name="__codelineno-44-30"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-44-31"><a id="__codelineno-44-31" name="__codelineno-44-31"></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'single'</span>
+</span><span id="__span-44-32"><a id="__codelineno-44-32" name="__codelineno-44-32"></a>
+</span><span id="__span-44-33"><a id="__codelineno-44-33" name="__codelineno-44-33"></a><span class="k">[tool.pytest.ini_options]</span>
+</span><span id="__span-44-34"><a id="__codelineno-44-34" name="__codelineno-44-34"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
+</span><span id="__span-44-35"><a id="__codelineno-44-35" name="__codelineno-44-35"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings'</span>
+</span><span id="__span-44-36"><a id="__codelineno-44-36" name="__codelineno-44-36"></a>
+</span><span id="__span-44-37"><a id="__codelineno-44-37" name="__codelineno-44-37"></a><span class="k">[tool.taskipy.tasks]</span>
+</span><span id="__span-44-38"><a id="__codelineno-44-38" name="__codelineno-44-38"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check .; ruff check . --diff'</span>
+</span><span id="__span-44-39"><a id="__codelineno-44-39" name="__codelineno-44-39"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check . --fix; ruff format .'</span>
+</span><span id="__span-44-40"><a id="__codelineno-44-40" name="__codelineno-44-40"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
+</span><span id="__span-44-41"><a id="__codelineno-44-41" name="__codelineno-44-41"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
+</span><span id="__span-44-42"><a id="__codelineno-44-42" name="__codelineno-44-42"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x --cov=fast_zero -vv'</span>
+</span><span id="__span-44-43"><a id="__codelineno-44-43" name="__codelineno-44-43"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html'</span>
+</span><span id="__span-44-44"><a id="__codelineno-44-44" name="__codelineno-44-44"></a>
+</span><span id="__span-44-45"><a id="__codelineno-44-45" name="__codelineno-44-45"></a><span class="k">[build-system]</span>
+</span><span id="__span-44-46"><a id="__codelineno-44-46" name="__codelineno-44-46"></a><span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"poetry-core&gt;=2.0.0,&lt;3.0.0"</span><span class="p">]</span>
+</span><span id="__span-44-47"><a id="__codelineno-44-47" name="__codelineno-44-47"></a><span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"poetry.core.masonry.api"</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Um ponto importante é que as versões dos pacotes podem variar dependendo da data em que você fizer a instalação dos pacotes. Esse arquivo é somente um exemplo.</p>
 </details>
@@ -2575,13 +2585,13 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <span class="normal"><a href="#__codelineno-48-5">5</a></span>
 <span class="normal"><a href="#__codelineno-48-6">6</a></span>
 <span class="normal"><a href="#__codelineno-48-7">7</a></span>
-<span class="normal"><a href="#__codelineno-48-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="normal"><a href="#__codelineno-48-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 </span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2"></a>
 </span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 </span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4"></a>
 </span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5"></a><span class="hll">
 </span></span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7"></a><span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-48-8"><a id="__codelineno-48-8" name="__codelineno-48-8"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 </div>
@@ -2635,9 +2645,9 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <span class="normal"><a href="#__codelineno-52-2">2</a></span>
 <span class="normal"><a href="#__codelineno-52-3">3</a></span>
 <span class="normal"><a href="#__codelineno-52-4">4</a></span>
-<span class="normal"><a href="#__codelineno-52-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="kn">from</span> <span class="nn">fastapi.testclient</span> <span class="kn">import</span> <span class="n">TestClient</span>  <span class="c1"># (1)!</span>
+<span class="normal"><a href="#__codelineno-52-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>  <span class="c1"># (1)!</span>
 </span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2"></a>
-</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a><span class="kn">from</span> <span class="nn">fast_zero.app</span> <span class="kn">import</span> <span class="n">app</span>  <span class="c1"># (2)!</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>  <span class="c1"># (2)!</span>
 </span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4"></a>
 </span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5"></a><span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># (3)!</span>
 </span></code></pre></div></td></tr></table></div>
@@ -2680,14 +2690,14 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <span class="normal"><a href="#__codelineno-55-11">11</a></span>
 <span class="normal"><a href="#__codelineno-55-12">12</a></span>
 <span class="normal"><a href="#__codelineno-55-13">13</a></span>
-<span class="normal"><a href="#__codelineno-55-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1"></a><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">HTTPStatus</span>  <span class="c1"># (6)!</span>
+<span class="normal"><a href="#__codelineno-55-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>  <span class="c1"># (6)!</span>
 </span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2"></a>
-</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3"></a><span class="kn">from</span> <span class="nn">fastapi.testclient</span> <span class="kn">import</span> <span class="n">TestClient</span>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
 </span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4"></a>
-</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5"></a><span class="kn">from</span> <span class="nn">fast_zero.app</span> <span class="kn">import</span> <span class="n">app</span>
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
 </span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6"></a>
 </span><span id="__span-55-7"><a id="__codelineno-55-7" name="__codelineno-55-7"></a>
-</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8"></a><span class="k">def</span> <span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>  <span class="c1"># (1)!</span>
+</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>  <span class="c1"># (1)!</span>
 </span><span id="__span-55-9"><a id="__codelineno-55-9" name="__codelineno-55-9"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># (2)!</span>
 </span><span id="__span-55-10"><a id="__codelineno-55-10" name="__codelineno-55-10"></a>
 </span><span id="__span-55-11"><a id="__codelineno-55-11" name="__codelineno-55-11"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>  <span class="c1"># (3)!</span>
@@ -2746,14 +2756,14 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <span class="normal"><a href="#__codelineno-57-11">11</a></span>
 <span class="normal"><a href="#__codelineno-57-12">12</a></span>
 <span class="normal"><a href="#__codelineno-57-13">13</a></span>
-<span class="normal"><a href="#__codelineno-57-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1"></a><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">HTTPStatus</span>
+<span class="normal"><a href="#__codelineno-57-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
 </span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2"></a>
-</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3"></a><span class="kn">from</span> <span class="nn">fastapi.testclient</span> <span class="kn">import</span> <span class="n">TestClient</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
 </span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4"></a>
-</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5"></a><span class="kn">from</span> <span class="nn">fast_zero.app</span> <span class="kn">import</span> <span class="n">app</span>
+</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
 </span><span id="__span-57-6"><a id="__codelineno-57-6" name="__codelineno-57-6"></a>
 </span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7"></a>
-</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8"></a><span class="k">def</span> <span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
+</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
 </span><span id="__span-57-9"><a id="__codelineno-57-9" name="__codelineno-57-9"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>  <span class="c1"># Arrange</span>
 </span><span id="__span-57-10"><a id="__codelineno-57-10" name="__codelineno-57-10"></a>
 </span><span id="__span-57-11"><a id="__codelineno-57-11" name="__codelineno-57-11"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>  <span class="c1"># Act</span>
@@ -2967,7 +2977,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, Marcelo Machado, Julio Formiga, Andre Pereira, Renne Rocha, Vinícius Dionysio, Rodrigo Barretos, Adorilson Bezerra
+      dunossauro, Marcelo Machado, Julio Formiga, Andre Pereira, Renne Rocha, Rodrigo Barretos, Adorilson Bezerra
     </nav>
   </span>
 

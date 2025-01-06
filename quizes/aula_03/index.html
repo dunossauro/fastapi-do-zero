@@ -1438,7 +1438,7 @@
 <p>
     </p><div class="quiz"><h3>05 - O que faz a seguinte fixture</h3>
     <div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span> <span class="nf">client</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </code></pre></div>
     <form>
@@ -1471,12 +1471,12 @@
 
 <p>
     </p><div class="quiz"><h3>07 - Sobre o relacionamento dos schemas, qual seria a resposta esperada pelo cliente em UserList?</h3>
-    <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UserPublic</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserPublic</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">email</span><span class="p">:</span> <span class="nb">str</span>
 
 
-<span class="k">class</span> <span class="nc">UserList</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserList</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserPublic</span><span class="p">]</span>
 </code></pre></div>
     <form>

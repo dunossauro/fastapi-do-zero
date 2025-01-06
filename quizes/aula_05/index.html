@@ -1430,7 +1430,7 @@
 <p>
     </p><div class="quiz"><h3>01 - Qual a função de adicionarmos a função "Depends" no seguinte código:</h3>
     <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'/users/'</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">CREATED</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserPublic</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span>
     <span class="n">user</span><span class="p">:</span> <span class="n">UserSchema</span><span class="p">,</span>
     <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)</span>
 <span class="p">):</span>
@@ -1504,7 +1504,7 @@
 <p>
     </p><div class="quiz"><h3>03 - Essa fixture no banco de dados garante que:</h3>
     <div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span> <span class="nf">session</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">session</span><span class="p">():</span>
     <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
         <span class="s1">'sqlite:///:memory:'</span><span class="p">,</span>
         <span class="n">connect_args</span><span class="o">=</span><span class="p">{</span><span class="s1">'check_same_thread'</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
@@ -1552,7 +1552,7 @@
 <p>
     </p><div class="quiz"><h3>04 - Para que o cliente requisite o campo "limit" ele deve usar a url:</h3>
     <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/users/'</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserList</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">read_users</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_users</span><span class="p">(</span>
     <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">)</span>
 <span class="p">):</span>
 </code></pre></div>
