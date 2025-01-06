@@ -152,8 +152,9 @@ pyenv local 3.13.0  # Essa era a maior versão do 3.13 quando escrevi
 Em conjunto com essa instrução, devemos dizer ao poetry que usaremos essa versão em nosso projeto. Para isso vamos alterar o arquivo de configuração do projeto o `pyproject.toml` na raiz do projeto:
 
 ```toml title="pyproject.toml" linenums="9"
-[tool.poetry.dependencies]
-python = "3.13.*"  # .* quer dizer qualquer versão da 3.12
+[project]
+#...
+requires-python = ">=3.11,<4.0"
 ```
 
 ---
