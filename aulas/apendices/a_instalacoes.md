@@ -152,7 +152,7 @@ pipx install ignr
 Com o pipx você pode executar:
 
 ```shell title="$ Execução no terminal!"
-pipx install poetry==1.8.5
+pipx install poetry
 ```
 
 ## GH
