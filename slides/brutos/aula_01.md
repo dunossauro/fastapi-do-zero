@@ -154,7 +154,7 @@ Em conjunto com essa instrução, devemos dizer ao poetry que usaremos essa vers
 ```toml title="pyproject.toml" linenums="9"
 [project]
 #...
-requires-python = ">=3.11,<4.0"
+requires-python = ">=3.13,<4.0"
 ```
 
 ---
