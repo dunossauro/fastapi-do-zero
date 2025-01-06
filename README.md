@@ -29,10 +29,10 @@ As Aulas estão dividas em:
 
 #### Sobre o ambiente
 
-Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `1.8.4`:
+Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.0.0`:
 
 ```bash
-pipx install poetry==1.8.4
+pipx install poetry==2.0.0
 ```
 
 A versão usada do python é a versão 3.13.0:
@@ -70,4 +70,4 @@ Para executar qualquer comando, basta usar: `task <comando>`, como por exemplo `
 
 #### Sobre os slides
 
-Todos os slides foram feitos usando marp. Versão do marp usada: `3.4.0`. O tema `rose-pine` está dentro da pasta dos slides brutos.
+Todos os slides foram feitos usando marp. Versão do marp usada: `4.0.3`. O tema `rose-pine` está dentro da pasta dos slides brutos.
