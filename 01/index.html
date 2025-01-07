@@ -1934,9 +1934,8 @@
 </li>
 <li>O <a href="https://python-poetry.org/" target="_blank">Poetry</a> para gerenciar os pacotes e seu ambiente virtual (caso não conheça o poetry temos uma <a href="https://youtu.be/ZOSWdktsKf0" target="_blank">live de python sobre ele</a>)</li>
 <li><a href="https://git-scm.com/" target="_blank">Git</a>: Para gerenciar versões do nosso projeto. (Caso precise de um tutorial legal sobre git, o <a href="https://www.youtube.com/playlist?list=PLvlkVRRKOYFQ3cfYPjLeQ0KvrQ8bG5H11" target="_blank">TeoMeWhy</a> fez uma playlist muito legal, totalmente de graça)</li>
-<li><a href="https://www.docker.com/" target="_blank">Docker</a>: Para criar um container da nossa aplicação (caso não tenha nenhuma experiência com docker a <a href="https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR" target="_blank">Linuxtips</a> tem uma playlist completa e grátis sobre docker no canal deles no YouTube)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
-<li><strong>OPCIONAL</strong>: O <a href="https://github.com/pypa/pipx" target="_blank">pipx</a> pode te
- ajudar bastante nesses momentos de instalações</li>
+<li><a href="https://www.docker.com/" target="_blank">Docker</a>: Para criar um container da nossa aplicação (caso não tenha nenhuma experiência com docker a <a href="https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR" target="_blank">Linuxtips</a> tem uma playlist completa e grátis sobre docker no canal deles no YouTube)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>
+7.<a href="https://github.com/pypa/pipx" target="_blank">Pipx</a>: Instalador de ferramentas python que não fazem parte do projeto.</li>
 <li><strong>OPCIONAL</strong>: O <a href="https://github.com/Antrikshy/ignr.py" target="_blank">ignr</a> para criar nosso gitignore</li>
 <li><strong>OPCIONAL (extremamente recomendado)</strong>: O <a href="https://cli.github.com/" target="_blank">gh</a> para criar o repositório e fazer alterações sem precisar acessar a página do Github</li>
 </ol>
@@ -2077,8 +2076,13 @@
 <p><a class="md-button" href="https://youtu.be/ZOSWdktsKf0"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"></path></svg></span> Link direto</a></p>
 </details>
 <p>Para instalar o Poetry, você pode seguir as instruções presentes na <a href="https://python-poetry.org/docs/#installation" target="_blank">documentação oficial</a> do Poetry para o seu sistema operacional. Alternativamente, se você optou por usar o <a href="https://pipx.pypa.io/stable/">pipx</a>, pode instalar o Poetry com o seguinte comando:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pipx<span class="w"> </span>install<span class="w"> </span>poetry
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pipx<span class="w"> </span>install<span class="w"> </span>poetry<span class="w"> </span><span class="c1">#(1)!</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>pipx<span class="w"> </span>inject<span class="w"> </span>poetry<span class="w"> </span>poetry-plugin-shell<span class="w"> </span><span class="c1">#(2)!</span>
 </span></code></pre></div>
+<ol>
+<li>Cria um ambiente virtual isolado para poetry e o deixa disponível no sistema.</li>
+<li>Adiciona a propriedade de shell no poetry. Para simplificar a execução no ambiente virtual.</li>
+</ol>
 <details class="question">
 <summary>Caso queira usar o pipx e não o tenha instalado no seu ambiente</summary>
 <p>O <a href="https://pipx.pypa.io/stable/">pipx</a> é uma forma de instalar pacotes de forma global no seu sistema sem que eles interfiram no seu ambiente global do python. Ele cria um ambiente virtual isolado para cada ferramenta.</p>
@@ -2223,7 +2227,7 @@
 </ol>
 <p>A linha em destaque <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> expõem a nossa função para ser servida pelo FastAPI. Dizendo que quando um cliente acessar o nosso endereço de rede no caminho <code>/</code>, usando o método HTTP GET<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, a função será executada. Desta maneira, temos todo o código necessário para criar nossa primeira aplicação web com FastAPI.</p>
 <p>Antes de iniciarmos nossa aplicação, temos que fazer um passo importante, habilitar o ambiente virtual, para que o python consiga enxergar nossas dependências instaladas. O poetry tem um comando específico para isso:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>poetry<span class="w"> </span>env<span class="w"> </span>activate
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>poetry<span class="w"> </span>shell
 </span></code></pre></div>
 <p>Agora com o ambiente virtual ativo, podemos iniciar nosso servidor FastAPI para iniciar nossa aplicação:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>fastapi<span class="w"> </span>dev<span class="w"> </span>fast_zero/app.py
@@ -2789,8 +2793,11 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </ol>
 <p><strong>Criando o arquivo .gitignore</strong></p>
 <p>Vamos iniciar com a criação de um arquivo <code>.gitignore</code> específico para Python. Existem diversos modelos disponíveis na internet, como os <a href="https://github.com/github/gitignore" target="_blank">disponíveis pelo próprio GitHub</a>, ou o <a href="https://gitignore.io" target="_blank">gitignore.io</a>. Uma ferramenta útil é a <a href="https://github.com/Antrikshy/ignr.py" target="_blank"><code>ignr</code></a>, feita em Python, que faz o download automático do arquivo para a nossa pasta de trabalho atual:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>ignr<span class="w"> </span>-p<span class="w"> </span>python<span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>pipx<span class="w"> </span>run<span class="w"> </span>ignr<span class="w"> </span>-p<span class="w"> </span>python<span class="w"> </span>&gt;<span class="w"> </span>.gitignore<span class="w"> </span><span class="c1">#(1)!</span>
 </span></code></pre></div>
+<ol>
+<li>O comando <code>pipx run</code> vai baixar o <code>ignr</code> vai executar o comando e vai desinstalar. Não existe a necessidade de termos ele instalado no sistema pois só será executado dessa vez.</li>
+</ol>
 <p>O <code>.gitignore</code> é importante porque ele nos ajuda a evitar que arquivos desnecessários ou sensíveis sejam enviados para o repositório. Isso inclui o ambiente virtual, arquivos de configuração pessoal, entre outros.</p>
 <p><strong>Criando um repositório no github</strong></p>
 <p>Agora, com nossos arquivos indesejados ignorados, podemos iniciar o versionamento de código usando o <code>git</code>. Para criar um repositório local, usamos o comando <code>git init .</code>. Para criar esse repositório no GitHub, utilizaremos o <code>gh</code>, um utilitário de linha de comando que nos auxilia nesse processo:</p>
@@ -2962,7 +2969,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">6 de janeiro de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">7 de janeiro de 2025</span>
   </span>
 
     
