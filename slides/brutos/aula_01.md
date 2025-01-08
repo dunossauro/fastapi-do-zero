@@ -108,6 +108,7 @@ Para instalar o poetry você pode fazer a instalação recomendada pelo site ou 
 ```bash
 pip install pipx
 pipx install poetry
+pipx inject poetry poetry-plugin-shell
 ```
 
 ---
