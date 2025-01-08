@@ -100,16 +100,18 @@ extra_css:
 
 extra:
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/dunossauro
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/dunossauro
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/dunossauro
-    - icon: fontawesome/brands/instagram
-      link: https://instagram.com/dunossauro
-    - icon: fontawesome/brands/tiktok
-      link: https://www.tiktok.com/@dunossauro
+    - icon: fontawesome/brands/mastodon
+      link: https://bolha.us/@dunossauro
+    - icon: fontawesome/brands/github
+      link: https://github.com/dunossauro
+    - icon: fontawesome/brands/twitch
+      link: https://www.twitch.tv/dunossauro
+    - icon: simple/pixelfed
+      link: https://bolha.photos/dunossauro
+    - icon: simple/homepage
+      link: https://dunossauro.com
 
 hooks:
   - hooks/quiz_hook.py
