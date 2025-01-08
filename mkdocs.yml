@@ -112,6 +112,8 @@ extra:
       link: https://bolha.photos/dunossauro
     - icon: simple/homepage
       link: https://dunossauro.com
+    - icon: simple/codeberg
+      link: https://codeberg.org/dunossauro
 
 hooks:
   - hooks/quiz_hook.py
