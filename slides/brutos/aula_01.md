@@ -440,11 +440,10 @@ Alguns comandos fazem mais sentido quando compostos. Queremos fazer mais, com me
 
 ```toml
 [tool.taskipy.tasks]
-lint = 'ruff check . && ruff check . --diff'
-format = 'ruff check . --fix && ruff format .'
+lint = 'ruff check'
+pre_format = 'ruff check --fix'
+format = 'ruff format'
 ```
-
-> O `&&` está sendo usado por compatibilidade com o windows, se você estiver no GNU/Linux ou MacOS. Você pode colocar `;` para unir comandos
 
 ---
 
