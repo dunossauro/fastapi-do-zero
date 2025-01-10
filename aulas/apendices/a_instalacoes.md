@@ -139,14 +139,6 @@ pipx ensurepath
 
 Dessa forma, os pacotes estarão no path. Podendo ser chamados pelo terminal sem problemas. A última coisa que precisa ser feita é abrir o terminal novamente, para que as novas variáveis de ambiente sejam lidas.
 
-## ignr
-
-Com o pipx você pode executar:
-
-```shell title="$ Execução no terminal!"
-pipx install ignr
-```
-
 ## poetry
 
 Com o pipx você pode executar:
