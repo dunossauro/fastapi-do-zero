@@ -33,6 +33,7 @@ Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento d
 
 ```bash
 pipx install poetry==2.0.0
+pipx inject poetry poetry-plugin-shell
 ```
 
 A versão usada do python é a versão 3.13.0:
