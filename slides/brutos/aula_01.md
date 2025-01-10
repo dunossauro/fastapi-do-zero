@@ -52,7 +52,6 @@ Materiais de qualidades e de pessoas incrível que fazem material aberto como eu
 Ferramentas incríveis que tornam o gerenciamento mais simples:
 
 7. O [pipx](https://github.com/pypa/pipx) pode te ajudar bastante nesses momentos de instalações globais
-8. O [ignr](https://github.com/Antrikshy/ignr.py) para criar nosso gitignore
 7. O [gh](https://cli.github.com/) para criar o repositório e fazer alterações sem precisar acessar a página do github
 
 > Presentes no apêndice A também :)
@@ -507,7 +506,7 @@ A estrutura de um teste, costuma contar com 3 ou 4 fases importantes.
 # Commit
 
 ```
-ignr -p python > .gitignore
+pipx run ignr -p python > .gitignore
 git init .
 gh repo create
 ```
