@@ -2480,7 +2480,7 @@
 </span></code></pre></div></td></tr></table></div>
 <ol>
 <li>Inicia o gerenciador de contexto <code>mock_db_time</code> usando o modelo <code>User</code> como base.</li>
-<li>Converte o user em um dicionário para simplificar a validação no teste.</li>
+<li>Converte o <code>user</code> em um dicionário para simplificar a validação no teste.</li>
 <li>Usa o time gerado por <code>mock_db_time</code> para validar o campo <code>created_at</code>.</li>
 </ol>
 <p>O teste permanece praticamente igual, com a diferença de que todas as operações envolvendo a criação de <code>User</code> no banco de dados acontecem no escopo de <code>mock_db_time</code>.</p>
@@ -2496,7 +2496,7 @@
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="p">}</span>
 </span></code></pre></div>
 <p>Como o tempo agora é determinístico e contido no nosso gerenciador de contexto, podemos fazer a comparação exata entre todos os campos. Inclusive <code>created_at</code>.</p>
-<p>Desta forma, nossos modelos e testes de banco de dados agora em ordem, estamos prontos para avançar para a próxima fase de configuração de nosso banco de dados e gerenciamento de migrações.</p>
+<p>Desta forma, com nossos modelos e testes de banco de dados em ordem, estamos prontos para avançar para a próxima fase de configuração de nosso banco de dados e gerenciamento de migrações.</p>
 <h2 id="configuracao-do-ambiente-do-banco-de-dados">Configuração do ambiente do banco de dados</h2>
 <p>Por fim, configuraremos nosso banco de dados. Primeiro, criaremos um novo arquivo chamado <code>settings.py</code> dentro do diretório <code>fast_zero</code>. Aqui, usaremos o Pydantic para criar uma classe <code>Settings</code> que irá pegar as configurações do nosso arquivo <code>.env</code>. Neste arquivo, a classe <code>Settings</code> é definida como:</p>
 <div class="language-python highlight"><span class="filename">fast_zero/settings.py</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
@@ -2921,7 +2921,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">16 de novembro de 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">11 de janeiro de 2025</span>
   </span>
 
     
@@ -2936,7 +2936,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, Marcelo Machado, Julio Formiga, NatalNW7, Andre Pereira, Renne Rocha, Rodrigo Barretos
+      dunossauro, Julio Formiga, Marcelo Machado, NatalNW7, Andre Pereira, Renne Rocha, Rodrigo Barretos
     </nav>
   </span>
 
