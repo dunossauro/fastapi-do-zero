@@ -29,10 +29,10 @@ As Aulas estão dividas em:
 
 #### Sobre o ambiente
 
-Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.0.0`:
+Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.0`:
 
 ```bash
-pipx install poetry==2.0.0
+pipx install poetry==2.0.1
 pipx inject poetry poetry-plugin-shell
 ```
 
