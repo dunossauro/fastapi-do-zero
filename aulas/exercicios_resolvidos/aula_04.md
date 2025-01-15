@@ -154,6 +154,38 @@ INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
 INFO  [alembic.runtime.migration] Running upgrade 74f39286e2f6 -> bb77f9679811, exercicio 02 aula 04
 ```
 
+??? warning "sqlalchemy.exc.OperationalError: (sqlite3.OperationalError)"
+	Caso você receba esse erro ao aplicar a migração, recomendo que veja a [Live de Python #211](https://youtu.be/yQtqkq9UkDA) live sobre `migrações e bancos de dados evolutivos`.
+	No minuto [1:28:33](https://youtu.be/yQtqkq9UkDA?t=5313) o motivo e a solução desse erro são abordados em mais detalhes.
+
+	Será preciso alterar o arquivo de migrações manualmente para que possamos inserir a coluna em lote,
+	para todas as linhas da tabela de uma vez.
+
+	O arquivo de migrações deve se parecer com esse:
+	
+    ```python title="/migrations/versions/bb77f9679811_exercicio_02_aula_04.py" linenums="20" hl_lines="3-4 15-16"
+    # ...
+    def upgrade():
+        with op.batch_alter_table('users', schema=None) as batch_op:  #(1)!
+            batch_op.add_column(   #(2)!
+                sa.Column(
+                    'updated_at',
+                    sa.DateTime(),
+                    server_default=sa.text('(CURRENT_TIMESTAMP)'),
+                    nullable=False,
+                )
+            )
+    
+    
+    def downgrade():
+        with op.batch_alter_table('users', schema=None) as batch_op:  #(1)!
+            batch_op.drop_column('updated_at')  #(3)!
+    ```
+
+    1. Entrando no contexto das operações em lote
+    2. Adiciona a coluna `updated_at` na tabela `users` com o `batch_op`
+    3. Remove a coluna `updated_at` da tabela `users` com o `batch_op`
+	
 Checando o resultado no schema do banco de dados:
 
 ```sql title="$ Execução no terminal!" hl_lines="15"
