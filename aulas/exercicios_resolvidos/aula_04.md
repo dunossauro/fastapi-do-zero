@@ -155,13 +155,15 @@ INFO  [alembic.runtime.migration] Running upgrade 74f39286e2f6 -> bb77f9679811, 
 ```
 
 ??? warning "sqlalchemy.exc.OperationalError: (sqlite3.OperationalError)"
-	Caso você receba esse erro ao aplicar a migração, recomendo que veja a [Live de Python #211](https://youtu.be/yQtqkq9UkDA) live sobre `migrações e bancos de dados evolutivos`.
+	Caso você receba esse erro ao aplicar a migração, recomendo que veja a [Live de Python #211](https://youtu.be/yQtqkq9UkDA) sobre `migrações e bancos de dados evolutivos`.
 	No minuto [1:28:33](https://youtu.be/yQtqkq9UkDA?t=5313) o motivo e a solução desse erro são abordados em mais detalhes.
 
-	Será preciso alterar o arquivo de migrações manualmente para que possamos inserir a coluna em lote,
-	para todas as linhas da tabela de uma vez.
+	Mas, em resumo, isso é um problema causado pelo modo como o python se comunica com o sqlite, fazzendo com que cada alteração no banco seja aplicado linha, a linha.
+	Para fazer todas as modificações de uma vez, usamos as `operações em batch`.
+	A ideia é abrir uma única conexão com o banco de dados e executar determinadas operações para todas as linhas antes da conexão ser fechada.
 
-	O arquivo de migrações deve se parecer com esse:
+	Para isso será preciso alterar o arquivo de migrações manualmente.
+	O arquivo deve se parecer com esse:
 	
     ```python title="/migrations/versions/bb77f9679811_exercicio_02_aula_04.py" linenums="20" hl_lines="3-4 15-16"
     # ...
