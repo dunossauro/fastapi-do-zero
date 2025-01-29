@@ -54,6 +54,7 @@ quote-style = 'single'
 [tool.towncrier]
 directory = "changelogs"
 filename = "CHANGELOG.md"
+issue_format = '[#{issue}](https://github.com/dunossauro/fastapi-do-zero/issues/{issue})'
 
 [[tool.towncrier.type]]
 directory = "adicionado"
@@ -73,4 +74,14 @@ showcontent = true
 [[tool.towncrier.type]]
 directory = "removido"
 name = "Removido"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "atualizacoes"
+name = "Atualizações"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "interno"
+name = "Interno"
 showcontent = true

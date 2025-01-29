@@ -5,7 +5,7 @@ Durante as aulas síncronas, diversas dúvidas sobre a configuração e instala�
 São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}. A ideia é agrupar todas as instalações um único lugar.
 
 ## Pyenv no Windows
-Para instalar o pyenv você precisa abrir seu terminal como administrado e executar o comando:
+Para instalar o pyenv você precisa abrir seu PowerShell como administrado e executar o comando:
 
 ```powershell
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
@@ -14,6 +14,18 @@ Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv
 A mensagem `pyenv-win is successfully installed. You may need to close and reopen your terminal before using it.` aparecerá na tela. Dizendo que precisamos reinicar o shell. 
 
 Só precisamos fechá-lo e abrir de novo.
+
+### Caso esse comando apresente erro
+
+Grande parte dos problemas que pessoas encontraram ao executar instalar o `pyenv` são relacionados a Polices do sistema
+
+![descrição](https://github.com/pyenv-win/pyenv-win/wiki/img/powershell-execution-policy-error.png){: .center .shadow }
+
+Para corrigir isso você pode executar o seguinte comando:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
 ## Pyenv no Linux/MacOS
 
