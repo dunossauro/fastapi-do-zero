@@ -1230,6 +1230,22 @@ files = [
 mkdocs = "*"
 
 [[package]]
+name = "mkdocs-towncrier"
+version = "0.1.3"
+description = "An insanely small plugin to add towncrier changelog draft into mkdocs"
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "mkdocs_towncrier-0.1.3-py3-none-any.whl", hash = "sha256:11ea461a10a29d86953fbc64b4ec545e21f800f4e0c4beacf6e8c56ab59d4bde"},
+    {file = "mkdocs_towncrier-0.1.3.tar.gz", hash = "sha256:01bdb869fa37b2adad92b2386d94a91b5447b6e71e2b327984ca5bb048894c75"},
+]
+
+[package.dependencies]
+mkdocs = ">=1.6.0,<1.7.0"
+towncrier = ">=24.7.0,<25.0.0"
+
+[[package]]
 name = "mkdocs-video"
 version = "1.5.0"
 description = ""
@@ -2377,4 +2393,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "b6598193a7e63c5cc4f59a5135bb31eb46945092355f40f6bacc8dac266d6e85"
+content-hash = "1ecc0d54a6f6a2682f9e59256f4049599d8332c251440e2ec3989eaf0db50228"

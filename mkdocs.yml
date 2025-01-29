@@ -80,6 +80,7 @@ plugins:
         - "wip.md"
   - exclude-unused-files
   - mkdocs_quiz
+  - towncrier
 
 fonts:
   icon: material/format-font
