@@ -426,7 +426,7 @@ Se iniciarmos o nosso servidor `task run` e entrarmos nas documentações, podem
 
 # Exercicio e quiz
 
-Crie um endpoint que retorna "olá mundo" usando HTML e escreva seu teste. Dica: para capturar a resposta do HTML do cliente de testes, você pode usar response.text
+Crie um novo endpoint em `fast_zero/app.py` que retorne "olá mundo" usando HTML e escreva seu teste em `tests/test_app.py`. Dica: para capturar a resposta do HTML do cliente de testes, você pode usar response.text
 
 quiz: https://fastapidozero.dunossauro.com/quizes/aula_02/
 

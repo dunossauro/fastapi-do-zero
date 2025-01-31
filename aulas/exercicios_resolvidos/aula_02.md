@@ -2,7 +2,7 @@
 
 ## Exercício 01
 
-Crie um endpoint que retorne "olá mundo" usando HTML e escreva seu teste.
+1. Crie um novo endpoint em `fast_zero/app.py` que retorne "olá mundo" usando HTML e escreva seu teste em `tests/test_app.py`.
 
 > Dica: para capturar a resposta do HTML do cliente de testes, você pode usar `#!python response.text`
 
@@ -17,7 +17,7 @@ from fastapi.responses import HTMLResponse
 # ...
 
 @app.get('/exercicio-html', response_class=HTMLResponse)
-def read_root():
+def exercicio_aula_02():
     return """
     <html>
       <head>
