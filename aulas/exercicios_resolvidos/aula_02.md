@@ -39,7 +39,7 @@ from fastapi.testclient import TestClient
 from fast_zero.app import app
 
 
-def test_root_deve_retornar_ola_mundo_em_html():
+def test_exercicio_ola_mundo_em_html():
     client = TestClient(app)
 
     response = client.get('/exercicio-html')
