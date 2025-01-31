@@ -12,13 +12,11 @@ Crie um endpoint que retorne "olá mundo" usando HTML e escreva seu teste.
 Para criação do endpoint retornando HTML devemos alterar a classe de resposta padrão do FastAPI para `HTMLResponse`:
 
 ```python title="Implementação do endpoint"
-from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
-app = FastAPI()
+# ...
 
-
-@app.get('/', response_class=HTMLResponse)
+@app.get('/exercicio-html', response_class=HTMLResponse)
 def read_root():
     return """
     <html>
@@ -44,7 +42,7 @@ from fast_zero.app import app
 def test_root_deve_retornar_ola_mundo_em_html():
     client = TestClient(app)
 
-    response = client.get('/')
+    response = client.get('/exercicio-html')
 
     assert response.status_code == HTTPStatus.OK
     assert '<h1> Olá Mundo </h1>' in response.text
