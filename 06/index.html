@@ -2294,7 +2294,7 @@
 </span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="n">form_data</span><span class="p">:</span> <span class="n">OAuth2PasswordRequestForm</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(),</span> <span class="c1">#(1)!</span>
 </span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_session</span><span class="p">),</span>
 </span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="p">):</span>
-</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>    <span class="n">user</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">form_data</span><span class="o">.</span><span class="n">username</span><span class="p">))</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>    <span class="n">user</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">form_data</span><span class="o">.</span><span class="n">username</span><span class="p">))</span> <span class="c1">#(2)!</span>
 </span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>
 </span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
 </span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
@@ -2314,6 +2314,7 @@
 </span></code></pre></div>
 <ol>
 <li>A classe <code>OAuth2PasswordRequestForm</code> é uma classe especial do FastAPI que gera automaticamente um formulário para solicitar o username (email neste caso) e a senha. Este formulário será apresentado automaticamente no Swagger UI e Redoc, facilitando a realização de testes de autenticação.</li>
+<li>Atenção redobrada: conforme a nota anterior, o formulário gerado por <code>OAuth2PasswordRequestForm</code> armazena credendicais do usuário em <code>username</code>. Como usamos email para identifiar o usuário, aqui comparamos <code>username</code> do formulário com o atributo <code>email</code> do modelo <code>User</code>.</li>
 </ol>
 <p>Esse endpoint recebe os dados do formulário através do <code>form_data</code> (que são injetados automaticamente graças ao <code>Depends()</code>) e tenta recuperar um usuário com o email fornecido. Se o usuário não for encontrado ou a senha não corresponder ao hash armazenado no banco de dados, uma exceção é lançada. Caso contrário, um token de acesso é criado usando o <code>create_access_token()</code> que criamos anteriormente e retornado como uma resposta.</p>
 <h3 id="testando-token">Testando /token</h3>
@@ -2835,7 +2836,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">12 de janeiro de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">31 de janeiro de 2025</span>
   </span>
 
     
@@ -2850,7 +2851,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, Lucas Mendes, Julio Formiga, RWallan
+      dunossauro, Lucas Mendes, Julio Formiga, RWallan, Kennedy Richard
     </nav>
   </span>
 
