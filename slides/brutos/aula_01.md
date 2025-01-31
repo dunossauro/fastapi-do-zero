@@ -31,9 +31,17 @@ style: |
 3. A versão 3.11+ do Python instalada.
 	- Caso não tenha essa versão você pode baixar do site oficial
 	- Ou instalar via [pyenv](https://github.com/pyenv/pyenv)
-4. O [Poetry](https://python-poetry.org/) para gerenciar os pacotes e seu ambiente virtual (caso não conheça o poetry temos uma [live de python sobre ele](https://youtu.be/ZOSWdktsKf0))
-5. [Git](https://git-scm.com/): Para gerenciar versões
-6. [Docker](https://www.docker.com/): Para criar um container da nossa aplicação
+4. O [pipx](https://github.com/pypa/pipx) pode te ajudar bastante nesses momentos de instalações globais
+
+---
+
+# O ambiente de desenvolvimento
+
+5. O [Poetry](https://python-poetry.org/) para gerenciar os pacotes e seu ambiente virtual (caso não conheça o poetry temos uma [live de python sobre ele](https://youtu.be/ZOSWdktsKf0))
+6. [Git](https://git-scm.com/): Para gerenciar versões
+7. [Docker](https://www.docker.com/): Para criar um container da nossa aplicação
+
+> Presentes no apêndice A também :)
 
 ---
 
@@ -44,17 +52,6 @@ Materiais de qualidades e de pessoas incrível que fazem material aberto como eu
 1. [Curso de git do teomewhy](https://www.youtube.com/playlist?list=PLvlkVRRKOYFQ3cfYPjLeQ0KvrQ8bG5H11)
 2. [Curso de Docker da LinuxTips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
 3. [Ajuda para configurar o ambiente - Apêndice A](https://fastapidozero.dunossauro.com/apendices/a_instalacoes/)
-
----
-
-# Coisas opcionais que podem ajudar
-
-Ferramentas incríveis que tornam o gerenciamento mais simples:
-
-7. O [pipx](https://github.com/pypa/pipx) pode te ajudar bastante nesses momentos de instalações globais
-7. O [gh](https://cli.github.com/) para criar o repositório e fazer alterações sem precisar acessar a página do github
-
-> Presentes no apêndice A também :)
 
 ---
 
@@ -394,7 +391,8 @@ Bom, esses comandos são bem difíceis de lembrar e mais chatos ainda de digitar
 
 
 ```bash
-ruff check . && ruff format .       # Para checar e formatar
+ruff check .               .        # para checar
+ruff format .                       # para formatar
 fastapi dev fast_zero/app.py        # para rodar a aplicação
 pytest --cov=fast_zero -vv          # teste
 coverage html                       # cobertura
@@ -419,9 +417,10 @@ poetry add --group dev taskipy
 Configuração:
 ```toml
 [tool.taskipy.tasks]
+lint = 'ruff check'
+format = 'ruff format'
 run = 'fastapi dev fast_zero/app.py'
 test = 'pytest -s -x --cov=fast_zero -vv'
-post_test = 'coverage html'
 ```
 
 ---
@@ -439,9 +438,9 @@ Alguns comandos fazem mais sentido quando compostos. Queremos fazer mais, com me
 
 ```toml
 [tool.taskipy.tasks]
-lint = 'ruff check'
 pre_format = 'ruff check --fix'
-format = 'ruff format'
+pre_test = 'task lint'
+post_test = 'coverage html'
 ```
 
 ---
@@ -451,8 +450,8 @@ format = 'ruff format'
 Em outros momentos, queremos fazer uma coisa, só se a primeira der certo, para isso podemos fazer:
 
 ```toml
+pre_format = 'ruff check --fix'
 pre_test = 'task lint'
-test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
 ```
 
