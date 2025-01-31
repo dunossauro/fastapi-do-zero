@@ -2625,9 +2625,10 @@
 <p><a class="glightbox" href="../assets/02/captura_de_tela_do_swagger_mostrando_o_schema_de_message.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt='Captura de tele do Swagger UI mostrando o json schema de "Message" que definimos no FastAPI' class="center shadow" src="../assets/02/captura_de_tela_do_swagger_mostrando_o_schema_de_message.png"></a></p>
 <p>Além disso, na seção de <code>Responses</code>, temos um exemplo claro da saída esperada do endpoint: <code class="language-python highlight"><span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">}</span></code>. Isso ilustra como a API irá responder, especificando que o campo obrigatório <code>"message"</code> será retornado com um valor do tipo <code>"string"</code>.</p>
 <h2 id="exercicio">Exercício</h2>
-<ol>
-<li>Crie um endpoint que retorne "olá mundo" usando HTML e escreva seu teste. Dica: para capturar a resposta do HTML do cliente de testes, você pode usar <code class="language-python highlight"><span class="n">response</span><span class="o">.</span><span class="n">text</span></code></li>
-</ol>
+<p>1.Crie um novo endpoint em <code>fast_zero/app.py</code> que retorne "olá mundo" usando HTML e escreva seu teste em <code>tests/test_app.py</code>.</p>
+<blockquote>
+<p>Dica: para capturar a resposta do HTML do cliente de testes, você pode usar <code class="language-python highlight"><span class="n">response</span><span class="o">.</span><span class="n">text</span></code></p>
+</blockquote>
 <p><a class="md-button" href="../exercicios_resolvidos/aula_02/">Exercícios resolvidos <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg></span></a></p>
 <h2 id="conclusao">Conclusão</h2>
 <p>Nesta aula, navegamos brevemente pelo vasto mundo do desenvolvimento web com foco em APIs, abraçando desde os fundamentos da comunicação na web até as práticas de troca de dados. Exploramos o modelo cliente-servidor, entendemos algumas das nuances das mensagens HTTP e tivemos uma introdução sobre URLs e HTML. Embora o HTML desempenhe um papel central na camada de apresentação, o nosso foco recaiu sobre as APIs, particularmente aquelas que trafegam JSON, um formato de dados.</p>
