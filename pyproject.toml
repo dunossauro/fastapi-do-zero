@@ -85,3 +85,8 @@ showcontent = true
 directory = "interno"
 name = "Interno"
 showcontent = true
+
+[[tool.towncrier.type]]
+directory = "slides"
+name = "Slides"
+showcontent = true
