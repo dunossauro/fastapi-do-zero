@@ -32,12 +32,7 @@ def exercicio_aula_02():
 O teste que faz a validação do valor retornado pelo endpoint não precisa ser muito robusto. A ideia principal do exercício é somente validar se estamos retornando o "Olá Mundo" em formato de HTML:
 
 ```python title="Implementação do teste"
-from http import HTTPStatus
-
-from fastapi.testclient import TestClient
-
-from fast_zero.app import app
-
+# ...
 
 def test_exercicio_ola_mundo_em_html():
     client = TestClient(app)
