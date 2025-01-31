@@ -21,7 +21,7 @@ def read_root():
     return """
     <html>
       <head>
-        <title> Nosso olá mundo!</title>
+        <title>Nosso olá mundo!</title>
       </head>
       <body>
         <h1> Olá Mundo </h1>
