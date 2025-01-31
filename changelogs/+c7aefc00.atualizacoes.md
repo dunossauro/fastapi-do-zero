@@ -1,1 +1,1 @@
-Ruff para versão 0.9.3
+Ruff para versão 0.9.4
