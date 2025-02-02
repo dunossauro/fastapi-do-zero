@@ -1819,20 +1819,22 @@
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>launch<span class="w"> </span>data...⣽
 </span></code></pre></div>
-<p>Nesse momento, ele abrirá o browser novamente exibira uma tela de ajustes de configurações:</p>
-<p><a class="glightbox" href="../assets/12/fly_lauch_tweak.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="captura de tela da janela de tweak da aplicação" class="center shadow" src="../assets/12/fly_lauch_tweak.png" width="500"></a></p>
-<p>Nesse momento faremos alguns ajustes em nossa configuração:</p>
+<p>Nesse momento, ele abrirá o browser novamente exibira uma tela de ajustes de configurações.</p>
+<p>Para as configurações da máquina que executará o aplicativo:
+<a class="glightbox" href="../assets/12/fly_lauch_tweak_01.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="captura de tela da janela de tweak da aplicação" class="center shadow" src="../assets/12/fly_lauch_tweak_01.png" width="500"></a></p>
 <ol>
 <li>Seção <code>Basics</code>: adicionaremos o nome da nossa aplicação no Fly. (Usarei <code>fastzeroapp</code>)</li>
-<li>Seção <code>Memory &amp; CPU</code>: alteraremos o campo <code>VM Memory</code> para 256MB</li>
-<li>Seção <code>Database</code>:<ul>
-<li>alteraremos o campo <code>Postgres</code> para <code>Fly Postgres</code></li>
-<li>criaremos um nome para o nosso serviço de banco de dados. (Usarei <code>fastzerodb</code>)</li>
-<li>no campo <code>Configuration</code> alteraremos para <code>Development - Single node, 1x shared CPU, 256MB RAM, 1GB disk</code></li>
-</ul>
-</li>
-<li>Por fim, clicamos em <code>Confirm Settings</code>!</li>
+<li>Na opção <code>VM sizes</code>: Usaremos <code>shared-cpu-1x</code></li>
+<li>Na opção <code>VM Memory</code>: Usaremos 512MB</li>
 </ol>
+<p>Paras configurações da máquina que executará o banco de dados:
+<a class="glightbox" href="../assets/12/fly_lauch_tweak_02.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="captura de tela da janela de tweak da aplicação" class="center shadow" src="../assets/12/fly_lauch_tweak_02.png" width="500"></a></p>
+<ol>
+<li>Alteraremos o campo <code>Provider</code> para <code>Fly Automated Postgres</code></li>
+<li>Criaremos um nome para o nosso serviço de banco de dados. (Usarei <code>fastzerodb</code>)</li>
+<li>No campo <code>Configuration</code> alteraremos para <code>Development - Single node, 1x shared CPU, 256MB RAM, 1GB disk</code></li>
+</ol>
+<p>Por fim, clicamos em <code>Confirm Settings</code>!</p>
 <p>Após esse ajuste, você pode fechar a janela do browser e voltar ao terminal, pois a parte interativa do <code>launch</code> ainda estará em execução. Como a resposta a seguir é bastante grande, colocarei <code>...</code> para pular algumas linhas que não nos interessam nesse momento:</p>
 <div class="language-shell highlight"><span class="filename">$ Continuação do comando `launch`</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Created<span class="w"> </span>app<span class="w"> </span><span class="s1">'fastzeroapp'</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>organization<span class="w"> </span><span class="s1">'personal'</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="hll">Admin<span class="w"> </span>URL:<span class="w"> </span>https://fly.io/apps/fastzeroapp
@@ -2139,7 +2141,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">5 de outubro de 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2 de fevereiro de 2025</span>
   </span>
 
     
