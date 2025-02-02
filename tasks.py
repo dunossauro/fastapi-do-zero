@@ -117,11 +117,7 @@ def update_project(c):
 
     for dep in sorted(dependencies):
         dep = dep.split()[0]
-        if dep == 'python':
-            ...
-
-        else:
-            c.run(f'poetry add {dep}@latest')
+        c.run(f'poetry add {dep}@latest')
 
 
 @task
@@ -215,9 +211,6 @@ def update_sub(c):
 
                 elif dep in 'psycopg':
                     c.run('poetry add "psycopg[binary]@latest"')
-
-                elif dep == 'python':
-                    ...
 
                 else:
                     c.run(f'poetry add {dep}@latest')
