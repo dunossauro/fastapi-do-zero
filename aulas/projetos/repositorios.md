@@ -288,3 +288,12 @@ O objetivo dessa página é unir todos os repositórios de pessoas que fizeram o
 | [FastAPI-Project](https://github.com/Potatoyz908/FastAPI-Project)                                      | [@Potatoyz908](https://github.com/Potatoyz908)                       | Aprimorando meus conhecimentos em Python e FastAPI                                                                                                |
 | [[fastzero-curso-eduardo-mendes](https://github.com/GabrielGuedesSilva/fastzero-curso-eduardo-mendes)] | [@GabrielGuedesSilva](https://github.com/GabrielGuedesSilva)         | Aprendendo FastAPI com o melhor!                                                                                                                  |
 | [fast_zero_repo](https://github.com/PatrickSagio/fast_zero_repo)                                       | [@PatrickSagio](https://github.com/PatrickSagio)                     | Aprendendo FastAPI. Curso show de bola!                                                                                                           |
+|[fastpy_todo](https://github.com/pLogicador/fastpy_todo) | [@pLogicador](https://github.com/pLogicador) | Primeiros passos com FastAPI, até agora interessante! |
+|[estudo_fastapi](https://github.com/djDhyogo/estudo_fastapi) | [@djDhyogo](https://github.com/djDhyogo/estudo_fastapi) | |
+|[fast_zero](https://github.com/Luiz-ROCampos/fast_zero.git) | [@Luiz-ROCampos](https://github.com/Luiz-ROCampos) | Iniciando o curso, antes tarde do que nunca |
+|[fastapi](https://github.com/morgannadev/fastapi) | [morgannadev](https://github.com/morgannadev/) | Aprendendo de novo |
+|[fast_zero](https://github.com/samuel-apls/fast_zero.git) | [samuel-apls](https://github.com/samuel-apls) | Curso de FastAPI com Eduardo Mendes (dunossauro) |
+|[Primeiro Projeto FASTAPI](https://github.com/cassiogvstos/Primeiro_Projeto_FASTAPI) | [cassiogvstos](https://github.com/cassiogvstos)  | Estou alguns no futuro após as gravações do curso, mas achei muito bom, dinâmica e didática fantásticas, Parabéns. |
+|[fast_zero_learning](https://github.com/costacoder/fast_zero_learning.git) | [costacoder](https://github.com/costacoder) | Iniciando curso do FastAPI com dunossauro, conteúdo excelente. |
+|[fastapi-do-zero](https://github.com/Gelzieny/fastapi-do-zero.git) | [Gelzieny](https://github.com/Gelzieny) | Aprendendo de novo|
+|[fastAPI_Zero](https://github.com/renanapcs/fastAPI_Zero) | [@renanapcs](https://github.com/renanapcs) | Aprendendo FastAPI com Dunossauro | 
