@@ -358,7 +358,7 @@ def test_jwt():
     decoded = decode(token, SECRET_KEY)
 
     assert decoded['test'] == data['test']
-    assert decoded['exp']  # Testa se o valor de exp foi adicionado ao token
+    assert 'exp' in decoded  # Testa se o valor de exp foi adicionado ao token
 ```
 ---
 

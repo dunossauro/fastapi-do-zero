@@ -15,7 +15,7 @@ def test_jwt():
     decoded = decode(token, SECRET_KEY, algorithms=['HS256'])
 
     assert decoded['test'] == data['test']
-    assert decoded['exp']
+    assert 'exp' in decoded
 
 
 def test_jwt_invalid_token(client):
