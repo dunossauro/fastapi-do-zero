@@ -31,10 +31,6 @@ class Token(BaseModel):
     token_type: str
 
 
-class TokenData(BaseModel):
-    username: str | None = None
-
-
 class TodoSchema(BaseModel):
     title: str
     description: str

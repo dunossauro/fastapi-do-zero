@@ -11,7 +11,6 @@ from sqlalchemy.orm import Session
 
 from fast_zero.database import get_session
 from fast_zero.models import User
-from fast_zero.schemas import TokenData
 from fast_zero.settings import Settings
 
 settings = Settings()
@@ -55,17 +54,19 @@ def get_current_user(
         payload = decode(
             token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
         )
-        username: str = payload.get('sub')
-        if not username:
+        subject_email = payload.get('sub')
+
+        if not subject_email:
             raise credentials_exception
-        token_data = TokenData(username=username)
+
     except DecodeError:
         raise credentials_exception
+
     except ExpiredSignatureError:
         raise credentials_exception
 
     user = session.scalar(
-        select(User).where(User.email == token_data.username)
+        select(User).where(User.email == subject_email)
     )
 
     if not user:

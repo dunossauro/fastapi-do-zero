@@ -585,8 +585,8 @@ def get_current_user(...):
 
     try:
         payload = jwt.decode(token, SECRET_KEY)
-        username: str = payload.get('sub')
-        if not username:
+        subject_email = payload.get('sub')
+        if not subject_email:
             raise credentials_exception
     except JWTError:
         raise credentials_exception
@@ -601,7 +601,7 @@ Caso esteja tudo correto com o token:
 def get_current_user(...):
     # ...
     user = session.scalar(
-        select(User).where(User.email == username)
+        select(User).where(User.email == subject_email)
     )
 
     if not user:

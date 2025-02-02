@@ -322,16 +322,21 @@ def test_token_expired_after_time(client, user):
 
 ```python
 def get_current_user(
+    session: Session = Depends(get_session),
+    token: str = Depends(oauth2_scheme),
+):
     try:
         payload = decode(
             token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
         )
-        username: str = payload.get('sub')
-        if not username:
+        subject_email = payload.get('sub')
+
+        if not subject_email:
             raise credentials_exception
-        token_data = TokenData(username=username)
+
     except DecodeError:
         raise credentials_exception
+
     except ExpiredSignatureError:
         raise credentials_exception
 ```

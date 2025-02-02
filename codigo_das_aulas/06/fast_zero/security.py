@@ -11,7 +11,6 @@ from sqlalchemy.orm import Session
 
 from fast_zero.database import get_session
 from fast_zero.models import User
-from fast_zero.schemas import TokenData
 
 SECRET_KEY = 'your-secret-key'  # Isso é provisório, vamos ajustar!
 ALGORITHM = 'HS256'
@@ -52,15 +51,16 @@ def get_current_user(
 
     try:
         payload = decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get('sub')
-        if not username:
+        subject_email = payload.get('sub')
+
+        if not subject_email:
             raise credentials_exception
-        token_data = TokenData(username=username)
+
     except DecodeError:
         raise credentials_exception
 
     user = session.scalar(
-        select(User).where(User.email == token_data.username)
+        select(User).where(User.email == subject_email)
     )
 
     if not user:
