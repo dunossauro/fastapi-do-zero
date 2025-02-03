@@ -52,6 +52,7 @@ INFO  [alembic.autogenerate.compare] Detected added column 'users.updated_at'
   Generating /home/dunossauro/git/fastapi-do-
   zero/codigo_das_aulas/09/migrations/versions/bd7cea4a4773_adicionando_created_at_e_updated_at_na_.py ...  done
 ```
+{% include "templates/sqlite_error.md" %}
 
 Gerando a seguinte migração:
 
