@@ -18,7 +18,7 @@ content:
 <?/quiz?>
 
 <?quiz?>
-question: 03 - Qual a função do objeto Mapper
+question: 03 - Qual a função do objeto Mapped
 answer: executar a função map do python no banco de dados
 answer-correct: Criar uma relação entre o tipo de dados do python e o da tabela do banco
 answer: Dizer qual o tipo de dado que terá no banco de dados
