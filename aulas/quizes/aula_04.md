@@ -18,7 +18,7 @@ content:
 <?/quiz?>
 
 <?quiz?>
-question: 03 - Qual a função do objeto Mapper
+question: 03 - Qual a função do objeto Mapped
 answer: executar a função map do python no banco de dados
 answer-correct: Criar uma relação entre o tipo de dados do python e o da tabela do banco
 answer: Dizer qual o tipo de dado que terá no banco de dados
@@ -79,7 +79,7 @@ session.scalar(select(User).where(User.username == 'Quiz'))
 
 ```quiz
 {
-    "questao": '08 - A função "select" tem a objetivo de:',
+    "questao": '08 - A função "select" tem o objetivo de:',
 	"opcoes": {
 		"a": "Executar uma busca no banco de dados",
 		"b": "Selecionar objetos 'User' no projeto",
