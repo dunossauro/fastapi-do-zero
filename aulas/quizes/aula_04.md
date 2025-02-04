@@ -79,7 +79,7 @@ session.scalar(select(User).where(User.username == 'Quiz'))
 
 ```quiz
 {
-    "questao": '08 - A função "select" tem a objetivo de:',
+    "questao": '08 - A função "select" tem o objetivo de:',
 	"opcoes": {
 		"a": "Executar uma busca no banco de dados",
 		"b": "Selecionar objetos 'User' no projeto",
