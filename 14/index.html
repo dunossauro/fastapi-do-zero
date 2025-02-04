@@ -2490,7 +2490,76 @@
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-gherkin highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nf">TODO</span>
+<div class="language-gherkin highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">Cenário:</span><span class="nf"> Autenticação via JWT</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/token</span><span class="nf">"</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="s">    {</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="s">        "username": "fausto@fausto.com",</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="s">        "password": "12345"</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="s">    }</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="s">    {</span>
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="s">        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0ZUB0ZXN0LmNvbSIsImV4cCI6MTY5MDI1ODE1M30.Nx0P_ornVwJBH_LLLVrlJoh6RmJeXR-Nr7YJ_mlGY04",</span>
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="s">        "token_type": "bearer"</span>
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="s">    }</span>
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="k">Cenário:</span><span class="nf"> Autenticação via JWT com usuário não existente</span>
+</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/token</span><span class="nf">"</span>
+</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a><span class="s">    {</span>
+</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="s">        "username": "fausto@fausto.com",</span>
+</span><span id="__span-35-23"><a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a><span class="s">        "password": "12345"</span>
+</span><span id="__span-35-24"><a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a><span class="s">    }</span>
+</span><span id="__span-35-25"><a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-26"><a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">400</span><span class="nf">"</span>
+</span><span id="__span-35-27"><a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-28"><a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-29"><a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a><span class="s">    {</span>
+</span><span id="__span-35-30"><a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a><span class="s">        "detail": "Incorrect email or password"</span>
+</span><span id="__span-35-31"><a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a><span class="s">    }</span>
+</span><span id="__span-35-32"><a id="__codelineno-35-32" name="__codelineno-35-32" href="#__codelineno-35-32"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-33"><a id="__codelineno-35-33" name="__codelineno-35-33" href="#__codelineno-35-33"></a>
+</span><span id="__span-35-34"><a id="__codelineno-35-34" name="__codelineno-35-34" href="#__codelineno-35-34"></a><span class="k">Cenário:</span><span class="nf"> Autorização via Bearer token</span>
+</span><span id="__span-35-35"><a id="__codelineno-35-35" name="__codelineno-35-35" href="#__codelineno-35-35"></a><span class="k">    Dado </span><span class="nf">que envie um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/token</span><span class="nf">"</span>
+</span><span id="__span-35-36"><a id="__codelineno-35-36" name="__codelineno-35-36" href="#__codelineno-35-36"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-37"><a id="__codelineno-35-37" name="__codelineno-35-37" href="#__codelineno-35-37"></a><span class="s">    {</span>
+</span><span id="__span-35-38"><a id="__codelineno-35-38" name="__codelineno-35-38" href="#__codelineno-35-38"></a><span class="s">        "username": "fausto@fausto.com",</span>
+</span><span id="__span-35-39"><a id="__codelineno-35-39" name="__codelineno-35-39" href="#__codelineno-35-39"></a><span class="s">        "password": "12345"</span>
+</span><span id="__span-35-40"><a id="__codelineno-35-40" name="__codelineno-35-40" href="#__codelineno-35-40"></a><span class="s">    }</span>
+</span><span id="__span-35-41"><a id="__codelineno-35-41" name="__codelineno-35-41" href="#__codelineno-35-41"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-42"><a id="__codelineno-35-42" name="__codelineno-35-42" href="#__codelineno-35-42"></a><span class="nf">    </span><span class="k">Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro</span><span class="nf">"</span>
+</span><span id="__span-35-43"><a id="__codelineno-35-43" name="__codelineno-35-43" href="#__codelineno-35-43"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-44"><a id="__codelineno-35-44" name="__codelineno-35-44" href="#__codelineno-35-44"></a><span class="s">    {</span>
+</span><span id="__span-35-45"><a id="__codelineno-35-45" name="__codelineno-35-45" href="#__codelineno-35-45"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-35-46"><a id="__codelineno-35-46" name="__codelineno-35-46" href="#__codelineno-35-46"></a><span class="s">    }</span>
+</span><span id="__span-35-47"><a id="__codelineno-35-47" name="__codelineno-35-47" href="#__codelineno-35-47"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-48"><a id="__codelineno-35-48" name="__codelineno-35-48" href="#__codelineno-35-48"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">deve receber o status "</span><span class="s">201</span><span class="nf">"</span>
+</span><span id="__span-35-49"><a id="__codelineno-35-49" name="__codelineno-35-49" href="#__codelineno-35-49"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-50"><a id="__codelineno-35-50" name="__codelineno-35-50" href="#__codelineno-35-50"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-51"><a id="__codelineno-35-51" name="__codelineno-35-51" href="#__codelineno-35-51"></a><span class="s">    {</span>
+</span><span id="__span-35-52"><a id="__codelineno-35-52" name="__codelineno-35-52" href="#__codelineno-35-52"></a><span class="s">        "id": 42,</span>
+</span><span id="__span-35-53"><a id="__codelineno-35-53" name="__codelineno-35-53" href="#__codelineno-35-53"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-35-54"><a id="__codelineno-35-54" name="__codelineno-35-54" href="#__codelineno-35-54"></a><span class="s">    }</span>
+</span><span id="__span-35-55"><a id="__codelineno-35-55" name="__codelineno-35-55" href="#__codelineno-35-55"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-56"><a id="__codelineno-35-56" name="__codelineno-35-56" href="#__codelineno-35-56"></a>
+</span><span id="__span-35-57"><a id="__codelineno-35-57" name="__codelineno-35-57" href="#__codelineno-35-57"></a><span class="k">Cenário:</span><span class="nf"> Tentativa de operação sem autorização</span>
+</span><span id="__span-35-58"><a id="__codelineno-35-58" name="__codelineno-35-58" href="#__codelineno-35-58"></a><span class="k">   Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro</span><span class="nf">"</span>
+</span><span id="__span-35-59"><a id="__codelineno-35-59" name="__codelineno-35-59" href="#__codelineno-35-59"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-60"><a id="__codelineno-35-60" name="__codelineno-35-60" href="#__codelineno-35-60"></a><span class="s">    {</span>
+</span><span id="__span-35-61"><a id="__codelineno-35-61" name="__codelineno-35-61" href="#__codelineno-35-61"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-35-62"><a id="__codelineno-35-62" name="__codelineno-35-62" href="#__codelineno-35-62"></a><span class="s">    }</span>
+</span><span id="__span-35-63"><a id="__codelineno-35-63" name="__codelineno-35-63" href="#__codelineno-35-63"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-64"><a id="__codelineno-35-64" name="__codelineno-35-64" href="#__codelineno-35-64"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">deve receber o status "</span><span class="s">401</span><span class="nf">"</span>
+</span><span id="__span-35-65"><a id="__codelineno-35-65" name="__codelineno-35-65" href="#__codelineno-35-65"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-66"><a id="__codelineno-35-66" name="__codelineno-35-66" href="#__codelineno-35-66"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-67"><a id="__codelineno-35-67" name="__codelineno-35-67" href="#__codelineno-35-67"></a><span class="s">    {</span>
+</span><span id="__span-35-68"><a id="__codelineno-35-68" name="__codelineno-35-68" href="#__codelineno-35-68"></a><span class="s">        "message": "Não autorizado"</span>
+</span><span id="__span-35-69"><a id="__codelineno-35-69" name="__codelineno-35-69" href="#__codelineno-35-69"></a><span class="s">    }</span>
+</span><span id="__span-35-70"><a id="__codelineno-35-70" name="__codelineno-35-70" href="#__codelineno-35-70"></a><span class="s">    </span><span class="k">"""</span>
 </span></code></pre></div>
 </div>
 </div>
@@ -2833,7 +2902,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">20 de agosto de 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">4 de fevereiro de 2025</span>
   </span>
 
     
