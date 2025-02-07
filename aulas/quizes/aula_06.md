@@ -83,7 +83,7 @@ content:
 <?/quiz?>
 
 <?quiz?>
-question: 09 - Qual o objetivo da função 'current_user'?
+question: 09 - Qual o objetivo da função 'get_current_user'?
 answer: Gerenciar a autenticação dos clientes
 answer: Validar o token JWT
 answer-correct: Gerenciar a autorização dos endpoints
