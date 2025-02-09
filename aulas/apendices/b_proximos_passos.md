@@ -98,60 +98,6 @@ Desta forma, ao acessar o endpoint pela API, temos a junção de templates e est
 
 ![](../assets/apendices/ola_mundo_com_templates.png){: .center .shadow }
 
-
-## Asyncio
-
-O FastAPI tem suporte nativo para programação assíncrona. A única coisa que precisa ser feita para isso, a nível do framework (não incluindo as dependências) é adicionar a palavra reservada `#!python async` no início dos endpoints. 
-
-Da seguinte forma:
-
-```python title="app.py"
-from asyncio import sleep
-
-from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get('/')
-async def home():#(1)!
-    await sleep(1)#(2)!
-    return {'message': 'Olá mundo!'}
-```
-
-1. Criação de uma função assíncrona
-2. Contexto de escalonamento usando `await`
-
-O escalonamento do loop durante as chamadas nos endpoints pode ser feito por meio da palavra reservada `#!python await`.
-
----
-
-Para que os testes sejam executados de forma assíncrona, precisamos instalar uma extensão do pytest:
-
-```shell title="$ Execução no terminal!"
-poetry add pytest-asyncio
-```
-
-Dessa forma podemos executar funções de teste que também são assíncronas usando um marcador do pytest:
-```python title="test_app.py"
-from fastapi.testclient import TestClient
-
-from app import app
-
-import pytest
-
-
-@pytest.mark.asyncio #(1)!
-async def test_async():
-    client = TestClient(app)
-    response = client.get('/')
-
-    assert response.json() == {'message': 'Olá mundo!'}
-```
-
-1. Marcador para executar a função de teste dentro de um loop de eventos
-
-
 ## Tarefas em segundo plano (Background)
 
 > TODO: adicionar explicação a esse tópico
