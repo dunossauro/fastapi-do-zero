@@ -1,64 +1,64 @@
-# 11 - Automatizando os testes com Integração Contínua (CI)
+# 10 - Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+
 
 <?quiz?>
-question: 01 - Qual a função da integração contínua?
-answer: Proibir que código que não funciona seja commitado
-answer-correct: Verificar se a integração das alterações foi bem sucedida
-answer: Impedir que pessoas de fora integrem código em nosso repositório
-answer: Integrar novos commits ao repositório
+question: 01 - Qual a função do arquivo `compose.yaml`?
+answer: Subir a aplicação de forma simples
+answer-correct: Especificar os serviços e como eles se relacionam
+answer: Substituir o Dockerfile
+answer: Criar uma container docker
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 02 - O que é o Github Actions?
-answer: Uma aplicação que executa os testes localmente
-answer: Um test runner como o pytest
-answer: Forma de integrar o github com outras aplicações
-answer-correct: Um serviço do github para CI
+question: 02 - Qual instrução do Dockerfile o `entrypoint` substitui?
+answer-correct: O comando de execução (CMD)
+answer: A definição da imagem base (FROM)
+answer: A exposição das portas (EXPOSE)
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 03 - O que é um workflow de CI?
-answer-correct: Uma lista de passos que o CI deve executar
-answer-correct: Uma automação executada sempre código é adicionado ao respositório
-answer: Uma forma de versionar software como o git
-answer: Passos que serão executados antes do commit
+question: 03 - O que quer dizer escopo nas fixtures?
+answer: Em quais testes elas vão atuar
+answer: Se um módulo pode usar aquela fixture
+answer-correct: Qual a duração da fixture
+answer: Capturar as variáveis de ambiente
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 04 - Quando o nosso trigger de CI é ativado?
-answer-correct: Sempre que fazemos um push
-answer-correct: Sempre que criamos um pull request
-answer: Sempre que um commit é feito
-answer: Sempre que uma issue é aberta
+question: 04 - Por que usamos o escopo de "session" na fixture?
+answer: Pra dizer que ela vai substituir a fixture de session
+answer: Criar uma sessão do cliente com o banco de dados
+answer: Dizer que a fixture tem a duração de um teste
+answer-correct: Dizer que a fixture será executada uma única vez durante os testes
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 05 - Nos steps, o que quer dizer "uses"?
-answer-correct: Diz que vamos usar uma action pronta
-answer: Diz que vamos executar uma instrução de shell
-answer: Que vamos fazer a instalação de um componente no workflow
-answer: Fazer checkout do código do repositório
+question: 05 - Para que serve o volume no docker?
+answer: Para armazenar as imagens geradas
+answer: Para adicionar um banco de dados
+answer: Para armazenar o cache do docker
+answer-correct: Para persistir arquivos na máquina host
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 06 - Nos steps, o que quer dizer "run"?
-answer: Que vamos usar uma action pronta do github
-answer: Serve para dizer que vamos usar um passo
-answer: Definir uma variável de ambiente
-answer-correct: Diz que vamos executar uma instrução de shell
+question: 06 - O que faz a flag `-it` no CLI do docker?
+answer: Conecta o container na internet
+answer-correct: Roda o container no modo interativo
+answer: Configura a rede do docker
+answer: Passa as variáveis de ambiente
 content:
 <?/quiz?>
 
 <?quiz?>
-question: 07 - Qual a função das "secrets" no arquivo yaml?
-answer: Criar variáveis de ambiente
-answer-correct: Não expor dados sensíveis no arquivo de ci
-answer: Substituir variáveis ​​com valores dinâmicos
-answer: Organizar o código YAML
+question: 07 - Por que precisamos usar o TestContainers no projeto?
+answer: Para executar os testes dentro de containers
+answer: Para testar os containers da aplicação
+answer: Para criar imagens durante o teste
+answer-correct: Para iniciar containers durante o teste
 content:
 <?/quiz?>
