@@ -1,4 +1,4 @@
-# Exercícios da aula 09
+# Exercícios da aula 10
 
 ## Exercício 01
 
