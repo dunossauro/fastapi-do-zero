@@ -1,4 +1,4 @@
-# 09 - Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
+# 10 - Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
 
 <?quiz?>
 question: 01 - Qual o papel da classe 'TodoState' em nosso código?

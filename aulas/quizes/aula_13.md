@@ -1,4 +1,4 @@
-# 12 - Fazendo deploy no Fly.io
+# 13 - Fazendo deploy no Fly.io
 
 <?quiz?>
 question: 01 - O que é fazer "deploy"?
