@@ -50,23 +50,6 @@ def test_update_user(client, user, token):
     }
 
 
-def test_update_integrity_error(client, user, other_user, token):
-    response_update = client.put(
-        f'/users/{user.id}',
-        headers={'Authorization': f'Bearer {token}'},
-        json={
-            'username': other_user.username,
-            'email': 'bob@example.com',
-            'password': 'mynewpassword',
-        },
-    )
-
-    assert response_update.status_code == HTTPStatus.CONFLICT
-    assert response_update.json() == {
-        'detail': 'Username or Email already exists'
-    }
-
-
 def test_delete_user(client, user, token):
     response = client.delete(
         f'/users/{user.id}',
@@ -89,6 +72,23 @@ def test_update_user_with_wrong_user(client, other_user, token):
     )
     assert response.status_code == HTTPStatus.FORBIDDEN
     assert response.json() == {'detail': 'Not enough permissions'}
+
+
+def test_update_integrity_error(client, user, other_user, token):
+    response_update = client.put(
+        f'/users/{user.id}',
+        headers={'Authorization': f'Bearer {token}'},
+        json={
+            'username': other_user.username,
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+
+    assert response_update.status_code == HTTPStatus.CONFLICT
+    assert response_update.json() == {
+        'detail': 'Username or Email already exists'
+    }
 
 
 def test_delete_user_wrong_user(client, other_user, token):

@@ -10,6 +10,7 @@ requires-python = ">=3.11,<4.0"
 dependencies = [
     "alembic (>=1.14.1,<2.0.0)",
     "fastapi[standard] (>=0.115.8,<0.116.0)",
+    "psycopg[binary] (>=3.2.4,<4.0.0)",
     "pwdlib[argon2] (>=0.2.1,<0.3.0)",
     "pydantic-settings (>=2.7.1,<3.0.0)",
     "pyjwt (>=2.10.1,<3.0.0)",
@@ -24,6 +25,7 @@ ruff = "^0.9.5"
 httpx = "^0.28.1"
 factory-boy = "^3.3.3"
 freezegun = "^1.5.1"
+testcontainers = "^4.9.1"
 
 [tool.ruff]
 line-length = 79
