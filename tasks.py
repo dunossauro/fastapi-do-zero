@@ -79,8 +79,9 @@ def env_file(path: Path, sync=True):
 
     with open(path / '.env', 'w', encoding='utf-8') as file:
         if sync:
-            file.write(dotenv)
-
+            file.write(fake_dotenv)
+        else:
+            file.write(fake_dotenv_async)
 
 @task
 def test_migrations(c):
