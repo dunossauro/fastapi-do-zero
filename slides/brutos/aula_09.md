@@ -3,589 +3,220 @@ marp: true
 theme: rose-pine
 ---
 
-# Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
+# Tornando o sistema de autenticação robusto
 
-> https://fastapidozero.dunossauro.com/09/
+> https://fastapidozero.dunossauro.com/08/
 
 ---
 
 ## Objetivos da Aula
 
-
-- Criação das rotas para as operações CRUD das tarefas
-- Fazer com só o usuário dono da tarefa possa acessar e modificar suas tarefas
-- Escrita e execução dos testes para cada operação das tarefas
-
----
-
-# Como funciona um todo list?
-
-> https://selenium.dunossauro.com/todo_list.html
+- Testar os casos de autenticação de forma correta
+- Testar os casos de autorização de forma correta
+- Implementar o refresh do token
+- Introduzir testes que param o tempo com `freezegun`
+- Introduzir geração de modelos automática com `factory-boy`
 
 ---
 
-## Vamos por partes :)
-
-1. Um novo router para tarefas
-2. Uma nova tabela no banco
-3. Novos schemas para tarefas
-4. Novos endpoints para tarefas
-
----
-
-# O primeiro endpoint
+# Testes de autorização
 
 > Parte 1
 
 ---
 
-Vamos criar um novo router para os todos em `fast_zero/routers/todos.py`
+## Garantir que o user faça somente o que pode
 
 ```python
-from fastapi import APIRouter
-
-router = APIRouter(prefix='/todos', tags=['todos'])
-```
-
-E linkar ele:
-
-```python
-from fast_zero.routers import auth, todos, users
-from fast_zero.schemas import Message
-
-app = FastAPI()
-
-app.include_router(users.router)
-app.include_router(auth.router)
-app.include_router(todos.router)
-```
-
----
-
-## Nosso primeiro endpoint
-
-Um endpoint de criação de todos
-
-```python
-@router.post('/', response_model=???)
-def create_todo(todo: ???):
-    return ???
-```
-
----
-
-## Mas e os schemas?
-
-<div class="columns">
-
-<div>
-
-```python
-# schemas.py
-from fast_zero.models import TodoState
-# ...
-class TodoSchema(BaseModel):
-    title: str
-    description: str
-    state: TodoState
-	
-class TodoPublic(TodoSchema):
-    id: int
-```
-
-</div>
-
-<div>
-
-```python
-# models.py
-from enum import Enum
-# ...
-class TodoState(str, Enum):
-    draft = 'draft'
-    todo = 'todo'
-    doing = 'doing'
-    done = 'done'
-    trash = 'trash'
-```
-
-</div>
-
-</div>
-
-
----
-
-## De volta ao endpoint
-
-```python
-from typing import Annotated
-
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-
-from fast_zero.database import get_session
-from fast_zero.models import User
-from fast_zero.schemas import TodoPublic, TodoSchema
-from fast_zero.security import get_current_user
-
-router = APIRouter(prefix='/todos', tags=['todos'])
-
-Session = Annotated[Session, Depends(get_session)]
-CurrentUser = Annotated[User, Depends(get_current_user)]
-
-
-@router.post('/', response_model=TodoPublic)
-def create_todo(
-    todo: TodoSchema,
-    user: CurrentUser,
+@router.put('/{user_id}', response_model=UserPublic)
+def update_user(
+    user_id: int,
+    user: UserSchema,
     session: Session,
+    current_user: CurrentUser,
 ):
-    return todo
+    if current_user.id != user_id:
+        raise HTTPException(
+            status_code=HTTPStatus.FORBIDDEN,
+            detail='Not enough permissions'
+        )
 ```
 
----
-
-## Parte 2
-
-> A tabela dos todos
+Não deve ser possível alterar via PUT os dados que não são seus
 
 ---
-
-## A tabela e seu relacionamento
 
 ```python
-from sqlalchemy import ForeignKey, func
-# ...
-@table_registry.mapped_as_dataclass
-class Todo:
-    __tablename__ = 'todos'
-
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    title: Mapped[str]
-    description: Mapped[str]
-    state: Mapped[TodoState]
-
-    # Toda tarefa pertence a alguém
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
-```
-
----
-
-## Juntando o endpoint com o banco de dados
-
-```python {1,3}
-from fast_zero.models import Todo, User
-# ...
-@router.post('/', response_model=TodoPublic)
-def create_todo(
-    todo: TodoSchema,
-    user: CurrentUser,
-    session: Session,
-):
-    db_todo = Todo(
-        title=todo.title,
-        description=todo.description,
-        state=todo.state,
-        user_id=user.id,
-    )
-    session.add(db_todo)
-    session.commit()
-    session.refresh(db_todo)
-
-    return db_todo
-```
-
----
-
-## Testes
-
-```python
-def test_create_todo(client, token):
-    response = client.post(
-        '/todos/',
+def test_update_user_with_wrong_user(client, user, token):
+    response = client.put(
+        f'/users/{user.id + 1}',
         headers={'Authorization': f'Bearer {token}'},
         json={
-            'title': 'Test todo',
-            'description': 'Test todo description',
-            'state': 'draft',
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
         },
     )
-    assert response.json() == {
-        'id': 1,
-        'title': 'Test todo',
-        'description': 'Test todo description',
-        'state': 'draft',
-    }
+    assert response.status_code == HTTPStatus.FORBIDDEN
+    assert response.json() == {'detail': 'Not enough permissions'}
 ```
 
----
+Na ultima aula fizemos algo parecido com isso!
 
-## Funciona?
-
-> http://127.0.0.1:8000/docs
 
 ---
 
-## Nem tudo são flores
+## O problema dessa abordagem
 
-```text
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: todos
-[SQL: INSERT INTO todos (title, description, state, user_id) VALUES (?, ?, ?, ?)]
-[parameters: ('string', 'string', 'draft', 8)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
+O uso do `+1` nos leva a algumas discussões interessantes:
+
+- Validamos a situação com um "hack", não existe o `+1`
+- Caso ele exista, o que vai acontecer em produção, vai funcionar?
+- Como representamos um cenário mais próximo da realidade?
+* **precisamos adicionar um novo user ao cenário de teste**
+
+---
+
+## Criando modelos `Users` sob demanda
+
+Para fazer a criação de users de forma mais intuitiva e sem a preocupação de valores repetidos, podemos usar uma "**fábrica**" de usuários.
+
+Isso pode ser feito com uma biblioteca chamada `factory-boy`:
+
+```shell
+poetry add --group dev factory-boy
 ```
 
----
-
-## Executando a migração
-
-```bash
-alembic revision --autogenerate -m "create todos table"
-alembic upgrade head
-```
-
---- 
-
-## Funciona?
-
-> http://127.0.0.1:8000/docs
+> Fábrica é um padrão de projeto de construção de objetos.
 
 ---
 
-# Parte 3
-
-> O endpoint de GET
-
----
-
-## A querystring
-
-Como agora temos vários parâmetros de query como `title`, `description` e `state`, podemos criar um modelo como esse:
+## O Factory-boy
 
 ```python
-# fast_zero/schemas.py
-class FilterTodo(FilterPage):
-    title: str | None = None
-    description: str | None = None
-    state: TodoState | None = None
-```
+#conftest.py
+import factory
 
-Uma coisa interessante de observar nesse modelo é que ele usa `FilterPage` como base, para que além dos campos propostos, tenhamos o `limit` e `offset` também.
-
-
-
----
-
-## Endpoint de GET
-
-```python
-from fastapi import APIRouter, Depends
-from sqlalchemy import select
-from fast_zero.schemas import TodoList, TodoPublic, TodoSchema
 # ...
-@router.get('/', response_model=???)
-def list_todos(
-    session: Session,
-    user: CurrentUser,
-    todo_filter: Annotated[FilterTodo, Query()],
-): ...
-```
----
 
-### Vamos olhar o swagger
-
-> http://127.0.0.1:8000/docs#/todos/list_todos_todos__get
-
----
-
-## Pegando os valores da query
-
-```python
-@router.get('/', response_model=TodoList)  # implementar
-def list_todos(...):
-    query = select(Todo).where(Todo.user_id == user.id)
-
-    if title:  # o título contém
-        query = query.filter(Todo.title.contains(title))
-
-    if description: # a descrição contém
-        query = query.filter(Todo.description.contains(description))
-
-    if state:  # o estado é igual
-        query = query.filter(Todo.state == state)
-
-    todos = session.scalars(query.offset(offset).limit(limit)).all()
-
-    return {'todos': todos}
-```
-
----
-
-## O schema
-
-```python
-class TodoList(BaseModel):
-    todos: list[TodoPublic]
-```
-
----
-
-## Testes para o GET
-
-- Devemos testar os parâmetros dos paths
-- Pra validar os filtros, precisamos de N 'todos'
-- Factory-boy vai nos ajudar aqui!
-
----
-
-## O factory
-
-```python
-# tests/test_todos.py
-import factory.fuzzy
-from fast_zero.models import Todo, TodoState
-# ...
-class TodoFactory(factory.Factory):
+class UserFactory(factory.Factory):
     class Meta:
-        model = Todo
+        model = User
 
-    title = factory.Faker('text')
-    description = factory.Faker('text')
-    state = factory.fuzzy.FuzzyChoice(TodoState)
-    user_id = 1
-```
-
-- [`FuzzyChoice`](https://factoryboy.readthedocs.io/en/stable/fuzzy.html#fuzzychoice): Fuzzy é uma forma de escolher randomicamente algo, no caso um TodoState
-
----
-
-### O primeiro teste
-
-```python
-def test_list_todos_should_return_5_todos(session, client, user, token):
-    expected_todos = 5
-    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
-    session.commit()
-
-    response = client.get(
-        '/todos/',  # sem query
-        headers={'Authorization': f'Bearer {token}'},
-    )
-
-    assert len(response.json()['todos']) == expected_todos
+    username = factory.Sequence(lambda n: f'test{n}')
+    email = factory.LazyAttribute(lambda obj: f'{obj.username}@test.com')
+    password = factory.LazyAttribute(lambda obj: f'{obj.username}@example.com')
 ```
 
 ---
 
-### ofset e limit
-
-```python
-def test_list_todos_pagination_should_return_2_todos(
-    session, user, client, token
-):
-    expected_todos = 2
-    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
-    session.commit()
-
-    response = client.get(
-        '/todos/?offset=1&limit=2',
-        headers={'Authorization': f'Bearer {token}'},
-    )
-
-    assert len(response.json()['todos']) == expected_todos
-```
-
----
-
-### Por título
-
-```python
-def test_list_todos_filter_title_should_return_5_todos(
-    session, user, client, token
-):
-    expected_todos = 5
-    session.bulk_save_objects(
-        TodoFactory.create_batch(5, user_id=user.id, title='Test todo 1')
-    )
-    session.commit()
-
-    response = client.get(
-        '/todos/?title=Test todo 1',
-        headers={'Authorization': f'Bearer {token}'},
-    )
-
-    assert len(response.json()['todos']) == expected_todos
-```
-
----
-
-### Filtro por descrição
-
-```python
-def test_list_todos_filter_description_should_return_5_todos(
-    session, user, client, token
-):
-    expected_todos = 5
-    session.bulk_save_objects(
-        TodoFactory.create_batch(5, user_id=user.id, description='description')
-    )
-    session.commit()
-
-    response = client.get(
-        '/todos/?description=desc',
-        headers={'Authorization': f'Bearer {token}'},
-    )
-
-    assert len(response.json()['todos']) == expected_todos
-```
-
----
-
-### Filtro por estado
-
-```python
-def test_list_todos_filter_state_should_return_5_todos(
-    session, user, client, token
-):
-    expected_todos = 5
-    session.bulk_save_objects(
-        TodoFactory.create_batch(5, user_id=user.id, state=TodoState.draft)
-    )
-    session.commit()
-
-    response = client.get(
-        '/todos/?state=draft',
-        headers={'Authorization': f'Bearer {token}'},
-    )
-
-    assert len(response.json()['todos']) == expected_todos
-```
-
----
-
-## Parte 4
-
-> O delete
-
----
-
-### O Delete
-
-```python
-@router.delete('/{todo_id}', response_model=Message)
-def delete_todo(todo_id: int, session: Session, user: CurrentUser):
-    todo = session.scalar(
-        select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
-    )
-
-    if not todo:
-        raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
-        )
-
-    session.delete(todo)
-    session.commit()
-
-    return {'message': 'Task has been deleted successfully.'}
-```
-
----
-
-### Testando o delete
-
-```python
-def test_delete_todo(session, client, user, token):
-    todo = TodoFactory(user_id=user.id)
-    session.add(todo)
-    session.commit()
-
-    response = client.delete(
-        f'/todos/{todo.id}', headers={'Authorization': f'Bearer {token}'}
-    )
-
-    assert response.status_code == HTTPStatus.OK
-    assert response.json() == {'message': 'Task has been deleted successfully.'}
-```
-
-```python
-def test_delete_todo_error(client, token):
-    response = client.delete(
-        f'/todos/{10}', headers={'Authorization': f'Bearer {token}'}
-    )
-
-    assert response.status_code == HTTPStatus.NOT_FOUND
-    assert response.json() == {'detail': 'Task not found.'}
-```
-
----
-
-# Parte 5
-
-> O endpoint de alteração via Patch
-
----
-
-## O Patch
-
-O `Patch`, diferente do verbo `PUT` permite que somente os dados a serem alterados sejam enviados. Para isso precisamos de um novo schema:
-
-```python
-class TodoUpdate(BaseModel):
-    title: str | None = None
-    description: str | None = None
-    state: TodoState | None = None
-```
-
----
-
-### O endpoint
-
-```python
-@router.patch('/{todo_id}', response_model=TodoPublic)
-def patch_todo(
-    todo_id: int, session: Session, user: CurrentUser, todo: TodoUpdate
-):
-    db_todo = session.scalar(
-        select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
-    )
-
-    if not db_todo:
-        raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
-        )
-
-    for key, value in todo.model_dump(exclude_unset=True).items():
-        setattr(db_todo, key, value)
-
-    session.add(db_todo)
-    session.commit()
-    session.refresh(db_todo)
-
-    return db_todo
-```
----
-
-### Testando o patch
+## O uso do factory-boy + fixture
 
 <div class="columns">
 
 <div>
 
+Aplicando a fabrica:
+
 ```python
-def test_patch_todo(session, client, user, token):
-    todo = TodoFactory(user_id=user.id)
+@pytest.fixture
+def user(session):
+    password = 'testtest'
+    user = UserFactory(
+        password=get_password_hash(password)
+    )
 
-    session.add(todo)
+    session.add(user)
     session.commit()
+    session.refresh(user)
 
-    response = client.patch(
-        f'/todos/{todo.id}',
-        json={'title': 'teste!'},
+    user.clean_password = password
+
+    return user
+```
+
+</div>
+
+<div>
+
+O cenário "real":
+
+```python
+@pytest.fixture
+def other_user(session):
+    password = 'testtest'
+    user = UserFactory(
+        password=get_password_hash(password)
+    )
+
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+
+    user.clean_password = password
+
+    return user
+```
+
+</div>
+
+</div>
+
+---
+
+## Alterando o teste de put para esse cenário
+
+```python
+def test_update_user_with_wrong_user(client, other_user, token):
+    response = client.put(
+        f'/users/{other_user.id}',
+        headers={'Authorization': f'Bearer {token}'},
+        json={
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+    assert response.status_code == HTTPStatus.FORBIDDEN
+    assert response.json() == {'detail': 'Not enough permissions'}
+```
+
+
+---
+
+## Criando um teste de DELETE para o cenário
+
+```python
+def test_delete_user_wrong_user(client, other_user, token):
+    response = client.delete(
+        f'/users/{other_user.id}',
         headers={'Authorization': f'Bearer {token}'},
     )
-    assert response.status_code == HTTPStatus.OK
-    assert response.json()['title'] == 'teste!'
+    assert response.status_code == HTTPStatus.FORBIDDEN
+    assert response.json() == {'detail': 'Not enough permissions'}
+```
+
+---
+
+# Expiração do token
+
+> Parte 2
+
+---
+
+## Sobre o tempo do token
+
+Quando geramos o token, ele tem a claim 'exp' que é ferente a validade do token.
+
+<div class="columns">
+
+<div>
+
+```json
+{
+    "exp": 1690258153,
+    "sub": "dudu@dudu.du"
+}
 ```
 
 </div>
@@ -593,53 +224,255 @@ def test_patch_todo(session, client, user, token):
 <div>
 
 ```python
-def test_patch_todo_error(client, token):
-    response = client.patch(
-        '/todos/10',
-        json={},
-        headers={'Authorization': f'Bearer {token}'},
+def create_access_token(data: dict):
+    expire = datetime.now(
+        tz=ZoneInfo('UTC')
+    ) + timedelta( # 30m
+        minutes=ACCESS_TOKEN_EXPIRE_MINUTES
     )
-    assert response.status_code == HTTPStatus.NOT_FOUND
-    assert response.json() == {'detail': 'Task not found.'}
 ```
 
 </div>
-
 </div>
 
 ---
 
-# Exercícios
+## O sistema do token
 
-1. Adicione os campos `created_at` e `updated_at` na tabela `Todo`
-	- Eles devem ser `init=False`
-	- Deve usar `func.now()` para criação
-	- O campo `updated_at` deve ter `onupdate`
-
-2. Criar uma migração para que os novos campos sejam versionados e também aplicar a migração
+<div class="mermaid">
+sequenceDiagram
+    participant Cliente
+    participant Server
+    Cliente->>Server: /auth/token (Cria um token)
+	Server-->>Server: Cria um token com exp de 30 minutos
+	Server->>Cliente: Retorna o token com sub e exp
+    Cliente->>Server: PUT /users/ + token
+	Server-->>Server: Valida o token
+	Server->>Cliente: Retorna a operação
+</div>
 
 ---
 
-# Exercícios
+## O tempo de duração
 
-3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API. Essa alteração deve ser refletida nos testes também!
-4. Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no `Todo` de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.
+<div class="mermaid">
+sequenceDiagram
+    participant Cliente
+    participant Server
+    Cliente->>Server: PUT /users/ + token
+	Server-->>Server: Token expirado
+	Server->>Cliente: UNAUTHORIZED - 401
+</div>
+
+Esse fluxo ainda não está implementado
+
+---
+
+## Precisamos "viajar no tempo"
+
+Para isso temos a "arma do tempo" o `freezegun`, uma biblioteca que ajuda a pausar o tempo durante os testes:
+
+```shell
+poetry add freezegun
+```
+
+---
+
+## Usando o freezegun
+
+```python
+from freezegun import freeze_time
+
+
+def test_token_expired_after_time(client, user):
+    # Para o tempo nessa data e hora
+    with freeze_time('2023-07-14 12:00:00'):
+        response = client.post(
+            '/auth/token',
+            data={'username': user.email, 'password': user.clean_password},
+        )
+        assert response.status_code == HTTPStatus.OK
+        token = response.json()['access_token']
+```
+
+---
+
+## Viajando no tempo
+
+```python
+def test_token_expired_after_time(client, user):
+    # ...
+    with freeze_time('2023-07-14 12:31:00'):
+        response = client.put(
+            f'/users/{user.id}',
+            headers={'Authorization': f'Bearer {token}'},
+            json={
+                'username': 'wrongwrong',
+                'email': 'wrong@wrong.com',
+                'password': 'wrong',
+            },
+        )
+        assert response.status_code == HTTPStatus.UNAUTHORIZED
+        assert response.json() == {'detail': 'Could not validate credentials'}
+```
+
+---
+
+## A validação da expiração
+
+```python
+def get_current_user(
+    session: Session = Depends(get_session),
+    token: str = Depends(oauth2_scheme),
+):
+    try:
+        payload = decode(
+            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
+        )
+        subject_email = payload.get('sub')
+
+        if not subject_email:
+            raise credentials_exception
+
+    except DecodeError:
+        raise credentials_exception
+
+    except ExpiredSignatureError:
+        raise credentials_exception
+```
+
+---
+
+# Problemas de autenticação
+
+> Parte 4
+
+---
+
+## Algumas coisas não foram cobertas
+
+Os nossos testes não cobrem os casos onde temos:
+- Senha incorreta
+- Email inexistente
+
+---
+
+## Testando a senha incorreta
+
+```python
+def test_token_wrong_password(client, user):
+    response = client.post(
+        '/auth/token',
+        data={'username': user.email, 'password': 'wrong_password'}
+    )
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.json() == {'detail': 'Incorrect email or password'}
+```
+
+---
+
+## Testando o user inexistente
+
+```python
+def test_token_inexistent_user(client):
+    response = client.post(
+        '/auth/token',
+        data={'username': 'no_user@no_domain.com', 'password': 'testtest'},
+    )
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.json() == {'detail': 'Incorrect email or password'}
+```
+
+---
+
+# Refresh do token
+
+> Parte 5
+
+---
+
+## O que acontece quando o exp vence?
+
+É necessario que o cliente renove o token de tempos em tempos para que ele não perca a validade e possa continuar usando a aplicação sem logar novamente.
+
+```python
+# fast_zero/routes/auth.py
+
+@router.post('/refresh_token', response_model=Token)
+def refresh_access_token(
+    user: User = Depends(get_current_user),
+):
+    new_access_token = create_access_token(data={'sub': user.email})
+
+    return {'access_token': new_access_token, 'token_type': 'bearer'}
+```
+
+---
+
+## O teste para o refresh
+
+Ver se o refresh faz mesmo refresh :)
+
+```python
+def test_refresh_token(client, user, token):
+    response = client.post(
+        '/auth/refresh_token',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    data = response.json()
+
+    assert response.status_code == HTTPStatus.OK
+    assert 'access_token' in data
+    assert 'token_type' in data
+    assert data['token_type'] == 'bearer'
+```
+
+---
+
+## Testando o fluxo de refresh
+
+Não se pode dar refresh depois que o token fica inválido
+
+```python
+def test_token_expired_dont_refresh(client, user):
+    with freeze_time('2023-07-14 12:00:00'):
+        response = client.post(
+            '/auth/token',
+            data={'username': user.email, 'password': user.clean_password},
+        )
+        assert response.status_code == HTTPStatus.OK
+        token = response.json()['access_token']
+
+    with freeze_time('2023-07-14 12:31:00'):
+        response = client.post(
+            '/auth/refresh_token',
+            headers={'Authorization': f'Bearer {token}'},
+        )
+        assert response.status_code == HTTPStatus.UNAUTHORIZED
+        assert response.json() == {'detail': 'Could not validate credentials'}
+```
+
+---
+
+# Exercício
+
+O endpoint de PUTusa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como other_user. Atualize o teste para usar essa nova fixture.
 
 ---
 
 # Quiz
 
-Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_09/) dessa aula
+Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_08/) dessa aula!
 
 ---
 
 # Commit
 
-```bash
+```shell
 git add .
-git commit -m "Implementado os endpoints de tarefas"
+git commit -m "Implementando o reresh do token e testes de autorização"
 ```
-
 
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>

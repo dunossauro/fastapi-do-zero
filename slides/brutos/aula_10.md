@@ -3,414 +3,642 @@ marp: true
 theme: rose-pine
 ---
 
-# Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+# Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
 
-> https://fastapidozero.dunossauro.com/10/
-
----
-
-### Objetivos dessa aula
-
-- Entender como criar uma imagem Docker para a nossa aplicação
-- Aprender a rodar a aplicação utilizando Docker
-- Introduzir o conceito de Docker Compose para múltiplos contêineres
-- Aprender o que é um Dockerfile e sua estrutura
-- Entender os benefícios e motivos da mudança para o PostgreSQL
+> https://fastapidozero.dunossauro.com/09/
 
 ---
 
-# Parte 1
+## Objetivos da Aula
 
-> Docker e Postgres
 
----
-
-## Docker
-
-Docker é uma ferramenta para criar containers.
-
-Containers são formas de **isolar as dependências**. Da mesma forma que fazemos com o ambiente virtual. Que isolam as dependências do python.
-
-No caso dos containers Docker, estamos falando de isolamento de ferramentas do sistema operacional. Isolamos programas e ambientes de forma completa
-
-> Cruso gratuito sobre docker da [linuxtips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
+- Criação das rotas para as operações CRUD das tarefas
+- Fazer com só o usuário dono da tarefa possa acessar e modificar suas tarefas
+- Escrita e execução dos testes para cada operação das tarefas
 
 ---
 
-## PostgreSQL
+# Como funciona um todo list?
 
-Um Banco de Dados Relacional de código aberto.
-
-- `Escalabilidade`: SQLite não é ideal para aplicações em larga escala ou com grande volume de dados. PostgreSQL foi projetado para lidar com uma grande quantidade de dados e requisições.
-- `Concorrência`: diferentemente do SQLite, que tem limitações para gravações simultâneas, o PostgreSQL suporta múltiplas operações simultâneas.
-- `Funcionalidades avançadas`: PostgreSQL vem com várias extensões e funcionalidades que o SQLite pode não oferecer.
+> https://selenium.dunossauro.com/todo_list.html
 
 ---
 
-## Nota importante
+## Vamos por partes :)
 
-> Embora para o escopo da nossa aplicação e os objetivos de aprendizado o SQLite pudesse ser suficiente, é sempre bom nos prepararmos para cenários de produção real. A adoção de PostgreSQL nos dá uma prévia das práticas do mundo real e garante que nossa aplicação possa escalar sem grandes modificações de infraestrutura.
-
-
----
-
-### Executando o postgres com docker
-
-```shell
-docker run \
-    --name app_database \
-    -e POSTGRES_USER=app_user \
-    -e POSTGRES_DB=app_db \
-    -e POSTGRES_PASSWORD=app_password \
-    -p 5432:5432 \
-    postgres
-```
-
-Essa instrução vai iniciar um container do postgres no nosso pc e disponibilizando ele na porta `5432`.
+1. Um novo router para tarefas
+2. Uma nova tabela no banco
+3. Novos schemas para tarefas
+4. Novos endpoints para tarefas
 
 ---
 
-### Conectando nossa aplicação ao postgres
+# O primeiro endpoint
 
-Precisamos instalar o driver para o postgres na nossa aplicação:
-
-```shell
-poetry add "psycopg[binary]"
-```
-
-Também precisamos alterar a URL do banco de dados
-
-```env
-# env
-DATABASE_URL="postgresql+psycopg://app_user:app_password@127.0.0.1:5432/app_db"
-```
+> Parte 1
 
 ---
 
-### Subindo a aplicação
-
-```shell
-task run
-```
-
----
-
-### Erro na migração
-
-Ao fazer uma chamada que depende do banco de dados, vamos obter um:
-
-`Internal Server Error`
-
-Se olharmos o shell
+Vamos criar um novo router para os todos em `fast_zero/routers/todos.py`
 
 ```python
-sqlalchemy.exc.ProgrammingError: (psycopg.errors.UndefinedTable) relation "users" does not exist
-LINE 2: FROM users 
+from fastapi import APIRouter
+
+router = APIRouter(prefix='/todos', tags=['todos'])
 ```
 
-A tabela `users` não existe na nossa aplicação.
-
----
-
-## Executando as migrações no novo banco
-
-```shell
-alembic upgrade head
-INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
-INFO  [alembic.runtime.migration] Will assume transactional DDL.
-INFO  [alembic.runtime.migration] Running upgrade  -> 74f39286e2f6, create users table
-INFO  [alembic.runtime.migration] Running upgrade 74f39286e2f6 -> 3a79a86c9e4a, create todos table
-```
-
-Com isso, tudo deve funcionar como esperado!
-
----
-
-## Os testes envolvendo o postgres
-
-Se executarmos os testes, eles vão continuar passando, pois os dados estão fixos na fixture:
+E linkar ele:
 
 ```python
-@pytest.fixture
-def session():
-    engine = create_engine(
-        'sqlite:///:memory:',
-        connect_args={'check_same_thread': False},
-        poolclass=StaticPool,
-    )
-    # ...
+from fast_zero.routers import auth, todos, users
+from fast_zero.schemas import Message
+
+app = FastAPI()
+
+app.include_router(users.router)
+app.include_router(auth.router)
+app.include_router(todos.router)
 ```
 
 ---
 
-## Usando as variáveis de ambiente no teste
+## Nosso primeiro endpoint
+
+Um endpoint de criação de todos
 
 ```python
-from fast_zero.settings import Settings
+@router.post('/', response_model=???)
+def create_todo(todo: ???):
+    return ???
+```
+
+---
+
+## Mas e os schemas?
+
+<div class="columns">
+
+<div>
+
+```python
+# schemas.py
+from fast_zero.models import TodoState
 # ...
-
-@pytest.fixture
-def session():
-    engine = create_engine(Settings().DATABASE_URL)
-    table_registry.metadata.create_all(engine)
+class TodoSchema(BaseModel):
+    title: str
+    description: str
+    state: TodoState
+	
+class TodoPublic(TodoSchema):
+    id: int
 ```
 
-Porém, agora temos um novo problema :)
-
----
-
-### O container do banco de dados precisa estar rodando
-
-```python
-E           sqlalchemy.exc.OperationalError: (psycopg.OperationalError) connection failed:
-E    connection to server at "127.0.0.1", port 5432 failed: Connection refused
-E           	Is the server running on that host and accepting TCP/IP connections?
-E           (Background on this error at: https://sqlalche.me/e/20/e3q8)
-
-OperationalError
-```
-
----
-
-## Testando com Docker
-
-Existe uma biblioteca python que gerencia as dependências de containers externos para que a aplicação seja executada. O [`TestContainers`](https://github.com/testcontainers/testcontainers-python)
-
-Para instalar:
-
-```bash
-poetry add --group dev testcontainers
-```
-
----
-
-### Alterando a fixture para usar o TestContainer
-
-```python
-from testcontainers.postgres import PostgresContainer 
-# ...
-@pytest.fixture
-def session():
-    with PostgresContainer('postgres:16', driver='psycopg') as postgres: 
-        engine = create_engine(postgres.get_connection_url()) 
-        table_registry.metadata.create_all(engine)
-
-        with Session(engine) as session:
-            yield session
-            session.rollback()
-
-        table_registry.metadata.drop_all(engine)
-```
-
-Assim os testes podem iniciar um container novo a cada vez que a fixture for chamada
-
----
-
-### O escopo da fixture
-
-<div class=mermaid>
-sequenceDiagram
-    PytestRunner-->>Fixture: Executa a fixture até o yield
-    PytestRunner->>Testes: Executa todos os testes
-	Testes-->>Testes: Executa um teste
-    PytestRunner-->>Fixture: Executa a fixture depois do yield
 </div>
 
----
-
-### Diferentes escopos
-
-- `function`: executada em todas as funções de teste;
-- `class`: executada uma vez por classe de teste;
-- `module`: executada uma vez por módulo;
-- `package`: executada uma vez por pacote;
-- `session`: executava uma vez por execução dos testes;
-
-Para resolver o problema com a lentidão dos testes, iremos criar uma fixture para iniciar o container do banco de dados com o escopo `session`.
-
----
-
-### Criando uma nova fixture
-
-Para criar um única imagem docker, podemos iniciar ela de forma isolada na aplicação
+<div>
 
 ```python
-@pytest.fixture(scope='session')
-def engine():
-    with PostgresContainer('postgres:16', driver='psycopg') as postgres:
-
-        _engine = create_engine(postgres.get_connection_url())
-
-        with _engine.begin():
-            yield _engine
+# models.py
+from enum import Enum
+# ...
+class TodoState(str, Enum):
+    draft = 'draft'
+    todo = 'todo'
+    doing = 'doing'
+    done = 'done'
+    trash = 'trash'
 ```
+
+</div>
+
+</div>
+
 
 ---
 
-### Alterando a fixture de session
+## De volta ao endpoint
 
 ```python
-@pytest.fixture
-def session(engine):
-    table_registry.metadata.create_all(engine)
+from typing import Annotated
 
-    with Session(engine) as session:
-        yield session
-        session.rollback()
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
 
-    table_registry.metadata.drop_all(engine)
-```
+from fast_zero.database import get_session
+from fast_zero.models import User
+from fast_zero.schemas import TodoPublic, TodoSchema
+from fast_zero.security import get_current_user
 
-Agora a session faz tudo que precisa fazer, mas sem a responsabilidade do iniciar a conexão
+router = APIRouter(prefix='/todos', tags=['todos'])
 
----
+Session = Annotated[Session, Depends(get_session)]
+CurrentUser = Annotated[User, Depends(get_current_user)]
 
-# Parte 2
 
-> Criando a imagem do nosso projeto
-
----
-
-## Criando a imagem do nosso projeto
-
-```docker
-FROM python:3.13-slim
-ENV POETRY_VIRTUALENVS_CREATE=false
-
-WORKDIR app/
-COPY . .
-
-RUN pip install poetry
-
-RUN poetry config installer.max-workers 10
-RUN poetry install --no-interaction --no-ansi
-
-EXPOSE 8000
-CMD poetry run uvicorn --host 0.0.0.0 fast_zero.app:app
+@router.post('/', response_model=TodoPublic)
+def create_todo(
+    todo: TodoSchema,
+    user: CurrentUser,
+    session: Session,
+):
+    return todo
 ```
 
 ---
 
-## Rodando o código
+## Parte 2
 
-```shell
-# Criar a imagem
-docker build -t "fast_zero" .
-# Iniciar a imagem
-docker run -it --name fastzeroapp -p 8000:8000 fast_zero:latest
-```
-
-> Podemos acessar para ver nossa aplicação [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
+> A tabela dos todos
 
 ---
 
-# Parte 3
+## A tabela e seu relacionamento
 
-> Docker compose
+```python
+from sqlalchemy import ForeignKey, func
+# ...
+@table_registry.mapped_as_dataclass
+class Todo:
+    __tablename__ = 'todos'
 
----
+    id: Mapped[int] = mapped_column(init=False, primary_key=True)
+    title: Mapped[str]
+    description: Mapped[str]
+    state: Mapped[TodoState]
 
-## Docker compose
-
-A ideia do docker compose é criar um único arquivo `yaml` que reúna todos os containers necessários para executar a aplicação.
-
-Dessa forma podemos gerenciar todos os os containers com um único comando o `docker compose`.
-
----
-
-## O banco de dados
-
-```yaml
-services:
-  fastzero_database:
-    image: postgres
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: app_user
-      POSTGRES_DB: app_db
-      POSTGRES_PASSWORD: app_password
-    ports:
-      - "5432:5432"
-
-volumes:
-  pgdata:
+    # Toda tarefa pertence a alguém
+    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
 ```
 
 ---
 
-## A aplicação
+## Juntando o endpoint com o banco de dados
 
-```yaml
-  fastzero_app:
-    image: fastzero_app
-    build: .
-    ports:
-      - "8000:8000"
-    depends_on:
-      - fastzero_database
-    environment:
-      DATABASE_URL: postgresql+psycopg://app_user:app_password@fastzero_database:5432/app_db
+```python {1,3}
+from fast_zero.models import Todo, User
+# ...
+@router.post('/', response_model=TodoPublic)
+def create_todo(
+    todo: TodoSchema,
+    user: CurrentUser,
+    session: Session,
+):
+    db_todo = Todo(
+        title=todo.title,
+        description=todo.description,
+        state=todo.state,
+        user_id=user.id,
+    )
+    session.add(db_todo)
+    session.commit()
+    session.refresh(db_todo)
+
+    return db_todo
 ```
 
 ---
 
-## Rodando tudo
+## Testes
 
-```bash
-docker compose up
+```python
+def test_create_todo(client, token):
+    response = client.post(
+        '/todos/',
+        headers={'Authorization': f'Bearer {token}'},
+        json={
+            'title': 'Test todo',
+            'description': 'Test todo description',
+            'state': 'draft',
+        },
+    )
+    assert response.json() == {
+        'id': 1,
+        'title': 'Test todo',
+        'description': 'Test todo description',
+        'state': 'draft',
+    }
 ```
 
 ---
 
 ## Funciona?
 
-Não ... migrações ...
+> http://127.0.0.1:8000/docs
 
 ---
 
-## Entrypoint
+## Nem tudo são flores
 
-A ideia do entrypoint é alterar o comando `CMD` para executar um script bash.
+```text
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: todos
+[SQL: INSERT INTO todos (title, description, state, user_id) VALUES (?, ?, ?, ?)]
+[parameters: ('string', 'string', 'draft', 8)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+```
+
+---
+
+## Executando a migração
 
 ```bash
-#!/bin/sh
-
-# Executa as migrações do banco de dados
-poetry run alembic upgrade head
-
-# Inicia a aplicação
-poetry run uvicorn --host 0.0.0.0 --port 8000 fast_zero.app:app
+alembic revision --autogenerate -m "create todos table"
+alembic upgrade head
 ```
 
-Assim que o container for inciado, ele executará esse script.
+--- 
+
+## Funciona?
+
+> http://127.0.0.1:8000/docs
 
 ---
 
-## Entrypoint no compose
+# Parte 3
+
+> O endpoint de GET
+
+---
+
+## A querystring
+
+Como agora temos vários parâmetros de query como `title`, `description` e `state`, podemos criar um modelo como esse:
+
+```python
+# fast_zero/schemas.py
+class FilterTodo(FilterPage):
+    title: str | None = None
+    description: str | None = None
+    state: TodoState | None = None
+```
+
+Uma coisa interessante de observar nesse modelo é que ele usa `FilterPage` como base, para que além dos campos propostos, tenhamos o `limit` e `offset` também.
 
 
-```yaml
-  fastzero_app:
-    image: fastzero_app
-    entrypoint: ./entrypoint.sh
-    build: .
+
+---
+
+## Endpoint de GET
+
+```python
+from fastapi import APIRouter, Depends
+from sqlalchemy import select
+from fast_zero.schemas import TodoList, TodoPublic, TodoSchema
+# ...
+@router.get('/', response_model=???)
+def list_todos(
+    session: Session,
+    user: CurrentUser,
+    todo_filter: Annotated[FilterTodo, Query()],
+): ...
+```
+---
+
+### Vamos olhar o swagger
+
+> http://127.0.0.1:8000/docs#/todos/list_todos_todos__get
+
+---
+
+## Pegando os valores da query
+
+```python
+@router.get('/', response_model=TodoList)  # implementar
+def list_todos(...):
+    query = select(Todo).where(Todo.user_id == user.id)
+
+    if title:  # o título contém
+        query = query.filter(Todo.title.contains(title))
+
+    if description: # a descrição contém
+        query = query.filter(Todo.description.contains(description))
+
+    if state:  # o estado é igual
+        query = query.filter(Todo.state == state)
+
+    todos = session.scalars(query.offset(offset).limit(limit)).all()
+
+    return {'todos': todos}
 ```
 
 ---
 
-## Refazendo o container
+## O schema
+
+```python
+class TodoList(BaseModel):
+    todos: list[TodoPublic]
+```
+
+---
+
+## Testes para o GET
+
+- Devemos testar os parâmetros dos paths
+- Pra validar os filtros, precisamos de N 'todos'
+- Factory-boy vai nos ajudar aqui!
+
+---
+
+## O factory
+
+```python
+# tests/test_todos.py
+import factory.fuzzy
+from fast_zero.models import Todo, TodoState
+# ...
+class TodoFactory(factory.Factory):
+    class Meta:
+        model = Todo
+
+    title = factory.Faker('text')
+    description = factory.Faker('text')
+    state = factory.fuzzy.FuzzyChoice(TodoState)
+    user_id = 1
+```
+
+- [`FuzzyChoice`](https://factoryboy.readthedocs.io/en/stable/fuzzy.html#fuzzychoice): Fuzzy é uma forma de escolher randomicamente algo, no caso um TodoState
+
+---
+
+### O primeiro teste
+
+```python
+def test_list_todos_should_return_5_todos(session, client, user, token):
+    expected_todos = 5
+    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
+    session.commit()
+
+    response = client.get(
+        '/todos/',  # sem query
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### ofset e limit
+
+```python
+def test_list_todos_pagination_should_return_2_todos(
+    session, user, client, token
+):
+    expected_todos = 2
+    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
+    session.commit()
+
+    response = client.get(
+        '/todos/?offset=1&limit=2',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### Por título
+
+```python
+def test_list_todos_filter_title_should_return_5_todos(
+    session, user, client, token
+):
+    expected_todos = 5
+    session.bulk_save_objects(
+        TodoFactory.create_batch(5, user_id=user.id, title='Test todo 1')
+    )
+    session.commit()
+
+    response = client.get(
+        '/todos/?title=Test todo 1',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### Filtro por descrição
+
+```python
+def test_list_todos_filter_description_should_return_5_todos(
+    session, user, client, token
+):
+    expected_todos = 5
+    session.bulk_save_objects(
+        TodoFactory.create_batch(5, user_id=user.id, description='description')
+    )
+    session.commit()
+
+    response = client.get(
+        '/todos/?description=desc',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+### Filtro por estado
+
+```python
+def test_list_todos_filter_state_should_return_5_todos(
+    session, user, client, token
+):
+    expected_todos = 5
+    session.bulk_save_objects(
+        TodoFactory.create_batch(5, user_id=user.id, state=TodoState.draft)
+    )
+    session.commit()
+
+    response = client.get(
+        '/todos/?state=draft',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert len(response.json()['todos']) == expected_todos
+```
+
+---
+
+## Parte 4
+
+> O delete
+
+---
+
+### O Delete
+
+```python
+@router.delete('/{todo_id}', response_model=Message)
+def delete_todo(todo_id: int, session: Session, user: CurrentUser):
+    todo = session.scalar(
+        select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
+    )
+
+    if not todo:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
+        )
+
+    session.delete(todo)
+    session.commit()
+
+    return {'message': 'Task has been deleted successfully.'}
+```
+
+---
+
+### Testando o delete
+
+```python
+def test_delete_todo(session, client, user, token):
+    todo = TodoFactory(user_id=user.id)
+    session.add(todo)
+    session.commit()
+
+    response = client.delete(
+        f'/todos/{todo.id}', headers={'Authorization': f'Bearer {token}'}
+    )
+
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'message': 'Task has been deleted successfully.'}
+```
+
+```python
+def test_delete_todo_error(client, token):
+    response = client.delete(
+        f'/todos/{10}', headers={'Authorization': f'Bearer {token}'}
+    )
+
+    assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'Task not found.'}
+```
+
+---
+
+# Parte 5
+
+> O endpoint de alteração via Patch
+
+---
+
+## O Patch
+
+O `Patch`, diferente do verbo `PUT` permite que somente os dados a serem alterados sejam enviados. Para isso precisamos de um novo schema:
+
+```python
+class TodoUpdate(BaseModel):
+    title: str | None = None
+    description: str | None = None
+    state: TodoState | None = None
+```
+
+---
+
+### O endpoint
+
+```python
+@router.patch('/{todo_id}', response_model=TodoPublic)
+def patch_todo(
+    todo_id: int, session: Session, user: CurrentUser, todo: TodoUpdate
+):
+    db_todo = session.scalar(
+        select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
+    )
+
+    if not db_todo:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
+        )
+
+    for key, value in todo.model_dump(exclude_unset=True).items():
+        setattr(db_todo, key, value)
+
+    session.add(db_todo)
+    session.commit()
+    session.refresh(db_todo)
+
+    return db_todo
+```
+---
+
+### Testando o patch
+
+<div class="columns">
+
+<div>
+
+```python
+def test_patch_todo(session, client, user, token):
+    todo = TodoFactory(user_id=user.id)
+
+    session.add(todo)
+    session.commit()
+
+    response = client.patch(
+        f'/todos/{todo.id}',
+        json={'title': 'teste!'},
+        headers={'Authorization': f'Bearer {token}'},
+    )
+    assert response.status_code == HTTPStatus.OK
+    assert response.json()['title'] == 'teste!'
+```
+
+</div>
+
+<div>
+
+```python
+def test_patch_todo_error(client, token):
+    response = client.patch(
+        '/todos/10',
+        json={},
+        headers={'Authorization': f'Bearer {token}'},
+    )
+    assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'Task not found.'}
+```
+
+</div>
+
+</div>
+
+---
+
+# Exercícios
+
+1. Adicione os campos `created_at` e `updated_at` na tabela `Todo`
+	- Eles devem ser `init=False`
+	- Deve usar `func.now()` para criação
+	- O campo `updated_at` deve ter `onupdate`
+
+2. Criar uma migração para que os novos campos sejam versionados e também aplicar a migração
+
+---
+
+# Exercícios
+
+3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API. Essa alteração deve ser refletida nos testes também!
+4. Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no `Todo` de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.
+
+---
+
+# Quiz
+
+Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_09/) dessa aula
+
+---
+
+# Commit
 
 ```bash
-docker-compose up --build
+git add .
+git commit -m "Implementado os endpoints de tarefas"
 ```
-
----
-
-## Não esqueça de responder ao quiz
-
-[Quiz](https://fastapidozero.dunossauro.com/quizes/aula_10/)
 
 
 <!-- mermaid.js -->
