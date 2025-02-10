@@ -67,6 +67,7 @@ async def read_users(
     query = await session.scalars(
         select(User).offset(filter_users.offset).limit(filter_users.limit)
     )
+
     users = query.all()
 
     return {'users': users}
@@ -83,7 +84,6 @@ async def update_user(
         raise HTTPException(
             status_code=HTTPStatus.FORBIDDEN, detail='Not enough permissions'
         )
-
     try:
         current_user.username = user.username
         current_user.password = get_password_hash(user.password)
