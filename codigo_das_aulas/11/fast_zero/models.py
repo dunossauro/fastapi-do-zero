@@ -28,12 +28,9 @@ class User:
     )
 
     todos: Mapped[list['Todo']] = relationship(
-        init=False, back_populates='user', cascade='all, delete-orphan'
-    )
-
-    # Exercício
-    updated_at: Mapped[datetime] = mapped_column(
-        init=False, server_default=func.now(), onupdate=func.now()
+        init=False,
+        cascade='all, delete-orphan',
+        lazy='selectin',
     )
 
 
@@ -47,5 +44,3 @@ class Todo:
     state: Mapped[TodoState]
 
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
-
-    user: Mapped[User] = relationship(init=False, back_populates='todos')
