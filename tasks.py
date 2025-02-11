@@ -97,7 +97,7 @@ def test_migrations(c):
             if int(path.parts[-1]) >= 10: # noqa
                 c.run('poetry install')
 
-                with env_file(path):
+                with env_file(path, sync=False):
                     c.run('alembic upgrade head')
                     schema = c.run('sqlite3 database.db ".schema"')
                     assert schema.stdout == migration_10
@@ -107,14 +107,6 @@ def test_migrations(c):
                 c.run('alembic upgrade head')
                 schema = c.run('sqlite3 database.db ".schema"')
                 assert schema.stdout == migration_04
-
-            elif int(path.parts[-1]) == 8: # noqa
-                c.run('poetry install')
-
-                with env_file(path, sync=False):
-                    c.run('alembic upgrade head')
-                    schema = c.run('sqlite3 database.db ".schema"')
-                    assert schema.stdout == migration_05
 
             elif int(path.parts[-1]) >= 5: # noqa
                 c.run('poetry install')
