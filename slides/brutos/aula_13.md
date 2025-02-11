@@ -3,100 +3,151 @@ marp: true
 theme: rose-pine
 ---
 
-# Despedida e próximos passos
+# Fazendo deploy no Fly.io
 
-> https://fastapidozero.dunossauro.com/13/
-
----
-
-## Objetivos de hoje
-
-- Fazer uma revisão geral dos conceitos e práticas que abordamos ao longo do curso.
-- Encorajar a exploração futura e o aprofundamento em áreas específicas.
-- Agradecer a todos que acompanharam esta série de aulas.
-- Apresentar outros materiais criados com FastAPI.
-- **Apresentar o projeto final**
+> https://fastapidozero.dunossauro.com/12/
 
 ---
 
-## Por onde passamos?
+## Objetivos dessa aula
 
-
-- FastAPI / Pydantic / Swagger
-- SQLAlchemy e Alembic
-- Ferramentas de teste (Pytest, Factory-boy)
-- Operações (docker, ci, deploy)
-- http / jwt
-- Configuração de projeto (ruff, taskpy, poetry, pyenv)
+- Entender o que é o Fly.io e como usar sua CLI
+- Aprender a fazer o deploy de uma aplicação Docker no Fly.io
+- Configurar uma instância do PostgreSQL no Fly.io
+- Configurar as variáveis de ambiente
+- Rodar as migrações em produção
 
 ---
 
-## Projeto final
+## Deploy
 
-> https://fastapidozero.dunossauro.com/14/
+A ultima parte do processo do código, **colocar em produção**.
 
----
-
-## Próximos passos com o framework
-
-Coisas que não vimos nesse curso mas que são bastante interessantes:
-
-- [Templates](https://fastapidozero.dunossauro.com/apendices/b_proximos_passos/#templates)
-- [Asyncio](https://fastapidozero.dunossauro.com/apendices/b_proximos_passos/#asyncio)
-- Anotações de tipos
-- [Tarefas em background](https://fastapidozero.dunossauro.com/apendices/b_proximos_passos/#tarefas-em-segundo-plano-background)
-- [Eventos de ciclo de vida](https://fastapidozero.dunossauro.com/apendices/b_proximos_passos/#eventos-de-ciclo-de-vida)
+No caso da nossa API, é "soltar ela no mundo" para que as outras pessoas usar. Liberar na internet.
 
 ---
 
-## Próximos passos com web
+## Fly.io
 
-Alguns tópicos e seus exemplos
+O Fly.io é uma plataforma de deploy que nos permite fazer o lançamento nossas aplicações na nuvem e que oferece serviços para diversas linguagens de programação e frameworks como Python e Django, PHP e Laravel, Ruby e Rails, Elixir e Phoenix, etc.
 
-- Logs: Armazenamento de eventos que ocorrem na aplicação
-- Rastreamento: Qual o caminho percorrido por uma requisição
-- Métricas: Quantas pessoas estão usando?
-- Monitoramento: Quando determinado evento ocorrer, envie um email
-- Cache: Não fazer uso exaustivo do banco de dados.
+Ao mesmo tempo, em que permite que o deploy de aplicações em containers docker também possam ser utilizadas, como é o nosso caso. Além disso, o Fly disponibiliza bancos de dados para serem usados em nossas aplicações, como PostgreSQL e Redis.
 
 ---
 
-## Outros materiais que desenvolvi sobre FastAPI
+## Mas, Fly.io?
 
-Coisas que não cobrimos no curso, mas que já foram abordadas na Live de Python:
+A ideia de usar o fly.io é que ele oferece uma plataforma simplificada para deploy. Sendo necessário nos preocuparmos somente o container Docker da nossa aplicação.
 
-- [WebSockets e Templates](https://youtu.be/EqFzY8dBWHs): Comunicação persistente entre o cliente e o back.
-    - fizemos um chat nessa live
-- [GraphQL](https://youtu.be/3h8K29U5_HA): Uma forma diferente de JSON de trabalhar.
-- [FastAPI + SQLModel](https://youtu.be/7RbUreoXOQg): Um ORM diferente.
-- [FastAPI + FastUI](https://youtu.be/5gpLQa_N2iA): Front-end feito pelo Backend.
+O restante das configurações fica a encargo deles.
 
 ---
 
-## Acabou? Ainda não!
+## PaaS - Platform as a service
 
-Embora esse seja o fim das aulas síncronas, ainda teremos as aulas assíncronas (vídeos) que sairão em algum momento esse ano.
+Uma plataforma como serviço significa que contratamos um serviço de plataforma.
 
----
+Por plataforma entenda que o serviço contratado vai cuidar de:
 
-## Apoie o projeto!
+- Segurança
+- Rede
+- Disponibilidade
+- Atualizações / Manutenção
+- ...
 
-Esse material gratuito só existe graças a campanha de financiamento coletivo da Live de Python:
-
-[https://apoia.se/livedepython](https://apoia.se/livedepython).
-
-Você pode me pagar um café via pix: **pix.dunossauro@gmail.com**
-
-### Acompanhe as lives de Python!
+Entregamos container ao serviço e damos "play"
 
 ---
 
-## Um beijo <3
+## Uma notícia incrível <3
 
-Se quiser falar comigo: https://dunossauro.com
+Temos um cumpom de crédito para usar o fly:
+https://fly.io/fastapi-do-zero-2024
 
-Minhas outras redes:
-- Mastodon: https://bolha.us/@dunossauro
-- PixelFed: http://bolha.photos/@dunossauro
-- Github: https://github.com/dunossauro
-- Codeberg: https://codeberg.org/dunossauro
+
+Obrigado de mais Kátia Nakamura <3 <3 <3
+
+---
+
+## Flyctl
+
+O flyctl é um CLI do fly que podemos usar para fazer as funções administrativas da aplicação pelo terminal:
+
+```bash
+flyctl version
+```
+
+> Caso precise instalar o [flyctl](https://fly.io/docs/flyctl/)
+
+---
+
+## Autenticação via CLI
+
+```bash
+flyctl auth login
+```
+
+---
+
+## Configuração para o deploy
+
+```bash
+flyctl launch --no-deploy
+```
+
+Responda um absoluto Y aqui:
+```bash
+# ...
+? Do you want to tweak these settings before proceeding? (y/N) 
+```
+
+---
+
+## Manuzeando nossa variáveis de ambiente
+
+```bash
+flyctl secrets list
+flyctl secrets set DATABASE_URL=???
+flyctl secrets set ALGORITHM="HS256"
+flyctl secrets set SECRET_KEY="your-secret-key"
+flyctl secrets set ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
+
+---
+
+## Fazendo o deploy
+
+```bash
+fly deploy --local-only --ha=false
+
+# ...
+
+Visit your newly deployed app at https://fastzeroapp.fly.dev/
+```
+
+---
+
+## Executando as migrações
+
+```bash
+flyctl ssh console -a fastzeroapp -C "poetry run alembic upgrade head"
+```
+
+---
+
+## Quiz
+
+Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_12/) dessa aula!
+
+---
+## Commit
+
+```bash
+git add .
+git commit -m "Adicionando arquivos gerados pelo Fly"
+git push
+```
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
+ 

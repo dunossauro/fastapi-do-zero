@@ -4,7 +4,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from fast_zero.database import get_session
 from fast_zero.models import User
@@ -18,12 +18,14 @@ from fast_zero.security import (
 router = APIRouter(prefix='/auth', tags=['auth'])
 
 OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
-Session = Annotated[Session, Depends(get_session)]
+Session = Annotated[AsyncSession, Depends(get_session)]
 
 
 @router.post('/token', response_model=Token)
-def login_for_access_token(form_data: OAuth2Form, session: Session):
-    user = session.scalar(select(User).where(User.email == form_data.username))
+async def login_for_access_token(form_data: OAuth2Form, session: Session):
+    user = await session.scalar(
+        select(User).where(User.email == form_data.username)
+    )
 
     if not user:
         raise HTTPException(
@@ -43,7 +45,7 @@ def login_for_access_token(form_data: OAuth2Form, session: Session):
 
 
 @router.post('/refresh_token', response_model=Token)
-def refresh_access_token(
+async def refresh_access_token(
     user: User = Depends(get_current_user),
 ):
     new_access_token = create_access_token(data={'sub': user.email})
