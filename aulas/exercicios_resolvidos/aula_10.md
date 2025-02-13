@@ -182,3 +182,26 @@ async def test_list_todos_should_return_all_expected_fields__exercicio(
         'title': todo.title,
     }]
 ```
+
+## Exercício 05
+
+5. Crie um teste para validar o caso do `Enum` em [`state: Mapped[TodoState]`](/10/#__codelineno-2-44){:target="_blank"} na tabela `TODO`, onde o valor esteja fora dos valores mapeados por ele. Isso forçará um erro que pode ser validado com [`pytest.raises`](https://docs.pytest.org/en/4.6.x/reference.html#pytest-raises){:target="_blank"}
+
+### Solução
+
+```python
+@pytest.mark.asyncio
+async def test_create_todo_error(session, user: User):
+    todo = Todo(
+        title='Test Todo',
+        description='Test Desc',
+        state='test',
+        user_id=user.id,
+    )
+
+    session.add(todo)
+    await session.commit()
+
+    with pytest.raises(LookupError):
+        await session.scalar(select(Todo))
+```
