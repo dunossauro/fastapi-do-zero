@@ -158,13 +158,14 @@ Esse exercício é um pouco mais trabalhoso que os demais. Vamos dividir ele em 
 No final das contas, algo parecido (não necessariamente idêntico) a isso:
 
 ```python
-def test_list_todos_should_return_all_expected_fields__exercicio(
+@pytest.mark.asyncio
+async def test_list_todos_should_return_all_expected_fields__exercicio(
     session, client, user, token, mock_db_time
 ):
     with mock_db_time(model=Todo) as time:
         todo = TodoFactory.create(user_id=user.id)
         session.add(todo)
-        session.commit()
+        await session.commit()
 
     session.refresh(todo)
     response = client.get(
