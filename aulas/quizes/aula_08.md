@@ -71,11 +71,11 @@ run(corrotina())
 ```
 
 <?quiz?>
-question: 06 - Greenlet
-answer-correct: a
-answer-correct: b
-answer-correct: c
-answer: d
+question: 06 - Qual a função do greenlet no projeto?
+answer-correct: Permitir que o SQLAlchemy faça programação assíncrona
+answer: Permitir que o coverage cubra funções async
+answer: Substituir o asyncio
+answer: Criar loops de eventos
 content:
 <?/quiz?>
 
@@ -94,9 +94,9 @@ content:
 {
     "questao": '08 - Qual a função de "pytest_asyncio.fixture" no código?',
 	"opcoes": {
-		"a": "",
-		"b": "",
-		"c": "",
+		"a": "Cria uma fixture bloqueante",
+		"b": "Cria uma fixture que só pode ser usada em testes assíncronos",
+		"c": "Cria uma fixture executada pelo loop de eventos",
 	},
 	"correta": "c",
 	"code" : """
@@ -111,13 +111,13 @@ async def session():
 
 ```quiz
 {
-    "questao": '09 - Ao que se refere "expire_on_commit" na criação da sessão?',
+    "questao": '09 - Ao que se refere "expire_on_commit=False" na criação da sessão?',
 	"opcoes": {
-		"a": "",
-		"b": "",
-		"c": "",
+		"a": "Expira os dados não commitados",
+		"b": "Não limpa a sessão após o commit",
+		"c": "Cria uma sessão com tempo de vida",
 	},
-	"correta": "c",
+	"correta": "b",
 	"code" : """
 ```python
 async def get_session():
