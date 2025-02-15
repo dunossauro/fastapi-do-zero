@@ -1,0 +1,27 @@
+name: testes windows
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Copia os arquivos do repo
+        uses: actions/checkout@v4
+
+      - name: Instalar o python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Roda os testes dos códigos de aulas
+        run: poetry run invoke test-sub
