@@ -26,5 +26,7 @@ jobs:
       - name: Instalar dependências do projeto
         run: poetry install --no-root
 
+      - uses: cpunion/setup-docker@v1
+
       - name: Roda os testes dos códigos de aulas
         run: poetry run invoke test-sub
