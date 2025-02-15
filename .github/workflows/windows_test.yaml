@@ -23,5 +23,8 @@ jobs:
       - name: Instalar Poetry
         run: pip install poetry
 
+      - name: Instalar dependências do projeto
+        run: poetry install --no-root
+
       - name: Roda os testes dos códigos de aulas
         run: poetry run invoke test-sub
