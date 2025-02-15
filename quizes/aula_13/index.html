@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://fastapidozero.dunossauro.com/quizes/aula_09/">
+        <link rel="canonical" href="https://fastapidozero.dunossauro.com/quizes/aula_13/">
       
       
-        <link rel="prev" href="../aula_08/">
+        <link rel="prev" href="../aula_12/">
       
-      
-        <link rel="next" href="../aula_10/">
       
       
       <link rel="icon" href="../../assets/logo.svg">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Aula 09 - FastAPI do Zero</title>
+        <title>13 - Fazendo deploy no Fly.io - FastAPI do Zero</title>
       
     
     
@@ -59,11 +57,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Aula 09 - FastAPI do Zero" >
+        <meta  property="og:title"  content="13 - Fazendo deploy no Fly.io - FastAPI do Zero" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://fastapidozero.dunossauro.com/assets/images/social/quizes/aula_09.png" >
+        <meta  property="og:image"  content="https://fastapidozero.dunossauro.com/assets/images/social/quizes/aula_13.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -71,15 +69,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fastapidozero.dunossauro.com/quizes/aula_09/" >
+        <meta  property="og:url"  content="https://fastapidozero.dunossauro.com/quizes/aula_13/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Aula 09 - FastAPI do Zero" >
+        <meta  name="twitter:title"  content="13 - Fazendo deploy no Fly.io - FastAPI do Zero" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://fastapidozero.dunossauro.com/assets/images/social/quizes/aula_09.png" >
+        <meta  name="twitter:image"  content="https://fastapidozero.dunossauro.com/assets/images/social/quizes/aula_13.png" >
       
     
     
@@ -141,6 +139,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#13-fazendo-deploy-no-flyio" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -172,7 +175,7 @@
 		<div class="md-header__topic" data-md-component="header-topic">
 		    <span class="md-ellipsis">
 			
-			Aula 09
+			13 - Fazendo deploy no Fly.io
 			
 		    </span>
 		</div>
@@ -1402,17 +1405,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../aula_09/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1422,7 +1418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1498,10 +1493,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../aula_13/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1511,6 +1515,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1540,6 +1545,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1558,78 +1565,14 @@
   
 
 
-<div><h1>09 - Tornando o sistema de autenticação robusto</h1>
-<p>
-    </p><div class="quiz"><h3>01 - Sobre o Factory-boy. O que siginifica a classe Meta?</h3>
-    <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">Factory</span><span class="p">):</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
-</code></pre></div>
-    <form>
-    <fieldset>
+<div><h1 id="13-fazendo-deploy-no-flyio">13 - Fazendo deploy no Fly.io</h1>
+<div class="quiz"><h3>01 - O que é fazer "deploy"?</h3><form><fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Colocar a aplicação em produção</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1"><label for="quiz-0-1">Executar os testes da aplicação</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2"><label for="quiz-0-2">Executar a aplicação localmente</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3"><label for="quiz-0-3">Fazer o processo de integração contínua</label></div></fieldset><button type="submit" class="quiz-button">Enviar</button></form><section class="content hidden"></section></div>
 
-            <div>
-            <input type="radio" name="answer" value="Diz que será usada uma metaclasse" id="a">
-            <label for="a">Diz que será usada uma metaclasse</label>
-            </div>
+<div class="quiz"><h3>02 - O quer dizer "PaaS"?</h3><form><fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0"><label for="quiz-1-0">Software como serviço</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1"><label for="quiz-1-1">Um local para subir a aplicação</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2"><label for="quiz-1-2">Softwares como o github</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" correct><label for="quiz-1-3">Plataforma como serviço</label></div></fieldset><button type="submit" class="quiz-button">Enviar</button></form><section class="content hidden"></section></div>
 
+<div class="quiz"><h3>03 - O que é o Fly.io?</h3><form><fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0"><label for="quiz-2-0">Uma plataforma de código</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1"><label for="quiz-2-1">Uma plataforma de versionamento</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" correct><label for="quiz-2-2">Uma plataforma de Cloud</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3"><label for="quiz-2-3">Uma plataforma de integração contínua</label></div></fieldset><button type="submit" class="quiz-button">Enviar</button></form><section class="content hidden"></section></div>
 
-            <div>
-            <input type="radio" name="answer" value="Explica ao Factory qual objeto ele deve se basear" id="b" correct="">
-            <label for="b">Explica ao Factory qual objeto ele deve se basear</label>
-            </div>
-
-
-            <div>
-            <input type="radio" name="answer" value="Extente a classe Factory com os parâmetros de Meta" id="c">
-            <label for="c">Extente a classe Factory com os parâmetros de Meta</label>
-            </div>
-
-    </fieldset>
-    <button type="submit" class="quiz-button">Enviar</button>
-    </form>
-    <section class="content hidden"></section>
-    </div>
-    
-<div class="quiz"><h3>02 - Ainda sobre o Factory-boy. O que siginifica "factory.Sequence"?</h3><form><fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0"><label for="quiz-0-0">Criará uma sequência de Metas</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" correct><label for="quiz-0-1">Adicionará +1 em cada objeto criado</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2"><label for="quiz-0-2">Monta uma sequência de objetos</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3"><label for="quiz-0-3">Cria um novo objeto do factory</label></div></fieldset><button type="submit" class="quiz-button">Enviar</button></form><section class="content hidden"></section></div>
-
-<div class="quiz"><h3>03 - Ainda sobre o Factory-boy. O que siginifica "factory.LazyAttribute"?</h3><form><fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Diz que o atributo será criado em tempo de execução</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">Diz que o atributo usará outros atributos para ser inicializado</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" correct><label for="quiz-1-2">Usa outros campos para ser composto</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3"><label for="quiz-1-3">Cria um atributo independênte</label></div></fieldset><button type="submit" class="quiz-button">Enviar</button></form><section class="content hidden"></section></div>
-
-<p>
-    </p><div class="quiz"><h3>04 - O que faz o gerenciador de contexto "freeze_time"?</h3>
-    <div class="highlight"><pre><span></span><code><span class="hll"><span class="k">with</span> <span class="n">freeze_time</span><span class="p">(</span><span class="s1">'2023-07-14 12:00:00'</span><span class="p">):</span>
-</span>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-        <span class="s1">'/auth/token'</span><span class="p">,</span>
-        <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">'username'</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="s1">'password'</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">clean_password</span><span class="p">},</span>
-    <span class="p">)</span>
-</code></pre></div>
-    <form>
-    <fieldset>
-
-            <div>
-            <input type="radio" name="answer" value="Pausa o tempo nas instruções dentro do 'with'" id="a" correct="">
-            <label for="a">Pausa o tempo nas instruções dentro do 'with'</label>
-            </div>
-
-
-            <div>
-            <input type="radio" name="answer" value="Congela o tempo da função toda" id="b">
-            <label for="b">Congela o tempo da função toda</label>
-            </div>
-
-
-            <div>
-            <input type="radio" name="answer" value="Muda a hora do computador para um bloco" id="c">
-            <label for="c">Muda a hora do computador para um bloco</label>
-            </div>
-
-    </fieldset>
-    <button type="submit" class="quiz-button">Enviar</button>
-    </form>
-    <section class="content hidden"></section>
-    </div>
-    
-<div class="quiz"><h3>05 - O que levanta o erro "ExpiredSignatureError"?</h3><form><fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0"><label for="quiz-2-0">Quando deu erro no valor de 'exp'</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1"><label for="quiz-2-1">Quando não deu certo avaliar a claim de 'exp'</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" correct><label for="quiz-2-2">Quando a claim de 'exp' tem um tempo expirado</label></div></fieldset><button type="submit" class="quiz-button">Enviar</button></form><section class="content hidden"></section></div></div><style type="text/css">.quiz {
+<div class="quiz"><h3>04 - Para que usamos o "flyctl"?</h3><form><fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Para fazer o login no fly</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Para nos comunicarmos com o fly via terminal</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" correct><label for="quiz-3-2">Para fazer deploy da aplicação</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" correct><label for="quiz-3-3">Para fazer o build do container</label></div></fieldset><button type="submit" class="quiz-button">Enviar</button></form><section class="content hidden"></section></div></div><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
