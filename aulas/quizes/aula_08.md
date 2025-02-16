@@ -12,8 +12,8 @@ content:
 
 <?quiz?>
 question: 02 - Dizemos que um código é cooperativo quando:
-answer-correct: Quando ele cede a vez para que outro código seja executado
-answer-correct: Quando ele faz uso da palavra reservada await
+answer-correct: Quando ele cede a vez para outro código ser executado
+answer-correct: Quando ele usa a palavra reservada await
 answer-correct: Quando ele permite ser escalonado
 answer: Quando ele usa async def
 content:
