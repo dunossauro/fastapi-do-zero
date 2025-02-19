@@ -40,16 +40,9 @@ content:
   O `FuzzyChoice` do Factory Boy gera valores aleatórios a partir de um conjunto predefinido, criando objetos de teste com dados realistas e facilitando testes de unidade robustos.
 <?/quiz?>
 
-<?quiz?>
-question: 05 - Por qual razão usamos `# noqa` no endpoint `list_todos`:
-answer: Para dizer aos QAs que esse código não é pra eles.
-answer: Para dizer que esse código não será coberto por testes.
-answer-correct: Para remover a checagem no linter na expressão.
-content:
-<?/quiz?>
 
 <?quiz?>
-question: 06 - Qual a função do `session.bulk_save_objects` nos testes de todo?
+question: 05 - Qual a função do `session.bulk_save_objects` nos testes de todo?
 answer-correct: Inserir uma lista de objetos na session
 answer: Salvar diversos objetos de uma vez no banco de dados
 content:
@@ -57,7 +50,7 @@ content:
 
 ```quiz
 {
-    "questao": '07 - Qual a função do `exclude_unset=True` no código abaixo?',
+    "questao": '06 - Qual a função do `exclude_unset=True` no código abaixo?',
 	"opcoes": {
 		"a": "Exclui os valores que não fazem parte do schema",
 		"b": "Exclui os valores que não foram passados para o schema",
