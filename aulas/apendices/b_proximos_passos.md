@@ -51,7 +51,7 @@ Todas as variáveis incluídas em `{{ variável }}` são passadas pelo endpoint 
 {% endraw %}
 
 
-Para unir os arquivos estáticos e os templates na aplicação podemos aplicar o seguinte bloco de código:
+Para unir os arquivos estáticos e os templates na aplicação, podemos aplicar o seguinte bloco de código:
 
 ```python title="app.py"
 from fastapi import FastAPI, Request
@@ -100,7 +100,13 @@ Desta forma, ao acessar o endpoint pela API, temos a junção de templates e est
 
 ## Tarefas em segundo plano (Background)
 
-> TODO: adicionar explicação a esse tópico
+Em algumas aplicações, é preciso realizar tarefas que possam ser feitas sem atrapalhar o funcionamento principal do programa. É útil para enviar e-mails, processar arquivos ou fazer cálculos demorados, mas sem impactar a experiência do usuário, que pode continuar interagindo com a aplicação.
+
+O FastAPI oferece suporte nativo para a execução de tarefas em segundo plano usando o objeto `BackgroundTasks`. Esse objeto permite que você adicione funções que serão executadas após a resposta ser enviada ao cliente. Dessa forma, o cliente não precisa esperar que a tarefa seja concluída para continuar suas interações.
+
+### Exemplo de implementação
+
+No exemplo a seguir, criamos uma tarefa simples que dorme por um tempo especificado e retorna uma resposta indicando que a requisição foi recebida e está sendo processada.
 
 ```python title="app.py"
 from time import sleep
@@ -112,7 +118,7 @@ app = FastAPI()
 
 
 def tarefa_em_segundo_plano(tempo=0):#(1)!
-    sleep(tempo)
+    sleep(tempo)  # Simula um processo demorado
 
 
 @app.get('/segundo-plano/{tempo}')
@@ -121,15 +127,23 @@ def segundo_plano(tempo: int, task: BackgroundTasks):#(2)!
     return {'message': 'Sua requisição está sendo processada!'}
 ```
 
-1. Uma função qualquer em python que será executada a qualquer momento
-2. O tipo `BackgroundTasks` deve ser passado ao endpoint para que ele tenha a possibilidade de adicionar uma tarefa ao loop de eventos
-3. O método `.add_task` adiciona a tarefa (função) ao loop de eventos.
+1. **Função de Tarefa:** A função `tarefa_em_segundo_plano` simula uma tarefa demorada, utilizando a função `sleep` para interromper a execução por um tempo determinado pelo parâmetro `tempo`. Essa função pode ser qualquer função Python que você deseje rodar em segundo plano.
+   
+2. **Recebendo BackgroundTasks:** O tipo `BackgroundTasks` é injetado automaticamente no endpoint, e ele permite que você adicione tarefas ao loop de eventos do FastAPI. Ao receber esse tipo, o endpoint poderá adicionar tarefas para execução em segundo plano, sem afetar a resposta imediata ao cliente.
+
+3. **Adicionando a tarefa ao background:** A função `.add_task()` do `BackgroundTasks` é usada para adicionar a função `tarefa_em_segundo_plano` ao evento em segundo plano, passando o parâmetro necessário (`tempo`, no caso). Assim, quando o cliente acessar o endpoint, a tarefa será iniciada em segundo plano enquanto a resposta já é enviada para ele.
+
+### Como funciona a execução
+
+Quando um cliente acessa o endpoint `/segundo-plano/{tempo}`, o FastAPI envia imediatamente a resposta `{'message': 'Sua requisição está sendo processada!'}`. A tarefa, que simula um processo demorado, é executada em segundo plano, sem que o cliente tenha que aguardar sua conclusão.
+
+Isso permite que você realize operações demoradas sem prejudicar a experiência do usuário, que pode seguir usando a aplicação enquanto a tarefa está em andamento.
 
 ## Eventos de ciclo de vida
 
-Os eventos de ciclo de vida são formas de iniciar ou testar alguma condição antes da aplicação ser de fato inicializada. Você pode criar validações, como saber se outra aplicação está de pé, configurar coisas antes da aplicação ser iniciada, como iniciar o banco de dados, etc.
+Os eventos de ciclo de vida são formas de iniciar ou testar alguma condição antes de a aplicação ser de fato inicializada. Você pode criar validações, como saber se outra aplicação está de pé, configurar coisas antes de a aplicação ser iniciada, como iniciar o banco de dados, etc.
 
-Da mesma forma alguns casos para antes da aplicação ser finalizada também podem ser criadas. Como garantir que todas as [tarefas em segundo plano](#tarefas-em-segundo-plano-background) estejam de fato finalizadas antes da aplicação parar de rodar.
+Da mesma forma, alguns casos para antes de a aplicação ser finalizada também podem ser criadas. Como garantir que todas as [tarefas em segundo plano](#tarefas-em-segundo-plano-background) estejam de fato finalizadas antes da aplicação parar de rodar.
 
 ```python title="app.py"
 from logging import getLogger
