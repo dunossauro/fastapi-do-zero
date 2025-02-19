@@ -19,6 +19,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 	[Aula :fontawesome-brands-youtube:](https://youtu.be/{{link}}?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){ .md-button }
 	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_{{aula}}.pdf){ .md-button }
 
+> Esse material passa por atualizações periódicas. Você pode acompanhar as notas de alterações [aqui](/alteracoes/){:target="_blank"}
 
 Olá, boas vindas ao curso de FastAPI!
 
