@@ -1,6 +1,6 @@
-# Aulas síncronas
+# Aulas síncronas 2024
 
-Faremos 14 encontros para as aulas síncronas em formato de live no meu canal do [YouTube](https://www.youtube.com/@dunossauro){:target="_blank"} entre as datas de 11/06 e 25/07.
+Faremos 15 encontros para as aulas síncronas em formato de live no meu canal do [YouTube](https://www.youtube.com/@dunossauro){:target="_blank"} entre as datas de 11/06 e 30/07.
 
 ## Como vai funcionar?
 

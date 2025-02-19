@@ -16,12 +16,13 @@ As Aulas estão dividas em:
 5. [Integrando Banco de Dados a API](https://fastapidozero.dunossauro.com/05/)
 6. [Autenticação e Autorização](https://fastapidozero.dunossauro.com/06/)
 7. [Refatorando a Estrutura do Projeto](https://fastapidozero.dunossauro.com/07/)
-8. [Tornando o sistema de autenticação robusto](https://fastapidozero.dunossauro.com/08/)
-9. [Criando Rotas CRUD para Tarefas](https://fastapidozero.dunossauro.com/09/)
-10. [Dockerizando a aplicação](https://fastapidozero.dunossauro.com/10/)
-11. [Automatizando os testes com integração contínua](https://fastapidozero.dunossauro.com/11/)
-12. [Fazendo o deploy no fly.io](https://fastapidozero.dunossauro.com/12/)
-13. [Despedida](https://fastapidozero.dunossauro.com/13/)
+8. [Tornando o projeto assíncrono](https://fastapidozero.dunossauro.com/08/)
+9. [Tornando o sistema de autenticação robusto](https://fastapidozero.dunossauro.com/09/)
+10. [Criando Rotas CRUD para Tarefas](https://fastapidozero.dunossauro.com/10/)
+11. [Dockerizando a aplicação](https://fastapidozero.dunossauro.com/11/)
+12. [Automatizando os testes com integração contínua](https://fastapidozero.dunossauro.com/12/)
+13. [Fazendo o deploy no fly.io](https://fastapidozero.dunossauro.com/13/)
+14. [Despedida](https://fastapidozero.dunossauro.com/14/)
 
 ---
 

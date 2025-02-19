@@ -113,12 +113,13 @@ Alguns outros tópicos não relativos a python também serão abordados. Então 
 5. [Integrando Banco de Dados a API](05.md){:target="_blank"}
 6. [Autenticação e Autorização](06.md){:target="_blank"}
 7. [Refatorando a Estrutura do Projeto](07.md){:target="_blank"}
-8. [Tornando o sistema de autenticação robusto](08.md){:target="_blank"}
-9. [Criando Rotas CRUD para Tarefas](09.md){:target="_blank"}
-10. [Dockerizando a nossa aplicação e introduzindo o PostgreSQL](10.md){:target="_blank"}
-11. [Automatizando os testes com integração contínua](11.md){:target="_blank"}
-12. [Fazendo o deploy no Fly.io](12.md){:target="_blank"}
-13. [Despedida e próximos passos](13.md){:target="_blank"}
+8. [Tornando o projeto assíncrono](08.md){:target="_blank"}
+9. [Tornando o sistema de autenticação robusto](09.md){:target="_blank"}
+10. [Criando Rotas CRUD para Tarefas](10.md){:target="_blank"}
+11. [Dockerizando a nossa aplicação e introduzindo o PostgreSQL](11.md){:target="_blank"}
+12. [Automatizando os testes com integração contínua](12.md){:target="_blank"}
+13. [Fazendo o deploy no Fly.io](13.md){:target="_blank"}
+14. [Despedida e próximos passos](14.md){:target="_blank"}
 
 Após todas as aulas, se você sentir que ainda quer evoluir mais e testar seus conhecimentos, [temos um projeto final](14.md){:target="_blank"} para avaliar o quanto você aprendeu.
 
