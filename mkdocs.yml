@@ -81,6 +81,7 @@ plugins:
   - exclude-unused-files
   - mkdocs_quiz
   - towncrier
+  - markdown-exec
 
 fonts:
   icon: material/format-font

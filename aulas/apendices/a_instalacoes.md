@@ -1,5 +1,7 @@
 # A - Instalando as ferramentas externas
 
+{% include "templates/versoes.md" %}
+
 Durante as aulas síncronas, diversas dúvidas sobre a configuração e instalação das ferramentas fora do python foram levantadas. A ideia dessa página é te auxiliar nas instalações.
 
 São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}. A ideia é agrupar todas as instalações um único lugar.
