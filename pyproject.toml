@@ -91,3 +91,6 @@ showcontent = true
 directory = "slides"
 name = "Slides"
 showcontent = true
+
+[tool.poetry]
+package-mode = false
