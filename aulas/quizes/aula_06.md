@@ -90,3 +90,13 @@ answer-correct: Gerenciar a autorização dos endpoints
 answer: Saber que é o usuário logado
 content:
 <?/quiz?>
+
+
+<?quiz?>
+question: 10 - Qual o objetivo da claim 'exp'?
+answer: Dizer se o token está autorizado
+answer: Especificar o nome do usuário
+answer: Definir o tempo de criação do token
+answer-correct: Transmitir o tempo de expiração do token
+content:
+<?/quiz?>
