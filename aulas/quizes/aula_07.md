@@ -51,3 +51,22 @@ def endpoint(session: Annotated[Session, Depends(get_session)])
 ```"""
 }
 ```
+
+```quiz
+{
+    "questao": '06 - O que o "include_router" faz nesse código?',
+	"opcoes": {
+		"a": "Adiciona as rotas definidas do router 'users'",
+		"b": "Cria um novo app fastAPI para o router",
+		"c": "Substitui as rotas existentes pelas rotas de 'users'",
+		"d": "Exclui as rotas de 'users' da aplicação",
+	},
+	"correta": "a",
+	"code" : """
+```python
+app = FastAPI()
+
+app.include_router(users.router)
+```"""
+}
+```
