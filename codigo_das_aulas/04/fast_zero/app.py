@@ -1,10 +1,12 @@
 from http import HTTPStatus
+from logging import getLogger
 
 from fastapi import FastAPI, HTTPException
 
 from fast_zero.schemas import Message, UserDB, UserList, UserPublic, UserSchema
 
 app = FastAPI()
+logger = getLogger('uvicorn.error')
 
 database = []  # Lista provisória para fins de estudo
 
