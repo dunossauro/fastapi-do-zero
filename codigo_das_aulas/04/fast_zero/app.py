@@ -33,6 +33,7 @@ def read_users():
 @app.put('/users/{user_id}', response_model=UserPublic)
 def update_user(user_id: int, user: UserSchema):
     if user_id > len(database) or user_id < 1:
+        logger.info(f'User with {user_id=} not found in the database')
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail='User not found'
         )
