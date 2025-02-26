@@ -70,3 +70,39 @@ app.include_router(users.router)
 ```"""
 }
 ```
+
+<?quiz?>
+question: 07 - O que faz "Annotated[FilterPage, Query()]" no nosso endpoint?
+answer-correct: Ignora parâmetros passados que não estejam em `FilterPage`
+answer-correct: Adiciona os campos de `FilterPage` na documentação
+answer-correct: Valida os tipos e valores passados via querystring
+answer-correct: Transforma os parâmetros de `FilterPage` em querystring
+content:
+<?/quiz?>
+
+<?quiz?>
+question: 08 - Qual o impacto das constantes movidas para a classe "Settings"?
+answer: Excluir a necessidade um arquivo .env
+answer-correct: Pode alterar configurações sem alterar o código fonte
+answer: Poder alterar os valores das contantes em tempo de execução
+answer: Simplificar as chamadas de código
+content:
+<?/quiz?>
+
+<?quiz?>
+question: 09 - Por qual motivo dividimos a aplicação em routers?
+answer: Melhorar o desempenho da aplicação
+answer-correct: Melhorar a organização do código
+answer-correct: Facilitar a manutenção
+answer: Todas as alternativas estão corretas
+content:
+<?/quiz?>
+
+<?quiz?>
+question: 10 - Por qual motivo "read_root" não foi migrado para nenhum router?
+answer: É só um exemplo de código
+answer: Por que ela retorna HTML
+answer-correct: Não pertence a nenhum domínio dos routers em específico
+answer: Por que não faz uso de Session
+content:
+<?/quiz?>
