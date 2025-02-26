@@ -47,9 +47,15 @@ def test_delete_user_should_return_not_found__exercicio(client):
 3. Por entrar no bloco de validação do `if` o `HTTPException` foi preenchido com `detail='User not found'`
 
 
-## Exercício 03
 
-Crie um endpoint de GET para pegar um único recurso como `users/{id}` e fazer seus testes para `#!python 200` e `#!python 404`.
+## [NF] Exercício 03
+### Solução
+
+## [WIP] Exercício 04
+
+> TODO: Incluir log e teste para o log
+
+Crie um endpoint de GET para pegar um único recurso como `users/{id}` e fazer seus testes para `#!python 200` e `#!python 404` (os logs devem ser incluídos).
 
 ### Solução
 
