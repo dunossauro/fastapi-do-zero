@@ -47,6 +47,7 @@ def update_user(user_id: int, user: UserSchema):
 @app.delete('/users/{user_id}', response_model=Message)
 def delete_user(user_id: int):
     if user_id > len(database) or user_id < 1:
+        logger.info(f'User with {user_id=} not found in the database')
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail='User not found'
         )
@@ -59,6 +60,7 @@ def delete_user(user_id: int):
 @app.get('/users/{user_id}', response_model=UserPublic)
 def read_user__exercicio(user_id: int):
     if user_id > len(database) or user_id < 1:
+        logger.info(f'User with {user_id=} not found in the database')
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail='User not found'
         )
