@@ -27,7 +27,7 @@ def test_create_user(client):
     }
 
 
-def test_create_user_should_return_400_username_exists__exercicio(
+def test_create_user_should_return_409_username_exists__exercicio(
     client, user
 ):
     response = client.post(
@@ -38,11 +38,11 @@ def test_create_user_should_return_400_username_exists__exercicio(
             'password': 'secret',
         },
     )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.status_code == HTTPStatus.CONFLICT
     assert response.json() == {'detail': 'Username already exists'}
 
 
-def test_create_user_should_return_400_email_exists__exercicio(client, user):
+def test_create_user_should_return_409_email_exists__exercicio(client, user):
     response = client.post(
         '/users/',
         json={
@@ -51,7 +51,7 @@ def test_create_user_should_return_400_email_exists__exercicio(client, user):
             'password': 'secret',
         },
     )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.status_code == HTTPStatus.CONFLICT
     assert response.json() == {'detail': 'Email already exists'}
 
 
