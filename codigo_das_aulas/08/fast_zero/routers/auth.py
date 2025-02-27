@@ -25,13 +25,13 @@ async def login_for_access_token(form_data: OAuth2Form, session: Session):
 
     if not user:
         raise HTTPException(
-            status_code=HTTPStatus.BAD_REQUEST,
+            status_code=HTTPStatus.UNAUTHORIZED,
             detail='Incorrect email or password',
         )
 
     if not verify_password(form_data.password, user.password):
         raise HTTPException(
-            status_code=HTTPStatus.BAD_REQUEST,
+            status_code=HTTPStatus.UNAUTHORIZED,
             detail='Incorrect email or password',
         )
 

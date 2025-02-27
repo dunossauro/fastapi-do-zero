@@ -35,12 +35,12 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
     if db_user:
         if db_user.username == user.username:
             raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
+                status_code=HTTPStatus.CONFLICT,
                 detail='Username already exists',
             )
         elif db_user.email == user.email:
             raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
+                status_code=HTTPStatus.CONFLICT,
                 detail='Email already exists',
             )
 
@@ -120,13 +120,13 @@ def login_for_access_token(
 
     if not user:
         raise HTTPException(
-            status_code=HTTPStatus.BAD_REQUEST,
+            status_code=HTTPStatus.UNAUTHORIZED,
             detail='Incorrect email or password',
         )
 
     if not verify_password(form_data.password, user.password):
         raise HTTPException(
-            status_code=HTTPStatus.BAD_REQUEST,
+            status_code=HTTPStatus.UNAUTHORIZED,
             detail='Incorrect email or password',
         )
 
