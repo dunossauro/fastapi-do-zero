@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from logging import INFO
 
 
 def test_root_deve_retornar_ok_e_ola_mundo(client):
@@ -56,11 +57,37 @@ def test_update_user(client):
     }
 
 
+def test_update_user_not_found_should_log(client, caplog):
+    caplog.set_level(INFO)
+
+    client.put(
+        '/users/666',
+        json={
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+
+    _, level, msg = caplog.record_tuples[0]
+    assert level == INFO
+    assert msg == 'User with user_id=666 not found in the database'
+
+
 def test_delete_user_should_return_not_found__exercicio(client):
     response = client.delete('/users/666')
 
     assert response.status_code == HTTPStatus.NOT_FOUND
     assert response.json() == {'detail': 'User not found'}
+
+
+def test_delete_user_should_log_not_found__exercicio(client, caplog):
+    caplog.set_level(INFO)
+    client.delete('/users/666')
+
+    _, level, msg = caplog.record_tuples[0]
+    assert level == INFO
+    assert msg == 'User with user_id=666 not found in the database'
 
 
 def test_update_user_should_return_not_found__exercicio(client):
@@ -74,6 +101,15 @@ def test_update_user_should_return_not_found__exercicio(client):
     )
     assert response.status_code == HTTPStatus.NOT_FOUND
     assert response.json() == {'detail': 'User not found'}
+
+
+def test_get_user_should_log_not_found__exercicio(client, caplog):
+    caplog.set_level(INFO)
+    client.get('/users/666')
+
+    _, level, msg = caplog.record_tuples[0]
+    assert level == INFO
+    assert msg == 'User with user_id=666 not found in the database'
 
 
 def test_get_user_should_return_not_found__exercicio(client):

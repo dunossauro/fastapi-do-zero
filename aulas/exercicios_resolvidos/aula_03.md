@@ -47,9 +47,44 @@ def test_delete_user_should_return_not_found__exercicio(client):
 3. Por entrar no bloco de validação do `if` o `HTTPException` foi preenchido com `detail='User not found'`
 
 
+
 ## Exercício 03
 
-Crie um endpoint de GET para pegar um único recurso como `users/{id}` e fazer seus testes para `#!python 200` e `#!python 404`.
+Adicionar uma chamada de log para o endpoint de DELETE e escrever um teste para ele
+
+### Solução
+
+A alteração no código:
+
+```python hl_lines="4"
+@app.delete('/users/{user_id}', response_model=Message)
+def delete_user(user_id: int):
+    if user_id > len(database) or user_id < 1:
+        logger.info(f'User with {user_id=} not found in the database')
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND, detail='User not found'
+        )
+
+    del database[user_id - 1]
+
+    return {'message': 'User deleted'}
+```
+
+O teste para o log:
+
+```python
+def test_delete_user_should_log_not_found__exercicio(client, caplog):
+    caplog.set_level(INFO)
+    client.delete('/users/666')
+
+    _, level, msg = caplog.record_tuples[0]
+    assert level == INFO
+    assert msg == 'User with user_id=666 not found in the database'
+```
+
+## Exercício 04
+
+Crie um endpoint de GET para pegar um único recurso como `users/{id}` e fazer seus testes para `#!python 200` e `#!python 404` (os logs devem ser incluídos).
 
 ### Solução
 
@@ -59,6 +94,7 @@ A implementação do endpoint é bastante parecida com as que fizemos até agora
 @app.get('/users/{user_id}', response_model=UserPublic)
 def read_user__exercicio(user_id: int):
     if user_id > len(database) or user_id < 1:
+        logger.info(f'User with {user_id=} not found in the database')
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail='User not found'
         )
@@ -85,4 +121,13 @@ def test_get_user___exercicio(client):
         'email': 'bob@example.com',
         'id': 1,
     }
+
+
+def test_get_user_should_log_not_found__exercicio(client, caplog):
+    caplog.set_level(INFO)
+    client.get('/users/666')
+
+    _, level, msg = caplog.record_tuples[0]
+    assert level == INFO
+    assert msg == 'User with user_id=666 not found in the database'
 ```

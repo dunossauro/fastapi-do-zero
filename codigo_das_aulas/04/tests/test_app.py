@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from logging import INFO
 
 
 def test_root_deve_retornar_ok_e_ola_mundo(client):
@@ -61,3 +62,20 @@ def test_delete_user(client):
 
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'User deleted'}
+
+
+def test_update_user_not_found_should_log(client, caplog):
+    caplog.set_level(INFO)
+
+    client.put(
+        '/users/666',
+        json={
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+
+    _, level, msg = caplog.record_tuples[0]
+    assert level == INFO
+    assert msg == 'User with user_id=666 not found in the database'
