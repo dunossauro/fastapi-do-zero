@@ -8,7 +8,7 @@ São comandos rápidos e simples, não tenho a intensão de explicar o que essas
 
 ## pipx
 
-O pipx é uma ferramenta opcional na configuração do ambiente, mas é extremamente recomendado que você a instale para simplificar a instalação de pacotes globais.
+O pipx é uma ferramenta para simplificar a instalação de pacotes globais.
 
 Para isso, você pode executar:
 
