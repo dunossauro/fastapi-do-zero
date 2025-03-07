@@ -6,98 +6,9 @@ Durante as aulas síncronas, diversas dúvidas sobre a configuração e instala�
 
 São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}. A ideia é agrupar todas as instalações um único lugar.
 
-## Pyenv no Windows
-Para instalar o pyenv você precisa abrir seu PowerShell como administrado e executar o comando:
-
-```powershell
-Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
-```
-
-A mensagem `pyenv-win is successfully installed. You may need to close and reopen your terminal before using it.` aparecerá na tela. Dizendo que precisamos reinicar o shell. 
-
-Só precisamos fechá-lo e abrir de novo.
-
-### Caso esse comando apresente erro
-
-Grande parte dos problemas que pessoas encontraram ao executar instalar o `pyenv` são relacionados a Polices do sistema
-
-![descrição](https://github.com/pyenv-win/pyenv-win/wiki/img/powershell-execution-policy-error.png){: .center .shadow }
-
-Para corrigir isso você pode executar o seguinte comando:
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-## Pyenv no Linux/MacOS
-
-Como não tenho como cobrir a instalação em todos as distros, vou usar uma ferramenta chamada pyenv-installer. É bastante simples, somente executar o comando:
-
-```shell title="$ Execução no terminal!"
-curl https://pyenv.run | bash
-```
-
-Após isso é importante que você siga a instrução de adicionar a configuração no seu `.bashrc`:
-
-```bash title="~/.bashrc"
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-```
-
-> Caso use zsh, xonsh, .... bom... Você deve saber o que está fazendo :)
-
-Após isso reinicie o shell para que a variável de ambiente seja carregada.
-
-??? warning "Caso esteja no ubuntu"
-	É importante que você instale o `curl` e o `git` antes:
-	
-	```shell title="$ Execução no terminal!"
-	sudo apt update
-	sudo apt install curl git
-	```
-
-## Instalação do Python via pyenv
-
-Agora, com o pyenv instalado, você pode instalar a versão do python que usaremos no curso. Como descrito na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}:
-
-```shell title="$ Execução no terminal!"
-pyenv install 3.13.0
-```
-
-A seguinte mensagem deve aparecer na tela:
-
-```{.powershell .no-copy}
-:: [Info] ::  Mirror: https://www.python.org/ftp/python
-:: [Downloading] ::  3.13.0 ...
-:: [Downloading] ::  From https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe
-:: [Downloading] ::  To   C:\Users\vagrant\.pyenv\pyenv-win\install_cache\python-3.13.0-amd64.exe
-:: [Installing] ::  3.13.0 ...
-:: [Info] :: completed! 3.13.0
-```
-
-#### Configurando a versão no pyenv
-
-Agora com versão instalada, devemos dizer ao shim, qual versão será usada globalmente. Podemos executar esse comando:
-
-```shell title="$ Execução no terminal!"
-pyenv global 3.13.0
-```
-
-Esse comando não costuma exibir nenhuma mensagem em caso de sucesso, se nada foi retornado, significa que tudo ocorreu como esperado.
-
-Para testar se a versão foi definida, podemos chamar o python no terminal:
-
-```shell title="$ Execução no terminal!"
-python --version
-Python 3.13.0 #(1)!
-```
-
-1. Responde que a versão correta foi setada!
-
 ## pipx
 
-O pipx é uma ferramenta opcional na configuração do ambiente, mas é extremamente recomendado que você a instale para simplificar a instalação de pacotes globais.
+O pipx é uma ferramenta para simplificar a instalação de pacotes globais.
 
 Para isso, você pode executar:
 

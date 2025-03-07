@@ -15,7 +15,6 @@
 ## Ferramentas de gerenciamento do ambiente
 
 ```bash exec="1"
-echo "- **Pyenv**: $(pyenv --version)"
 echo "- **Poetry**: $(poetry --version)"
 echo "- **Pipx**: $(pipx --version)"
 echo "- **Docker**: $(docker --version)"
