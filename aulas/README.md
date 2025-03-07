@@ -44,17 +44,20 @@ Além da construção do projeto, o curso também incluirá a prática de testes
 
 Aqui está uma visão geral dos tópicos que abordaremos neste curso:
 
-1. **Configuração do ambiente de desenvolvimento para FastAPI**: começaremos do absoluto zero, criando e configurando nosso ambiente de desenvolvimento.
+1. **Configuração do ambiente e gerenciamento de um projeto Python**: começaremos do zero, configurando o ambiente de desenvolvimento. Escolheremos ferramentas adequadas, aplicaremos boas práticas de gerenciamento de projetos e integraremos um gerenciador de projetos, task manager, ferramentas de análise estática e formatação de código.
 
-2. **Primeiros Passos com FastAPI e Testes**: após configurar o ambiente, mergulharemos na estrutura básica de um projeto FastAPI e faremos uma introdução detalhada ao Test Driven Development (TDD).
+2. **Primeiros Passos com FastAPI**: introduziremos os conceitos do desenvolvimento web com FastAPI, ensinando como criar endpoints, realizar operações CRUD, aplicar injeção de dependência, criar schemas e outros fundamentos.
 
-3. **Modelagem de Dados com Pydantic e SQLAlchemy**: aprenderemos a criar e manipular modelos de dados utilizando Pydantic e SQLAlchemy, dois recursos que levam a eficiência do FastAPI a outro nível.
+3. **Modelagem de Dados com Pydantic, SQLAlchemy e Alembic**: aprenderemos a criar e manipular modelos de dados utilizando Pydantic e SQLAlchemy, além de configurar um esquema de migrações de banco de dados utilizando Alembic.
 
-4. **Autenticação e Autorização em FastAPI**: construiremos um sistema de autenticação completo, para proteger nossas rotas e garantir que apenas usuários autenticados tenham acesso a certos dados.
+4. **Programação Assíncrona**: a partir da metade do curso, focaremos em tornar nosso projeto totalmente assíncrono, aproveitando os recursos do FastAPI e do SQLAlchemy para operações mais eficientes e escaláveis.
 
-5. **Testando sua Aplicação FastAPI**: faremos uma introdução detalhada aos testes de aplicação FastAPI, utilizando as bibliotecas pytest e coverage. Além de executá-los em um pipeline de integração contínua com github actions.
+5. **Autenticação e Autorização em FastAPI**: construiremos um sistema completo de autenticação para proteger nossas rotas e garantir que apenas usuários autenticados tenham acesso a dados e funcionalidades específicas.
 
-6. **Dockerizando e Fazendo Deploy de sua Aplicação FastAPI**: por fim, aprenderemos como "dockerizar" nossa aplicação FastAPI e fazer seu deploy utilizando Fly.io.
+6. **Foco em testes**: faremos uma introdução detalhada ao desenvolvimento orientado a testes, utilizando pytest e coverage, e aprenderemos a configurar um pipeline de integração contínua com GitHub Actions para garantir a qualidade do código.
+
+7. **Conteinerizando e Fazendo Deploy de sua Aplicação FastAPI**: por fim, aprenderemos a criar um container Docker para nossa aplicação FastAPI e realizaremos o deploy utilizando Fly.io, preparando a aplicação para produção.
+
 
 ## 💰 Esse curso é gratuito?
 
