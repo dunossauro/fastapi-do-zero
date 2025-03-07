@@ -12,4 +12,4 @@
 	Testing {{full_version}} (cpython) ... Done
 	```
 	
-	1. {{full_version}} é última release da versão lançada enquanto esscrevia esse material.
+	1. {{full_version}} é a última release da versão lançada enquanto esscrevia esse material.
