@@ -1,4 +1,4 @@
-	```docker
+	```docker title="Dockerfile"
 	FROM python:{{short_version}}-slim
 	ENV POETRY_VIRTUALENVS_CREATE=false
 
