@@ -1,4 +1,4 @@
-# 4.0 (2025-03-12)
+# 4.0 (2025-03-13)
 
 ## Prontos principais da release
 
@@ -6,7 +6,8 @@
 - Remoção do pyenv em detrimento do poetry 2.0
 - Material suplementar ao fim das aulas
 - Novas questões no quiz
-- Apliação dos textos em diversas aulas
+- Ampliação dos textos em diversas aulas
+- Diversas novas adições de comentários em blocos
 
 
 ### Adicionado
@@ -63,14 +64,14 @@
 
 - `poetry` 2.0.1 -> 2.1.1 ([#307](https://github.com/dunossauro/fastapi-do-zero/issues/307))
 - `factory-boy` 3.3.1 -> 3.3.3
-- `psycopg[binary]` 3.2.5 -> 3.2.5
+- `psycopg[binary]` 3.2.5 -> 3.2.6
 - `pydantic-settings` 2.7.1 -> 2.8.0
-- `ruff` 0.9.4 -> 0.9.10
+- `ruff` 0.9.4 -> 0.10.0
 - `sqlalchemy ` 2.0.37 -> 2.0.39
-- alembic `1.14.1` -> `1.15.1`
-- fastapi[standard] `0.115.9` -> `0.115.11`
-- pytest = `8.3.4` -> `8.3.5`
-- testcontainers `4.9.1` - `4.9.2`
+- `alembic` 1.14.1 -> 1.15.1
+- `fastapi[standard]` 0.115.9 -> 0.115.11
+- `pytest` = 8.3.4 -> 8.3.5
+- `testcontainers` 4.9.1 -> 4.9.2
 
 ### Interno
 
