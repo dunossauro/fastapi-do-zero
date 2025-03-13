@@ -8,6 +8,7 @@
 - Novas questões no quiz
 - Ampliação dos textos em diversas aulas
 - Diversas novas adições de comentários em blocos
+- [Datas para apresentação do curso em 2025](aulas/2025.md)
 
 
 ### Adicionado
