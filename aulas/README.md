@@ -65,17 +65,13 @@ SIM! Esse curso foi todo desenvolvido [de forma aberta](#licenca){:target="_blan
 
 ## Onde o curso será disponibilizado?
 
-Esse material será disponibilizado de três formas diferentes:
+Esse material será disponibilizado em duas formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
-
-2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo. [**Datas já disponíveis**](aulas/sincronas.md);
-
-    **Playlist das Aulas síncronas (Ao vivo)**:
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo em meu canal do [YouTube](http://youtube.com/@dunossauro){:target="_blank"} para quem prefere assistir ao ler. (**Vídeos ainda não disponíveis**)
-
+2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo.
+    - [**Datas de 2025 já disponíveis**](aulas/2025.md)
+	- Playlist das apresentações de 2024:
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ## Pré-requisitos
 
 Para aproveitar ao máximo este curso, é recomendado que você já tenha algum conhecimento prévio em python, se pudesse listar o que considero importante para não se perder, os tópicos em python importantes são:
