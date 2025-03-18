@@ -13,7 +13,7 @@ theme: rose-pine
 
 - **Reestruturar o projeto para facilitar sua manutenção**
 - Mover coisas de altenticação para um arquivo chamado `fast_zero/auth.py`
-- Deixando em `fast_zero/secutiry.py` somente as validações de senha
+- Deixando em `fast_zero/security.py` somente as validações de senha
 - Remover constantes do código
 - Criar routers específicos
 - Criação de um modelo pydantic para querys
