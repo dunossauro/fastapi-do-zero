@@ -22,7 +22,7 @@ dependencies = [
 pytest = "^8.3.5"
 pytest-cov = "^6.0.0"
 taskipy = "^1.14.1"
-ruff = "^0.11.0"
+ruff = "^0.11.1"
 httpx = "^0.28.1"
 pytest-asyncio = "^0.25.3"
 
