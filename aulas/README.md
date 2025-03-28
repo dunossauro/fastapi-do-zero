@@ -172,11 +172,12 @@ Pontos de atenção:
 
 ## 🔧 Ferramentas de apoio
 
-Toda essa página foi feita usando as seguintes bibliotecas:
+Toda essa página foi escrita em markdown usando as seguintes bibliotecas:
 
 - [MkDocs](https://www.mkdocs.org/){:target="_blank"}: Para geração das páginas estáticas usando Markdown
 - [Mkdocs-material](https://squidfunk.github.io/mkdocs-material/){:target="_blank"}: Tema para o MkDocs
 - [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/){:target="_blank"}: Extensões para MkDocs, como emojis, diagramas e blocos estilizados de código
+- [markdown-exec](https://pawamoy.github.io/markdown-exec/){:target="_blank"}: Utilitários para executar snippets dinâmicos de código e adicionar o resultado em markdown
 - [Python-Markdown](https://python-markdown.github.io/){:target="_blank"}: Extensão do Python para Markdown
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MkDocs exibir os vídeos na página
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
