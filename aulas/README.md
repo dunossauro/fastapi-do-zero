@@ -78,7 +78,7 @@ Esse material será disponibilizado em duas formas diferentes:
 Para aproveitar ao máximo este curso, é recomendado que você já tenha algum conhecimento prévio em python. Se pudesse listar o que considero importante para não se perder, os tópicos em python importantes são:
 
 - O funcionamento de funções: como criar e usar ([referência](https://youtu.be/0yXPQZvlgrk){:target="_blank"});
-O funcionamento das estruturas de dados: como listas, dicionários, etc.;
+- O funcionamento das estruturas de dados: como listas, dicionários, etc.;
 - Uma pitada sobre objetos: saber o que são métodos e atributos ([referência](https://youtu.be/BALM_oJcJL4){:target="_blank"});
 - Classes de dados: o funcionamento básico das dataclasses ([referência](https://youtu.be/NtZY3AmsBSk){:target="_blank"}).
 
