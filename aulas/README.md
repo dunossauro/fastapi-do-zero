@@ -19,32 +19,33 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 	[Aula :fontawesome-brands-youtube:](https://youtu.be/{{link}}?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){ .md-button }
 	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_{{aula}}.pdf){ .md-button }
 
-> Esse material passa por atualizações periódicas. Você pode acompanhar as notas de alterações [aqui](/alteracoes/){:target="_blank"}
+> Esse material passa por atualizações periódicas. Você pode acompanhar as notas de alterações [aqui](/alteracoes/){:target="_blank"}.
 
-Olá, boas vindas ao curso de FastAPI!
+Olá, boas-vindas ao curso de FastAPI!
 
 A nossa intenção neste curso é facilitar o aprendizado no desenvolvimento de APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação com JWT. Tudo isso para oferecer uma boa base para quem quer trabalhar com desenvolvimento web com Python. A ideia desse curso é apresentar os conceitos de forma prática, construindo um projeto do zero e indo até a sua fase de produção.
 
 
 ## O que é FastAPI?
 
-[FastAPI](https://fastapi.tiangolo.com/){:target="_blank"} é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de diversas funcionalidades modernas do Python como anotações de tipo e suporte a concorrência, facilitando o desenvolvimento de APIs.
+[FastAPI](https://fastapi.tiangolo.com/){:target="_blank"} é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de diversas funcionalidades modernas do Python, como anotações de tipo e suporte à concorrência. Simplificando o desenvolvimento de APIs.
+
 
 ## Sobre o curso
 
-Este curso foi desenvolvido para oferecer uma experiência prática no uso do FastAPI, uma das ferramentas mais modernas para construção de APIs. Ao longo do curso, o objetivo é que você obtenha uma compreensão das funcionalidades do FastAPI e de boas práticas associadas a ele.
+Este curso foi desenvolvido para oferecer uma experiência prática no uso do FastAPI. O objetivo é que você obtenha uma compreensão das funcionalidades do FastAPI e de boas práticas associadas a ele.
 
 O projeto central do curso será a construção de um gerenciador de tarefas (uma lista de tarefas), começando do zero. Esse projeto incluirá a implementação da autenticação do usuário e das operações CRUD completas.
 
-Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2025, como a versão 0.115 do FastAPI, a versão 2.0+ do Pydantic, a versão 2.0+ do SQLAlchemy ORM, além do Python 3.11/3.12 e do Alembic para gerenciamento de migrações.
+Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2025, como a versão 0.115 do FastAPI, a versão 2.0+ do Pydantic, a versão 2.0+ do SQLAlchemy ORM, além do Python 3.11/3.12/3.13 e do Alembic para gerenciamento de migrações.
 
-Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem planeja garantir que as APIs desenvolvidas sejam não apenas funcionais, mas também robustas e confiáveis.
+Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem planeja garantir que as APIs desenvolvidas sejam não somente funcionais, mas também robustas e confiáveis.
 
 ## O que você vai aprender?
 
 Aqui está uma visão geral dos tópicos que abordaremos neste curso:
 
-1. **Configuração do ambiente e gerenciamento de um projeto Python**: começaremos do zero, configurando o ambiente de desenvolvimento. Escolheremos ferramentas adequadas, aplicaremos boas práticas de gerenciamento de projetos e integraremos um gerenciador de projetos, task manager, ferramentas de análise estática e formatação de código.
+1. **Configuração do ambiente e gerenciamento de um projeto Python**: começaremos do zero, configurando o ambiente de desenvolvimento. Escolheremos ferramentas adequadas, aplicaremos boas práticas na construção de projetos e integraremos um gerenciador de projetos, task manager, ferramentas de análise estática e formatação de código.
 
 2. **Primeiros Passos com FastAPI**: introduziremos os conceitos do desenvolvimento web com FastAPI, ensinando como criar endpoints, realizar operações CRUD, aplicar injeção de dependência, criar schemas e outros fundamentos.
 
@@ -69,26 +70,27 @@ Esse material será disponibilizado em duas formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
 2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo.
-    - [**Datas de 2025 já disponíveis**](aulas/2025.md)
+    - [**Datas de 2025 já disponíveis**](aulas/2025.md).
 	- Playlist das apresentações de 2024:
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ## Pré-requisitos
 
-Para aproveitar ao máximo este curso, é recomendado que você já tenha algum conhecimento prévio em python, se pudesse listar o que considero importante para não se perder, os tópicos em python importantes são:
+Para aproveitar ao máximo este curso, é recomendado que você já tenha algum conhecimento prévio em python. Se pudesse listar o que considero importante para não se perder, os tópicos em python importantes são:
 
 - O funcionamento de funções: como criar e usar ([referência](https://youtu.be/0yXPQZvlgrk){:target="_blank"});
-- O funcionamento das estruturas de dados: como listas, dicionários e etc;
+O funcionamento das estruturas de dados: como listas, dicionários, etc.;
 - Uma pitada sobre objetos: saber o que são métodos e atributos ([referência](https://youtu.be/BALM_oJcJL4){:target="_blank"});
 - Classes de dados: o funcionamento básico das dataclasses ([referência](https://youtu.be/NtZY3AmsBSk){:target="_blank"}).
 
-> As referências servem como base caso você ainda não tenha estudado esses assuntos
+> As referências servem como base caso você ainda não tenha estudado esses assuntos.
 
-Alguns outros tópicos não relativos a python também serão abordados. Então é interessante que você tenha algum entendimento básico sobre: 
+Alguns outros tópicos não relativos a python também serão abordados. Então, é interessante que você tenha algum entendimento básico sobre:
 
-- Desenvolvimento Web e APIs RESTful: não essencial, pois iremos abordar, mas o quanto mais você souber melhor para acompanhar;
-- Banco de dados / SQL: Um conhecimento básico sobre criação e busca de dados usando SQL já o suficiente, embora esse tópico também seja como o anterior, quanto mais você souber melhor;
-- git: não nos aprofundaremos nesse tópico durante o curso, mas usaremos operações básicas de git (como commit e push);
-- docker: também não nos aprofundaremos nesse tópico e ele só será abordado nas aulas finais. Mas, também, só usaremos comandos básicos de docker e docker-compose.
+
+- Desenvolvimento Web e APIs RESTful: não essencial, pois iremos abordar, mas quanto mais você souber, melhor para acompanhar.
+- Banco de dados / SQL: Um conhecimento básico sobre criação e busca de dados usando SQL já é suficiente, embora esse tópico também seja como o anterior, quanto mais você souber, melhor.
+- Git: não nos aprofundaremos nesse tópico durante o curso, mas usaremos operações elementares de git (como commit e push).
+- Docker: também não nos aprofundaremos nesse tópico e ele só será abordado nas aulas finais. Mas, também, só usaremos comandos básicos de docker e docker-compose.
 
 ??? info "Caso esteja iniciando seus estudos em Python!"
 	Caso você ainda não se sinta uma pessoa preparada, ou caiu aqui sem saber exatamente o que esperar. Temos um pequeno curso introdutório. Destinado aos primeiros passos com python.
@@ -181,8 +183,8 @@ Toda essa página foi escrita em markdown usando as seguintes bibliotecas:
 - [Python-Markdown](https://python-markdown.github.io/){:target="_blank"}: Extensão do Python para Markdown
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MkDocs exibir os vídeos na página
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
-- [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Pra criar a animação no topo dessa página
-- [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Pra exibir a animação do Glaxnimate
+- [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Para criar a animação no topo dessa página
+- [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Para exibir a animação do Glaxnimate
 
 Para os slides:
 
@@ -190,7 +192,7 @@ Para os slides:
 - [Rose-Pine](https://github.com/rainbowflesh/Rose-Pine-For-Marp){:target="_blank"}: Tema que usei no marp
 
 ### 📁 Repositório
-O versionamento de tudo está sendo feito no [repositório do curso Github](https://github.com/dunossauro/fastapi-do-zero){:target="_blank"}
+O versionamento de tudo está sendo feito no [repositório do curso Github](https://github.com/dunossauro/fastapi-do-zero){:target="_blank"}.
 
 ### 🚀 Deploy
 Os deploys das páginas estáticas geradas pelo MkDocs estão sendo feitos no [Netlify](https://www.netlify.com/){:target="_blank"}
