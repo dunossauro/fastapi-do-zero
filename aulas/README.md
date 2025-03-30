@@ -127,17 +127,17 @@ Após todas as aulas, se você sentir que ainda quer evoluir mais e testar seus 
 
 ### 🦖 Quem vai ministrar essas aulas?
 
-Prazer! Eu me chamo Eduardo. Mas as pessoas me conhecem na internet como [@dunossauro](https://dunossauro.com){:target="_blank"}.
+Prazer! Eu me chamo Eduardo. As pessoas me conhecem na internet como [@dunossauro](https://dunossauro.com){:target="_blank"}.
 
 <div class="sbs" markdown>
 ![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/readme/dunossauro.jpg){ align=left width="300" .shadow}
 <div markdown>
 
-Sou um programador Python muito empolgado e curioso. Toco um projeto pessoal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há quase 7 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
+Sou um programador Python muito apaixonado e curioso. Toco um projeto pessoal semanal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há quase 8 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
 
-Esse projeto que estamos desenvolvendo é um pedaço, um projeto, de um grande curso de FastAPI que estou montando. Espero que você se divirta ao máximo com a parte prática enquanto escrevo em mais detalhes todo o potencial teórico que lançarei no futuro!
+Adoro escrever (estamos aqui, não é mesmo?), programar coisas malucas, fazer música com programação e papear sobre software livre, computabilidade e IndieWeb.
 
-[Caso queira saber mais sobre esse projeto completo](https://youtu.be/ikmFLkjxqFg){:target="_blank"}.
+Tô sempre pela web e nos eventos de Python, a gente pode se conectar nessa imensa rede mundial de computadores. [Meus links!](https://dunossauro.com){:target="_blank"}.
 </div>
 </div>
 
