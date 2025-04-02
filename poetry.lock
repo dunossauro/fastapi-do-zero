@@ -1250,21 +1250,21 @@ test = ["mkdocs-d2-plugin", "mkdocs-include-markdown-plugin", "mkdocs-macros-tes
 
 [[package]]
 name = "mkdocs-material"
-version = "9.6.10"
+version = "9.6.11"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "mkdocs_material-9.6.10-py3-none-any.whl", hash = "sha256:36168548df4e2ddeb9a334ddae4ab9c388ccfea4dd50ffee657d22b93dcb1c3e"},
-    {file = "mkdocs_material-9.6.10.tar.gz", hash = "sha256:25a453c1f24f34fcf1f53680c03d2c1421b52ce5247f4468153c87a70cd5f1fc"},
+    {file = "mkdocs_material-9.6.11-py3-none-any.whl", hash = "sha256:47f21ef9cbf4f0ebdce78a2ceecaa5d413581a55141e4464902224ebbc0b1263"},
+    {file = "mkdocs_material-9.6.11.tar.gz", hash = "sha256:0b7f4a0145c5074cdd692e4362d232fb25ef5b23328d0ec1ab287af77cc0deff"},
 ]
 
 [package.dependencies]
 babel = ">=2.10,<3.0"
 backrefs = ">=5.7.post1,<6.0"
 colorama = ">=0.4,<1.0"
-jinja2 = ">=3.0,<4.0"
+jinja2 = ">=3.1,<4.0"
 markdown = ">=3.2,<4.0"
 mkdocs = ">=1.6,<2.0"
 mkdocs-material-extensions = ">=1.3,<2.0"
@@ -2050,14 +2050,14 @@ tomli = {version = ">=2.0.1,<3.0.0", markers = "python_version >= \"3.7\" and py
 
 [[package]]
 name = "termcolor"
-version = "2.5.0"
+version = "3.0.1"
 description = "ANSI color formatting for output in terminal"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "termcolor-2.5.0-py3-none-any.whl", hash = "sha256:37b17b5fc1e604945c2642c872a3764b5d547a48009871aea3edd3afa180afb8"},
-    {file = "termcolor-2.5.0.tar.gz", hash = "sha256:998d8d27da6d48442e8e1f016119076b690d962507531df4890fcd2db2ef8a6f"},
+    {file = "termcolor-3.0.1-py3-none-any.whl", hash = "sha256:da1ed4ec8a5dc5b2e17476d859febdb3cccb612be1c36e64511a6f2485c10c69"},
+    {file = "termcolor-3.0.1.tar.gz", hash = "sha256:a6abd5c6e1284cea2934443ba806e70e5ec8fd2449021be55c280f8a3731b611"},
 ]
 
 [package.extras]
@@ -2191,18 +2191,22 @@ typing-extensions = ">=4.12.0"
 
 [[package]]
 name = "typos"
-version = "1.31.0"
+version = "1.31.1"
 description = "Source Code Spelling Correction"
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "typos-1.31.0-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:5487895e22727a38176be80ea24c02c688050f5430e6bc674597e6f4ab8c6859"},
-    {file = "typos-1.31.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:c3bf182f7a543989171e2d5d3c80e34579ff86cfb96518d6f02e9db23075efb9"},
-    {file = "typos-1.31.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:dbcd55c72890095799eecba7c056381b7844dba324250ba0f2d56f4b41dd1dc3"},
-    {file = "typos-1.31.0-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:11e6c557841e5139d74029d84c333e461bdbbe2ba6a16238e2675e6ba75ff6d7"},
-    {file = "typos-1.31.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:903d5679002ce3dd938839a6063149bb888004b55d45591a8672e246741ea454"},
-    {file = "typos-1.31.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:69a58b7c90e1507bf258b6f0b2ae616e0432ec45c7240c2cd64d442a09a59b73"},
+    {file = "typos-1.31.1-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:03187da0c68e0613e6d743b1e5aa48a1a0b02bdfe8bfda8ed785927931713d64"},
+    {file = "typos-1.31.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:f19c54bab4ec5cf6912e50dda5f2edc0d31014f7788baddcdae830f6bfd73341"},
+    {file = "typos-1.31.1-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a57e4fb7f00e60408b00989d7c57ed81ebaf56a14bafbb75c003dbb82b0b5b74"},
+    {file = "typos-1.31.1-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:7ddc6aa57710881e1a2e9998f3efd47f454b23ab60765f507bba277d0bb8686f"},
+    {file = "typos-1.31.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6641a3231b29edbac1a35394b0822bc218bd8f70caea233b90e382cbeb58731f"},
+    {file = "typos-1.31.1-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:1bc524b335d637f6c1b78b5396b997aa9c9ac7ed0361686209f5b88525fbb248"},
+    {file = "typos-1.31.1-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:bd5031c8a8480640328c2cc2c4defc54471feeaae8201aefff94e16b6ca87f22"},
+    {file = "typos-1.31.1-py3-none-win32.whl", hash = "sha256:07cf79739059c4f74e0c02a5e1c80b9adf70797a76ea4a4ebab3fce134935d60"},
+    {file = "typos-1.31.1-py3-none-win_amd64.whl", hash = "sha256:2a0c3a46894aa8e5f2dddd240439c8f537e5b3b084f37fd127dfdb0494f3ccf2"},
+    {file = "typos-1.31.1.tar.gz", hash = "sha256:089e2f0a266f00214c2b4726dd3947c904c978937c0635ce38134103d1a171b9"},
 ]
 
 [[package]]
@@ -2391,4 +2395,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "b3211ba2651622473a5554265201a18bf193c61152bc899328c8b465c79e7572"
+content-hash = "a3bc7dbc083212f01578fef93897a77350a2fdb119453bf7e8e99ff0069c4d81"
