@@ -178,10 +178,13 @@ Toda essa página foi escrita em markdown usando as seguintes bibliotecas:
 
 - [MkDocs](https://www.mkdocs.org/){:target="_blank"}: Para geração das páginas estáticas usando Markdown
 - [Mkdocs-material](https://squidfunk.github.io/mkdocs-material/){:target="_blank"}: Tema para o MkDocs
-- [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/){:target="_blank"}: Extensões para MkDocs, como emojis, diagramas e blocos estilizados de código
-- [markdown-exec](https://pawamoy.github.io/markdown-exec/){:target="_blank"}: Utilitários para executar snippets dinâmicos de código e adicionar o resultado em markdown
+- [Pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/){:target="_blank"}: Extensões para MkDocs, como emojis, diagramas e blocos estilizados de código
+- [Markdown-exec](https://pawamoy.github.io/markdown-exec/){:target="_blank"}: Utilitários para executar snippets dinâmicos de código e adicionar o resultado em markdown
 - [Python-Markdown](https://python-markdown.github.io/){:target="_blank"}: Extensão do Python para Markdown
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Extensão para o MkDocs exibir os vídeos na página
+- [mkdocs-towncrier](https://github.com/davfsa/mkdocs-towncrier){:target="_blank"}: Extensão para exibir os changelogs do [towncrier](https://towncrier.readthedocs.io/en/stable/index.html) no mkdocs
+- [Mkdocs-quiz](https://github.com/skyface753/mkdocs-quiz){:target="_blank"}: Para os questionários sobre as aulas
+- [mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Para exibir os vídeos do youtube nas páginas
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
 - [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Para criar a animação no topo dessa página
 - [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Para exibir a animação do Glaxnimate
