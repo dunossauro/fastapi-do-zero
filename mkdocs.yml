@@ -67,14 +67,6 @@ plugins:
       show_line_count: true
   - git-revision-date-localized
   - social
-  - with-pdf:
-      author: Eduardo Mendes (@dunossauro)
-      cover_title: FastAPI do zero
-      cover_subtitle: Uma introdução prática!
-      copyright: CC BY-NC-SA
-      toc_level: 6
-      enabled_if_env: ENABLE_PDF_EXPORT
-      toc_title: Índice
   - exclude:
       glob:
         - "wip.md"
