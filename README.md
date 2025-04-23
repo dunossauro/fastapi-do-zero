@@ -73,3 +73,55 @@ Para executar qualquer comando, basta usar: `task <comando>`, como por exemplo `
 #### Sobre os slides
 
 Todos os slides foram feitos usando marp. Versão do marp usada: `4.0.3`. O tema `rose-pine` está dentro da pasta dos slides brutos.
+
+
+## Gerar nova release
+
+> TODO: Deixar isso melhor documentado
+
+- Criar uma release no towncrier
+- Criar a tag do git
+- Criar uma release no mike na tag e dá push
+- Sobe a release com `task deploy`
+
+
+### Caso a documentação antiga precise ser atualizada (> 4.0)
+
+O `mike` foi introduzido após a v4.0. Você precisa aplicar o diff abaixo, caso precise atualizar algo:
+
+<details>
+
+<summary> Diff que precisa ser aplicado antes!</summary>
+
+```diff
+diff --git a/mkdocs.yml b/mkdocs.yml
+index 38c5b9f..7ed5c54 100644
+--- a/mkdocs.yml
++++ b/mkdocs.yml
+@@ -67,14 +67,6 @@ plugins:
+       show_line_count: true
+   - git-revision-date-localized
+   - social
+-  - with-pdf:
+-      author: Eduardo Mendes (@dunossauro)
+-      cover_title: FastAPI do zero
+-      cover_subtitle: Uma introdução prática!
+-      copyright: CC BY-NC-SA
+-      toc_level: 6
+-      enabled_if_env: ENABLE_PDF_EXPORT
+-      toc_title: Índice
+   - exclude:
+       glob:
+         - "wip.md"
+@@ -115,6 +107,8 @@ extra:
+       link: https://dunossauro.com
+     - icon: simple/codeberg
+       link: https://codeberg.org/dunossauro
++  version:
++    provider: mike
+ 
+ hooks:
+   - hooks/quiz_hook.py
+```
+
+</details>
