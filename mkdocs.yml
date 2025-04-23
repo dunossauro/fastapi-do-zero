@@ -1,5 +1,5 @@
 site_name: FastAPI do Zero
-site_url: https://fastapidozero.dunossauro.com
+site_url: https://fastapidozero.dunossauro.com/
 docs_dir: aulas
 repo_url: https://github.com/dunossauro/fastapi-do-zero
 repo_name: dunossauro/fastapi-do-zero
@@ -108,6 +108,9 @@ extra:
       link: https://dunossauro.com
     - icon: simple/codeberg
       link: https://codeberg.org/dunossauro
+  version:
+    provider: mike
+    default: estavel
 
 hooks:
   - hooks/quiz_hook.py
