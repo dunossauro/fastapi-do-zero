@@ -125,3 +125,10 @@ index 38c5b9f..7ed5c54 100644
 ```
 
 </details>
+
+Exemplo do comando do mike:
+
+```bash
+mike deploy --push 4.0 --allow-empty
+# onde 4.0 é a versão da tag da documentação
+```
