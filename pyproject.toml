@@ -34,7 +34,7 @@ dependencies = [
 
 [tool.taskipy.tasks]
 serve = {cmd="mkdocs serve --dev-addr localhost:8080", help="Executa o servidor local do mkdocs"}
-deploy = {cmd="mkdocs gh-deploy", help="Faz o deploy da página em produção"}
+deploy = {cmd="mike deploy estavel --push --allow-empty", help="Faz o deploy da página em produção usando mike"}
 slides = {cmd="marp -I slides/brutos/ --html --theme slides/brutos/rose-pine.css --allow-local-files --pdf -o slides/pdf/", help="Gera os slides em pdf"}
 slides_html = {cmd="marp -I slides/brutos --html --theme slides/brutos/rose-pine.css --allow-local-files -o slides/html", help="Gera os slides em html (formato usado nas aulas)"}
 ruff = 'ruff check'
