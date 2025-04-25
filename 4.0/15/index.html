@@ -1,0 +1,3183 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material da fixação do aprendizado">
+      
+      
+      
+        <link rel="canonical" href="https://fastapidozero.dunossauro.com/4.0/15/">
+      
+      
+        <link rel="prev" href="../14/">
+      
+      
+        <link rel="next" href="../alteracoes/">
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Projeto final - FastAPI do Zero</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_markdown_exec_pyodide.css">
+    
+      <link rel="stylesheet" href="../assets/_markdown_exec_ansi.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Projeto final - FastAPI do Zero" >
+      
+        <meta  property="og:description"  content="Material da fixação do aprendizado" >
+      
+        <meta  property="og:image"  content="https://fastapidozero.dunossauro.com/4.0/assets/images/social/15.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fastapidozero.dunossauro.com/4.0/15/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Projeto final - FastAPI do Zero" >
+      
+        <meta  name="twitter:description"  content="Material da fixação do aprendizado" >
+      
+        <meta  name="twitter:image"  content="https://fastapidozero.dunossauro.com/4.0/assets/images/social/15.png" >
+      
+    
+    
+
+<script>
+    const preferencesKey = "fonts-preferences";
+    const preferencesId = "md-fonts-style";
+    const loadSetPreferences = () => {
+	let prefStyles = document.querySelector(`#${preferencesId}`);
+
+	if (!prefStyles) {
+	    prefStyles = document.createElement("style");
+	    prefStyles.id = preferencesId;
+	    document.head.insertAdjacentElement("beforeend", prefStyles);
+	}
+
+	prefStyles.innerHTML = "";
+
+	const loadedPreferences = __md_get(preferencesKey);
+
+	if (!loadedPreferences) {
+	    __md_set(preferencesKey, {
+		"__global": {
+		    "cssRaw": ""
+		}
+	    });
+	    return;
+	}
+
+	prefStyles.innerHTML = loadedPreferences["__global"]["cssRaw"];
+    };
+    loadSetPreferences();
+</script>
+
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#projeto-final" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+	<a href=".." title="FastAPI do Zero" class="md-header__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+	    
+  <img src="../assets/logo.svg" alt="logo">
+
+	</a>
+	<label class="md-header__button md-icon" for="__drawer">
+	    
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+	</label>
+	<div class="md-header__title" data-md-component="header-title">
+	    <div class="md-header__ellipsis">
+		<div class="md-header__topic">
+		    <span class="md-ellipsis">
+			FastAPI do Zero
+		    </span>
+		</div>
+		<div class="md-header__topic" data-md-component="header-topic">
+		    <span class="md-ellipsis">
+			
+			Projeto final
+			
+		    </span>
+		</div>
+	    </div>
+	</div>
+	
+	
+	<form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Modo noturno"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo noturno" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+	
+	
+	
+	<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+	
+	<!-- fonts -->
+	<div class="md-header__option">
+    <div class="md-select">
+	
+	<button class="md-header__button md-icon" aria-label="Selecione a fonte">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 8h3v12h1v1h-4v-1h1v-3h-4l-1.5 3H14v1h-4v-1h1zm1 1-3.5 7H18zM5 3h5c1.11 0 2 .89 2 2v11H9v-5H6v5H3V5c0-1.11.89-2 2-2m1 2v4h3V5z"/></svg>
+	</button>
+	<div class="md-select__inner">
+	    <ul class="md-select__list">
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="Default" data-code="" data-src="" class="md-select__link">
+			Default
+		    </a>
+		</li>
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="Roboto" data-code="Roboto Mono" data-src="" class="md-select__link">
+			Roboto
+		    </a>
+		</li>
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="OpenDyslexic" data-code="OpenDyslexicMono" data-src="https://fonts.cdnfonts.com/css/opendyslexic" class="md-select__link">
+			OpenDyslexic
+		    </a>
+		</li>
+		
+	    </ul>
+	</div>
+    </div>
+</div>
+	<!-- fonts -->
+	
+	
+	<label class="md-header__button md-icon" for="__search">
+	    
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+	</label>
+	<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	<div class="md-header__source">
+	    <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dunossauro/fastapi-do-zero
+  </div>
+</a>
+	</div>
+	
+    </nav>
+    
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="FastAPI do Zero" class="md-nav__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    FastAPI do Zero
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dunossauro/fastapi-do-zero
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FastAPI do Zero!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurando o ambiente de desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução ao desenvolvimento WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estruturando o Projeto e Criando Rotas CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurando o banco de dados e gerenciando migrações com Alembic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrando Banco de Dados a API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autenticação e Autorização com JWT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Refatorando a Estrutura do Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tornando o projeto assíncrono
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tornando o sistema de autenticação robusto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatizando os testes com Integração Contínua
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fazendo deploy no Fly.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Despedida e próximos passos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Projeto final
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Projeto final
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      O projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      A API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-condicoes-do-token-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      As condições do token JWT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#livros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Livros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#romancistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Romancistas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitizacao-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sanitização de dados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#erros-de-autenticacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erros de autenticação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erros-de-permissao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erros de permissão
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-nao-encontrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro não encontrado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-de-conflito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro de conflito
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-banco-de-dados-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      O banco de dados / ORM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O banco de dados / ORM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relacionamentos-no-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relacionamentos no ORM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cenarios-de-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cenários de teste
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cenários de teste">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-contas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de contas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-livros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de livros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-romancistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de romancistas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-do-projeto-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrega do projeto final
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alteracoes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alterações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Apendices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            Apendices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apendices/a_instalacoes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A - Instalando as ferramentas externas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apendices/b_proximos_passos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    B - Próximos passos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apendices/c_versoes_usadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C - Versões das bibliotecas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aulas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            Aulas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aulas/sincronas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aulas síncronas 2024
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aulas/v2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aulas síncronas 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Exercicios resolvidos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            Exercicios resolvidos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercicios_resolvidos/aula_10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" >
+        
+          
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projetos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            Projetos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projetos/projetos_finais/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projetos finais
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projetos/repositorios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repositórios do curso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+        
+          
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quizes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            Quizes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 - Introdução ao desenvolvimento WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 07
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aula 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11 - Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12 - Automatizando os testes com Integração Contínua (CI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quizes/aula_13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13 - Fazendo deploy no Fly.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      O projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      A API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-condicoes-do-token-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      As condições do token JWT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#livros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Livros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#romancistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Romancistas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitizacao-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sanitização de dados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#erros-de-autenticacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erros de autenticação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erros-de-permissao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erros de permissão
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-nao-encontrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro não encontrado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-de-conflito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro de conflito
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-banco-de-dados-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      O banco de dados / ORM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O banco de dados / ORM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relacionamentos-no-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relacionamentos no ORM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cenarios-de-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cenários de teste
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cenários de teste">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-contas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de contas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-livros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de livros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerenciamento-de-romancistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gerenciamento de romancistas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-do-projeto-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrega do projeto final
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<div><h1 id="projeto-final">Projeto final</h1>
+<p>Você chegou ao final, <a href="https://youtu.be/1Mcdh2Vf2Xk" target="_blank">PARABAINS</a> 🎉</p>
+<p>No aprendizado, nada melhor que praticar! Para isso, vamos fazer nosso "TCC" ou como gostam de chamar no mundo "interprize bizines": um teste técnico.</p>
+<p>A ideia deste projeto final é simplesmente extrair tudo que aprendemos no curso para um grande exercício de fixação em formato de projeto.</p>
+<h2 id="o-projeto">O projeto</h2>
+<p>Neste projeto vamos construir uma API que segue os mesmos moldes da que desenvolvemos durante o curso, porém, com outra proposta. Iremos fazer uma versão simplificado de um acervo digital de livros. Chamaremos de <code>MADR</code> (Mader), uma sigla para "Meu Acervo Digital de Romances".</p>
+<p>O objetivo do projeto é criarmos um gerenciador de livros e relacionar com seus autores. Tudo isso em um contexto bastante simplificado. Usando somente as funcionalidades que aprendemos no curso.</p>
+<p>A implementação será baseada em 3 pilares:</p>
+<pre class="mermaid"><code>graph
+    MADR --&gt; A["Controle de acesso / Gerenciamento de contas"]
+    MADR --&gt; B["Gerenciamento de Livros"]
+    MADR --&gt; C["Gerenciamento de Romancistas"]
+    A --&gt; D["Gerenciamento de contas"]
+    D --&gt; Criação
+    D --&gt; Atualização
+    A --&gt; G["Acesso via JWT"]
+    D --&gt; Deleção
+    B --&gt; E["CRUD"]
+    C --&gt; F["CRUD"]</code></pre>
+<h2 id="a-api">A API</h2>
+<p>Dividiremos os endpoints em três <code>routers</code>:</p>
+<ol>
+<li><code>contas</code>: Gerenciamento de contas e de acesso à API</li>
+<li><code>livros</code>: Gerenciamento de livros</li>
+<li><code>romancistas</code>: Gerenciamento de romancistas</li>
+</ol>
+<h3 id="contas">Contas</h3>
+<p>O router de conta deve ser responsável pelas operações referentes a criação, alteração e deleção de contas. Os endpoints:</p>
+<ul>
+<li>
+<p>POST <code>/conta</code>: deve ser responsável pela criação de uma nova conta</p>
+<ul>
+<li>O schema responsável para criação desse endpoint deve ser:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto@fausto.com"</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">"senha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>Esses schema deve ser validado com pydantic</li>
+<li>O retorno para o caso de sucesso deve ser <code>201</code> e com o schema de exemplo:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto@fausto.com"</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto"</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>A senha deve ser criptografada antes de ser inserida no banco de dados</li>
+<li>obs: <strong>Não é necessário</strong> fazer o login no sistema para enviar uma requisição para esse enpoint</li>
+<li>🚨 Caso o registro já exista na base, <a href="#erro-de-conflito">conflito</a></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Antes de inserir no banco, o nome deve ser <a href="#sanitizacao-de-dados">sanitizado</a></li>
+</ul>
+</li>
+<li>
+<p>PUT <code>/conta/{id}</code>: deve ser responsável pela alteração de uma conta especificada por <code>id</code></p>
+<ul>
+<li>O schema responsável para criação desse endpoint deve ser:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto"</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto@fausto.com"</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">"senha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>Esses schema deve ser validado com pydantic</li>
+<li>O retorno para o caso de sucesso deve ser <code>200</code> e com o schema de exemplo:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto@fausto.com"</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto"</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>🚨 O acesso só pode ocorrer via um <code>Bearer token</code> válido enviado nos headers, <a href="#erros">erro</a></li>
+<li>🚨 Somente a pessoa detentora da sua própria conta pode alterar seus dados</li>
+<li>🚨 Caso as alterações no registro já existam na base, <a href="#erro-de-conflito">conflito</a></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Antes de inserir no banco, o nome deve ser <a href="#sanitizacao-de-dados">sanitizados</a></li>
+</ul>
+</li>
+<li>
+<p>DELETE <code>/conta/{id}</code>: deve ser responsável pela deleção de uma conta especificada por <code>id</code></p>
+<ul>
+<li>O retorno para o caso de sucesso deve ser <code>200</code> e com o schema de exemplo:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Conta deletada com sucesso"</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>🚨 O acesso só pode ocorrer via um <code>Bearer token</code> válido enviado nos headers, <a href="#erros">erro</a></li>
+<li>🚨 Somente a pessoa detentora da sua própria conta pode alterar seus dados</li>
+</ul>
+</li>
+<li>
+<p>POST <code>/token</code>: Responsável pelo login</p>
+<ul>
+<li>O endpoint deverá receber o seguinte schema via <code>OAuth2PasswordRequestForm</code>:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fausto@fausto.com"</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>O conta deve ser validada com "username" e "password"</li>
+<li>🚨 O acesso só pode ocorrer via um <code>Bearer token</code> válido enviado nos headers, <a href="#erros">erro</a></li>
+<li>O retorno para o caso de sucesso deve ser <code>200</code> e com o schema de exemplo:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0ZUB0ZXN0LmNvbSIsImV4cCI6MTY5MDI1ODE1M30.Nx0P_ornVwJBH_LLLVrlJoh6RmJeXR-Nr7YJ_mlGY04"</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>POST <code>/refresh-token</code>: Responsável por atualizar o token</p>
+<ul>
+<li>O endpoint deverá receber os headers:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nt">"Authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0ZUB0ZXN0LmNvbSIsImV4cCI6MTY5MDI1ODE1M30.Nx0P_ornVwJBH_LLLVrlJoh6RmJeXR-Nr7YJ_mlGY04"</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>O retorno para o caso de sucesso deve ser <code>200</code> e com o schema de exemplo:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0ZUB0ZXN0LmNvbSIsImV4cCI6MTY5MDI1ODE1M30.Nx0P_ornVwJBH_LLLVrlJoh6RmJeXR-Nr7YJ_mlGY04"</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>🚨 Caso as coisas não ocorram como o esperado: <a href="#erros">Erros</a></li>
+</ul>
+</li>
+</ul>
+<h5 id="as-condicoes-do-token-jwt">As condições do token JWT</h5>
+<p>O tempo de expiração do token deve ser de <code>60</code> minutos, o algorítimo usado deve ser <code>HS256</code> e o subject deve ser o <code>email</code>.</p>
+<h3 id="livros">Livros</h3>
+<ul>
+<li>
+<p>POST <code>/livro</code>: Responsável pela adição de um livro no MADR</p>
+<ul>
+<li>O livro deve ser criado com base no seguinte schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1973</span><span class="p">,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Café Da Manhã Dos Campeões"</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">"romancista_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>O retorno de sucesso <code>200</code> deve ser:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1973</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"café da manhã dos campeões"</span><span class="p">,</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="nt">"romancista_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Disponível somente via autenticação, caso contrário <a href="#erros-de-permissao">erro</a></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Antes de inserir no banco, os nomes devem ser <a href="#sanitizacao-de-dados">sanitizados</a></li>
+<li>🚨 Caso o novo nome já exista na base, <a href="#erro-de-conflito">conflito</a></li>
+</ul>
+</li>
+<li>
+<p>DELETE <code>/livro/{id}</code>: Responsável por deletar um livro usando o <code>id</code> como base</p>
+<ul>
+<li>O caso de sucesso <code>200</code> deve retornar o schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Livro deletado no MADR"</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Disponível somente via autenticação, caso contrário <a href="#erros-de-permissao">erro</a></li>
+<li>🚨 Caso o <code>id</code> não exista no MADR, <a href="#erro-nao-encontrado">erro</a></li>
+</ul>
+</li>
+<li>
+<p>PATCH <code>/livro/{id}</code>: Responsável por alterar um livro usando o <code>id</code> como base</p>
+<ul>
+<li>O livro deve ser alterado com o seguinte schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1974</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>O schema para o caso de sucesso <code>200</code> deve ser:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1974</span><span class="p">,</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"café da manhã dos campeões"</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="nt">"romancista_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Disponível somente via autenticação, caso contrário <a href="#erros-de-permissao">erro</a></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Antes de inserir no banco, os nomes devem ser <a href="#sanitizacao-de-dados">sanitizados</a></li>
+<li>🚨 Caso o <code>id</code> não exista no MADR, <a href="#erro-nao-encontrado">erro</a></li>
+<li>🚨 Caso o novo nome já exista na base, <a href="#erro-de-conflito">conflito</a></li>
+</ul>
+</li>
+<li>
+<p>GET <code>/livro/{id}</code>: Busca um livro por <code>id</code></p>
+<ul>
+<li>O retorno deve ser <code>200 OK</code> com o schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1974</span><span class="p">,</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"café da manhã dos campeões"</span><span class="p">,</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="nt">"romancista_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>🚨 Caso o <code>id</code> não exista no MADR, <a href="#erro-nao-encontrado">erro</a></li>
+</ul>
+</li>
+<li>
+<p>GET <code>/livro?nome=xxxx&amp;ano=xxxx</code>: Busca por livros quando query parameters</p>
+<ul>
+<li>Deve ser capaz de filtrar por nome de forma parcial</li>
+<li>Deve ser capaz de filtrar por ano</li>
+<li>Deve paginar os resultados maiores que 20</li>
+<li>Exemplo de chamada:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>/livro/?titulo=a&amp;ano=1900
+</span></code></pre></div></li>
+<li>Exemplo do schema de resposta:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="p">{</span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1900</span><span class="p">,</span><span class="w"> </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"café da manhã dos campeões"</span><span class="p">,</span><span class="w"> </span><span class="nt">"romancista_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">        </span><span class="p">{</span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1900</span><span class="p">,</span><span class="w"> </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memórias póstumas de brás cubas"</span><span class="p">,</span><span class="w"> </span><span class="nt">"romancista_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Caso não encontre nenhuma correspondência, deverá retornar <code>200 OK</code> com a lista vazia:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="romancistas">Romancistas</h3>
+<ul>
+<li>
+<p>POST <code>/romancista</code>: Responsável pela adição de romancistas no MADR</p>
+<ul>
+<li>Romancista devem ser criadas com base no seguinte schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Lispector"</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>A resposta padrão deve retornar <code>201</code> com o schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">{</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Lispector"</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Disponível somente via autenticação, caso contrário <a href="#erros-de-permissao">erro</a></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Antes de inserir no banco, os nomes devem ser <a href="#sanitizacao-de-dados">sanitizados</a></li>
+<li>🚨 Caso o novo nome já exista na base, <a href="#erro-de-conflito">conflito</a></li>
+</ul>
+</li>
+<li>
+<p>DELETE <code>/romancista/{id}</code>: responsável pela deleção de romancistas por <code>id</code></p>
+<ul>
+<li>O retorno para o caso de sucesso deve ser <code>200</code> e com o schema de exemplo:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">{</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Romancista deletada no MADR"</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Disponível somente via autenticação, caso contrário <a href="#erros-de-permissao">erro</a></li>
+<li>🚨 Caso o <code>id</code> não exista no MADR, <a href="#erro-nao-encontrado">erro</a></li>
+</ul>
+</li>
+<li>
+<p>PATCH <code>/romancista/{id}</code>: responsável pela alteração de romancistas por <code>id</code></p>
+<ul>
+<li>Romancista devem ser alteradas com base no seguinte schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">{</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Lispector"</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>A resposta padrão deve retornar <code>200</code> com o schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">{</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Lispector"</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Disponível somente via autenticação, caso contrário <a href="#erros-de-permissao">erro</a></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Antes de inserir no banco, os nomes devem ser <a href="#sanitizacao-de-dados">sanitizados</a></li>
+<li>🚨 Caso o <code>id</code> não exista no MADR, <a href="#erro-nao-encontrado">erro</a></li>
+<li>🚨 Caso o novo nome já exista na base, <a href="#erro-de-conflito">conflito</a></li>
+</ul>
+</li>
+<li>
+<p>GET <code>/romancista/{id}</code>: Busca um romancista por <code>id</code></p>
+<ul>
+<li>O retorno deve ser <code>200 OK</code> com o schema:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">{</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"machado de assis"</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li>🚨 Caso o <code>id</code> não exista no MADR, <a href="#erro-nao-encontrado">erro</a></li>
+</ul>
+</li>
+<li>
+<p>GET <code>/romancista?</code>: Busca romancistas baseado em nomes parciais</p>
+<ul>
+<li>Deve ser capaz de filtrar por nome de forma parcial</li>
+<li>Deve paginar os resultados maiores que 20</li>
+<li>Exemplo de chamada:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>/romancista/?nome=a
+</span></code></pre></div></li>
+<li>Exemplo do schema de resposta:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">{</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="nt">"romancistas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">        </span><span class="p">{</span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"machado de assis"</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">        </span><span class="p">{</span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clarice lispector"</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">        </span><span class="p">{</span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"josé de alencar"</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="p">}</span>
+</span></code></pre></div></li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Caso não encontre nenhuma correspondência, deverá retornar <code>200 OK</code> com a lista vazia:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">{</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="nt">"romancistas"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="p">}</span>
+</span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="sanitizacao-de-dados">Sanitização de dados</h3>
+<p>Antes de inserir no banco, os nomes de romancistas ou livros devem ser sanitizados.</p>
+<p>Exemplos para os nomes:</p>
+<table>
+<thead>
+<tr>
+<th>Entrada</th>
+<th>Sanitizado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Machado de Assis"</td>
+<td>machado de assis</td>
+</tr>
+<tr>
+<td>"Manuel        Bandeira"</td>
+<td>manuel bandeira</td>
+</tr>
+<tr>
+<td>"Edgar Alan Poe         "</td>
+<td>edgar alan poe</td>
+</tr>
+<tr>
+<td>"Androides Sonham Com Ovelhas Elétricas?"</td>
+<td>androides sonham com ovelhas elétricas</td>
+</tr>
+<tr>
+<td>"  breve  história  do tempo "</td>
+<td>breve história do tempo</td>
+</tr>
+<tr>
+<td>"O mundo assombrado pelos demônios"</td>
+<td>o mundo assombrado pelos demônios</td>
+</tr>
+</tbody>
+</table>
+<h3 id="erros">Erros</h3>
+<h4 id="erros-de-autenticacao">Erros de autenticação</h4>
+<p>Todos os erros relativos à autenticação devem retornar o status code <code>400 BAD REQUEST</code> com o seguinte schema:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Email ou senha incorretos"</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="erros-de-permissao">Erros de permissão</h4>
+<p>Caso uma pessoa tente fazer uma operação sem a permissão necessária, o status code<code>401 Unauthorized</code> deverá ser retornado com o json:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="p">{</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Não autorizado"</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="erro-nao-encontrado">Erro não encontrado</h4>
+<p>Caso o <code>id</code> não exista no MADR, um erro <code>404 NOT FOUND</code> deve ser retornado com o json:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">{</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Romancista não consta no MADR"</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>ou então</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="p">{</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Livro não consta no MADR"</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="erro-de-conflito">Erro de conflito</h4>
+<p>Caso o recurso já exista, devemos retornar <code>409 CONFLICT</code> com o json:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="p">{</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{recurso} já consta no MADR"</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Onde a variável <code>recurso</code> é relativa ao recurso que está duplicado. Exemplos para:</p>
+<ul>
+<li>contas: <code>"conta já consta no MADR"</code></li>
+<li>livros: <code>"livro já consta no MADR"</code></li>
+<li>romancista: <code>"romancista já consta no MADR"</code></li>
+</ul>
+<h2 id="o-banco-de-dados-orm">O banco de dados / ORM</h2>
+<p>A modelagem do banco deve contar com três tabelas: <code>User</code>, <code>Livro</code> e <code>Romancista</code>. Onde <code>Livro</code> e <code>Romancista</code> se relacionam da forma que romancistas podem estar relacionado a diversos livros e diversos livros devem ser associados a uma única romancista. Como sugere o <a href="https://pt.wikipedia.org/wiki/Modelo_entidade_relacionamento" target="_blank">DER</a>:</p>
+<pre class="mermaid"><code>erDiagram
+  Romancista |o -- |{ Livro : livros
+  User {
+      int id PK
+      string email UK
+      string username UK
+      string senha
+  }
+  Livro {
+      int id  PK
+      string ano
+      string titulo UK
+      string id_romancista FK
+  }
+  Romancista {
+      int id PK
+      string nome UK
+      string livros
+  }</code></pre>
+<h3 id="relacionamentos-no-orm">Relacionamentos no ORM</h3>
+<p>Alguns problemas podem ser encontrados durante a criação dos relacionamentos com SQLAlchemy, então segue uma cola simples caso sinta que travou.</p>
+<details class="danger">
+<summary>Em caso de emergência quebre o vidro</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Livro</span><span class="p">:</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="o">...</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="n">autoria</span><span class="p">:</span> <span class="n">Mapped</span><span class="p">[</span><span class="n">Romancista</span><span class="p">]</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s1">'livros'</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="p">)</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">Romancista</span><span class="p">:</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    <span class="o">...</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    <span class="n">livros</span><span class="p">:</span> <span class="n">Mapped</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s1">'Livro'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span>
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s1">'romancista'</span><span class="p">,</span> <span class="n">cascade</span><span class="o">=</span><span class="s1">'all, delete-orphan'</span>
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>    <span class="p">)</span>
+</span></code></pre></div>
+</details>
+<h2 id="cenarios-de-teste">Cenários de teste</h2>
+<p>O ideal é que esse projeto tenha uma cobertura de testes de 100%. Afinal, foi dessa forma que passamos nosso tempo no curso, testando absolutamente tudo e garantindo que o código funcione da maneira como deveria.</p>
+<p>Nesse tópico separei alguns cenários de testes usando a linguagem <a href="https://cucumber.io/docs/gherkin/reference/" target="_blank">gherkin</a> para te ajudar a pensar em como as requisições serão recebidas e devem ser respondidas pela aplicação.</p>
+<p>Esses cenários podem te guiar tanto para escrever a aplicação, quanto os testes.</p>
+<h3 id="gerenciamento-de-contas">Gerenciamento de contas</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Criação de contas</label><label for="__tabbed_1_2">Casos de erro</label><label for="__tabbed_1_3">Autenticação e autorização</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-gherkin highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">Funcionalidade:</span><span class="nf"> Gerenciamento de conta</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="k">Cenário:</span><span class="nf"> Criação de conta</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/user</span><span class="nf">"</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="s">    {</span>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="s">        "username": "dunossauro",</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="s">        "email": "dudu@dudu.com",</span>
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="s">        "password": "123456"</span>
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="s">    }</span>
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">201</span><span class="nf">"</span>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a><span class="s">    {</span>
+</span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a><span class="s">        "email": "dudu@dudu.com",</span>
+</span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a><span class="s">        "username": "dunossauro"</span>
+</span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a><span class="s">    }</span>
+</span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>
+</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="k">Cenário:</span><span class="nf"> Alteração de conta</span>
+</span><span id="__span-33-22"><a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/user</span><span class="nf">"</span>
+</span><span id="__span-33-23"><a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-33-24"><a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a><span class="s">    {</span>
+</span><span id="__span-33-25"><a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a><span class="s">        "username": "dunossauro",</span>
+</span><span id="__span-33-26"><a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a><span class="s">        "email": "dudu@dudu.com",</span>
+</span><span id="__span-33-27"><a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a><span class="s">        "password": "123456"</span>
+</span><span id="__span-33-28"><a id="__codelineno-33-28" name="__codelineno-33-28" href="#__codelineno-33-28"></a><span class="s">    }</span>
+</span><span id="__span-33-29"><a id="__codelineno-33-29" name="__codelineno-33-29" href="#__codelineno-33-29"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-33-30"><a id="__codelineno-33-30" name="__codelineno-33-30" href="#__codelineno-33-30"></a><span class="nf">    </span><span class="k">Quando </span><span class="nf">enviar um "</span><span class="s">PUT</span><span class="nf">" em "</span><span class="s">/user/1</span><span class="nf">"</span>
+</span><span id="__span-33-31"><a id="__codelineno-33-31" name="__codelineno-33-31" href="#__codelineno-33-31"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-33-32"><a id="__codelineno-33-32" name="__codelineno-33-32" href="#__codelineno-33-32"></a><span class="s">    {</span>
+</span><span id="__span-33-33"><a id="__codelineno-33-33" name="__codelineno-33-33" href="#__codelineno-33-33"></a><span class="s">        "username": "dunossauro",</span>
+</span><span id="__span-33-34"><a id="__codelineno-33-34" name="__codelineno-33-34" href="#__codelineno-33-34"></a><span class="s">        "email": "dudu@dudu.com",</span>
+</span><span id="__span-33-35"><a id="__codelineno-33-35" name="__codelineno-33-35" href="#__codelineno-33-35"></a><span class="s">        "password": "654321"</span>
+</span><span id="__span-33-36"><a id="__codelineno-33-36" name="__codelineno-33-36" href="#__codelineno-33-36"></a><span class="s">    }</span>
+</span><span id="__span-33-37"><a id="__codelineno-33-37" name="__codelineno-33-37" href="#__codelineno-33-37"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-33-38"><a id="__codelineno-33-38" name="__codelineno-33-38" href="#__codelineno-33-38"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-33-39"><a id="__codelineno-33-39" name="__codelineno-33-39" href="#__codelineno-33-39"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-33-40"><a id="__codelineno-33-40" name="__codelineno-33-40" href="#__codelineno-33-40"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-33-41"><a id="__codelineno-33-41" name="__codelineno-33-41" href="#__codelineno-33-41"></a><span class="s">    {</span>
+</span><span id="__span-33-42"><a id="__codelineno-33-42" name="__codelineno-33-42" href="#__codelineno-33-42"></a><span class="s">        "username": "dunossauro",</span>
+</span><span id="__span-33-43"><a id="__codelineno-33-43" name="__codelineno-33-43" href="#__codelineno-33-43"></a><span class="s">        "email": "dudu@dudu.com"</span>
+</span><span id="__span-33-44"><a id="__codelineno-33-44" name="__codelineno-33-44" href="#__codelineno-33-44"></a><span class="s">    }</span>
+</span><span id="__span-33-45"><a id="__codelineno-33-45" name="__codelineno-33-45" href="#__codelineno-33-45"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-33-46"><a id="__codelineno-33-46" name="__codelineno-33-46" href="#__codelineno-33-46"></a>
+</span><span id="__span-33-47"><a id="__codelineno-33-47" name="__codelineno-33-47" href="#__codelineno-33-47"></a><span class="k">Cenário:</span><span class="nf"> Deleção da conta</span>
+</span><span id="__span-33-48"><a id="__codelineno-33-48" name="__codelineno-33-48" href="#__codelineno-33-48"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/user</span><span class="nf">"</span>
+</span><span id="__span-33-49"><a id="__codelineno-33-49" name="__codelineno-33-49" href="#__codelineno-33-49"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-33-50"><a id="__codelineno-33-50" name="__codelineno-33-50" href="#__codelineno-33-50"></a><span class="s">    {</span>
+</span><span id="__span-33-51"><a id="__codelineno-33-51" name="__codelineno-33-51" href="#__codelineno-33-51"></a><span class="s">        "username": "dunossauro",</span>
+</span><span id="__span-33-52"><a id="__codelineno-33-52" name="__codelineno-33-52" href="#__codelineno-33-52"></a><span class="s">        "email": "dudu@dudu.com",</span>
+</span><span id="__span-33-53"><a id="__codelineno-33-53" name="__codelineno-33-53" href="#__codelineno-33-53"></a><span class="s">        "password": "123456"</span>
+</span><span id="__span-33-54"><a id="__codelineno-33-54" name="__codelineno-33-54" href="#__codelineno-33-54"></a><span class="s">    }</span>
+</span><span id="__span-33-55"><a id="__codelineno-33-55" name="__codelineno-33-55" href="#__codelineno-33-55"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-33-56"><a id="__codelineno-33-56" name="__codelineno-33-56" href="#__codelineno-33-56"></a><span class="nf">    </span><span class="k">Quando </span><span class="nf">enviar um "</span><span class="s">DELETE</span><span class="nf">" em "</span><span class="s">/user/1</span><span class="nf">"</span>
+</span><span id="__span-33-57"><a id="__codelineno-33-57" name="__codelineno-33-57" href="#__codelineno-33-57"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-33-58"><a id="__codelineno-33-58" name="__codelineno-33-58" href="#__codelineno-33-58"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-33-59"><a id="__codelineno-33-59" name="__codelineno-33-59" href="#__codelineno-33-59"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-33-60"><a id="__codelineno-33-60" name="__codelineno-33-60" href="#__codelineno-33-60"></a><span class="s">    {</span>
+</span><span id="__span-33-61"><a id="__codelineno-33-61" name="__codelineno-33-61" href="#__codelineno-33-61"></a><span class="s">        "message": "Conta deletada com sucesso"</span>
+</span><span id="__span-33-62"><a id="__codelineno-33-62" name="__codelineno-33-62" href="#__codelineno-33-62"></a><span class="s">    }</span>
+</span><span id="__span-33-63"><a id="__codelineno-33-63" name="__codelineno-33-63" href="#__codelineno-33-63"></a><span class="s">    </span><span class="k">"""</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-gherkin highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">Cenário:</span><span class="nf"> Criação de conta já existente</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/user</span><span class="nf">"</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="s">    {</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="s">        "username": "dunossauro",</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="s">        "email": "dudu@dudu.com",</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="s">        "password": "123456"</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="s">    }</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="nf">    </span><span class="k">Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/user</span><span class="nf">"</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="s">    {</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="s">        "username": "dunossauro",</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="s">        "email": "dudu@dudu.com",</span>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="s">        "password": "123456"</span>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="s">    }</span>
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">400</span><span class="nf">"</span>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="s">    {</span>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="s">        "message": "Conta já cadastrada"</span>
+</span><span id="__span-34-23"><a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="s">    }</span>
+</span><span id="__span-34-24"><a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="s">    </span><span class="k">"""</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-gherkin highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">Cenário:</span><span class="nf"> Autenticação via JWT</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/token</span><span class="nf">"</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="s">    {</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="s">        "username": "fausto@fausto.com",</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="s">        "password": "12345"</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="s">    }</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="s">    {</span>
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="s">        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0ZUB0ZXN0LmNvbSIsImV4cCI6MTY5MDI1ODE1M30.Nx0P_ornVwJBH_LLLVrlJoh6RmJeXR-Nr7YJ_mlGY04",</span>
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="s">        "token_type": "bearer"</span>
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="s">    }</span>
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="k">Cenário:</span><span class="nf"> Autenticação via JWT com usuário não existente</span>
+</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/token</span><span class="nf">"</span>
+</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a><span class="s">    {</span>
+</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="s">        "username": "fausto@fausto.com",</span>
+</span><span id="__span-35-23"><a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a><span class="s">        "password": "12345"</span>
+</span><span id="__span-35-24"><a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a><span class="s">    }</span>
+</span><span id="__span-35-25"><a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-26"><a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">400</span><span class="nf">"</span>
+</span><span id="__span-35-27"><a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-28"><a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-29"><a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a><span class="s">    {</span>
+</span><span id="__span-35-30"><a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a><span class="s">        "detail": "Incorrect email or password"</span>
+</span><span id="__span-35-31"><a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a><span class="s">    }</span>
+</span><span id="__span-35-32"><a id="__codelineno-35-32" name="__codelineno-35-32" href="#__codelineno-35-32"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-33"><a id="__codelineno-35-33" name="__codelineno-35-33" href="#__codelineno-35-33"></a>
+</span><span id="__span-35-34"><a id="__codelineno-35-34" name="__codelineno-35-34" href="#__codelineno-35-34"></a><span class="k">Cenário:</span><span class="nf"> Autorização via Bearer token</span>
+</span><span id="__span-35-35"><a id="__codelineno-35-35" name="__codelineno-35-35" href="#__codelineno-35-35"></a><span class="k">    Dado </span><span class="nf">que envie um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/token</span><span class="nf">"</span>
+</span><span id="__span-35-36"><a id="__codelineno-35-36" name="__codelineno-35-36" href="#__codelineno-35-36"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-37"><a id="__codelineno-35-37" name="__codelineno-35-37" href="#__codelineno-35-37"></a><span class="s">    {</span>
+</span><span id="__span-35-38"><a id="__codelineno-35-38" name="__codelineno-35-38" href="#__codelineno-35-38"></a><span class="s">        "username": "fausto@fausto.com",</span>
+</span><span id="__span-35-39"><a id="__codelineno-35-39" name="__codelineno-35-39" href="#__codelineno-35-39"></a><span class="s">        "password": "12345"</span>
+</span><span id="__span-35-40"><a id="__codelineno-35-40" name="__codelineno-35-40" href="#__codelineno-35-40"></a><span class="s">    }</span>
+</span><span id="__span-35-41"><a id="__codelineno-35-41" name="__codelineno-35-41" href="#__codelineno-35-41"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-42"><a id="__codelineno-35-42" name="__codelineno-35-42" href="#__codelineno-35-42"></a><span class="nf">    </span><span class="k">Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro</span><span class="nf">"</span>
+</span><span id="__span-35-43"><a id="__codelineno-35-43" name="__codelineno-35-43" href="#__codelineno-35-43"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-44"><a id="__codelineno-35-44" name="__codelineno-35-44" href="#__codelineno-35-44"></a><span class="s">    {</span>
+</span><span id="__span-35-45"><a id="__codelineno-35-45" name="__codelineno-35-45" href="#__codelineno-35-45"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-35-46"><a id="__codelineno-35-46" name="__codelineno-35-46" href="#__codelineno-35-46"></a><span class="s">    }</span>
+</span><span id="__span-35-47"><a id="__codelineno-35-47" name="__codelineno-35-47" href="#__codelineno-35-47"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-48"><a id="__codelineno-35-48" name="__codelineno-35-48" href="#__codelineno-35-48"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">deve receber o status "</span><span class="s">201</span><span class="nf">"</span>
+</span><span id="__span-35-49"><a id="__codelineno-35-49" name="__codelineno-35-49" href="#__codelineno-35-49"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-50"><a id="__codelineno-35-50" name="__codelineno-35-50" href="#__codelineno-35-50"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-51"><a id="__codelineno-35-51" name="__codelineno-35-51" href="#__codelineno-35-51"></a><span class="s">    {</span>
+</span><span id="__span-35-52"><a id="__codelineno-35-52" name="__codelineno-35-52" href="#__codelineno-35-52"></a><span class="s">        "id": 42,</span>
+</span><span id="__span-35-53"><a id="__codelineno-35-53" name="__codelineno-35-53" href="#__codelineno-35-53"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-35-54"><a id="__codelineno-35-54" name="__codelineno-35-54" href="#__codelineno-35-54"></a><span class="s">    }</span>
+</span><span id="__span-35-55"><a id="__codelineno-35-55" name="__codelineno-35-55" href="#__codelineno-35-55"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-56"><a id="__codelineno-35-56" name="__codelineno-35-56" href="#__codelineno-35-56"></a>
+</span><span id="__span-35-57"><a id="__codelineno-35-57" name="__codelineno-35-57" href="#__codelineno-35-57"></a><span class="k">Cenário:</span><span class="nf"> Tentativa de operação sem autorização</span>
+</span><span id="__span-35-58"><a id="__codelineno-35-58" name="__codelineno-35-58" href="#__codelineno-35-58"></a><span class="k">   Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro</span><span class="nf">"</span>
+</span><span id="__span-35-59"><a id="__codelineno-35-59" name="__codelineno-35-59" href="#__codelineno-35-59"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-60"><a id="__codelineno-35-60" name="__codelineno-35-60" href="#__codelineno-35-60"></a><span class="s">    {</span>
+</span><span id="__span-35-61"><a id="__codelineno-35-61" name="__codelineno-35-61" href="#__codelineno-35-61"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-35-62"><a id="__codelineno-35-62" name="__codelineno-35-62" href="#__codelineno-35-62"></a><span class="s">    }</span>
+</span><span id="__span-35-63"><a id="__codelineno-35-63" name="__codelineno-35-63" href="#__codelineno-35-63"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-35-64"><a id="__codelineno-35-64" name="__codelineno-35-64" href="#__codelineno-35-64"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">deve receber o status "</span><span class="s">401</span><span class="nf">"</span>
+</span><span id="__span-35-65"><a id="__codelineno-35-65" name="__codelineno-35-65" href="#__codelineno-35-65"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-35-66"><a id="__codelineno-35-66" name="__codelineno-35-66" href="#__codelineno-35-66"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-35-67"><a id="__codelineno-35-67" name="__codelineno-35-67" href="#__codelineno-35-67"></a><span class="s">    {</span>
+</span><span id="__span-35-68"><a id="__codelineno-35-68" name="__codelineno-35-68" href="#__codelineno-35-68"></a><span class="s">        "message": "Não autorizado"</span>
+</span><span id="__span-35-69"><a id="__codelineno-35-69" name="__codelineno-35-69" href="#__codelineno-35-69"></a><span class="s">    }</span>
+</span><span id="__span-35-70"><a id="__codelineno-35-70" name="__codelineno-35-70" href="#__codelineno-35-70"></a><span class="s">    </span><span class="k">"""</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="gerenciamento-de-livros">Gerenciamento de livros</h3>
+<div class="language-gherkin highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">Funcionalidade:</span><span class="nf"> Livro</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="k">Cenário:</span><span class="nf"> Registro de livro</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro/</span><span class="nf">"</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="s">    {</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="s">        "ano": 1973,</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="s">        "titulo": "Café Da Manhã Dos Campeões",</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="s">        "romancista_id": 1</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="s">    }</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">201</span><span class="nf">"</span>
+</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-16"><a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a><span class="s">    {</span>
+</span><span id="__span-36-17"><a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a><span class="s">        "ano": 1973,</span>
+</span><span id="__span-36-18"><a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a><span class="s">        "titulo": "café da manhã dos campeões",</span>
+</span><span id="__span-36-19"><a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a><span class="s">        "romancista_id": 1</span>
+</span><span id="__span-36-20"><a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a><span class="s">    }</span>
+</span><span id="__span-36-21"><a id="__codelineno-36-21" name="__codelineno-36-21" href="#__codelineno-36-21"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-22"><a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a>
+</span><span id="__span-36-23"><a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a>
+</span><span id="__span-36-24"><a id="__codelineno-36-24" name="__codelineno-36-24" href="#__codelineno-36-24"></a><span class="k">Cenário:</span><span class="nf"> Alteração de livro</span>
+</span><span id="__span-36-25"><a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">PATCH</span><span class="nf">" em "</span><span class="s">/livro/1</span><span class="nf">"</span>
+</span><span id="__span-36-26"><a id="__codelineno-36-26" name="__codelineno-36-26" href="#__codelineno-36-26"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-27"><a id="__codelineno-36-27" name="__codelineno-36-27" href="#__codelineno-36-27"></a><span class="s">    {</span>
+</span><span id="__span-36-28"><a id="__codelineno-36-28" name="__codelineno-36-28" href="#__codelineno-36-28"></a><span class="s">        "ano": 1974</span>
+</span><span id="__span-36-29"><a id="__codelineno-36-29" name="__codelineno-36-29" href="#__codelineno-36-29"></a><span class="s">    }</span>
+</span><span id="__span-36-30"><a id="__codelineno-36-30" name="__codelineno-36-30" href="#__codelineno-36-30"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-31"><a id="__codelineno-36-31" name="__codelineno-36-31" href="#__codelineno-36-31"></a>
+</span><span id="__span-36-32"><a id="__codelineno-36-32" name="__codelineno-36-32" href="#__codelineno-36-32"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-36-33"><a id="__codelineno-36-33" name="__codelineno-36-33" href="#__codelineno-36-33"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-36-34"><a id="__codelineno-36-34" name="__codelineno-36-34" href="#__codelineno-36-34"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-35"><a id="__codelineno-36-35" name="__codelineno-36-35" href="#__codelineno-36-35"></a><span class="s">    {</span>
+</span><span id="__span-36-36"><a id="__codelineno-36-36" name="__codelineno-36-36" href="#__codelineno-36-36"></a><span class="s">        "ano": 1974,</span>
+</span><span id="__span-36-37"><a id="__codelineno-36-37" name="__codelineno-36-37" href="#__codelineno-36-37"></a><span class="s">        "titulo": "café da manhã dos campeões",</span>
+</span><span id="__span-36-38"><a id="__codelineno-36-38" name="__codelineno-36-38" href="#__codelineno-36-38"></a><span class="s">        "romancista_id": 1</span>
+</span><span id="__span-36-39"><a id="__codelineno-36-39" name="__codelineno-36-39" href="#__codelineno-36-39"></a><span class="s">    }</span>
+</span><span id="__span-36-40"><a id="__codelineno-36-40" name="__codelineno-36-40" href="#__codelineno-36-40"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-41"><a id="__codelineno-36-41" name="__codelineno-36-41" href="#__codelineno-36-41"></a>
+</span><span id="__span-36-42"><a id="__codelineno-36-42" name="__codelineno-36-42" href="#__codelineno-36-42"></a><span class="k">Cenário:</span><span class="nf"> Buscar livro por ID</span>
+</span><span id="__span-36-43"><a id="__codelineno-36-43" name="__codelineno-36-43" href="#__codelineno-36-43"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">GET</span><span class="nf">" em "</span><span class="s">/livro/1</span><span class="nf">"</span>
+</span><span id="__span-36-44"><a id="__codelineno-36-44" name="__codelineno-36-44" href="#__codelineno-36-44"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-36-45"><a id="__codelineno-36-45" name="__codelineno-36-45" href="#__codelineno-36-45"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-36-46"><a id="__codelineno-36-46" name="__codelineno-36-46" href="#__codelineno-36-46"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-47"><a id="__codelineno-36-47" name="__codelineno-36-47" href="#__codelineno-36-47"></a><span class="s">    {</span>
+</span><span id="__span-36-48"><a id="__codelineno-36-48" name="__codelineno-36-48" href="#__codelineno-36-48"></a><span class="s">        "ano": 1974,</span>
+</span><span id="__span-36-49"><a id="__codelineno-36-49" name="__codelineno-36-49" href="#__codelineno-36-49"></a><span class="s">        "titulo": "café da manhã dos campeões",</span>
+</span><span id="__span-36-50"><a id="__codelineno-36-50" name="__codelineno-36-50" href="#__codelineno-36-50"></a><span class="s">        "romancista_id": 1</span>
+</span><span id="__span-36-51"><a id="__codelineno-36-51" name="__codelineno-36-51" href="#__codelineno-36-51"></a><span class="s">    }</span>
+</span><span id="__span-36-52"><a id="__codelineno-36-52" name="__codelineno-36-52" href="#__codelineno-36-52"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-53"><a id="__codelineno-36-53" name="__codelineno-36-53" href="#__codelineno-36-53"></a>
+</span><span id="__span-36-54"><a id="__codelineno-36-54" name="__codelineno-36-54" href="#__codelineno-36-54"></a><span class="k">Cenário:</span><span class="nf"> Deleção de livro</span>
+</span><span id="__span-36-55"><a id="__codelineno-36-55" name="__codelineno-36-55" href="#__codelineno-36-55"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">DELETE</span><span class="nf">" em "</span><span class="s">/livro/1</span><span class="nf">"</span>
+</span><span id="__span-36-56"><a id="__codelineno-36-56" name="__codelineno-36-56" href="#__codelineno-36-56"></a>
+</span><span id="__span-36-57"><a id="__codelineno-36-57" name="__codelineno-36-57" href="#__codelineno-36-57"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-36-58"><a id="__codelineno-36-58" name="__codelineno-36-58" href="#__codelineno-36-58"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-36-59"><a id="__codelineno-36-59" name="__codelineno-36-59" href="#__codelineno-36-59"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-60"><a id="__codelineno-36-60" name="__codelineno-36-60" href="#__codelineno-36-60"></a><span class="s">    {</span>
+</span><span id="__span-36-61"><a id="__codelineno-36-61" name="__codelineno-36-61" href="#__codelineno-36-61"></a><span class="s">        "message": "Livro deletado no MADR"</span>
+</span><span id="__span-36-62"><a id="__codelineno-36-62" name="__codelineno-36-62" href="#__codelineno-36-62"></a><span class="s">    }</span>
+</span><span id="__span-36-63"><a id="__codelineno-36-63" name="__codelineno-36-63" href="#__codelineno-36-63"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-64"><a id="__codelineno-36-64" name="__codelineno-36-64" href="#__codelineno-36-64"></a>
+</span><span id="__span-36-65"><a id="__codelineno-36-65" name="__codelineno-36-65" href="#__codelineno-36-65"></a><span class="k">Cenário:</span><span class="nf"> Filtro de livros</span>
+</span><span id="__span-36-66"><a id="__codelineno-36-66" name="__codelineno-36-66" href="#__codelineno-36-66"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro/</span><span class="nf">"</span>
+</span><span id="__span-36-67"><a id="__codelineno-36-67" name="__codelineno-36-67" href="#__codelineno-36-67"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-68"><a id="__codelineno-36-68" name="__codelineno-36-68" href="#__codelineno-36-68"></a><span class="s">    {</span>
+</span><span id="__span-36-69"><a id="__codelineno-36-69" name="__codelineno-36-69" href="#__codelineno-36-69"></a><span class="s">        "ano": 1900,</span>
+</span><span id="__span-36-70"><a id="__codelineno-36-70" name="__codelineno-36-70" href="#__codelineno-36-70"></a><span class="s">        "titulo": "Café Da Manhã Dos Campeões",</span>
+</span><span id="__span-36-71"><a id="__codelineno-36-71" name="__codelineno-36-71" href="#__codelineno-36-71"></a><span class="s">        "romancista_id": 1</span>
+</span><span id="__span-36-72"><a id="__codelineno-36-72" name="__codelineno-36-72" href="#__codelineno-36-72"></a><span class="s">    }</span>
+</span><span id="__span-36-73"><a id="__codelineno-36-73" name="__codelineno-36-73" href="#__codelineno-36-73"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-74"><a id="__codelineno-36-74" name="__codelineno-36-74" href="#__codelineno-36-74"></a><span class="nf">    </span><span class="k">E </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro/</span><span class="nf">"</span>
+</span><span id="__span-36-75"><a id="__codelineno-36-75" name="__codelineno-36-75" href="#__codelineno-36-75"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-76"><a id="__codelineno-36-76" name="__codelineno-36-76" href="#__codelineno-36-76"></a><span class="s">    {</span>
+</span><span id="__span-36-77"><a id="__codelineno-36-77" name="__codelineno-36-77" href="#__codelineno-36-77"></a><span class="s">        "ano": 1900,</span>
+</span><span id="__span-36-78"><a id="__codelineno-36-78" name="__codelineno-36-78" href="#__codelineno-36-78"></a><span class="s">        "titulo": "Memórias Póstumas de Brás Cubas",</span>
+</span><span id="__span-36-79"><a id="__codelineno-36-79" name="__codelineno-36-79" href="#__codelineno-36-79"></a><span class="s">        "romancista_id": 2</span>
+</span><span id="__span-36-80"><a id="__codelineno-36-80" name="__codelineno-36-80" href="#__codelineno-36-80"></a><span class="s">    }</span>
+</span><span id="__span-36-81"><a id="__codelineno-36-81" name="__codelineno-36-81" href="#__codelineno-36-81"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-82"><a id="__codelineno-36-82" name="__codelineno-36-82" href="#__codelineno-36-82"></a><span class="nf">    </span><span class="k">E </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/livro/</span><span class="nf">"</span>
+</span><span id="__span-36-83"><a id="__codelineno-36-83" name="__codelineno-36-83" href="#__codelineno-36-83"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-84"><a id="__codelineno-36-84" name="__codelineno-36-84" href="#__codelineno-36-84"></a><span class="s">    {</span>
+</span><span id="__span-36-85"><a id="__codelineno-36-85" name="__codelineno-36-85" href="#__codelineno-36-85"></a><span class="s">        "ano": 1865,</span>
+</span><span id="__span-36-86"><a id="__codelineno-36-86" name="__codelineno-36-86" href="#__codelineno-36-86"></a><span class="s">        "titulo": "Iracema",</span>
+</span><span id="__span-36-87"><a id="__codelineno-36-87" name="__codelineno-36-87" href="#__codelineno-36-87"></a><span class="s">        "romancista_id": 3</span>
+</span><span id="__span-36-88"><a id="__codelineno-36-88" name="__codelineno-36-88" href="#__codelineno-36-88"></a><span class="s">    }</span>
+</span><span id="__span-36-89"><a id="__codelineno-36-89" name="__codelineno-36-89" href="#__codelineno-36-89"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-36-90"><a id="__codelineno-36-90" name="__codelineno-36-90" href="#__codelineno-36-90"></a><span class="nf">    </span><span class="k">E </span><span class="nf">enviar um "</span><span class="s">GET</span><span class="nf">" em "</span><span class="s">/livro/?titulo=a&amp;ano=1900</span><span class="nf">"</span>
+</span><span id="__span-36-91"><a id="__codelineno-36-91" name="__codelineno-36-91" href="#__codelineno-36-91"></a>
+</span><span id="__span-36-92"><a id="__codelineno-36-92" name="__codelineno-36-92" href="#__codelineno-36-92"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-36-93"><a id="__codelineno-36-93" name="__codelineno-36-93" href="#__codelineno-36-93"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-36-94"><a id="__codelineno-36-94" name="__codelineno-36-94" href="#__codelineno-36-94"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-36-95"><a id="__codelineno-36-95" name="__codelineno-36-95" href="#__codelineno-36-95"></a><span class="s">    {</span>
+</span><span id="__span-36-96"><a id="__codelineno-36-96" name="__codelineno-36-96" href="#__codelineno-36-96"></a><span class="s">        "livros": [</span>
+</span><span id="__span-36-97"><a id="__codelineno-36-97" name="__codelineno-36-97" href="#__codelineno-36-97"></a><span class="s">            {"ano": 1900, "titulo": "café da manhã dos campeões", "romancista_id": 1, "id": 1},</span>
+</span><span id="__span-36-98"><a id="__codelineno-36-98" name="__codelineno-36-98" href="#__codelineno-36-98"></a><span class="s">            {"ano": 1900, "titulo": "memórias póstumas de brás cubas", "romancista_id": 2, "id": 2}</span>
+</span><span id="__span-36-99"><a id="__codelineno-36-99" name="__codelineno-36-99" href="#__codelineno-36-99"></a><span class="s">        ]</span>
+</span><span id="__span-36-100"><a id="__codelineno-36-100" name="__codelineno-36-100" href="#__codelineno-36-100"></a><span class="s">    }</span>
+</span><span id="__span-36-101"><a id="__codelineno-36-101" name="__codelineno-36-101" href="#__codelineno-36-101"></a><span class="s">    </span><span class="k">"""</span>
+</span></code></pre></div>
+<h3 id="gerenciamento-de-romancistas">Gerenciamento de romancistas</h3>
+<div class="language-gherkin highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">Funcionalidade:</span><span class="nf"> Romancistas</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">Cenário:</span><span class="nf"> Criação de Romancista</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/romancista</span><span class="nf">"</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="s">    {</span>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="s">    }</span>
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">201</span><span class="nf">"</span>
+</span><span id="__span-37-13"><a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-37-14"><a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-15"><a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a><span class="s">    {</span>
+</span><span id="__span-37-16"><a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a><span class="s">        "nome": "clarice lispector"</span>
+</span><span id="__span-37-17"><a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a><span class="s">    }</span>
+</span><span id="__span-37-18"><a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-19"><a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a>
+</span><span id="__span-37-20"><a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a><span class="k">Cenário:</span><span class="nf"> Buscar romancista por ID</span>
+</span><span id="__span-37-21"><a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">GET</span><span class="nf">" em "</span><span class="s">/romancista/1</span><span class="nf">"</span>
+</span><span id="__span-37-22"><a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-37-23"><a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-37-24"><a id="__codelineno-37-24" name="__codelineno-37-24" href="#__codelineno-37-24"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-25"><a id="__codelineno-37-25" name="__codelineno-37-25" href="#__codelineno-37-25"></a><span class="s">    {</span>
+</span><span id="__span-37-26"><a id="__codelineno-37-26" name="__codelineno-37-26" href="#__codelineno-37-26"></a><span class="s">        "nome": "clarice lispector"</span>
+</span><span id="__span-37-27"><a id="__codelineno-37-27" name="__codelineno-37-27" href="#__codelineno-37-27"></a><span class="s">    }</span>
+</span><span id="__span-37-28"><a id="__codelineno-37-28" name="__codelineno-37-28" href="#__codelineno-37-28"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-29"><a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a>
+</span><span id="__span-37-30"><a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a><span class="k">Cenário:</span><span class="nf"> Alteração de Romancista</span>
+</span><span id="__span-37-31"><a id="__codelineno-37-31" name="__codelineno-37-31" href="#__codelineno-37-31"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">PUT</span><span class="nf">" em "</span><span class="s">/romancista/1</span><span class="nf">"</span>
+</span><span id="__span-37-32"><a id="__codelineno-37-32" name="__codelineno-37-32" href="#__codelineno-37-32"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-33"><a id="__codelineno-37-33" name="__codelineno-37-33" href="#__codelineno-37-33"></a><span class="s">    {</span>
+</span><span id="__span-37-34"><a id="__codelineno-37-34" name="__codelineno-37-34" href="#__codelineno-37-34"></a><span class="s">        "nome": "manuel bandeira"</span>
+</span><span id="__span-37-35"><a id="__codelineno-37-35" name="__codelineno-37-35" href="#__codelineno-37-35"></a><span class="s">    }</span>
+</span><span id="__span-37-36"><a id="__codelineno-37-36" name="__codelineno-37-36" href="#__codelineno-37-36"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-37"><a id="__codelineno-37-37" name="__codelineno-37-37" href="#__codelineno-37-37"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-37-38"><a id="__codelineno-37-38" name="__codelineno-37-38" href="#__codelineno-37-38"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-37-39"><a id="__codelineno-37-39" name="__codelineno-37-39" href="#__codelineno-37-39"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-40"><a id="__codelineno-37-40" name="__codelineno-37-40" href="#__codelineno-37-40"></a><span class="s">    {</span>
+</span><span id="__span-37-41"><a id="__codelineno-37-41" name="__codelineno-37-41" href="#__codelineno-37-41"></a><span class="s">        "nome": "manuel bandeira"</span>
+</span><span id="__span-37-42"><a id="__codelineno-37-42" name="__codelineno-37-42" href="#__codelineno-37-42"></a><span class="s">    }</span>
+</span><span id="__span-37-43"><a id="__codelineno-37-43" name="__codelineno-37-43" href="#__codelineno-37-43"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-44"><a id="__codelineno-37-44" name="__codelineno-37-44" href="#__codelineno-37-44"></a>
+</span><span id="__span-37-45"><a id="__codelineno-37-45" name="__codelineno-37-45" href="#__codelineno-37-45"></a><span class="k">Cenário:</span><span class="nf"> Deleção de Romancista</span>
+</span><span id="__span-37-46"><a id="__codelineno-37-46" name="__codelineno-37-46" href="#__codelineno-37-46"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">DELETE</span><span class="nf">" em "</span><span class="s">/romancista/1</span><span class="nf">"</span>
+</span><span id="__span-37-47"><a id="__codelineno-37-47" name="__codelineno-37-47" href="#__codelineno-37-47"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-37-48"><a id="__codelineno-37-48" name="__codelineno-37-48" href="#__codelineno-37-48"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-37-49"><a id="__codelineno-37-49" name="__codelineno-37-49" href="#__codelineno-37-49"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-50"><a id="__codelineno-37-50" name="__codelineno-37-50" href="#__codelineno-37-50"></a><span class="s">    {</span>
+</span><span id="__span-37-51"><a id="__codelineno-37-51" name="__codelineno-37-51" href="#__codelineno-37-51"></a><span class="s">        "message": "Romancista deletada no MADR"</span>
+</span><span id="__span-37-52"><a id="__codelineno-37-52" name="__codelineno-37-52" href="#__codelineno-37-52"></a><span class="s">    }</span>
+</span><span id="__span-37-53"><a id="__codelineno-37-53" name="__codelineno-37-53" href="#__codelineno-37-53"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-54"><a id="__codelineno-37-54" name="__codelineno-37-54" href="#__codelineno-37-54"></a>
+</span><span id="__span-37-55"><a id="__codelineno-37-55" name="__codelineno-37-55" href="#__codelineno-37-55"></a><span class="k">Cenário:</span><span class="nf"> Busca de romancistas por filtro</span>
+</span><span id="__span-37-56"><a id="__codelineno-37-56" name="__codelineno-37-56" href="#__codelineno-37-56"></a><span class="k">    Quando </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/romancista</span><span class="nf">"</span>
+</span><span id="__span-37-57"><a id="__codelineno-37-57" name="__codelineno-37-57" href="#__codelineno-37-57"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-58"><a id="__codelineno-37-58" name="__codelineno-37-58" href="#__codelineno-37-58"></a><span class="s">    {</span>
+</span><span id="__span-37-59"><a id="__codelineno-37-59" name="__codelineno-37-59" href="#__codelineno-37-59"></a><span class="s">        "nome": "Clarice Lispector"</span>
+</span><span id="__span-37-60"><a id="__codelineno-37-60" name="__codelineno-37-60" href="#__codelineno-37-60"></a><span class="s">    }</span>
+</span><span id="__span-37-61"><a id="__codelineno-37-61" name="__codelineno-37-61" href="#__codelineno-37-61"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-62"><a id="__codelineno-37-62" name="__codelineno-37-62" href="#__codelineno-37-62"></a>
+</span><span id="__span-37-63"><a id="__codelineno-37-63" name="__codelineno-37-63" href="#__codelineno-37-63"></a><span class="nf">    </span><span class="k">E </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/romancista</span><span class="nf">"</span>
+</span><span id="__span-37-64"><a id="__codelineno-37-64" name="__codelineno-37-64" href="#__codelineno-37-64"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-65"><a id="__codelineno-37-65" name="__codelineno-37-65" href="#__codelineno-37-65"></a><span class="s">    {</span>
+</span><span id="__span-37-66"><a id="__codelineno-37-66" name="__codelineno-37-66" href="#__codelineno-37-66"></a><span class="s">        "nome": "Manuel Bandeira"</span>
+</span><span id="__span-37-67"><a id="__codelineno-37-67" name="__codelineno-37-67" href="#__codelineno-37-67"></a><span class="s">    }</span>
+</span><span id="__span-37-68"><a id="__codelineno-37-68" name="__codelineno-37-68" href="#__codelineno-37-68"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-69"><a id="__codelineno-37-69" name="__codelineno-37-69" href="#__codelineno-37-69"></a>
+</span><span id="__span-37-70"><a id="__codelineno-37-70" name="__codelineno-37-70" href="#__codelineno-37-70"></a><span class="nf">    </span><span class="k">E </span><span class="nf">enviar um "</span><span class="s">POST</span><span class="nf">" em "</span><span class="s">/romancista</span><span class="nf">"</span>
+</span><span id="__span-37-71"><a id="__codelineno-37-71" name="__codelineno-37-71" href="#__codelineno-37-71"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-72"><a id="__codelineno-37-72" name="__codelineno-37-72" href="#__codelineno-37-72"></a><span class="s">    {</span>
+</span><span id="__span-37-73"><a id="__codelineno-37-73" name="__codelineno-37-73" href="#__codelineno-37-73"></a><span class="s">        "nome": "Paulo Leminski"</span>
+</span><span id="__span-37-74"><a id="__codelineno-37-74" name="__codelineno-37-74" href="#__codelineno-37-74"></a><span class="s">    }</span>
+</span><span id="__span-37-75"><a id="__codelineno-37-75" name="__codelineno-37-75" href="#__codelineno-37-75"></a><span class="s">    </span><span class="k">"""</span>
+</span><span id="__span-37-76"><a id="__codelineno-37-76" name="__codelineno-37-76" href="#__codelineno-37-76"></a>
+</span><span id="__span-37-77"><a id="__codelineno-37-77" name="__codelineno-37-77" href="#__codelineno-37-77"></a><span class="nf">    </span><span class="k">Quando </span><span class="nf">enviar um "</span><span class="s">GET</span><span class="nf">" em "</span><span class="s">/romancista?nome=a</span><span class="nf">"</span>
+</span><span id="__span-37-78"><a id="__codelineno-37-78" name="__codelineno-37-78" href="#__codelineno-37-78"></a><span class="nf">    </span><span class="k">Então </span><span class="nf">devo receber o status "</span><span class="s">200</span><span class="nf">"</span>
+</span><span id="__span-37-79"><a id="__codelineno-37-79" name="__codelineno-37-79" href="#__codelineno-37-79"></a><span class="nf">    </span><span class="k">E </span><span class="nf">o json contendo</span>
+</span><span id="__span-37-80"><a id="__codelineno-37-80" name="__codelineno-37-80" href="#__codelineno-37-80"></a><span class="nf">    </span><span class="k">"""</span>
+</span><span id="__span-37-81"><a id="__codelineno-37-81" name="__codelineno-37-81" href="#__codelineno-37-81"></a><span class="s">    {</span>
+</span><span id="__span-37-82"><a id="__codelineno-37-82" name="__codelineno-37-82" href="#__codelineno-37-82"></a><span class="s">        "romancistas": [</span>
+</span><span id="__span-37-83"><a id="__codelineno-37-83" name="__codelineno-37-83" href="#__codelineno-37-83"></a><span class="s">            {"nome": "clarice lispector", "id": 1},</span>
+</span><span id="__span-37-84"><a id="__codelineno-37-84" name="__codelineno-37-84" href="#__codelineno-37-84"></a><span class="s">            {"nome": "manuel bandeira", "id": 2},</span>
+</span><span id="__span-37-85"><a id="__codelineno-37-85" name="__codelineno-37-85" href="#__codelineno-37-85"></a><span class="s">            {"nome": "paulo leminski", "id": 3}</span>
+</span><span id="__span-37-86"><a id="__codelineno-37-86" name="__codelineno-37-86" href="#__codelineno-37-86"></a><span class="s">        ]</span>
+</span><span id="__span-37-87"><a id="__codelineno-37-87" name="__codelineno-37-87" href="#__codelineno-37-87"></a><span class="s">    }</span>
+</span><span id="__span-37-88"><a id="__codelineno-37-88" name="__codelineno-37-88" href="#__codelineno-37-88"></a><span class="s">    </span><span class="k">"""</span>
+</span></code></pre></div>
+<h2 id="ferramentas">Ferramentas</h2>
+<p>Gostaria que você se sentissem livres para escolher o conjunto de ferramentas que mais gostarem para fazer esse projeto. O formatador preferido, o servidor de aplicação preferido, projeto de variáveis de ambiente preferido, etc.</p>
+<p>As únicas coisas exigidas para a criação desse projeto são:</p>
+<ol>
+<li>Python 3.11+</li>
+<li>FastAPI</li>
+<li>SQLAlchemy</li>
+<li>Alguma ferramenta para gerenciamento de projeto que suporte <code>pyproject.toml</code></li>
+<li>PostgreSQL</li>
+<li>Containers (a ferramenta que preferir. Podman/docker/k8s/...)</li>
+<li>Pytest</li>
+</ol>
+<h2 id="entrega-do-projeto-final">Entrega do projeto final</h2>
+<p>Criar um projeto utilizando git e hospedado em alguma plataforma (github/gitlab/codeberg/...) e postar <a href="https://github.com/dunossauro/fastapi-do-zero/issues/135" target="_blank">nessa issue</a>. Ao final, juntarei todos os projetos finais em uma tabela <a href="../projetos/projetos_finais/" target="_blank">nesse site</a> para que as pessoas possam aprender com as diferenças entre os projetos.</p>
+<p>É imprescindível que seu projeto tenha um <code>README.md</code> explicando quais foram as suas escolhas e como executar o seu projeto. Para podermos rodar e aprender com ele.</p></div><style type="text/css">.quiz {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+/* Set margin-top of first quiz child */
+.quiz > *:first-child {
+  margin-top: 0;
+}
+.hidden {
+  display: none;
+}
+
+form button {
+  background-color: var(--md-primary-fg-color);
+  border: none;
+  color: var(--md-primary-bg-color);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+.wrong label {
+  color: red;
+}
+.correct label {
+  color: green;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+fieldset input {
+  margin: 0 10px;
+}
+fieldset label {
+  margin: 0 10px;
+}
+
+label.correct {
+  color: green;
+}
+label.wrong {
+  color: red;
+}
+input[type='radio'].correct {
+  accent-color: green;
+}
+input[type='radio'].wrong {
+  accent-color: red;
+}
+.content {
+  margin: 10px;
+}
+</style><script type="text/javascript" defer>document.querySelectorAll('.quiz').forEach((quiz) => {
+  let form = quiz.querySelector('form');
+  let fieldset = form.querySelector('fieldset');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let selectedAnswers = form.querySelectorAll('input[name="answer"]:checked');
+    let correctAnswers = fieldset.querySelectorAll(
+      'input[name="answer"][correct]'
+    );
+    // Check if all correct answers are selected
+    let is_correct = selectedAnswers.length === correctAnswers.length;
+    for (let i = 0; i < selectedAnswers.length; i++) {
+      if (!selectedAnswers[i].hasAttribute('correct')) {
+        is_correct = false;
+        break;
+      }
+    }
+    let section = quiz.querySelector('section');
+    if (is_correct) {
+      section.classList.remove('hidden');
+      resetFieldset(fieldset);
+      // Mark all fields with colors
+      const allAnswers = fieldset.querySelectorAll('input[name="answer"]');
+      for (let i = 0; i < allAnswers.length; i++) {
+        if (allAnswers[i].hasAttribute('correct')) {
+          allAnswers[i].parentElement.classList.add('correct');
+        } else {
+          allAnswers[i].parentElement.classList.add('wrong');
+        }
+      }
+    } else {
+      section.classList.add('hidden');
+      resetFieldset(fieldset);
+      // Mark wrong fields with colors
+      for (let i = 0; i < selectedAnswers.length; i++) {
+        if (!selectedAnswers[i].hasAttribute('correct')) {
+          selectedAnswers[i].parentElement.classList.add('wrong');
+        } else {
+          selectedAnswers[i].parentElement.classList.add('correct');
+        }
+      }
+    }
+  });
+});
+
+function resetFieldset(fieldset) {
+  const fieldsetChildren = fieldset.children;
+  for (let i = 0; i < fieldsetChildren.length; i++) {
+    fieldsetChildren[i].classList.remove('wrong');
+    fieldsetChildren[i].classList.remove('correct');
+  }
+}
+</script>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última atualização">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="9 de fevereiro de 2025 06:27:19">9 de fevereiro de 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Colaboradores">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      dunossauro
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://youtube.com/dunossauro" target="_blank" rel="noopener" title="youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://bolha.us/@dunossauro" target="_blank" rel="noopener me" title="bolha.us" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.5 102.5 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5m-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dunossauro" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.twitch.tv/dunossauro" target="_blank" rel="noopener" title="www.twitch.tv" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M391.17 103.47h-38.63v109.7h38.63ZM285 103h-38.63v109.75H285ZM120.83 0 24.31 91.42v329.16h115.83V512l96.53-91.42h77.25L487.69 256V0Zm328.24 237.75-77.22 73.12h-77.24l-67.6 64v-64h-86.87V36.58h308.93Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bolha.photos/dunossauro" target="_blank" rel="noopener" title="bolha.photos" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12m-.953-9.38h2.202c2.074 0 3.755-1.637 3.755-3.656S15.323 7.31 13.249 7.31h-3.177c-1.197 0-2.167.944-2.167 2.109v8.208z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://dunossauro.com" target="_blank" rel="noopener" title="dunossauro.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.992.034C1.217.166.602.841.416 1.769.388 1.901.36 21.858.388 23.895c0 .181 0 .181.923-.593.497-.416 1.328-1.128 1.801-1.516.34-.28.626-.543.637-.576.011-.039.022-1.148.017-2.466L3.76 16.35h1.516c.829 0 1.52.022 1.537.044s.028.538.022 1.142c0 .61.011 1.104.022 1.104.017 0 .643-.522.725-.604.017-.017.401-.335.851-.714.923-.77.917-.764 1.373-1.148.28-.236.34-.264.412-.203.072.066 2.878 2.421 3.592 3.02a1239 1239 0 0 1 3.932 3.306c.003.003 2.02 1.74 2.076 1.702.021-.01.038-3.333.038-7.38-.006-6.574.005-7.365.082-7.381.044-.011.895-.017 1.884-.017h1.801l-.022-3.761c-.005-2.07-.033-3.817-.05-3.877-.142-.495-.51-1.022-.883-1.28-.473-.318.164-.302-10.566-.302-5.442-.005-9.99.011-10.11.033"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://codeberg.org/dunossauro" target="_blank" rel="noopener" title="codeberg.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../assets/_markdown_exec_pyodide.js"></script>
+      
+        <script src="../assets/javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
