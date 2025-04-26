@@ -4,7 +4,7 @@
 
 Durante as aulas síncronas, diversas dúvidas sobre a configuração e instalação das ferramentas fora do python foram levantadas. A ideia dessa página é te auxiliar nas instalações.
 
-São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na [página de configuração do projeto](../01.md#instalacao-do-python){:target="_blank"}. A ideia é agrupar todas as instalações um único lugar.
+São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na [página de configuração do projeto](../01.md){:target="_blank"}. A ideia é agrupar todas as instalações um único lugar.
 
 ## pipx
 
@@ -15,6 +15,11 @@ Para isso, você pode executar:
 ```shell title="$ Execução no terminal!"
 pip install pipx
 ```
+
+???+ warning "Instalação do pipx"
+    Embora seja possível instalar via pip, em algumas versões é exigido o escopo de usuário `--user` para fazer a instalação global.
+	
+	A melhor forma de instalar o pipx ainda é usando o seu sistema operacional. Você pode consultar a documentação sobre como fazer isso. [documentação](https://pipx.pypa.io/stable/installation/)
 
 A resposta do comando deverá ser parecida com essa:
 

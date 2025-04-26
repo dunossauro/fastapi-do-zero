@@ -1,8 +1,7 @@
 ??? warning "sqlalchemy.exc.OperationalError: (sqlite3.OperationalError)"
-	Caso você receba esse erro ao aplicar a migração, recomendo que veja a [Live de Python #211](https://youtu.be/yQtqkq9UkDA) sobre `migrações e bancos de dados evolutivos` (recomendada no texto [da aula 04 - "Caso nunca tenha trabalhado com Migrações"](/04/#instalando-o-alembic-e-criando-a-primeira-migracao){:target="_blank"}).
-	
+	Caso você receba esse erro ao aplicar a migração, recomendo que veja a [Live de Python #211](https://youtu.be/yQtqkq9UkDA) sobre `migrações e bancos de dados evolutivos` (recomendada no texto [da aula 04 - "Caso nunca tenha trabalhado com Migrações"](../04.md#instalando-o-alembic-e-criando-a-primeira-migracao){:target="_blank"}).
 
-	No minuto [1:28:33](https://youtu.be/yQtqkq9UkDA?t=5313) o motivo e a solução desse erro são abordados em mais detalhes.
+	No minuto [1:28:33](https://youtu.be/yQtqkq9UkDA?t=5313){:target="_blank"} o motivo e a solução desse erro são abordados em mais detalhes.
 
 	Mas, em resumo, isso é um problema causado pelo modo como o python se comunica com o sqlite, fazendo com que cada alteração no banco seja aplicado linha, a linha.
 	Para fazer todas as modificações de uma vez, usamos as `operações em batch`.
