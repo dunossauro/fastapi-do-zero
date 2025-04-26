@@ -2652,7 +2652,7 @@
 <p>Após essa alteração, ao utilizar o Swagger, a autorização será direcionada corretamente para o endpoint apropriado.</p>
 <p><a class="glightbox" href="../assets/07/autoriza%C3%A7%C3%A3o_no_swagger_apontando_para_o_endere%C3%A7o_correto.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Captura de tela do Swagger direcionando para o endereço correto" class="center shadow" src="../assets/07/autoriza%C3%A7%C3%A3o_no_swagger_apontando_para_o_endere%C3%A7o_correto.png"></a></p>
 <h4 id="alteracao-no-teste-do-token">Alteração no teste do token</h4>
-<p>Essa alteração fará com que o teste referente a criação do token também falhe. Pois ele procurará pelo endpoint <code>/token</code>. Devemos fazer a alteração para o novo caminho, que com a criação de router, adiciona o prefixo <a href="#__codelineno-4-13"><code>/auth</code></a>. Ficando assim:</p>
+<p>Essa alteração fará com que o teste referente a criação do token também falhe. Pois ele procurará pelo endpoint <code>/token</code>. Devemos fazer a alteração para o novo caminho, que com a criação de router, adiciona o prefixo <a href="#__codelineno-4-14"><code>/auth</code></a>. Ficando assim:</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">tests/test_app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-70">70</a></span>
 <span class="normal"><a href="#__codelineno-7-71">71</a></span>
 <span class="normal"><a href="#__codelineno-7-72">72</a></span>
@@ -3388,7 +3388,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, azevedo
+      dunossauro, azevedo, Not Committed Yet
     </nav>
   </span>
 

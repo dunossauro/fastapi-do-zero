@@ -2404,7 +2404,7 @@
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="k">return</span> <span class="o">&lt;</span><span class="n">algo</span><span class="o">&gt;</span>
 </span></code></pre></div>
 <p>Diferente de uma função tradicional, que realiza toda a execução de uma vez (até encontrar o <code class="language-python highlight"><span class="k">return</span></code>), a corrotina pode ser <a href="#cooperatividade-e-escalonamento" target="_blank"><strong>escalonada</strong></a> usando a palavra-chave <code class="language-python highlight"><span class="k">await</span></code>.</p>
-<p>O <code class="language-python highlight"><span class="k">await</span></code> é usado para chamar operações que podem levar algum tempo, pelo bloqueio de I/O. Isso permite que o Python "libere" o controle de volta para o <a href="#o-que-e-o-loop-de-eventos" target="_blank">loop de eventos</a>, que pode executar outras tarefas enquanto aguarda a operação "espera" a resposta de O/O ser concluída:</p>
+<p>O <code class="language-python highlight"><span class="k">await</span></code> é usado para chamar operações que podem levar algum tempo, pelo bloqueio de I/O. Isso permite que o Python "libere" o controle de volta para o <a href="#loop-de-eventos" target="_blank">loop de eventos</a>, que pode executar outras tarefas enquanto aguarda a operação "espera" a resposta de O/O ser concluída:</p>
 <div class="language-python highlight"><span class="filename">Código de exemplo</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">corrotina</span><span class="p">():</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">await</span> <span class="o">&lt;</span><span class="n">chamada</span><span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">banco</span><span class="o">-</span><span class="n">de</span><span class="o">-</span><span class="n">dados</span><span class="o">&gt;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">await</span> <span class="o">&lt;</span><span class="n">chamada</span><span class="o">-</span><span class="n">para</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">externa</span><span class="o">&gt;</span>
@@ -3293,7 +3293,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, Rafael Barbosa, Not Committed Yet
+      dunossauro, Not Committed Yet, Rafael Barbosa
     </nav>
   </span>
 
