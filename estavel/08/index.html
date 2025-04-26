@@ -2362,7 +2362,7 @@
 <p>Em um cenário síncrono, nosso cenário até o momento, enquanto processamos uma requisição, não conseguimos processar outra até que a primeira seja concluída. Esse fluxo de execução é chamado de <a href="#bloqueio-de-io" target="_blank"><strong>bloqueante</strong></a>, pois a aplicação fica "parada", aguardando a resposta de sistemas externos, como o banco de dados. Esse tempo de espera, conhecido como bloqueio por I/O (Input/Output) [Entrada/Saída], prejudica o desempenho, pois a aplicação não pode atender a novas requisições enquanto espera.</p>
 <details class="example" open="open">
 <summary>Bloqueio de aplicação VS bloqueio do servidor</summary>
-<p>Quando dizemos que a aplicação está bloqueada, estamos nos referindo somente ao código explícito da aplicação. O servidor de aplicação, em nosso caso o <a href="/01/#uvicorn" target="_blank"><code>uvicorn</code></a>, já trabalha de forma não bloqueante. Ele cria uma fila de requisições e vai passando uma a uma à nossa aplicação conforme as respostas forem sendo retornadas.</p>
+<p>Quando dizemos que a aplicação está bloqueada, estamos nos referindo somente ao código explícito da aplicação. O servidor de aplicação, em nosso caso o <a href="../01/#uvicorn" target="_blank"><code>uvicorn</code></a>, já trabalha de forma não bloqueante. Ele cria uma fila de requisições e vai passando uma a uma à nossa aplicação conforme as respostas forem sendo retornadas.</p>
 <p>Além disso, ele pode inicializar diversas cópias da nossa aplicação (mesmo síncronas) em um formato de workers e executar diversos processos para nossa aplicação. Se quisermos inicializar o uvicorn nesse modo, a única alteração necessária seria adicionar a flag <code>--workers &lt;int&gt;</code>. Algo como:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uvicorn<span class="w"> </span>fast_zero.app:app<span class="w"> </span>--workers<span class="w"> </span><span class="m">3</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>INFO:<span class="w">     </span>Uvicorn<span class="w"> </span>running<span class="w"> </span>on<span class="w"> </span>http://127.0.0.1:8000<span class="w"> </span><span class="o">(</span>Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </span>quit<span class="o">)</span>
@@ -2615,7 +2615,7 @@
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="hll"><span class="n">asyncio_default_fixture_loop_scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'function'</span>
 </span></span></code></pre></div>
 <blockquote>
-<p>Para evitar cair em mais um assunto, esse tópico será tratado na aula 11 em <a href="/11/#fixtures-de-sessao" target="_blank">Fixtures de sessao</a>.</p>
+<p>Para evitar cair em mais um assunto, esse tópico será tratado na aula 11 em <a href="../11/#fixtures-de-sessao" target="_blank">Fixtures de sessao</a>.</p>
 </blockquote>
 <hr>
 <p>Desta forma, podemos alterar nossa fixture de <code>session</code> para fornecer uma sessão assíncrona:</p>
@@ -3035,7 +3035,7 @@
 <div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">[tool.coverage.run]</span>
 </span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="n">concurrency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"thread"</span><span class="p">,</span><span class="w"> </span><span class="s2">"<ins class="critic">greenlet</ins>"</span><span class="p">]</span>
 </span></code></pre></div>
-<p>Precisamos ativar a concorrência no coverage em dois casos, para threads (conversamos sobre isso <a href="/05/#threads-e-conexoes" target="_blank">na aula 05</a>) e para o <a href="#configuracao-para-o-sqlalchemy-assincrono" target="_blank">greenlet</a> adicionado pela conexão assíncrona do SQLAlchemy.</p>
+<p>Precisamos ativar a concorrência no coverage em dois casos, para threads (conversamos sobre isso <a href="../05/#threads-e-conexoes" target="_blank">na aula 05</a>) e para o <a href="#configuracao-para-o-sqlalchemy-assincrono" target="_blank">greenlet</a> adicionado pela conexão assíncrona do SQLAlchemy.</p>
 <p>Com essa pequena alteração, podemos executar os testes novamente e olhar a cobertura:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>task<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="c1"># ...</span>
@@ -3293,7 +3293,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, Rafael Barbosa
+      dunossauro, Rafael Barbosa, Not Committed Yet
     </nav>
   </span>
 

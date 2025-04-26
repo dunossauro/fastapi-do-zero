@@ -2461,7 +2461,7 @@
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>E<span class="w">           </span><span class="o">}</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1"># ...</span>
 </span></code></pre></div>
-<p>Esse comportamento acontece por termos usado <a href="/10/#__codelineno-2-33" target="_blank"><code class="language-python highlight"><span class="n">lazy</span><span class="o">=</span><span class="s1">'selectin'</span></code></a> no <code>relationship</code>. Isso faz com que o novo campo traga os resultados de <code>Todo</code>s associados a esse <code>User</code> quando for buscado via <code>select</code>. Por esse motivo devemos alterar nosso teste de criação de users:</p>
+<p>Esse comportamento acontece por termos usado <a href="#__codelineno-2-33" target="_blank"><code class="language-python highlight"><span class="n">lazy</span><span class="o">=</span><span class="s1">'selectin'</span></code></a> no <code>relationship</code>. Isso faz com que o novo campo traga os resultados de <code>Todo</code>s associados a esse <code>User</code> quando for buscado via <code>select</code>. Por esse motivo devemos alterar nosso teste de criação de users:</p>
 <div class="language-py highlight"><span class="filename">tests/test_db.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_create_user</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">mock_db_time</span><span class="p">):</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="k">with</span> <span class="n">mock_db_time</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">User</span><span class="p">)</span> <span class="k">as</span> <span class="n">time</span><span class="p">:</span>
@@ -3119,7 +3119,7 @@
 </li>
 <li>Adicionar os campos <code>created_at</code> e <code>updated_at</code> no schema de saída dos endpoints. Para que esse valores sejam retornados na API. Essa alteração deve ser refletida nos testes também!</li>
 <li>Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no <code>Todo</code> de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.</li>
-<li>Crie um teste para validar o caso do <code>Enum</code> em <a href="/10/#__codelineno-2-44" target="_blank"><code>state: Mapped[TodoState]</code></a> na tabela <code>TODO</code>, onde o valor esteja fora dos valores mapeados por ele. Isso forçará um erro que pode ser validado com <a href="https://docs.pytest.org/en/4.6.x/reference.html#pytest-raises" target="_blank"><code>pytest.raises</code></a></li>
+<li>Crie um teste para validar o caso do <code>Enum</code> em <a href="#__codelineno-2-44" target="_blank"><code>state: Mapped[TodoState]</code></a> na tabela <code>TODO</code>, onde o valor esteja fora dos valores mapeados por ele. Isso forçará um erro que pode ser validado com <a href="https://docs.pytest.org/en/4.6.x/reference.html#pytest-raises" target="_blank"><code>pytest.raises</code></a></li>
 </ol>
 <p><a class="md-button" href="../exercicios_resolvidos/aula_10/">Exercícios resolvidos <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg></span></a></p>
 <h2 id="conclusao">Conclusão</h2>
@@ -3272,11 +3272,11 @@ function resetFieldset(fieldset) {
   <span class="md-source-file__fact">
     <span class="md-icon" title="Colaboradores">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      dunossauro
+      dunossauro, Not Committed Yet
     </nav>
   </span>
 
