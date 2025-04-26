@@ -2292,7 +2292,15 @@
 </blockquote>
 <details class="danger" open="open">
 <summary>Sobre as verões das bibliotecas instaladas</summary>
-<p>A última atualização dos pacotes deste material foi feita em: <strong>26/04/2025 às 01:06</strong>.Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="apendices/c_versoes_usadas.md">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
+<div class="language-text highlight"><pre><span></span><code>```python exec="on"
+</code></pre></div>
+<p>from pathlib import Path
+from datetime import datetime
+target = Path('codigo_das_aulas/13/pyproject.toml')
+modified = target.stat().st_ctime
+print(f'A última atualização dos pacotes deste material foi feita em: <strong>{datetime.fromtimestamp(modified).strftime("%d/%m/%Y às %H:%M")}</strong>.')
+```</p>
+<p>Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="../apendices/c_versoes_usadas/">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
 </details>
 <h2 id="pipx">pipx</h2>
 <p>O <a href="https://pipx.pypa.io/latest/" target="_blank">pipx</a> é uma ferramenta usada para instalar e executar ferramentas Python globalmente no sistema de forma segura. Diferente do <strong>pip</strong>, que instala ferramentas sem um ambiente virtual (por padrão) e pode "sujar" nosso ambiente, o <code>pipx</code> cria um ambiente virtual e isola cada ferramenta dentro dele, facilitando a instalação de pacotes globais.</p>
@@ -3287,7 +3295,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, Julio Formiga, Renne Rocha
+      dunossauro, Not Committed Yet, Julio Formiga, Renne Rocha
     </nav>
   </span>
 

@@ -1838,7 +1838,15 @@
 <div><h1 id="a-instalando-as-ferramentas-externas">A - Instalando as ferramentas externas</h1>
 <details class="danger" open="open">
 <summary>Sobre as verões das bibliotecas instaladas</summary>
-<p>A última atualização dos pacotes deste material foi feita em: <strong>26/04/2025 às 01:06</strong>.Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="apendices/c_versoes_usadas.md">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
+<div class="language-text highlight"><pre><span></span><code>```python exec="on"
+</code></pre></div>
+<p>from pathlib import Path
+from datetime import datetime
+target = Path('codigo_das_aulas/13/pyproject.toml')
+modified = target.stat().st_ctime
+print(f'A última atualização dos pacotes deste material foi feita em: <strong>{datetime.fromtimestamp(modified).strftime("%d/%m/%Y às %H:%M")}</strong>.')
+```</p>
+<p>Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="../c_versoes_usadas/">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
 </details>
 <p>Durante as aulas síncronas, diversas dúvidas sobre a configuração e instalação das ferramentas fora do python foram levantadas. A ideia dessa página é te auxiliar nas instalações.</p>
 <p>São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na <a href="../../01/" target="_blank">página de configuração do projeto</a>. A ideia é agrupar todas as instalações um único lugar.</p>
@@ -2049,11 +2057,11 @@ function resetFieldset(fieldset) {
   <span class="md-source-file__fact">
     <span class="md-icon" title="Colaboradores">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      dunossauro
+      dunossauro, Not Committed Yet
     </nav>
   </span>
 
