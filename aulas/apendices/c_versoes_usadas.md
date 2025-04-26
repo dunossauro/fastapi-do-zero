@@ -1,5 +1,7 @@
 # C - Versões das bibliotecas
 
+{% include "templates/versoes.md" %}
+
 ## Bibliotecas do projeto
 
 ```toml

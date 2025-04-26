@@ -1,6 +1,7 @@
 # A - Instalando as ferramentas externas
 
-{% include "templates/versoes.md" %}
+{% include "templates/versoes.md" %} 
+	Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o [apêndice C](../apendices/c_versoes_usadas.md) contém todas as versões usadas no ambiente de forma detalhada.
 
 Durante as aulas síncronas, diversas dúvidas sobre a configuração e instalação das ferramentas fora do python foram levantadas. A ideia dessa página é te auxiliar nas instalações.
 
