@@ -133,7 +133,7 @@ Prazer! Eu me chamo Eduardo. As pessoas me conhecem na internet como [@dunossaur
 ![Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo](assets/readme/dunossauro.jpg){ align=left width="300" .shadow}
 <div markdown>
 
-Sou um programador Python muito apaixonado e curioso. Toco um projeto pessoal semanal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há quase 8 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
+Sou um programador Python muito apaixonado e curioso. Toco um projeto pessoal semanal chamado [Live de Python](https://www.youtube.com/@Dunossauro){:target="_blank"} há pouco mais de 8 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.
 
 Adoro escrever (estamos aqui, não é mesmo?), programar coisas malucas, fazer música com programação e papear sobre software livre, computabilidade e IndieWeb.
 
@@ -185,6 +185,9 @@ Toda essa página foi escrita em markdown usando as seguintes bibliotecas:
 - [mkdocs-towncrier](https://github.com/davfsa/mkdocs-towncrier){:target="_blank"}: Extensão para exibir os changelogs do [towncrier](https://towncrier.readthedocs.io/en/stable/index.html) no mkdocs
 - [Mkdocs-quiz](https://github.com/skyface753/mkdocs-quiz){:target="_blank"}: Para os questionários sobre as aulas
 - [mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Para exibir os vídeos do youtube nas páginas
+- [mkdocs-macros](https://mkdocs-macros-plugin.readthedocs.io/en/latest/){:target="_blank"}: Para criação de macros e variações de textos usando variáveis
+- [mike](https://github.com/jimporter/mike){:target="_blank"}: Para manter múltiplas versões do mkdocs online
+- [jinja2](https://jinja.palletsprojects.com/en/stable/){:target="_blank"}: Para escrever blocos reutilizáveis
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
 - [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Para criar a animação no topo dessa página
 - [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Para exibir a animação do Glaxnimate
