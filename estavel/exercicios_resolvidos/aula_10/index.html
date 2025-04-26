@@ -1999,8 +1999,8 @@
 </span></code></pre></div>
 <details class="warning">
 <summary>sqlalchemy.exc.OperationalError: (sqlite3.OperationalError)</summary>
-<p>Caso você receba esse erro ao aplicar a migração, recomendo que veja a <a href="https://youtu.be/yQtqkq9UkDA">Live de Python #211</a> sobre <code>migrações e bancos de dados evolutivos</code> (recomendada no texto <a href="/04/#instalando-o-alembic-e-criando-a-primeira-migracao" target="_blank">da aula 04 - "Caso nunca tenha trabalhado com Migrações"</a>).</p>
-<p>No minuto <a href="https://youtu.be/yQtqkq9UkDA?t=5313">1:28:33</a> o motivo e a solução desse erro são abordados em mais detalhes.</p>
+<p>Caso você receba esse erro ao aplicar a migração, recomendo que veja a <a href="https://youtu.be/yQtqkq9UkDA">Live de Python #211</a> sobre <code>migrações e bancos de dados evolutivos</code> (recomendada no texto <a href="../../04/#instalando-o-alembic-e-criando-a-primeira-migracao" target="_blank">da aula 04 - "Caso nunca tenha trabalhado com Migrações"</a>).</p>
+<p>No minuto <a href="https://youtu.be/yQtqkq9UkDA?t=5313" target="_blank">1:28:33</a> o motivo e a solução desse erro são abordados em mais detalhes.</p>
 <p>Mas, em resumo, isso é um problema causado pelo modo como o python se comunica com o sqlite, fazendo com que cada alteração no banco seja aplicado linha, a linha.
 Para fazer todas as modificações de uma vez, usamos as <code>operações em batch</code>.
 A ideia é abrir uma única conexão com o banco de dados e executar determinadas operações para todas as linhas antes da conexão ser fechada.</p>
