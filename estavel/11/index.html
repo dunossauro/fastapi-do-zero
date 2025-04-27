@@ -2755,7 +2755,7 @@
 <details class="bug" open="open">
 <summary>Problemas no <code>Windows</code>, pscycopg e asyncio</summary>
 <p>Existe um comportamento indesejável ao executar o pscycopg de forma assíncrona no windows (<a href="https://www.psycopg.org/psycopg3/docs/advanced/async.html#asynchronous-operations" target="_blank">link para o problema</a>).</p>
-<p>O <a href="http://localhost:8080/08/#loop-de-eventos" target="_blank">loop de eventos</a> padrão tem alguns problemas para executar as terefas com o postgres no <strong><code>Windows</code></strong>. Para contornar isso, podemos adicionar manualmente o loop de eventos do windows ao asyncio, para que tudo seja executado corretamente:</p>
+<p>O <a href="../08/#loop-de-eventos" target="_blank">loop de eventos</a> padrão tem alguns problemas para executar as terefas com o postgres no <strong><code>Windows</code></strong>. Para contornar isso, podemos adicionar manualmente o loop de eventos do windows ao asyncio, para que tudo seja executado corretamente:</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-29-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-29-3"> 3</a></span>
@@ -3193,7 +3193,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="27 de abril de 2025 05:03:16">27 de abril de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="27 de abril de 2025 05:21:45">27 de abril de 2025</span>
   </span>
 
     
