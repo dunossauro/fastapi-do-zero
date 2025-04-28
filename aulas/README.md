@@ -123,7 +123,7 @@ Alguns outros tópicos não relativos a python também serão abordados. Então,
 13. [Fazendo o deploy no Fly.io](13.md){:target="_blank"}
 14. [Despedida e próximos passos](14.md){:target="_blank"}
 
-Após todas as aulas, se você sentir que ainda quer evoluir mais e testar seus conhecimentos, [temos um projeto final](14.md){:target="_blank"} para avaliar o quanto você aprendeu.
+Após todas as aulas, se você sentir que ainda quer evoluir mais e testar seus conhecimentos, [temos um projeto final](15.md){:target="_blank"} para avaliar o quanto você aprendeu.
 
 ### 🦖 Quem vai ministrar essas aulas?
 
@@ -213,10 +213,13 @@ Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API e
 
 Nos vemos na primeira aula. ❤
 
-## F.A.Q.
+## ❓ F.A.Q.
 
-Perguntas frequentes que me fizeram durante os vídeos:
+Perguntas frequentes não técnicas que me fizeram durante as aulas:
 
-- Que papel de parede é esse? [É uma foto do Liam Wong](https://www.tumblr.com/liamwong){:target="_blank"}
-- Qual o tema no shell? Todo o meu tema do Gnome foi customizado com [Gradience](https://gradienceteam.github.io/){:target="_blank"} o tema é [Pretty In Purple](https://www.gnome-look.org/p/2031597){:target="_blank"}
-- Qual o tema do seu editor? [Rebecca](https://github.com/vic/rebecca-theme){:target="_blank"}
+- Que papel de parede é esse? [É uma foto do Liam Wong](https://www.tumblr.com/liamwong){:target="_blank"}.
+- Qual sistema operacional está usando? Eu uso GNU/Linux, a distribuição é o [EndeavourOS](https://endeavouros.com/){:target="_blank"}.
+- Qual terminal está usando? O [Terminator](https://gnome-terminator.org/){:target="_blank"}.
+- Qual editor de texto está usando? O [GNU/Emacs](https://www.gnu.org/software/emacs/){:target="_blank"}.
+- Qual o tema que está suando no sistema? O [Catppuccin Mocha](https://catppuccin.com/){:target="_blank"}. Eu uso ele no shell e no editor de texto.
+- Onde estão suas configurações do sistema? Em [https://dunossauro.com/dotfiles](https://dunossauro.com/dotfiles){:target="_blank"}.
