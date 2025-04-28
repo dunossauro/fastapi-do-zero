@@ -11,7 +11,8 @@ style: |
 
 # 01 - Configurando o Ambiente de Desenvolvimento
 
-> https://fastapidozero.dunossauro.com/01/
+> https://fastapidozero.dunossauro.com/4.0/01/
+
 ---
 
 # Objetivos dessa aula:
@@ -27,27 +28,33 @@ style: |
 # O ambiente de desenvolvimento
 
 1. Um editor de texto a sua escolha (Eu vou usar o [GNU/Emacs](https://www.gnu.org/software/emacs/))
+   - Kate, vim, emacs, vscodium, ...
 2. Um terminal a sua escolha (Usarei o [Terminator](https://gnome-terminator.org/))
-3. A versão 3.11+ do Python instalada.
-	- Caso não tenha essa versão você pode baixar do site oficial
-	- Ou instalar via [pyenv](https://github.com/pyenv/pyenv)
+   - Ghostty, tilix, iTerm2, windows terminal (WSL/Powershell)
+3. Uma versão [suportada](https://devguide.python.org/versions/) do python
+   - 3.9+
 4. O [pipx](https://github.com/pypa/pipx) pode te ajudar bastante nesses momentos de instalações globais
+   - Que vamos instalar juntos
 
 ---
 
 # O ambiente de desenvolvimento
 
-5. O [Poetry](https://python-poetry.org/) para gerenciar os pacotes e seu ambiente virtual (caso não conheça o poetry temos uma [live de python sobre ele](https://youtu.be/ZOSWdktsKf0))
+5. O [Poetry](https://python-poetry.org/) (2+) para:
+   - Gerenciar os pacotes
+   - Instalações de versões do python; e
+   - Ambiente virtual
 6. [Git](https://git-scm.com/): Para gerenciar versões
 7. [Docker](https://www.docker.com/): Para criar um container da nossa aplicação
+   - Aula 11 pra frente
 
-> Presentes no apêndice A também :)
+> Presentes no [apêndice A](https://fastapidozero.dunossauro.com/4.0/apendices/a_instalacoes/) também :)
 
 ---
 
 # Caso seja preciso
 
-Materiais de qualidades e de pessoas incrível que fazem material aberto como eu:
+Materiais de qualidades e de pessoas incrível que fazem materiais abertos como eu:
 
 1. [Curso de git do teomewhy](https://www.youtube.com/playlist?list=PLvlkVRRKOYFQ3cfYPjLeQ0KvrQ8bG5H11)
 2. [Curso de Docker da LinuxTips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
@@ -55,54 +62,25 @@ Materiais de qualidades e de pessoas incrível que fazem material aberto como eu
 
 ---
 
-# Python 3.13
+# Configuração do ambiente (pipx)
 
-Se você precisar (re)construir o ambiente usado nesse curso, é **extremamente recomendado** que você use o [pyenv](https://github.com/pyenv/pyenv).
+Como nem todo mundo conhece as ferramentas, vamos iniciar com a instalação do pipx. `pipx` é um instalador de pacotes globais do python, geralmente usado para bibliotecas de terminal, que são e`X`ecutáveis.
 
-```bash
-pyenv update
-pyenv install 3.13:latest
+```
+pip install --user pipx    # windows
+python -m pipx ensurepath  # windows
+
+sudo apt/dnf install pipx  # linux
+pipx ensurepath            # linux
 ```
 
-> Momento de uma pausa dramática!
-
 ---
 
-# Pyenv
-
-Pyenv é uma aplicação externa ao python que permite a instalação de diferentes versões do python no sistema e as isola.
-
-Na computação, chamamos esse conceito de [shim](https://en.wikipedia.org/wiki/Shim_(computing)). Uma camada, onde toda vez que o python for chamado, ele redirecionará a chamada do python ao pyenv. Uma espécie de "proxy".
-
-
-<div class="mermaid">
-graph LR
-  A["Executando o python no terminal"] --> pyenv
-  pyenv["Pyenv shim"] --> questao{"existe '.python-version'?"}
-  questao -->|sim| B["Execute esta versão instalada no pyenv"]
-  questao -->|não| C["Use a versão global do pyenv"]
-</div>
-
----
-
-# Instalação do pyenv
-
-É o famoso depende... Qual SO? Qual versão? Qual arquitetura?
-
-- Linux: https://github.com/pyenv/pyenv-installer
-    - vamos fazer juntos
-- MacOS: https://github.com/pyenv/pyenv-installer
-- Windows: https://pyenv-win.github.io/pyenv-win/
-    - vamos fazer juntos
-
----
-
-# Poetry
+# Configuração do ambiente (poetry)
 
 Para instalar o poetry você pode fazer a instalação recomendada pelo site ou de forma mais simplificada via pipx
 
 ```bash
-pip install pipx
 pipx install poetry
 pipx inject poetry poetry-plugin-shell
 ```
@@ -113,7 +91,7 @@ pipx inject poetry poetry-plugin-shell
 
 Isso pode te ajudar a ter menos dificuldade, caso trave em algum lugar
 
-> https://fastapidozero.dunossauro.com/apendices/instalacoes/
+> https://fastapidozero.dunossauro.com/4.0/apendices/a_instalacoes/
 
 ---
 
@@ -122,7 +100,7 @@ Isso pode te ajudar a ter menos dificuldade, caso trave em algum lugar
 Vamos criar nossa estrutura com base na estrutura simples que o Poetry cria para nós.
 
 ```bash
-poetry new fast_zero
+poetry new --flat fast_zero
 cd fast_zero
 ```
 
@@ -133,22 +111,29 @@ isso vai nos gerar essa estrutura:
 ├── fast_zero
 │  └── __init__.py
 ├── poetry.lock
+├── pyproject.yoml
 ├── README.md
 └── tests
    └── __init__.py
 ```
 ---
-## Contornando possíveis erros
 
-Para que a versão que instalamos com pyenv seja usada em nosso projeto criado com poetry, devemos dizer ao pyenv qual versão do python será usada nesse diretório:
+## A versão do python
 
-```shell title="$ Execução no terminal!"
-pyenv local 3.13.0  # Essa era a maior versão do 3.13 quando escrevi
+Uma boa prática é sempre usar a maior versão **possível** do python no projeto. Nem sempre todas as bibliotecas suportam a versão mais recente, mas no nosso caso, tudo funciona na `3.13`:
+
+```shell
+poetry python install 3.13  # Mais atual hoje!
+poetry env use 3.13         # Pra usar essa versão no projeto
 ```
+
+---
+
+## A versão do python
 
 Em conjunto com essa instrução, devemos dizer ao poetry que usaremos essa versão em nosso projeto. Para isso vamos alterar o arquivo de configuração do projeto o `pyproject.toml` na raiz do projeto:
 
-```toml title="pyproject.toml" linenums="9"
+```toml
 [project]
 #...
 requires-python = ">=3.13,<4.0"
@@ -391,7 +376,7 @@ Bom, esses comandos são bem difíceis de lembrar e mais chatos ainda de digitar
 
 
 ```bash
-ruff check .               .        # para checar
+ruff check .                        # para checar
 ruff format .                       # para formatar
 fastapi dev fast_zero/app.py        # para rodar a aplicação
 pytest --cov=fast_zero -vv          # teste
@@ -450,16 +435,28 @@ post_test = 'coverage html'
 Em outros momentos, queremos fazer uma coisa, só se a primeira der certo, para isso podemos fazer:
 
 ```toml
-pre_format = 'ruff check --fix'
 pre_test = 'task lint'
+test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
 ```
+
+<div class="mermaid">
+graph LR
+    pre_task --> task
+	task --> post_task
+</div>
 
 primeiro a task de lint, se der certo, test, se der certo, coverage :)
 
 ---
 
-# Testando o nosso hello world
+# Voltando ao código
+
+> Aos testes, na verdade!
+
+---
+
+## Testando o nosso hello world
 
 Dentro da pasta `test` vamos criar um arquivo chamado `test_app.py`
 
@@ -516,11 +513,9 @@ gh repo create
 
 Crie um repositório para acompanhar o curso e suba em alguma plataforma, como [Github](https://github.com/), [gitlab](https://gitlab.com/), [codeberg](https://codeberg.org/), etc. E compartilhe o link no [repositório do curso](https://github.com/dunossauro/fastapi-do-zero/issues/91) para podermos aprender juntos.
 
-> Não se esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_01/) dessa aula
+> Não se esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_01/) dessa aula
 
 
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">
