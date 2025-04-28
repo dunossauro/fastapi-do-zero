@@ -75,7 +75,7 @@ Vamos construir um "todo list", uma ferramenta para gerenciar tarefas "a fazer".
 
 # Acessar alguns links aqui :)
 
-- O projeto final, deve se parecer com isso: [fast_zero](https://github.com/dunossauro/fastapi-do-zero/tree/v4.0.1/codigo_das_aulas/13)
+- O projeto final, deve se parecer com isso: [fast_zero](https://github.com/dunossauro/fastapi-do-zero/tree/v4.0/codigo_das_aulas/13)
 - Em produção: [no deploy](https://fastzeroapp.fly.dev/)
 - Ambiente de CI: [Github Actions](https://github.com/dunossauro/fast_zero/actions)
 
@@ -174,7 +174,7 @@ ul {
 1. Em texto, para quem prefere ler
     - https://fastapidozero.dunossauro.com/
 2. Em aulas síncronas: Para quem precisa do compromisso de estar junto
-    - Datas dos encontros: https://fastapidozero.dunossauro.com/4.0.1/aulas/2025/
+    - Datas dos encontros: https://fastapidozero.dunossauro.com/4.0/aulas/2025/
 	- **Estamos aqui!**
 	- A lives ficarão salvas para ver depois :)
 3. A edição de 2024 está completamente disponível, se estiver com pressa
@@ -211,7 +211,7 @@ Alguns outros tópicos não relativos a Python também serão abordados. Então,
 
 # Programação
 
-> https://fastapidozero.dunossauro.com/4.0.1/aulas/2025/
+> https://fastapidozero.dunossauro.com/4.0/aulas/2025/
 
 ---
 
@@ -238,7 +238,7 @@ Sei que existem estilos diferentes de estudo que funcionam melhor para cada pess
 ---
 
 # O projeto final
-> https://fastapidozero.dunossauro.com/4.0.1/15/
+> https://fastapidozero.dunossauro.com/4.0/15/
 
 ---
 
@@ -246,7 +246,7 @@ Sei que existem estilos diferentes de estudo que funcionam melhor para cada pess
 
 Ao final do curso, temos um material bem descritivo, em um formato de um teste técnico (sim, aqueles que as empresas cobram). Pode ser interessante fazê-lo. Tanto para fixação, quanto para fazer suas próprias escolhas de design e estruturas.
 
-As instruções estão aqui: https://fastapidozero.dunossauro.com/4.0.1/15/
+As instruções estão aqui: https://fastapidozero.dunossauro.com/4.0/15/
 
 ---
 
@@ -256,9 +256,9 @@ O texto anda em um ritmo bem mais rápido que os vídeos.
 
 Logo, a versão do texto que usaremos agora é a `4.0.*`
 
-Atualmente é a 4.0.1:
+Atualmente é a tag 4.0.1, os fixes estão todos na versão 4.0:
 
-https://fastapidozero.dunossauro.com/4.0.1
+https://fastapidozero.dunossauro.com/4.0
 
 ---
 
