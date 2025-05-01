@@ -515,6 +515,16 @@ Crie um repositório para acompanhar o curso e suba em alguma plataforma, como [
 
 > Não se esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_01/) dessa aula
 
+---
+
+## Suplementar / Para próxima aula
+
+Caso o mundo dos testes ainda seja um pouco nebuloso para você, recomendo que antes de partir para a próxima aula, você dê uma assistida em algumas lives de python de fora desse curso:
+
+- [Uma introdução aos testes: Como fazer? | Live de Python #232](https://youtu.be/-8H2Pyxnoek)
+- [Pytest: Uma introdução - Live de Python #167](https://youtu.be/MjQCvJmc31A)
+- [Pytest Fixtures - Live de Python #168](https://youtu.be/sidi9Z_IkLU)
+
 
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
