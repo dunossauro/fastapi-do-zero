@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Estruturando o Projeto e Criando Rotas do CRUD
 
-> https://fastapidozero.dunossauro.com/03/
+> https://fastapidozero.dunossauro.com/4.0/03/
 
 ---
 
@@ -150,7 +150,7 @@ Temos um de-para de chaves e tipos.
 
 ---
 
-# O pydantic têm dados além do python
+# O pydantic têm tipos além do python
 
 Validação de emails podem ser melhores:
 
@@ -461,18 +461,21 @@ def test_update_user(client):
 2. Escrever um teste para o erro de `404` (NOT FOUND) para o endpoint de DELETE;
 3. Crie um endpoint GET para pegar um único recurso como `users/{id}` e faça seus testes para `200` e `404`.
 
-> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_03/) da aula
+> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_03/) da aula
 
 ---
 
-# Antes de terminar
+## Suplementar / Para próxima aula
 
-Um pedido carinhoso!
+Para próxima aula, caso você não tenha nenhuma familiaridade com o SQLAlchemy ou com o Alembic, recomendo que assista a essas lives para se preparar e nivelar um pouco o conhecimento sobre essas ferramentas:
 
-Assistam as lives sobre migrações e sobre SQLAlchemy para se prepararem melhor para absorver o conteúdo da próxima aula!
+- [SQLAlchemy: conceitos básicos, uma introdução a versão 2 | Live de Python #258](https://youtu.be/t4C1c62Z4Ag)
+- [Migrações, bancos de dados evolutivos (Alembic e SQLAlchemy) | Live de Python #211](https://youtu.be/yQtqkq9UkDA)
 
-- [Live sobre SQLAlchemy - #258](https://youtu.be/t4C1c62Z4Ag)
-- [Live sobre Migrações - #211](https://youtu.be/yQtqkq9UkDA)
+Outro recurso que usaremos na próxima aula e pode te ajudar saber um pouco, são as variáveis de ambiente. Tema abordado em:
+
+- [Variáveis de ambiente, dotenv, constantes e configurações | Live de Python #207](https://youtu.be/DiiKff1z2Yw)
+
 
 ---
 
