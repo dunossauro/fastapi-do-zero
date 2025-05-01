@@ -4,7 +4,7 @@ theme: rose-pine
 ---
 
 # Introdução ao desenvolvimento WEB
-> https://fastapidozero.dunossauro.com/02/
+> https://fastapidozero.dunossauro.com/4.0/02/
 
 ---
 
@@ -428,7 +428,7 @@ Se iniciarmos o nosso servidor `task run` e entrarmos nas documentações, podem
 
 Crie um novo endpoint em `fast_zero/app.py` que retorne "olá mundo" usando HTML e escreva seu teste em `tests/test_app.py`. Dica: para capturar a resposta do HTML do cliente de testes, você pode usar response.text
 
-quiz: https://fastapidozero.dunossauro.com/quizes/aula_02/
+quiz: https://fastapidozero.dunossauro.com/4.0/quizes/aula_02/
 
 ---
 
