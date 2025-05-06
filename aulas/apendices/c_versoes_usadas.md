@@ -14,6 +14,10 @@
 --8<-- "codigo_das_aulas/13/pyproject.toml:23:32"
 ```
 
+### Lock de todo o ambiente
+
+O lock do projeto final pode ser encontrado [aqui!](https://github.com/dunossauro/fastapi-do-zero/blob/{{current_tag}}/codigo_das_aulas/13/poetry.lock){:target="_blank"}
+
 ## Ferramentas de gerenciamento do ambiente
 
 ```bash exec="1"
