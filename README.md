@@ -89,7 +89,13 @@ towncrier build --version 4.0.2
 
 ### 2. Atualizar o pyproject
 
-A versão deve ser atualizada no campo `project.version`
+A versão deve ser atualizada no campo `project.version`:
+
+```toml
+[project]
+name = "fastapi-do-zero"
+version = "4.0.2"
+```
 
 ### 3. Atualizar tag `current_version` no mkdocs
 
