@@ -250,6 +250,14 @@ As instruções estão aqui: https://fastapidozero.dunossauro.com/4.0/15/
 
 ---
 
+# Vai ter certificado?
+
+Pretendo emitir um certificado **simbólico** de participação para quem entregar o projeto final até **nov/25**
+
+[certificado](https://github.com/dunossauro/fastapi-do-zero/blob/main/stuff/exemplo_certificado.png)
+
+---
+
 # Considerações **MUITO** importantes
 
 O texto anda em um ritmo bem mais rápido que os vídeos.
