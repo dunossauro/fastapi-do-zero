@@ -1,3 +1,56 @@
+# 4.0.1 (2025-05-06)
+
+## Prontos principais da release
+
+- Atualização das bibliotecas
+- Versionamento das páginas do curso via mike
+- Atualização dos primeiros slides para apresentação de 2025
+
+### Adicionado
+
+- Lock no apendice C
+
+### Correções
+
+- Todos os links agora contam com target blank, iniciado por [ThiagoEidi](https://github.com/ThiagoEidi) ([#337](https://github.com/dunossauro/fastapi-do-zero/issues/337))
+- Links absolutos na versão estável ([#348](https://github.com/dunossauro/fastapi-do-zero/issues/348))
+- Corrigindo typos (secutiry -> security), por [@nothiel](https://github.com/nothiel)
+
+### Alterado
+
+- Nota de revisão sobre env files no docker recebeu mais insumos
+- Simplificações de texto na página inicial
+
+### Atualizações
+
+- Novas respostas sobre ambiente no F.A.Q.
+- `FastAPI` 0.115.11 -> 0.115.12
+- `alembic` 1.15.1 -> 1.15.2
+- `poetry` 2.1.1 -> 2.1.3
+- `psycopg[binary]` 3.2.6 -> 3.2.7
+- `pytest-asyncio` 0.25 -> 0.26
+- `pytest-cov` 6.0 -> 6.1.1
+- `ruff` 0.10.0 -> 0.11.8
+- `sqlalchemy` 2.0.39 -> 2.0.40
+- `testcontainers` 4.9.2 -> 4.10
+
+### Interno
+
+- Versionamento no material de texto ([#345](https://github.com/dunossauro/fastapi-do-zero/issues/345))
+- Remoção do export para pdf das páginas ([#346](https://github.com/dunossauro/fastapi-do-zero/issues/346))
+- Macros para tags de redirecionamento correto de slides de códigos para versões 4+ ([#347](https://github.com/dunossauro/fastapi-do-zero/issues/347))
+- [quiz] Ao clicar no label do form, agora o id é mapeado corretamente. Por [@EvandroNetoo](https://github.com/EvandroNetoo) ([#352](https://github.com/dunossauro/fastapi-do-zero/issues/352))
+- Atualização typos `1.30.2` -> `1.32.0`
+- `mkdocs-material` 9.6.8 -> 9.6.12
+
+### Slides
+
+- Revisão `00` para 4.0.1 ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+- Revisão `01` para 4.0.1 ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+- Revisão `02` para 4.0.1 ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+- Revisão `03` para 4.0.1 ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+
+
 # 4.0 (2025-03-13)
 
 ## Prontos principais da release
