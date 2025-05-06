@@ -75,17 +75,56 @@ Para executar qualquer comando, basta usar: `task <comando>`, como por exemplo `
 Todos os slides foram feitos usando marp. Versão do marp usada: `4.0.3`. O tema `rose-pine` está dentro da pasta dos slides brutos.
 
 
-## Gerar nova release
+## Passos para gerar nova release
 
 > TODO: Deixar isso melhor documentado
 
-- Criar uma release no towncrier
-- Criar a tag do git
-- Criar uma release no mike na tag e dá push
-- Sobe a release com `task deploy`
+### 1. Fazer o build dos changelogs
 
+`towncrier build --version <versao>`, algo como:
 
-### Caso a documentação antiga precise ser atualizada (> 4.0)
+```bash
+towncrier build --version 4.0.2
+```
+
+### 2. Atualizar o pyproject
+
+A versão deve ser atualizada no campo `project.version`
+
+### 3. Atualizar tag `current_version` no mkdocs
+
+```yaml
+# ... mkdocs.yml
+extra:
+  current_tag: v4.0.2 # para tag
+```
+
+### 4. Fazer o commit
+
+```bash
+git add .
+git commit -m "Upadate para v4.0.2"
+```
+
+### 5. Criar a tag do git
+
+```bash
+git tag v4.0.2
+git push --tags
+```
+
+### 6. Criar versão do mike
+
+> TODO: Isso só vale para majors
+
+### 7. Fazer o deploy atualizado
+
+```bash
+mike deploy --push 4.0  # atualizar a versão
+task deploy             # atualizar a estável
+```
+
+#### Caso a documentação antiga precise ser atualizada (> 4.0)
 
 O `mike` foi introduzido após a v4.0. Você precisa aplicar o diff abaixo, caso precise atualizar algo:
 
