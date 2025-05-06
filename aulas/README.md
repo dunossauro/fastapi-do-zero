@@ -9,15 +9,14 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 # FastAPI do ZERO
 
 {%set aula = "00" %}
-{%set link = "QShMRcicxnE" %}
-
+{%set link = "ImhYlISeWPQ" %}
 
 ??? tip "Caso prefira ver a apresentação do curso em vídeo"
 	Esse aula ainda não está disponível em formato de vídeo, somente em texto ou live!
 	![type:video](https://www.youtube.com/embed/{{link}})
 
 	[Aula :fontawesome-brands-youtube:](https://youtu.be/{{link}}?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){ .md-button }
-	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/main/slides/pdf/aula_{{aula}}.pdf){ .md-button }
+	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/{{current_tag}}/slides/pdf/aula_{{aula}}.pdf){ .md-button }
 
 > Esse material passa por atualizações periódicas. Você pode acompanhar as notas de alterações [aqui](alteracoes.md){:target="_blank"}.
 
@@ -71,6 +70,7 @@ Esse material será disponibilizado em duas formas diferentes:
 1. Em livro texto: todo o material está disponível nessa página;
 2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo.
     - [**Datas de 2025 já disponíveis**](aulas/2025.md){:target="_blank"}.
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3KT9ZWvPmaGFQ0KjIez0403" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 	- Playlist das apresentações de 2024:
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
