@@ -2,8 +2,6 @@
 
 O site gerado por esse repositório está disponível em: [fastapidozero.dunossauro.com](https://fastapidozero.dunossauro.com).
 
-> O objetivo final desse curso é que ele também seja disponibilizado em vídeo quando a escrita do material terminar. Nos vemos no youtube em breve!
-
 O objetivo desse projeto é ensinar FastAPI para pessoas que queiram ter o seu primeiro contato com o mesmo. A ideia padrão é construir uma aplicação pequena e simples, mas executando todos os passos até o deploy.
 
 As Aulas estão dividas em:
@@ -62,17 +60,18 @@ Os comandos para executar funções como deploy, servidor local, geração de sl
 ```bash
 task --list
 serve       Executa o servidor local do mkdocs
-deploy      Faz o deploy da página em produção
+mserve      Executa o servidor local do mkdocs via mike
+deploy      Faz o deploy da página em produção usando mike
 slides      Gera os slides em pdf
 slides_html Gera os slides em html (formato usado nas aulas)
-pdf         Cria um pdf único de todo o curso (não otimizado ainda)
+ruff        ruff check
 ```
 
 Para executar qualquer comando, basta usar: `task <comando>`, como por exemplo `task serve`.
 
 #### Sobre os slides
 
-Todos os slides foram feitos usando marp. Versão do marp usada: `4.0.3`. O tema `rose-pine` está dentro da pasta dos slides brutos.
+Todos os slides foram feitos usando marp. Versão do marp usada: `4.0.3`. O tema `rose-pine`, com algumas modificações, está dentro da pasta dos slides brutos.
 
 
 ## Passos para gerar nova release
