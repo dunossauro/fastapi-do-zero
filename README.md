@@ -40,7 +40,7 @@ pipx inject poetry poetry-plugin-shell
 A versão usada do python é a versão 3.13.2:
 
 ```
-pyenv local 3.13.2
+poetry python install 3.13
 ```
 
 para configurar todo o ambiente basta executar:
