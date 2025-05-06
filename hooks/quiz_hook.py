@@ -12,12 +12,14 @@ def format_quiz(source, *args, **kwargs):
 
     ops = []
     for chave, valor in block['opcoes'].items():
+        input_id = f'{block['questao'][:2]}-{chave}'
+
         if chave == block['correta']:
             ops.append(
                 f"""
             <div>
-            <input type="radio" name="answer" value="{valor}" id="{chave}" correct="">
-            <label for="{chave}">{valor}</label>
+            <input type="radio" name="answer" value="{valor}" id="{input_id}" correct="">
+            <label for="{input_id}">{valor}</label>
             </div>
             """
             )
@@ -25,8 +27,8 @@ def format_quiz(source, *args, **kwargs):
             ops.append(
                 f"""
             <div>
-            <input type="radio" name="answer" value="{valor}" id="{chave}">
-            <label for="{chave}">{valor}</label>
+            <input type="radio" name="answer" value="{valor}" id="{input_id}">
+            <label for="{input_id}">{valor}</label>
             </div>
             """
             )
