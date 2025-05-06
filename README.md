@@ -127,7 +127,6 @@ git push --tags
 
 ```bash
 mike deploy --push 4.0  # atualizar a versão
-task deploy             # atualizar a estável
 ```
 
 #### Caso a documentação antiga precise ser atualizada (> 4.0)
