@@ -173,7 +173,23 @@ Pontos de atenção:
 4. Uma conta no [Github](https://github.com/){:target="_blank"}: para podermos testar com Github Actions;
 5. Uma conta no [Fly.io](https://fly.io/){:target="_blank"}: ferramenta que usaremos para fazer deploy.
 
+## Conclusão
+
+Neste curso, a intenção é fornecer uma compreensão completa do framework FastAPI, utilizando-o para construir uma aplicação de gerenciamento de tarefas. O aprendizado será focado na prática, e cada conceito será acompanhado por exemplos e exercícios relevantes.
+
+A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.
+
+Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.
+
+Nos vemos na primeira aula. ❤
+
+---
+
 ## 🔧 Ferramentas de apoio
+
+Todo o conteúdo deste material foi produzido **intencionalmente** com ferramentas [FLOSS](https://pt.wikipedia.org/wiki/Software_livre_e_de_c%C3%B3digo_aberto){:target="_blank"}.
+
+### 📝 Para a página
 
 Toda essa página foi escrita em markdown usando as seguintes bibliotecas:
 
@@ -188,31 +204,36 @@ Toda essa página foi escrita em markdown usando as seguintes bibliotecas:
 - [mkdocs-video](https://github.com/soulless-viewer/mkdocs-video){:target="_blank"}: Para exibir os vídeos do youtube nas páginas
 - [mkdocs-macros](https://mkdocs-macros-plugin.readthedocs.io/en/latest/){:target="_blank"}: Para criação de macros e variações de textos usando variáveis
 - [mike](https://github.com/jimporter/mike){:target="_blank"}: Para manter múltiplas versões do mkdocs online
+
+Ferramentas que não fazem parte do ecossistema markdown, mas se misturam:
+
 - [jinja2](https://jinja.palletsprojects.com/en/stable/){:target="_blank"}: Para escrever blocos reutilizáveis
 - [Mermaid.js](https://mermaid-js.github.io/mermaid/){:target="_blank"}: Construção dos diagramas
 - [Glaxnimate](https://glaxnimate.mattbas.org/){:target="_blank"}: Para criar a animação no topo dessa página
 - [Lottie-Player](https://github.com/LottieFiles/lottie-player){:target="_blank"}: Para exibir a animação do Glaxnimate
 
-Para os slides:
+### 💬 Para os slides
+
+Tudo também feito com markdown, usando:
 
 - [marp](https://marp.app/){:target="_blank"}: Onde preparei os slides
 - [Rose-Pine](https://github.com/rainbowflesh/Rose-Pine-For-Marp){:target="_blank"}: Tema que usei no marp
 
+### 📺 Para as transmissões
+
+Foi utilizado o [Open Broadcaster Software (OBS)](https://obsproject.com/){:target="_blank"}.
+
+### 🖼️ Thumbnails para YouTube
+
+Para tratamento das imagens foi usado o [Darktable](https://www.darktable.org/){:target="_blank"}, para a composição das thumbnails foi usado o [Inkscape](https://inkscape.org/){:target="_blank"}.
+
 ### 📁 Repositório
-O versionamento de tudo está sendo feito no [repositório do curso Github](https://github.com/dunossauro/fastapi-do-zero){:target="_blank"}.
+
+O versionamento de tudo está sendo feito pelo [git](https://git-scm.com/){:target="_blank"} e está disponível no [repositório do curso Github](https://github.com/dunossauro/fastapi-do-zero){:target="_blank"}.
 
 ### 🚀 Deploy
+
 Os deploys das páginas estáticas geradas pelo MkDocs estão sendo feitos no [Netlify](https://www.netlify.com/){:target="_blank"}
-
-## Conclusão
-
-Neste curso, a intenção é fornecer uma compreensão completa do framework FastAPI, utilizando-o para construir uma aplicação de gerenciamento de tarefas. O aprendizado será focado na prática, e cada conceito será acompanhado por exemplos e exercícios relevantes.
-
-A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.
-
-Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.
-
-Nos vemos na primeira aula. ❤
 
 ## ❓ F.A.Q.
 
