@@ -53,7 +53,7 @@
 
 # 4.0 (2025-03-13)
 
-## Prontos principais da release
+## Pontos principais da release
 
 - Criação de uma nova aula sobre programação assíncrona (08)
 - Remoção do pyenv em detrimento do poetry 2.0
