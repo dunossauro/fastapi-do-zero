@@ -1,6 +1,6 @@
 # 4.0.1 (2025-05-06)
 
-## Prontos principais da release
+## Pontos principais da release
 
 - Atualização das bibliotecas
 - Versionamento das páginas do curso via mike
