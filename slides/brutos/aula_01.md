@@ -58,7 +58,7 @@ Materiais de qualidades e de pessoas incrível que fazem materiais abertos como 
 
 1. [Curso de git do teomewhy](https://www.youtube.com/playlist?list=PLvlkVRRKOYFQ3cfYPjLeQ0KvrQ8bG5H11)
 2. [Curso de Docker da LinuxTips](https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
-3. [Ajuda para configurar o ambiente - Apêndice A](https://fastapidozero.dunossauro.com/apendices/a_instalacoes/)
+3. [Ajuda para configurar o ambiente - Apêndice A](https://fastapidozero.dunossauro.com/4.0/apendices/a_instalacoes/)
 
 ---
 
@@ -449,6 +449,21 @@ graph LR
 primeiro a task de lint, se der certo, test, se der certo, coverage :)
 
 ---
+
+## Ao final, deve ficar parecido com isso
+
+```toml
+[tool.taskipy.tasks]
+lint = 'ruff check'
+pre_format = 'ruff check --fix'
+format = 'ruff format'
+run = 'fastapi dev fast_zero/app.py'
+pre_test = 'task lint'
+test = 'pytest -s -x --cov=fast_zero -vv'
+post_test = 'coverage html'
+```
+
+```
 
 # Voltando ao código
 
