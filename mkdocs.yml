@@ -112,6 +112,7 @@ extra:
     provider: mike
     default: estavel
   current_tag: main
+  python_supported_version: 3.9
 
 hooks:
   - hooks/quiz_hook.py
