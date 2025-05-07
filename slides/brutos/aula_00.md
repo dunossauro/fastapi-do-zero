@@ -92,9 +92,9 @@ blockquote {
 
 O curso ao todo tem 14 aulas. Todas elas têm:
 
-- Uma aula em texto: [exemplo](https://fastapidozero.dunossauro.com/01/)
-- Exercícios para fixação prática: [exemplo](https://fastapidozero.dunossauro.com/04/#exercicios)
-- Quizes para fixação teórica: [exemplo](https://fastapidozero.dunossauro.com/quizes/aula_01/)
+- Uma aula em texto: [exemplo](https://fastapidozero.dunossauro.com/4.0/01/)
+- Exercícios para fixação prática: [exemplo](https://fastapidozero.dunossauro.com/4.0/04/#exercicios)
+- Quizes para fixação teórica: [exemplo](https://fastapidozero.dunossauro.com/4.0/quizes/aula_01/)
 
 > Recomendo que você tire um tempo na semana para responder aos quizes e a feitura dos exercícios
 
