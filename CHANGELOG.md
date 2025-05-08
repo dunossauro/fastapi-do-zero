@@ -1,3 +1,27 @@
+# 4.0.2 (2025-05-08)
+
+### Adicionado
+
+- Opção de instalação do poetry shell via pipx
+
+### Correções
+
+- Correção gramatical na página de mudanças, por [@ViniciusSouzaRoque](https://github.com/ViniciusSouzaRoque)
+- Typo verões -> versões no template de versões
+
+### Interno
+
+- Redirecionamento para 404 via netlify ([#355](https://github.com/dunossauro/fastapi-do-zero/issues/355))
+- Adicionando as playlists nas páginas de aulas por ano
+- Criando macro para versão mínima suportada do python
+- Listando mais ferramentas de apoio a página inicial
+
+### Slides
+
+- Ajustando links e adicionando configuração do taskipy em `01`
+- Correção dos links em `00`
+
+
 # 4.0.1 (2025-05-06)
 
 ## Pontos principais da release
