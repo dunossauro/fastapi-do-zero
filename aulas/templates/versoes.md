@@ -1,4 +1,4 @@
-???+ danger "Sobre as verões das bibliotecas instaladas"
+???+ danger "Sobre as versões das bibliotecas instaladas"
 	```python exec="on"
 	from pathlib import Path
 	from datetime import datetime
