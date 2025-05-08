@@ -32,7 +32,7 @@ style: |
 2. Um terminal a sua escolha (Usarei o [Terminator](https://gnome-terminator.org/))
    - Ghostty, tilix, iTerm2, windows terminal (WSL/Powershell)
 3. Uma versão [suportada](https://devguide.python.org/versions/) do python
-   - 3.9+
+   - Atualmente 3.9+
 4. O [pipx](https://github.com/pypa/pipx) pode te ajudar bastante nesses momentos de instalações globais
    - Que vamos instalar juntos
 
@@ -74,6 +74,8 @@ sudo apt/dnf install pipx  # linux
 pipx ensurepath            # linux
 ```
 
+> PS: Vamos fazer juntos
+
 ---
 
 # Configuração do ambiente (poetry)
@@ -97,7 +99,7 @@ Isso pode te ajudar a ter menos dificuldade, caso trave em algum lugar
 
 ## Estrutura base do projeto
 
-Vamos criar nossa estrutura com base na estrutura simples que o Poetry cria para nós.
+Vamos criar nossa estrutura do projeto com base na estrutura que o Poetry cria para nós.
 
 ```bash
 poetry new --flat fast_zero
@@ -116,6 +118,7 @@ isso vai nos gerar essa estrutura:
 └── tests
    └── __init__.py
 ```
+
 ---
 
 ## A versão do python
@@ -172,7 +175,7 @@ def read_root():
 No terminal:
 
 ```shell
-python -i fastzero/app.py
+python -i fastzero/app.py  # -i python interativo
 ```
 
 ---
@@ -223,6 +226,8 @@ Se acessarmos http://localhost:8000/redoc podemos ver os endpoinds e suas respos
 ---
 
 # O ambiente de desenvolvimento
+
+> Boas práticas gerais
 
 ---
 
@@ -463,7 +468,7 @@ test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
 ```
 
-```
+---
 
 # Voltando ao código
 
@@ -526,7 +531,7 @@ gh repo create
 
 # Exercício
 
-Crie um repositório para acompanhar o curso e suba em alguma plataforma, como [Github](https://github.com/), [gitlab](https://gitlab.com/), [codeberg](https://codeberg.org/), etc. E compartilhe o link no [repositório do curso](https://github.com/dunossauro/fastapi-do-zero/issues/91) para podermos aprender juntos.
+Crie um repositório para acompanhar o curso e suba em alguma plataforma, como [Github](https://github.com/), [gitlab](https://gitlab.com/), [codeberg](https://codeberg.org/), etc. E compartilhe o link na [issue #91 do repositório do curso](https://github.com/dunossauro/fastapi-do-zero/issues/91) para podermos aprender juntos.
 
 > Não se esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_01/) dessa aula
 
