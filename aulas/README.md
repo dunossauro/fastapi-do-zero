@@ -6,7 +6,11 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <lottie-player src="https://raw.githubusercontent.com/dunossauro/fastapi-do-zero/main/stuff/anim_lottie.json" background="transparent" speed="1" style="margin-left: auto; margin-right: auto;" loop autoplay></lottie-player>
 
-# FastAPI do ZERO
+
+<div class="flex">
+<h1>FastAPI do ZERO</h1>
+<img alt="" src="/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+</div>
 
 {%set aula = "00" %}
 {%set link = "ImhYlISeWPQ" %}
