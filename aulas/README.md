@@ -9,7 +9,8 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 
 <div class="flex">
 <h1>FastAPI do ZERO</h1>
-<img alt="" src="/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+<img alt="" src="assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+
 </div>
 
 {%set aula = "00" %}
