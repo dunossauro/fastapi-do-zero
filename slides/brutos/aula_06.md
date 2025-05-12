@@ -754,5 +754,3 @@ git commit -m "Protege os endpoints GET, PUT e DELETE com autenticação"
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">
