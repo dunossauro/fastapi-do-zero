@@ -240,8 +240,8 @@ database = []  # provisório para estudo!
 @app.post('/users/', status_code=status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema):
     user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)
-	# Aqui precisamos criar um novo modelo que represente o banco
-	# Precisamos de um identificador para esse registro!
+    # Aqui precisamos criar um novo modelo que represente o banco
+    # Precisamos de um identificador para esse registro!
 
     database.append(user_with_id)
 
@@ -296,9 +296,6 @@ Você deve ter notado que a linha `client = TestClient(app)` está repetida na p
 
 ---
 
-Neste caso, vamos criar uma fixture que retorna nosso `client`. Para fazer isso, precisamos criar o arquivo `tests/conftest.py`. O arquivo `conftest.py` é um arquivo especial reconhecido pelo pytest que permite definir fixtures que podem ser reutilizadas em diferentes módulos de teste dentro de um projeto. É uma forma de centralizar recursos comuns de teste.
-
-
 ```python title="tests/conftest.py"
 import pytest
 from fastapi.testclient import TestClient
@@ -308,6 +305,8 @@ from fast_zero.app import app
 def client():
     return TestClient(app)
 ```
+
+Neste caso, vamos criar uma fixture que retorna nosso `client`. Para fazer isso, precisamos criar o arquivo `tests/conftest.py`. O arquivo `conftest.py` é um arquivo especial reconhecido pelo pytest que permite definir fixtures que podem ser reutilizadas em diferentes módulos de teste dentro de um projeto. É uma forma de centralizar recursos comuns de teste.
 
 ---
 
