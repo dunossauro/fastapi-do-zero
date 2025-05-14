@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Integrando Banco de Dados a API
 
-> https://fastapidozero.dunossauro.com/05/
+> https://fastapidozero.dunossauro.com/4.0/05/
 
 ---
 
@@ -154,12 +154,12 @@ def create_user(user: UserSchema):
     if db_user:
         if db_user.username == user.username:
             raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
+                status_code=HTTPStatus.CONFLICT,
                 detail='Username already exists',
             )
         elif db_user.email == user.email:
             raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
+                status_code=HTTPStatus.CONFLICT,
                 detail='Email already exists',
             )
 ```
@@ -497,6 +497,7 @@ def update_user(
 ```
 
 ---
+
 ## Enpoint de /DELETE
 
 ```python
@@ -650,14 +651,14 @@ Agora tudo foi coberto com sucesso :)
 
 1. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `400`
 2. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o e-mail já foi registrado. Validando o erro `400`
-3. Atualizar os testes criados nos exercícios 1 e 2 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios) para suportarem o banco de dados
-4. Implementar o banco de dados para o endpoint de listagem por id, criado no exercício 3 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios)
+3. Atualizar os testes criados nos exercícios 1 e 2 da [aula 03](https://fastapidozero.dunossauro.com/4.0/03/#exercicios) para suportarem o banco de dados
+4. Implementar o banco de dados para o endpoint de listagem por id, criado no exercício 3 da [aula 03](https://fastapidozero.dunossauro.com/4.0/03/#exercicios)
 
 ---
 
 # Quiz
 
-> https://fastapidozero.dunossauro.com/quizes/aula_05/
+> https://fastapidozero.dunossauro.com/4.0/quizes/aula_05/
 
 ---
 
