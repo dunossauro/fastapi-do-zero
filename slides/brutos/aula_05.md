@@ -361,8 +361,6 @@ def test_create_user(client):
 
 ## Erros!
 
-A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
-
 ```python
 from sqlalchemy.pool import StaticPool
 # ...
@@ -381,6 +379,8 @@ def session():
 
     table_registry.metadata.drop_all(engine)
 ```
+
+A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
 
 ---
 
