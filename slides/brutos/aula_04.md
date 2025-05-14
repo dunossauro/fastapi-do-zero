@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Configurando o Banco de Dados e gerenciando Migrações com Alembic
 
-> https://fastapidozero.dunossauro.com/04/
+> https://fastapidozero.dunossauro.com/4.0/04/
 
 ---
 
@@ -344,7 +344,7 @@ from sqlalchemy import select
 from fast_zero.models import User
 
 def test_create_user(session, mock_db_time):
-    with mock_db_time(model=User) as time: #(1)!
+    with mock_db_time(model=User) as time:
         new_user = User(
             username='alice', password='secret', email='teste@test'
         )
@@ -353,12 +353,12 @@ def test_create_user(session, mock_db_time):
 
 	user = session.scalar(select(User).where(User.username == 'alice'))
 
-    assert asdict(user) == { #(2)!
+    assert asdict(user) == {
         'id': 1,
         'username': 'alice',
         'password': 'secret',
         'email': 'teste@test',
-        'created_at': time,  #(3)!
+        'created_at': time,
     }
 ```
 
@@ -536,7 +536,7 @@ alembic upgrade head
 3. Criar uma nova migração autogerada com alembic
 4. Aplicar essa migração ao banco de dados
 
-> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_04/) da aula
+> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_04/) da aula
 
 ---
 
