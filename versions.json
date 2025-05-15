@@ -2,7 +2,9 @@
   {
     "version": "estavel",
     "title": "estavel",
-    "aliases": []
+    "aliases": [
+      "-"
+    ]
   },
   {
     "version": "4.0",
