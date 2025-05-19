@@ -2457,7 +2457,7 @@
 <p>Para visualizar, temos que iniciar o servidor:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>task<span class="w"> </span>run
 </span></code></pre></div>
-<p>E acessar a página <a href="http://localhost:8000/docs" target="_blank">http://127.0.01:8000/docs</a>. Isso nos mostrará as definições do nosso endpoint usando o modelo no swagger:</p>
+<p>E acessar a página <a href="http://localhost:8000/docs" target="_blank">http://127.0.0.1:8000/docs</a>. Isso nos mostrará as definições do nosso endpoint usando o modelo no swagger:</p>
 <p><a class="glightbox" href="../assets/03/swagger_exibindo_o_schema_de_entrada_de_create_user.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Captura de tela do swagger UI exibindo o modelo do pydantic descrito acima" class="center" src="../assets/03/swagger_exibindo_o_schema_de_entrada_de_create_user.png" width="400"></a></p>
 <h4 id="modelo-de-saida-de-dados">Modelo de saída de dados</h4>
 <p>O modelo de saída explica ao cliente quais dados serão retornados quando a chamada a esse endpoint for feita. Para a API ter um uso fluído, temos que especificar o retorno corretamente na documentação.</p>
@@ -3001,7 +3001,7 @@
 </ol>
 <p><a class="md-button" href="../exercicios_resolvidos/aula_03/">Exercícios resolvidos <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg></span></a></p>
 <h2 id="conclusao">Conclusão</h2>
-<p>Com a implementação bem-sucedida das rotas CRUD, demos um passo significativo na construção de uma funcional com FastAPI. Agora podemos manipular usuários - criar, ler, atualizar e excluir - o que é fundamental para muitos sistemas de informação.</p>
+<p>Com a implementação bem-sucedida das rotas CRUD, demos um passo significativo na construção de uma API funcional com FastAPI. Agora podemos manipular usuários - criar, ler, atualizar e excluir - o que é fundamental para muitos sistemas de informação.</p>
 <p>O papel dos testes em cada etapa não pode ser subestimado. Testes não apenas nos ajudam a assegurar que nosso código está funcionando como esperado, mas também nos permitem refinar nossas soluções e detectar problemas potenciais antes que eles afetem a funcionalidade geral do nosso sistema. Nunca subestime a importância de executar seus testes sempre que fizer uma alteração em seu código!</p>
 <p>Até aqui, no entanto, trabalhamos com um "banco de dados" provisório, na forma de uma lista Python, que é volátil e não persiste os dados de uma execução do aplicativo para outra. Para nosso aplicativo ser útil em um cenário do mundo real, precisamos armazenar nossos dados de forma mais duradoura. É aí que os bancos de dados entram.</p>
 <p>Outro ponto que deve ser destacado é que nossas implementações de testes sofrem interferência dos testes anteriores. Testes devem funcionar de forma isolada, sem a dependência de um teste anterior. Vamos ajustar isso no futuro.</p>
@@ -3139,7 +3139,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 de maio de 2025 01:54:01">15 de maio de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 de maio de 2025 00:29:04">19 de maio de 2025</span>
   </span>
 
     
@@ -3154,7 +3154,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, Marcelo Machado
+      dunossauro, Marcelo Machado, Renan de Assis
     </nav>
   </span>
 
