@@ -53,7 +53,7 @@ Crie um endpoint de GET para pegar um único recurso como `users/{id}` e fazer s
 
 ### Solução
 
-A implementação do endpoint é bastante parecida com as que fizemos até agora. Precisamos validar se existe um `id` comparível no nosso banco de dados falso. Nos baseando pela posição do elento na lista.
+A implementação do endpoint é bastante parecida com as que fizemos até agora. Precisamos validar se existe um `id` compatível no nosso banco de dados falso, nos baseando pela posição do elemento na lista.
 
 ```python
 @app.get('/users/{user_id}', response_model=UserPublic)
