@@ -104,7 +104,7 @@ from fast_zero.models import User
 def test_create_user():
     user = User(username='test', email='test@test.com', password='secret')
 
-    assert user.password == 'secrete'
+    assert user.password == 'secret'
 ```
 
 > Aqui temos uma bomba!
@@ -214,6 +214,8 @@ def test_create_user(session):
 
     assert user.username == 'alice'
 ```
+
+> task test
 
 ---
 
@@ -514,6 +516,24 @@ alembic revision --autogenerate -m "create users table"
 
 ```bash
 alembic upgrade head
+```
+
+---
+
+## Dando uma olhada no banco de dados
+
+Pra isso poderíamos usar uma ferramenta gráfica ou usando a CLI do sqlite:
+
+```bash
+python -m sqlite3 database.db
+
+# Abrirá o shell do sqlite3
+sqlite>
+```
+
+```sql
+select * from alembic_version;
+select * from users;
 ```
 
 ---
