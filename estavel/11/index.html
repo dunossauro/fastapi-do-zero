@@ -2965,6 +2965,10 @@
 <li><code>get_connection_url()</code> pega a URI do container postgres criado pelo <code>testcontainers</code>.</li>
 </ol>
 <p>Agora, todas às vezes em que a fixture de <code>session</code> for usada nos testes. Será iniciado um novo container postgres na versão 16. E as interações com o banco serão feitas nesse container.</p>
+<details class="tip">
+<summary>Caso esteja usando Podman</summary>
+<p>Existe um tutorial <a href="https://podman-desktop.io/tutorial/testcontainers-with-podman">oficial do podman</a> ensinando a ativar a compatibilidade.</p>
+</details>
 <p>Tudo pronto para execução dos testes:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>task<span class="w"> </span><span class="nb">test</span>
 </span></code></pre></div>
@@ -3193,7 +3197,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="13 de maio de 2025 18:10:20">13 de maio de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="22 de maio de 2025 12:56:07">22 de maio de 2025</span>
   </span>
 
     
