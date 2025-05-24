@@ -320,7 +320,7 @@ Agora que conhecemos o tipo `Annotated`, podemos introduzir um novo conceito par
 ```python
 @app.get('/', response_model=UserList)
 def read_users(
-    skip: int = 0, limit: int = 100, session
+    session: Session, skip: int = 0, limit: int = 100
 ):
     users = session.scalars(select(User).offset(skip).limit(limit)).all()
     return {'users': users}
