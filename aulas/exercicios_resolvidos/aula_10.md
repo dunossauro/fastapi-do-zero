@@ -167,7 +167,7 @@ async def test_list_todos_should_return_all_expected_fields__exercicio(
         session.add(todo)
         await session.commit()
 
-    session.refresh(todo)
+    await session.refresh(todo)
     response = client.get(
         '/todos/',
         headers={'Authorization': f'Bearer {token}'},
