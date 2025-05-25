@@ -27,7 +27,7 @@ content:
 <?/quiz?>
 
 <?quiz?>
-question: 04 - O que faz o a função mapped_column?
+question: 04 - O que faz a função mapped_column?
 answer: Indicar valores padrões para as colunas
 answer: Criar indicadores de SQL no objeto
 answer: Adiciona restrições referentes a coluna no banco de dados
