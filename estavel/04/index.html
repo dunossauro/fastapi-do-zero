@@ -2308,21 +2308,23 @@
 </li>
 </ul>
 <h3 id="configuracoes-de-ambiente-e-os-12-fatores">Configurações de ambiente e os 12 fatores</h3>
-<p>Uma boa prática no desenvolvimento de aplicações é separar as configurações do código. Configurações, como credenciais de banco de dados, são propensas a mudanças entre ambientes diferentes (como desenvolvimento, teste e produção). Misturá-las com o código pode tornar o processo de mudança entre esses ambientes complicado e propenso a erros.</p>
+<p>Uma boa prática no desenvolvimento de aplicações é separar as configurações do código, especialmente para dados sensíveis como credenciais de banco de dados. Essa abordagem resolve dois futuros problemas:</p>
+<ol>
+<li><strong>Variação entre ambientes</strong>: Configurações costumam mudar entre ambientes diferentes (desenvolvimento, teste e produção), e misturá-las com o código pode tornar o processo de mudança entre esses ambientes complicado e propenso a erros.</li>
+<li><strong>Segurança</strong>: Expor credenciais de banco de dados e outras informações sensíveis no código-fonte é uma prática de segurança ruim, pois se um vazamento acontecesse comprometeria o acesso aos seus recursos.</li>
+</ol>
+<p>Essa prática está alinhada com a metodologia dos <a href="https://12factor.net/pt_br/">12 fatores</a> (especificamente o 3º fator: <a href="https://12factor.net/pt_br/config">Config</a>), que recomenda armazenar configurações variáveis no ambiente e não no código.</p>
 <details class="tip">
 <summary>Caso queira saber mais sobre 12 fatores</summary>
 <p>Temos uma live focada nesse assunto com a participação especial do <a href="https://twitter.com/rochacbruno" target="_blank">Bruno Rocha</a></p>
 <p><a class="glightbox" href="https://www.youtube.com/embed/DA-hOskxOxE" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><div class="video-container"><iframe src="https://www.youtube.com/embed/DA-hOskxOxE" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div></a></p>
 <p><a class="md-button" href="https://www.youtube.com/watch?v=DA-hOskxOxE"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"></path></svg></span> Link direto</a></p>
 </details>
-<p>Além disso, expor credenciais de banco de dados e outras informações sensíveis no código-fonte é uma prática de segurança ruim. Se esse código fosse comprometido, essas informações poderiam ser usadas para acessar e manipular seus recursos.</p>
-<p>Por isso, usaremos o <code>pydantic-settings</code> para gerenciar nossas configurações de ambiente. A biblioteca permite que você defina configurações em arquivos separados ou variáveis de ambiente e acesse-as de uma maneira estruturada e segura em seu código.</p>
-<p>Isso está alinhado com a metodologia dos 12 fatores, um conjunto de melhores práticas para desenvolvimento de aplicações modernas. O terceiro fator, "Config", afirma que as configurações que variam entre os ambientes devem ser armazenadas no ambiente e não no código.</p>
-<p>Agora que entendemos melhor esses conceitos, começaremos instalando as bibliotecas que iremos usar. O primeiro passo é instalar o SQLAlchemy, um ORM que nos permite trabalhar com bancos de dados SQL de maneira Pythonica. Além disso, o Alembic, que é uma ferramenta de migração de banco de dados, funciona muito bem com o SQLAlchemy e nos ajudará a gerenciar as alterações do esquema do nosso banco de dados.</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>poetry<span class="w"> </span>add<span class="w"> </span>sqlalchemy
+<p>Para gerenciar e separar nossas configurações do código de forma segura e estruturada, usaremos o <code>pydantic-settings</code>. Essa biblioteca permite que você defina configurações tanto em variáveis de ambiente quanto em arquivos separados (como <code>.env</code>), evitando a escrita de configurações diretamente no código-fonte.</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>poetry<span class="w"> </span>add<span class="w"> </span>pydantic-settings
 </span></code></pre></div>
-<p>Além disso, para evitar a escrita de configurações do banco de dados diretamente no código-fonte, usaremos o <code>pydantic-settings</code>. Este pacote nos permite gerenciar as configurações do nosso aplicativo de uma maneira mais segura e estruturada.</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>poetry<span class="w"> </span>add<span class="w"> </span>pydantic-settings
+<p>Agora que entendemos melhor esses conceitos, começaremos instalando o SQLAlchemy, um ORM que nos permite trabalhar com bancos de dados SQL de maneira Pythonica. Além disso, o Alembic, que é uma ferramenta de migração de banco de dados, funciona muito bem com o SQLAlchemy e nos ajudará a gerenciar as alterações do esquema do nosso banco de dados.</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>poetry<span class="w"> </span>add<span class="w"> </span>sqlalchemy
 </span></code></pre></div>
 <p>Agora estamos prontos para mergulhar na configuração do nosso banco de dados! Vamos em frente.</p>
 <h2 id="o-basico-sobre-sqlalchemy">O básico sobre SQLAlchemy</h2>
@@ -3163,7 +3165,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 de maio de 2025 20:33:37 UTC">19 de maio de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de maio de 2025 02:02:36 UTC">25 de maio de 2025</span>
   </span>
 
     
@@ -3178,7 +3180,7 @@ function resetFieldset(fieldset) {
       
     </span>
     <nav>
-      dunossauro, NatalNW7, Marcelo Machado, Renne Rocha, Andre Pereira, Rodrigo Barretos
+      dunossauro, Renan de Assis, NatalNW7, Renne Rocha, Marcelo Machado, Andre Pereira, Rodrigo Barretos
     </nav>
   </span>
 
