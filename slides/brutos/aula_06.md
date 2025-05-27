@@ -85,7 +85,7 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
 ---
 
-# Alterando o endpoint de Update
+### Alterando o endpoint de Update
 
 ```python
 @app.put('/users/{user_id}', response_model=UserPublic)
@@ -339,6 +339,8 @@ def create_access_token(data: dict):
     encoded_jwt = encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 ```
+
+
 ---
 
 # Testando a geração de tokens
@@ -359,6 +361,23 @@ def test_jwt():
     assert decoded['test'] == data['test']
     assert 'exp' in decoded  # Testa se o valor de exp foi adicionado ao token
 ```
+
+> Pode ser que esse teste falhe!
+
+---
+
+## Funções de fuso horário
+
+Dependendo da compilação do python, as propriedades de timezone podem não estar disponíveis.
+
+Para resolver isso:
+
+```bash
+poetry add tzdata
+```
+
+Agora podemos executar o teste novamente!
+
 ---
 
 # De volta ao endpoint `/token`
