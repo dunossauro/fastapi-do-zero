@@ -110,7 +110,7 @@ extra:
       link: https://codeberg.org/dunossauro
   version:
     provider: mike
-    default: v4.0.3
+    default: estavel
   current_tag: main
   python_supported_version: 3.9
 
