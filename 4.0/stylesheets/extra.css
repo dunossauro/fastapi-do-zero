@@ -30,3 +30,9 @@ div.mermaid {
 .md-typeset .md-button {
   padding: 0.625rem 1.25rem;
 }
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -50px;
+}
