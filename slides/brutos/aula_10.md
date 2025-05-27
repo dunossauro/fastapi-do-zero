@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
 
-> https://fastapidozero.dunossauro.com/09/
+> https://fastapidozero.dunossauro.com/estavel/10/
 
 ---
 
@@ -629,7 +629,7 @@ def test_patch_todo_error(client, token):
 
 # Quiz
 
-Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_09/) dessa aula
+Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/estavel/quizes/aula_10/) dessa aula
 
 ---
 

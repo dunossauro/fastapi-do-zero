@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Tornando o sistema de autenticação robusto
 
-> https://fastapidozero.dunossauro.com/08/
+> https://fastapidozero.dunossauro.com/estavel/09/
 
 ---
 
@@ -463,7 +463,7 @@ O endpoint de PUTusa dois users criados na base de dados, porém, até o momento
 
 # Quiz
 
-Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_08/) dessa aula!
+Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/estavel/quizes/aula_09/) dessa aula!
 
 ---
 

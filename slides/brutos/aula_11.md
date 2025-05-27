@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Dockerizando a nossa aplicação e introduzindo o PostgreSQL
 
-> https://fastapidozero.dunossauro.com/10/
+> https://fastapidozero.dunossauro.com/estavel/11/
 
 ---
 
@@ -410,7 +410,7 @@ docker-compose up --build
 
 ## Não esqueça de responder ao quiz
 
-[Quiz](https://fastapidozero.dunossauro.com/quizes/aula_10/)
+[Quiz](https://fastapidozero.dunossauro.com/estavel/quizes/aula_11/)
 
 
 <!-- mermaid.js -->

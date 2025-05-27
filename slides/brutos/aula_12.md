@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Automatizando os testes com Integração Contínua (CI)
 
-> https://fastapidozero.dunossauro.com/11/
+> https://fastapidozero.dunossauro.com/estavel/12/
 
 ---
 
@@ -224,7 +224,7 @@ git push
 
 ## Quiz
 
-Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_11/)!
+Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/estavel/quizes/aula_12/)!
 
 
 <!-- mermaid.js -->
