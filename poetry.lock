@@ -986,14 +986,14 @@ mkdocs = ">=1.0"
 
 [[package]]
 name = "mkdocs-git-revision-date-localized-plugin"
-version = "1.4.5"
+version = "1.4.6"
 description = "Mkdocs plugin that enables displaying the localized date of the last git modification of a markdown file."
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "mkdocs_git_revision_date_localized_plugin-1.4.5-py3-none-any.whl", hash = "sha256:395ae0b9eec565c78a76fffc938b70f52774bf2971245482d31aba47018c5fa9"},
-    {file = "mkdocs_git_revision_date_localized_plugin-1.4.5.tar.gz", hash = "sha256:9e37f1343d314c9cd8f9cbbf117c4bdc1d2d24a0653c5bbd7059d072f2cd0972"},
+    {file = "mkdocs_git_revision_date_localized_plugin-1.4.6-py3-none-any.whl", hash = "sha256:d36e454db0904553274bc3a51e0b5f06d6c03dca946779fca8f905a3b5148f47"},
+    {file = "mkdocs_git_revision_date_localized_plugin-1.4.6.tar.gz", hash = "sha256:a09f70e45d5824f89d9f45b39c0ab501ad030a3ff54bfdc6e8327e7b402d9462"},
 ]
 
 [package.dependencies]
@@ -2048,14 +2048,14 @@ files = [
 
 [[package]]
 name = "zipp"
-version = "3.21.0"
+version = "3.22.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "zipp-3.21.0-py3-none-any.whl", hash = "sha256:ac1bbe05fd2991f160ebce24ffbac5f6d11d83dc90891255885223d42b3cd931"},
-    {file = "zipp-3.21.0.tar.gz", hash = "sha256:2c9958f6430a2040341a52eb608ed6dd93ef4392e02ffe219417c1b28b5dd1f4"},
+    {file = "zipp-3.22.0-py3-none-any.whl", hash = "sha256:fe208f65f2aca48b81f9e6fd8cf7b8b32c26375266b009b413d45306b6148343"},
+    {file = "zipp-3.22.0.tar.gz", hash = "sha256:dd2f28c3ce4bc67507bfd3781d21b7bb2be31103b51a4553ad7d90b84e57ace5"},
 ]
 
 [package.extras]
@@ -2063,10 +2063,10 @@ check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1) ; sys_platform != \"
 cover = ["pytest-cov"]
 doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
 enabler = ["pytest-enabler (>=2.2)"]
-test = ["big-O", "importlib-resources ; python_version < \"3.9\"", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-itertools", "pytest (>=6,!=8.1.*)", "pytest-ignore-flaky"]
+test = ["big-O", "importlib_resources ; python_version < \"3.9\"", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more_itertools", "pytest (>=6,!=8.1.*)", "pytest-ignore-flaky"]
 type = ["pytest-mypy"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "bb8e37ee313fabadfc214ecd69a763143094d735b54909ee2f63ed9073b6ce26"
+content-hash = "35c5f0dfc061f8cbb2b96cadfe9a734b4c182feb1352cabda2a526a8767777e3"
