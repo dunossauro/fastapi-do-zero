@@ -1,3 +1,49 @@
+# 4.0.3 (2025-05-27)
+
+### Adicionado
+
+- Tip para rodar os testcontaners caso esteja usando podman
+
+### Correções
+
+- Diversas correções de texto na aula 01 por [@renan-asantos](https://github.com/renan-asantos) ([#356](https://github.com/dunossauro/fastapi-do-zero/issues/356))
+- Diversos typos na aula 03 por [@renan-asantos](https://github.com/renan-asantos) ([#376](https://github.com/dunossauro/fastapi-do-zero/issues/376))
+- Correções de typos na aula 08 por [@kylefelipe](https://github.com/kylefelipe) ([#380](https://github.com/dunossauro/fastapi-do-zero/issues/380))
+- Remoção de warning na resolução do exercício 04 da aula 10, por [@kylefelipe](https://github.com/kylefelipe) ([#382](https://github.com/dunossauro/fastapi-do-zero/issues/382))
+- Ajustando todos os endpoints para usarem Annotated na aula 07
+
+### Alterado
+
+- Adicionando flag para não instalar as dependências de desenvolvimento no container docker. ([#369](https://github.com/dunossauro/fastapi-do-zero/issues/369))
+- Coesão e fluidez de texto na aula 04 por [@renan-asantos](https://github.com/renan-asantos) ([#383](https://github.com/dunossauro/fastapi-do-zero/issues/383))
+- Links para aulas 01 à 06 atualizadas no cabeçalho do texto
+- Playlist de funções como referência dos pré-requisitos
+
+### Atualizações
+
+- `alembic` 1.15.2 -> 1.16.1
+- `freezegun` 1.5.1 -> 1.5.2
+- `psycopg[binary]` 3.2.7 -> 3.2.9
+- `pytest-asyncio` 0.26 -> 1.0.0
+- `ruff` 0.11.8 -> 0.11.11
+- `sqlalchemy` 2.0.40 -> 2.0.41
+
+### Interno
+
+- Adicionando badge "not by ai" no footer e na página principal ([#357](https://github.com/dunossauro/fastapi-do-zero/issues/357))
+- CI rodando somente em alterações de código
+- `mkdocs-material` 9.6.12 -> 9.6.14
+
+### Slides
+
+- Correção dos links em `04` ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+- Atualização da aula `06` para v4X ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+- Atualização da aula `05` para v4X ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+- Adequação dos slides `07` para v4 ([#283](https://github.com/dunossauro/fastapi-do-zero/issues/283))
+- Correções e expansão dos slides `04`
+- Remoção do download de fontes no HTML
+
+
 # 4.0.2 (2025-05-08)
 
 ### Adicionado
