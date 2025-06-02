@@ -1913,14 +1913,14 @@ dev = ["furo (>=2024.05.06)", "nox", "packaging", "sphinx (>=5)", "twisted"]
 
 [[package]]
 name = "typing-extensions"
-version = "4.13.2"
-description = "Backported and Experimental Type Hints for Python 3.8+"
+version = "4.14.0"
+description = "Backported and Experimental Type Hints for Python 3.9+"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "typing_extensions-4.13.2-py3-none-any.whl", hash = "sha256:a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c"},
-    {file = "typing_extensions-4.13.2.tar.gz", hash = "sha256:e6c81219bd689f51865d9e372991c540bda33a0379d5573cddb9a3a23f7caaef"},
+    {file = "typing_extensions-4.14.0-py3-none-any.whl", hash = "sha256:a1514509136dd0b477638fc68d6a91497af5076466ad0fa6c338e44e359944af"},
+    {file = "typing_extensions-4.14.0.tar.gz", hash = "sha256:8676b788e32f02ab42d9e7c61324048ae4c6d844a399eebace3d4979d75ceef4"},
 ]
 
 [[package]]
@@ -1940,22 +1940,22 @@ typing-extensions = ">=4.12.0"
 
 [[package]]
 name = "typos"
-version = "1.32.0"
+version = "1.33.1"
 description = "Source Code Spelling Correction"
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "typos-1.32.0-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:3b6f1f6a482607845f5867911e886db15a7163fb6c0375f06325080bc1039f82"},
-    {file = "typos-1.32.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:e1fb839eb28769fa8e91057bfc745adaef492e48660cd047bb4c1cdd85dbbfff"},
-    {file = "typos-1.32.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0bf09c943965619ae0a21121613de074cb65eb57bbc05af9ad4619f9504debdf"},
-    {file = "typos-1.32.0-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:4276b08d2c5717dd47be1f95f683b1c6b11c093c50a87f5ad28b73809a736030"},
-    {file = "typos-1.32.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:23d2d00bc7bb9f470cd978fd5697f70f8a25c3b0c6186f0703ef248765c17b16"},
-    {file = "typos-1.32.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:33490718ee858f718b7fd5ef3622d62ab5e1e435d1f6d0128c4c6183261aa970"},
-    {file = "typos-1.32.0-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:fd5d39f41210b7983c22e49caf654085da42fb0707bca5cbc2f9ad62a70a11e4"},
-    {file = "typos-1.32.0-py3-none-win32.whl", hash = "sha256:3a267fae0c23a8b0a7e1013a1b553f91a5d0b03da8882e852349bff75750fa7d"},
-    {file = "typos-1.32.0-py3-none-win_amd64.whl", hash = "sha256:eed297ec4bf29bd8680ed78f2d27d4cbde77444aef58531dcad07d68a46e4ad0"},
-    {file = "typos-1.32.0.tar.gz", hash = "sha256:14d74cfb656371ad867c498c6ef681feceaad5ace296914b854625e24bc9ef1c"},
+    {file = "typos-1.33.1-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:2c4c333212f3abb42eabdc87016603ec995129338b98d56af9d0427a048055fd"},
+    {file = "typos-1.33.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:676856f3724b2c497f963600eeddabe9931da5c267c7b85551d576e92d5f17a2"},
+    {file = "typos-1.33.1-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:57c0e84e63a37535f3fea0d85659e88cbe59329dbd7b1920d31bbc52e6d63fca"},
+    {file = "typos-1.33.1-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:c174e3b756ebd7f576de759a749b4ca4c6d7952801e179d4f9ade1a6bba159c5"},
+    {file = "typos-1.33.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:538889ffcc159b0da1f2eeb52fb99a94be2886ca5060a48b84c0bb54893ea604"},
+    {file = "typos-1.33.1-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:4f6afcb874c6a803da9d93813546648cdf3764ee5657844b9cd8692aaeff4790"},
+    {file = "typos-1.33.1-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:2cedb8e13c3cb9e2755061297d464962c66561f0b30bb12432d9d05497483be8"},
+    {file = "typos-1.33.1-py3-none-win32.whl", hash = "sha256:88717b9849faa363534b79fa20526d1e9ada506501c9f0f4ab52fdbc9085fa8a"},
+    {file = "typos-1.33.1-py3-none-win_amd64.whl", hash = "sha256:05dc54433a296acde0bfb729dda122ff86723568f2d38f8a9de8708b3d4866dc"},
+    {file = "typos-1.33.1.tar.gz", hash = "sha256:ae5905af0925cee3ea97cd3372c5f570b67547b6b8af6b95c678b310fbec55c9"},
 ]
 
 [[package]]
@@ -2069,4 +2069,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "7512a18f1935377856d9d03f935631120b98f5585747e836fc749ea643d2d8e3"
+content-hash = "4dc3a4b5b18d683a90ab5bc3d1d66c8d094c3140330a4805d20dcf9781dfa3a1"
