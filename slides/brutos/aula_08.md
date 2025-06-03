@@ -319,20 +319,20 @@ async def session():
 #tests/test_db.py
 import pytest
 
-@pytest.mark.asyncio 
+@pytest.mark.asyncio
 async def test_create_user(session, mock_db_time):
     with mock_db_time(model=User) as time:
         new_user = User(
             username='alice', password='secret', email='teste@test'
         )
         session.add(new_user)
-        await session.commit() 
+        await session.commit()
 
-    user = await session.scalar(select(User).where(User.username == 'alice')) 
+    user = await session.scalar(select(User).where(User.username == 'alice'))
     # ...
 ```
 
---- 
+---
 
 ## Rodando um único arquivo
 
@@ -351,7 +351,9 @@ task test tests/test_db.py
 
 ## Técnica de refatoração com testes
 
-Uma das grandes vantagens de termos uma boa cobertura de testes é que podemos fazer mudanças estruturais no projeto e garantir que tudo funcione da forma como já estava antes. Os testes nos trazem uma **segurança** para que tudo possa mudar internamente sem alterar os resultados da API. Para isso, a estratégia que vamos usar aqui é a de caminhar executando um teste por vez.
+Uma das grandes vantagens de termos uma boa cobertura de testes é que podemos fazer mudanças estruturais no projeto e garantir que tudo funcione da forma como já estava antes.
+
+Os testes nos trazem uma **segurança** para que tudo possa mudar internamente sem alterar os resultados da API. Para isso, a estratégia que vamos usar aqui é a de caminhar executando um teste por vez.
 
 ---
 
@@ -386,11 +388,337 @@ task test --collect-only
 
 ---
 
+### Router `auth`
+
+Acredito que começar pelo router `auth` pode ser menos assustador, já que até o momento ele tem somente um endpoint (`login_for_access_token`) e um teste (`test_get_token`).
+
+```bash
+task test -k test_get_token
+# ...
+FAILED tests/test_auth.py::test_get_token - AttributeError: 'coroutine' object has no attribute 'password'
+```
+
+---
+
+Esse erro é interessante, pois o que ele notifica é que um objeto corrotina não tem o atributo password. Precisamos analisar o código para entender em qual o objeto está buscando password:
+
+```python
+#fast_zero/routers/auth.py
+@router.post('/token', response_model=Token)
+def login_for_access_token(form_data: OAuth2Form, session: Session):
+    user = session.scalar(select(User).where(User.email == form_data.username))
+
+    # ...
+
+    if not verify_password(form_data.password, user.password):
+    # ...
+```
+
+---
+
+Agora precisamos de `await`
+
+```python
+@router.post('/token', response_model=Token)
+async def login_for_access_token(form_data: OAuth2Form, session: Session):
+    user = await session.scalar(
+        select(User).where(User.email == form_data.username)
+    )
+    # ...
+```
+
+---
+
+## Tentando de novo
+
+Problemas na fixture de `user`!
+
+```python
+task test -k test_get_token
+
+# ...
+
+tests/test_auth.py::test_get_token /home/dunossauro/07/tests/conftest.py:75: RuntimeWarning: coroutine 'AsyncSession.commit' was never awaited
+  session.commit()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+/home/dunossauro/07/tests/conftest.py:76: RuntimeWarning: coroutine 'AsyncSession.refresh' was never awaited
+  session.refresh(user)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+PASSED
+```
+
+---
+
+## Transformando a fixture e async
+
+Como temos duas interações de I/O com o banco nesse fixture `.commit` e `.refresh`, devemos aguardar as duas:
+
+```python
+@pytest_asyncio.fixture
+async def user(session):
+    # ...
+    session.add(user)
+    await session.commit()
+    await session.refresh(user)
+    # ...
+```
+
+> De novo agora... `task test -k test_get_token`
+
+---
+
+## Corrigindo os tipos
+
+Embora o comportamento do código esteja correto e sem nenhum problema aparente. Precisamos corrigir o tipo usado para injeção de depenências que não é mais Session, mas AsyncSession:
+
+```python
+# fast_zero/routers/auth.py
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+# ...
+OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
+Session = Annotated[AsyncSession, Depends(get_session)]
+```
+
+---
+
+## Podemos partir para o router de `users` agora
+
+O cabeçalho
+
+```python
+# ...
+from sqlalchemy.ext.asyncio import AsyncSession
+# ...
+Session = Annotated[AsyncSession, Depends(get_session)]
+```
+
+---
+
+## Endpoint de POST
+
+```python
+task test -k test_create_user
+```
+
+Precisamos adicionar os awaits...
+
+
+```python
+async def create_user(user: UserSchema, session: Session):
+    db_user = await session.scalar(
+        select(User).where(
+            (User.username == user.username) | (User.email == user.email)
+        )
+    )
+    # ...
+    session.add(db_user)
+    await session.commit()
+    await session.refresh(db_user)
+
+    return db_user
+```
+---
+
+## Endpoint de GET
+
+```bash
+task test -k test_read
+
+FAILED tests/test_users.py::test_read_users - AttributeError: 'coroutine' object has no attribute 'all'
+```
+
+```python
+async def read_users(
+    session: Session, filter_users: Annotated[FilterPage, Query()]
+):
+    query = await session.scalars(
+        select(User).offset(filter_users.offset).limit(filter_users.limit)
+    )
+    users = query.all()
+
+    return {'users': users}
+```
+
+---
+
+## Endpoint de PUT
+
+```bash
+task test -k test_update
+# ...
+FAILED tests/test_users.py::test_update_user - AttributeError: 'coroutine' object has no attribute 'id'
+```
+
+A corrotina nesse caso é no `current_user`:
+
+```python
+from sqlalchemy.ext.asyncio import AsyncSession
+# ...
+async def get_current_user(
+    session: AsyncSession = Depends(get_session),
+    token: str = Depends(oauth2_scheme),
+):
+    # ...
+    user = await session.scalar(
+        select(User).where(User.email == subject_email)
+    )
+```
+
+---
+
+## Agora o PUT de verdade
+
+```python
+async def update_user(...):
+    # ...
+    try:
+        current_user.username = user.username
+        current_user.password = get_password_hash(user.password)
+        current_user.email = user.email
+        await session.commit()
+        await session.refresh(current_user)
+
+        return current_user
+```
+
+---
+
+## O DELETE
+
+```python
+@router.delete('/{user_id}', response_model=Message)
+async def delete_user(...):
+    # ...
+    await session.delete(current_user)
+    await session.commit()
+```
+
+```bash
+task test -k test_delete
+# ...
+tests/test_users.py::test_delete_user PASSED
+```
+
+---
+
+## Só pra garantir...
+
+```bash
+task test
+```
+
+---
+
+## Cobertura de testes assíncrona
+
+> Parte 5
+
+---
+
+## Vamos olhar o arquivo de cobertura
+
+... Estranho, não?
+
+```toml
+[tool.coverage.run]
+concurrency = ["thread", "greenlet"]
+```
+
+---
+
+## Vamos tentar de novo
+
+```bash
+task test
+```
+
+Agora olhar a cobertura de novo!
+
+---
+
+## Migrações async
+
+> Parte 6
+
+---
+
+## Vamos tentar aplicar a migração
+
+```bash
+alembic upgrade head
+# ...
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called;
+can't call await_only() here. Was IO attempted in an unexpected place?
+(Background on this error at: https://sqlalche.me/e/20/xd2s)
+```
+
+---
+
+## O problema do `.env`
+
+Como nosso `.env` aponta para uma conexão async, temos que fazer com que a migração seja async:
+
+```python
+import asyncio
+
+from logging.config import fileConfig
+
+from sqlalchemy.ext.asyncio import async_engine_from_config
+from sqlalchemy import pool
+
+## Vamos reescrever essa função!
+def run_migrations_online():
+    asyncio.run(run_async_migrations())
+```
+
+---
+
+## Executando a conexão async
+
+```python
+async def run_async_migrations():
+    connectable = async_engine_from_config(
+        config.get_section(config.config_ini_section),
+        prefix="sqlalchemy.",
+        poolclass=pool.NullPool,
+    )
+
+    async with connectable.connect() as connection:
+        await connection.run_sync(do_run_migrations)
+
+    await connectable.dispose()
+```
+
+---
+
+## Fazendo a migração async
+
+```python
+def do_run_migrations(connection):
+    context.configure(connection=connection, target_metadata=target_metadata)
+
+    with context.begin_transaction():
+        context.run_migrations()
+```
+
+---
+
+## Mais uma tentativa
+
+```python
+alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+```
+
+---
+
 ## Suplementar / Para próxima aula
 
 Na próxima aula, vamos adicionar randomização em testes para facilitar a criação dos dados de teste. Caso não conheça o Faker ou Factory-boy, pode ser uma boa para entender melhor a próxima aula:
 
-- [Randomização de dados em testes unitários com Faker e Factory-boy | Live de Python #281](https://youtu.be/q_P-2h5L1cE){:target="_blank"}
+- [Randomização de dados em testes unitários com Faker e Factory-boy | Live de Python #281](https://youtu.be/q_P-2h5L1cE)
 
 ---
 
