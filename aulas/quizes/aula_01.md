@@ -1,9 +1,9 @@
 # 01 - Configurando o Ambiente de Desenvolvimento
 
 <?quiz?>
-question: 01 - Qual a função do pyenv?
+question: 01 - Qual a função do pipx?
 answer: Criar e gerenciar ambientes virtuais para bibliotecas
-answer-correct: Instalar versões diferentes do python no seu ambiente
+answer-correct: Instalar bibliotecas isoladamente de forma global
 answer: Uma alternativa ao pip
 answer: Uma alternativa ao venv
 content:
@@ -13,7 +13,7 @@ content:
 question: 02 - Qual a função do Poetry?
 answer: Uma alternativa ao pip
 answer-correct: Gerenciar um projeto python
-answer: Tem o mesmo propósito do pyenv
+answer: Tem o mesmo propósito do pipx
 content:
 <?/quiz?>
 

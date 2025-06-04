@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Fazendo deploy no Fly.io
 
-> https://fastapidozero.dunossauro.com/12/
+> https://fastapidozero.dunossauro.com/estavel/13/
 
 ---
 
@@ -137,7 +137,7 @@ flyctl ssh console -a fastzeroapp -C "poetry run alembic upgrade head"
 
 ## Quiz
 
-Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_12/) dessa aula!
+Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/estavel/quizes/aula_13/) dessa aula!
 
 ---
 ## Commit

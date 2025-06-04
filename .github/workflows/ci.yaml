@@ -1,11 +1,14 @@
-name: ci
+name: CI dos códigos de aulas
+
 on:
   push:
-    branches:
-    - main
+    paths:
+      - 'codigo_das_aulas/**'
+      - '.github/workflows/**'
   pull_request:
-    branches:
-    - main
+    paths:
+      - 'codigo_das_aulas/**'
+      - '.github/workflows/**'
 
 jobs:
   test:

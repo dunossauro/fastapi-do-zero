@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# FastAPI do zero
+# FastAPI do zero `2025`
 
 > https://fastapidozero.dunossauro.com/
 
@@ -36,23 +36,24 @@ A ideia por trás desse material não é só o FastAPI, mas sobre as tecnologias
 - Uvicorn
 - SQLAlchemy
 - JWT
+- asyncIO
 
 ---
 
 # É também sobre algumas práticas comuns
 
 - Ambiente e ferramentas de desenvolvimento
-  - pyenv, poetry, taskipy, ruff, ...
+  - poetry, taskipy, ruff, ...
 - Testes
   - pytest, fixtures, coverage, factory-boy, freezegun, testcontainers, ...
 - Operações
-  - docker, integração contínua, deploy, ...
+  - containers, integração contínua, deploy, ...
 
 ---
 
 # O que vamos construir?
 
-Vocês sabem que eu sou o "pai da teoria". Então decidir fazer uma coisa um pouco diferente.
+Vocês sabem que eu sou o "pai da teoria". Então, decidir fazer uma coisa um pouco diferente.
 
 - Um projeto prático
 - Do zero
@@ -74,7 +75,7 @@ Vamos construir um "todo list", uma ferramenta para gerenciar tarefas "a fazer".
 
 # Acessar alguns links aqui :)
 
-- O projeto final, deve se parecer com isso:  [fast_zero](https://github.com/dunossauro/fast_zero)
+- O projeto final, deve se parecer com isso: [fast_zero](https://github.com/dunossauro/fastapi-do-zero/tree/v4.0/codigo_das_aulas/13)
 - Em produção: [no deploy](https://fastzeroapp.fly.dev/)
 - Ambiente de CI: [Github Actions](https://github.com/dunossauro/fast_zero/actions)
 
@@ -89,13 +90,13 @@ blockquote {
 
 # Como está estruturado?
 
-O curso ao todo tem 14 aulas. Todas, ~~quase todas~~, elas têm:
+O curso ao todo tem 14 aulas. Todas elas têm:
 
-- Uma aula em texto: [exemplo](https://fastapidozero.dunossauro.com/01/)
-- Exercícios para fixação prática: [exemplo](https://fastapidozero.dunossauro.com/04/#exercicios)
-- Quizes para fixação teórica: [exemplo](https://fastapidozero.dunossauro.com/quizes/aula_01/)
+- Uma aula em texto: [exemplo](https://fastapidozero.dunossauro.com/4.0/01/)
+- Exercícios para fixação prática: [exemplo](https://fastapidozero.dunossauro.com/4.0/04/#exercicios)
+- Quizes para fixação teórica: [exemplo](https://fastapidozero.dunossauro.com/4.0/quizes/aula_01/)
 
-> Recomendo que você tire um tempo para responder aos quizes e a feitura dos exercícios
+> Recomendo que você tire um tempo na semana para responder aos quizes e a feitura dos exercícios
 
 ---
 
@@ -104,9 +105,9 @@ O curso ao todo tem 14 aulas. Todas, ~~quase todas~~, elas têm:
 ### O curso é totalmente focado em backend e APIs JSON
 
 - Não construiremos um cliente (html, gui, mobile, ...)
-- Não entraremos no contexto de CD
-- Não faremos deploy de modelos
-- Não falaremos de integrações
+- Não entraremos no contexto de CD (Continuous Deploy)
+- Não faremos deploy de modelos (IA)
+- Não falaremos de integrações (serviços além do banco de dados)
 - Nem mesmo sobre bots
 
 > Embora, com a base construída aqui, você deve ser capaz de seguir esses caminhos após o curso
@@ -163,31 +164,32 @@ De diversas formas:
 
 <style scoped>
 ul {
-  font-size: 20px;
+  font-size: 28px;
 }
 </style>
 
 
-# O curso será disponibilizado de 3 formas
+# Como o curso será disponibilizado?
 
 1. Em texto, para quem prefere ler
     - https://fastapidozero.dunossauro.com/
 2. Em aulas síncronas: Para quem precisa do compromisso de estar junto
-    - Datas dos encontros: https://fastapidozero.dunossauro.com/aulas/sincronas/
+    - Datas dos encontros: https://fastapidozero.dunossauro.com/4.0/aulas/2025/
+	- **Estamos aqui!**
 	- A lives ficarão salvas para ver depois :)
-3. Em aulas assíncronas: Para quem prefere assistir no seu ritmo
-    - *Ainda sem datas*
+3. A edição de 2024 está completamente disponível, se estiver com pressa
+   - [playlist](https://www.youtube.com/playlist?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP)
 
 ---
 
-# pré-requisitos para acompanhar
+# Pré-requisitos para acompanhar
 > https://fastapidozero.dunossauro.com/#pre-requisitos
 
 ---
 
-# Algumas coisas importantes
+## Algumas coisas importantes
 
-Como o objetivo desse curso é conversamos sobre um framework web feito em python. É importante, para acompanhar, que você tenha noções sobre:
+Como o objetivo desse curso é conversar sobre um framework web feito em python. É importante, para acompanhar, que você tenha noções sobre:
 
 - O funcionamento de funções: como criar e usar: [uma referência](https://youtu.be/0yXPQZvlgrk)
 - O funcionamento das estruturas de dados: como listas, dicionários e etc;
@@ -198,7 +200,7 @@ Como o objetivo desse curso é conversamos sobre um framework web feito em pytho
 
 # Algumas outras coisas **não essenciais**
 
-Alguns outros tópicos não relativos a python também serão abordados. Então é interessante que você tenha algum entendimento básico sobre:
+Alguns outros tópicos não relativos a Python também serão abordados. Então, é interessante que você tenha algum entendimento básico sobre:
 
 - Desenvolvimento Web e APIs RESTful
 - Banco de dados / SQL
@@ -209,17 +211,18 @@ Alguns outros tópicos não relativos a python também serão abordados. Então 
 
 # Programação
 
-Das aulas síncronas
-
-> https://fastapidozero.dunossauro.com/aulas/sincronas/
+> https://fastapidozero.dunossauro.com/4.0/aulas/2025/
 
 ---
 
 # Nossos encontros síncronos
 
-Nossos encontros acontecerão as **terças e quintas** com duração de **1h30 m**. Entre às **20 h e 21:30**.
+Nossos encontros acontecerão às **terças e quintas** com duração de **2h**. Entre às **20h e 22h**.
 
 Com chat aberto para tirar dúvidas enquanto a aula acontece.
+
+- [iCal](https://calendar.google.com/calendar/ical/6d04fd6ec76625bcd265875fdc5e4670a001c60f53bc96b596a43394b8c78ca0%40group.calendar.google.com/public/basic.ics)
+- [Google Agenda](https://calendar.google.com/calendar/u/0?cid=NmQwNGZkNmVjNzY2MjViY2QyNjU4NzVmZGM1ZTQ2NzBhMDAxYzYwZjUzYmM5NmI1OTZhNDMzOTRiOGM3OGNhMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
 
 
 ---
@@ -230,12 +233,12 @@ Sei que existem estilos diferentes de estudo que funcionam melhor para cada pess
 
 - Dar uma lida no material antes, para aproveitar melhor as lives e tirar dúvidas
 - Fazer os quizes e os exercícios
-- Postar suas dúvidas no nosso grupo do telegram
+- Postar suas dúvidas no nosso grupo do [telegram](https://t.me/fastapicomdunossauro)
 
 ---
 
 # O projeto final
-> https://fastapidozero.dunossauro.com/14/
+> https://fastapidozero.dunossauro.com/4.0/15/
 
 ---
 
@@ -243,16 +246,27 @@ Sei que existem estilos diferentes de estudo que funcionam melhor para cada pess
 
 Ao final do curso, temos um material bem descritivo, em um formato de um teste técnico (sim, aqueles que as empresas cobram). Pode ser interessante fazê-lo. Tanto para fixação, quanto para fazer suas próprias escolhas de design e estruturas.
 
-As instruções estão aqui: https://fastapidozero.dunossauro.com/14/
+As instruções estão aqui: https://fastapidozero.dunossauro.com/4.0/15/
 
 ---
 
 # Vai ter certificado?
 
-Pretendo emitir um certificado **simbólico** de participação para quem entregar o projeto final **até 25/08**.
+Pretendo emitir um certificado **simbólico** de participação para quem entregar o projeto final até **nov/25**
 
-Os projetos finais ficarão listados nesta página: https://fastapidozero.dunossauro.com/projetos/projetos_finais/
+[certificado](https://github.com/dunossauro/fastapi-do-zero/blob/main/stuff/exemplo_certificado.png)
 
+---
+
+# Considerações **MUITO** importantes
+
+O texto anda em um ritmo bem mais rápido que os vídeos.
+
+Logo, a versão do texto que usaremos agora é a `4.0.*`
+
+Atualmente é a tag 4.0.1, os fixes estão todos na versão 4.0:
+
+https://fastapidozero.dunossauro.com/4.0
 
 ---
 
@@ -279,6 +293,3 @@ p {
 ### https://fastapidozero.dunossauro.com/
 
 Nos vemos na primeira aula!
-
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

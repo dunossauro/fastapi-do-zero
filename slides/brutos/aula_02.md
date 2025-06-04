@@ -4,7 +4,7 @@ theme: rose-pine
 ---
 
 # Introdução ao desenvolvimento WEB
-> https://fastapidozero.dunossauro.com/02/
+> https://fastapidozero.dunossauro.com/4.0/02/
 
 ---
 
@@ -428,7 +428,7 @@ Se iniciarmos o nosso servidor `task run` e entrarmos nas documentações, podem
 
 Crie um novo endpoint em `fast_zero/app.py` que retorne "olá mundo" usando HTML e escreva seu teste em `tests/test_app.py`. Dica: para capturar a resposta do HTML do cliente de testes, você pode usar response.text
 
-quiz: https://fastapidozero.dunossauro.com/quizes/aula_02/
+quiz: https://fastapidozero.dunossauro.com/4.0/quizes/aula_02/
 
 ---
 
@@ -445,5 +445,3 @@ git push
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

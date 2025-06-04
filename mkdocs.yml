@@ -1,5 +1,5 @@
 site_name: FastAPI do Zero
-site_url: https://fastapidozero.dunossauro.com
+site_url: https://fastapidozero.dunossauro.com/
 docs_dir: aulas
 repo_url: https://github.com/dunossauro/fastapi-do-zero
 repo_name: dunossauro/fastapi-do-zero
@@ -67,14 +67,6 @@ plugins:
       show_line_count: true
   - git-revision-date-localized
   - social
-  - with-pdf:
-      author: Eduardo Mendes (@dunossauro)
-      cover_title: FastAPI do zero
-      cover_subtitle: Uma introdução prática!
-      copyright: CC BY-NC-SA
-      toc_level: 6
-      enabled_if_env: ENABLE_PDF_EXPORT
-      toc_title: Índice
   - exclude:
       glob:
         - "wip.md"
@@ -116,6 +108,11 @@ extra:
       link: https://dunossauro.com
     - icon: simple/codeberg
       link: https://codeberg.org/dunossauro
+  version:
+    provider: mike
+    default: estavel
+  current_tag: main
+  python_supported_version: 3.9
 
 hooks:
   - hooks/quiz_hook.py

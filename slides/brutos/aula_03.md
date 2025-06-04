@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Estruturando o Projeto e Criando Rotas do CRUD
 
-> https://fastapidozero.dunossauro.com/03/
+> https://fastapidozero.dunossauro.com/4.0/03/
 
 ---
 
@@ -150,7 +150,7 @@ Temos um de-para de chaves e tipos.
 
 ---
 
-# O pydantic têm dados além do python
+# O pydantic têm tipos além do python
 
 Validação de emails podem ser melhores:
 
@@ -240,8 +240,8 @@ database = []  # provisório para estudo!
 @app.post('/users/', status_code=status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: UserSchema):
     user_with_id = UserDB(**user.model_dump(), id=len(database) + 1)
-	# Aqui precisamos criar um novo modelo que represente o banco
-	# Precisamos de um identificador para esse registro!
+    # Aqui precisamos criar um novo modelo que represente o banco
+    # Precisamos de um identificador para esse registro!
 
     database.append(user_with_id)
 
@@ -296,9 +296,6 @@ Você deve ter notado que a linha `client = TestClient(app)` está repetida na p
 
 ---
 
-Neste caso, vamos criar uma fixture que retorna nosso `client`. Para fazer isso, precisamos criar o arquivo `tests/conftest.py`. O arquivo `conftest.py` é um arquivo especial reconhecido pelo pytest que permite definir fixtures que podem ser reutilizadas em diferentes módulos de teste dentro de um projeto. É uma forma de centralizar recursos comuns de teste.
-
-
 ```python title="tests/conftest.py"
 import pytest
 from fastapi.testclient import TestClient
@@ -308,6 +305,8 @@ from fast_zero.app import app
 def client():
     return TestClient(app)
 ```
+
+Neste caso, vamos criar uma fixture que retorna nosso `client`. Para fazer isso, precisamos criar o arquivo `tests/conftest.py`. O arquivo `conftest.py` é um arquivo especial reconhecido pelo pytest que permite definir fixtures que podem ser reutilizadas em diferentes módulos de teste dentro de um projeto. É uma forma de centralizar recursos comuns de teste.
 
 ---
 
@@ -461,18 +460,21 @@ def test_update_user(client):
 2. Escrever um teste para o erro de `404` (NOT FOUND) para o endpoint de DELETE;
 3. Crie um endpoint GET para pegar um único recurso como `users/{id}` e faça seus testes para `200` e `404`.
 
-> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_03/) da aula
+> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_03/) da aula
 
 ---
 
-# Antes de terminar
+## Suplementar / Para próxima aula
 
-Um pedido carinhoso!
+Para próxima aula, caso você não tenha nenhuma familiaridade com o SQLAlchemy ou com o Alembic, recomendo que assista a essas lives para se preparar e nivelar um pouco o conhecimento sobre essas ferramentas:
 
-Assistam as lives sobre migrações e sobre SQLAlchemy para se prepararem melhor para absorver o conteúdo da próxima aula!
+- [SQLAlchemy: conceitos básicos, uma introdução a versão 2 | Live de Python #258](https://youtu.be/t4C1c62Z4Ag)
+- [Migrações, bancos de dados evolutivos (Alembic e SQLAlchemy) | Live de Python #211](https://youtu.be/yQtqkq9UkDA)
 
-- [Live sobre SQLAlchemy - #258](https://youtu.be/t4C1c62Z4Ag)
-- [Live sobre Migrações - #211](https://youtu.be/yQtqkq9UkDA)
+Outro recurso que usaremos na próxima aula e pode te ajudar saber um pouco, são as variáveis de ambiente. Tema abordado em:
+
+- [Variáveis de ambiente, dotenv, constantes e configurações | Live de Python #207](https://youtu.be/DiiKff1z2Yw)
+
 
 ---
 
@@ -489,5 +491,3 @@ $ git push
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

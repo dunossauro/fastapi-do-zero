@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Integrando Banco de Dados a API
 
-> https://fastapidozero.dunossauro.com/05/
+> https://fastapidozero.dunossauro.com/4.0/05/
 
 ---
 
@@ -84,9 +84,6 @@ session.scalar(query)   # Lista 1 objeto
 
 session.commit()    # Executa as UTs no banco
 session.rollback()  # Desfaz as UTs
-
-session.begin()  # inicia a sessão
-session.close()  # Fecha a sessão
 ```
 
 ---
@@ -127,7 +124,7 @@ from fast_zero.models import User
 from fast_zero.settings import Settings
 # ...
 
-@app.post('/users/', response_model=UserPublic, status_code=201)
+@app.post('/users/', response_model=UserPublic, status_code=HTTPStatus.CREATED)
 def create_user(user: UserSchema):
     engine = create_engine(Settings().DATABASE_URL)
 
@@ -147,19 +144,19 @@ def create_user(user: UserSchema):
 ## Caso exista
 
 ```python
-@app.post('/users/', response_model=UserPublic, status_code=201)
+@app.post('/users/', response_model=UserPublic, status_code=HTTPStatus.CREATED)
 def create_user(user: UserSchema):
     # ...
     
     if db_user:
         if db_user.username == user.username:
             raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
+                status_code=HTTPStatus.CONFLICT,
                 detail='Username already exists',
             )
         elif db_user.email == user.email:
             raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
+                status_code=HTTPStatus.CONFLICT,
                 detail='Email already exists',
             )
 ```
@@ -169,7 +166,7 @@ def create_user(user: UserSchema):
 ### Caso não exista, deve ser inserido na base de dados
 
 ```python
-@app.post('/users/', response_model=UserPublic, status_code=201)
+@app.post('/users/', response_model=UserPublic, status_code=HTTPStatus.CREATED)
 def create_user(user: UserSchema):
     # ...
 
@@ -220,7 +217,7 @@ def get_session():
 from fast_zero.database import get_session
 # ...
 
-@app.post('/users/', response_model=UserPublic, status_code=201)
+@app.post('/users/', response_model=UserPublic, status_code=HTTPStatus.CREATED)
 def create_user(user: UserSchema):
     session = get_session()
 
@@ -302,7 +299,7 @@ from sqlalchemy.orm import Session
 
 # ...
 
-@app.post('/users/', response_model=UserPublic, status_code=201)
+@app.post('/users/', response_model=UserPublic, status_code=HTTPStatus.CREATED)
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(
         select(User).where(
@@ -347,7 +344,7 @@ def test_create_user(client):
             'password': 'secret',
         },
     )
-    assert response.status_code == 201
+    assert response.status_code == HTTPStatus.CREATED
     assert response.json() == {
         'username': 'alice',
         'email': 'alice@example.com',
@@ -360,8 +357,6 @@ def test_create_user(client):
 ---
 
 ## Erros!
-
-A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
 
 ```python
 from sqlalchemy.pool import StaticPool
@@ -381,6 +376,8 @@ def session():
 
     table_registry.metadata.drop_all(engine)
 ```
+
+A fixture precisa de algumas pequenas adaptações para rodar em threads diferentes:
 
 ---
 
@@ -497,6 +494,7 @@ def update_user(
 ```
 
 ---
+
 ## Enpoint de /DELETE
 
 ```python
@@ -648,16 +646,16 @@ Agora tudo foi coberto com sucesso :)
 
 # Exercícios:
 
-1. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `400`
-2. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o e-mail já foi registrado. Validando o erro `400`
-3. Atualizar os testes criados nos exercícios 1 e 2 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios) para suportarem o banco de dados
-4. Implementar o banco de dados para o endpoint de listagem por id, criado no exercício 3 da [aula 03](https://fastapidozero.dunossauro.com/03/#exercicios)
+1. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `409`
+2. Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o e-mail já foi registrado. Validando o erro `409`
+3. Atualizar os testes criados nos exercícios 1 e 2 da [aula 03](https://fastapidozero.dunossauro.com/4.0/03/#exercicios) para suportarem o banco de dados
+4. Implementar o banco de dados para o endpoint de listagem por id, criado no exercício 3 da [aula 03](https://fastapidozero.dunossauro.com/4.0/03/#exercicios)
 
 ---
 
 # Quiz
 
-> https://fastapidozero.dunossauro.com/quizes/aula_05/
+> https://fastapidozero.dunossauro.com/4.0/quizes/aula_05/
 
 ---
 
@@ -678,6 +676,3 @@ git push
 	}
     mermaid.initialize(config);
 </script>
-
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

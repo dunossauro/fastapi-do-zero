@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
 
-> https://fastapidozero.dunossauro.com/09/
+> https://fastapidozero.dunossauro.com/estavel/10/
 
 ---
 
@@ -629,7 +629,7 @@ def test_patch_todo_error(client, token):
 
 # Quiz
 
-Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_09/) dessa aula
+Não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/estavel/quizes/aula_10/) dessa aula
 
 ---
 
@@ -644,5 +644,3 @@ git commit -m "Implementado os endpoints de tarefas"
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

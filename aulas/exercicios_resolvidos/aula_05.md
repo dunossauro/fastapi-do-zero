@@ -101,7 +101,7 @@ def read_user__exercicio(
 
 A segunda parte é entender o que precisa ser feito nos testes para que eles consigam cobrir os dois casos previstos. O de sucesso e o de falha.
 
-O teste de sucesso continua passando, pois ele de fato não depende de nenhuma interação com o banco de dados:
+O teste de falha continua passando, pois ele de fato não depende de nenhuma interação com o banco de dados:
 ```python
 def test_get_user_should_return_not_found__exercicio(client):
     response = client.get('/users/666')
