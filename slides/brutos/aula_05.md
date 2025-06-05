@@ -24,7 +24,7 @@ A peça principal da nossa integração é a **sessão** do ORM. Ela precisa ser
 
 <div class="mermaid" style="text-align: center;">
 graph LR
-  Enpoint <--> Session
+  Endpoint <--> Session
   Session <--> id1[(Database)]
 </div>
 
