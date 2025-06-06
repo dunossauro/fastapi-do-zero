@@ -19,7 +19,7 @@ dependencies = [
 pytest = "^8.4.0"
 pytest-cov = "^6.1.1"
 taskipy = "^1.14.1"
-ruff = "^0.11.12"
+ruff = "^0.11.13"
 httpx = "^0.28.1"
 
 [tool.ruff]
