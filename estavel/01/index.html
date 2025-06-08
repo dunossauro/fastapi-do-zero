@@ -2292,7 +2292,7 @@
 </blockquote>
 <details class="danger" open="open">
 <summary>Sobre as versões das bibliotecas instaladas</summary>
-<p>A última atualização dos pacotes deste material foi feita em: <strong>06/06/2025 às 08:40</strong>.</p>
+<p>A última atualização dos pacotes deste material foi feita em: <strong>08/06/2025 às 09:44</strong>.</p>
 <p>Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="../apendices/c_versoes_usadas/">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
 </details>
 <h2 id="pipx">pipx</h2>
@@ -2528,7 +2528,7 @@
 <li>Função que será executada quando o endereço <code>/</code> for acessado por um cliente</li>
 <li>Os dados que serão retornados pelo endereço quando for chamado</li>
 </ol>
-<p>A linha em destaque <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> expõem a nossa função para ser servida pelo FastAPI. Dizendo que quando um cliente acessar o nosso endereço de rede no caminho <code>/</code>, usando o método HTTP GET<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, a função será executada. Desta maneira, temos todo o código necessário para criar nossa primeira aplicação web com FastAPI.</p>
+<p>A linha em destaque <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> expõe a nossa função para ser servida pelo FastAPI. Dizendo que quando um cliente acessar o nosso endereço de rede no caminho <code>/</code>, usando o método HTTP GET<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, a função será executada. Desta maneira, temos todo o código necessário para criar nossa primeira aplicação web com FastAPI.</p>
 <p>Antes de iniciarmos nossa aplicação, temos que fazer um passo importante, habilitar o ambiente virtual, para que o python consiga enxergar nossas dependências instaladas. O poetry tem um comando específico para isso:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>poetry<span class="w"> </span>shell
 </span></code></pre></div>
@@ -2602,7 +2602,7 @@
 <p>O cliente mais tradicional da web é o navegador, podemos digitar o endereço na barra de navegação e se tudo ocorreu corretamente, você deve ver a mensagem "Olá Mundo!" em formato JSON.</p>
 <p><a class="glightbox" href="../assets/01/nagevador_com_localhost.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt='Captura de tela do browser acessando "http://127.0.0.1"' class="center shadow" src="../assets/01/nagevador_com_localhost.png"></a></p>
 <blockquote>
-<p>Para parar a execução do fastapi no shell, você pode digitar <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> e a mensagem <code>Shutting down</code> aparecerá mostrando que o servidor foi finalizado.</p>
+<p>Para parar a execução do fastapi no shell, você pode digitar <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> e a mensagem <code>Shutting down</code> aparecerá, mostrando que o servidor foi finalizado.</p>
 </blockquote>
 <details class="example">
 <summary>Diferentes clientes para nossa aplicação</summary>
@@ -2636,7 +2636,7 @@
 </span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>INFO:<span class="w">     </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>application<span class="w"> </span>startup.
 </span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>INFO:<span class="w">     </span>Application<span class="w"> </span>startup<span class="w"> </span>complete.
 </span></code></pre></div>
-<p>Sempre que usarmos o fastapi para inicializar a aplicação no shell, ele faz uma chamada interna para inicializar o uvicorn. Por esse motivo ele aparece nas respostas HTTP e também na execução do comando.</p>
+<p>Sempre que usarmos o fastapi para inicializar a aplicação no shell, ele faz uma chamada interna para inicializar o uvicorn. Por esse motivo, ele aparece nas respostas HTTP e também na execução do comando.</p>
 <details class="tip">
 <summary>Você poderia chamar a aplicação diretamente pelo Uvicorn também</summary>
 <p></p><div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>uvicorn<span class="w"> </span>fast_zero.app:app
@@ -2656,7 +2656,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <li><a href="https://github.com/taskipy/taskipy" target="_blank">taskipy</a>: ferramenta usada para criação de comandos. Como executar a aplicação, rodar os testes, etc.</li>
 <li><a href="https://docs.pytest.org/" target="_blank">pytest</a>: ferramenta para escrever e executar testes</li>
 <li><a href="https://docs.astral.sh/ruff/" target="_blank">ruff</a>: Uma ferramenta que tem duas funções no nosso código:<ol>
-<li>Um analisador estático de código (um <a href="https://pt.wikipedia.org/wiki/Linter_(computa%C3%A7%C3%A3o)" target="_blank">linter</a>), para dizer se não estamos infringido alguma <a href="https://docs.astral.sh/ruff/rules/" target="_blank">boa prática de programação</a>;</li>
+<li>Um analisador estático de código (um <a href="https://pt.wikipedia.org/wiki/Linter_(computa%C3%A7%C3%A3o)" target="_blank">linter</a>), para dizer se não estamos infringindo alguma <a href="https://docs.astral.sh/ruff/rules/" target="_blank">boa prática de programação</a>;</li>
 <li>Um formatador de código. Para seguirmos um estilo único de código. Vamos nos basear na <a href="https://peps.python.org/pep-0008/" target="_blank">PEP-8</a>.</li>
 </ol>
 </li>
@@ -2748,7 +2748,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <ul>
 <li><code>lint</code>: Faz a checagem de boas práticas do código python</li>
 <li><code>pre_format</code>: Faz algumas correções de boas práticas automaticamente</li>
-<li><code>format</code>: Executa a formatação do código em relação as convenções de estilo de código</li>
+<li><code>format</code>: Executa a formatação do código em relação às convenções de estilo de código</li>
 <li><code>run</code>: executa o servidor de desenvolvimento do FastAPI</li>
 <li><code>pre_test</code>: executa a camada de lint antes de executar os testes</li>
 <li><code>test</code>: executa os testes com pytest de forma verbosa (-vv) e adiciona nosso código como base de cobertura</li>
@@ -2967,7 +2967,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <li>Importa o nosso <code>app</code> definido em <code>fast_zero</code></li>
 <li>Cria um cliente de testes usando a nossa aplicação como base</li>
 </ol>
-<p>Só o fato de termos definido um cliente, já nos mostra uma cobertura bastante diferente:</p>
+<p>Só o fato de termos definido um cliente já nos mostra uma cobertura bastante diferente:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>task<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="c1"># parte da mensagem foi omitida</span>
 </span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="hll">collected<span class="w"> </span><span class="m">0</span><span class="w"> </span>items
@@ -2986,7 +2986,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </span></code></pre></div>
 <p>No navegador, podemos ver que a única linha não "testada" é aquela onde temos a lógica (o corpo) da função <code>read_root</code>. As linhas de definição estão todas verdes:</p>
 <p><a class="glightbox" href="../assets/01/navegador_com_pagina_de_cobertura_com_estrutuda_de_testes.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="browser" class="center" src="../assets/01/navegador_com_pagina_de_cobertura_com_estrutuda_de_testes.png"></a></p>
-<p>No verde vemos o que foi executado quando chamamos o teste, no vermelho o que não foi.</p>
+<p>No verde, vemos o que foi executado quando chamamos o teste, no vermelho o que não foi.</p>
 <p>Para resolver isso, temos que criar um teste de fato, fazendo uma chamada para nossa API usando o cliente de teste que definimos:</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">tests/test_app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-52-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-52-2"> 2</a></span>
@@ -3084,7 +3084,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </span></code></pre></div></td></tr></table></div>
 <p>Com base nesse código, podemos observar as três fases:</p>
 <h3 id="fase-1-organizar-arrange">Fase 1 - Organizar (Arrange)</h3>
-<p>Nesta primeira etapa, estamos preparando o ambiente para o teste. No exemplo, a linha com o comentário <code>Arrange</code> não é o teste em si, ela monta o ambiente para que o teste possa ser executado. Estamos configurando um <code>client</code> de testes para fazer a requisição ao <code>app</code>.</p>
+<p>Nesta primeira etapa, estamos preparando o ambiente para o teste. No exemplo, a linha com o comentário <code>Arrange</code> não é o teste em si, ela monta o ambiente para o teste poder ser executado. Estamos configurando um <code>client</code> de testes para fazer a requisição ao <code>app</code>.</p>
 <h3 id="fase-2-agir-act">Fase 2 - Agir (Act)</h3>
 <p>Aqui é a etapa onde acontece a ação principal do teste, que consiste em chamar o Sistema Sob Teste (<a href="http://xunitpatterns.com/SUT.html" target="_blank">SUT</a>). No nosso caso, o SUT é a rota <code>/</code>, e a ação é representada pela linha <code>response = client.get('/')</code>. Estamos exercitando a rota e armazenando sua resposta na variável <code>response</code>. É a fase em que o código de testes executa o código de produção que está sendo testado. Agir aqui significa interagir diretamente com a parte do sistema que queremos avaliar, para ver como ela se comporta.</p>
 <h3 id="fase-3-afirmar-assert">Fase 3 - <em>Afirmar</em> (Assert)</h3>
@@ -3123,7 +3123,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </blockquote>
 <p>Esses passos garantem que todo o código criado na aula esteja versionado e disponível para compartilhamento no GitHub.</p>
 <h2 id="suplementar-para-proxima-aula">Suplementar / Para próxima aula</h2>
-<p>Caso o mundo dos testes ainda seja um pouco nebuloso para você, recomendo que antes de partir para a próxima aula, você dê uma assistida em algumas lives de python de fora desse curso:</p>
+<p>Caso o mundo dos testes ainda seja um pouco nebuloso para você, recomendo que, antes de partir para a próxima aula, você dê uma assistida em algumas lives de python de fora desse curso:</p>
 <ul>
 <li><a href="https://youtu.be/-8H2Pyxnoek" target="_blank">Uma introdução aos testes: Como fazer? | Live de Python #232</a></li>
 <li><a href="https://youtu.be/MjQCvJmc31A" target="_blank">Pytest: Uma introdução - Live de Python #167</a></li>
@@ -3135,7 +3135,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </ol>
 <p><a class="md-button" href="../exercicios_resolvidos/aula_01/">Exercícios resolvidos <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg></span></a></p>
 <h2 id="conclusao">Conclusão</h2>
-<p>Pronto! Agora temos um ambiente de desenvolvimento totalmente configurado para começar a trabalhar com FastAPI e já fizemos nossa primeira imersão no Desenvolvimento Orientado por Testes. Na próxima aula nos aprofundaremos na estruturação da nossa aplicação FastAPI. Até lá!</p>
+<p>Pronto! Agora temos um ambiente de desenvolvimento totalmente configurado para começar a trabalhar com FastAPI e já fizemos nossa primeira imersão no Desenvolvimento Orientado por Testes. Na próxima aula, nos aprofundaremos na estruturação da nossa aplicação FastAPI. Até lá!</p>
 <hr>
 <p>Agora que a aula acabou, é um bom momento para você relembrar alguns conceitos e fixar melhor o conteúdo respondendo ao questionário referente a ela.</p>
 <p><a class="md-button" href="../quizes/aula_01/">Quiz <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M4 2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m8.19 3.5c-.89 0-1.6.18-2.14.54-.55.36-.83.96-.78 1.65h1.97c0-.28.1-.49.26-.63.2-.14.42-.21.69-.21.31 0 .58.08.76.26.18.17.27.39.27.69 0 .28-.08.53-.22.74-.17.22-.38.4-.64.54-.52.32-.86.6-1.07.84-.19.24-.29.58-.29 1.08h2c0-.28.05-.5.14-.68.09-.17.26-.32.52-.47.46-.21.84-.49 1.13-.85.29-.37.44-.76.44-1.2q0-1.05-.81-1.68c-.54-.41-1.29-.62-2.23-.62M11 12v2h2v-2z"></path></svg></span></a></p>
@@ -3149,10 +3149,10 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <p>Exploraremos mais a fundo a relação de métodos e o protocolo HTTP na próxima aula. <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:3">
-<p>Em alguns casos existe uma divergência de opiniões em os linter mais tradicionais. Mas, em geral funciona bem. <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>Em alguns casos, existe uma divergência de opiniões entre os linters mais tradicionais. Mas, em geral, funciona bem. <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:4">
-<p>Em versões antigas do texto usávamos as ferramentas do PyCQA como o pylint e o isort. <a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>Em versões antigas do texto, usávamos as ferramentas do PyCQA como o pylint e o isort. <a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 </ol>
 </div></div><style type="text/css">.quiz {
@@ -3286,7 +3286,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de maio de 2025 22:23:20 UTC">8 de maio de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de junho de 2025 12:51:57 UTC">8 de junho de 2025</span>
   </span>
 
     
