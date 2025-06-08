@@ -16,7 +16,7 @@ As Aulas estão dividas em:
 7. [Refatorando a Estrutura do Projeto](https://fastapidozero.dunossauro.com/estavel/07/)
 8. [Tornando o projeto assíncrono](https://fastapidozero.dunossauro.com/estavel/08/)
 9. [Tornando o sistema de autenticação robusto](https://fastapidozero.dunossauro.com/estavel/09/)
-10. [Criando Rotas CRUD para Tarefas](https://fastapidozero.dunossauro.com/estavel/10/)
+10. [Criando Rotas CRUD para gerenciamento de tarefas](https://fastapidozero.dunossauro.com/estavel/10/)
 11. [Dockerizando a aplicação](https://fastapidozero.dunossauro.com/estavel/11/)
 12. [Automatizando os testes com integração contínua](https://fastapidozero.dunossauro.com/estavel/12/)
 13. [Fazendo o deploy no fly.io](https://fastapidozero.dunossauro.com/estavel/13/)
