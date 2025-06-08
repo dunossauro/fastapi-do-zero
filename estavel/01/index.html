@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Como instalar as dependência e ajustar nosso pyproject.toml">
+        <meta name="description" content="Como instalar as dependências e ajustar nosso pyproject.toml">
       
       
       
@@ -67,7 +67,7 @@
       
         <meta  property="og:title"  content="Configurando o ambiente de desenvolvimento - FastAPI do Zero" >
       
-        <meta  property="og:description"  content="Como instalar as dependência e ajustar nosso pyproject.toml" >
+        <meta  property="og:description"  content="Como instalar as dependências e ajustar nosso pyproject.toml" >
       
         <meta  property="og:image"  content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/01.png" >
       
@@ -83,7 +83,7 @@
       
         <meta  name="twitter:title"  content="Configurando o ambiente de desenvolvimento - FastAPI do Zero" >
       
-        <meta  name="twitter:description"  content="Como instalar as dependência e ajustar nosso pyproject.toml" >
+        <meta  name="twitter:description"  content="Como instalar as dependências e ajustar nosso pyproject.toml" >
       
         <meta  name="twitter:image"  content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/01.png" >
       
@@ -2266,7 +2266,7 @@
 </ul>
 <details class="tip">
 <summary>Caso prefira ver a aula em vídeo</summary>
-<p>Esse aula ainda não está disponível em formato de vídeo, somente em texto ou live!
+<p>Essa aula ainda não está disponível em formato de vídeo, somente em texto ou live!
 <a class="glightbox" href="https://www.youtube.com/embed/-Pi5AmOfL2s" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><div class="video-container"><iframe src="https://www.youtube.com/embed/-Pi5AmOfL2s" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div></a></p>
 </details>
 <p><a class="md-button" href="https://youtu.be/-Pi5AmOfL2s?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP">Aula <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"></path></svg></span></a>
@@ -2278,7 +2278,7 @@
 <p>Nesta aula, iniciaremos nossa jornada na construção de uma API com FastAPI. Partiremos do básico, configurando nosso ambiente de desenvolvimento. Discutiremos desde a escolha e instalação da versão correta do Python até a instalação e configuração do Poetry, um gerenciador de pacotes e dependências para Python. Além disso, instalaremos e configuraremos uma série de ferramentas de desenvolvimento úteis, como Ruff, pytest e Taskipy.</p>
 <p>Após configurado o nosso ambiente, criaremos nosso primeiro programa "Hello, World!" com FastAPI. Isso nos permitirá confirmar que tudo está funcionando corretamente. E, finalmente, exploraremos uma parte crucial do Desenvolvimento Orientado por Testes (TDD), escrevendo nosso primeiro teste com Pytest.</p>
 <h2 id="ambiente-de-desenvolvimento">Ambiente de Desenvolvimento</h2>
-<p>Para iniciar esse curso você precisa de algumas ferramentas instaladas:</p>
+<p>Para iniciar esse curso, você precisa de algumas ferramentas instaladas:</p>
 <ol>
 <li>Um editor de texto a sua escolha (Usarei o <a href="https://www.gnu.org/software/emacs/" target="_blank">GNU/Emacs</a>)</li>
 <li>Um terminal a sua escolha (Usarei o <a href="https://gnome-terminator.org/" target="_blank">Terminator</a>)</li>
@@ -2417,7 +2417,7 @@
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">cd</span><span class="w"> </span>fast_zero
 </span></code></pre></div>
 <ol>
-<li>Cria um pacote python chamado <code>fast_zero</code> no formato <code>flat</code>. Por padrão o poetry utiliza o formato <code>src</code>. Mais informações sobre isso <a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/" target="_blank">aqui</a></li>
+<li>Cria um pacote python chamado <code>fast_zero</code> no formato <code>flat</code>. Por padrão, o poetry utiliza o formato <code>src</code>. Mais informações sobre isso <a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/" target="_blank">aqui</a></li>
 </ol>
 <p>Ele criará uma estrutura de arquivos e pastas como essa:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>.
@@ -2498,7 +2498,7 @@
 <p>De forma tradicional, como todas as funções em python.</p>
 <details class="tip">
 <summary>Dica: Como abrir o terminal interativo (REPL)</summary>
-<p>Para abrir o terminal interativo com o seu código carregado, você deve chamar o Python no terminal usando -i:</p>
+<p>Para abrir o terminal interativo com o seu código carregado, você deve chamar o Python no terminal usando <code>-i</code>:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>python<span class="w"> </span>-i<span class="w"> </span>&lt;seu_arquivo.py&gt;
 </span></code></pre></div>
 <p>O interpretador do Python executa o código do arquivo e retorna o shell após executar tudo que está escrito no arquivo.</p>
@@ -2526,7 +2526,7 @@
 <li>Iniciando uma aplicação FastAPI</li>
 <li>Definindo um endpoint com o endereço <code>/</code> acessível pelo método HTTP <code>GET</code></li>
 <li>Função que será executada quando o endereço <code>/</code> for acessado por um cliente</li>
-<li>Os dados que serão retornados pelo endereço quando for chamado</li>
+<li>Os dados que serão retornados pelo endereço, quando o endpoint for chamado</li>
 </ol>
 <p>A linha em destaque <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> expõe a nossa função para ser servida pelo FastAPI. Dizendo que quando um cliente acessar o nosso endereço de rede no caminho <code>/</code>, usando o método HTTP GET<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, a função será executada. Desta maneira, temos todo o código necessário para criar nossa primeira aplicação web com FastAPI.</p>
 <p>Antes de iniciarmos nossa aplicação, temos que fazer um passo importante, habilitar o ambiente virtual, para que o python consiga enxergar nossas dependências instaladas. O poetry tem um comando específico para isso:</p>
@@ -2606,7 +2606,7 @@
 </blockquote>
 <details class="example">
 <summary>Diferentes clientes para nossa aplicação</summary>
-<p>Caso exista uma curiosidade sobre outros clientes HTTP que não o browser, podemos usar aplicações de linha de comando como tradicional <a href="https://curl.se/" target="_blank">curl</a>:</p>
+<p>Caso exista uma curiosidade sobre outros clientes HTTP que não o browser, podemos usar aplicações de linha de comando como a tradicional <a href="https://curl.se/" target="_blank">curl</a>:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>curl<span class="w"> </span><span class="m">127</span>.0.0.1:8000
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="o">{</span><span class="s2">"message"</span>:<span class="s2">"Olá Mundo!"</span><span class="o">}</span>
 </span></code></pre></div>
@@ -2674,7 +2674,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </ol>
 <p>Para configurar o ruff montamos a configuração em 3 <a href="https://toml.io/pt/v1.0.0#tabela" target="_blank">tabelas</a> distintas no arquivo <code>pyproject.toml</code>. Uma para as configurações globais, uma para o linter e uma para o formatador.</p>
 <p><strong>Configuração global</strong></p>
-<p>Na configuração global do Ruff queremos alterar somente duas coisas. O comprimento de linha para 79 caracteres (conforme sugerido na <a href="https://peps.python.org/pep-0008/" target="_blank">PEP-8</a>) e em seguida, informaremos que o diretório de migrações de banco de dados será ignorado na checagem e na formatação:</p>
+<p>Na configuração global do Ruff queremos alterar somente duas coisas. O comprimento de linha para 79 caracteres (conforme sugerido na <a href="https://peps.python.org/pep-0008/" target="_blank">PEP-8</a>) e, em seguida, informaremos que o diretório de migrações de banco de dados será ignorado na checagem e na formatação:</p>
 <div class="language-toml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-21">21</a></span>
 <span class="normal"><a href="#__codelineno-36-22">22</a></span>
 <span class="normal"><a href="#__codelineno-36-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-21"><a id="__codelineno-36-21" name="__codelineno-36-21"></a><span class="k">[tool.ruff]</span>
@@ -2723,7 +2723,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </span><span id="__span-39-34"><a id="__codelineno-39-34" name="__codelineno-39-34"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
 </span><span id="__span-39-35"><a id="__codelineno-39-35" name="__codelineno-39-35"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings'</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Na segunda linha dizemos para o pytest adicionar a opção <code>no:warnings</code>. Para ter uma visualização mais limpa dos testes, caso alguma biblioteca exiba uma mensagem de warning, isso será suprimido pelo pytest.</p>
+<p>Na segunda linha, dizemos para o pytest adicionar a opção <code>no:warnings</code>. Para ter uma visualização mais limpa dos testes, caso alguma biblioteca exiba uma mensagem de warning, isso será suprimido pelo pytest.</p>
 <h3 id="taskipy">Taskipy</h3>
 <p>A ideia do <a href="https://github.com/taskipy/taskipy" target="_blank">Taskipy</a> é ser um executor de tarefas (<em>task runner</em>) complementar em nossa aplicação. No lugar de ter que lembrar comandos como o do fastapi, que vimos na execução da aplicação, que tal substituir ele simplesmente por <code>task run</code>?</p>
 <p>Isso funcionaria para qualquer comando complicado em nossa aplicação. Simplificando as chamadas e também para não termos que lembrar de como executar todos os comandos de cabeça.</p>
@@ -3017,7 +3017,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </span><span id="__span-52-14"><a id="__codelineno-52-14" name="__codelineno-52-14"></a>    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="o">==</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>  <span class="c1"># (5)!</span>
 </span></code></pre></div></td></tr></table></div>
 <ol>
-<li>No nome da função, geralmente escrevemos o que o teste de fato faz. Aqui estamos dizendo que root deve retornar o status OK e a mensagem "olá mundo". Root é o nome dado a raiz da URL. O caminho <code>/</code>, que colocamos na definição do <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code>. OK é o status que diz que a requisição aconteceu com sucesso no protocolo HTTP.</li>
+<li>No nome da função, escrevemos geralmente o que o teste de fato faz. Aqui estamos dizendo que root deve retornar o status OK e a mensagem "olá mundo". Root é o nome dado a raiz da URL. O caminho <code>/</code>, que colocamos na definição do <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code>. OK é o status que diz que a requisição aconteceu com sucesso no protocolo HTTP.</li>
 <li>Aqui criamos o cliente de teste do nosso app</li>
 <li>Nesse ponto, o <code>client</code> faz uma requisição. Da mesma forma que o browser, um cliente da API. Nisso, chamamos o endereço de root, usando o método GET.</li>
 <li>Aqui fazemos a validação do código de resposta, para saber se a resposta é referente ao código <code>200</code>, que significa <code>OK</code>. Mais informações sobre esse tópico <a href="../02/#boas-praticas-para-constantes" target="_blank">aqui</a>.</li>
@@ -3103,7 +3103,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>pipx<span class="w"> </span>run<span class="w"> </span>ignr<span class="w"> </span>-p<span class="w"> </span>python<span class="w"> </span>&gt;<span class="w"> </span>.gitignore<span class="w"> </span><span class="c1">#(1)!</span>
 </span></code></pre></div>
 <ol>
-<li>O comando <code>pipx run</code> vai baixar o <code>ignr</code> vai executar o comando e vai desinstalar. Não existe a necessidade de termos ele instalado no sistema pois só será executado dessa vez.</li>
+<li>O comando <code>pipx run</code> vai baixar o <code>ignr</code> vai executar o comando e vai desinstalar. Não existe a necessidade de termos ele instalado no sistema, pois só será executado dessa vez.</li>
 </ol>
 <p>O <code>.gitignore</code> é importante porque ele nos ajuda a evitar que arquivos desnecessários ou sensíveis sejam enviados para o repositório. Isso inclui o ambiente virtual, arquivos de configuração pessoal, entre outros.</p>
 <p><strong>Criando um repositório no github</strong></p>
@@ -3286,7 +3286,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de junho de 2025 12:51:57 UTC">8 de junho de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de junho de 2025 13:00:15 UTC">8 de junho de 2025</span>
   </span>
 
     
