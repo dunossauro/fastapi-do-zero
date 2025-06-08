@@ -114,16 +114,16 @@ Alguns outros tópicos não relativos a python também serão abordados. Então,
 
 ## Aulas
 
-1. [Configurando o Ambiente de Desenvolvimento](01.md){:target="_blank"}
+1. [Configurando o ambiente de desenvolvimento](01.md){:target="_blank"}
 2. [Introdução ao desenvolvimento WEB](02.md){:target="_blank"}
-3. [Estruturando seu Projeto e Criando Rotas CRUD](03.md){:target="_blank"}
-4. [Configurando Banco de Dados e Gerenciando Migrações com Alembic](04.md){:target="_blank"}
-5. [Integrando Banco de Dados a API](05.md){:target="_blank"}
-6. [Autenticação e Autorização](06.md){:target="_blank"}
-7. [Refatorando a Estrutura do Projeto](07.md){:target="_blank"}
+3. [Estruturando seu projeto e criando rotas CRUD](03.md){:target="_blank"}
+4. [Configurando o banco de dados e gerenciando migrações com Alembic](04.md){:target="_blank"}
+5. [Integrando o banco de dados à API](05.md){:target="_blank"}
+6. [Autenticação e Autorização com JWT](06.md){:target="_blank"}
+7. [Refatorando a estrutura do projeto](07.md){:target="_blank"}
 8. [Tornando o projeto assíncrono](08.md){:target="_blank"}
 9. [Tornando o sistema de autenticação robusto](09.md){:target="_blank"}
-10. [Criando Rotas CRUD para Tarefas](10.md){:target="_blank"}
+10. [Criando rotas CRUD para gerenciamento de tarefas](10.md){:target="_blank"}
 11. [Dockerizando a nossa aplicação e introduzindo o PostgreSQL](11.md){:target="_blank"}
 12. [Automatizando os testes com integração contínua](12.md){:target="_blank"}
 13. [Fazendo o deploy no Fly.io](13.md){:target="_blank"}
