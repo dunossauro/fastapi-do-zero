@@ -1,5 +1,5 @@
 ??? tip "Caso prefira ver a aula em vídeo"
-	Esse aula ainda não está disponível em formato de vídeo, somente em texto ou live!
+	Essa aula ainda não está disponível em formato de vídeo, somente em texto ou live!
 	![type:video](https://www.youtube.com/embed/{{link}})
 
 [Aula :fontawesome-brands-youtube:](https://youtu.be/{{link}}?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){ .md-button }
