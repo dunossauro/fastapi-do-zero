@@ -253,6 +253,47 @@ alembic upgrade head
 
 ---
 
+## Relacionando `User` com `TODO`
+
+```python
+@table_registry.mapped_as_dataclass
+class User:
+    # ...
+    todos: Mapped[list['Todo']] = relationship(
+        init=False,
+        cascade='all, delete-orphan',
+        lazy='selectin',
+    )
+```
+
+---
+
+## Isso se sustenta nos testes?
+
+```bash
+task test
+```
+
+---
+
+## Alterando o `test_db` para a relação
+
+```python
+@pytest.mark.asyncio
+async def test_create_user(session, mock_db_time):
+    # ...
+    assert asdict(user) == {
+        'id': 1,
+        'username': 'alice',
+        'password': 'secret',
+        'email': 'teste@test',
+        'created_at': time,
+        'todos': [],  # AQUI!
+    }
+```
+
+---
+
 # Parte 3
 
 > O endpoint de GET
@@ -378,7 +419,7 @@ def test_list_todos_should_return_5_todos(session, client, user, token):
 
 ---
 
-### ofset e limit
+### offset e limit
 
 ```python
 def test_list_todos_pagination_should_return_2_todos(
