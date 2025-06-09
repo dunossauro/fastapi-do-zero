@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
+# Criando rotas CRUD para gerenciamento de tarefas
 
 > https://fastapidozero.dunossauro.com/estavel/10/
 
@@ -68,7 +68,7 @@ Um endpoint de criação de todos
 
 ```python
 @router.post('/', response_model=???)
-def create_todo(todo: ???):
+async def create_todo(todo: ???):
     return ???
 ```
 
@@ -122,7 +122,7 @@ class TodoState(str, Enum):
 from typing import Annotated
 
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from fast_zero.database import get_session
 from fast_zero.models import User
@@ -131,12 +131,12 @@ from fast_zero.security import get_current_user
 
 router = APIRouter(prefix='/todos', tags=['todos'])
 
-Session = Annotated[Session, Depends(get_session)]
+Session = Annotated[AsyncSession, Depends(get_session)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
 @router.post('/', response_model=TodoPublic)
-def create_todo(
+async def create_todo(
     todo: TodoSchema,
     user: CurrentUser,
     session: Session,
@@ -178,7 +178,7 @@ class Todo:
 from fast_zero.models import Todo, User
 # ...
 @router.post('/', response_model=TodoPublic)
-def create_todo(
+async def create_todo(
     todo: TodoSchema,
     user: CurrentUser,
     session: Session,
@@ -190,8 +190,8 @@ def create_todo(
         user_id=user.id,
     )
     session.add(db_todo)
-    session.commit()
-    session.refresh(db_todo)
+    await session.commit()
+    await session.refresh(db_todo)
 
     return db_todo
 ```
@@ -285,7 +285,7 @@ from sqlalchemy import select
 from fast_zero.schemas import TodoList, TodoPublic, TodoSchema
 # ...
 @router.get('/', response_model=???)
-def list_todos(
+async def list_todos(
     session: Session,
     user: CurrentUser,
     todo_filter: Annotated[FilterTodo, Query()],
@@ -315,7 +315,7 @@ def list_todos(...):
     if state:  # o estado é igual
         query = query.filter(Todo.state == state)
 
-    todos = session.scalars(query.offset(offset).limit(limit)).all()
+    todos = await session.scalars(query.offset(offset).limit(limit)).all()
 
     return {'todos': todos}
 ```
@@ -474,7 +474,7 @@ def test_list_todos_filter_state_should_return_5_todos(
 
 ```python
 @router.delete('/{todo_id}', response_model=Message)
-def delete_todo(todo_id: int, session: Session, user: CurrentUser):
+async def delete_todo(todo_id: int, session: Session, user: CurrentUser):
     todo = session.scalar(
         select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
     )
@@ -485,7 +485,7 @@ def delete_todo(todo_id: int, session: Session, user: CurrentUser):
         )
 
     session.delete(todo)
-    session.commit()
+    await session.commit()
 
     return {'message': 'Task has been deleted successfully.'}
 ```
@@ -543,7 +543,7 @@ class TodoUpdate(BaseModel):
 
 ```python
 @router.patch('/{todo_id}', response_model=TodoPublic)
-def patch_todo(
+async def patch_todo(
     todo_id: int, session: Session, user: CurrentUser, todo: TodoUpdate
 ):
     db_todo = session.scalar(
@@ -559,8 +559,8 @@ def patch_todo(
         setattr(db_todo, key, value)
 
     session.add(db_todo)
-    session.commit()
-    session.refresh(db_todo)
+    await session.commit()
+    await session.refresh(db_todo)
 
     return db_todo
 ```
@@ -611,6 +611,8 @@ def test_patch_todo_error(client, token):
 
 # Exercícios
 
+> Ao todo teremos 5 exercícios!
+
 1. Adicione os campos `created_at` e `updated_at` na tabela `Todo`
 	- Eles devem ser `init=False`
 	- Deve usar `func.now()` para criação
@@ -624,6 +626,12 @@ def test_patch_todo_error(client, token):
 
 3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API. Essa alteração deve ser refletida nos testes também!
 4. Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no `Todo` de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.
+
+---
+
+# Exercícios
+
+5. Crie um teste para validar o caso do `Enum` em `state: Mapped[TodoState]` na tabela `TODO`, onde o valor esteja fora dos valores mapeados por ele. Isso forçará um erro que pode ser validado com [`pytest.raises`](https://docs.pytest.org/en/4.6.x/reference.html#pytest-raises)
 
 ---
 

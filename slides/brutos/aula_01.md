@@ -9,7 +9,7 @@ style: |
   }
 ---
 
-# 01 - Configurando o Ambiente de Desenvolvimento
+# 01 - Configurando o ambiente de desenvolvimento
 
 > https://fastapidozero.dunossauro.com/4.0/01/
 

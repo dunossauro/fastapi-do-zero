@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Integrando Banco de Dados a API
+# Integrando banco de dados à API
 
 > https://fastapidozero.dunossauro.com/4.0/05/
 
