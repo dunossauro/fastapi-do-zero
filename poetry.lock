@@ -971,14 +971,14 @@ pyyaml = ">=5.1"
 
 [[package]]
 name = "mkdocs-git-authors-plugin"
-version = "0.9.5"
+version = "0.9.6"
 description = "Mkdocs plugin to display git authors of a page"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "mkdocs_git_authors_plugin-0.9.5-py3-none-any.whl", hash = "sha256:acdacc8452db90a94d9c395a230b16965a9f2f51e0a6eef182ac7d3e02e394fb"},
-    {file = "mkdocs_git_authors_plugin-0.9.5.tar.gz", hash = "sha256:e19f0252ead3d626fd73e15bb56d6675704c3b62aa569ebc363f791291b8f60e"},
+    {file = "mkdocs_git_authors_plugin-0.9.6-py3-none-any.whl", hash = "sha256:c437d33e85b79e39809f9d81d3283267b416312425b6f9728cd60156d59187e8"},
+    {file = "mkdocs_git_authors_plugin-0.9.6.tar.gz", hash = "sha256:180cc80ef78d553676b850fb783e13506d7eadd30b13a070aa085b2d9ad0607d"},
 ]
 
 [package.dependencies]
@@ -2048,14 +2048,14 @@ files = [
 
 [[package]]
 name = "zipp"
-version = "3.22.0"
+version = "3.23.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "zipp-3.22.0-py3-none-any.whl", hash = "sha256:fe208f65f2aca48b81f9e6fd8cf7b8b32c26375266b009b413d45306b6148343"},
-    {file = "zipp-3.22.0.tar.gz", hash = "sha256:dd2f28c3ce4bc67507bfd3781d21b7bb2be31103b51a4553ad7d90b84e57ace5"},
+    {file = "zipp-3.23.0-py3-none-any.whl", hash = "sha256:071652d6115ed432f5ce1d34c336c0adfd6a884660d1e9712a256d3d3bd4b14e"},
+    {file = "zipp-3.23.0.tar.gz", hash = "sha256:a07157588a12518c9d4034df3fbbee09c814741a33ff63c05fa29d26a2404166"},
 ]
 
 [package.extras]
@@ -2063,10 +2063,10 @@ check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1) ; sys_platform != \"
 cover = ["pytest-cov"]
 doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
 enabler = ["pytest-enabler (>=2.2)"]
-test = ["big-O", "importlib_resources ; python_version < \"3.9\"", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more_itertools", "pytest (>=6,!=8.1.*)", "pytest-ignore-flaky"]
+test = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more_itertools", "pytest (>=6,!=8.1.*)", "pytest-ignore-flaky"]
 type = ["pytest-mypy"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "4c092ed8f0d7cbb176d88a6970149ec63adddf38e008addefb59ed3db50ce35b"
+content-hash = "647825bfa89683aadcf3901138a24baddd53c617906fcd67966c2d838f6d844d"
