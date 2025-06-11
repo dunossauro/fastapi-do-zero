@@ -74,6 +74,9 @@ plugins:
   - mkdocs_quiz
   - towncrier
   - markdown-exec
+  - mkdocs-simple-hooks:
+      hooks:
+        on_post_build: "hooks.copy_slides:copy_slides"
 
 fonts:
   icon: material/format-font
