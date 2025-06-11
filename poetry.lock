@@ -1098,6 +1098,24 @@ files = [
 mkdocs = "*"
 
 [[package]]
+name = "mkdocs-simple-hooks"
+version = "0.1.5"
+description = "Define your own hooks for mkdocs, without having to create a new package."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "mkdocs-simple-hooks-0.1.5.tar.gz", hash = "sha256:dddbdf151a18723c9302a133e5cf79538be8eb9d274e8e07d2ac3ac34890837c"},
+    {file = "mkdocs_simple_hooks-0.1.5-py3-none-any.whl", hash = "sha256:efeabdbb98b0850a909adee285f3404535117159d5cb3a34f541d6eaa644d50a"},
+]
+
+[package.dependencies]
+mkdocs = ">=1.2"
+
+[package.extras]
+test = ["pytest (>=4.0)", "pytest-cov"]
+
+[[package]]
 name = "mkdocs-towncrier"
 version = "0.1.4"
 description = "An insanely small plugin to add towncrier changelog draft into mkdocs"
@@ -2069,4 +2087,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "95a6b65a1625e8df4226a2227baa897aa686564fe41c024f55a593719d8c7227"
+content-hash = "09e65f67d385aaf1c6f1f292382c13f91678dce8311d71aabbc3b279aeb9d0c7"

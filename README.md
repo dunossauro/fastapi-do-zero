@@ -65,8 +65,7 @@ task --list
 serve       Executa o servidor local do mkdocs
 mserve      Executa o servidor local do mkdocs via mike
 deploy      Faz o deploy da página em produção usando mike
-slides      Gera os slides em pdf
-slides_html Gera os slides em html (formato usado nas aulas)
+slides      Gera os slides em html
 ruff        ruff check
 ```
 
