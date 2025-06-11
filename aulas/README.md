@@ -21,7 +21,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 	![type:video](https://www.youtube.com/embed/{{link}})
 
 	[Aula :fontawesome-brands-youtube:](https://youtu.be/{{link}}?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){ .md-button }
-	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/{{current_tag}}/slides/pdf/aula_{{aula}}.pdf){ .md-button }
+	[Slides :fontawesome-solid-file-powerpoint:]({{page.canonical_url}}slides/aula_{{aula}}.html){ .md-button }
 
 > Esse material passa por atualizações periódicas. Você pode acompanhar as notas de alterações [aqui](alteracoes.md){:target="_blank"}.
 
