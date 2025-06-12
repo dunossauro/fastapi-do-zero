@@ -938,14 +938,14 @@ mkdocs = "*"
 
 [[package]]
 name = "mkdocs-exclude-unused-files"
-version = "1.4.0"
+version = "1.4.1"
 description = "A mkdocs plugin that excludes assets that are unused (orphaned) from being included in the final mkdocs output."
 optional = false
 python-versions = "<4.0,>=3.8.1"
 groups = ["main"]
 files = [
-    {file = "mkdocs_exclude_unused_files-1.4.0-py3-none-any.whl", hash = "sha256:975486b65e9b8f1bb51c89b1c1dabbbbe23e339a5fae5aa29a7a588b2d40a382"},
-    {file = "mkdocs_exclude_unused_files-1.4.0.tar.gz", hash = "sha256:8f22ba540f5c184f3e874a0b85fb3987dcea985bb3e3fb2a21b48364486adeec"},
+    {file = "mkdocs_exclude_unused_files-1.4.1-py3-none-any.whl", hash = "sha256:da702f03d19e696fedb7f42505cf52a858e4c917478ad2475fee4f01350bda16"},
+    {file = "mkdocs_exclude_unused_files-1.4.1.tar.gz", hash = "sha256:96864e19a518afbb7f6e8bf4cf724f880da483e108d1dc00b58ca04a7214282d"},
 ]
 
 [package.dependencies]
@@ -2087,4 +2087,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "09e65f67d385aaf1c6f1f292382c13f91678dce8311d71aabbc3b279aeb9d0c7"
+content-hash = "d88f68ed842b842355909fdafe88c12bd6447a8f4fdee08703f5410334a586e0"
