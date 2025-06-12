@@ -344,7 +344,7 @@ async def list_todos(
 
 ```python
 @router.get('/', response_model=TodoList)  # implementar
-def list_todos(...):
+async def list_todos(...):
     query = select(Todo).where(Todo.user_id == user.id)
 
     if title:  # o título contém
