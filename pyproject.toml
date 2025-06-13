@@ -1,6 +1,6 @@
 [project]
 name = "fastapi-do-zero"
-version = "4.0.4"
+version = "4.0.5"
 description = ""
 authors = [
     {name = "dunossauro",email = "mendesxeduardo@gmail.com"}
