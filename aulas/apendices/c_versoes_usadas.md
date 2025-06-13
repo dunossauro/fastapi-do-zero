@@ -25,4 +25,5 @@ echo "- **Poetry**: $(poetry --version)"
 echo "- **Pipx**: $(pipx --version)"
 echo "- **Docker**: $(docker --version)"
 echo "- **Docker-compose**: $(docker-compose --version)"
+echo "- **Flyctl**: $(flyctl version)"
 ```
