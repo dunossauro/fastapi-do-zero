@@ -160,7 +160,7 @@ jobs:
 
     steps:
       - name: Copia os arquivos do repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Instalar o python
         uses: actions/setup-python@v5
