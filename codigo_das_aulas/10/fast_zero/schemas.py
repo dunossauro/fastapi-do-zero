@@ -49,7 +49,7 @@ class TodoList(BaseModel):
 
 
 class FilterTodo(FilterPage):
-    title: str | None = None
+    title: str | None = Field(default=None, min_length=3, max_length=20)
     description: str | None = None
     state: TodoState | None = None
 
