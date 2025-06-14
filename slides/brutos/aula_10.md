@@ -307,7 +307,7 @@ Como agora temos vários parâmetros de query como `title`, `description` e `sta
 ```python
 # fast_zero/schemas.py
 class FilterTodo(FilterPage):
-    title: str | None = Field(default=None, min_length=3, max_length=20)
+    title: str | None = None
     description: str | None = None
     state: TodoState | None = None
 ```
