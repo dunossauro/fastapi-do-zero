@@ -1791,14 +1791,14 @@ tomli = {version = ">=2.0.1,<3.0.0", markers = "python_version >= \"3.7\" and py
 
 [[package]]
 name = "testcontainers"
-version = "4.11.0"
+version = "4.10.0"
 description = "Python library for throwaway instances of anything that can run in a Docker container"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["dev"]
 files = [
-    {file = "testcontainers-4.11.0-py3-none-any.whl", hash = "sha256:36f0e1165ce2b504b1e8b8c9779ca738d3baad57d402e35c22ccf01a371fda0d"},
-    {file = "testcontainers-4.11.0.tar.gz", hash = "sha256:48faa72d0ba8d141495d5aec08f8cd5d244ed77c1c4089a4ce1df7b5e12caaf3"},
+    {file = "testcontainers-4.10.0-py3-none-any.whl", hash = "sha256:31ed1a81238c7e131a2a29df6db8f23717d892b592fa5a1977fd0dcd0c23fc23"},
+    {file = "testcontainers-4.10.0.tar.gz", hash = "sha256:03f85c3e505d8b4edeb192c72a961cebbcba0dd94344ae778b4a159cb6dcf8d3"},
 ]
 
 [package.dependencies]
@@ -1812,10 +1812,10 @@ wrapt = "*"
 arangodb = ["python-arango (>=7.8,<8.0)"]
 aws = ["boto3", "httpx"]
 azurite = ["azure-storage-blob (>=12.19,<13.0)"]
-chroma = ["chromadb-client (>=1.0.0,<2.0.0)"]
+chroma = ["chromadb-client"]
 clickhouse = ["clickhouse-driver"]
 cosmosdb = ["azure-cosmos"]
-db2 = ["ibm_db_sa ; platform_machine != \"aarch64\" and platform_machine != \"arm64\"", "sqlalchemy"]
+db2 = ["ibm_db_sa", "sqlalchemy"]
 generic = ["httpx", "redis"]
 google = ["google-cloud-datastore (>=2)", "google-cloud-pubsub (>=2)"]
 influxdb = ["influxdb", "influxdb-client"]
@@ -2329,4 +2329,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "a822a93d9eec98e33ebef9bd1914fbbb4f04ffe5101e2b3b8ff79cc7dd40f445"
+content-hash = "571535d2824670a7184a2ced316e68144b5f3edfa0bfb54f78c0bb7cb5bf8bf7"
