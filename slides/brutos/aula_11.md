@@ -425,15 +425,6 @@ docker-compose up --build
 
 ---
 
-## Commit
-
-```bash
-git add .
-git commit -m "Dockerizando nossa aplicação e inserindo o PostgreSQL"
-```
-
----
-
 ### Antes de irmos embora!
 
 Como mudamos para o postgres, não precisamos mais do `aiosqlite` no projeto, pois, agora, até mesmo nos testes, estamos usando o postgres. Logo:
@@ -443,6 +434,16 @@ poetry remove aiosqlite
 ```
 
 ---
+
+## Commit
+
+```bash
+git add .
+git commit -m "Dockerizando nossa aplicação e inserindo o PostgreSQL"
+```
+
+---
+
 
 ## Suplementar / Para próxima aula
 
