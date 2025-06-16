@@ -434,6 +434,16 @@ git commit -m "Dockerizando nossa aplicação e inserindo o PostgreSQL"
 
 ---
 
+### Antes de irmos embora!
+
+Como mudamos para o postgres, não precisamos mais do `aiosqlite` no projeto, pois, agora, até mesmo nos testes, estamos usando o postgres. Logo:
+
+```bash
+poetry remove aiosqlite
+```
+
+---
+
 ## Suplementar / Para próxima aula
 
 Na próxima aula vamos conversar sobre como criar estruturas de testes que rodam no github, via integração contínua. Uma boa introdução para o assunto é essa live de python:
