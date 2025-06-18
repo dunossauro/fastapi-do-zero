@@ -19,6 +19,7 @@ oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl='auth/token', refreshUrl='auth/refresh'
 )
 
+
 def create_access_token(data: dict):
     to_encode = data.copy()
     expire = datetime.now(tz=ZoneInfo('UTC')) + timedelta(
