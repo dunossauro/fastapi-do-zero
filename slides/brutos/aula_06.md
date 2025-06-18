@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Autenticação e Autorização
 
-> https://fastapidozero.dunossauro.com/06/
+> https://fastapidozero.dunossauro.com/4.0/06/
 
 ---
 

@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Estruturando o Projeto e Criando Rotas do CRUD
+# Estruturando o projeto e criando rotas do CRUD
 
 > https://fastapidozero.dunossauro.com/4.0/03/
 

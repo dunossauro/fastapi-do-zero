@@ -2,7 +2,7 @@
 
 ## Exercício 01
 
-O endpoint de `PUT`usa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como `other_user`. Atualize o teste para usar essa nova fixture.
+O endpoint de `PUT` usa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como `other_user`. Atualize o teste para usar essa nova fixture.
 
 
 ### Solução

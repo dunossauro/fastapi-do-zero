@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Configurando o Banco de Dados e gerenciando Migrações com Alembic
+# Configurando o banco de dados e gerenciando migrações com Alembic
 
 > https://fastapidozero.dunossauro.com/4.0/04/
 

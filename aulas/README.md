@@ -21,7 +21,7 @@ description: Boas vindas ao nosso minicurso de FastAPI!
 	![type:video](https://www.youtube.com/embed/{{link}})
 
 	[Aula :fontawesome-brands-youtube:](https://youtu.be/{{link}}?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP){ .md-button }
-	[Slides :fontawesome-solid-file-powerpoint:](https://github.com/dunossauro/fastapi-do-zero/blob/{{current_tag}}/slides/pdf/aula_{{aula}}.pdf){ .md-button }
+	[Slides :fontawesome-solid-file-powerpoint:]({{page.canonical_url}}slides/aula_{{aula}}.html){ .md-button }
 
 > Esse material passa por atualizações periódicas. Você pode acompanhar as notas de alterações [aqui](alteracoes.md){:target="_blank"}.
 
@@ -114,16 +114,16 @@ Alguns outros tópicos não relativos a python também serão abordados. Então,
 
 ## Aulas
 
-1. [Configurando o Ambiente de Desenvolvimento](01.md){:target="_blank"}
+1. [Configurando o ambiente de desenvolvimento](01.md){:target="_blank"}
 2. [Introdução ao desenvolvimento WEB](02.md){:target="_blank"}
-3. [Estruturando seu Projeto e Criando Rotas CRUD](03.md){:target="_blank"}
-4. [Configurando Banco de Dados e Gerenciando Migrações com Alembic](04.md){:target="_blank"}
-5. [Integrando Banco de Dados a API](05.md){:target="_blank"}
-6. [Autenticação e Autorização](06.md){:target="_blank"}
-7. [Refatorando a Estrutura do Projeto](07.md){:target="_blank"}
+3. [Estruturando seu projeto e criando rotas CRUD](03.md){:target="_blank"}
+4. [Configurando o banco de dados e gerenciando migrações com Alembic](04.md){:target="_blank"}
+5. [Integrando o banco de dados à API](05.md){:target="_blank"}
+6. [Autenticação e Autorização com JWT](06.md){:target="_blank"}
+7. [Refatorando a estrutura do projeto](07.md){:target="_blank"}
 8. [Tornando o projeto assíncrono](08.md){:target="_blank"}
 9. [Tornando o sistema de autenticação robusto](09.md){:target="_blank"}
-10. [Criando Rotas CRUD para Tarefas](10.md){:target="_blank"}
+10. [Criando rotas CRUD para gerenciamento de tarefas](10.md){:target="_blank"}
 11. [Dockerizando a nossa aplicação e introduzindo o PostgreSQL](11.md){:target="_blank"}
 12. [Automatizando os testes com integração contínua](12.md){:target="_blank"}
 13. [Fazendo o deploy no Fly.io](13.md){:target="_blank"}
@@ -151,7 +151,7 @@ Tô sempre pela web e nos eventos de Python, a gente pode se conectar nessa imen
 
 Esse material contou com a revisão e contribuições inestimáveis de pessoas incríveis:
 
-[@0xluc](https://github.com/0xluc){:target="_blank"}, [@adorilson](https://github.com/adorilson){:target="_blank"}, [@aguynaldo](https://github.com/aguynaldo){:target="blank"}, [@alphabraga](https://github.com/alphabraga){:target="_blank"}, [@andrespp](https://github.com/andrespp){:target="_blank"}, [@azmovi](https://github.com/azmovi){:target="_blank"}, [@bugelseif](https://github.com/bugelseif){:target="_blank"}, [@EvandroNetoo](https://github.com/EvandroNetoo){:target="_blank"}, [@FtxDante](https://github.com/FtxDante){:target="_blank"}, [@gabrielhardcore](https://github.com/gabrielhardcore){:target="_blank"}, [@gbpagano](https://github.com/gbpagano){:target="_blank"}, [@henriqueccda](https://github.com/henriqueccda){:target="_blank"}, [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"}, [@ig0r-ferreira](https://github.com/ig0r-ferreira){:target="_blank"}, [@itsGab](https://github.com/itsGab){:target="_blank"}, [@ivansantiagojr](https://github.com/ivansantiagojr){:target="_blank"}, [@jlplautz](https://github.com/jlplautz){:target="_blank"}, [@jonathanscheibel](https://github.com/jonathanscheibel){:target="_blank"}, [@jpsalviano](https://github.com/jpsalviano){:target="_blank"}, [@julioformiga](https://github.com/julioformiga){:target="_blank"}, [@kylefelipe](https://github.com/kylefelipe){:target="_blank"}, [@KennedyRichard](https://github.com/KennedyRichard){:target="_blank"}, [@lbmendes](https://github.com/lbmendes){:target="_blank"}, [@lucasmpavelski](http://github.com/lucasmpavelski){:target="_blank"}, [@lucianoratamero](https://github.com/lucianoratamero){:target="_blank"}, [@marythealice](https://github.com/marythealice){:target="_blank"}, [@matheusalmeida28](https://github.com/matheusalmeida28){:target="_blank"}, [matheussricardoo](https://github.com/matheussricardoo){:target="_blank"}, [@me15degrees](https://github.com/me15degrees){:target="_blank"}, [@mmaachado](https://github.com/mmaachado){:target="_blank"}, [@NatalNW7](https://github.com/NatalNW7){:target="_blank"}, [@raiguilhermems](https://github.com/raiguilhermems){:target="_blank"}, [@renan-asantos](https://github.com/renan-asantos){:target="_blank"}, [@rennerocha](https://github.com/rennerocha){:target="_blank"}, [@ricardo-emanuel01](https://github.com/ricardo-emanuel01){:target="_blank"}, [@rodbv](https://github.com/rodbv){:target="_blank"}, [@rodrigosbarretos](https://github.com/rodrigosbarretos){:target="_blank"}, [@taconi](https://github.com/taconi){:target="_blank"}, [@ThiagoEidi](https://github.com/ThiagoEidi){:target="_blank"}, [@wanderleihuttel](https://github.com/wanderleihuttel){:target="_blank"}, [@williangl](https://github.com/williangl){:target="_blank"}, [@vcwild](https://github.com/vcwild){:target="_blank"}, [@vdionysio](https://github.com/vdionysio){:target="_blank"}, [@ViniciusSouzaRoque](https://github.com/ViniciusSouzaRoque){:target="_blank"}
+[@0xluc](https://github.com/0xluc){:target="_blank"}, [@adorilson](https://github.com/adorilson){:target="_blank"}, [@aguynaldo](https://github.com/aguynaldo){:target="blank"}, [@alphabraga](https://github.com/alphabraga){:target="_blank"}, [@andrespp](https://github.com/andrespp){:target="_blank"}, [@azmovi](https://github.com/azmovi){:target="_blank"}, [@bugelseif](https://github.com/bugelseif){:target="_blank"}, [@EvandroNetoo](https://github.com/EvandroNetoo){:target="_blank"}, [@FtxDante](https://github.com/FtxDante){:target="_blank"}, [@gabrielhardcore](https://github.com/gabrielhardcore){:target="_blank"}, [@gbpagano](https://github.com/gbpagano){:target="_blank"}, [@henriqueccda](https://github.com/henriqueccda){:target="_blank"}, [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"}, [@ig0r-ferreira](https://github.com/ig0r-ferreira){:target="_blank"}, [@itsGab](https://github.com/itsGab){:target="_blank"}, [@ivansantiagojr](https://github.com/ivansantiagojr){:target="_blank"}, [@jlplautz](https://github.com/jlplautz){:target="_blank"}, [@jonathanscheibel](https://github.com/jonathanscheibel){:target="_blank"}, [@jpsalviano](https://github.com/jpsalviano){:target="_blank"}, [@julioformiga](https://github.com/julioformiga){:target="_blank"}, [@kylefelipe](https://github.com/kylefelipe){:target="_blank"}, [@KennedyRichard](https://github.com/KennedyRichard){:target="_blank"}, [@lbmendes](https://github.com/lbmendes){:target="_blank"}, [@lucasmpavelski](http://github.com/lucasmpavelski){:target="_blank"}, [@lucianoratamero](https://github.com/lucianoratamero){:target="_blank"}, [@marythealice](https://github.com/marythealice){:target="_blank"}, [@matheusalmeida28](https://github.com/matheusalmeida28){:target="_blank"}, [matheussricardoo](https://github.com/matheussricardoo){:target="_blank"}, [@me15degrees](https://github.com/me15degrees){:target="_blank"}, [@mmaachado](https://github.com/mmaachado){:target="_blank"}, [@NatalNW7](https://github.com/NatalNW7){:target="_blank"}, [@raiguilhermems](https://github.com/raiguilhermems){:target="_blank"}, [@renan-asantos](https://github.com/renan-asantos){:target="_blank"}, [@rennerocha](https://github.com/rennerocha){:target="_blank"}, [@ricardo-emanuel01](https://github.com/ricardo-emanuel01){:target="_blank"}, [@rodbv](https://github.com/rodbv){:target="_blank"}, [@rodrigosbarretos](https://github.com/rodrigosbarretos){:target="_blank"}, [@taconi](https://github.com/taconi){:target="_blank"}, [@thiagonebuloni](https://github.com/thiagonebuloni){:target="_blank"}, [@ThiagoEidi](https://github.com/ThiagoEidi){:target="_blank"}, [@wanderleihuttel](https://github.com/wanderleihuttel){:target="_blank"}, [@williangl](https://github.com/williangl){:target="_blank"}, [@vcwild](https://github.com/vcwild){:target="_blank"}, [@vdionysio](https://github.com/vdionysio){:target="_blank"}, [@ViniciusSouzaRoque](https://github.com/ViniciusSouzaRoque){:target="_blank"}
 
 {++**Muito obrigado!**++} :heart:
 

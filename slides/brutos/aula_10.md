@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
+# Criando rotas CRUD para gerenciamento de tarefas
 
 > https://fastapidozero.dunossauro.com/estavel/10/
 
@@ -68,7 +68,7 @@ Um endpoint de criação de todos
 
 ```python
 @router.post('/', response_model=???)
-def create_todo(todo: ???):
+async def create_todo(todo: ???):
     return ???
 ```
 
@@ -122,7 +122,7 @@ class TodoState(str, Enum):
 from typing import Annotated
 
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from fast_zero.database import get_session
 from fast_zero.models import User
@@ -131,12 +131,12 @@ from fast_zero.security import get_current_user
 
 router = APIRouter(prefix='/todos', tags=['todos'])
 
-Session = Annotated[Session, Depends(get_session)]
+Session = Annotated[AsyncSession, Depends(get_session)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
 @router.post('/', response_model=TodoPublic)
-def create_todo(
+async def create_todo(
     todo: TodoSchema,
     user: CurrentUser,
     session: Session,
@@ -178,7 +178,7 @@ class Todo:
 from fast_zero.models import Todo, User
 # ...
 @router.post('/', response_model=TodoPublic)
-def create_todo(
+async def create_todo(
     todo: TodoSchema,
     user: CurrentUser,
     session: Session,
@@ -190,8 +190,8 @@ def create_todo(
         user_id=user.id,
     )
     session.add(db_todo)
-    session.commit()
-    session.refresh(db_todo)
+    await session.commit()
+    await session.refresh(db_todo)
 
     return db_todo
 ```
@@ -253,6 +253,47 @@ alembic upgrade head
 
 ---
 
+## Relacionando `User` com `TODO`
+
+```python
+@table_registry.mapped_as_dataclass
+class User:
+    # ...
+    todos: Mapped[list['Todo']] = relationship(
+        init=False,
+        cascade='all, delete-orphan',
+        lazy='selectin',
+    )
+```
+
+---
+
+## Isso se sustenta nos testes?
+
+```bash
+task test
+```
+
+---
+
+## Alterando o `test_db` para a relação
+
+```python
+@pytest.mark.asyncio
+async def test_create_user(session, mock_db_time):
+    # ...
+    assert asdict(user) == {
+        'id': 1,
+        'username': 'alice',
+        'password': 'secret',
+        'email': 'teste@test',
+        'created_at': time,
+        'todos': [],  # AQUI!
+    }
+```
+
+---
+
 # Parte 3
 
 > O endpoint de GET
@@ -285,7 +326,7 @@ from sqlalchemy import select
 from fast_zero.schemas import TodoList, TodoPublic, TodoSchema
 # ...
 @router.get('/', response_model=???)
-def list_todos(
+async def list_todos(
     session: Session,
     user: CurrentUser,
     todo_filter: Annotated[FilterTodo, Query()],
@@ -303,7 +344,7 @@ def list_todos(
 
 ```python
 @router.get('/', response_model=TodoList)  # implementar
-def list_todos(...):
+async def list_todos(...):
     query = select(Todo).where(Todo.user_id == user.id)
 
     if title:  # o título contém
@@ -315,7 +356,7 @@ def list_todos(...):
     if state:  # o estado é igual
         query = query.filter(Todo.state == state)
 
-    todos = session.scalars(query.offset(offset).limit(limit)).all()
+    todos = await session.scalars(query.offset(offset).limit(limit)).all()
 
     return {'todos': todos}
 ```
@@ -363,10 +404,11 @@ class TodoFactory(factory.Factory):
 ### O primeiro teste
 
 ```python
-def test_list_todos_should_return_5_todos(session, client, user, token):
+@pytest.mark.asyncio
+async def test_list_todos_should_return_5_todos(session, client, user, token):
     expected_todos = 5
-    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
-    session.commit()
+    session.add_all(TodoFactory.create_batch(5, user_id=user.id))
+    await session.commit()
 
     response = client.get(
         '/todos/',  # sem query
@@ -378,15 +420,16 @@ def test_list_todos_should_return_5_todos(session, client, user, token):
 
 ---
 
-### ofset e limit
+### offset e limit
 
 ```python
-def test_list_todos_pagination_should_return_2_todos(
+@pytest.mark.asyncio
+async def test_list_todos_pagination_should_return_2_todos(
     session, user, client, token
 ):
     expected_todos = 2
-    session.bulk_save_objects(TodoFactory.create_batch(5, user_id=user.id))
-    session.commit()
+    session.add_all(TodoFactory.create_batch(5, user_id=user.id))
+    await session.commit()
 
     response = client.get(
         '/todos/?offset=1&limit=2',
@@ -401,14 +444,15 @@ def test_list_todos_pagination_should_return_2_todos(
 ### Por título
 
 ```python
-def test_list_todos_filter_title_should_return_5_todos(
+@pytest.mark.asyncio
+async def test_list_todos_filter_title_should_return_5_todos(
     session, user, client, token
 ):
     expected_todos = 5
-    session.bulk_save_objects(
+    session.add_all(
         TodoFactory.create_batch(5, user_id=user.id, title='Test todo 1')
     )
-    session.commit()
+    await session.commit()
 
     response = client.get(
         '/todos/?title=Test todo 1',
@@ -423,14 +467,15 @@ def test_list_todos_filter_title_should_return_5_todos(
 ### Filtro por descrição
 
 ```python
-def test_list_todos_filter_description_should_return_5_todos(
+@pytest.mark.asyncio
+async def test_list_todos_filter_description_should_return_5_todos(
     session, user, client, token
 ):
     expected_todos = 5
-    session.bulk_save_objects(
+    session.add_all(
         TodoFactory.create_batch(5, user_id=user.id, description='description')
     )
-    session.commit()
+    await session.commit()
 
     response = client.get(
         '/todos/?description=desc',
@@ -445,14 +490,15 @@ def test_list_todos_filter_description_should_return_5_todos(
 ### Filtro por estado
 
 ```python
-def test_list_todos_filter_state_should_return_5_todos(
+@pytest.mark.asyncio
+async def test_list_todos_filter_state_should_return_5_todos(
     session, user, client, token
 ):
     expected_todos = 5
-    session.bulk_save_objects(
+    session.add_all(
         TodoFactory.create_batch(5, user_id=user.id, state=TodoState.draft)
     )
-    session.commit()
+    await session.commit()
 
     response = client.get(
         '/todos/?state=draft',
@@ -474,8 +520,8 @@ def test_list_todos_filter_state_should_return_5_todos(
 
 ```python
 @router.delete('/{todo_id}', response_model=Message)
-def delete_todo(todo_id: int, session: Session, user: CurrentUser):
-    todo = session.scalar(
+async def delete_todo(todo_id: int, session: Session, user: CurrentUser):
+    todo = await session.scalar(
         select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
     )
 
@@ -484,8 +530,7 @@ def delete_todo(todo_id: int, session: Session, user: CurrentUser):
             status_code=HTTPStatus.NOT_FOUND, detail='Task not found.'
         )
 
-    session.delete(todo)
-    session.commit()
+    await session.delete(todo)
 
     return {'message': 'Task has been deleted successfully.'}
 ```
@@ -495,10 +540,11 @@ def delete_todo(todo_id: int, session: Session, user: CurrentUser):
 ### Testando o delete
 
 ```python
-def test_delete_todo(session, client, user, token):
+@pytest.mark.asyncio
+async def test_delete_todo(session, client, user, token):
     todo = TodoFactory(user_id=user.id)
     session.add(todo)
-    session.commit()
+    await session.commit()
 
     response = client.delete(
         f'/todos/{todo.id}', headers={'Authorization': f'Bearer {token}'}
@@ -511,7 +557,7 @@ def test_delete_todo(session, client, user, token):
 ```python
 def test_delete_todo_error(client, token):
     response = client.delete(
-        f'/todos/{10}', headers={'Authorization': f'Bearer {token}'}
+        '/todos/10', headers={'Authorization': f'Bearer {token}'}
     )
 
     assert response.status_code == HTTPStatus.NOT_FOUND
@@ -543,10 +589,10 @@ class TodoUpdate(BaseModel):
 
 ```python
 @router.patch('/{todo_id}', response_model=TodoPublic)
-def patch_todo(
+async def patch_todo(
     todo_id: int, session: Session, user: CurrentUser, todo: TodoUpdate
 ):
-    db_todo = session.scalar(
+    db_todo = await session.scalar(
         select(Todo).where(Todo.user_id == user.id, Todo.id == todo_id)
     )
 
@@ -559,8 +605,8 @@ def patch_todo(
         setattr(db_todo, key, value)
 
     session.add(db_todo)
-    session.commit()
-    session.refresh(db_todo)
+    await session.commit()
+    await session.refresh(db_todo)
 
     return db_todo
 ```
@@ -573,11 +619,12 @@ def patch_todo(
 <div>
 
 ```python
-def test_patch_todo(session, client, user, token):
+@pytest.mark.asyncio
+async def test_patch_todo(session, client, user, token):
     todo = TodoFactory(user_id=user.id)
 
     session.add(todo)
-    session.commit()
+    await session.commit()
 
     response = client.patch(
         f'/todos/{todo.id}',
@@ -611,6 +658,8 @@ def test_patch_todo_error(client, token):
 
 # Exercícios
 
+> Ao todo teremos 5 exercícios!
+
 1. Adicione os campos `created_at` e `updated_at` na tabela `Todo`
 	- Eles devem ser `init=False`
 	- Deve usar `func.now()` para criação
@@ -624,6 +673,12 @@ def test_patch_todo_error(client, token):
 
 3. Adicionar os campos `created_at` e `updated_at` no schema de saída dos endpoints. Para que esse valores sejam retornados na API. Essa alteração deve ser refletida nos testes também!
 4. Crie um teste para o endpoint de busca (GET) que valide todos os campos contidos no `Todo` de resposta. Até o momento, todas as validações foram feitas pelo tamanho do resultado de todos.
+
+---
+
+# Exercícios
+
+5. Crie um teste para validar o caso do `Enum` em `state: Mapped[TodoState]` na tabela `TODO`, onde o valor esteja fora dos valores mapeados por ele. Isso forçará um erro que pode ser validado com [`pytest.raises`](https://docs.pytest.org/en/4.6.x/reference.html#pytest-raises)
 
 ---
 

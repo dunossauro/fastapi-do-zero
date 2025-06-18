@@ -29,7 +29,7 @@ theme: rose-pine
 
 ```python
 @router.put('/{user_id}', response_model=UserPublic)
-def update_user(
+async def update_user(
     user_id: int,
     user: UserSchema,
     session: Session,
@@ -61,8 +61,7 @@ def test_update_user_with_wrong_user(client, user, token):
     assert response.json() == {'detail': 'Not enough permissions'}
 ```
 
-Na ultima aula fizemos algo parecido com isso!
-
+Podemos simular isso de uma forma **bastante** simples.
 
 ---
 
@@ -119,16 +118,16 @@ class UserFactory(factory.Factory):
 Aplicando a fabrica:
 
 ```python
-@pytest.fixture
-def user(session):
+@pytest_asyncio.fixture
+async def user(session):
     password = 'testtest'
     user = UserFactory(
         password=get_password_hash(password)
     )
 
     session.add(user)
-    session.commit()
-    session.refresh(user)
+    await session.commit()
+    await session.refresh(user)
 
     user.clean_password = password
 
@@ -142,16 +141,16 @@ def user(session):
 O cenário "real":
 
 ```python
-@pytest.fixture
-def other_user(session):
+@pytest_asyncio.fixture
+async def other_user(session):
     password = 'testtest'
     user = UserFactory(
         password=get_password_hash(password)
     )
 
     session.add(user)
-    session.commit()
-    session.refresh(user)
+    await session.commit()
+    await session.refresh(user)
 
     user.clean_password = password
 
@@ -180,6 +179,8 @@ def test_update_user_with_wrong_user(client, other_user, token):
     assert response.status_code == HTTPStatus.FORBIDDEN
     assert response.json() == {'detail': 'Not enough permissions'}
 ```
+
+O `token` nesse caso é refente ao `user`, não a `other_user`
 
 
 ---
@@ -321,10 +322,11 @@ def test_token_expired_after_time(client, user):
 ## A validação da expiração
 
 ```python
-def get_current_user(
-    session: Session = Depends(get_session),
+async def get_current_user(
+    session: AsyncSession = Depends(get_session),
     token: str = Depends(oauth2_scheme),
 ):
+    # ...
     try:
         payload = decode(
             token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
@@ -365,7 +367,7 @@ def test_token_wrong_password(client, user):
         '/auth/token',
         data={'username': user.email, 'password': 'wrong_password'}
     )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.status_code == HTTPStatus.UNAUTHORIZED
     assert response.json() == {'detail': 'Incorrect email or password'}
 ```
 
@@ -379,7 +381,7 @@ def test_token_inexistent_user(client):
         '/auth/token',
         data={'username': 'no_user@no_domain.com', 'password': 'testtest'},
     )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.status_code == HTTPStatus.UNAUTHORIZED
     assert response.json() == {'detail': 'Incorrect email or password'}
 ```
 
@@ -399,7 +401,7 @@ def test_token_inexistent_user(client):
 # fast_zero/routes/auth.py
 
 @router.post('/refresh_token', response_model=Token)
-def refresh_access_token(
+async def refresh_access_token(
     user: User = Depends(get_current_user),
 ):
     new_access_token = create_access_token(data={'sub': user.email})
@@ -457,7 +459,7 @@ def test_token_expired_dont_refresh(client, user):
 
 # Exercício
 
-O endpoint de PUTusa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como other_user. Atualize o teste para usar essa nova fixture.
+O endpoint de PUT usa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como `other_user`. Atualize o teste para usar essa nova fixture.
 
 ---
 

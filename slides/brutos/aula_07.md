@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Refatorando a Estrutura do Projeto
+# Refatorando a estrutura do projeto
 
 > https://fastapidozero.dunossauro.com/4.0/07/
 

@@ -3,7 +3,7 @@ marp: true
 theme: rose-pine
 ---
 
-# Integrando Banco de Dados a API
+# Integrando banco de dados à API
 
 > https://fastapidozero.dunossauro.com/4.0/05/
 
@@ -24,7 +24,7 @@ A peça principal da nossa integração é a **sessão** do ORM. Ela precisa ser
 
 <div class="mermaid" style="text-align: center;">
 graph LR
-  Enpoint <--> Session
+  Endpoint <--> Session
   Session <--> id1[(Database)]
 </div>
 
@@ -44,7 +44,7 @@ graph LR
 
 <div class="mermaid" style="text-align: center;">
 graph
-  Enpoint ---> Session
+   ---> Session
   Session --> scalars
   Session --> scalar
   scalar --> Busca_Dado[Busca um dado]
@@ -88,7 +88,7 @@ session.rollback()  # Desfaz as UTs
 
 ---
 
-# Entendendo o enpoint de cadastro
+# Entendendo o endpoint de cadastro
 
 Precisamos executar algumas operações para efetuar um cadastro:
 
@@ -238,7 +238,7 @@ Com isso, podemos somente chamar a nossa função e obter a nossa sessão. Evita
 Embora esteja bom, não tenhamos muita coisa que fuja da nossa lógica, somente a invocação de `get_session`. A chamada está acoplada. Isso traz dois problemas:
 
 1. **Encapsulamento**: é complicado de escrever testes!
-2. **Dependência**: o enpoint tem que conhecer a chamada da sessão
+2. **Dependência**: o endpoint tem que conhecer a chamada da sessão
 
 Mas, nem tudo está perdido!
 
@@ -475,7 +475,7 @@ def put_ou_delete():
 
 ---
 
-## Enpoint de /PUT
+## Endpoint de /PUT
 
 ```python
 @app.put('/users/{user_id}', response_model=UserPublic)
@@ -495,7 +495,7 @@ def update_user(
 
 ---
 
-## Enpoint de /DELETE
+## Endpoint de /DELETE
 
 ```python
 @app.delete('/users/{user_id}', response_model=Message)

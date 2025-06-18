@@ -95,6 +95,26 @@ task run
 
 ---
 
+### Windows!
+
+Existe um comportamento indesejável ao executar o pscycopg de forma [assíncrona no windows](https://www.psycopg.org/psycopg3/docs/advanced/async.html#asynchronous-operations). O loop de eventos padrão tem alguns problemas para executar as terefas com o postgres no Windows. Para contornar isso:
+
+```python
+import asyncio
+import sys
+
+# ...
+
+if sys.platform == 'win32': 
+    asyncio.set_event_loop_policy(
+        asyncio.WindowsSelectorEventLoopPolicy()
+    )
+
+app = FastAPI()
+```
+
+---
+
 ### Erro na migração
 
 Ao fazer uma chamada que depende do banco de dados, vamos obter um:
@@ -131,9 +151,9 @@ Com isso, tudo deve funcionar como esperado!
 Se executarmos os testes, eles vão continuar passando, pois os dados estão fixos na fixture:
 
 ```python
-@pytest.fixture
-def session():
-    engine = create_engine(
+@pytest_asyncio.fixture
+async def session():
+    engine = create_async_engine(
         'sqlite:///:memory:',
         connect_args={'check_same_thread': False},
         poolclass=StaticPool,
@@ -149,10 +169,13 @@ def session():
 from fast_zero.settings import Settings
 # ...
 
-@pytest.fixture
-def session():
-    engine = create_engine(Settings().DATABASE_URL)
-    table_registry.metadata.create_all(engine)
+@pytest_asyncio.fixture
+async def session():
+    engine = create_async_engine(Settings().DATABASE_URL)
+
+    async with engine.begin() as conn:
+        await conn.run_sync(table_registry.metadata.create_all)
+    # ...
 ```
 
 Porém, agora temos um novo problema :)
@@ -189,17 +212,14 @@ poetry add --group dev testcontainers
 ```python
 from testcontainers.postgres import PostgresContainer 
 # ...
-@pytest.fixture
-def session():
+@pytest_asyncio.fixture
+async def session():
     with PostgresContainer('postgres:16', driver='psycopg') as postgres: 
-        engine = create_engine(postgres.get_connection_url()) 
-        table_registry.metadata.create_all(engine)
+        engine = create_async_engine(postgres.get_connection_url()) 
 
-        with Session(engine) as session:
-            yield session
-            session.rollback()
-
-        table_registry.metadata.drop_all(engine)
+        async with engine.begin() as conn:
+            await conn.run_sync(table_registry.metadata.create_all)
+    # ...
 ```
 
 Assim os testes podem iniciar um container novo a cada vez que a fixture for chamada
@@ -238,11 +258,7 @@ Para criar um única imagem docker, podemos iniciar ela de forma isolada na apli
 @pytest.fixture(scope='session')
 def engine():
     with PostgresContainer('postgres:16', driver='psycopg') as postgres:
-
-        _engine = create_engine(postgres.get_connection_url())
-
-        with _engine.begin():
-            yield _engine
+        yield create_async_engine(postgres.get_connection_url())
 ```
 
 ---
@@ -250,15 +266,16 @@ def engine():
 ### Alterando a fixture de session
 
 ```python
-@pytest.fixture
-def session(engine):
-    table_registry.metadata.create_all(engine)
+@pytest_asyncio.fixture
+async def session(engine):
+    async with engine.begin() as conn:
+        await conn.run_sync(table_registry.metadata.create_all)
 
-    with Session(engine) as session:
+    async with AsyncSession(engine, expire_on_commit=False) as session:
         yield session
-        session.rollback()
 
-    table_registry.metadata.drop_all(engine)
+    async with engine.begin() as conn:
+        await conn.run_sync(table_registry.metadata.drop_all)
 ```
 
 Agora a session faz tudo que precisa fazer, mas sem a responsabilidade do iniciar a conexão
@@ -283,7 +300,7 @@ COPY . .
 RUN pip install poetry
 
 RUN poetry config installer.max-workers 10
-RUN poetry install --no-interaction --no-ansi
+RUN poetry install --no-interaction --no-ansi --without dev
 
 EXPOSE 8000
 CMD poetry run uvicorn --host 0.0.0.0 fast_zero.app:app
@@ -405,6 +422,34 @@ Assim que o container for inciado, ele executará esse script.
 ```bash
 docker-compose up --build
 ```
+
+---
+
+### Antes de irmos embora!
+
+Como mudamos para o postgres, não precisamos mais do `aiosqlite` no projeto, pois, agora, até mesmo nos testes, estamos usando o postgres. Logo:
+
+```bash
+poetry remove aiosqlite
+```
+
+---
+
+## Commit
+
+```bash
+git add .
+git commit -m "Dockerizando nossa aplicação e inserindo o PostgreSQL"
+```
+
+---
+
+
+## Suplementar / Para próxima aula
+
+Na próxima aula vamos conversar sobre como criar estruturas de testes que rodam no github, via integração contínua. Uma boa introdução para o assunto é essa live de python:
+
+[Github Actions - Live de Python #170 - Com Willian Lopes](https://youtu.be/L1f6N6NcgPw)
 
 ---
 
