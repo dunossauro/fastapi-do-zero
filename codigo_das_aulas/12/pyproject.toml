@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.4.0"
+pytest = "^8.4.1"
 pytest-cov = "^6.2.1"
 taskipy = "^1.14.1"
 ruff = "^0.12.0"
