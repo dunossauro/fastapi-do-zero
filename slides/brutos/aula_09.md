@@ -459,7 +459,7 @@ def test_token_expired_dont_refresh(client, user):
 
 ## Atualizando a documentação
 
-Agora que temos um endpoint de refresh, podemos adicionar ele a documentação do OAuth:
+Agora que temos um endpoint de refresh, podemos adicioná-lo à documentação do OAuth:
 
 ```python
 # security.py
