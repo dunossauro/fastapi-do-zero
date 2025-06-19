@@ -457,6 +457,21 @@ def test_token_expired_dont_refresh(client, user):
 
 ---
 
+## Atualizando a documentação
+
+Agora que temos um endpoint de refresh, podemos adicioná-lo à documentação do OAuth:
+
+```python
+# security.py
+oauth2_scheme = OAuth2PasswordBearer(
+    tokenUrl='auth/token', refreshUrl='auth/refresh'
+)
+```
+
+Para checar: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+---
+
 # Exercício
 
 O endpoint de PUT usa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como `other_user`. Atualize o teste para usar essa nova fixture.
