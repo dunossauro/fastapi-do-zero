@@ -13,6 +13,7 @@ from fast_zero.app import app
 from fast_zero.database import get_session
 from fast_zero.models import User, table_registry
 from fast_zero.security import get_password_hash
+from fast_zero.settings import Settings
 
 
 @pytest.fixture
@@ -29,6 +30,11 @@ def client(session):
 
 @pytest.fixture(scope='session')
 def engine():
+    # Caso do windows + Docker no CI
+    import sys  # noqa: PLC0415
+    if sys.platform == 'win32':
+        return create_async_engine(Settings().DATABASE_URL)
+
     with PostgresContainer('postgres:16', driver='psycopg') as postgres:
         _engine = create_async_engine(postgres.get_connection_url())
         yield _engine
