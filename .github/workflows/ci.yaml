@@ -11,6 +11,27 @@ on:
       - '.github/workflows/**'
 
 jobs:
+  windows-hell:
+    runs-on: windows-latest
+
+    steps:
+      - name: Copia os arquivos do repo
+        uses: actions/checkout@v4
+
+      - name: Instalar o python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Instalar dependências do projeto
+        run: poetry install --no-root
+
+      - name: Roda os testes da ultima aula
+        run: poetry run invoke test-last-class
+
   test:
     runs-on: ubuntu-latest
     strategy:

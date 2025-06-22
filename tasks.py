@@ -19,7 +19,7 @@ CREATE TABLE users (
 	UNIQUE (email), 
 	UNIQUE (username)
 );
-""" # noqa
+"""   # noqa
 
 migration_05 = """CREATE TABLE alembic_version (
 	version_num VARCHAR(32) NOT NULL, 
@@ -37,7 +37,9 @@ CREATE TABLE users (
 );
 """  # noqa
 
-migration_10 = migration_05 + """CREATE TABLE todos (
+migration_10 = (
+    migration_05
+    + """CREATE TABLE todos (
 	id INTEGER NOT NULL, 
 	title VARCHAR NOT NULL, 
 	description VARCHAR NOT NULL, 
@@ -46,7 +48,8 @@ migration_10 = migration_05 + """CREATE TABLE todos (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(user_id) REFERENCES users (id)
 );
-"""  # noqa
+"""
+)  # noqa
 
 dotenv = """DATABASE_URL="postgresql+psycopg://app_user:app_password@localhost:5432/app_db"
 SECRET_KEY="your-secret-key"
@@ -83,6 +86,7 @@ def env_file(path: Path, sync=True):
         else:
             file.write(fake_dotenv_async)
 
+
 @task
 def test_migrations(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
@@ -94,7 +98,7 @@ def test_migrations(c):
             database.unlink()
 
         with c.cd(str(path)):
-            if int(path.parts[-1]) >= 10: # noqa
+            if int(path.parts[-1]) >= 10:   # noqa
                 c.run('poetry install')
 
                 with env_file(path, sync=False):
@@ -102,13 +106,13 @@ def test_migrations(c):
                     schema = c.run('sqlite3 database.db ".schema"')
                     assert schema.stdout == migration_10
 
-            elif int(path.parts[-1]) == 4: # noqa
+            elif int(path.parts[-1]) == 4:   # noqa
                 c.run('poetry install')
                 c.run('alembic upgrade head')
                 schema = c.run('sqlite3 database.db ".schema"')
                 assert schema.stdout == migration_04
 
-            elif int(path.parts[-1]) >= 5: # noqa
+            elif int(path.parts[-1]) >= 5:   # noqa
                 c.run('poetry install')
                 c.run('alembic upgrade head')
                 schema = c.run('sqlite3 database.db ".schema"')
@@ -180,6 +184,15 @@ def test_sub(c):
 
 
 @task
+def test_last_class(c):
+    code_path = Path('./codigo_das_aulas/13')
+    with c.cd(str(code_path)):
+        print('Current path: ', code_path)
+        c.run('poetry install')
+        c.run('poetry run task test')
+
+
+@task
 def command_sub(c, cmd):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
@@ -217,7 +230,7 @@ def update_sub(c):
                 elif dep in 'pydantic':
                     c.run('poetry add "pydantic[email]@latest"')
 
-                elif dep in'pwdlib':
+                elif dep in 'pwdlib':
                     c.run('poetry add "pwdlib[argon2]@latest"')
 
                 elif dep in 'psycopg':
