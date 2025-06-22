@@ -184,12 +184,20 @@ def test_sub(c):
 
 
 @task
-def test_last_class(c):
+def win_test_last_class(c):
     code_path = Path('./codigo_das_aulas/13')
     with c.cd(str(code_path)):
         print('Current path: ', code_path)
         c.run('poetry install')
         c.run('poetry run task test')
+        c.run('poetry run alembic upgrade head')
+
+@task
+def win_test_migration(c):
+    code_path = Path('./codigo_das_aulas/13')
+    with c.cd(str(code_path)):
+        print('Current path: ', code_path)
+        c.run('poetry run alembic upgrade head')
 
 
 @task
