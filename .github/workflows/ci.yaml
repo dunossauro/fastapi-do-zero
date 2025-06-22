@@ -14,7 +14,43 @@ jobs:
   windows-hell:
     runs-on: windows-latest
 
+    env:
+      PGHOST: localhost
+      PGDATABASE: app_db
+      PGUSERNAME: app_user
+      PGPASSWORD: app_password
+      DATABASE_URL: postgresql+psycopg://app_user:app_password@localhost:5432/app_db
+
     steps:
+      - name: Add PostgreSQL binaries to PATH
+        shell: bash
+        run: echo "$PGBIN" >> $GITHUB_PATH
+
+      - name: Start preinstalled PostgreSQL
+        shell: bash
+        run: |
+          echo "Initializing database cluster..."
+
+          # Convert backslashes to forward slashes in RUNNER_TEMP for Windows Git Bash
+          export PGHOST="${RUNNER_TEMP//\\//}/postgres"
+          export PGDATA="$PGHOST/pgdata"
+          mkdir -p "$PGDATA"
+
+          # initdb requires file for password in non-interactive mode
+          export PWFILE="$RUNNER_TEMP/pwfile"
+          echo "postgres" > "$PWFILE"
+          initdb --pgdata="$PGDATA" --username="postgres" --pwfile="$PWFILE"
+
+          echo "Starting PostgreSQL..."
+          echo "unix_socket_directories = '$PGHOST'" >> "$PGDATA/postgresql.conf"
+          pg_ctl start
+
+          echo "Creating user..."
+          psql --host "$PGHOST" --username="postgres" --dbname="postgres" --command="CREATE USER $PGUSERNAME PASSWORD '$PGPASSWORD'" --command="\du"
+
+          echo "Creating database..."
+          createdb --owner="$PGUSERNAME" --username="postgres" "$PGDATABASE"
+
       - name: Copia os arquivos do repo
         uses: actions/checkout@v4
 
@@ -26,11 +62,14 @@ jobs:
       - name: Instalar Poetry
         run: pip install poetry
 
-      - name: Instalar dependências do projeto
+      - name: Instalar dependências globais
         run: poetry install --no-root
 
-      - name: Roda os testes da ultima aula
-        run: poetry run invoke test-last-class
+      - name: Roda os testes da ultima aula (win)
+        run: poetry run invoke win-test-last-class
+
+      - name: Roda as migrações (win)
+        run: poetry run invoke win-test-migration
 
   test:
     runs-on: ubuntu-latest
