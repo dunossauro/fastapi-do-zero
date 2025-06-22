@@ -190,7 +190,6 @@ def win_test_last_class(c):
         print('Current path: ', code_path)
         c.run('poetry install')
         c.run('poetry run task test')
-        c.run('poetry run alembic upgrade head')
 
 @task
 def win_test_migration(c):
