@@ -33,11 +33,12 @@ def engine():
     # Caso do windows + Docker no CI
     import sys  # noqa: PLC0415
     if sys.platform == 'win32':
-        return create_async_engine(Settings().DATABASE_URL)
+        yield create_async_engine(Settings().DATABASE_URL)
 
-    with PostgresContainer('postgres:16', driver='psycopg') as postgres:
-        _engine = create_async_engine(postgres.get_connection_url())
-        yield _engine
+    else:
+        with PostgresContainer('postgres:16', driver='psycopg') as postgres:
+            _engine = create_async_engine(postgres.get_connection_url())
+            yield _engine
 
 
 @pytest_asyncio.fixture
