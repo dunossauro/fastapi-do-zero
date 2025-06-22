@@ -5,10 +5,12 @@ on:
     paths:
       - 'codigo_das_aulas/**'
       - '.github/workflows/**'
+      - 'tasks.py'
   pull_request:
     paths:
       - 'codigo_das_aulas/**'
       - '.github/workflows/**'
+      - 'tasks.py'
 
 jobs:
   windows-hell:
