@@ -18,7 +18,9 @@
 
 O lock do projeto final pode ser encontrado [aqui!](https://github.com/dunossauro/fastapi-do-zero/blob/{{current_tag}}/codigo_das_aulas/13/poetry.lock){:target="_blank"}
 
-## Ferramentas de gerenciamento do ambiente
+## Ferramentas instaladas do ambiente
+
+Aqui estão listadas as versões que foram usadas das ferramentas instaladas no meu sistema de forma determinística:
 
 ```bash exec="1"
 echo "- **Poetry**: $(poetry --version)"
