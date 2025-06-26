@@ -74,7 +74,7 @@ Esse material será disponibilizado em duas formas diferentes:
 
 1. Em livro texto: todo o material está disponível nessa página;
 2. Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo.
-    - [**Datas de 2025 já disponíveis**](aulas/2025.md){:target="_blank"}.
+    - Playlist das apresentações de 2025:
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3KT9ZWvPmaGFQ0KjIez0403" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 	- Playlist das apresentações de 2024:
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
