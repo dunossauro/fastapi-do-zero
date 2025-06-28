@@ -680,8 +680,8 @@ def test_patch_todo_error(client, token):
 
 5. Crie um teste para validar o caso do `Enum` em `state: Mapped[TodoState]` na tabela `TODO`, onde o valor esteja fora dos valores mapeados por ele. Isso forçará um erro que pode ser validado com [`pytest.raises`](https://docs.pytest.org/en/4.6.x/reference.html#pytest-raises)
 6. Crie dois testes para validar a busca por `todos`.
-   - Um com o `` com um texto menor do que `3` caracteres
-   - Um com o `` com um texto maior do que `20` caracteres
+   - Um com o `title` com um texto menor do que `3` caracteres
+   - Um com o `title` com um texto maior do que `20` caracteres
 
 ---
 
