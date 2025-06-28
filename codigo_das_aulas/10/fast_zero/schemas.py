@@ -30,8 +30,8 @@ class Token(BaseModel):
 
 
 class FilterPage(BaseModel):
-    offset: int = 0
-    limit: int = 100
+    offset: int = Field(0, ge=0)
+    limit: int = Field(100, ge=1)
 
 
 class TodoSchema(BaseModel):

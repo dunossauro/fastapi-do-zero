@@ -360,6 +360,26 @@ def read_users(session: Session, filter_users: Annotated[FilterPage, Query()]):
 > Mostrar o efeito no swagger
 
 ---
+
+## Pydantic + Query
+
+Da mesma forma que o SQLAlchemy, o Pydantic nos permite adicionar restrições em campos.
+
+Por exemplo, o valor é `int` com default `0`, mas ele não pode ser negativo. Nesse caso, usamos o `Field` para aplicar restrições:
+
+```python
+# schemas.py
+from pydantic import ..., Field
+# ...
+class FilterPage(BaseModel):
+    offset: int = Field(0, ge=0)
+    limit: int = Field(100, ge=0)
+```
+
+`ge` quer dizer *greater than* ["maior que"]. Ou seja, sempre tem que ser um valor positivo, ou maior do que `0`
+
+---
+
 # Parte 4
 
 Movendo as constantes para variáveis de ambiente
