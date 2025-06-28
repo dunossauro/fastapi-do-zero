@@ -95,6 +95,26 @@ task run
 
 ---
 
+### Windows!
+
+Existe um comportamento indesejável ao executar o pscycopg de forma [assíncrona no windows](https://www.psycopg.org/psycopg3/docs/advanced/async.html#asynchronous-operations). O loop de eventos padrão tem alguns problemas para executar as terefas com o postgres no Windows. Para contornar isso:
+
+```python
+import asyncio
+import sys
+
+# ...
+
+if sys.platform == 'win32': 
+    asyncio.set_event_loop_policy(
+        asyncio.WindowsSelectorEventLoopPolicy()
+    )
+
+app = FastAPI()
+```
+
+---
+
 ### Erro na migração
 
 Ao fazer uma chamada que depende do banco de dados, vamos obter um:
@@ -405,6 +425,16 @@ docker-compose up --build
 
 ---
 
+### Antes de irmos embora!
+
+Como mudamos para o postgres, não precisamos mais do `aiosqlite` no projeto, pois, agora, até mesmo nos testes, estamos usando o postgres. Logo:
+
+```bash
+poetry remove aiosqlite
+```
+
+---
+
 ## Commit
 
 ```bash
@@ -413,6 +443,7 @@ git commit -m "Dockerizando nossa aplicação e inserindo o PostgreSQL"
 ```
 
 ---
+
 
 ## Suplementar / Para próxima aula
 
