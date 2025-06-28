@@ -204,10 +204,7 @@ def test_delete_todo_error(client, token):
     assert response.json() == {'detail': 'Task not found.'}
 
 
-@pytest.mark.asyncio
-async def test_list_todos_filter_min_length_exercicio_06(
-    session, user, client, token
-):
+async def test_list_todos_filter_min_length_exercicio_06(client, token):
     tiny_string = 'a'
     response = client.get(
         f'/todos/?title={tiny_string}',
@@ -217,10 +214,7 @@ async def test_list_todos_filter_min_length_exercicio_06(
     assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
 
 
-@pytest.mark.asyncio
-async def test_list_todos_filter_max_length_exercicio_06(
-    session, user, client, token
-):
+async def test_list_todos_filter_max_length_exercicio_06(client, token):
     large_string = 'a' * 22
     response = client.get(
         f'/todos/?title={large_string}',
