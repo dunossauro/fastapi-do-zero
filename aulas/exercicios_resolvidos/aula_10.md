@@ -205,3 +205,34 @@ async def test_create_todo_error(session, user: User):
     with pytest.raises(LookupError):
         await session.scalar(select(Todo))
 ```
+
+## Exercício 06
+
+Crie dois testes para validar a busca por `todos`.
+   - Um com o `title` com um texto menor do que `3` caracteres
+   - Um com o `title` com um texto maior do que `20` caracteres
+
+### Solução
+
+A solução desse exercício é bastante simples, precisamos de uma querystring com o campo `title` e fazer uma requisição com uma string menor e outra com a string maior que o que definimos no schema:
+
+```python
+def test_list_todos_filter_min_length_exercicio_06(client, token):
+    tiny_string = 'a'
+    response = client.get(
+        f'/todos/?title={tiny_string}',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+
+
+def test_list_todos_filter_max_length_exercicio_06(client, token):
+    large_string = 'a' * 22
+    response = client.get(
+        f'/todos/?title={large_string}',
+        headers={'Authorization': f'Bearer {token}'},
+    )
+
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+```

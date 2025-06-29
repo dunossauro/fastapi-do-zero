@@ -306,15 +306,15 @@ Como agora temos vários parâmetros de query como `title`, `description` e `sta
 
 ```python
 # fast_zero/schemas.py
+from pydantic import Field
+# ...
 class FilterTodo(FilterPage):
-    title: str | None = None
-    description: str | None = None
+    title: str | None = Field(None, min_length=3, max_length=20)
+    description: str | None = Field(None, min_length=3, max_length=20)
     state: TodoState | None = None
 ```
 
 Uma coisa interessante de observar nesse modelo é que ele usa `FilterPage` como base, para que além dos campos propostos, tenhamos o `limit` e `offset` também.
-
-
 
 ---
 
@@ -679,6 +679,9 @@ def test_patch_todo_error(client, token):
 # Exercícios
 
 5. Crie um teste para validar o caso do `Enum` em `state: Mapped[TodoState]` na tabela `TODO`, onde o valor esteja fora dos valores mapeados por ele. Isso forçará um erro que pode ser validado com [`pytest.raises`](https://docs.pytest.org/en/4.6.x/reference.html#pytest-raises)
+6. Crie dois testes para validar a busca por `todos`.
+   - Um com o `title` com um texto menor do que `3` caracteres
+   - Um com o `title` com um texto maior do que `20` caracteres
 
 ---
 
