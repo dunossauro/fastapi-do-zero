@@ -15,6 +15,9 @@ from fast_zero.settings import Settings
 
 settings = Settings()
 pwd_context = PasswordHash.recommended()
+oauth2_scheme = OAuth2PasswordBearer(
+    tokenUrl='auth/token', refreshUrl='auth/refresh'
+)
 
 
 def create_access_token(data: dict):
@@ -35,9 +38,6 @@ def get_password_hash(password: str):
 
 def verify_password(plain_password: str, hashed_password: str):
     return pwd_context.verify(plain_password, hashed_password)
-
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/token')
 
 
 async def get_current_user(
