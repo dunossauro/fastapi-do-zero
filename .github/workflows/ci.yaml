@@ -87,7 +87,7 @@ jobs:
         run: sudo apt update
 
       - name: instala o sqlite3
-        run: sudo apt install sqlite3
+        run: sudo apt install sqlite3 -y
 
       - name: Instalar o python
         uses: actions/setup-python@v5
