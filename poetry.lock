@@ -1087,19 +1087,19 @@ test = ["pytest (>=4.0)", "pytest-cov"]
 
 [[package]]
 name = "mkdocs-towncrier"
-version = "0.1.4"
+version = "0.1.5"
 description = "An insanely small plugin to add towncrier changelog draft into mkdocs"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "mkdocs_towncrier-0.1.4-py3-none-any.whl", hash = "sha256:6ac60250023d5fd4cee62a0b1681f0cec0ba9303ac25f3ef1f7ad1afa5d16b40"},
-    {file = "mkdocs_towncrier-0.1.4.tar.gz", hash = "sha256:097020b94d0226228800d291bbdd0e96ace7fce9d65b694bd733d2e55876b5c6"},
+    {file = "mkdocs_towncrier-0.1.5-py3-none-any.whl", hash = "sha256:ea6819a5600912a4238890cf9b921d2933eea1a2d0e7e862861caf091ef4e4b4"},
+    {file = "mkdocs_towncrier-0.1.5.tar.gz", hash = "sha256:081dc80f3bc84035b9ee6994e0d8fb88acf3ccc123bcefb4cccabe0f515892de"},
 ]
 
 [package.dependencies]
 mkdocs = ">=1.6.0,<1.7.0"
-towncrier = ">=24.7.0,<25.0.0"
+towncrier = ">=24.7.0,<26.0.0"
 
 [[package]]
 name = "mkdocs-video"
@@ -1909,14 +1909,14 @@ files = [
 
 [[package]]
 name = "towncrier"
-version = "24.8.0"
+version = "25.8.0"
 description = "Building newsfiles for your project."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "towncrier-24.8.0-py3-none-any.whl", hash = "sha256:9343209592b839209cdf28c339ba45792fbfe9775b5f9c177462fd693e127d8d"},
-    {file = "towncrier-24.8.0.tar.gz", hash = "sha256:013423ee7eed102b2f393c287d22d95f66f1a3ea10a4baa82d298001a7f18af3"},
+    {file = "towncrier-25.8.0-py3-none-any.whl", hash = "sha256:b953d133d98f9aeae9084b56a3563fd2519dfc6ec33f61c9cd2c61ff243fb513"},
+    {file = "towncrier-25.8.0.tar.gz", hash = "sha256:eef16d29f831ad57abb3ae32a0565739866219f1ebfbdd297d32894eb9940eb1"},
 ]
 
 [package.dependencies]
@@ -2084,4 +2084,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "6ed4d7333efbfcbc5358a3fbfd834e9a1faba71424c1208064c82fe7a3d60819"
+content-hash = "71a2b0c61b1874aee7f3f19f2bd42b939940214a4be3cb5adcf270488ada9af8"
