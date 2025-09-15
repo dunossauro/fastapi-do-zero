@@ -19,7 +19,7 @@ CREATE TABLE users (
 	UNIQUE (email), 
 	UNIQUE (username)
 );
-""" # noqa
+"""   # noqa
 
 migration_05 = """CREATE TABLE alembic_version (
 	version_num VARCHAR(32) NOT NULL, 
@@ -37,7 +37,9 @@ CREATE TABLE users (
 );
 """  # noqa
 
-migration_09 = migration_05 + """CREATE TABLE todos (
+migration_10 = (
+    migration_05
+    + """CREATE TABLE todos (
 	id INTEGER NOT NULL, 
 	title VARCHAR NOT NULL, 
 	description VARCHAR NOT NULL, 
@@ -46,7 +48,8 @@ migration_09 = migration_05 + """CREATE TABLE todos (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(user_id) REFERENCES users (id)
 );
-"""  # noqa
+"""
+)  # noqa
 
 dotenv = """DATABASE_URL="postgresql+psycopg://app_user:app_password@localhost:5432/app_db"
 SECRET_KEY="your-secret-key"
@@ -60,44 +63,56 @@ ALGORITHM="HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 """
 
+fake_dotenv_async = """DATABASE_URL="sqlite+aiosqlite:///database.db"
+SECRET_KEY="your-secret-key"
+ALGORITHM="HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+"""
+
 
 @contextmanager
-def env_file(path: Path):
+def env_file(path: Path, sync=True):
     with open(path / '.env', 'w', encoding='utf-8') as file:
-        file.write(fake_dotenv)
+        if sync:
+            file.write(fake_dotenv)
+        else:
+            file.write(fake_dotenv_async)
 
     yield
 
     with open(path / '.env', 'w', encoding='utf-8') as file:
-        file.write(dotenv)
+        if sync:
+            file.write(fake_dotenv)
+        else:
+            file.write(fake_dotenv_async)
 
 
 @task
 def test_migrations(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
-        print(path)
+        print('test_migrations: ', path)
         database = path / 'database.db'
 
         if database.exists():
             database.unlink()
 
         with c.cd(str(path)):
-            if int(path.parts[-1]) >= 9: # noqa
+            if int(path.parts[-1]) >= 10:   # noqa
                 c.run('poetry install')
 
-                with env_file(path):
+                with env_file(path, sync=False):
                     c.run('alembic upgrade head')
                     schema = c.run('sqlite3 database.db ".schema"')
-                    assert schema.stdout == migration_09
+                    assert schema.stdout == migration_10
 
-            elif int(path.parts[-1]) == 4: # noqa
+            elif int(path.parts[-1]) == 4:   # noqa
                 c.run('poetry install')
                 c.run('alembic upgrade head')
                 schema = c.run('sqlite3 database.db ".schema"')
                 assert schema.stdout == migration_04
 
-            elif int(path.parts[-1]) >= 5: # noqa
+            elif int(path.parts[-1]) >= 5:   # noqa
                 c.run('poetry install')
                 c.run('alembic upgrade head')
                 schema = c.run('sqlite3 database.db ".schema"')
@@ -124,7 +139,7 @@ def update_project(c):
 def typos_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
-        print(path)
+        print('typos_sub: ', path)
         with c.cd(str(path)):
             c.run('poetry run typos .')
 
@@ -133,7 +148,7 @@ def typos_sub(c):
 def lint_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
-        print(path)
+        print('lint_sub: ', path)
         with c.cd(str(path)):
             c.run('poetry run task lint')
 
@@ -142,7 +157,7 @@ def lint_sub(c):
 def test_act(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
-        print(path)
+        print('test_act: ', path)
         with c.cd(str(path)):
             if (path / '.github').exists():
                 c.run('act')
@@ -152,7 +167,7 @@ def test_act(c):
 def test_docker_build(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
-        print(path)
+        print('test_docker_build: ', path)
         with c.cd(str(path)):
             if (path / 'compose.yaml').exists():
                 c.run('docker compose build')
@@ -162,17 +177,33 @@ def test_docker_build(c):
 def test_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
-        print(path)
+        print('test_sub: ', path)
         with c.cd(str(path)):
             c.run('poetry install')
             c.run('poetry run task test')
 
 
 @task
+def win_test_last_class(c):
+    code_path = Path('./codigo_das_aulas/13')
+    with c.cd(str(code_path)):
+        print('Current path: ', code_path)
+        c.run('poetry install')
+        c.run('poetry run task test')
+
+@task
+def win_test_migration(c):
+    code_path = Path('./codigo_das_aulas/13')
+    with c.cd(str(code_path)):
+        print('Current path: ', code_path)
+        c.run('poetry run alembic upgrade head')
+
+
+@task
 def command_sub(c, cmd):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
-        print(path)
+        print('command_sub: ', path)
         with c.cd(str(path)):
             c.run(cmd)
 
@@ -190,7 +221,7 @@ def update_sub(c):
         poetry_toml = toml_tables['tool']['poetry']
         dev_dependencies = poetry_toml['group']['dev']['dependencies']
 
-        print(path)
+        print('update_sub:', path)
         with c.cd(str(path)):
             c.run('rm -rf .venv')
             if (path / 'poetry.lock').exists():
@@ -206,7 +237,7 @@ def update_sub(c):
                 elif dep in 'pydantic':
                     c.run('poetry add "pydantic[email]@latest"')
 
-                elif dep in'pwdlib':
+                elif dep in 'pwdlib':
                     c.run('poetry add "pwdlib[argon2]@latest"')
 
                 elif dep in 'psycopg':

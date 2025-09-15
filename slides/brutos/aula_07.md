@@ -3,9 +3,9 @@ marp: true
 theme: rose-pine
 ---
 
-# Refatorando a Estrutura do Projeto
+# Refatorando a estrutura do projeto
 
-> https://fastapidozero.dunossauro.com/07/
+> https://fastapidozero.dunossauro.com/4.0/07/
 
 ---
 
@@ -13,7 +13,7 @@ theme: rose-pine
 
 - **Reestruturar o projeto para facilitar sua manutenção**
 - Mover coisas de altenticação para um arquivo chamado `fast_zero/auth.py`
-- Deixando em `fast_zero/secutiry.py` somente as validações de senha
+- Deixando em `fast_zero/security.py` somente as validações de senha
 - Remover constantes do código
 - Criar routers específicos
 - Criação de um modelo pydantic para querys
@@ -192,7 +192,45 @@ Fazendo assim com que os testes que dependem dessa fixture passem a funcionar.
 
 # Parte 3
 
-Usando o tipo `Annotated` para simplificar definições
+Buscando por boas práticas do FastAPI.
+
+- Usando o tipo `Annotated` para simplificar definições
+- Usando o tipo `Query` para query strings
+
+---
+
+## Adicionando `FAST` a análise estática
+
+Uma das coisas que você já deve ter notado até agora é o quanto a análise estática do ruff nos ajuda a manter um código mais padronizado, sempre escrito da mesma forma e com uma integridade conceitual.
+
+Mas, o ruff também conta com checagem de boas práticas de código FastAPI. Com as regras definidas em FAST. Podemos adicionar essa regra ao nosso arquivo de configuração:
+
+```toml
+#pyproject.toml
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT', 'FAST']
+```
+
+---
+
+## Task lint
+
+E BUM! Temos coisas de boas práticas a melhorar:
+
+```python
+fast_zero/routers/auth.py:21:5: 'FAST002' FastAPI dependency without `Annotated`
+   |
+19 | @router.post('/token', response_model=Token)
+20 | def login_for_access_token(
+21 |     form_data: OAuth2PasswordRequestForm = Depends(),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FAST002
+22 |     session: Session = Depends(get_session),
+23 | ):
+   |
+   = help: Replace with `typing.Annotated`
+# ... Diversos erros FAST002
+```
 
 ---
 
@@ -274,6 +312,74 @@ task test
 ```
 
 ---
+
+## O tipo Query
+
+Agora que conhecemos o tipo `Annotated`, podemos introduzir um novo conceito para as querystrings. No endpoint de listagem, estamos passando parâmetros específicos na URL para paginar a quantidade de objetos.
+
+```python
+@app.get('/', response_model=UserList)
+def read_users(
+    session: Session, skip: int = 0, limit: int = 100
+):
+    users = session.scalars(select(User).offset(skip).limit(limit)).all()
+    return {'users': users}
+```
+
+Os parâmetros `skip` e `limit` são parâmetros de query. Porém eles pode ser usados em qualquer busca no banco.
+
+---
+
+## Pydantic + Query
+
+Já que são parâmetros genéricos, para reutilização no futuro, podemos transformar eles em um modelo do Pyndatic:
+
+```python
+# schemas.py
+class FilterPage(BaseModel):
+    offset: int = 0
+    limit: int = 100
+```
+
+---
+
+## Pydantic + Query
+
+Para diferenciar o schema json dos schemas de Query, o FastAPI conta como o objeto `Query` em conjunto com `Annotated`:
+
+```python
+from fastapi import ..., Query
+# ...
+@router.get('/', response_model=UserList)
+def read_users(session: Session, filter_users: Annotated[FilterPage, Query()]):
+    users = session.scalars(
+        select(User).offset(filter_users.offset).limit(filter_users.limit)
+    ).all()
+```
+
+> Mostrar o efeito no swagger
+
+---
+
+## Pydantic + Query
+
+Da mesma forma que o SQLAlchemy, o Pydantic nos permite adicionar restrições em campos.
+
+Por exemplo, o valor é `int` com default `0`, mas ele não pode ser negativo. Nesse caso, usamos o `Field` para aplicar restrições:
+
+```python
+# schemas.py
+from pydantic import ..., Field
+# ...
+class FilterPage(BaseModel):
+    offset: int = Field(0, ge=0)
+    limit: int = Field(100, ge=0)
+```
+
+`ge` quer dizer *greater than* ["maior que"]. Ou seja, sempre tem que ser um valor positivo, ou maior do que `0`
+
+---
+
 # Parte 4
 
 Movendo as constantes para variáveis de ambiente
@@ -357,58 +463,11 @@ task test
 
 ---
 
-# Parte 5
+## Suplementar / Para próxima aula
 
-Criando um modelo Pydantic para querystrings
+Na próxima aula, vamos adicionar o suporte a programação assíncrona em nossa aplicação. Caso esse assunto seja um novidade para você, temos uma live introdutória sobre o assunto:
 
----
-
-## Annotated e mais funcionalidades
-
-Agora que conhecemos o tipo `Annotated`, podemos introduzir um novo conceito para as querystrings. No endpoint de listagem, estamos passando parâmetros específicos na URL para paginar a quantidade de objetos.
-
-Com `skip` e `offset`. Reduzindo a quantidade de objetos na resposta:
-
-```py title="fast_zero/routers/users.py" hl_lines="3 5"
-@app.get('/', response_model=UserList)
-def read_users(
-    skip: int = 0, limit: int = 100, session: Session = Depends(get_session)
-):
-    users = session.scalars(select(User).offset(skip).limit(limit)).all()
-    return {'users': users}
-```
-
----
-
-## Pydantic e querystrings
-
-Embora isso não seja efetivamente um problema, uma boa pratica de organização é seria um modelo do pydantic especializado em filtros, como:
-
-
-```python
-# fast_zero/schemas.py
-class FilterPage(BaseModel):
-    offset: int = 0
-    limit: int = 100
-```
-
-Dessa forma, qualquer endpoint que precisar paginar resultados podem se beneficiar desse modelo.
-
----
-
-## O typo Query
-
-Uma das formas de remover a declaração de todos os parâmetros explicitamente da query no endpoint é usar nosso modelo com o objeto `Query` do FastAPI.
-
-```py title="fast_zero/routers/users.py" hl_lines="1 6 16"
-from fastapi import APIRouter, Depends, HTTPException, Query
-
-@router.get('/', response_model=UserList)
-def read_users(session: Session, filter_users: Annotated[FilterPage, Query()]):
-    ...
-```
-
-A junção de `Annotated` e `Query()` faz com que o modelo do pydantic transforme seus parâmetros em querystrings.
+- [Requests assíncronos com HTTPX | Live de Python #234](https://youtu.be/V4hSLZRCGoE)
 
 ---
 
@@ -416,7 +475,7 @@ A junção de `Annotated` e `Query()` faz com que o modelo do pydantic transform
 
 Migre os endpoints e testes criados nos exercícios anteriores para os locais corretos na nova estrutura da aplicação.
 
-> Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_07/)
+> Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_07/)
 
 ---
 
@@ -428,6 +487,3 @@ git commit -m "Refatorando estrutura do projeto
 - Criado routers para Users e Auth
 - Movendo constantes para variáveis de ambiente."
 ```
-
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

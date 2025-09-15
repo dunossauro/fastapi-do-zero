@@ -3,9 +3,9 @@ marp: true
 theme: rose-pine
 ---
 
-# Configurando o Banco de Dados e gerenciando Migrações com Alembic
+# Configurando o banco de dados e gerenciando migrações com Alembic
 
-> https://fastapidozero.dunossauro.com/04/
+> https://fastapidozero.dunossauro.com/4.0/04/
 
 ---
 
@@ -104,7 +104,7 @@ from fast_zero.models import User
 def test_create_user():
     user = User(username='test', email='test@test.com', password='secret')
 
-    assert user.password == 'secrete'
+    assert user.password == 'secret'
 ```
 
 > Aqui temos uma bomba!
@@ -214,6 +214,8 @@ def test_create_user(session):
 
     assert user.username == 'alice'
 ```
+
+> task test
 
 ---
 
@@ -344,7 +346,7 @@ from sqlalchemy import select
 from fast_zero.models import User
 
 def test_create_user(session, mock_db_time):
-    with mock_db_time(model=User) as time: #(1)!
+    with mock_db_time(model=User) as time:
         new_user = User(
             username='alice', password='secret', email='teste@test'
         )
@@ -353,12 +355,12 @@ def test_create_user(session, mock_db_time):
 
 	user = session.scalar(select(User).where(User.username == 'alice'))
 
-    assert asdict(user) == { #(2)!
+    assert asdict(user) == {
         'id': 1,
         'username': 'alice',
         'password': 'secret',
         'email': 'teste@test',
-        'created_at': time,  #(3)!
+        'created_at': time,
     }
 ```
 
@@ -518,6 +520,24 @@ alembic upgrade head
 
 ---
 
+## Dando uma olhada no banco de dados
+
+Pra isso poderíamos usar uma ferramenta gráfica ou usando a CLI do sqlite:
+
+```bash
+python -m sqlite3 database.db
+
+# Abrirá o shell do sqlite3
+sqlite>
+```
+
+```sql
+select * from alembic_version;
+select * from users;
+```
+
+---
+
 # Exercícios
 
 1. Fazer uma alteração no modelo (tabela `User`) e adicionar um campo chamado `updated_at`:
@@ -536,7 +556,7 @@ alembic upgrade head
 3. Criar uma nova migração autogerada com alembic
 4. Aplicar essa migração ao banco de dados
 
-> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/quizes/aula_04/) da aula
+> Obviamente, não esqueça de responder ao [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_04/) da aula
 
 ---
 
@@ -551,5 +571,3 @@ git push
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

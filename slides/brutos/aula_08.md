@@ -3,29 +3,55 @@ marp: true
 theme: rose-pine
 ---
 
-# Tornando o sistema de autenticação robusto
+# Tornando o projeto assíncrono
 
-> https://fastapidozero.dunossauro.com/08/
+> https://fastapidozero.dunossauro.com/4.0/08/
 
 ---
 
 ## Objetivos da Aula
 
-- Testar os casos de autenticação de forma correta
-- Testar os casos de autorização de forma correta
-- Implementar o refresh do token
-- Introduzir testes que param o tempo com `freezegun`
-- Introduzir geração de modelos automática com `factory-boy`
+
+- Introduzir os conceitos de programação assíncrona
+- Refatorar nossa aplicação para suportar AsyncIO
+  - Tanto a aplicação (SQLAlchemy, FastAPI)
+  - Quanto os testes (Pytests, Fixtures)
 
 ---
 
-# Testes de autorização
+## O bloqueio da aplicação
 
 > Parte 1
 
 ---
 
-## Garantir que o user faça somente o que pode
+## Bloqueio de I/O
+
+Um dos problemas mais comuns ao lidarmos com uma aplicação web é a necessidade de estarmos sempre disponíveis para responder a requisições enviadas pelos clientes. Quando recebemos uma requisição, normalmente precisamos processá-la:
+
+<div class="mermaid">
+graph LR
+    A["Validar o schema"] --> B["Conectar ao DB"]
+	B --> C["Fazer algumas operações"]
+	C --> D["Repassa ao banco de dados"]
+	D --> E["Retornar o recurso"]
+	subgraph B1[aguardando I/O]
+    B
+    end
+	subgraph B2[aguardando I/O]
+    D
+    end
+</div>
+
+Esse fluxo de execução é chamado de **bloqueante**, pois a aplicação fica "parada", aguardando a resposta de sistemas externos, como o banco de dados.
+
+---
+
+## Bloqueio de I/O
+
+<div class="columns">
+
+<div>
 
 ```python
 @router.put('/{user_id}', response_model=UserPublic)
@@ -38,444 +64,680 @@ def update_user(
     if current_user.id != user_id:
         raise HTTPException(
             status_code=HTTPStatus.FORBIDDEN,
-            detail='Not enough permissions'
+			detail='Not enough permissions'
+        )
+    try:
+        current_user.username = user.username
+        current_user.password = get_password_hash(user.password)
+        current_user.email = user.email
+        session.commit()
+        session.refresh(current_user)
+
+        return current_user
+
+    except IntegrityError:
+        raise HTTPException(
+            status_code=HTTPStatus.CONFLICT,
+            detail='Username or Email already exists',
         )
 ```
 
-Não deve ser possível alterar via PUT os dados que não são seus
-
----
-
-```python
-def test_update_user_with_wrong_user(client, user, token):
-    response = client.put(
-        f'/users/{user.id + 1}',
-        headers={'Authorization': f'Bearer {token}'},
-        json={
-            'username': 'bob',
-            'email': 'bob@example.com',
-            'password': 'mynewpassword',
-        },
-    )
-    assert response.status_code == HTTPStatus.FORBIDDEN
-    assert response.json() == {'detail': 'Not enough permissions'}
-```
-
-Na ultima aula fizemos algo parecido com isso!
-
-
----
-
-## O problema dessa abordagem
-
-O uso do `+1` nos leva a algumas discussões interessantes:
-
-- Validamos a situação com um "hack", não existe o `+1`
-- Caso ele exista, o que vai acontecer em produção, vai funcionar?
-- Como representamos um cenário mais próximo da realidade?
-* **precisamos adicionar um novo user ao cenário de teste**
-
----
-
-## Criando modelos `Users` sob demanda
-
-Para fazer a criação de users de forma mais intuitiva e sem a preocupação de valores repetidos, podemos usar uma "**fábrica**" de usuários.
-
-Isso pode ser feito com uma biblioteca chamada `factory-boy`:
-
-```shell
-poetry add --group dev factory-boy
-```
-
-> Fábrica é um padrão de projeto de construção de objetos.
-
----
-
-## O Factory-boy
-
-```python
-#conftest.py
-import factory
-
-# ...
-
-class UserFactory(factory.Factory):
-    class Meta:
-        model = User
-
-    username = factory.Sequence(lambda n: f'test{n}')
-    email = factory.LazyAttribute(lambda obj: f'{obj.username}@test.com')
-    password = factory.LazyAttribute(lambda obj: f'{obj.username}@example.com')
-```
-
----
-
-## O uso do factory-boy + fixture
-
-<div class="columns">
-
-<div>
-
-Aplicando a fabrica:
-
-```python
-@pytest.fixture
-def user(session):
-    password = 'testtest'
-    user = UserFactory(
-        password=get_password_hash(password)
-    )
-
-    session.add(user)
-    session.commit()
-    session.refresh(user)
-
-    user.clean_password = password
-
-    return user
-```
-
 </div>
 
-<div>
-
-O cenário "real":
-
-```python
-@pytest.fixture
-def other_user(session):
-    password = 'testtest'
-    user = UserFactory(
-        password=get_password_hash(password)
-    )
-
-    session.add(user)
-    session.commit()
-    session.refresh(user)
-
-    user.clean_password = password
-
-    return user
-```
-
+<div class="mermaid">
+graph TD
+    A["Validar o schema"] --> B1
+	B1 --> C["Algumas operações"]
+	C --> B2
+	C --> E["Retornar o recurso"]
+	subgraph B1[aguardando I/O]
+    B["Conectar ao DB"]
+    end
+	subgraph B2[aguardando I/O]
+    D["Repassa ao banco de dados"]
+    end
+	B2 --> C
 </div>
 
 </div>
 
 ---
 
-## Alterando o teste de put para esse cenário
+## O bloqueio é da **aplicação**
 
-```python
-def test_update_user_with_wrong_user(client, other_user, token):
-    response = client.put(
-        f'/users/{other_user.id}',
-        headers={'Authorization': f'Bearer {token}'},
-        json={
-            'username': 'bob',
-            'email': 'bob@example.com',
-            'password': 'mynewpassword',
-        },
-    )
-    assert response.status_code == HTTPStatus.FORBIDDEN
-    assert response.json() == {'detail': 'Not enough permissions'}
-```
+Uma coisa que deve ficar **extremamente clara** é que embora tenhamos um bloqueio na aplicação, **não** temos um bloqueio no **servidor** (uvicorn).
 
+<div class="mermaid">
+	flowchart LR
+	   Cliente_1 --> Uvicorn
+	   Cliente_2 --> Uvicorn
+	   Cliente_3 --> Uvicorn
+	   Uvicorn --> Backlog
+	   Backlog --> Uvicorn
+	   Uvicorn --> APP
+	   APP --> Uvicorn
+</div>
 
----
-
-## Criando um teste de DELETE para o cenário
-
-```python
-def test_delete_user_wrong_user(client, other_user, token):
-    response = client.delete(
-        f'/users/{other_user.id}',
-        headers={'Authorization': f'Bearer {token}'},
-    )
-    assert response.status_code == HTTPStatus.FORBIDDEN
-    assert response.json() == {'detail': 'Not enough permissions'}
-```
+Por padrão, são `2048` requisições que podem aguardar no backlog
 
 ---
 
-# Expiração do token
+## O servidor pode "copiar" a aplicação
+
+Com isso distribuir as requisições de forma paralela
+
+<div class="mermaid">
+	flowchart LR
+	   Cliente --> Uvicorn
+	   Uvicorn --> copia_01
+	   Uvicorn --> copia_02
+	   Uvicorn --> copia_03
+</div>
+
+```bash
+uvicorn fast_zero.app:app --workers 3
+```
+
+A aplicação ainda bloqueia, mas como tem mais, faz coisas ao mesmo tempo.
+
+---
+
+## Aplicação **não** bloqueante
 
 > Parte 2
 
 ---
 
-## Sobre o tempo do token
+## Corrotinas
 
-Quando geramos o token, ele tem a claim 'exp' que é ferente a validade do token.
+Embora esse assunto possa se estender de forma sem controle, uma corrotina *assíncrona* basicamente é uma função em python que pode ser **escalonada** durante o bloqueio de I/O.
 
-<div class="columns">
+São criadas pela palavra reservada `async` e o escalonamento é feito pela palavra `await`.
 
-<div>
-
-```json
-{
-    "exp": 1690258153,
-    "sub": "dudu@dudu.du"
-}
-```
-
-</div>
-
-<div>
 
 ```python
-def create_access_token(data: dict):
-    expire = datetime.now(
-        tz=ZoneInfo('UTC')
-    ) + timedelta( # 30m
-        minutes=ACCESS_TOKEN_EXPIRE_MINUTES
+# código ilustrativo ao nosso contexto
+async def get_users() -> list[User]:
+    result = await session.scalars(select(User))
+    return result
+```
+
+---
+
+## Corrotinas
+
+Uma das características de uma corrotina, é o fato dela não ser executada quando chamada diretamente:
+
+```python
+>>> async def foo():
+...     ...
+...
+>>> foo()
+<coroutine object foo at 0x7f2e0ec79850>
+```
+
+Ela precisa ser executada por um agente externo. Um **loop de eventos**.
+
+---
+
+## Loop de eventos
+
+É responsável por executar e coordenar todas as corrotinas. Sempre que precisamos de cooperação entre os bloqueios, o loop ficará responsável por executar as corrotinas e nos trazer o resultado.
+
+> TODO
+
+---
+
+## Cooperatividade e Escalonamento
+
+> TODO
+
+---
+
+## Bando de dados e bloqueios
+
+> Parte 3
+
+---
+
+## Instalando o suporte a asyncio no sqla
+
+Embora o suporte a `asyncio` seja nativo no `sqlalchemy` 2.0. Algumas plataformas (como Silicon) não tem os pacotes pré-compilados (wheels) do `greenlet`. Para isso, vamos fazer uma instalação explícita:
+
+```bash
+poetry add "sqlalchemy[asyncio]"
+```
+
+> obs: A partir da versão 2.1, o suporte a asyncio deverá **sempre** ser instalado manualmente!
+
+---
+
+## SQLite + AsyncIO
+
+Como estamos utilizando o banco de dados SQLite, que não possui suporte nativo a asyncio no Python, precisamos instalar uma extensão chamada aiosqlite. Ela permite a execução assíncrona com bancos SQLite:
+
+```bash
+poetry add aiosqlite
+```
+
+---
+
+## Alterando o `.env`
+
+Para que nossa conexão esteja ciente que o aiosqlite está sendo usado, devemos alterar a variável de ambiente para contemplar essa alteração:
+
+```bash
+DATABASE_URL="sqlite+aiosqlite:///database.db"
+```
+
+---
+
+## Sessão com suporte a AsyncIO
+
+```python
+#fast_zero/database.py
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+
+from fast_zero.settings import Settings
+
+engine = create_async_engine(Settings().DATABASE_URL)
+
+
+async def get_session():
+    async with AsyncSession(engine, expire_on_commit=False) as session:
+        yield session
+```
+
+`expire_on_commit` deve ser `False` pois não sabemos se todas as corrotinas "liberaram" a sessão. Para prevenir erros, essa opção de ser ativada.
+
+---
+
+## Pytest + AsyncIO
+
+Embora o SQLAlchemy e o FastAPI lidem de forma nativa com programação assíncrona, o pytest ainda não. Para isso, precisamos instalar uma extensão que adicione esse suporte. A pytest-asyncio fornece um mecanismo de marcação para testes e também um para criação de fixtures assíncronas:
+
+```bash
+poetry add --group dev pytest-asyncio
+```
+
+---
+
+## Pytest + AsyncIO
+
+Uma exigência formal do pytest-asyncio é que seja configurado o escopo padrão das fixtures:
+
+```toml
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+asyncio_default_fixture_loop_scope = 'function'
+```
+
+> Para evitar cair em mais um assunto, o tópico de escopos de fixtures serão abordados na aula 11
+
+---
+
+## Fixture async para `session`
+
+```python
+import pytest_asyncio
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+
+@pytest_asyncio.fixture 
+async def session():
+    engine = create_async_engine(
+        'sqlite+aiosqlite:///:memory:',
+        connect_args={'check_same_thread': False},
+        poolclass=StaticPool,
     )
-```
-
-</div>
-</div>
-
----
-
-## O sistema do token
-
-<div class="mermaid">
-sequenceDiagram
-    participant Cliente
-    participant Server
-    Cliente->>Server: /auth/token (Cria um token)
-	Server-->>Server: Cria um token com exp de 30 minutos
-	Server->>Cliente: Retorna o token com sub e exp
-    Cliente->>Server: PUT /users/ + token
-	Server-->>Server: Valida o token
-	Server->>Cliente: Retorna a operação
-</div>
-
----
-
-## O tempo de duração
-
-<div class="mermaid">
-sequenceDiagram
-    participant Cliente
-    participant Server
-    Cliente->>Server: PUT /users/ + token
-	Server-->>Server: Token expirado
-	Server->>Cliente: UNAUTHORIZED - 401
-</div>
-
-Esse fluxo ainda não está implementado
-
----
-
-## Precisamos "viajar no tempo"
-
-Para isso temos a "arma do tempo" o `freezegun`, uma biblioteca que ajuda a pausar o tempo durante os testes:
-
-```shell
-poetry add freezegun
-```
-
----
-
-## Usando o freezegun
-
-```python
-from freezegun import freeze_time
-
-
-def test_token_expired_after_time(client, user):
-    # Para o tempo nessa data e hora
-    with freeze_time('2023-07-14 12:00:00'):
-        response = client.post(
-            '/auth/token',
-            data={'username': user.email, 'password': user.clean_password},
-        )
-        assert response.status_code == HTTPStatus.OK
-        token = response.json()['access_token']
-```
-
----
-
-## Viajando no tempo
-
-```python
-def test_token_expired_after_time(client, user):
     # ...
-    with freeze_time('2023-07-14 12:31:00'):
-        response = client.put(
-            f'/users/{user.id}',
-            headers={'Authorization': f'Bearer {token}'},
-            json={
-                'username': 'wrongwrong',
-                'email': 'wrong@wrong.com',
-                'password': 'wrong',
-            },
-        )
-        assert response.status_code == HTTPStatus.UNAUTHORIZED
-        assert response.json() == {'detail': 'Could not validate credentials'}
 ```
 
 ---
 
-## A validação da expiração
+## Fixture async para `session`
 
 ```python
-def get_current_user(
-    session: Session = Depends(get_session),
-    token: str = Depends(oauth2_scheme),
-):
-    try:
-        payload = decode(
-            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
-        )
-        subject_email = payload.get('sub')
+@pytest_asyncio.fixture 
+async def session():
+    # ...
+    async with engine.begin() as conn: 
+        await conn.run_sync(table_registry.metadata.create_all) 
 
-        if not subject_email:
-            raise credentials_exception
+    async with AsyncSession(engine, expire_on_commit=False) as session:
+        yield session
 
-    except DecodeError:
-        raise credentials_exception
-
-    except ExpiredSignatureError:
-        raise credentials_exception
+    async with engine.begin() as conn:
+        await conn.run_sync(table_registry.metadata.drop_all)
 ```
 
 ---
 
-# Problemas de autenticação
+## Testando o banco de dados
+
+```python
+#tests/test_db.py
+import pytest
+
+@pytest.mark.asyncio
+async def test_create_user(session, mock_db_time):
+    with mock_db_time(model=User) as time:
+        new_user = User(
+            username='alice', password='secret', email='teste@test'
+        )
+        session.add(new_user)
+        await session.commit()
+
+    user = await session.scalar(select(User).where(User.username == 'alice'))
+    # ...
+```
+
+---
+
+## Rodando um único arquivo
+
+```bash
+task test tests/test_db.py
+```
+
+---
+
+
+## Refatorando com teste!
 
 > Parte 4
 
 ---
 
-## Algumas coisas não foram cobertas
+## Técnica de refatoração com testes
 
-Os nossos testes não cobrem os casos onde temos:
-- Senha incorreta
-- Email inexistente
+Uma das grandes vantagens de termos uma boa cobertura de testes é que podemos fazer mudanças estruturais no projeto e garantir que tudo funcione da forma como já estava antes.
+
+Os testes nos trazem uma **segurança** para que tudo possa mudar internamente sem alterar os resultados da API. Para isso, a estratégia que vamos usar aqui é a de caminhar executando um teste por vez.
 
 ---
 
-## Testando a senha incorreta
+Uma das funcionalidades legais do pytest é poder executar somente um único teste, ou um grupo deles, usando o nome do teste como base. Para isso, podemos chamar task test passando a flag `-k` seguida do nome do teste. Algo como:
 
-```python
-def test_token_wrong_password(client, user):
-    response = client.post(
-        '/auth/token',
-        data={'username': user.email, 'password': 'wrong_password'}
-    )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
-    assert response.json() == {'detail': 'Incorrect email or password'}
+
+```bash
+task test -k test_create_user
+
+# ...
+tests/test_users.py::test_create_user FAILED
+```
+
+Para cada teste que falhar, vamos nos organizando para fazer a conversão do código para assíncrono.
+
+---
+
+Para listar todos os testes presentes no nosso projeto, podemos usar a flag `--collect-only` do pytest:
+
+```bash
+task test --collect-only
+<Dir fast_zero>
+  <Package tests>
+    <Module test_app.py>
+      <Function test_root_deve_retornar_ok_e_ola_mundo>
+    <Module test_auth.py>
+      <Function test_get_token>
+    <Module test_db.py>
+      <Coroutine test_create_user>
+...
 ```
 
 ---
 
-## Testando o user inexistente
+### Router `auth`
 
-```python
-def test_token_inexistent_user(client):
-    response = client.post(
-        '/auth/token',
-        data={'username': 'no_user@no_domain.com', 'password': 'testtest'},
-    )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
-    assert response.json() == {'detail': 'Incorrect email or password'}
+Acredito que começar pelo router `auth` pode ser menos assustador, já que até o momento ele tem somente um endpoint (`login_for_access_token`) e um teste (`test_get_token`).
+
+```bash
+task test -k test_get_token
+# ...
+FAILED tests/test_auth.py::test_get_token - AttributeError: 'coroutine' object has no attribute 'password'
 ```
 
 ---
 
-# Refresh do token
+Esse erro é interessante, pois o que ele notifica é que um objeto corrotina não tem o atributo password. Precisamos analisar o código para entender em qual o objeto está buscando password:
+
+```python
+#fast_zero/routers/auth.py
+@router.post('/token', response_model=Token)
+def login_for_access_token(form_data: OAuth2Form, session: Session):
+    user = session.scalar(select(User).where(User.email == form_data.username))
+
+    # ...
+
+    if not verify_password(form_data.password, user.password):
+    # ...
+```
+
+---
+
+Agora precisamos de `await`
+
+```python
+@router.post('/token', response_model=Token)
+async def login_for_access_token(form_data: OAuth2Form, session: Session):
+    user = await session.scalar(
+        select(User).where(User.email == form_data.username)
+    )
+    # ...
+```
+
+---
+
+## Tentando de novo
+
+Problemas na fixture de `user`!
+
+```python
+task test -k test_get_token
+
+# ...
+
+tests/test_auth.py::test_get_token /home/dunossauro/07/tests/conftest.py:75: RuntimeWarning: coroutine 'AsyncSession.commit' was never awaited
+  session.commit()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+/home/dunossauro/07/tests/conftest.py:76: RuntimeWarning: coroutine 'AsyncSession.refresh' was never awaited
+  session.refresh(user)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+PASSED
+```
+
+---
+
+## Transformando a fixture e async
+
+Como temos duas interações de I/O com o banco nesse fixture `.commit` e `.refresh`, devemos aguardar as duas:
+
+```python
+@pytest_asyncio.fixture
+async def user(session):
+    # ...
+    session.add(user)
+    await session.commit()
+    await session.refresh(user)
+    # ...
+```
+
+> De novo agora... `task test -k test_get_token`
+
+---
+
+## Corrigindo os tipos
+
+Embora o comportamento do código esteja correto e sem nenhum problema aparente. Precisamos corrigir o tipo usado para injeção de depenências que não é mais Session, mas AsyncSession:
+
+```python
+# fast_zero/routers/auth.py
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+# ...
+OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
+Session = Annotated[AsyncSession, Depends(get_session)]
+```
+
+---
+
+## Podemos partir para o router de `users` agora
+
+O cabeçalho
+
+```python
+# ...
+from sqlalchemy.ext.asyncio import AsyncSession
+# ...
+Session = Annotated[AsyncSession, Depends(get_session)]
+```
+
+---
+
+## Endpoint de POST
+
+```python
+task test -k test_create_user
+```
+
+Precisamos adicionar os awaits...
+
+
+```python
+async def create_user(user: UserSchema, session: Session):
+    db_user = await session.scalar(
+        select(User).where(
+            (User.username == user.username) | (User.email == user.email)
+        )
+    )
+    # ...
+    session.add(db_user)
+    await session.commit()
+    await session.refresh(db_user)
+
+    return db_user
+```
+---
+
+## Endpoint de GET
+
+```bash
+task test -k test_read
+
+FAILED tests/test_users.py::test_read_users - AttributeError: 'coroutine' object has no attribute 'all'
+```
+
+```python
+async def read_users(
+    session: Session, filter_users: Annotated[FilterPage, Query()]
+):
+    query = await session.scalars(
+        select(User).offset(filter_users.offset).limit(filter_users.limit)
+    )
+    users = query.all()
+
+    return {'users': users}
+```
+
+---
+
+## Endpoint de PUT
+
+```bash
+task test -k test_update
+# ...
+FAILED tests/test_users.py::test_update_user - AttributeError: 'coroutine' object has no attribute 'id'
+```
+
+A corrotina nesse caso é no `current_user`:
+
+```python
+from sqlalchemy.ext.asyncio import AsyncSession
+# ...
+async def get_current_user(
+    session: AsyncSession = Depends(get_session),
+    token: str = Depends(oauth2_scheme),
+):
+    # ...
+    user = await session.scalar(
+        select(User).where(User.email == subject_email)
+    )
+```
+
+---
+
+## Agora o PUT de verdade
+
+```python
+async def update_user(...):
+    # ...
+    try:
+        current_user.username = user.username
+        current_user.password = get_password_hash(user.password)
+        current_user.email = user.email
+        await session.commit()
+        await session.refresh(current_user)
+
+        return current_user
+```
+
+---
+
+## O DELETE
+
+```python
+@router.delete('/{user_id}', response_model=Message)
+async def delete_user(...):
+    # ...
+    await session.delete(current_user)
+    await session.commit()
+```
+
+```bash
+task test -k test_delete
+# ...
+tests/test_users.py::test_delete_user PASSED
+```
+
+---
+
+## Só pra garantir...
+
+```bash
+task test
+```
+
+---
+
+## Cobertura de testes assíncrona
 
 > Parte 5
 
 ---
 
-## O que acontece quando o exp vence?
+## Vamos olhar o arquivo de cobertura
 
-É necessario que o cliente renove o token de tempos em tempos para que ele não perca a validade e possa continuar usando a aplicação sem logar novamente.
+... Estranho, não?
 
-```python
-# fast_zero/routes/auth.py
-
-@router.post('/refresh_token', response_model=Token)
-def refresh_access_token(
-    user: User = Depends(get_current_user),
-):
-    new_access_token = create_access_token(data={'sub': user.email})
-
-    return {'access_token': new_access_token, 'token_type': 'bearer'}
+```toml
+[tool.coverage.run]
+concurrency = ["thread", "greenlet"]
 ```
 
 ---
 
-## O teste para o refresh
+## Vamos tentar de novo
 
-Ver se o refresh faz mesmo refresh :)
+```bash
+task test
+```
+
+Agora olhar a cobertura de novo!
+
+---
+
+## Migrações async
+
+> Parte 6
+
+---
+
+## Vamos tentar aplicar a migração
+
+```bash
+alembic upgrade head
+# ...
+sqlalchemy.exc.MissingGreenlet: greenlet_spawn has not been called;
+can't call await_only() here. Was IO attempted in an unexpected place?
+(Background on this error at: https://sqlalche.me/e/20/xd2s)
+```
+
+---
+
+## O problema do `.env`
+
+Como nosso `.env` aponta para uma conexão async, temos que fazer com que a migração seja async:
 
 ```python
-def test_refresh_token(client, user, token):
-    response = client.post(
-        '/auth/refresh_token',
-        headers={'Authorization': f'Bearer {token}'},
+import asyncio
+
+from logging.config import fileConfig
+
+from sqlalchemy.ext.asyncio import async_engine_from_config
+from sqlalchemy import pool
+
+## Vamos reescrever essa função!
+def run_migrations_online():
+    asyncio.run(run_async_migrations())
+```
+
+---
+
+## Executando a conexão async
+
+```python
+async def run_async_migrations():
+    connectable = async_engine_from_config(
+        config.get_section(config.config_ini_section),
+        prefix="sqlalchemy.",
+        poolclass=pool.NullPool,
     )
 
-    data = response.json()
+    async with connectable.connect() as connection:
+        await connection.run_sync(do_run_migrations)
 
-    assert response.status_code == HTTPStatus.OK
-    assert 'access_token' in data
-    assert 'token_type' in data
-    assert data['token_type'] == 'bearer'
+    await connectable.dispose()
 ```
 
 ---
 
-## Testando o fluxo de refresh
-
-Não se pode dar refresh depois que o token fica inválido
+## Fazendo a migração async
 
 ```python
-def test_token_expired_dont_refresh(client, user):
-    with freeze_time('2023-07-14 12:00:00'):
-        response = client.post(
-            '/auth/token',
-            data={'username': user.email, 'password': user.clean_password},
-        )
-        assert response.status_code == HTTPStatus.OK
-        token = response.json()['access_token']
+def do_run_migrations(connection):
+    context.configure(connection=connection, target_metadata=target_metadata)
 
-    with freeze_time('2023-07-14 12:31:00'):
-        response = client.post(
-            '/auth/refresh_token',
-            headers={'Authorization': f'Bearer {token}'},
-        )
-        assert response.status_code == HTTPStatus.UNAUTHORIZED
-        assert response.json() == {'detail': 'Could not validate credentials'}
+    with context.begin_transaction():
+        context.run_migrations()
 ```
 
 ---
 
-# Exercício
+## Mais uma tentativa
 
-O endpoint de PUTusa dois users criados na base de dados, porém, até o momento ele cria um novo user no teste via request na API por falta de uma fixture como other_user. Atualize o teste para usar essa nova fixture.
-
----
-
-# Quiz
-
-Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/quizes/aula_08/) dessa aula!
+```python
+alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+```
 
 ---
 
-# Commit
+## Suplementar / Para próxima aula
 
-```shell
+Na próxima aula, vamos adicionar randomização em testes para facilitar a criação dos dados de teste. Caso não conheça o Faker ou Factory-boy, pode ser uma boa para entender melhor a próxima aula:
+
+- [Randomização de dados em testes unitários com Faker e Factory-boy | Live de Python #281](https://youtu.be/q_P-2h5L1cE)
+
+---
+
+## Exercícios e Quiz
+
+1. Reveja os endpoints criados por você em exercícios anteriores e adicione async e await para que eles se tornem não bloqueantes também.
+2. Altere o endpoint read_root para suportar asyncio.
+
+> Não esqueça de responder o [quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_08/)
+
+---
+
+## Commit
+
+```bash
 git add .
-git commit -m "Implementando o reresh do token e testes de autorização"
+git commit -m "Refatorando estrutura do projeto: Suporte a asyncio, tornando o projeto não bloqueante"
 ```
 
 <!-- mermaid.js -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">

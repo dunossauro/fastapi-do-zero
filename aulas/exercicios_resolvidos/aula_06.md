@@ -46,7 +46,7 @@ def test_get_current_user_does_not_exists__exercicio(client):
 
 ## Exercício 03
 
-Reveja os testes criados até a aula 5 e veja se eles ainda fazem sentido (testes envolvendo `#!python 400`)
+Reveja os testes criados até a aula 5 e veja se eles ainda fazem sentido (testes envolvendo `#!python 409`)
 
 ### Solução
 

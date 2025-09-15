@@ -1,14 +1,14 @@
 # Exercícios da aula 05
 
 ## Exercício 01
-Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `#!python 400`.
+Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o username já foi registrado. Validando o erro `#!python 409`.
 
 ### Solução
 
 Para testar esse cenário, precisamos de um username que já esteja registrado na base de dados. Para isso, podemos usar a fixture de `user` que criamos. Ela é uma garantia que o valor já está inserido no banco de dados:
 
 ```py title="/tests/test_app.py" hl_lines="1 5"
-def test_create_user_should_return_400_username_exists__exercicio(client, user):
+def test_create_user_should_return_409_username_exists__exercicio(client, user):
     response = client.post(
         '/users/',
         json={
@@ -17,19 +17,19 @@ def test_create_user_should_return_400_username_exists__exercicio(client, user):
             'password': 'secret',
         },
     )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.status_code == HTTPStatus.CONFLICT
     assert response.json() == {'detail': 'Username already exists'}
 ```
 
 ## Exercício 02
-Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o e-mail já foi registrado. Validando o erro `#!python 400`.
+Escrever um teste para o endpoint de POST (create_user) que contemple o cenário onde o e-mail já foi registrado. Validando o erro `#!python 409`.
 
 ### Solução
 
 Para testar esse cenário, precisamos de um e-mail que já esteja registrado na base de dados. Para isso, podemos usar a fixture de `user` que criamos. Ela é uma garantia que o valor já está inserido no banco de dados:
 
 ```py title="/tests/test_app.py" hl_lines="1 5"
-def test_create_user_should_return_400_email_exists__exercicio(client, user):
+def test_create_user_should_return_409_email_exists__exercicio(client, user):
     response = client.post(
         '/users/',
         json={
@@ -38,7 +38,7 @@ def test_create_user_should_return_400_email_exists__exercicio(client, user):
             'password': 'secret',
         },
     )
-    assert response.status_code == HTTPStatus.BAD_REQUEST
+    assert response.status_code == HTTPStatus.CONFLICT
     assert response.json() == {'detail': 'Email already exists'}
 ```
 
@@ -101,7 +101,7 @@ def read_user__exercicio(
 
 A segunda parte é entender o que precisa ser feito nos testes para que eles consigam cobrir os dois casos previstos. O de sucesso e o de falha.
 
-O teste de sucesso continua passando, pois ele de fato não depende de nenhuma interação com o banco de dados:
+O teste de falha continua passando, pois ele de fato não depende de nenhuma interação com o banco de dados:
 ```python
 def test_get_user_should_return_not_found__exercicio(client):
     response = client.get('/users/666')

@@ -5,7 +5,7 @@ theme: rose-pine
 
 # Autenticação e Autorização
 
-> https://fastapidozero.dunossauro.com/06/
+> https://fastapidozero.dunossauro.com/4.0/06/
 
 ---
 
@@ -85,7 +85,7 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
 ---
 
-# Alterando o endpoint de Update
+### Alterando o endpoint de Update
 
 ```python
 @app.put('/users/{user_id}', response_model=UserPublic)
@@ -95,13 +95,13 @@ def update_user(
     session: Session = Depends(get_session),
 ):
     # ...
-    db_user.username = user.username
-    db_user.password = get_password_hash(user.password)
-    db_user.email = user.email
-    session.commit()
-    session.refresh(db_user)
+        db_user.username = user.username
+        db_user.password = get_password_hash(user.password)
+        db_user.email = user.email
+        session.commit()
+        session.refresh(db_user)
 
-    return db_user
+        return db_user
 ```
 
 Como agora as senhas estão sendo encriptadas durante o cadastro, caso o `User` altere a senha no endpoint de update, a senha precisa ser encriptada também
@@ -122,7 +122,7 @@ task test
 
 ---
 
-# Autenticação
+## Autenticação
 
 <div class="mermaid" style="text-align: center;">
 sequenceDiagram
@@ -190,7 +190,7 @@ OAuth2 É um protocolo aberto para autorização. O FastAPI disponibiliza alguns
 
 ---
 
-# Validando os dados!
+## Validando os dados!
 
 ```python
 @app.post('/token')
@@ -200,18 +200,17 @@ def login_for_access_token(
 ):
     user = session.scalar(select(User).where(User.email == form_data.username))
 
-    if db_user:
-        if db_user.username == user.username:
-            raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
-                detail='Username already exists',
-            )
-        elif db_user.email == user.email:
-            raise HTTPException(
-                status_code=HTTPStatus.BAD_REQUEST,
-                detail='Email already exists',
-            )
-    # ...
+    if not user:
+        raise HTTPException(
+            status_code=HTTPStatus.UNAUTHORIZED,
+            detail='Incorrect email or password'
+        )
+
+    if not verify_password(form_data.password, user.password):
+        raise HTTPException(
+            status_code=HTTPStatus.UNAUTHORIZED,
+            detail='Incorrect email or password'
+        )
 ```
 
 ---
@@ -340,6 +339,8 @@ def create_access_token(data: dict):
     encoded_jwt = encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 ```
+
+
 ---
 
 # Testando a geração de tokens
@@ -360,6 +361,23 @@ def test_jwt():
     assert decoded['test'] == data['test']
     assert 'exp' in decoded  # Testa se o valor de exp foi adicionado ao token
 ```
+
+> Pode ser que esse teste falhe!
+
+---
+
+## Funções de fuso horário
+
+Dependendo da compilação do python, as propriedades de timezone podem não estar disponíveis.
+
+Para resolver isso:
+
+```bash
+poetry add tzdata
+```
+
+Agora podemos executar o teste novamente!
+
 ---
 
 # De volta ao endpoint `/token`
@@ -423,7 +441,7 @@ A fixture de `User` que estamos criando salva a senha limpa. Isso dá erro na ho
 
 ---
 
-## Problema 2!
+### Problema 2!
 
 ```python
 # conftest.py
@@ -588,7 +606,7 @@ def get_current_user(...):
         subject_email = payload.get('sub')
         if not subject_email:
             raise credentials_exception
-    except JWTError:
+    except DecodeError:
         raise credentials_exception
     # ...
 ```
@@ -624,16 +642,12 @@ def update_user(
 ):
     if current_user.id != user_id:
         raise HTTPException(
-            status_code=HTTPStatus.FORBIDDEN, detail='Not enough permissions'
+            status_code=HTTPStatus.FORBIDDEN,
+            detail='Not enough permissions'
         )
 
-    current_user.username = user.username
-    current_user.password = user.password
-    current_user.email = user.email
-    session.commit()
-    session.refresh(current_user)
-
-    return current_user
+    try:
+        ...
 ```
 
 ---
@@ -731,15 +745,15 @@ def test_jwt_invalid_token(client):
 
 1. Faça um teste para cobrir o cenário que levanta exception `credentials_exception` na autenticação caso o `User` não seja encontrado. Ao olhar a cobertura de `security.py` você vai notar que esse contexto não está coberto.
 
-2. Faça um teste para cobrir o cenário que levanta exception credentials_exception na autenticação caso o email seja enviado, mas não exista um User correspondente cadastrado na base de dados. Ao olhar a cobertura de security.py você vai notar que esse contexto não está coberto.
+2. Faça um teste para cobrir o cenário que levanta exception `credentials_exception` na autenticação caso o **email seja enviado**, mas não exista um User correspondente cadastrado na base de dados. Ao olhar a cobertura de `security.py` você vai notar que esse contexto não está coberto.
 
-3. Reveja os testes criados até a aula 5 e veja se eles ainda fazem sentido (testes envolvendo 400)
+3. Reveja os testes criados até a aula 5 e veja se eles ainda fazem sentido (testes envolvendo 409)
 
 ---
 
 # Quiz
 
-Não se esqueça de responder ao [Quiz](https://fastapidozero.dunossauro.com/quizes/aula_06/) dessa aula também!
+Não se esqueça de responder ao [Quiz](https://fastapidozero.dunossauro.com/4.0/quizes/aula_06/) dessa aula também!
 
 ---
 
@@ -754,5 +768,3 @@ git commit -m "Protege os endpoints GET, PUT e DELETE com autenticação"
 <!-- mermaid.js -->
 <script src="https://unpkg.com/mermaid@10.2.4/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'dark'});</script>
-<script src=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/index.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.min.css " rel="stylesheet">
