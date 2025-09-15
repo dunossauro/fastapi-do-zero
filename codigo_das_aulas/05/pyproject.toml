@@ -16,9 +16,9 @@ dependencies = [
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.2"
-pytest-cov = "^6.2.1"
+pytest-cov = "^7.0.0"
 taskipy = "^1.14.1"
-ruff = "^0.12.12"
+ruff = "^0.13.0"
 httpx = "^0.28.1"
 
 [tool.ruff]

@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
     "mkdocs (>=1.6.1,<2.0.0)",
-    "mkdocs-material (>=9.6.18,<10.0.0)",
+    "mkdocs-material (>=9.6.20,<10.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
     "mkdocs-glightbox (>=0.5.1,<0.6.0)",
     "mkdocs-video (>=1.5.0,<2.0.0)",
@@ -24,7 +24,7 @@ dependencies = [
     "rich (>=14.1.0,<15.0.0)",
     "typos (>=1.36.2,<2.0.0)",
     "fastapi (>=0.116.1,<0.117.0)",
-    "ruff (>=0.12.12,<0.13.0)",
+    "ruff (>=0.13.0,<0.14.0)",
     "mkdocs-quiz (>=0.0.41,<0.0.42)",
     "towncrier (>=25.8.0,<26.0.0)",
     "mkdocs-towncrier (>=0.1.5,<0.2.0)",
