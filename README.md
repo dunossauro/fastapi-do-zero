@@ -34,7 +34,7 @@ um projeto final](https://fastapidozero.dunossauro.com/estavel/15/) para avaliar
 Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.1.3`:
 
 ```bash
-pipx install poetry==2.1.2
+pipx install poetry==2.2
 pipx inject poetry poetry-plugin-shell
 ```
 
@@ -164,7 +164,7 @@ index 38c5b9f..7ed5c54 100644
        link: https://codeberg.org/dunossauro
 +  version:
 +    provider: mike
- 
+
  hooks:
    - hooks/quiz_hook.py
 ```
