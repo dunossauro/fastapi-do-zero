@@ -16,10 +16,10 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pytest (>=8.3.4,<9.0.0)",
-    "pytest-cov (>=6.0.0,<7.0.0)",
+    "pytest (>=8.4.2,<9.0.0)",
+    "pytest-cov (>=7.0.0,<8.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
-    "ruff (>=0.9.4,<0.10.0)"
+    "ruff (>=0.13.0,<0.14.0)"
 ]
 
 [tool.ruff]
