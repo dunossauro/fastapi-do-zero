@@ -114,7 +114,7 @@ extra:
   version:
     provider: mike
     default: estavel
-  current_tag: v4.1.0
+  current_tag: v4.2.0
   python_supported_version: 3.9
 
 hooks:
