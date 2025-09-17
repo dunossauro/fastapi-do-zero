@@ -1,4 +1,11 @@
-# fastapi-do-zero 4.2.0 (2025-09-17)
+# 4.2.0 (2025-09-17)
+
+### Pontos da release
+
+- Suporte a PEP 735 `[dependency-groups]`
+- Correções de texto
+- Updates de verões de bibliotecas
+- Updates do CI
 
 ## Correções
 
