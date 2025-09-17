@@ -1,3 +1,34 @@
+# fastapi-do-zero 4.2.0 (2025-09-17)
+
+## Correções
+
+- Typo corrigido nas aulas 08 e 11 por [@thiagonebuloni](https://github.com/thiagonebuloni) ([#429](https://github.com/dunossauro/fastapi-do-zero/issues/429))
+
+## Alterado
+
+- Usando `[dependency-groups]` da [pep 735](https://peps.python.org/pep-0735/) implementando no `poetry 2.2`. Por [@taconi](https://github.com/taconi) ([#292](https://github.com/dunossauro/fastapi-do-zero/issues/292))
+
+## Atualizações
+
+- Update das actions do CI na 12. `checkout` v4 -> v5
+- Update das actions do CI na 12. `setup-python` v5 -> v6
+- `alembic` 1.16.2 -> 1.16.5
+- `fastapi[standard]` 0.115.14 -> 0.116.2
+- `freezegun` 1.5.2 -> 1.5.5
+- `pytest-asyncio` 1.0.0 -> 1.2.0
+- `pytest-cov` 6.3.0 -> 7.0.0
+- `pytest` 8.4.1 -> 8.4.2
+- `ruff` 0.12.1 -> 0.13.0
+- `sqlalchemy` 2.0.41 -> 2.0.43
+- `testcontainers` 4.10.0 -> 4.13.0
+
+## Interno
+
+- Atualização de actions do CI `setup-python` e `checkout`
+- `CI`: Ajustando o update do sqlite
+- `mkdocs-material` 9.6.14 -> 9.6.20
+
+
 # 4.1.0 (2025-06-29)
 
 ### Adicionado
