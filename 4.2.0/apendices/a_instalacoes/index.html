@@ -1,0 +1,2213 @@
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fastapidozero.dunossauro.com/4.2.0/apendices/a_instalacoes/">
+      
+      
+        <link rel="prev" href="../../alteracoes/">
+      
+      
+        <link rel="next" href="../b_proximos_passos/">
+      
+      
+      <link rel="icon" href="../../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>A - Instalando as ferramentas externas - FastAPI do Zero</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_markdown_exec_pyodide.css">
+    
+      <link rel="stylesheet" href="../../assets/_markdown_exec_ansi.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="A - Instalando as ferramentas externas - FastAPI do Zero">
+      
+        <meta property="og:description" content="None">
+      
+        <meta property="og:image" content="https://fastapidozero.dunossauro.com/4.2.0/assets/images/social/apendices/a_instalacoes.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://fastapidozero.dunossauro.com/4.2.0/apendices/a_instalacoes/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="A - Instalando as ferramentas externas - FastAPI do Zero">
+      
+        <meta name="twitter:description" content="None">
+      
+        <meta name="twitter:image" content="https://fastapidozero.dunossauro.com/4.2.0/assets/images/social/apendices/a_instalacoes.png">
+      
+    
+    
+
+<script>
+    const preferencesKey = "fonts-preferences";
+    const preferencesId = "md-fonts-style";
+    const loadSetPreferences = () => {
+	let prefStyles = document.querySelector(`#${preferencesId}`);
+
+	if (!prefStyles) {
+	    prefStyles = document.createElement("style");
+	    prefStyles.id = preferencesId;
+	    document.head.insertAdjacentElement("beforeend", prefStyles);
+	}
+
+	prefStyles.innerHTML = "";
+
+	const loadedPreferences = __md_get(preferencesKey);
+
+	if (!loadedPreferences) {
+	    __md_set(preferencesKey, {
+		"__global": {
+		    "cssRaw": ""
+		}
+	    });
+	    return;
+	}
+
+	prefStyles.innerHTML = loadedPreferences["__global"]["cssRaw"];
+    };
+    loadSetPreferences();
+</script>
+
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-instalando-as-ferramentas-externas" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+	<a href="../.." title="FastAPI do Zero" class="md-header__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+	    
+  <img src="../../assets/logo.svg" alt="logo">
+
+	</a>
+	<label class="md-header__button md-icon" for="__drawer">
+	    
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+	</label>
+	<div class="md-header__title" data-md-component="header-title">
+	    <div class="md-header__ellipsis">
+		<div class="md-header__topic">
+		    <span class="md-ellipsis">
+			FastAPI do Zero
+		    </span>
+		</div>
+		<div class="md-header__topic" data-md-component="header-topic">
+		    <span class="md-ellipsis">
+			
+			A - Instalando as ferramentas externas
+			
+		    </span>
+		</div>
+	    </div>
+	</div>
+	
+	
+	<form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo" aria-label="Modo claro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo" aria-label="Modo noturno" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo noturno" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+	
+	
+	
+	<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+	
+	<!-- fonts -->
+	<div class="md-header__option">
+    <div class="md-select">
+	
+	<button class="md-header__button md-icon" aria-label="Selecione a fonte">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 8h3v12h1v1h-4v-1h1v-3h-4l-1.5 3H14v1h-4v-1h1zm1 1-3.5 7H18zM5 3h5c1.11 0 2 .89 2 2v11H9v-5H6v5H3V5c0-1.11.89-2 2-2m1 2v4h3V5z"></path></svg>
+	</button>
+	<div class="md-select__inner">
+	    <ul class="md-select__list">
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="Default" data-code="" data-src="" class="md-select__link">
+			Default
+		    </a>
+		</li>
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="Roboto" data-code="Roboto Mono" data-src="" class="md-select__link">
+			Roboto
+		    </a>
+		</li>
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="OpenDyslexic" data-code="OpenDyslexicMono" data-src="https://fonts.cdnfonts.com/css/opendyslexic" class="md-select__link">
+			OpenDyslexic
+		    </a>
+		</li>
+		
+	    </ul>
+	</div>
+    </div>
+</div>
+	<!-- fonts -->
+	
+	
+	<label class="md-header__button md-icon" for="__search">
+	    
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+	</label>
+	<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	<div class="md-header__source">
+	    <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    dunossauro/fastapi-do-zero
+  </div>
+</a>
+	</div>
+	
+    </nav>
+    
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FastAPI do Zero" class="md-nav__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    FastAPI do Zero
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    dunossauro/fastapi-do-zero
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FastAPI do Zero!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurando o ambiente de desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução ao desenvolvimento WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estruturando o projeto e criando rotas CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurando o banco de dados e gerenciando migrações com Alembic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrando banco de dados à API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autenticação e Autorização com JWT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Refatorando a estrutura do projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tornando o projeto assíncrono
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tornando o sistema de autenticação robusto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Criando rotas CRUD para gerenciamento de tarefas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automatizando os testes com Integração Contínua
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fazendo deploy no Fly.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Despedida e próximos passos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projeto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alteracoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alterações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apendices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            Apendices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    A - Instalando as ferramentas externas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    A - Instalando as ferramentas externas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pipx" class="md-nav__link">
+    <span class="md-ellipsis">
+      pipx
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      poetry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gh" class="md-nav__link">
+    <span class="md-ellipsis">
+      GH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../b_proximos_passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    B - Próximos passos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c_versoes_usadas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C - Versões das bibliotecas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19">
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Aulas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            Aulas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aulas/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aulas síncronas 2024
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aulas/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aulas síncronas 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20">
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exercicios resolvidos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            Exercicios resolvidos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exercicios_resolvidos/aula_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21">
+        
+          
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Projetos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            Projetos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projetos/projetos_finais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projetos finais
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projetos/repositorios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repositórios do curso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22">
+        
+          
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quizes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            Quizes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Introdução ao desenvolvimento WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 07
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Automatizando os testes com Integração Contínua (CI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quizes/aula_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Fazendo deploy no Fly.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pipx" class="md-nav__link">
+    <span class="md-ellipsis">
+      pipx
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      poetry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gh" class="md-nav__link">
+    <span class="md-ellipsis">
+      GH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="a-instalando-as-ferramentas-externas">A - Instalando as ferramentas externas</h1>
+<details class="danger" open="open">
+<summary>Sobre as versões das bibliotecas instaladas</summary>
+<p>A última atualização dos pacotes deste material foi feita em: <strong>17/09/2025 às 12:08</strong>.</p>
+<p>Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="../c_versoes_usadas/">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
+</details>
+<p>Durante as aulas síncronas, diversas dúvidas sobre a configuração e instalação das ferramentas fora do python foram levantadas. A ideia dessa página é te auxiliar nas instalações.</p>
+<p>São comandos rápidos e simples, não tenho a intensão de explicar o que essas ferramentas fazem exatamente, muitas explicações já foram escritas sobre elas na <a href="../../01/" target="_blank">página de configuração do projeto</a>. A ideia é agrupar todas as instalações um único lugar.</p>
+<h2 id="pipx">pipx</h2>
+<p>O pipx é uma ferramenta para simplificar a instalação de pacotes globais.</p>
+<p>Para isso, você pode executar:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>pipx
+</span></code></pre></div>
+<details class="warning" open="open">
+<summary>Instalação do pipx</summary>
+<p>Embora seja possível instalar via pip, em algumas versões é exigido o escopo de usuário <code>--user</code> para fazer a instalação global.</p>
+<p>A melhor forma de instalar o pipx ainda é usando o seu sistema operacional. Você pode consultar a documentação sobre como fazer isso. <a href="https://pipx.pypa.io/stable/installation/">documentação</a></p>
+</details>
+<p>A resposta do comando deverá ser parecida com essa:</p>
+<div class="language-powershell no-copy highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Collecting</span> <span class="n">pipx</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="n">Downloading</span> <span class="n">pipx</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">0-py3-none-any</span><span class="p">.</span><span class="n">whl</span><span class="p">.</span><span class="n">metadata</span> <span class="p">(</span><span class="n">18</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">Collecting</span> <span class="n">argcomplete</span><span class="p">&gt;=</span><span class="n">1</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">4</span> <span class="p">(</span><span class="n">from</span> <span class="n">pipx</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  <span class="n">Downloading</span> <span class="n">argcomplete</span><span class="p">-</span><span class="n">3</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">0-py3-none-any</span><span class="p">.</span><span class="n">whl</span><span class="p">.</span><span class="n">metadata</span> <span class="p">(</span><span class="n">16</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">Collecting</span> <span class="n">colorama</span><span class="p">&gt;=</span><span class="n">0</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">4</span> <span class="p">(</span><span class="n">from</span> <span class="n">pipx</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  <span class="n">Downloading</span> <span class="n">colorama</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">6-py2</span><span class="p">.</span><span class="n">py3-none-any</span><span class="p">.</span><span class="n">whl</span><span class="p">.</span><span class="n">metadata</span> <span class="p">(</span><span class="n">17</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">Collecting</span> <span class="n">packaging</span><span class="p">&gt;=</span><span class="n">20</span> <span class="p">(</span><span class="n">from</span> <span class="n">pipx</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  <span class="n">Downloading</span> <span class="n">packaging</span><span class="p">-</span><span class="n">24</span><span class="p">.</span><span class="n">1-py3-none-any</span><span class="p">.</span><span class="n">whl</span><span class="p">.</span><span class="n">metadata</span> <span class="p">(</span><span class="n">3</span><span class="p">.</span><span class="n">2</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">Collecting</span> <span class="n">platformdirs</span><span class="p">&gt;=</span><span class="n">2</span><span class="p">.</span><span class="n">1</span> <span class="p">(</span><span class="n">from</span> <span class="n">pipx</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  <span class="n">Downloading</span> <span class="n">platformdirs</span><span class="p">-</span><span class="n">4</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">2-py3-none-any</span><span class="p">.</span><span class="n">whl</span><span class="p">.</span><span class="n">metadata</span> <span class="p">(</span><span class="n">11</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">Collecting</span> <span class="n">userpath</span><span class="p">!=</span><span class="n">1</span><span class="p">.</span><span class="n">9</span><span class="p">,&gt;=</span><span class="n">1</span><span class="p">.</span><span class="n">6</span> <span class="p">(</span><span class="n">from</span> <span class="n">pipx</span><span class="p">)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  <span class="n">Downloading</span> <span class="n">userpath</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">2-py3-none-any</span><span class="p">.</span><span class="n">whl</span><span class="p">.</span><span class="n">metadata</span> <span class="p">(</span><span class="n">3</span><span class="p">.</span><span class="n">0</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">Collecting</span> <span class="n">click</span> <span class="p">(</span><span class="n">from</span> <span class="n">userpath</span><span class="p">!=</span><span class="n">1</span><span class="p">.</span><span class="n">9</span><span class="p">,&gt;=</span><span class="n">1</span><span class="p">.</span><span class="n">6</span><span class="p">-&gt;</span><span class="n">pipx</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  <span class="n">Downloading</span> <span class="n">click</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">7-py3-none-any</span><span class="p">.</span><span class="n">whl</span><span class="p">.</span><span class="n">metadata</span> <span class="p">(</span><span class="n">3</span><span class="p">.</span><span class="n">0</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">Downloading</span> <span class="n">pipx</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">0-py3-none-any</span><span class="p">.</span><span class="n">whl</span> <span class="p">(</span><span class="n">77</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>   <span class="err">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="n">77</span><span class="p">.</span><span class="n">8</span><span class="p">/</span><span class="n">77</span><span class="p">.</span><span class="n">8</span> <span class="n">kB</span> <span class="n">2</span><span class="p">.</span><span class="n">2</span> <span class="n">MB</span><span class="p">/</span><span class="n">s</span> <span class="n">eta</span> <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">Downloading</span> <span class="n">argcomplete</span><span class="p">-</span><span class="n">3</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">0-py3-none-any</span><span class="p">.</span><span class="n">whl</span> <span class="p">(</span><span class="n">42</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>   <span class="err">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="n">42</span><span class="p">.</span><span class="n">6</span><span class="p">/</span><span class="n">42</span><span class="p">.</span><span class="n">6</span> <span class="n">kB</span> <span class="p">?</span> <span class="n">eta</span> <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">Downloading</span> <span class="n">colorama</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">6-py2</span><span class="p">.</span><span class="n">py3-none-any</span><span class="p">.</span><span class="n">whl</span> <span class="p">(</span><span class="n">25</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">Downloading</span> <span class="n">packaging</span><span class="p">-</span><span class="n">24</span><span class="p">.</span><span class="n">1-py3-none-any</span><span class="p">.</span><span class="n">whl</span> <span class="p">(</span><span class="n">53</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>   <span class="err">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="n">54</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">54</span><span class="p">.</span><span class="n">0</span> <span class="n">kB</span> <span class="p">?</span> <span class="n">eta</span> <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="n">Downloading</span> <span class="n">platformdirs</span><span class="p">-</span><span class="n">4</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">2-py3-none-any</span><span class="p">.</span><span class="n">whl</span> <span class="p">(</span><span class="n">18</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="n">Downloading</span> <span class="n">userpath</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">2-py3-none-any</span><span class="p">.</span><span class="n">whl</span> <span class="p">(</span><span class="n">9</span><span class="p">.</span><span class="n">1</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="n">Downloading</span> <span class="n">click</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">7-py3-none-any</span><span class="p">.</span><span class="n">whl</span> <span class="p">(</span><span class="n">97</span> <span class="n">kB</span><span class="p">)</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>   <span class="err">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="n">97</span><span class="p">.</span><span class="n">9</span><span class="p">/</span><span class="n">97</span><span class="p">.</span><span class="n">9</span> <span class="n">kB</span> <span class="n">295</span><span class="p">.</span><span class="n">3</span> <span class="n">kB</span><span class="p">/</span><span class="n">s</span> <span class="n">eta</span> <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">platformdirs</span><span class="p">,</span> <span class="n">packaging</span><span class="p">,</span> <span class="n">colorama</span><span class="p">,</span> <span class="n">argcomplete</span><span class="p">,</span> <span class="n">click</span><span class="p">,</span> <span class="n">userpath</span><span class="p">,</span> <span class="n">pipx</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="n">Successfully</span> <span class="n">installed</span> <span class="n">argcomplete</span><span class="p">-</span><span class="n">3</span><span class="p">.</span><span class="n">3</span><span class="p">.</span><span class="n">0</span> <span class="n">click</span><span class="p">-</span><span class="n">8</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">7</span> <span class="n">colorama</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">6</span> <span class="n">packaging</span><span class="p">-</span><span class="n">24</span><span class="p">.</span><span class="n">1</span> <span class="n">pipx</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">6</span><span class="p">.</span><span class="n">0</span> <span class="n">platformdirs</span><span class="p">-</span><span class="n">4</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">2</span> <span class="n">userpath</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">2</span>
+</span></code></pre></div>
+<p>Para testar se o pipx foi instalado com sucesso, podemos executar:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pipx<span class="w"> </span>--version
+</span></code></pre></div>
+<p>Se a versão for respondida, tudo está certo :)</p>
+<p>Uma coisa recomendada de fazer, é adicionar os paths do pipx nas variáveis de ambiente, para isso podemos executar:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pipx<span class="w"> </span>ensurepath
+</span></code></pre></div>
+<p>Dessa forma, os pacotes estarão no path. Podendo ser chamados pelo terminal sem problemas. A última coisa que precisa ser feita é abrir o terminal novamente, para que as novas variáveis de ambiente sejam lidas.</p>
+<h2 id="poetry">poetry</h2>
+<p>Com o pipx você pode executar:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pipx<span class="w"> </span>install<span class="w"> </span>poetry
+</span></code></pre></div>
+<h2 id="gh">GH</h2>
+<p>Gh é um CLI para o github. Facilita em diversos momentos.</p>
+<p>A instalação para diversos sistemas e variantes pode ser encontrada <a href="https://github.com/cli/cli#installation" target="_blank">aqui</a>.</p>
+<h2 id="docker">Docker</h2>
+<p>A instalação do docker é bastante diferente para sistemas operacionais diferentes e até mesmo em arquiteturas de processadores diferentes. Por exemplo, MacOS com intel ou arm, ou windows com WSL, ou hyper-V.</p>
+<p>Por esse motivo, acredito que seja interessante você seguir os tutoriais oficiais:</p>
+<ul>
+<li><a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a></li>
+<li><a href="https://docs.docker.com/desktop/install/windows-install/" target="_blank">Windows</a></li>
+<li><a href="https://docs.docker.com/desktop/install/mac-install/" target="_blank">MacOS</a></li>
+</ul>
+<h3 id="docker-compose">Docker Compose</h3>
+<p>A instalação varia bastante de sistema para sistema, mas você pode olhar o <a href="https://docs.docker.com/compose/install/" target="_blank">guia de instalação oficial</a>.</p>
+<h2 id="git">Git</h2>
+<p>O git pode ser baixado no <a href="https://git-scm.com/downloads" target="_blank">site oficial</a> para windows e mac. No Linux acredito que todas as distribuições têm o <code>git</code> como um pacote disponível para instalação.</p><style type="text/css">.quiz {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+/* Set margin-top of first quiz child */
+.quiz > *:first-child {
+  margin-top: 0;
+}
+.hidden {
+  display: none;
+}
+
+form button {
+  background-color: var(--md-primary-fg-color);
+  border: none;
+  color: var(--md-primary-bg-color);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+.wrong label {
+  color: red;
+}
+.correct label {
+  color: green;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+fieldset input {
+  margin: 0 10px;
+}
+fieldset label {
+  margin: 0 10px;
+}
+
+label.correct {
+  color: green;
+}
+label.wrong {
+  color: red;
+}
+input[type='radio'].correct {
+  accent-color: green;
+}
+input[type='radio'].wrong {
+  accent-color: red;
+}
+.content {
+  margin: 10px;
+}
+</style><script type="text/javascript" defer>document.querySelectorAll('.quiz').forEach((quiz) => {
+  let form = quiz.querySelector('form');
+  let fieldset = form.querySelector('fieldset');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let selectedAnswers = form.querySelectorAll('input[name="answer"]:checked');
+    let correctAnswers = fieldset.querySelectorAll(
+      'input[name="answer"][correct]'
+    );
+    // Check if all correct answers are selected
+    let is_correct = selectedAnswers.length === correctAnswers.length;
+    for (let i = 0; i < selectedAnswers.length; i++) {
+      if (!selectedAnswers[i].hasAttribute('correct')) {
+        is_correct = false;
+        break;
+      }
+    }
+    let section = quiz.querySelector('section');
+    if (is_correct) {
+      section.classList.remove('hidden');
+      resetFieldset(fieldset);
+      // Mark all fields with colors
+      const allAnswers = fieldset.querySelectorAll('input[name="answer"]');
+      for (let i = 0; i < allAnswers.length; i++) {
+        if (allAnswers[i].hasAttribute('correct')) {
+          allAnswers[i].parentElement.classList.add('correct');
+        } else {
+          allAnswers[i].parentElement.classList.add('wrong');
+        }
+      }
+    } else {
+      section.classList.add('hidden');
+      resetFieldset(fieldset);
+      // Mark wrong fields with colors
+      for (let i = 0; i < selectedAnswers.length; i++) {
+        if (!selectedAnswers[i].hasAttribute('correct')) {
+          selectedAnswers[i].parentElement.classList.add('wrong');
+        } else {
+          selectedAnswers[i].parentElement.classList.add('correct');
+        }
+      }
+    }
+  });
+});
+
+function resetFieldset(fieldset) {
+  const fieldsetChildren = fieldset.children;
+  for (let i = 0; i < fieldsetChildren.length; i++) {
+    fieldsetChildren[i].classList.remove('wrong');
+    fieldsetChildren[i].classList.remove('correct');
+  }
+}
+</script>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última atualização">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="26 de abril de 2025 04:41:38 UTC">26 de abril de 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Colaboradores">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+      
+    </span>
+    <nav>
+      dunossauro
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!-- Footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+
+      <img alt="" src="/estavel/assets/Written-By-Human-Not-By-AI-Badge-white.svg">
+
+      <!-- Social links -->
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://youtube.com/dunossauro" target="_blank" rel="noopener" title="youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://bolha.us/@dunossauro" target="_blank" rel="noopener me" title="bolha.us" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M433 179.1c0-97.2-63.7-125.7-63.7-125.7-62.5-28.7-228.6-28.4-290.5 0 0 0-63.7 28.5-63.7 125.7 0 115.7-6.6 259.4 105.6 289.1 40.5 10.7 75.3 13 103.3 11.4 50.8-2.8 79.3-18.1 79.3-18.1l-1.7-36.9s-36.3 11.4-77.1 10.1c-40.4-1.4-83-4.4-89.6-54-.6-4.6-.9-9.3-.9-13.9 85.6 20.9 158.7 9.1 178.7 6.7 56.1-6.7 105-41.3 111.2-72.9 9.8-49.8 9-121.5 9-121.5zm-75.1 125.2h-46.6V190.1c0-49.7-64-51.6-64 6.9v62.5H201V197c0-58.5-64-56.6-64-6.9v114.2H90.3c0-122.1-5.2-147.9 18.4-175 25.9-28.9 79.8-30.8 103.8 6.1l11.6 19.5 11.6-19.5c24.1-37.1 78.1-34.8 103.8-6.1 23.7 27.3 18.4 53 18.4 175"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dunossauro" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.twitch.tv/dunossauro" target="_blank" rel="noopener" title="www.twitch.tv" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M359.4 103.5h-38.6v109.7h38.6zm-106.2-.5h-38.6v109.8h38.6zM89 0-7.5 91.4v329.2h115.8V512l96.5-91.4h77.3L455.9 256V0zm328.3 237.8-77.2 73.1h-77.2l-67.6 64v-64h-86.9V36.6h308.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bolha.photos/dunossauro" target="_blank" rel="noopener" title="bolha.photos" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12m-.953-9.38h2.202c2.074 0 3.755-1.637 3.755-3.656S15.323 7.31 13.249 7.31h-3.177c-1.197 0-2.167.944-2.167 2.109v8.208z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://dunossauro.com" target="_blank" rel="noopener" title="dunossauro.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.992.034C1.217.166.602.841.416 1.769.388 1.901.36 21.858.388 23.895c0 .181 0 .181.923-.593.497-.416 1.328-1.128 1.801-1.516.34-.28.626-.543.637-.576.011-.039.022-1.148.017-2.466L3.76 16.35h1.516c.829 0 1.52.022 1.537.044s.028.538.022 1.142c0 .61.011 1.104.022 1.104.017 0 .643-.522.725-.604.017-.017.401-.335.851-.714.923-.77.917-.764 1.373-1.148.28-.236.34-.264.412-.203.072.066 2.878 2.421 3.592 3.02a1239 1239 0 0 1 3.932 3.306c.003.003 2.02 1.74 2.076 1.702.021-.01.038-3.333.038-7.38-.006-6.574.005-7.365.082-7.381.044-.011.895-.017 1.884-.017h1.801l-.022-3.761c-.005-2.07-.033-3.817-.05-3.877-.142-.495-.51-1.022-.883-1.28-.473-.318.164-.302-10.566-.302-5.442-.005-9.99.011-10.11.033"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://codeberg.org/dunossauro" target="_blank" rel="noopener" title="codeberg.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.999.747A11.974 11.974 0 0 0 0 12.75c0 2.254.635 4.465 1.833 6.376L11.837 6.19c.072-.092.251-.092.323 0l4.178 5.402h-2.992l.065.239h3.113l.882 1.138h-3.674l.103.374h3.86l.777 1.003h-4.358l.135.483h4.593l.695.894h-5.038l.165.589h5.326l.609.785h-5.717l.182.65h6.038l.562.727h-6.397l.183.65h6.717A12 12 0 0 0 24 12.75 11.977 11.977 0 0 0 11.999.747m3.654 19.104.182.65h5.326c.173-.204.353-.433.513-.65zm.385 1.377.18.65h3.563c.233-.198.485-.428.712-.65zm.383 1.377.182.648h1.203c.356-.204.685-.412 1.042-.648z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      
+        <script src="../../assets/javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
