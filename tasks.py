@@ -218,8 +218,7 @@ def update_sub(c):
         toml_project = toml_tables['project']
         dependencies = toml_project['dependencies']
 
-        poetry_toml = toml_tables['tool']['poetry']
-        dev_dependencies = poetry_toml['group']['dev']['dependencies']
+        dev_dependencies = toml_tables['dependency-groups']['dev']
 
         print('update_sub:', path)
         with c.cd(str(path)):
@@ -247,6 +246,7 @@ def update_sub(c):
                     c.run(f'poetry add {dep}@latest')
 
             for dep in dev_dependencies:
+                dep = dep.split()[0]
                 c.run(f'poetry add --group dev {dep}@latest')
 
             c.run('poetry install')
