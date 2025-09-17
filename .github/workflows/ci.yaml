@@ -54,10 +54,10 @@ jobs:
           createdb --owner="$PGUSERNAME" --username="postgres" "$PGDATABASE"
 
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Instalar o python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.13
 
@@ -81,7 +81,7 @@ jobs:
 
     steps:
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Atualização do sistema
         run: sudo apt update
@@ -90,7 +90,7 @@ jobs:
         run: sudo apt install sqlite3 -y
 
       - name: Instalar o python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
 
