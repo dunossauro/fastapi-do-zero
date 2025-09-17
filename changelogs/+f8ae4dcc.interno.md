@@ -1,1 +1,1 @@
-Atualizando actions do CI
+Atualização de actions do CI `setup-python` e `checkout`
