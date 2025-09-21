@@ -174,7 +174,7 @@ Pontos de atenção:
 
 1. Um editor de texto ou IDE de sua escolha. Estou usando o [GNU/Emacs](https://www.gnu.org/software/emacs/){:target="_blank"} enquanto escrevo as aulas;
 2. Um terminal. Todos os exemplos do curso são executados e explicados no terminal. Você pode usar o que se sentir mais a vontade e for compatível com seu sistema operacional;
-3. Ter o interpretador Python instalado em uma uma versão [oficialmente suportada](https://devguide.python.org/versions/){:target="_blank"}, atualmente {{python_supported_version}}+.
+3. Ter o interpretador Python instalado em uma versão [oficialmente suportada](https://devguide.python.org/versions/){:target="_blank"}, atualmente {{python_supported_version}}+.
 4. Uma conta no [Github](https://github.com/){:target="_blank"}: para podermos testar com Github Actions;
 5. Uma conta no [Fly.io](https://fly.io/){:target="_blank"}: ferramenta que usaremos para fazer deploy.
 
