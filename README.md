@@ -31,7 +31,7 @@ um projeto final](https://fastapidozero.dunossauro.com/estavel/15/) para avaliar
 
 #### Sobre o ambiente
 
-Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.1.3`:
+Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.2.1`:
 
 ```bash
 pipx install poetry==2.2
