@@ -28,8 +28,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Instalar dependências de build
-        run: pip install poetry invoke rich
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Instalar dependências do projeto
+        run: poetry install --only dev
 
       - name: Rodar os dockers dos códigos de aulas
         run: poetry run invoke test_docker_build --python_version=${{ matrix.python-version }}
