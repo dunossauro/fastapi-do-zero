@@ -13,6 +13,19 @@ on:
       - 'tasks.py'
 
 jobs:
+  containers:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Instala dependencias de build
+        run: pip install invoke rich
+
+      - name: Roda os dockers dos códigos de aulas
+        run: poetry run invoke test_docker_build --python_version=${{ matrix.python-version }}
+
   windows-hell:
     runs-on: windows-latest
 
@@ -105,9 +118,6 @@ jobs:
 
       - name: Roda os testes dos códigos de aulas
         run: poetry run invoke test-sub
-
-      - name: Roda os dockers dos códigos de aulas
-        run: poetry run invoke test-docker-build
 
       - name: Roda os typos dos códigos de aulas
         run: poetry run invoke typos-sub
