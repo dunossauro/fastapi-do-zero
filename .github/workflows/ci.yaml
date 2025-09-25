@@ -125,11 +125,30 @@ jobs:
       - name: Instalar dependências do projeto
         run: poetry install --only dev
 
-      - name: Roda os linters dos códigos de aulas
-        run: poetry run invoke lint-sub
-
       - name: Roda os testes dos códigos de aulas
         run: poetry run invoke test-sub
+
+
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copia os arquivos do repo
+        uses: actions/checkout@v5
+
+      - name: Instalar o python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Instalar dependências do projeto
+        run: poetry install --only dev
+
+      - name: Roda os linters dos códigos de aulas
+        run: poetry run invoke lint-sub
 
       - name: Roda os typos dos códigos de aulas
         run: poetry run invoke typos-sub
