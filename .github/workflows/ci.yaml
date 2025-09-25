@@ -65,7 +65,7 @@ jobs:
         run: pip install poetry
 
       - name: Instalar dependências globais
-        run: poetry install --no-root
+        run: poetry install --only dev
 
       - name: Roda os testes da ultima aula (win)
         run: poetry run invoke win-test-last-class
