@@ -35,7 +35,7 @@ jobs:
         run: poetry install --only dev
 
       - name: Rodar os dockers dos códigos de aulas
-        run: poetry run invoke test_docker_build --python_version=${{ matrix.python-version }}
+        run: poetry run invoke test-docker-build --python-version=${{ matrix.python-version }}
 
 
   windows-hell:
