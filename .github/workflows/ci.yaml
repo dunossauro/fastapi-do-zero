@@ -20,11 +20,20 @@ jobs:
         python-version: ["3.11", "3.12", "3.13"]
 
     steps:
-      - name: Instala dependencias de build
-        run: pip install invoke rich
+      - name: Checkout do código
+        uses: actions/checkout@v4
 
-      - name: Roda os dockers dos códigos de aulas
+      - name: Instalar o Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Instalar dependências de build
+        run: pip install poetry invoke rich
+
+      - name: Rodar os dockers dos códigos de aulas
         run: poetry run invoke test_docker_build --python_version=${{ matrix.python-version }}
+
 
   windows-hell:
     runs-on: windows-latest
