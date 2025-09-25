@@ -98,7 +98,7 @@ jobs:
         run: pip install poetry
 
       - name: Instalar dependências do projeto
-        run: poetry install --no-root
+        run: poetry install --only dev
 
       - name: Roda os linters dos códigos de aulas
         run: poetry run invoke lint-sub
