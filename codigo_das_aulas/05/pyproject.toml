@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
     "alembic (>=1.16.5,<2.0.0)",
-    "fastapi[standard] (>=0.117.1,<0.118.0)",
+    "fastapi[standard] (>=0.118.0,<0.119.0)",
     "pydantic-settings (>=2.11.0,<3.0.0)",
     "sqlalchemy (>=2.0.43,<3.0.0)"
 ]
