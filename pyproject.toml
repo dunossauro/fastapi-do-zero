@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
     "mkdocs (>=1.6.1,<2.0.0)",
-    "mkdocs-material (>=9.6.20,<10.0.0)",
+    "mkdocs-material (>=9.6.21,<10.0.0)",
     "mkdocs-glightbox (>=0.5.1,<0.6.0)",
     "mkdocs-video (>=1.5.0,<2.0.0)",
     "mkdocs-git-authors-plugin (>=0.10.0,<0.11.0)",
