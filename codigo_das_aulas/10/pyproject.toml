@@ -23,11 +23,11 @@ dev = [
     "pytest (>=8.4.2,<9.0.0)",
     "pytest-cov (>=7.0.0,<8.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
-    "ruff (>=0.13.2,<0.14.0)",
+    "ruff (>=0.14.0,<0.15.0)",
     "pytest-asyncio (>=1.2.0,<2.0.0)",
     "factory-boy (>=3.3.3,<4.0.0)",
     "freezegun (>=1.5.5,<2.0.0)",
-    "testcontainers (>=4.13.1,<5.0.0)"
+    "testcontainers (>=4.13.2,<5.0.0)"
 ]
 
 [tool.ruff]
