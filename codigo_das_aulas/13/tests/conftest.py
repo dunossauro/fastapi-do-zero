@@ -32,6 +32,7 @@ def client(session):
 def engine():
     # Caso do windows + Docker no CI
     import sys  # noqa: PLC0415
+
     if sys.platform == 'win32':
         yield create_async_engine(Settings().DATABASE_URL)
 

@@ -12,7 +12,7 @@ Adicione os campos `created_at` e `updated_at` na tabela `Todo`
 Devem ser adicionados os dois campos ao modelo `Todo`:
 
 ```python title="fast_zero/models.py" hl_lines="15-21"
-@table_registry.mapped_as_dataclass
+@mapped_as_dataclass(table_registry)
 class Todo:
     __tablename__ = 'todos'
 

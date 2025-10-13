@@ -157,7 +157,7 @@ async def create_todo(
 ```python
 from sqlalchemy import ForeignKey, func
 # ...
-@table_registry.mapped_as_dataclass
+@mapped_as_dataclass(table_registry)
 class Todo:
     __tablename__ = 'todos'
 
@@ -256,7 +256,7 @@ alembic upgrade head
 ## Relacionando `User` com `TODO`
 
 ```python
-@table_registry.mapped_as_dataclass
+@mapped_as_dataclass(table_registry)
 class User:
     # ...
     todos: Mapped[list['Todo']] = relationship(

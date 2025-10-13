@@ -15,7 +15,7 @@ Fazer uma alteração no modelo (tabela `User`) e adicionar um campo chamado `up
 ### Solução
 
 ```python hl_lines="12-14"
-@table_registry.mapped_as_dataclass
+@mapped_as_dataclass(table_registry)
 class User:
     __tablename__ = 'users'
 

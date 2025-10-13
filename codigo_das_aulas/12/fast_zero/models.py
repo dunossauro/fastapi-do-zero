@@ -2,7 +2,13 @@ from datetime import datetime
 from enum import Enum
 
 from sqlalchemy import ForeignKey, func
-from sqlalchemy.orm import Mapped, mapped_column, registry, relationship
+from sqlalchemy.orm import (
+    Mapped,
+    mapped_as_dataclass,
+    mapped_column,
+    registry,
+    relationship,
+)
 
 table_registry = registry()
 
@@ -15,7 +21,7 @@ class TodoState(str, Enum):
     trash = 'trash'
 
 
-@table_registry.mapped_as_dataclass
+@mapped_as_dataclass(table_registry)
 class User:
     __tablename__ = 'users'
 
@@ -34,7 +40,7 @@ class User:
     )
 
 
-@table_registry.mapped_as_dataclass
+@mapped_as_dataclass(table_registry)
 class Todo:
     __tablename__ = 'todos'
 
