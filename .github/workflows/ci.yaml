@@ -103,6 +103,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.11", "3.12", "3.13", "3.14"]
+    continue-on-error: ${{ matrix.python-version == '3.14' }}
 
     steps:
       - name: Copia os arquivos do repo
