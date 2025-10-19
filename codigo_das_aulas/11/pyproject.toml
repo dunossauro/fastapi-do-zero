@@ -47,6 +47,10 @@ quote-style = 'single'
 pythonpath = "."
 addopts = '-p no:warnings'
 
+[tool.coverage.run]
+core = "ctrace"
+concurrency = ["thread", "greenlet"]
+
 [tool.taskipy.tasks]
 lint = 'ruff check'
 pre_format = 'ruff check --fix'
