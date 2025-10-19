@@ -3032,8 +3032,12 @@
 <p>Todo o código executado após o <code class="language-python highlight"><span class="k">await</span></code> é mostrado como não coberto, pois no momento do escalonamento o coverage não estava configurado para lidar concorrência.</p>
 <p>A solução para isso é dizer ao coverage que nosso código usa determinado tipo de concorrência. Como, por exemplo:</p>
 <div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">[tool.coverage.run]</span>
-</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="n">concurrency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"thread"</span><span class="p">,</span><span class="w"> </span><span class="s2">"<ins class="critic">greenlet</ins>"</span><span class="p">]</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="n">core</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ctrace"</span><span class="c1">#(1)!</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="n">concurrency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"thread"</span><span class="p">,</span><span class="w"> </span><span class="s2">"<ins class="critic">greenlet</ins>"</span><span class="p">]</span>
 </span></code></pre></div>
+<ol>
+<li>Existem diversas formas de executar o coverage. O <code>sysmon</code> é o runner padrão, mas atualmente ele não suporta o greenlet. <a href="https://coverage.readthedocs.io/en/latest/config.html#run-core">Fonte para se aprofundar mais</a>.</li>
+</ol>
 <p>Precisamos ativar a concorrência no coverage em dois casos, para threads (conversamos sobre isso <a href="../05/#threads-e-conexoes" target="_blank">na aula 05</a>) e para o <a href="#configuracao-para-o-sqlalchemy-assincrono" target="_blank">greenlet</a> adicionado pela conexão assíncrona do SQLAlchemy.</p>
 <p>Com essa pequena alteração, podemos executar os testes novamente e olhar a cobertura:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>task<span class="w"> </span><span class="nb">test</span>
@@ -3277,7 +3281,7 @@ function resetFieldset(fieldset) {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 de julho de 2025 15:26:34 UTC">12 de julho de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 de outubro de 2025 00:06:44 UTC">19 de outubro de 2025</span>
   </span>
 
     
