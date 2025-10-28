@@ -8,7 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "fastapi[standard] (>=0.119.0,<0.120.0)"
+    "fastapi[standard] (>=0.120.1,<0.121.0)"
 ]
 
 [dependency-groups]
@@ -16,7 +16,7 @@ dev = [
     "pytest (>=8.4.2,<9.0.0)",
     "pytest-cov (>=7.0.0,<8.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
-    "ruff (>=0.14.1,<0.15.0)"
+    "ruff (>=0.14.2,<0.15.0)"
 ]
 
 [tool.ruff]
