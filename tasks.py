@@ -126,6 +126,7 @@ def update_project(c):
     toml_tables = loads(toml.read_text())
     toml_project = toml_tables['project']
     dependencies = toml_project['dependencies']
+    dev_dependencies = toml_tables['dependency-groups']['dev']
 
     if (Path('.') / 'poetry.lock').exists():
         c.run('rm poetry.lock')
@@ -133,6 +134,10 @@ def update_project(c):
     for dep in sorted(dependencies):
         dep = dep.split()[0]
         c.run(f'poetry add {dep}@latest')
+
+    for dep in sorted(dev_dependencies):
+        dep = dep.split()[0]
+        c.run(f'poetry add --group dev {dep}@latest')
 
 
 @task
