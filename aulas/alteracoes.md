@@ -1,5 +1,5 @@
 # Alterações
 
-:: towncrier-draft Ultimas alterações
+:: towncrier-draft Alterações ainda sem release
 
 --8<-- "CHANGELOG.md"
