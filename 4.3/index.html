@@ -1,0 +1,2604 @@
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Boas vindas ao nosso minicurso de FastAPI!">
+      
+      
+      
+        <link rel="canonical" href="https://fastapidozero.dunossauro.com/4.3/">
+      
+      
+      
+        <link rel="next" href="01/">
+      
+      
+      <link rel="icon" href="assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>FastAPI do Zero! - FastAPI do Zero</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_markdown_exec_pyodide.css">
+    
+      <link rel="stylesheet" href="assets/_markdown_exec_ansi.css">
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="FastAPI do Zero">
+      
+        <meta property="og:description" content="Boas vindas ao nosso minicurso de FastAPI!">
+      
+        <meta property="og:image" content="https://fastapidozero.dunossauro.com/4.3/assets/images/social/README.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://fastapidozero.dunossauro.com/4.3/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="FastAPI do Zero">
+      
+        <meta name="twitter:description" content="Boas vindas ao nosso minicurso de FastAPI!">
+      
+        <meta name="twitter:image" content="https://fastapidozero.dunossauro.com/4.3/assets/images/social/README.png">
+      
+    
+    
+
+<script>
+    const preferencesKey = "fonts-preferences";
+    const preferencesId = "md-fonts-style";
+    const loadSetPreferences = () => {
+	let prefStyles = document.querySelector(`#${preferencesId}`);
+
+	if (!prefStyles) {
+	    prefStyles = document.createElement("style");
+	    prefStyles.id = preferencesId;
+	    document.head.insertAdjacentElement("beforeend", prefStyles);
+	}
+
+	prefStyles.innerHTML = "";
+
+	const loadedPreferences = __md_get(preferencesKey);
+
+	if (!loadedPreferences) {
+	    __md_set(preferencesKey, {
+		"__global": {
+		    "cssRaw": ""
+		}
+	    });
+	    return;
+	}
+
+	prefStyles.innerHTML = loadedPreferences["__global"]["cssRaw"];
+    };
+    loadSetPreferences();
+</script>
+
+  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#o-que-e-fastapi" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+	<a href="." title="FastAPI do Zero" class="md-header__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+	    
+  <img src="assets/logo.svg" alt="logo">
+
+	</a>
+	<label class="md-header__button md-icon" for="__drawer">
+	    
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+	</label>
+	<div class="md-header__title" data-md-component="header-title">
+	    <div class="md-header__ellipsis">
+		<div class="md-header__topic">
+		    <span class="md-ellipsis">
+			FastAPI do Zero
+		    </span>
+		</div>
+		<div class="md-header__topic" data-md-component="header-topic">
+		    <span class="md-ellipsis">
+			
+			FastAPI do Zero!
+			
+		    </span>
+		</div>
+	    </div>
+	</div>
+	
+	
+	<form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo" aria-label="Modo claro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo" aria-label="Modo noturno" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo noturno" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+	
+	
+	
+	<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+	
+	<!-- fonts -->
+	<div class="md-header__option">
+    <div class="md-select">
+	
+	<button class="md-header__button md-icon" aria-label="Selecione a fonte">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 8h3v12h1v1h-4v-1h1v-3h-4l-1.5 3H14v1h-4v-1h1zm1 1-3.5 7H18zM5 3h5c1.11 0 2 .89 2 2v11H9v-5H6v5H3V5c0-1.11.89-2 2-2m1 2v4h3V5z"></path></svg>
+	</button>
+	<div class="md-select__inner">
+	    <ul class="md-select__list">
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="Default" data-code="" data-src="" class="md-select__link">
+			Default
+		    </a>
+		</li>
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="Roboto" data-code="Roboto Mono" data-src="" class="md-select__link">
+			Roboto
+		    </a>
+		</li>
+		
+		<li class="md-select__item">
+		    <a id="md-fonts" data-text="OpenDyslexic" data-code="OpenDyslexicMono" data-src="https://fonts.cdnfonts.com/css/opendyslexic" class="md-select__link">
+			OpenDyslexic
+		    </a>
+		</li>
+		
+	    </ul>
+	</div>
+    </div>
+</div>
+	<!-- fonts -->
+	
+	
+	<label class="md-header__button md-icon" for="__search">
+	    
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+	</label>
+	<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	<div class="md-header__source">
+	    <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    dunossauro/fastapi-do-zero
+  </div>
+</a>
+	</div>
+	
+    </nav>
+    
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="FastAPI do Zero" class="md-nav__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+      
+  <img src="assets/logo.svg" alt="logo">
+
+    </a>
+    FastAPI do Zero
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    dunossauro/fastapi-do-zero
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    FastAPI do Zero!
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    FastAPI do Zero!
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é FastAPI?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre o curso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que você vai aprender?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esse-curso-e-gratuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      💰 Esse curso é gratuito?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onde-o-curso-sera-disponibilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Onde o curso será disponibilizado?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pré-requisitos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aulas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aulas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quem-vai-ministrar-essas-aulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🦖 Quem vai ministrar essas aulas?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revisao-e-contribuicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revisão e contribuições
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Licença
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-necessarias-para-acompanhar-o-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 Ferramentas necessárias para acompanhar o curso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-de-apoio" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Ferramentas de apoio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Ferramentas de apoio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-a-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Para a página
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-os-slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      💬 Para os slides
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-as-transmissoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📺 Para as transmissões
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumbnails-para-youtube" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖼️ Thumbnails para YouTube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Repositório
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Deploy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❓ F.A.Q.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurando o ambiente de desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução ao desenvolvimento WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estruturando o projeto e criando rotas CRUD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurando o banco de dados e gerenciando migrações com Alembic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrando banco de dados à API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autenticação e Autorização com JWT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Refatorando a estrutura do projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tornando o projeto assíncrono
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tornando o sistema de autenticação robusto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Criando rotas CRUD para gerenciamento de tarefas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automatizando os testes com Integração Contínua
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fazendo deploy no Fly.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Despedida e próximos passos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projeto final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="alteracoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alterações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18">
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apendices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            Apendices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apendices/a_instalacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A - Instalando as ferramentas externas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apendices/b_proximos_passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    B - Próximos passos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apendices/c_versoes_usadas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C - Versões das bibliotecas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19">
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Aulas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            Aulas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aulas/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aulas síncronas 2024
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aulas/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aulas síncronas 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20">
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exercicios resolvidos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            Exercicios resolvidos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercicios_resolvidos/aula_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exercícios da aula 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21">
+        
+          
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Projetos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            Projetos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projetos/projetos_finais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projetos finais
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projetos/repositorios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repositórios do curso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22">
+        
+          
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quizes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            Quizes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Introdução ao desenvolvimento WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 07
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aula 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Automatizando os testes com Integração Contínua (CI)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quizes/aula_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Fazendo deploy no Fly.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é FastAPI?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre o curso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que você vai aprender?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esse-curso-e-gratuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      💰 Esse curso é gratuito?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onde-o-curso-sera-disponibilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Onde o curso será disponibilizado?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pré-requisitos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aulas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aulas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quem-vai-ministrar-essas-aulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🦖 Quem vai ministrar essas aulas?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revisao-e-contribuicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revisão e contribuições
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Licença
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-necessarias-para-acompanhar-o-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 Ferramentas necessárias para acompanhar o curso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-de-apoio" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Ferramentas de apoio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Ferramentas de apoio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-a-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Para a página
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-os-slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      💬 Para os slides
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-as-transmissoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📺 Para as transmissões
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumbnails-para-youtube" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖼️ Thumbnails para YouTube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Repositório
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Deploy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❓ F.A.Q.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<p><lottie-player src="https://raw.githubusercontent.com/dunossauro/fastapi-do-zero/main/stuff/anim_lottie.json" background="transparent" speed="1" style="margin-left: auto; margin-right: auto;" loop autoplay></lottie-player></p>
+<div class="flex">
+<h1>FastAPI do ZERO</h1>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/Written-By-Human-Not-By-AI-Badge-white.svg" data-desc-position="bottom"><img alt="" src="assets/Written-By-Human-Not-By-AI-Badge-white.svg"></a>
+
+</div>
+
+<details class="tip">
+<summary>Caso prefira ver a apresentação do curso em vídeo</summary>
+<p>Esse aula ainda não está disponível em formato de vídeo, somente em texto ou live!
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://www.youtube.com/embed/ImhYlISeWPQ" data-desc-position="bottom"></a></p><div class="video-container"><iframe src="https://www.youtube.com/embed/ImhYlISeWPQ" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div><p></p>
+<p><a class="md-button" href="https://youtu.be/ImhYlISeWPQ?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP">Aula <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg></span></a>
+<a class="md-button" href="https://fastapidozero.dunossauro.com/4.3/slides/aula_00.html">Slides <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0h149.5c17 0 33.3 6.7 45.3 18.7l106.5 106.6c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm208-5.5V152c0 13.3 10.7 24 24 24h93.5zM152 256c-13.3 0-24 10.7-24 24v144c0 13.3 10.7 24 24 24s24-10.7 24-24v-24h24c39.8 0 72-32.2 72-72s-32.2-72-72-72zm48 96h-24v-48h24c13.3 0 24 10.7 24 24s-10.7 24-24 24"></path></svg></span></a></p>
+</details>
+<blockquote>
+<p>Esse material passa por atualizações periódicas. Você pode acompanhar as notas de alterações <a href="alteracoes/" target="_blank">aqui</a>.</p>
+</blockquote>
+<p>Olá, boas-vindas ao curso de FastAPI!</p>
+<p>A nossa intenção neste curso é facilitar o aprendizado no desenvolvimento de APIs usando o FastAPI. Vamos explorar como integrar bancos de dados, criar testes e um sistema básico de autenticação com JWT. Tudo isso para oferecer uma boa base para quem quer trabalhar com desenvolvimento web com Python. A ideia desse curso é apresentar os conceitos de forma prática, construindo um projeto do zero e indo até a sua fase de produção.</p>
+<h2 id="o-que-e-fastapi">O que é FastAPI?</h2>
+<p><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a> é um framework Python moderno, projetado para simplicidade, velocidade e eficiência. A combinação de diversas funcionalidades modernas do Python, como anotações de tipo e suporte à concorrência. Simplificando o desenvolvimento de APIs.</p>
+<h2 id="sobre-o-curso">Sobre o curso</h2>
+<p>Este curso foi desenvolvido para oferecer uma experiência prática no uso do FastAPI. O objetivo é que você obtenha uma compreensão das funcionalidades do FastAPI e de boas práticas associadas a ele.</p>
+<p>O projeto central do curso será a construção de um gerenciador de tarefas (uma lista de tarefas), começando do zero. Esse projeto incluirá a implementação da autenticação do usuário e das operações CRUD completas.</p>
+<p>Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2025, como a versão 0.115 do FastAPI, a versão 2.0+ do Pydantic, a versão 2.0+ do SQLAlchemy ORM, além do Python 3.11/3.12/3.13 e do Alembic para gerenciamento de migrações.</p>
+<p>Além da construção do projeto, o curso também incluirá a prática de testes, utilizando o pytest. Essa abordagem planeja garantir que as APIs desenvolvidas sejam não somente funcionais, mas também robustas e confiáveis.</p>
+<h2 id="o-que-voce-vai-aprender">O que você vai aprender?</h2>
+<p>Aqui está uma visão geral dos tópicos que abordaremos neste curso:</p>
+<ol>
+<li>
+<p><strong>Configuração do ambiente e gerenciamento de um projeto Python</strong>: começaremos do zero, configurando o ambiente de desenvolvimento. Escolheremos ferramentas adequadas, aplicaremos boas práticas na construção de projetos e integraremos um gerenciador de projetos, task manager, ferramentas de análise estática e formatação de código.</p>
+</li>
+<li>
+<p><strong>Primeiros Passos com FastAPI</strong>: introduziremos os conceitos do desenvolvimento web com FastAPI, ensinando como criar endpoints, realizar operações CRUD, aplicar injeção de dependência, criar schemas e outros fundamentos.</p>
+</li>
+<li>
+<p><strong>Modelagem de Dados com Pydantic, SQLAlchemy e Alembic</strong>: aprenderemos a criar e manipular modelos de dados utilizando Pydantic e SQLAlchemy, além de configurar um esquema de migrações de banco de dados utilizando Alembic.</p>
+</li>
+<li>
+<p><strong>Programação Assíncrona</strong>: a partir da metade do curso, focaremos em tornar nosso projeto totalmente assíncrono, aproveitando os recursos do FastAPI e do SQLAlchemy para operações mais eficientes e escaláveis.</p>
+</li>
+<li>
+<p><strong>Autenticação e Autorização em FastAPI</strong>: construiremos um sistema completo de autenticação para proteger nossas rotas e garantir que apenas usuários autenticados tenham acesso a dados e funcionalidades específicas.</p>
+</li>
+<li>
+<p><strong>Foco em testes</strong>: faremos uma introdução detalhada ao desenvolvimento orientado a testes, utilizando pytest e coverage, e aprenderemos a configurar um pipeline de integração contínua com GitHub Actions para garantir a qualidade do código.</p>
+</li>
+<li>
+<p><strong>Conteinerizando e Fazendo Deploy de sua Aplicação FastAPI</strong>: por fim, aprenderemos a criar um container Docker para nossa aplicação FastAPI e realizaremos o deploy utilizando Fly.io, preparando a aplicação para produção.</p>
+</li>
+</ol>
+<h2 id="esse-curso-e-gratuito">💰 Esse curso é gratuito?</h2>
+<p>SIM! Esse curso foi todo desenvolvido <a href="#licenca" target="_blank">de forma aberta</a> e com a <a href="https://apoia.se/fastapi" target="_blank">ajuda financeira</a> de pessoas incríveis. Caso você sinta vontade de contribuir, você pode me pagar um café por pix (pix.dunossauro@gmail.com) ou apoiar a <a href="https://apoia.se/livedepython" target="_blank">campanha recorrente de financiamento coletivo da live de python</a> que é o que paga as contas aqui de casa.</p>
+<h2 id="onde-o-curso-sera-disponibilizado">Onde o curso será disponibilizado?</h2>
+<p>Esse material será disponibilizado em duas formas diferentes:</p>
+<ol>
+<li>Em livro texto: todo o material está disponível nessa página;</li>
+<li>
+<p>Em aulas síncronas ao vivo: para quem prefere o compromisso de acompanhar em grupo.</p>
+<ul>
+<li>
+<p>Playlist das apresentações de 2025:
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3KT9ZWvPmaGFQ0KjIez0403" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p>Referente a versão <a href="/4.1">4.1</a> do texto</p>
+</li>
+<li>
+<p>Playlist das apresentações de 2024:
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=bbzMgz9dXoVXNdlR&amp;list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p>Referente a versão <a href="/1.0">1.0</a> do texto</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="pre-requisitos">Pré-requisitos</h2>
+<p>Para aproveitar ao máximo este curso, é recomendado que você já tenha algum conhecimento prévio em python. Se pudesse listar o que considero importante para não se perder, os tópicos em python importantes são:</p>
+<ul>
+<li>O funcionamento de funções: como criar e usar (<a href="https://www.youtube.com/playlist?list=PLOQgLBuj2-3LqssmOySRIAr5JFoVH7DK0" target="_blank">referência</a>);</li>
+<li>O funcionamento das estruturas de dados: como listas, dicionários, etc.;</li>
+<li>Uma pitada sobre objetos: saber o que são métodos e atributos (<a href="https://youtu.be/BALM_oJcJL4" target="_blank">referência</a>);</li>
+<li>Classes de dados: o funcionamento básico das dataclasses (<a href="https://youtu.be/NtZY3AmsBSk" target="_blank">referência</a>).</li>
+</ul>
+<blockquote>
+<p>As referências servem como base caso você ainda não tenha estudado esses assuntos.</p>
+</blockquote>
+<p>Alguns outros tópicos não relativos a python também serão abordados. Então, é interessante que você tenha algum entendimento básico sobre:</p>
+<ul>
+<li>Desenvolvimento Web e APIs RESTful: não essencial, pois iremos abordar, mas quanto mais você souber, melhor para acompanhar.</li>
+<li>Banco de dados / SQL: Um conhecimento básico sobre criação e busca de dados usando SQL já é suficiente, embora esse tópico também seja como o anterior, quanto mais você souber, melhor.</li>
+<li>Git: não nos aprofundaremos nesse tópico durante o curso, mas usaremos operações elementares de git (como commit e push).</li>
+<li>Docker: também não nos aprofundaremos nesse tópico e ele só será abordado nas aulas finais. Mas, também, só usaremos comandos básicos de docker e docker-compose.</li>
+</ul>
+<details class="info">
+<summary>Caso esteja iniciando seus estudos em Python!</summary>
+<p>Caso você ainda não se sinta uma pessoa preparada, ou caiu aqui sem saber exatamente o que esperar. Temos um pequeno curso introdutório. Destinado aos primeiros passos com python.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://youtube.com/embed/yTQDbqmv8Ho" data-desc-position="bottom"></a></p><div class="video-container"><iframe src="https://youtube.com/embed/yTQDbqmv8Ho" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div><p></p>
+<p><a class="md-button" href="https://www.youtube.com/watch?v=yTQDbqmv8Ho"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg></span> Link direto</a></p>
+<p>Também temos uma live focada em dicas para iniciar os estudos em python</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://www.youtube.com/embed/HSotf1Amess" data-desc-position="bottom"></a></p><div class="video-container"><iframe src="https://www.youtube.com/embed/HSotf1Amess" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div><p></p>
+<p><a class="md-button" href="https://www.youtube.com/watch?v=HSotf1Amess"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg></span> Link direto</a></p>
+<p>Ou então a leitura do livro <a href="https://penseallen.github.io/PensePython2e/" target="_blank"><strong>Pense em python</strong></a></p>
+</details>
+<h2 id="aulas">Aulas</h2>
+<ol>
+<li><a href="01/" target="_blank">Configurando o ambiente de desenvolvimento</a></li>
+<li><a href="02/" target="_blank">Introdução ao desenvolvimento WEB</a></li>
+<li><a href="03/" target="_blank">Estruturando seu projeto e criando rotas CRUD</a></li>
+<li><a href="04/" target="_blank">Configurando o banco de dados e gerenciando migrações com Alembic</a></li>
+<li><a href="05/" target="_blank">Integrando o banco de dados à API</a></li>
+<li><a href="06/" target="_blank">Autenticação e Autorização com JWT</a></li>
+<li><a href="07/" target="_blank">Refatorando a estrutura do projeto</a></li>
+<li><a href="08/" target="_blank">Tornando o projeto assíncrono</a></li>
+<li><a href="09/" target="_blank">Tornando o sistema de autenticação robusto</a></li>
+<li><a href="10/" target="_blank">Criando rotas CRUD para gerenciamento de tarefas</a></li>
+<li><a href="11/" target="_blank">Dockerizando a nossa aplicação e introduzindo o PostgreSQL</a></li>
+<li><a href="12/" target="_blank">Automatizando os testes com integração contínua</a></li>
+<li><a href="13/" target="_blank">Fazendo o deploy no Fly.io</a></li>
+<li><a href="14/" target="_blank">Despedida e próximos passos</a></li>
+</ol>
+<p>Após todas as aulas, se você sentir que ainda quer evoluir mais e testar seus conhecimentos, <a href="15/" target="_blank">temos um projeto final</a> para avaliar o quanto você aprendeu.</p>
+<h3 id="quem-vai-ministrar-essas-aulas">🦖 Quem vai ministrar essas aulas?</h3>
+<p>Prazer! Eu me chamo Eduardo. As pessoas me conhecem na internet como <a href="https://dunossauro.com" target="_blank">@dunossauro</a>.</p>
+<div class="sbs">
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/readme/dunossauro.jpg" data-desc-position="bottom"><img align="left" alt="Uma fotografia minha, Dunossauro, sentado em um banco com um por do sol ao fundo" class="shadow" src="assets/readme/dunossauro.jpg" width="300"></a></p>
+<div>
+<p>Sou um programador Python muito apaixonado e curioso. Toco um projeto pessoal semanal chamado <a href="https://www.youtube.com/@Dunossauro" target="_blank">Live de Python</a> há pouco mais de 8 anos. Onde conversamos sobre tudo e mais um pouco quando o assunto é Python.</p>
+<p>Adoro escrever (estamos aqui, não é mesmo?), programar coisas malucas, fazer música com programação e papear sobre software livre, computabilidade e IndieWeb.</p>
+<p>Tô sempre pela web e nos eventos de Python, a gente pode se conectar nessa imensa rede mundial de computadores. <a href="https://dunossauro.com" target="_blank">Meus links!</a>.</p>
+</div>
+</div>
+<h2 id="revisao-e-contribuicoes"><img alt="🧐" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f9d0.svg" title=":face_with_monocle:"> Revisão e contribuições</h2>
+<p>Esse material contou com a revisão e contribuições inestimáveis de pessoas incríveis:</p>
+<p><a href="https://github.com/0xluc" target="_blank">@0xluc</a>, <a href="https://github.com/adorilson" target="_blank">@adorilson</a>, <a href="https://github.com/aguynaldo" target="blank">@aguynaldo</a>, <a href="https://github.com/alphabraga" target="_blank">@alphabraga</a>, <a href="https://github.com/andrespp" target="_blank">@andrespp</a>, <a href="https://github.com/azmovi" target="_blank">@azmovi</a>, <a href="https://github.com/bugelseif" target="_blank">@bugelseif</a>, <a href="https://github.com/EvandroNetoo" target="_blank">@EvandroNetoo</a>, <a href="https://github.com/FtxDante" target="_blank">@FtxDante</a>, <a href="https://github.com/gabrielhardcore" target="_blank">@gabrielhardcore</a>, <a href="https://github.com/gbpagano" target="_blank">@gbpagano</a>, <a href="https://github.com/henriqueccda" target="_blank">@henriqueccda</a>, <a href="https://github.com/henriquesebastiao" target="_blank">@henriquesebastiao</a>, <a href="https://github.com/ig0r-ferreira" target="_blank">@ig0r-ferreira</a>, <a href="https://github.com/itsGab" target="_blank">@itsGab</a>, <a href="https://github.com/ivansantiagojr" target="_blank">@ivansantiagojr</a>, <a href="https://github.com/jlplautz" target="_blank">@jlplautz</a>, <a href="https://github.com/jonathanscheibel" target="_blank">@jonathanscheibel</a>, <a href="https://github.com/jpsalviano" target="_blank">@jpsalviano</a>, <a href="https://github.com/julioformiga" target="_blank">@julioformiga</a>, <a href="https://github.com/kylefelipe" target="_blank">@kylefelipe</a>, <a href="https://github.com/KennedyRichard" target="_blank">@KennedyRichard</a>, <a href="https://github.com/lbmendes" target="_blank">@lbmendes</a>, <a href="http://github.com/lucasmpavelski" target="_blank">@lucasmpavelski</a>, <a href="https://github.com/lucianoratamero" target="_blank">@lucianoratamero</a>, <a href="https://github.com/marythealice" target="_blank">@marythealice</a>, <a href="https://github.com/matheusalmeida28" target="_blank">@matheusalmeida28</a>, <a href="https://github.com/matheussricardoo" target="_blank">matheussricardoo</a>, <a href="https://github.com/me15degrees" target="_blank">@me15degrees</a>, <a href="https://github.com/mmaachado" target="_blank">@mmaachado</a>, <a href="https://github.com/NatalNW7" target="_blank">@NatalNW7</a>, <a href="https://github.com/raiguilhermems" target="_blank">@raiguilhermems</a>, <a href="https://github.com/renan-asantos" target="_blank">@renan-asantos</a>, <a href="https://github.com/rennerocha" target="_blank">@rennerocha</a>, <a href="https://github.com/ricardo-emanuel01" target="_blank">@ricardo-emanuel01</a>, <a href="https://github.com/rodbv" target="_blank">@rodbv</a>, <a href="https://github.com/rodrigosbarretos" target="_blank">@rodrigosbarretos</a>, <a href="https://github.com/taconi" target="_blank">@taconi</a>, <a href="https://github.com/thiagonebuloni" target="_blank">@thiagonebuloni</a>, <a href="https://github.com/ThiagoEidi" target="_blank">@ThiagoEidi</a>, <a href="https://github.com/wanderleihuttel" target="_blank">@wanderleihuttel</a>, <a href="https://github.com/williangl" target="_blank">@williangl</a>, <a href="https://github.com/vcwild" target="_blank">@vcwild</a>, <a href="https://github.com/vdionysio" target="_blank">@vdionysio</a>, <a href="https://github.com/ViniciusSouzaRoque" target="_blank">@ViniciusSouzaRoque</a></p>
+<p><ins class="critic"><strong>Muito obrigado!</strong></ins> <img alt="❤" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2764.svg" title=":heart:"></p>
+<h2 id="licenca">📖 Licença</h2>
+<p>Todo esse curso foi escrito e produzido por Eduardo Mendes (<a href="https://dunossauro.com/" target="_blank">@dunossauro</a>).</p>
+<p>Todo esse material é gratuito e está sob licença Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">BY-NC-SA</a>. O que significa que:</p>
+<ul>
+<li>Você pode copiar e reproduzir esse material em qualquer meio e em qualquer formato;</li>
+<li>Você pode adaptar esse material e construir outros materiais usando esse material.</li>
+</ul>
+<p>Pontos de atenção:</p>
+<ul>
+<li>Você precisa dar os devidos créditos a esse material onde for usar ou adaptar;</li>
+<li>Você não pode usar para fins comerciais. Como vender ou usar para obter vantagens comerciais;</li>
+<li>Todo o material derivado desse material deve ser redistribuído com a licença <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA</a>.</li>
+</ul>
+<h2 id="ferramentas-necessarias-para-acompanhar-o-curso">🧰 Ferramentas necessárias para acompanhar o curso</h2>
+<ol>
+<li>Um editor de texto ou IDE de sua escolha. Estou usando o <a href="https://www.gnu.org/software/emacs/" target="_blank">GNU/Emacs</a> enquanto escrevo as aulas;</li>
+<li>Um terminal. Todos os exemplos do curso são executados e explicados no terminal. Você pode usar o que se sentir mais a vontade e for compatível com seu sistema operacional;</li>
+<li>Ter o interpretador Python instalado em uma versão <a href="https://devguide.python.org/versions/" target="_blank">oficialmente suportada</a>, atualmente 3.10+.</li>
+<li>Uma conta no <a href="https://github.com/" target="_blank">Github</a>: para podermos testar com Github Actions;</li>
+<li>Uma conta no <a href="https://fly.io/" target="_blank">Fly.io</a>: ferramenta que usaremos para fazer deploy.</li>
+</ol>
+<h2 id="conclusao">Conclusão</h2>
+<p>Neste curso, a intenção é fornecer uma compreensão completa do framework FastAPI, utilizando-o para construir uma aplicação de gerenciamento de tarefas. O aprendizado será focado na prática, e cada conceito será acompanhado por exemplos e exercícios relevantes.</p>
+<p>A jornada começará com a configuração do ambiente de desenvolvimento e introdução ao FastAPI. Ao longo das aulas, abordaremos tópicos como autenticação, operações CRUD, testes com pytest e deploy. A ênfase será colocada na aplicação de boas práticas e no entendimento das ferramentas e tecnologias atualizadas, incluindo as versões mais recentes do FastAPI, Pydantic, SQLAlchemy ORM, Python e Alembic.</p>
+<p>Este conteúdo foi pensado para auxiliar na compreensão de como criar uma API eficiente e confiável, dando atenção a aspectos importantes como testes e integração com banco de dados.</p>
+<p>Nos vemos na primeira aula. ❤</p>
+<hr>
+<h2 id="ferramentas-de-apoio">🔧 Ferramentas de apoio</h2>
+<p>Todo o conteúdo deste material foi produzido <strong>intencionalmente</strong> com ferramentas <a href="https://pt.wikipedia.org/wiki/Software_livre_e_de_c%C3%B3digo_aberto" target="_blank">FLOSS</a>.</p>
+<h3 id="para-a-pagina">📝 Para a página</h3>
+<p>Toda essa página foi escrita em markdown usando as seguintes bibliotecas:</p>
+<ul>
+<li><a href="https://www.mkdocs.org/" target="_blank">MkDocs</a>: Para geração das páginas estáticas usando Markdown</li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">Mkdocs-material</a>: Tema para o MkDocs</li>
+<li><a href="https://facelessuser.github.io/pymdown-extensions/" target="_blank">Pymdown-extensions</a>: Extensões para MkDocs, como emojis, diagramas e blocos estilizados de código</li>
+<li><a href="https://pawamoy.github.io/markdown-exec/" target="_blank">Markdown-exec</a>: Utilitários para executar snippets dinâmicos de código e adicionar o resultado em markdown</li>
+<li><a href="https://python-markdown.github.io/" target="_blank">Python-Markdown</a>: Extensão do Python para Markdown</li>
+<li><a href="https://github.com/soulless-viewer/mkdocs-video" target="_blank">Mkdocs-video</a>: Extensão para o MkDocs exibir os vídeos na página</li>
+<li><a href="https://github.com/davfsa/mkdocs-towncrier" target="_blank">mkdocs-towncrier</a>: Extensão para exibir os changelogs do <a href="https://towncrier.readthedocs.io/en/stable/index.html">towncrier</a> no mkdocs</li>
+<li><a href="https://github.com/skyface753/mkdocs-quiz" target="_blank">Mkdocs-quiz</a>: Para os questionários sobre as aulas</li>
+<li><a href="https://github.com/soulless-viewer/mkdocs-video" target="_blank">mkdocs-video</a>: Para exibir os vídeos do youtube nas páginas</li>
+<li><a href="https://mkdocs-macros-plugin.readthedocs.io/en/latest/" target="_blank">mkdocs-macros</a>: Para criação de macros e variações de textos usando variáveis</li>
+<li><a href="https://github.com/jimporter/mike" target="_blank">mike</a>: Para manter múltiplas versões do mkdocs online</li>
+</ul>
+<p>Ferramentas que não fazem parte do ecossistema markdown, mas se misturam:</p>
+<ul>
+<li><a href="https://jinja.palletsprojects.com/en/stable/" target="_blank">jinja2</a>: Para escrever blocos reutilizáveis</li>
+<li><a href="https://mermaid-js.github.io/mermaid/" target="_blank">Mermaid.js</a>: Construção dos diagramas</li>
+<li><a href="https://glaxnimate.mattbas.org/" target="_blank">Glaxnimate</a>: Para criar a animação no topo dessa página</li>
+<li><a href="https://github.com/LottieFiles/lottie-player" target="_blank">Lottie-Player</a>: Para exibir a animação do Glaxnimate</li>
+</ul>
+<h3 id="para-os-slides">💬 Para os slides</h3>
+<p>Tudo também feito com markdown, usando:</p>
+<ul>
+<li><a href="https://marp.app/" target="_blank">marp</a>: Onde preparei os slides</li>
+<li><a href="https://github.com/rainbowflesh/Rose-Pine-For-Marp" target="_blank">Rose-Pine</a>: Tema que usei no marp</li>
+</ul>
+<h3 id="para-as-transmissoes">📺 Para as transmissões</h3>
+<p>Foi utilizado o <a href="https://obsproject.com/" target="_blank">Open Broadcaster Software (OBS)</a>.</p>
+<h3 id="thumbnails-para-youtube">🖼️ Thumbnails para YouTube</h3>
+<p>Para tratamento das imagens foi usado o <a href="https://www.darktable.org/" target="_blank">Darktable</a>, para a composição das thumbnails foi usado o <a href="https://inkscape.org/" target="_blank">Inkscape</a>.</p>
+<h3 id="repositorio">📁 Repositório</h3>
+<p>O versionamento de tudo está sendo feito pelo <a href="https://git-scm.com/" target="_blank">git</a> e está disponível no <a href="https://github.com/dunossauro/fastapi-do-zero" target="_blank">repositório do curso Github</a>.</p>
+<h3 id="deploy">🚀 Deploy</h3>
+<p>Os deploys das páginas estáticas geradas pelo MkDocs estão sendo feitos no <a href="https://www.netlify.com/" target="_blank">Netlify</a></p>
+<h2 id="faq">❓ F.A.Q.</h2>
+<p>Perguntas frequentes não técnicas que me fizeram durante as aulas:</p>
+<ul>
+<li>Que papel de parede é esse? <a href="https://www.tumblr.com/liamwong" target="_blank">É uma foto do Liam Wong</a>.</li>
+<li>Qual sistema operacional está usando? Eu uso GNU/Linux, a distribuição é o <a href="https://endeavouros.com/" target="_blank">EndeavourOS</a>.</li>
+<li>Qual terminal está usando? O <a href="https://gnome-terminator.org/" target="_blank">Terminator</a>.</li>
+<li>Qual editor de texto está usando? O <a href="https://www.gnu.org/software/emacs/" target="_blank">GNU/Emacs</a>.</li>
+<li>Qual o tema que está suando no sistema? O <a href="https://catppuccin.com/" target="_blank">Catppuccin Mocha</a>. Eu uso ele no shell e no editor de texto.</li>
+<li>Onde estão suas configurações do sistema? Em <a href="https://dunossauro.com/dotfiles" target="_blank">https://dunossauro.com/dotfiles</a>.</li>
+</ul><style type="text/css">.quiz {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+/* Set margin-top of first quiz child */
+.quiz > *:first-child {
+  margin-top: 0;
+}
+.hidden {
+  display: none;
+}
+
+form button {
+  background-color: var(--md-primary-fg-color);
+  border: none;
+  color: var(--md-primary-bg-color);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+.wrong label {
+  color: red;
+}
+.correct label {
+  color: green;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+fieldset input {
+  margin: 0 10px;
+}
+fieldset label {
+  margin: 0 10px;
+}
+
+label.correct {
+  color: green;
+}
+label.wrong {
+  color: red;
+}
+input[type='radio'].correct {
+  accent-color: green;
+}
+input[type='radio'].wrong {
+  accent-color: red;
+}
+.content {
+  margin: 10px;
+}
+</style><script type="text/javascript" defer>document.querySelectorAll('.quiz').forEach((quiz) => {
+  let form = quiz.querySelector('form');
+  let fieldset = form.querySelector('fieldset');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let selectedAnswers = form.querySelectorAll('input[name="answer"]:checked');
+    let correctAnswers = fieldset.querySelectorAll(
+      'input[name="answer"][correct]'
+    );
+    // Check if all correct answers are selected
+    let is_correct = selectedAnswers.length === correctAnswers.length;
+    for (let i = 0; i < selectedAnswers.length; i++) {
+      if (!selectedAnswers[i].hasAttribute('correct')) {
+        is_correct = false;
+        break;
+      }
+    }
+    let section = quiz.querySelector('section');
+    if (is_correct) {
+      section.classList.remove('hidden');
+      resetFieldset(fieldset);
+      // Mark all fields with colors
+      const allAnswers = fieldset.querySelectorAll('input[name="answer"]');
+      for (let i = 0; i < allAnswers.length; i++) {
+        if (allAnswers[i].hasAttribute('correct')) {
+          allAnswers[i].parentElement.classList.add('correct');
+        } else {
+          allAnswers[i].parentElement.classList.add('wrong');
+        }
+      }
+    } else {
+      section.classList.add('hidden');
+      resetFieldset(fieldset);
+      // Mark wrong fields with colors
+      for (let i = 0; i < selectedAnswers.length; i++) {
+        if (!selectedAnswers[i].hasAttribute('correct')) {
+          selectedAnswers[i].parentElement.classList.add('wrong');
+        } else {
+          selectedAnswers[i].parentElement.classList.add('correct');
+        }
+      }
+    }
+  });
+});
+
+function resetFieldset(fieldset) {
+  const fieldsetChildren = fieldset.children;
+  for (let i = 0; i < fieldsetChildren.length; i++) {
+    fieldsetChildren[i].classList.remove('wrong');
+    fieldsetChildren[i].classList.remove('correct');
+  }
+}
+</script>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última atualização">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="29 de outubro de 2025 16:37:01 UTC">29 de outubro de 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Colaboradores">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
+      
+    </span>
+    <nav>
+      dunossauro, Julio Formiga
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!-- Footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+
+      <img alt="" src="/estavel/assets/Written-By-Human-Not-By-AI-Badge-white.svg">
+
+      <!-- Social links -->
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://youtube.com/dunossauro" target="_blank" rel="noopener" title="youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://bolha.us/@dunossauro" target="_blank" rel="noopener me" title="bolha.us" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M433 179.1c0-97.2-63.7-125.7-63.7-125.7-62.5-28.7-228.6-28.4-290.5 0 0 0-63.7 28.5-63.7 125.7 0 115.7-6.6 259.4 105.6 289.1 40.5 10.7 75.3 13 103.3 11.4 50.8-2.8 79.3-18.1 79.3-18.1l-1.7-36.9s-36.3 11.4-77.1 10.1c-40.4-1.4-83-4.4-89.6-54-.6-4.6-.9-9.3-.9-13.9 85.6 20.9 158.7 9.1 178.7 6.7 56.1-6.7 105-41.3 111.2-72.9 9.8-49.8 9-121.5 9-121.5zm-75.1 125.2h-46.6V190.1c0-49.7-64-51.6-64 6.9v62.5H201V197c0-58.5-64-56.6-64-6.9v114.2H90.3c0-122.1-5.2-147.9 18.4-175 25.9-28.9 79.8-30.8 103.8 6.1l11.6 19.5 11.6-19.5c24.1-37.1 78.1-34.8 103.8-6.1 23.7 27.3 18.4 53 18.4 175"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dunossauro" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.twitch.tv/dunossauro" target="_blank" rel="noopener" title="www.twitch.tv" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M359.4 103.5h-38.6v109.7h38.6zm-106.2-.5h-38.6v109.8h38.6zM89 0-7.5 91.4v329.2h115.8V512l96.5-91.4h77.3L455.9 256V0zm328.3 237.8-77.2 73.1h-77.2l-67.6 64v-64h-86.9V36.6h308.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bolha.photos/dunossauro" target="_blank" rel="noopener" title="bolha.photos" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12m-.953-9.38h2.202c2.074 0 3.755-1.637 3.755-3.656S15.323 7.31 13.249 7.31h-3.177c-1.197 0-2.167.944-2.167 2.109v8.208z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://dunossauro.com" target="_blank" rel="noopener" title="dunossauro.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.992.034C1.217.166.602.841.416 1.769.388 1.901.36 21.858.388 23.895c0 .181 0 .181.923-.593.497-.416 1.328-1.128 1.801-1.516.34-.28.626-.543.637-.576.011-.039.022-1.148.017-2.466L3.76 16.35h1.516c.829 0 1.52.022 1.537.044s.028.538.022 1.142c0 .61.011 1.104.022 1.104.017 0 .643-.522.725-.604.017-.017.401-.335.851-.714.923-.77.917-.764 1.373-1.148.28-.236.34-.264.412-.203.072.066 2.878 2.421 3.592 3.02a1239 1239 0 0 1 3.932 3.306c.003.003 2.02 1.74 2.076 1.702.021-.01.038-3.333.038-7.38-.006-6.574.005-7.365.082-7.381.044-.011.895-.017 1.884-.017h1.801l-.022-3.761c-.005-2.07-.033-3.817-.05-3.877-.142-.495-.51-1.022-.883-1.28-.473-.318.164-.302-10.566-.302-5.442-.005-9.99.011-10.11.033"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://codeberg.org/dunossauro" target="_blank" rel="noopener" title="codeberg.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.999.747A11.974 11.974 0 0 0 0 12.75c0 2.254.635 4.465 1.833 6.376L11.837 6.19c.072-.092.251-.092.323 0l4.178 5.402h-2.992l.065.239h3.113l.882 1.138h-3.674l.103.374h3.86l.777 1.003h-4.358l.135.483h4.593l.695.894h-5.038l.165.589h5.326l.609.785h-5.717l.182.65h6.038l.562.727h-6.397l.183.65h6.717A12 12 0 0 0 24 12.75 11.977 11.977 0 0 0 11.999.747m3.654 19.104.182.65h5.326c.173-.204.353-.433.513-.65zm.385 1.377.18.65h3.563c.233-.198.485-.428.712-.65zm.383 1.377.182.648h1.203c.356-.204.685-.412 1.042-.648z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="assets/_markdown_exec_pyodide.js"></script>
+      
+        <script src="assets/javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
