@@ -1,5 +1,11 @@
 # fastapi-do-zero 4.3 (2025-10-29)
 
+### Pontos da release
+
+- Suporte ao Python 3.14 no material
+- Alteração no `mapped_as_dataclass` para seguir as novas recomendações do SQLAlchemy
+- Alterações na fixture do sqlalchemy para não gerar `ResourceWarning`
+
 ## Adicionado
 
 - Suporte ao python `3.14` ([#453](https://github.com/dunossauro/fastapi-do-zero/issues/453))
