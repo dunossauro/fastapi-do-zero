@@ -1672,9 +1672,10 @@
 
 
 <h1 id="alteracoes">Alterações</h1>
-<h1 id="fastapi-do-zero-ultimas-alteracoes-2025-10-27">fastapi-do-zero Ultimas alterações (2025-10-27)</h1>
+<h1 id="fastapi-do-zero-ultimas-alteracoes-2025-10-28">fastapi-do-zero Ultimas alterações (2025-10-28)</h1>
 <h2 id="adicionado">Adicionado</h2>
 <ul>
+<li>Suporte ao python <code>3.14</code> (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/453">#453</a>)</li>
 <li>Aula 08: nota sobre a execução do <code>coverage</code> e a escolha fixada no <code>ctrace</code></li>
 </ul>
 <h2 id="correcoes">Correções</h2>
@@ -1688,7 +1689,7 @@
 </ul>
 <h2 id="atualizacoes">Atualizações</h2>
 <ul>
-<li><code>alembic</code> 1.16.5 -&gt; 1.17.0</li>
+<li><code>alembic</code> 1.16.5 -&gt; 1.17.1</li>
 <li><code>fastapi[standard]</code> 0.116.2 -&gt; 0.120.1</li>
 <li><code>poetry</code> 2.2.0 -&gt; 2.2.1</li>
 <li><code>psycopg</code> 3.2.10 -&gt; 3.2.12</li>
@@ -1698,6 +1699,11 @@
 <li><code>ruff</code> 0.13.0 -&gt; 0.14.2</li>
 <li><code>sqlalchemy[asyncio]</code> 2.0.43 -&gt; 2.0.44</li>
 <li><code>testcontainers</code> 4.13.0 -&gt; 4.13.2</li>
+</ul>
+<h2 id="interno">Interno</h2>
+<ul>
+<li>CI: Agora a versão padrão para os steps fora dos testes é o 3.14 (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/453">#453</a>)</li>
+<li>CI: Build das imagens docker em um novo job</li>
 </ul>
 <h1 id="420-2025-09-17">4.2.0 (2025-09-17)</h1>
 <h3 id="pontos-da-release">Pontos da release</h3>
@@ -1729,7 +1735,7 @@
 <li><code>sqlalchemy</code> 2.0.41 -&gt; 2.0.43</li>
 <li><code>testcontainers</code> 4.10.0 -&gt; 4.13.0</li>
 </ul>
-<h2 id="interno">Interno</h2>
+<h2 id="interno_1">Interno</h2>
 <ul>
 <li>Atualização de actions do CI <code>setup-python</code> e <code>checkout</code></li>
 <li><code>CI</code>: Ajustando o update do sqlite</li>
@@ -1761,7 +1767,7 @@
 <li><code>pytest</code> 8.4.0 -&gt; 8.4.1</li>
 <li><code>ruff</code> 0.11.13 -&gt; 0.12.1</li>
 </ul>
-<h3 id="interno_1">Interno</h3>
+<h3 id="interno_2">Interno</h3>
 <ul>
 <li>CI: Adicionando validações do windows para executar os testes da última aula</li>
 <li>Versão do <code>flyctl</code> movida para o markdown-exec</li>
@@ -1806,7 +1812,7 @@
 <li><code>pytest</code> 8.3.5 -&gt; 8.4.0</li>
 <li><code>ruff</code> 0.11.11 -&gt; 0.11.13</li>
 </ul>
-<h3 id="interno_2">Interno</h3>
+<h3 id="interno_3">Interno</h3>
 <ul>
 <li>Slides servidos somente em html (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/402">#402</a>)</li>
 <li><code>typos</code> 1.32.0 -&gt; 1.33.1</li>
@@ -1846,7 +1852,7 @@
 <li><code>ruff</code> 0.11.8 -&gt; 0.11.11</li>
 <li><code>sqlalchemy</code> 2.0.40 -&gt; 2.0.41</li>
 </ul>
-<h3 id="interno_3">Interno</h3>
+<h3 id="interno_4">Interno</h3>
 <ul>
 <li>Adicionando badge "not by ai" no footer e na página principal (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/357">#357</a>)</li>
 <li>CI rodando somente em alterações de código</li>
@@ -1871,7 +1877,7 @@
 <li>Correção gramatical na página de mudanças, por <a href="https://github.com/ViniciusSouzaRoque">@ViniciusSouzaRoque</a></li>
 <li>Typo verões -&gt; versões no template de versões</li>
 </ul>
-<h3 id="interno_4">Interno</h3>
+<h3 id="interno_5">Interno</h3>
 <ul>
 <li>Redirecionamento para 404 via netlify (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/355">#355</a>)</li>
 <li>Adicionando as playlists nas páginas de aulas por ano</li>
@@ -1918,7 +1924,7 @@
 <li><code>sqlalchemy</code> 2.0.39 -&gt; 2.0.40</li>
 <li><code>testcontainers</code> 4.9.2 -&gt; 4.10</li>
 </ul>
-<h3 id="interno_5">Interno</h3>
+<h3 id="interno_6">Interno</h3>
 <ul>
 <li>Versionamento no material de texto (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/345">#345</a>)</li>
 <li>Remoção do export para pdf das páginas (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/346">#346</a>)</li>
@@ -2008,7 +2014,7 @@
 <li><code>pytest</code> = 8.3.4 -&gt; 8.3.5</li>
 <li><code>testcontainers</code> 4.9.1 -&gt; 4.9.2</li>
 </ul>
-<h3 id="interno_6">Interno</h3>
+<h3 id="interno_7">Interno</h3>
 <ul>
 <li>Adicionando <code>markdown-exec</code> ao projeto</li>
 <li>Atualização do <code>mkdocs-material</code></li>
@@ -2042,7 +2048,7 @@
 <li>Ruff para versão 0.9.4</li>
 <li>testecontainers para versão 4.9.1</li>
 </ul>
-<h3 id="interno_7">Interno</h3>
+<h3 id="interno_8">Interno</h3>
 <ul>
 <li>Atualização do <code>mkdocs-material</code></li>
 <li>Atualização do <code>typos</code></li>
