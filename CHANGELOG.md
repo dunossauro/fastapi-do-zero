@@ -1,3 +1,38 @@
+# fastapi-do-zero 4.3 (2025-10-29)
+
+## Adicionado
+
+- Suporte ao python `3.14` ([#453](https://github.com/dunossauro/fastapi-do-zero/issues/453))
+- Aula 08: nota sobre a execução do `coverage` e a escolha fixada no `ctrace`
+
+## Correções
+
+- Adicionando `engine.dispose` para garatir que a DBAPI não levante warnings relativos ao não fechamento do fixture do banco de dados
+- Ajuste de typo na página inicial
+
+## Alterado
+
+- `mapped_as_dataclass` agora segue o novo formato definido na versão `2.0.44` do `sqlalchemy`
+
+## Atualizações
+
+- `alembic` 1.16.5 -> 1.17.1
+- `fastapi[standard]` 0.116.2 -> 0.120.1
+- `poetry` 2.2.0 -> 2.2.1
+- `psycopg` 3.2.10 -> 3.2.12
+- `pwdlib` 0.2.1 -> 0.3.0
+- `pydantic-settings` 2.10.1 -> 2.11.1
+- `pydantic` 2.12.0 -> 2.12.3
+- `ruff` 0.13.0 -> 0.14.2
+- `sqlalchemy[asyncio]` 2.0.43 -> 2.0.44
+- `testcontainers` 4.13.0 -> 4.13.2
+
+## Interno
+
+- CI: Agora a versão padrão para os steps fora dos testes é o 3.14 ([#453](https://github.com/dunossauro/fastapi-do-zero/issues/453))
+- CI: Build das imagens docker em um novo job
+
+
 # 4.2.0 (2025-09-17)
 
 ### Pontos da release
