@@ -1004,21 +1004,21 @@ mkdocs = ">=1.0"
 
 [[package]]
 name = "mkdocs-git-revision-date-localized-plugin"
-version = "1.4.7"
+version = "1.5.0"
 description = "Mkdocs plugin that enables displaying the localized date of the last git modification of a markdown file."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "mkdocs_git_revision_date_localized_plugin-1.4.7-py3-none-any.whl", hash = "sha256:056c0a90242409148f1dc94d5c9d2c25b5b8ddd8de45489fa38f7fa7ccad2bc4"},
-    {file = "mkdocs_git_revision_date_localized_plugin-1.4.7.tar.gz", hash = "sha256:10a49eff1e1c3cb766e054b9d8360c904ce4fe8c33ac3f6cc083ac6459c91953"},
+    {file = "mkdocs_git_revision_date_localized_plugin-1.5.0-py3-none-any.whl", hash = "sha256:933f9e35a8c135b113f21bb57610d82e9b7bcc71dd34fb06a029053c97e99656"},
+    {file = "mkdocs_git_revision_date_localized_plugin-1.5.0.tar.gz", hash = "sha256:17345ccfdf69a1905dc96fb1070dce82d03a1eb6b0d48f958081a7589ce3c248"},
 ]
 
 [package.dependencies]
 babel = ">=2.7.0"
 gitpython = ">=3.1.44"
 mkdocs = ">=1.0"
-pytz = ">=2025.1"
+tzdata = {version = ">=2023.3", markers = "sys_platform == \"win32\""}
 
 [[package]]
 name = "mkdocs-glightbox"
@@ -1065,14 +1065,14 @@ test = ["mkdocs-d2-plugin", "mkdocs-include-markdown-plugin", "mkdocs-macros-tes
 
 [[package]]
 name = "mkdocs-material"
-version = "9.6.22"
+version = "9.6.23"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "mkdocs_material-9.6.22-py3-none-any.whl", hash = "sha256:14ac5f72d38898b2f98ac75a5531aaca9366eaa427b0f49fc2ecf04d99b7ad84"},
-    {file = "mkdocs_material-9.6.22.tar.gz", hash = "sha256:87c158b0642e1ada6da0cbd798a3389b0bc5516b90e5ece4a0fb939f00bacd1c"},
+    {file = "mkdocs_material-9.6.23-py3-none-any.whl", hash = "sha256:3bf3f1d82d269f3a14ed6897bfc3a844cc05e1dc38045386691b91d7e6945332"},
+    {file = "mkdocs_material-9.6.23.tar.gz", hash = "sha256:62ebc9cdbe90e1ae4f4e9b16a6aa5c69b93474c7b9e79ebc0b11b87f9f055e00"},
 ]
 
 [package.dependencies]
@@ -1471,18 +1471,6 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
-
-[[package]]
-name = "pytz"
-version = "2025.2"
-description = "World timezone definitions, modern and historical"
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "pytz-2025.2-py2.py3-none-any.whl", hash = "sha256:5ddf76296dd8c44c26eb8f4b6f35488f3ccbf6fbbd7adee0b7262d43f0ec2f00"},
-    {file = "pytz-2025.2.tar.gz", hash = "sha256:360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3"},
-]
 
 [[package]]
 name = "pyyaml"
@@ -1913,22 +1901,35 @@ files = [
 
 [[package]]
 name = "typos"
-version = "1.38.1"
+version = "1.39.0"
 description = "Source Code Spelling Correction"
 optional = false
 python-versions = ">=3.8"
 groups = ["dev"]
 files = [
-    {file = "typos-1.38.1-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:81555bf13a4a396f4a67b111fac4c089160a1895fabc74b2d25ade8679fb6282"},
-    {file = "typos-1.38.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:2104ccb86b0fae888f18c550b37e878ab059cd38986cbfb5bb52e8dbcbfe4040"},
-    {file = "typos-1.38.1-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b09aa2005cdab56cd4f22385817443e6e016a654d65324d7836c4b803b45bde4"},
-    {file = "typos-1.38.1-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:e796091790b5bbd56b8302004898c78590c8007cc4e8818d9a6b452ab25e2b04"},
-    {file = "typos-1.38.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:05b0ff729edd43b772a944d4b26dcb85d2386278fd52e23d5731c05f08ffccbc"},
-    {file = "typos-1.38.1-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:0c2653617f2e3292f2a947e4c2c219284bc4738eb604499b74c3963f7393ba2d"},
-    {file = "typos-1.38.1-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:92ba4a1f594d9f92c122f441187e9c5e76f71d03d38fe5e177efc245f55cf195"},
-    {file = "typos-1.38.1-py3-none-win32.whl", hash = "sha256:3d6eb15ebd1d0801e936573ea7d9dd88fb97a6b514224028a386bc31d4ba0ec4"},
-    {file = "typos-1.38.1-py3-none-win_amd64.whl", hash = "sha256:46d264618c6b3000afed13639af7dccbb78a5b8bd70cb3a438980eda58f6d175"},
-    {file = "typos-1.38.1.tar.gz", hash = "sha256:145c72cb897b6bf05c3a021fe83272c3d632a389b0d6151cc22d5ec103d5ebec"},
+    {file = "typos-1.39.0-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:99fb6d7a02f217d12e95191be0c29d3bd1cada0177b3c5f3805c06e0dacf849d"},
+    {file = "typos-1.39.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:b1bbafb016dac632a592ac377dfffe75719b46dce68b76e4f446c9da1f8f8742"},
+    {file = "typos-1.39.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:eb1c056076391f651522b4535a0d59278637138fa442751664b68faee1acd568"},
+    {file = "typos-1.39.0-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:edaa69b55ce91b8671538aa2a90b17cd819729aff675d177438f2d944e5302b5"},
+    {file = "typos-1.39.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2bd9ac3c38941735731dee57d68c343c246382268eb25ffa42e9a61b9681ba09"},
+    {file = "typos-1.39.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:8db67a6d4fe81e5c31f59696d21d84f903bda63db09361cab4121e1a5e7308bf"},
+    {file = "typos-1.39.0-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:cedda788cd563871f0da4771aa85346c374139d2a26ae9207b51e6d505518975"},
+    {file = "typos-1.39.0-py3-none-win32.whl", hash = "sha256:f698db497d3358475d9c03f585ef528e53e999321ae2ccf9bc093a2dc1ca2e91"},
+    {file = "typos-1.39.0-py3-none-win_amd64.whl", hash = "sha256:0f7caf772b9b71d749ccfbef197db537dac3d76f2af8f6e77729c7d115f714b0"},
+    {file = "typos-1.39.0.tar.gz", hash = "sha256:d22e0be146296ab2afafdccbf0e5f555e48acc78329f2d64a6a8230a045ee2a8"},
+]
+
+[[package]]
+name = "tzdata"
+version = "2025.2"
+description = "Provider of IANA time zone data"
+optional = false
+python-versions = ">=2"
+groups = ["main"]
+markers = "sys_platform == \"win32\""
+files = [
+    {file = "tzdata-2025.2-py2.py3-none-any.whl", hash = "sha256:1a403fada01ff9221ca8044d701868fa132215d84beb92242d9acd2147f667a8"},
+    {file = "tzdata-2025.2.tar.gz", hash = "sha256:b60a638fcc0daffadf82fe0f57e53d06bdec2f36c4df66280ae79bce6bd6f2b9"},
 ]
 
 [[package]]
@@ -2042,4 +2043,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "e0a14034cabe32d096d03d1609342d1447ce067be51beb6d253032882538f357"
+content-hash = "2766bbbcab9043ecb4c766530e2acc3753d4e9f30e9c770843a308b7afab4328"
