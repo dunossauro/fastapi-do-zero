@@ -2282,7 +2282,7 @@
 <li>Um terminal a sua escolha (Usarei o <a href="https://gnome-terminator.org/" target="_blank">Terminator</a>)</li>
 <li>Python, em uma versão <a href="https://devguide.python.org/versions/" target="_blank">oficialmente suportada</a>, atualmente 3.10+</li>
 <li><a href="https://git-scm.com/" target="_blank">Git</a>: Para gerenciar versões do nosso projeto. (Caso precise de um tutorial legal sobre git, o <a href="https://www.youtube.com/playlist?list=PLvlkVRRKOYFQ3cfYPjLeQ0KvrQ8bG5H11" target="_blank">TeoMeWhy</a> fez uma playlist muito legal, totalmente de graça)</li>
-<li><a href="https://www.docker.com/" target="_blank">Docker</a>: Para criar um container da nossa aplicação (caso não tenha nenhuma experiência com docker a <a href="https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR" target="_blank">Linuxtips</a> tem uma playlist completa e grátis sobre docker no canal deles no YouTube)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">4</a></sup></li>
+<li><a href="https://www.docker.com/" target="_blank">Docker</a>: Para criar um container da nossa aplicação (caso não tenha nenhuma experiência com docker a <a href="https://www.youtube.com/playlist?list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR" target="_blank">Linuxtips</a> tem uma playlist completa e grátis sobre docker no canal deles no YouTube)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 <li><strong>OPCIONAL (extremamente recomendado)</strong>: O <a href="https://cli.github.com/" target="_blank">gh</a> para criar o repositório e fazer alterações sem precisar acessar a página do Github</li>
 </ol>
 <blockquote>
@@ -2290,7 +2290,7 @@
 </blockquote>
 <details class="danger" open="open">
 <summary>Sobre as versões das bibliotecas instaladas</summary>
-<p>A última atualização dos pacotes deste material foi feita em: <strong>01/11/2025 às 19:33</strong>.</p>
+<p>A última atualização dos pacotes deste material foi feita em: <strong>04/11/2025 às 02:12</strong>.</p>
 <p>Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="../apendices/c_versoes_usadas/">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
 </details>
 <h2 id="pipx">pipx</h2>
@@ -2541,7 +2541,7 @@
 <li>Função que será executada quando o endereço <code>/</code> for acessado por um cliente</li>
 <li>Os dados que serão retornados pelo endereço, quando o endpoint for chamado</li>
 </ol>
-<p>A linha em destaque <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> expõe a nossa função para ser servida pelo FastAPI. Dizendo que quando um cliente acessar o nosso endereço de rede no caminho <code>/</code>, usando o método HTTP GET<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">1</a></sup>, a função será executada. Desta maneira, temos todo o código necessário para criar nossa primeira aplicação web com FastAPI.</p>
+<p>A linha em destaque <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> expõe a nossa função para ser servida pelo FastAPI. Dizendo que quando um cliente acessar o nosso endereço de rede no caminho <code>/</code>, usando o método HTTP GET<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, a função será executada. Desta maneira, temos todo o código necessário para criar nossa primeira aplicação web com FastAPI.</p>
 <p>Antes de iniciarmos nossa aplicação, temos que fazer um passo importante, habilitar o ambiente virtual, para que o python consiga enxergar nossas dependências instaladas. O poetry tem um comando específico para isso:</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>poetry<span class="w"> </span>shell
 </span></code></pre></div>
@@ -2680,7 +2680,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <h2 id="configurando-as-ferramentas-de-desenvolvimento">Configurando as ferramentas de desenvolvimento</h2>
 <p>Após a instalação das ferramentas de desenvolvimento, precisamos definir as configurações de cada uma individualmente no arquivo <code>pyproject.toml</code>.</p>
 <h3 id="ruff">Ruff</h3>
-<p>O <a href="https://docs.astral.sh/ruff/" target="_blank">Ruff</a> é uma ferramenta moderna em python, escrita em rust, compatível<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">2</a></sup> com os projetos de análise estática escritos e mantidos originalmente pela comunidade no projeto <a href="https://github.com/PyCQA/" target="_blank">PYCQA</a><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">3</a></sup> e tem duas funções principais:</p>
+<p>O <a href="https://docs.astral.sh/ruff/" target="_blank">Ruff</a> é uma ferramenta moderna em python, escrita em rust, compatível<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> com os projetos de análise estática escritos e mantidos originalmente pela comunidade no projeto <a href="https://github.com/PyCQA/" target="_blank">PYCQA</a><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> e tem duas funções principais:</p>
 <ol>
 <li>Analisar o código de forma estática (Linter): Efetuar a verificação se estamos programando de acordo com boas práticas do python.</li>
 <li>Formatar o código (Formatter): Efetuar a verificação do código para padronizar um estilo de código pré-definido.</li>
@@ -3147,17 +3147,17 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <div class="footnote">
 <hr>
 <ol>
+<li id="fn:1">
+<p>Você não precisa se preocupar com o docker inicialmente, ele será usado da aula 11 em diante.&nbsp;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
 <li id="fn:2">
-<p>Exploraremos mais a fundo a relação de métodos e o protocolo HTTP na próxima aula.&nbsp;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>Exploraremos mais a fundo a relação de métodos e o protocolo HTTP na próxima aula.&nbsp;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
 </li>
 <li id="fn:3">
-<p>Em alguns casos, existe uma divergência de opiniões entre os linters mais tradicionais. Mas, em geral, funciona bem.&nbsp;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 2 in the text">↩</a></p>
+<p>Em alguns casos, existe uma divergência de opiniões entre os linters mais tradicionais. Mas, em geral, funciona bem.&nbsp;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
 <li id="fn:4">
-<p>Em versões antigas do texto, usávamos as ferramentas do PyCQA como o pylint e o isort.&nbsp;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 3 in the text">↩</a></p>
-</li>
-<li id="fn:1">
-<p>Você não precisa se preocupar com o docker inicialmente, ele será usado da aula 11 em diante.&nbsp;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 4 in the text">↩</a></p>
+<p>Em versões antigas do texto, usávamos as ferramentas do PyCQA como o pylint e o isort.&nbsp;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">↩</a></p>
 </li>
 </ol>
 </div><style type="text/css">.quiz {
