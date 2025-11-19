@@ -70,6 +70,22 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 """
 
 
+def iter_class_paths():
+    base = Path('./codigo_das_aulas').resolve()
+    return sorted([p for p in base.glob('*') if p.is_dir()])
+
+
+def clean_venv_lock(c, path: Path):
+    venv = path / '.venv'
+    lock = path / 'poetry.lock'
+
+    if venv.exists():
+        c.run('rm -rf .venv')
+
+    if lock.exists():
+        lock.unlink()
+
+
 @contextmanager
 def env_file(path: Path, sync=True):
     with open(path / '.env', 'w', encoding='utf-8') as file:
@@ -89,8 +105,7 @@ def env_file(path: Path, sync=True):
 
 @task
 def test_migrations(c):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
+    for path in iter_class_paths():
         print('test_migrations: ', path)
         database = path / 'database.db'
 
@@ -121,15 +136,16 @@ def test_migrations(c):
 
 @task
 def update_project(c):
-    c.run('rm -rf .venv')
-    toml = Path('.') / 'pyproject.toml'
+    root = Path('.')
+    clean_venv_lock(c, root)
+
+    toml = root / 'pyproject.toml'
+
     toml_tables = loads(toml.read_text())
+
     toml_project = toml_tables['project']
     dependencies = toml_project['dependencies']
     dev_dependencies = toml_tables['dependency-groups']['dev']
-
-    if (Path('.') / 'poetry.lock').exists():
-        c.run('rm poetry.lock')
 
     for dep in sorted(dependencies):
         if not '(==' in dep:
@@ -144,8 +160,7 @@ def update_project(c):
 
 @task
 def typos_sub(c):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
+    for path in iter_class_paths():
         print('typos_sub: ', path)
         with c.cd(str(path)):
             c.run('poetry run typos .')
@@ -153,8 +168,7 @@ def typos_sub(c):
 
 @task
 def lint_sub(c):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
+    for path in iter_class_paths():
         print('lint_sub: ', path)
         with c.cd(str(path)):
             c.run('poetry run task lint')
@@ -162,25 +176,27 @@ def lint_sub(c):
 
 @task
 def test_act(c):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
-        print('test_act: ', path)
-        with c.cd(str(path)):
-            if (path / '.github').exists():
+    for path in iter_class_paths():
+        github = path / '.github'
+        if github.exists():
+            print('test_act:', path)
+            with c.cd(str(path)):
                 c.run('act')
 
 
 @task
 def test_docker_build(c, python_version='3.12'):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
-        print('test_docker_build: ', path)
+    for path in iter_class_paths():
+        print('test_docker_build:', path)
+        dockerfile = path / 'Dockerfile'
 
         with c.cd(str(path)):
-            if (path / 'Dockerfile').exists():
-                c.run(
-                    f"sed -i 's/FROM python:.*$/FROM python:{python_version}/' Dockerfile"
+            if dockerfile.exists():
+                text = dockerfile.read_text()
+                text = text.replace(
+                    'FROM python:', f'FROM python:{python_version}'
                 )
+                dockerfile.write_text(text)
 
             if (path / 'compose.yaml').exists():
                 c.run('docker compose build')
@@ -188,9 +204,8 @@ def test_docker_build(c, python_version='3.12'):
 
 @task
 def test_sub(c):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
-        print('test_sub: ', path)
+    for path in iter_class_paths():
+        print('test_sub:', path)
         with c.cd(str(path)):
             c.run('poetry install')
             c.run('poetry run task test')
@@ -204,6 +219,7 @@ def win_test_last_class(c):
         c.run('poetry install')
         c.run('poetry run task test')
 
+
 @task
 def win_test_migration(c):
     code_path = Path('./codigo_das_aulas/13')
@@ -214,18 +230,15 @@ def win_test_migration(c):
 
 @task
 def command_sub(c, cmd):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
-        print('command_sub: ', path)
+    for path in iter_class_paths():
+        print('command_sub:', path)
         with c.cd(str(path)):
             c.run(cmd)
 
 
 @task
 def update_sub(c):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-
-    for path in sorted(code_path):
+    for path in iter_class_paths():
         toml = path / 'pyproject.toml'
         toml_tables = loads(toml.read_text())
         toml_project = toml_tables['project']
@@ -235,9 +248,7 @@ def update_sub(c):
 
         print('update_sub:', path)
         with c.cd(str(path)):
-            c.run('rm -rf .venv')
-            if (path / 'poetry.lock').exists():
-                c.run('rm poetry.lock')
+            clean_venv_lock(c, path)
 
             for dep in sorted(dependencies):
                 dep = dep.split()[0]
