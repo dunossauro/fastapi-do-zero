@@ -132,12 +132,14 @@ def update_project(c):
         c.run('rm poetry.lock')
 
     for dep in sorted(dependencies):
-        dep = dep.split()[0]
-        c.run(f'poetry add {dep}@latest')
+        if not '(==' in dep:
+            dep = dep.split()[0]
+            c.run(f'poetry add {dep}@latest')
 
     for dep in sorted(dev_dependencies):
-        dep = dep.split()[0]
-        c.run(f'poetry add --group dev {dep}@latest')
+        if not '(==' in dep:
+            dep = dep.split()[0]
+            c.run(f'poetry add --group dev {dep}@latest')
 
 
 @task
