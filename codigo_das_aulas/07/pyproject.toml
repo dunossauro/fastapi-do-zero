@@ -8,10 +8,10 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "alembic (>=1.17.1,<2.0.0)",
-    "fastapi[standard] (>=0.121.0,<0.122.0)",
+    "alembic (>=1.17.2,<2.0.0)",
+    "fastapi[standard] (>=0.121.2,<0.122.0)",
     "pwdlib[argon2] (>=0.3.0,<0.4.0)",
-    "pydantic-settings (>=2.11.0,<3.0.0)",
+    "pydantic-settings (>=2.12.0,<3.0.0)",
     "pyjwt (>=2.10.1,<3.0.0)",
     "sqlalchemy (>=2.0.44,<3.0.0)",
     "tzdata (>=2025.2,<2026.0)"
@@ -19,10 +19,10 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pytest (>=8.4.2,<9.0.0)",
+    "pytest (>=9.0.1,<10.0.0)",
     "pytest-cov (>=7.0.0,<8.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
-    "ruff (>=0.14.4,<0.15.0)"
+    "ruff (>=0.14.5,<0.15.0)"
 ]
 
 [tool.ruff]
