@@ -187,16 +187,13 @@ def test_act(c):
 @task
 def test_docker_build(c, python_version='3.12'):
     for path in iter_class_paths():
-        print('test_docker_build:', path)
-        dockerfile = path / 'Dockerfile'
+        print('test_docker_build: ', path)
 
         with c.cd(str(path)):
-            if dockerfile.exists():
-                text = dockerfile.read_text()
-                text = text.replace(
-                    'FROM python:', f'FROM python:{python_version}'
+            if (path / 'Dockerfile').exists():
+                c.run(
+                    f"sed -i 's/FROM python:.*$/FROM python:{python_version}/' Dockerfile"
                 )
-                dockerfile.write_text(text)
 
             if (path / 'compose.yaml').exists():
                 c.run('docker compose build')
