@@ -453,14 +453,14 @@ standard-no-fastapi-cloud-cli = ["uvicorn[standard] (>=0.15.0)"]
 
 [[package]]
 name = "fastapi-cloud-cli"
-version = "0.4.0"
+version = "0.5.1"
 description = "Deploy and manage FastAPI Cloud apps from the command line 🚀"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "fastapi_cloud_cli-0.4.0-py3-none-any.whl", hash = "sha256:6c44bd0636e57fb9a156ff67f4c54f17b5fbb3d84c65ea9e2461d4daaf64d9e7"},
-    {file = "fastapi_cloud_cli-0.4.0.tar.gz", hash = "sha256:335c6655d8c2c04f85282ffc70eb33b6dd9e220e89ebef9ff7ccedcb37f94e1d"},
+    {file = "fastapi_cloud_cli-0.5.1-py3-none-any.whl", hash = "sha256:1a28415b059b27af180a55a835ac2c9e924a66be88412d5649d4f91993d1a698"},
+    {file = "fastapi_cloud_cli-0.5.1.tar.gz", hash = "sha256:5ed9591fda9ef5ed846c7fb937a06c491a00eef6d5bb656c84d82f47e500804b"},
 ]
 
 [package.dependencies]
