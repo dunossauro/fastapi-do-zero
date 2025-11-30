@@ -2245,8 +2245,11 @@
 <p>Uma das formas de interagir com a plataforma é via uma aplicação de linha de comando disponibilizada pelo Fly, o <a href="https://fly.io/docs/flyctl/" target="_blank">flyctl</a>.</p>
 <p>O flyctl precisa ser instalado em seu computador. Em algumas distribuições linux o flyctl está disponível nos repositórios de aplicações. Para Mac/Windows ou distribuições linux que não contam com o pacote no repositório, você pode seguir o guia de <a href="https://fly.io/docs/hands-on/install-flyctl/" target="_blank">instalação oficial</a>.</p>
 <p>Após a instalação, você pode verificar se o flyctl está instalado em seu sistema operacional digitando o seguinte comando no terminal:</p>
-<div class="language-sh highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash:<span class="w"> </span>linha<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>flyctl:<span class="w"> </span>comando<span class="w"> </span>não<span class="w"> </span>encontrado
+<div class="language-bash highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flyctl<span class="w"> </span>version
 </span></code></pre></div>
+<div class="result">
+<p>flyctl v0.3.227 linux/amd64 Commit: 9ffd614b0ffd7e9c4bfb3b62845fe430eb33174b BuildDate: 2025-11-28T19:45:50Z</p>
+</div>
 <p>No momento da sua instalação, você pode se deparar com uma versão mais recente do que a minha no momento, mas os comandos devem funcionar da mesma forma em qualquer versão menor que <code>1.0.0</code>.</p>
 <h4 id="fazendo-login-via-terminal">Fazendo login via terminal</h4>
 <p>Após a instalação do <code>flyctl</code> é importante que você efetue o login usando suas credenciais, para que o <code>flyctl</code> consiga vincular suas credenciais com a linha de comando. Para isso podemos executar o seguinte comando:</p>
