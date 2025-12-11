@@ -1,92 +1,82 @@
 # 02 - Introdução ao desenvolvimento WEB
 
-<?quiz?>
-question: 01 - Sobre o modelo cliente servidor, podemos afirmar que:
-answer-correct: O servidor é responsável por servir dados aos clientes
-answer-correct: O cliente é quem consome recursos do servidor
-answer: A comunicação é iniciada pelo servidor
-answer: As respostas são originadas pelo cliente
-content:
-<?/quiz?>
+<quiz>
+Sobre o modelo cliente servidor, podemos afirmar que:
+- [x] O servidor é responsável por servir dados aos clientes
+- [x] O cliente é quem consome recursos do servidor
+- [ ] A comunicação é iniciada pelo servidor
+- [ ] As respostas são originadas pelo cliente
+</quiz>
 
-<?quiz?>
-question: 02 - Um servidor de aplicação como uvicorn:
-answer-correct: pode servir a aplicação em loopback
-answer-correct: pode servir a aplicação em rede local
-answer: deve servir a aplicação somente em produção
-content:
-<?/quiz?>
+<quiz>
+Um servidor de aplicação como uvicorn:
+- [x] pode servir a aplicação em loopback
+- [x] pode servir a aplicação em rede local
+- [ ] deve servir a aplicação somente em produção
+</quiz>
 
-<?quiz?>
-question: 03 - O que significa URL?
-answer: Uma Rota Local
-answer: Rotas Locais Unidas
-answer: Localizador de Recursos Locais
-answer-correct: Localizador Uniforme de Recursos
-content:
-<?/quiz?>
+<quiz>
+O que significa URL?
+- [ ] Uma Rota Local
+- [ ] Rotas Locais Unidas
+- [ ] Localizador de Recursos Locais
+- [x] Localizador Uniforme de Recursos
+</quiz>
 
-<?quiz?>
-question: 04 - Qual dessas opções faz parte da URL:
-answer-correct: Protocolo
-answer-correct: Endereço
-answer: HTML
-answer-correct: Caminho
-answer-correct: Porta
-answer: Verbo
-content:
-<?/quiz?>
+<quiz>
+Qual dessas opções faz parte da URL:
+- [x] Protocolo
+- [x] Endereço
+- [ ] HTML
+- [x] Caminho
+- [x] Porta
+- [ ] Verbo
+</quiz>
 
-<?quiz?>
-question: 05 - Qual desses campos <b>não</b> faz parte do cabeçalho HTTP?
-answer: Server
-answer: Content-Type
-answer-correct: Corpo
-answer: Accept
-content:
-<?/quiz?>
+<quiz>
+Qual desses campos **não** faz parte do cabeçalho HTTP?
+- [ ] Server
+- [ ] Content-Type
+- [x] Corpo
+- [ ] Accept
+</quiz>
 
-<?quiz?>
-question: 06 - O verbo <b>PUT</b> tem a função de:
-answer: Solicitar um recurso
-answer: Deletar um recurso
-answer-correct: Atualizar um recurso existente
-answer: Todas as anteriores
-content:
-<?/quiz?>
+<quiz>
+O verbo **PUT** tem a função de:
+- [ ] Solicitar um recurso
+- [ ] Deletar um recurso
+- [x] Atualizar um recurso existente
+- [ ] Todas as anteriores
+</quiz>
 
-<?quiz?>
-question: 07 - Respostas com códigos da classe 500, significam
-answer: Sucesso
-answer-correct: Erro no servidor
-answer: Informacionais
-answer: Erro no cliente
-content:
-<?/quiz?>
+<quiz>
+Respostas com códigos da classe 500, significam
+- [ ] Sucesso
+- [x] Erro no servidor
+- [ ] Informacionais
+- [ ] Erro no cliente
+</quiz>
 
-<?quiz?>
-question: 08 - O código 200 de resposta significa:
-answer: Found
-answer: Accepted
-answer: Created
-answer-correct: OK
-content:
-<?/quiz?>
+<quiz>
+O código `200` de resposta significa:
+- [ ] Found
+- [ ] Accepted
+- [ ] Created
+- [x] OK
+</quiz>
 
-<?quiz?>
-question: 09 - O código 422 de resposta significa:
-answer: Not Found
-answer: OK
-answer-correct: Unprocessable Entity
-answer: Bad Request
-answer: Forbidden
-content:
-<?/quiz?>
+<quiz>
+O código `422` de resposta significa:
+- [ ] Not Found
+- [ ] OK
+- [x] Unprocessable Entity
+- [ ] Bad Request
+- [ ] Forbidden
+</quiz>
 
-<?quiz?>
-question: 10 - Qual a função do pydantic?
-answer-correct: Validar os dados que saem da API
-answer-correct: Validar os dados que entram na API
-answer-correct: Documentação automática
-content:
-<?/quiz?>
+<quiz>
+Qual a função do pydantic?
+- [x] Validar os dados que saem da API
+- [x] Validar os dados que entram na API
+- [x] Documentação automática
+</quiz>

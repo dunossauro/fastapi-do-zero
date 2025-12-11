@@ -1107,18 +1107,23 @@ files = [
 
 [[package]]
 name = "mkdocs-quiz"
-version = "0.0.41"
-description = "A mkdocs plugin to create a quiz in your markdown document."
+version = "1.2.2"
+description = "A MkDocs plugin to create interactive quizzes in your markdown."
 optional = false
-python-versions = "*"
+python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "mkdocs_quiz-0.0.41-py3-none-any.whl", hash = "sha256:b83992ef5ba3b62e2cd804b8e8a382514e19a2374e732836274f7e0d9b0ff0ce"},
-    {file = "mkdocs_quiz-0.0.41.tar.gz", hash = "sha256:9c9b18d9112068bf3f776e333aadf087c62f62a418ab67207b60a3e1751ba748"},
+    {file = "mkdocs_quiz-1.2.2-py3-none-any.whl", hash = "sha256:f5edd47acdad04244ebe4ec1ed395f8ac14b4a89285842e99803075ca3412c71"},
+    {file = "mkdocs_quiz-1.2.2.tar.gz", hash = "sha256:518d85a8c352715a62291f654acaa46f8f404ff7c40da6da6b7ae1607c93be4d"},
 ]
 
 [package.dependencies]
-mkdocs = "*"
+mkdocs = ">=1.0.0"
+polib = ">=1.1.0"
+
+[package.extras]
+dev = ["babel (>=2.9.0)", "mypy (>=1.0.0)", "pre-commit (>=3.0.0)", "pytest (>=7.0.0)", "pytest-cov (>=4.0.0)", "ruff (>=0.8.0)", "types-Markdown", "types-polib (>=1.0.0)"]
+docs = ["mkdocs-material"]
 
 [[package]]
 name = "mkdocs-simple-hooks"
@@ -1348,6 +1353,18 @@ files = [
 docs = ["furo (>=2025.9.25)", "proselint (>=0.14)", "sphinx (>=8.2.3)", "sphinx-autodoc-typehints (>=3.2)"]
 test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=8.4.2)", "pytest-cov (>=7)", "pytest-mock (>=3.15.1)"]
 type = ["mypy (>=1.18.2)"]
+
+[[package]]
+name = "polib"
+version = "1.2.0"
+description = "A library to manipulate gettext files (po and mo files)."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "polib-1.2.0-py2.py3-none-any.whl", hash = "sha256:1c77ee1b81feb31df9bca258cbc58db1bbb32d10214b173882452c73af06d62d"},
+    {file = "polib-1.2.0.tar.gz", hash = "sha256:f3ef94aefed6e183e342a8a269ae1fc4742ba193186ad76f175938621dbfc26b"},
+]
 
 [[package]]
 name = "psutil"
@@ -2050,4 +2067,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "792a4078e85c4940a51b70d6b103817927ca10566c91308771c34d31c5bc4470"
+content-hash = "aefef062af735e7e5c9d6a1f689309e7561264a84627f4c9356cf3da0205e7e4"

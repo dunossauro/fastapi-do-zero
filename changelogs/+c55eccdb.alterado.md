@@ -1,0 +1,1 @@
+Quizes: Agora contam com progresso, respostas ficam salvas em cache e tem links compartilhaveis. Melhorias possíveis graças a paciência do [@ewels](https://github.com/ewels) em aceitar minhas propostas me de melhoria no `mkdocs-quiz`

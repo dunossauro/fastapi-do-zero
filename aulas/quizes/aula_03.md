@@ -1,78 +1,63 @@
 # 03 - Estruturando o Projeto e Criando Rotas CRUD
 
-<?quiz?>
-question: 01 - O método POST pode ser associado a qual letra da sigla CRUD?
-answer: U
-answer: D
-answer-correct: C
-answer: R
-content:
-<?/quiz?>
+<quiz>
+O método POST pode ser associado a qual letra da sigla CRUD?
+- [ ] U
+- [ ] D
+- [x] C
+- [ ] R
+</quiz>
 
-<?quiz?>
-question: 02 - Quando um recurso é criado via POST, qual o Status deve ser retornado para sucesso?
-answer: 200
-answer-correct: 201
-answer: 202
-answer: 301
-content:
-<?/quiz?>
+<quiz>
+Quando um recurso é criado via POST, qual o Status deve ser retornado para sucesso?
+- [ ] 200
+- [x] 201
+- [ ] 202
+- [ ] 301
+</quiz>
 
-<?quiz?>
-question: 03 - Quando um schema não é respeitado pelo cliente, qual o status retornado?
-answer: 500
-answer: 404
-answer: 401
-answer-correct: 422
-content:
-<?/quiz?>
+<quiz>
+Quando um schema não é respeitado pelo cliente, qual o status retornado?
+- [ ] 500
+- [ ] 404
+- [ ] 401
+- [x] 422
+</quiz>
 
-<?quiz?>
-question: 04 - O FastAPI retorna qual status para quando o servidor não respeita o contrato? 
-answer: UNPROCESSABLE ENTITY
-answer: I'M A TEAPOT
-answer-correct: INTERNAL SERVER ERROR
-answer: NOT IMPLEMENTED
-content:
-<?/quiz?>
+<quiz>
+O FastAPI retorna qual status para quando o servidor não respeita o contrato?
+- [ ] UNPROCESSABLE ENTITY
+- [ ] I'M A TEAPOT
+- [x] INTERNAL SERVER ERROR
+- [ ] NOT IMPLEMENTED
+</quiz>
 
-```quiz
-{
-    "questao": "05 - O que faz a seguinte fixture",
-	"opcoes": {
-		"a": "Faz uma requisição a aplicação",
-		"b": "Cria um cliente de teste reutilizável",
-		"c": "Faz o teste automaticamente",
-	},
-	"correta": "b",
-	"code" : """
+<quiz>
+O que faz a seguinte fixture?
+
 ```python
 @pytest.fixture
 def client():
     return TestClient(app)
-```"""
-}
 ```
 
-<?quiz?>
-question: 06 - Qual código de resposta deve ser enviado quando o recurso requerido não for encontrado?
-answer: 201
-answer-correct: 404
-answer: 401
-answer: 500
-content:
-<?/quiz?>
+- [ ] Faz uma requisição a aplicação
+- [x] Cria um cliente de teste reutilizável
+- [ ] Faz o teste automaticamente
 
-```quiz
-{
-    "questao": "07 - Sobre o relacionamento dos schemas, qual seria a resposta esperada pelo cliente em UserList?",
-	"opcoes": {
-		"a": '{"users": {"username": "string", "email": "e@mail.com"}}',
-		"b": '{"users": [{"username": "string", "email": "e@mail.com"}]}',
-		"c": "As duas estão corretas",
-	},
-	"correta": "b",
-	"code" : """
+</quiz>
+
+<quiz>
+Qual código de resposta deve ser enviado quando o recurso requerido não for encontrado?
+- [ ] 201
+- [x] 404
+- [ ] 401
+- [ ] 500
+</quiz>
+
+<quiz>
+Sobre o relacionamento dos schemas, qual seria a resposta esperada pelo cliente em `UserList`?
+
 ```python
 class UserPublic(BaseModel):
     username: str
@@ -81,42 +66,40 @@ class UserPublic(BaseModel):
 
 class UserList(BaseModel):
     users: list[UserPublic]
-```"""
-}
 ```
 
-<?quiz?>
-question: 08 - HTTPException tem a função de:
-answer: Criar um erro de servidor
-answer-correct: Retornar um erro ao cliente
-answer: Fazer uma validação HTTP
-content:
-<?/quiz?>
+- [ ] `{"users": {"username": "string", "email": "e@mail.com"}}`
+- [x] `{"users": [{"username": "string", "email": "e@mail.com"}]}`
+- [ ] As duas estão corretas
 
-<?quiz?>
-question: 09 - 'users/{user_id}' permite:
-answer-correct: Parametrizar a URL
-answer-correct: Pedir por um recurso com id específico
-answer-correct: Aumentar a flexibilidade dos endpoints
-content:
-<?/quiz?>
+</quiz>
 
-```quiz
-{
-    "questao": "10 - Qual a função desse bloco de código nos endpoints de PUT E DELETE?",
-	"opcoes": {
-		'a': 'Garantir que só sejam chamados id válidos',
-		'b': 'Montar um novo schema do pydantic',
-		'c': 'Dizer ao cliente que o schema dele tem um erro',
-		'c': 'Criar um erro de servidor',
-	},
-	"correta": "a",
-	"code" : """
+<quiz>
+`HTTPException` tem a função de:
+- [ ] Criar um erro de servidor
+- [x] Retornar um erro ao cliente
+- [ ] Fazer uma validação HTTP
+</quiz>
+
+<quiz>
+`users/{user_id}` permite:
+- [x] Parametrizar a URL
+- [x] Pedir por um recurso com id específico
+- [x] Aumentar a flexibilidade dos endpoints
+</quiz>
+
+<quiz>
+Qual a função desse bloco de código nos endpoints de PUT E DELETE?
+
 ```python
 if user_id > len(database) or user_id < 1:
 	raise HTTPException(
 		status_code=HTTPStatus.NOT_FOUND, detail='User not found'
 	)
-```"""
-}
 ```
+
+- [x] Garantir que só sejam chamados id válidos
+- [ ] Montar um novo schema do pydantic
+- [ ] Dizer ao cliente que o schema dele tem um erro
+- [ ] Criar um erro de servidor
+</quiz>

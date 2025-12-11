@@ -10,7 +10,7 @@ theme:
   custom_dir: overrides
   logo: assets/logo.svg
   favicon: assets/logo.svg
-  language: pt
+  language: pt-BR
   features:
     - content.code.annotate
     - content.code.copy
@@ -61,7 +61,7 @@ plugins:
   - glightbox
   - mkdocs-video
   - search:
-      lang: pt
+      lang: pt-BR
   - git-authors:
       show_email_address: false
       show_line_count: true
@@ -71,7 +71,8 @@ plugins:
       glob:
         - "wip.md"
   - exclude-unused-files
-  - mkdocs_quiz
+  - mkdocs_quiz:
+      auto_number: true
   - towncrier
   - markdown-exec
   - mkdocs-simple-hooks:
@@ -116,6 +117,3 @@ extra:
     default: estavel
   current_tag: v4.3
   python_supported_version: "3.10"
-
-hooks:
-  - hooks/quiz_hook.py

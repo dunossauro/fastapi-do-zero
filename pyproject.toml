@@ -19,7 +19,7 @@ dependencies = [
     "mkdocs-exclude (>=1.0.2,<2.0.0)",
     "mkdocs-exclude-unused-files (>=1.4.1,<2.0.0)",
     "mkdocs-macros-plugin (>=1.5.0,<2.0.0)",
-    "mkdocs-quiz (==0.0.41)",
+    "mkdocs-quiz (>=1.2.2,<2.0.0)",
     "towncrier (>=25.8.0,<26.0.0)",
     "mkdocs-towncrier (>=0.1.5,<0.2.0)",
     "markdown-exec[ansi] (>=1.12.1,<2.0.0)",
