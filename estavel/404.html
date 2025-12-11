@@ -57,37 +57,6 @@
 
     
     
-
-<script>
-    const preferencesKey = "fonts-preferences";
-    const preferencesId = "md-fonts-style";
-    const loadSetPreferences = () => {
-	let prefStyles = document.querySelector(`#${preferencesId}`);
-
-	if (!prefStyles) {
-	    prefStyles = document.createElement("style");
-	    prefStyles.id = preferencesId;
-	    document.head.insertAdjacentElement("beforeend", prefStyles);
-	}
-
-	prefStyles.innerHTML = "";
-
-	const loadedPreferences = __md_get(preferencesKey);
-
-	if (!loadedPreferences) {
-	    __md_set(preferencesKey, {
-		"__global": {
-		    "cssRaw": ""
-		}
-	    });
-	    return;
-	}
-
-	prefStyles.innerHTML = loadedPreferences["__global"]["cssRaw"];
-    };
-    loadSetPreferences();
-</script>
-
   </head>
   
   
@@ -247,7 +216,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Inicializando a pesquisa
+            Inicializando busca
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -258,7 +227,7 @@
 	
 	
 	<div class="md-header__source">
-	    <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+	    <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir para repositório" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -276,13 +245,40 @@
     <div class="md-container" data-md-component="container">
       
       
+  
+  <nav id="quiz-progress-mobile" class="quiz-progress-mobile md-nav" aria-label="Quiz Progress" style="display: none;">
+    <!-- mkdocs-quiz progress sidebar (mobile) -->
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-bar-incorrect" style="width: 0%"></div>
+      <div class="quiz-progress-bar-correct" style="width: 0%"></div>
+    </div>
+    <div data-md-component="quiz-progress">
+        <div class="quiz-correct-reset">
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Answered:">Answered:</span> <span class="quiz-progress-answered">0</span> / <span class="quiz-progress-total">0</span>
+          </span>
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Correct:">Correct:</span> <span class="quiz-progress-score">0</span> / <span class="quiz-progress-score-total">0</span>
+          </span>
+          <a href="#" class="quiz-reset-all-link" style="color: var(--md-primary-fg-color); text-decoration: none;">
+            <span data-quiz-translate="Reset">Reset</span>
+          </a>
+        </div>
+    </div>
+  </nav>
+
+  
+  
         
           
         
       
+
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
           
+  
+  
             
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
@@ -303,7 +299,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+      <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir para repositório" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -1500,7 +1496,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 01
+    01 - Configurando o Ambiente de Desenvolvimento
   
 
     
@@ -1556,7 +1552,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 03
+    03 - Estruturando o Projeto e Criando Rotas CRUD
   
 
     
@@ -1584,7 +1580,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 04
+    04 - Configurando o Banco de Dados e Gerenciando Migrações com Alembic
   
 
     
@@ -1612,7 +1608,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 05
+    05 - Integrando Banco de Dados a API
   
 
     
@@ -1640,7 +1636,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 06
+    06 - Autenticação e Autorização com JWT
   
 
     
@@ -1668,7 +1664,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 07
+    07 - Refatorando a Estrutura do Projeto
   
 
     
@@ -1696,7 +1692,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 08
+    08 - Tornando o projeto assíncrono
   
 
     
@@ -1724,7 +1720,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 09
+    09 - Tornando o sistema de autenticação robusto
   
 
     
@@ -1752,7 +1748,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 10
+    10 - Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
   
 
     
@@ -1881,6 +1877,43 @@
               </div>
             
           
+
+  
+  <div id="quiz-progress-sidebar" aria-label="Quiz Progress" style="display: none;">
+    <!-- mkdocs-quiz progress sidebar (desktop) -->
+    <label class="md-nav__title">
+      <span class="md-nav__icon md-icon"></span>
+      <span data-quiz-translate="Quiz Progress">Quiz Progress</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="quiz-progress">
+      <li class="md-nav__item">
+        <div class="md-nav__link">
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Answered:">Answered:</span> <span class="quiz-progress-answered">0</span> / <span class="quiz-progress-total">0</span> (<span class="quiz-progress-answered-percentage">0%</span>)
+          </span>
+        </div>
+      </li>
+      <li class="md-nav__item">
+        <div class="md-nav__link">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-bar-incorrect" style="width: 0%"></div>
+            <div class="quiz-progress-bar-correct" style="width: 0%"></div>
+          </div>
+        </div>
+      </li>
+      <li class="md-nav__item">
+        <div class="md-nav__link quiz-correct-reset">
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Correct:">Correct:</span> <span class="quiz-progress-score">0</span> / <span class="quiz-progress-score-total">0</span> (<span class="quiz-progress-score-percentage">0%</span>)
+          </span>
+          <a href="#" class="quiz-reset-all-link" style="color: var(--md-primary-fg-color); text-decoration: none;">
+            <span data-quiz-translate="Reset">Reset</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
           
             <div class="md-content" data-md-component="content">
               
@@ -2019,7 +2052,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/estavel", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "/estavel/assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "/estavel", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "/estavel/assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
     
     
       <script src="/estavel/assets/javascripts/bundle.e71a0d61.min.js"></script>

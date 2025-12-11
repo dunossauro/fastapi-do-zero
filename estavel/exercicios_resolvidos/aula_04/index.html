@@ -60,37 +60,6 @@
 
     
     
-
-<script>
-    const preferencesKey = "fonts-preferences";
-    const preferencesId = "md-fonts-style";
-    const loadSetPreferences = () => {
-	let prefStyles = document.querySelector(`#${preferencesId}`);
-
-	if (!prefStyles) {
-	    prefStyles = document.createElement("style");
-	    prefStyles.id = preferencesId;
-	    document.head.insertAdjacentElement("beforeend", prefStyles);
-	}
-
-	prefStyles.innerHTML = "";
-
-	const loadedPreferences = __md_get(preferencesKey);
-
-	if (!loadedPreferences) {
-	    __md_set(preferencesKey, {
-		"__global": {
-		    "cssRaw": ""
-		}
-	    });
-	    return;
-	}
-
-	prefStyles.innerHTML = loadedPreferences["__global"]["cssRaw"];
-    };
-    loadSetPreferences();
-</script>
-
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Exercícios da aula 04 - FastAPI do Zero">
@@ -132,7 +101,7 @@
       
         
         <a href="#exercicios-da-aula-04" class="md-skip">
-          Ir para o conteúdo
+          Pular para conteúdo
         </a>
       
     </div>
@@ -276,7 +245,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Inicializando a pesquisa
+            Inicializando busca
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -287,7 +256,7 @@
 	
 	
 	<div class="md-header__source">
-	    <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+	    <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir para repositório" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
@@ -305,13 +274,40 @@
     <div class="md-container" data-md-component="container">
       
       
+  
+  <nav id="quiz-progress-mobile" class="quiz-progress-mobile md-nav" aria-label="Quiz Progress" style="display: none;">
+    <!-- mkdocs-quiz progress sidebar (mobile) -->
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-bar-incorrect" style="width: 0%"></div>
+      <div class="quiz-progress-bar-correct" style="width: 0%"></div>
+    </div>
+    <div data-md-component="quiz-progress">
+        <div class="quiz-correct-reset">
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Answered:">Answered:</span> <span class="quiz-progress-answered">0</span> / <span class="quiz-progress-total">0</span>
+          </span>
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Correct:">Correct:</span> <span class="quiz-progress-score">0</span> / <span class="quiz-progress-score-total">0</span>
+          </span>
+          <a href="#" class="quiz-reset-all-link" style="color: var(--md-primary-fg-color); text-decoration: none;">
+            <span data-quiz-translate="Reset">Reset</span>
+          </a>
+        </div>
+    </div>
+  </nav>
+
+  
+  
         
           
         
       
+
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
           
+  
+  
             
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
@@ -332,7 +328,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir ao repositório" class="md-source" data-md-component="source">
+      <a href="https://github.com/dunossauro/fastapi-do-zero" title="Ir para repositório" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
@@ -1690,7 +1686,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 01
+    01 - Configurando o Ambiente de Desenvolvimento
   
 
     
@@ -1746,7 +1742,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 03
+    03 - Estruturando o Projeto e Criando Rotas CRUD
   
 
     
@@ -1774,7 +1770,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 04
+    04 - Configurando o Banco de Dados e Gerenciando Migrações com Alembic
   
 
     
@@ -1802,7 +1798,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 05
+    05 - Integrando Banco de Dados a API
   
 
     
@@ -1830,7 +1826,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 06
+    06 - Autenticação e Autorização com JWT
   
 
     
@@ -1858,7 +1854,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 07
+    07 - Refatorando a Estrutura do Projeto
   
 
     
@@ -1886,7 +1882,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 08
+    08 - Tornando o projeto assíncrono
   
 
     
@@ -1914,7 +1910,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 09
+    09 - Tornando o sistema de autenticação robusto
   
 
     
@@ -1942,7 +1938,7 @@
   <span class="md-ellipsis">
     
   
-    Aula 10
+    10 - Criando Rotas CRUD para Gerenciamento de Tarefas em FastAPI
   
 
     
@@ -2193,6 +2189,43 @@
               </div>
             
           
+
+  
+  <div id="quiz-progress-sidebar" aria-label="Quiz Progress" style="display: none;">
+    <!-- mkdocs-quiz progress sidebar (desktop) -->
+    <label class="md-nav__title">
+      <span class="md-nav__icon md-icon"></span>
+      <span data-quiz-translate="Quiz Progress">Quiz Progress</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="quiz-progress">
+      <li class="md-nav__item">
+        <div class="md-nav__link">
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Answered:">Answered:</span> <span class="quiz-progress-answered">0</span> / <span class="quiz-progress-total">0</span> (<span class="quiz-progress-answered-percentage">0%</span>)
+          </span>
+        </div>
+      </li>
+      <li class="md-nav__item">
+        <div class="md-nav__link">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-bar-incorrect" style="width: 0%"></div>
+            <div class="quiz-progress-bar-correct" style="width: 0%"></div>
+          </div>
+        </div>
+      </li>
+      <li class="md-nav__item">
+        <div class="md-nav__link quiz-correct-reset">
+          <span class="md-ellipsis">
+            <span data-quiz-translate="Correct:">Correct:</span> <span class="quiz-progress-score">0</span> / <span class="quiz-progress-score-total">0</span> (<span class="quiz-progress-score-percentage">0%</span>)
+          </span>
+          <a href="#" class="quiz-reset-all-link" style="color: var(--md-primary-fg-color); text-decoration: none;">
+            <span data-quiz-translate="Reset">Reset</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
           
             <div class="md-content" data-md-component="content">
               
@@ -2430,9 +2463,14 @@ O arquivo deve se parecer com esse:</p>
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
+  position: relative;
 }
-/* Set margin-top of first quiz child */
-.quiz > *:first-child {
+/* Set margin-top of first quiz child (skip the header link) */
+.quiz > .quiz-question:first-of-type {
+  margin-top: 0;
+}
+/* Remove top margin from first element inside quiz-question */
+.quiz-question > *:first-child {
   margin-top: 0;
 }
 .hidden {
@@ -2448,13 +2486,30 @@ form button {
   text-decoration: none;
   display: inline-block;
   font-size: 0.8rem;
+  cursor: pointer;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
 }
 
-.wrong label {
-  color: red;
+form button:hover:not(:disabled) {
+  opacity: 0.9;
 }
-.correct label {
-  color: green;
+
+form button:disabled {
+  background-color: var(--md-default-fg-color--lighter, #ccc);
+  color: var(--md-default-fg-color--light, #666);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.wrong label,
+.wrong label * {
+  color: #dc3545;
+}
+.correct label,
+.correct label * {
+  color: #198754;
 }
 
 fieldset {
@@ -2469,73 +2524,1160 @@ fieldset label {
   margin: 0 10px;
 }
 
-label.correct {
-  color: green;
+input[type="radio"].correct {
+  accent-color: #198754;
 }
-label.wrong {
-  color: red;
-}
-input[type='radio'].correct {
-  accent-color: green;
-}
-input[type='radio'].wrong {
-  accent-color: red;
+input[type="radio"].wrong {
+  accent-color: #dc3545;
 }
 .content {
   margin: 10px;
 }
-</style><script type="text/javascript" defer>document.querySelectorAll('.quiz').forEach((quiz) => {
-  let form = quiz.querySelector('form');
-  let fieldset = form.querySelector('fieldset');
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    let selectedAnswers = form.querySelectorAll('input[name="answer"]:checked');
-    let correctAnswers = fieldset.querySelectorAll(
-      'input[name="answer"][correct]'
-    );
-    // Check if all correct answers are selected
-    let is_correct = selectedAnswers.length === correctAnswers.length;
-    for (let i = 0; i < selectedAnswers.length; i++) {
-      if (!selectedAnswers[i].hasAttribute('correct')) {
-        is_correct = false;
-        break;
-      }
-    }
-    let section = quiz.querySelector('section');
-    if (is_correct) {
-      section.classList.remove('hidden');
-      resetFieldset(fieldset);
-      // Mark all fields with colors
-      const allAnswers = fieldset.querySelectorAll('input[name="answer"]');
-      for (let i = 0; i < allAnswers.length; i++) {
-        if (allAnswers[i].hasAttribute('correct')) {
-          allAnswers[i].parentElement.classList.add('correct');
-        } else {
-          allAnswers[i].parentElement.classList.add('wrong');
-        }
-      }
-    } else {
-      section.classList.add('hidden');
-      resetFieldset(fieldset);
-      // Mark wrong fields with colors
-      for (let i = 0; i < selectedAnswers.length; i++) {
-        if (!selectedAnswers[i].hasAttribute('correct')) {
-          selectedAnswers[i].parentElement.classList.add('wrong');
-        } else {
-          selectedAnswers[i].parentElement.classList.add('correct');
-        }
-      }
-    }
-  });
-});
 
-function resetFieldset(fieldset) {
-  const fieldsetChildren = fieldset.children;
-  for (let i = 0; i < fieldsetChildren.length; i++) {
-    fieldsetChildren[i].classList.remove('wrong');
-    fieldsetChildren[i].classList.remove('correct');
+/* Quiz feedback message */
+.quiz-feedback {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.quiz-feedback.correct {
+  background-color: #d1e7dd;
+  border: 1px solid #a3cfbb;
+  color: #198754;
+}
+
+.quiz-feedback.incorrect {
+  background-color: #f8d7da;
+  border: 1px solid #f1aeb5;
+  color: #dc3545;
+}
+
+[data-md-color-scheme="slate"] .quiz-feedback.correct {
+  background-color: #051b11;
+  border: 1px solid #0f5132;
+}
+
+[data-md-color-scheme="slate"] .quiz-feedback.incorrect {
+  background-color: #2c0b0e;
+  border: 1px solid #842029;
+}
+
+/* Quiz header link styling - positioned in top right corner */
+.quiz-header-link {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--md-default-fg-color--light, #888);
+  transition: opacity 0.2s;
+  padding: 0.25rem 0.5rem;
+}
+.quiz:hover .quiz-header-link {
+  opacity: 1;
+}
+
+/* Quiz number header styling */
+.quiz-number {
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* Quiz Progress Sidebar - Progress bar styling */
+/* Most styling comes from Material's .md-nav classes */
+#quiz-progress-sidebar {
+  margin-top: 1.5rem;
+}
+/* if config progress_sidebar_position is top, need top padding instead of bottom */
+.md-nav--secondary > #quiz-progress-sidebar:first-child {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+@media screen and (min-width: 59.9375em) {
+  #quiz-progress-sidebar .md-nav__list {
+    border-left: 3px solid var(--md-default-fg-color--lightest);
   }
 }
+
+.quiz-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--md-default-fg-color--lightest, rgba(0, 0, 0, 0.07));
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0.2rem 0;
+  display: flex;
+}
+
+.quiz-progress-bar-incorrect {
+  height: 100%;
+  background: rgba(244, 67, 54, 0.8);
+  transition: width 0.3s ease;
+}
+
+.quiz-progress-bar-correct {
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.quiz-correct-reset {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Mobile Quiz Progress Tracker */
+/* Shows under navbar on mobile, hidden on desktop */
+.quiz-progress-mobile {
+  display: none; /* Hidden by default on desktop */
+  background-color: var(--md-default-bg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest, rgba(0, 0, 0, 0.07));
+  padding: 0.8rem;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 48px;
+  z-index: 3; /* Below Material header (z-index: 4) but above page content */
+}
+
+/* Show mobile tracker only on small screens (mobile/tablet) */
+/* Material breakpoint: up to 76.1875em (1219px) */
+@media screen and (max-width: 76.1875em) {
+  .quiz-progress-mobile {
+    display: block;
+  }
+}
+
+/* Mobile tracker styling adjustments */
+.quiz-progress-mobile .md-nav__list {
+  padding: 0;
+  margin: 0;
+  max-width: 61rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.quiz-progress-mobile .md-nav__item {
+  margin: 0.3rem 0;
+}
+
+.quiz-progress-mobile .md-nav__link {
+  padding: 0.2rem 0;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz-progress-mobile .quiz-progress-bar {
+  margin: 0.3rem 0;
+}
+
+.quiz-progress-mobile .md-ellipsis {
+  flex: 1;
+}
+
+/* Quiz Intro */
+.quiz-intro {
+  margin: 1rem 0;
+}
+
+.quiz-intro p {
+  margin: 0 0 0.5rem 0;
+}
+
+/* Quiz Results End Screen */
+.quiz-results {
+  border: 1px solid black;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  background-color: var(--md-default-bg-color);
+  transition: all 0.3s ease;
+}
+
+/* Progress state - subtle styling */
+.quiz-results-progress {
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+}
+
+.quiz-results-progress h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--md-default-fg-color);
+}
+
+.quiz-results-stats,
+.quiz-results-correct-stats {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+.quiz-results-answered,
+.quiz-results-correct,
+.quiz-results-total,
+.quiz-results-percentage {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+}
+
+/* Complete state - bold and prominent styling */
+.quiz-results-complete {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.quiz-results-complete.hidden {
+  display: none;
+}
+
+.quiz-results-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: var(--md-default-fg-color);
+}
+
+.quiz-results-score-display {
+  margin: 1.5rem 0;
+}
+
+.quiz-results-score-value {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Score color coding */
+.quiz-results-score-excellent {
+  color: #198754;
+  background-color: rgba(25, 135, 84, 0.1);
+}
+
+.quiz-results-score-good {
+  color: #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.quiz-results-score-average {
+  color: #ffc107;
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.quiz-results-score-poor {
+  color: #fd7e14;
+  background-color: rgba(253, 126, 20, 0.1);
+}
+
+.quiz-results-score-fail {
+  color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.quiz-results-message {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 1rem 0 2rem 0;
+  color: var(--md-default-fg-color);
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .quiz-results-score-excellent {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.15);
+}
+
+[data-md-color-scheme="slate"] .quiz-results-score-good {
+  color: #66bb6a;
+  background-color: rgba(102, 187, 106, 0.15);
+}
+
+[data-md-color-scheme="slate"] .quiz-results-score-average {
+  color: #ffeb3b;
+  background-color: rgba(255, 235, 59, 0.15);
+}
+
+[data-md-color-scheme="slate"] .quiz-results-score-poor {
+  color: #ff9800;
+  background-color: rgba(255, 152, 0, 0.15);
+}
+
+[data-md-color-scheme="slate"] .quiz-results-score-fail {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.15);
+}
+</style><script type="text/javascript">var JSConfetti=function(){"use strict";function t(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function e(t,e){for(var i=0;i<e.length;i++){var n=e[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}function i(t,i,n){return i&&e(t.prototype,i),n&&e(t,n),t}function n(t){return+t.replace(/px/,"")}function s(t,e){var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:0,n=Math.random()*(e-t)+t;return Math.floor(n*Math.pow(10,i))/Math.pow(10,i)}function o(t){return t[s(0,t.length)]}var a=["#fcf403","#62fc03","#f4fc03","#03e7fc","#03fca5","#a503fc","#fc03ad","#fc03c2"];function r(t){return Math.log(t)/Math.log(1920)}var h=function(){function e(i){t(this,e);var n=i.initialPosition,a=i.direction,h=i.confettiRadius,c=i.confettiColors,u=i.emojis,l=i.emojiSize,d=i.canvasWidth,f=s(.9,1.7,3)*r(d);this.confettiSpeed={x:f,y:f},this.finalConfettiSpeedX=s(.2,.6,3),this.rotationSpeed=u.length?.01:s(.03,.07,3)*r(d),this.dragForceCoefficient=s(5e-4,9e-4,6),this.radius={x:h,y:h},this.initialRadius=h,this.rotationAngle="left"===a?s(0,.2,3):s(-.2,0,3),this.emojiSize=l,this.emojiRotationAngle=s(0,2*Math.PI),this.radiusYUpdateDirection="down";var m="left"===a?s(82,15)*Math.PI/180:s(-15,-82)*Math.PI/180;this.absCos=Math.abs(Math.cos(m)),this.absSin=Math.abs(Math.sin(m));var v=s(-150,0),p={x:n.x+("left"===a?-v:v)*this.absCos,y:n.y-v*this.absSin};this.currentPosition=Object.assign({},p),this.initialPosition=Object.assign({},p),this.color=u.length?null:o(c),this.emoji=u.length?o(u):null,this.createdAt=(new Date).getTime(),this.direction=a}return i(e,[{key:"draw",value:function(t){var e=this.currentPosition,i=this.radius,n=this.color,s=this.emoji,o=this.rotationAngle,a=this.emojiRotationAngle,r=this.emojiSize,h=window.devicePixelRatio;n?(t.fillStyle=n,t.beginPath(),t.ellipse(e.x*h,e.y*h,i.x*h,i.y*h,o,0,2*Math.PI),t.fill()):s&&(t.font="".concat(r,"px serif"),t.save(),t.translate(h*e.x,h*e.y),t.rotate(a),t.textAlign="center",t.fillText(s,0,0),t.restore())}},{key:"updatePosition",value:function(t,e){var i=this.confettiSpeed,n=this.dragForceCoefficient,s=this.finalConfettiSpeedX,o=this.radiusYUpdateDirection,a=this.rotationSpeed,r=this.createdAt,h=this.direction,c=e-r;i.x>s&&(this.confettiSpeed.x-=n*t),this.currentPosition.x+=i.x*("left"===h?-this.absCos:this.absCos)*t,this.currentPosition.y=this.initialPosition.y-i.y*this.absSin*c+.00125*Math.pow(c,2)/2,this.rotationSpeed-=this.emoji?1e-4:1e-5*t,this.rotationSpeed<0&&(this.rotationSpeed=0),this.emoji?this.emojiRotationAngle+=this.rotationSpeed*t%(2*Math.PI):"down"===o?(this.radius.y-=t*a,this.radius.y<=0&&(this.radius.y=0,this.radiusYUpdateDirection="up")):(this.radius.y+=t*a,this.radius.y>=this.initialRadius&&(this.radius.y=this.initialRadius,this.radiusYUpdateDirection="down"))}},{key:"getIsVisibleOnCanvas",value:function(t){return this.currentPosition.y<t+100}}]),e}();function c(){var t=document.createElement("canvas");return t.style.position="fixed",t.style.width="100%",t.style.height="100%",t.style.top="0",t.style.left="0",t.style.zIndex="1000",t.style.pointerEvents="none",document.body.appendChild(t),t}function u(t){var e=t.confettiRadius,i=void 0===e?6:e,n=t.confettiNumber,s=void 0===n?t.confettiesNumber||(t.emojis?40:250):n,o=t.confettiColors,r=void 0===o?a:o,h=t.emojis,c=void 0===h?t.emojies||[]:h,u=t.emojiSize,l=void 0===u?80:u;return t.emojies&&console.error("emojies argument is deprecated, please use emojis instead"),t.confettiesNumber&&console.error("confettiesNumber argument is deprecated, please use confettiNumber instead"),{confettiRadius:i,confettiNumber:s,confettiColors:r,emojis:c,emojiSize:l}}var l=function(){function e(i){var n=this;t(this,e),this.canvasContext=i,this.shapes=[],this.promise=new Promise((function(t){return n.resolvePromise=t}))}return i(e,[{key:"getBatchCompletePromise",value:function(){return this.promise}},{key:"addShapes",value:function(){var t;(t=this.shapes).push.apply(t,arguments)}},{key:"complete",value:function(){var t;return!this.shapes.length&&(null===(t=this.resolvePromise)||void 0===t||t.call(this),!0)}},{key:"processShapes",value:function(t,e,i){var n=this,s=t.timeDelta,o=t.currentTime;this.shapes=this.shapes.filter((function(t){return t.updatePosition(s,o),t.draw(n.canvasContext),!i||t.getIsVisibleOnCanvas(e)}))}}]),e}();return function(){function e(){var i=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};t(this,e),this.activeConfettiBatches=[],this.canvas=i.canvas||c(),this.canvasContext=this.canvas.getContext("2d"),this.requestAnimationFrameRequested=!1,this.lastUpdated=(new Date).getTime(),this.iterationIndex=0,this.loop=this.loop.bind(this),requestAnimationFrame(this.loop)}return i(e,[{key:"loop",value:function(){var t,e,i,s,o;this.requestAnimationFrameRequested=!1,t=this.canvas,e=window.devicePixelRatio,i=getComputedStyle(t),s=n(i.getPropertyValue("width")),o=n(i.getPropertyValue("height")),t.setAttribute("width",(s*e).toString()),t.setAttribute("height",(o*e).toString());var a=(new Date).getTime(),r=a-this.lastUpdated,h=this.canvas.offsetHeight,c=this.iterationIndex%10==0;this.activeConfettiBatches=this.activeConfettiBatches.filter((function(t){return t.processShapes({timeDelta:r,currentTime:a},h,c),!c||!t.complete()})),this.iterationIndex++,this.queueAnimationFrameIfNeeded(a)}},{key:"queueAnimationFrameIfNeeded",value:function(t){this.requestAnimationFrameRequested||this.activeConfettiBatches.length<1||(this.requestAnimationFrameRequested=!0,this.lastUpdated=t||(new Date).getTime(),requestAnimationFrame(this.loop))}},{key:"addConfetti",value:function(){for(var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e=u(t),i=e.confettiRadius,n=e.confettiNumber,s=e.confettiColors,o=e.emojis,a=e.emojiSize,r=this.canvas.getBoundingClientRect(),c=r.width,d=r.height,f=5*d/7,m={x:0,y:f},v={x:c,y:f},p=new l(this.canvasContext),y=0;y<n/2;y++){var g=new h({initialPosition:m,direction:"right",confettiRadius:i,confettiColors:s,confettiNumber:n,emojis:o,emojiSize:a,canvasWidth:c}),C=new h({initialPosition:v,direction:"left",confettiRadius:i,confettiColors:s,confettiNumber:n,emojis:o,emojiSize:a,canvasWidth:c});p.addShapes(g,C)}return this.activeConfettiBatches.push(p),this.queueAnimationFrameIfNeeded(),p.getBatchCompletePromise()}},{key:"clearCanvas",value:function(){this.activeConfettiBatches=[]}},{key:"destroyCanvas",value:function(){this.canvas.remove()}}]),e}()}();
+</script><script type="text/javascript">
+window.mkdocsQuizTranslations = {"Submit": "Enviar", "Question {n}": "Questão {n}", "Quiz Progress": "Progresso do quiz", "questions answered": "questões respondidas", "correct": "correto", "Quiz Complete!": "Quiz completo!", "Reset quiz": "Reiniciar quiz", "Quiz results are saved to your browser's local storage and will persist between sessions.": "Os resultados do quiz são salvos no local storage do seu browser e serão persistidos entre as sessões.", "Outstanding! You aced it!": "Excelente! Você arrasou!", "Great job! You really know your stuff!": "Excelente trabalho! Você realmente entende do assunto!", "Good effort! Keep learning!": "Bom trabalho! Continue aprendendo!", "Not bad, but there's room for improvement!": "Nada mal, mas há espaço para melhorias!", "Better luck next time! Keep trying!": "Boa sorte na próxima vez! Continue tentando!", "Are you sure you want to reset the quiz? This will clear your progress.": "Tem certeza de que deseja reiniciar o teste? Isso apagará seu progresso.", "Try Again": "Tente novamente", "Correct answer!": "Resposta correta!", "Incorrect answer. Please try again.": "Resposta incorreta. Tente de novo.", "Incorrect answer.": "Resposta incorreta.", "Answered:": "Respondido:", "Correct:": "Correto:", "Reset": "Reiniciar"};
+</script><script type="text/javascript">
+window.mkdocsQuizConfig = {
+  confetti: true,
+  showProgress: true,
+  progressSidebarPosition: "top"
+};
+</script><script type="text/javascript" defer>// Wrap everything in an IIFE to avoid variable redeclaration issues
+// when Material for MkDocs instant navigation reloads the page
+(function () {
+  // Constants
+  const STORAGE_KEY_PREFIX = "quiz_progress_";
+
+  // Translation helper function
+  function t(key, params = {}) {
+    let text = window.mkdocsQuizTranslations?.[key] || key;
+    // Simple template replacement for {n} and {key} style placeholders
+    return text.replace(/{(\w+)}/g, (_, k) => (params[k] !== undefined ? params[k] : `{${k}}`));
+  }
+
+  // Confetti instance (will be initialized if enabled)
+  let jsConfetti = null;
+
+  // Store event listeners for cleanup
+  let eventListeners = [];
+
+  // Initialize confetti if enabled
+  if (window.mkdocsQuizConfig && window.mkdocsQuizConfig.confetti) {
+    if (typeof JSConfetti !== "undefined") {
+      jsConfetti = new JSConfetti();
+    }
+  }
+
+  // Function to move quiz progress sidebar into TOC sidebar
+  // This needs to run on every page load for Material instant navigation
+  function repositionSidebar() {
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      const sidebar = document.getElementById("quiz-progress-sidebar");
+      const tocSidebar = document.querySelector(".md-sidebar--secondary .md-sidebar__inner .md-nav--secondary");
+
+      if (sidebar && tocSidebar) {
+        // Check if sidebar is already in the correct position
+        // by seeing if it's already a child of tocSidebar
+        if (!tocSidebar.contains(sidebar)) {
+          // Get position from config (default: "top")
+          const position =
+            window.mkdocsQuizConfig && window.mkdocsQuizConfig.progressSidebarPosition
+              ? window.mkdocsQuizConfig.progressSidebarPosition
+              : "top";
+
+          // Move sidebar based on configured position
+          if (position === "bottom") {
+            // Append to the end (below TOC)
+            tocSidebar.appendChild(sidebar);
+          } else {
+            // Default: insert at the top (above TOC)
+            if (tocSidebar.firstChild) {
+              tocSidebar.insertBefore(sidebar, tocSidebar.firstChild);
+            } else {
+              tocSidebar.appendChild(sidebar);
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // Cleanup function to remove event listeners and prevent memory leaks
+  function cleanup() {
+    eventListeners.forEach(({ element, event, handler }) => {
+      element.removeEventListener(event, handler);
+    });
+    eventListeners = [];
+  }
+
+  // Helper function to add tracked event listeners
+  function addTrackedEventListener(element, event, handler) {
+    element.addEventListener(event, handler);
+    eventListeners.push({ element, event, handler });
+  }
+
+  // Global quiz tracker
+  const quizTracker = {
+    quizzes: {},
+    totalQuizzes: 0,
+    answeredQuizzes: 0,
+    correctQuizzes: 0,
+
+    init: function () {
+      this.totalQuizzes = document.querySelectorAll(".quiz").length;
+      this.loadFromStorage();
+      // Initialize wasCompleted based on restored state to prevent confetti on page load
+      // Only fire confetti when completing quizzes in the current session, not from localStorage
+      const progress = this.getProgress();
+      this.wasCompleted = progress.answered === progress.total && progress.total > 0;
+      this.updateDisplay();
+    },
+
+    markQuiz: function (quizId, isCorrect, selectedValues = []) {
+      const wasAnswered = !!this.quizzes[quizId];
+      const wasCorrect = this.wasPreviouslyCorrect(quizId);
+
+      if (!wasAnswered) {
+        this.answeredQuizzes++;
+      }
+
+      this.quizzes[quizId] = {
+        answered: true,
+        correct: isCorrect,
+        selectedValues: selectedValues,
+      };
+
+      if (isCorrect && !wasCorrect) {
+        this.correctQuizzes++;
+      } else if (!isCorrect && wasCorrect) {
+        this.correctQuizzes--;
+      }
+
+      this.saveToStorage();
+      this.updateDisplay();
+    },
+
+    wasPreviouslyCorrect: function (quizId) {
+      return this.quizzes[quizId] && this.quizzes[quizId].correct;
+    },
+
+    resetQuiz: function (quizId) {
+      if (this.quizzes[quizId]) {
+        if (this.quizzes[quizId].correct) {
+          this.correctQuizzes--;
+        }
+        this.answeredQuizzes--;
+        delete this.quizzes[quizId];
+        this.saveToStorage();
+        this.updateDisplay();
+      }
+    },
+
+    resetAllQuiz: function () {
+      this.quizzes = {};
+      this.answeredQuizzes = 0;
+      this.correctQuizzes = 0;
+      this.saveToStorage();
+      this.updateDisplay();
+
+      // Reset all quiz forms on the page
+      document.querySelectorAll(".quiz").forEach((quiz) => {
+        const form = quiz.querySelector("form");
+        const fieldset = form.querySelector("fieldset");
+        const submitButton = form.querySelector('button[type="submit"]');
+        const resetButton = form.querySelector(".quiz-reset-button");
+        const feedbackDiv = form.querySelector(".quiz-feedback");
+        const section = quiz.querySelector("section");
+
+        // Clear all selections
+        const allInputs = fieldset.querySelectorAll('input[name="answer"]');
+        allInputs.forEach((input) => {
+          input.checked = false;
+          input.disabled = false;
+        });
+
+        // Reset colors
+        resetFieldset(fieldset);
+
+        // Hide content section
+        if (section) {
+          section.classList.add("hidden");
+        }
+
+        // Hide feedback message
+        feedbackDiv.classList.add("hidden");
+        feedbackDiv.classList.remove("correct", "incorrect");
+        feedbackDiv.textContent = "";
+
+        // Show submit button, hide reset button
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.classList.remove("hidden");
+        }
+        if (resetButton) {
+          resetButton.classList.add("hidden");
+        }
+      });
+    },
+
+    getProgress: function () {
+      return {
+        total: this.totalQuizzes,
+        answered: this.answeredQuizzes,
+        correct: this.correctQuizzes,
+        percentage: this.totalQuizzes > 0 ? Math.round((this.answeredQuizzes / this.totalQuizzes) * 100) : 0,
+        score: this.totalQuizzes > 0 ? Math.round((this.correctQuizzes / this.totalQuizzes) * 100) : 0,
+      };
+    },
+
+    saveToStorage: function () {
+      try {
+        const pageKey = STORAGE_KEY_PREFIX + window.location.pathname;
+        const data = JSON.stringify(this.quizzes);
+
+        // Check size limit (50KB max to prevent quota issues)
+        if (data.length > 50000) {
+          console.warn("Quiz progress data exceeds size limit, not saving to localStorage");
+          this.showStorageWarning("Quiz progress is too large to save");
+          return;
+        }
+
+        localStorage.setItem(pageKey, data);
+      } catch (e) {
+        // Handle quota exceeded or localStorage disabled
+        console.error("Failed to save quiz progress:", e);
+        this.showStorageWarning(
+          "Unable to save quiz progress. Your browser may have storage disabled or quota exceeded.",
+        );
+      }
+    },
+
+    loadFromStorage: function () {
+      try {
+        const pageKey = STORAGE_KEY_PREFIX + window.location.pathname;
+        const stored = localStorage.getItem(pageKey);
+
+        if (stored) {
+          // Validate size before parsing (50KB max)
+          if (stored.length > 50000) {
+            console.warn("Stored quiz data exceeds size limit, clearing corrupted data");
+            localStorage.removeItem(pageKey);
+            return;
+          }
+
+          const parsed = JSON.parse(stored);
+
+          // Validate structure: should be an object
+          if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+            console.warn("Invalid quiz data structure, clearing corrupted data");
+            localStorage.removeItem(pageKey);
+            return;
+          }
+
+          this.quizzes = parsed;
+
+          // Recalculate counts and validate quiz data structure
+          this.answeredQuizzes = 0;
+          this.correctQuizzes = 0;
+          for (let key in this.quizzes) {
+            const quiz = this.quizzes[key];
+            // Validate each quiz entry has expected structure
+            if (typeof quiz !== "object" || typeof quiz.answered !== "boolean" || typeof quiz.correct !== "boolean") {
+              console.warn("Invalid quiz entry structure, clearing corrupted data");
+              this.quizzes = {};
+              localStorage.removeItem(pageKey);
+              return;
+            }
+
+            if (quiz.answered) {
+              this.answeredQuizzes++;
+            }
+            if (quiz.correct) {
+              this.correctQuizzes++;
+            }
+          }
+        }
+      } catch (e) {
+        // Handle parsing errors or localStorage unavailable
+        console.error("Failed to load quiz progress:", e);
+        const pageKey = STORAGE_KEY_PREFIX + window.location.pathname;
+        try {
+          localStorage.removeItem(pageKey); // Clear corrupted data
+        } catch (cleanupError) {
+          // localStorage might be completely unavailable
+        }
+      }
+    },
+
+    updateDisplay: function () {
+      const progress = this.getProgress();
+      const wasComplete = this.wasCompleted;
+      const isComplete = progress.answered === progress.total && progress.total > 0;
+
+      // Dispatch custom event for sidebar/other UI components
+      window.dispatchEvent(
+        new CustomEvent("quizProgressUpdate", {
+          detail: progress,
+        }),
+      );
+      // Update sidebar if it exists
+      this.updateSidebar();
+      // Update results div if it exists
+      this.updateResultsDiv(progress, isComplete, wasComplete);
+
+      // Track completion state
+      this.wasCompleted = isComplete;
+    },
+
+    updateResultsDiv: function (progress, isComplete, wasComplete) {
+      const resultsDiv = document.getElementById("quiz-results");
+      if (!resultsDiv) return;
+
+      // Update progress section
+      const answeredEl = resultsDiv.querySelector(".quiz-results-answered");
+      const totalEl = resultsDiv.querySelector(".quiz-results-total");
+      const percentageEl = resultsDiv.querySelector(".quiz-results-percentage");
+      const correctEl = resultsDiv.querySelector(".quiz-results-correct");
+
+      if (answeredEl) answeredEl.textContent = progress.answered;
+      if (totalEl) totalEl.textContent = progress.total;
+      if (percentageEl) percentageEl.textContent = progress.percentage + "%";
+      if (correctEl) correctEl.textContent = progress.correct;
+
+      // Handle completion state
+      const progressSection = resultsDiv.querySelector(".quiz-results-progress");
+      const completeSection = resultsDiv.querySelector(".quiz-results-complete");
+
+      if (isComplete) {
+        // Hide progress, show complete
+        if (progressSection) progressSection.classList.add("hidden");
+        if (completeSection) {
+          completeSection.classList.remove("hidden");
+
+          // Update score display
+          const scoreValue = resultsDiv.querySelector(".quiz-results-score-value");
+          const scoreMessage = resultsDiv.querySelector(".quiz-results-message");
+
+          if (scoreValue) {
+            scoreValue.textContent = progress.score + "%";
+
+            // Remove all score classes
+            scoreValue.classList.remove(
+              "quiz-results-score-excellent",
+              "quiz-results-score-good",
+              "quiz-results-score-average",
+              "quiz-results-score-poor",
+              "quiz-results-score-fail",
+            );
+
+            // Add appropriate score class and message
+            let message = "";
+            if (progress.score >= 90) {
+              scoreValue.classList.add("quiz-results-score-excellent");
+              message = t("Outstanding! You aced it!");
+            } else if (progress.score >= 75) {
+              scoreValue.classList.add("quiz-results-score-good");
+              message = t("Great job! You really know your stuff!");
+            } else if (progress.score >= 60) {
+              scoreValue.classList.add("quiz-results-score-average");
+              message = t("Good effort! Keep learning!");
+            } else if (progress.score >= 40) {
+              scoreValue.classList.add("quiz-results-score-poor");
+              message = t("Not bad, but there's room for improvement!");
+            } else {
+              scoreValue.classList.add("quiz-results-score-fail");
+              message = t("Better luck next time! Keep trying!");
+            }
+
+            if (scoreMessage) scoreMessage.textContent = message;
+          }
+
+          // Trigger confetti and scroll on first completion
+          if (!wasComplete) {
+            // Scroll to results div
+            resultsDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+
+            // Fire confetti if enabled and score is good
+            if (jsConfetti && progress.score >= 10) {
+              setTimeout(() => {
+                jsConfetti.addConfetti();
+              }, 500);
+            }
+          }
+        }
+      } else {
+        // Show progress, hide complete
+        if (progressSection) progressSection.classList.remove("hidden");
+        if (completeSection) completeSection.classList.add("hidden");
+      }
+    },
+
+    updateSidebar: function () {
+      // Update both desktop and mobile sidebars
+      const sidebars = [
+        document.getElementById("quiz-progress-sidebar"),
+        document.getElementById("quiz-progress-mobile"),
+      ];
+
+      sidebars.forEach((sidebar) => {
+        if (sidebar) {
+          const progress = this.getProgress();
+
+          // Update answered count
+          const answeredEl = sidebar.querySelector(".quiz-progress-answered");
+          if (answeredEl) {
+            answeredEl.textContent = progress.answered;
+          }
+
+          // Update answered percentage - desktop only
+          const answeredPercentageEl = sidebar.querySelector(".quiz-progress-answered-percentage");
+          if (answeredPercentageEl && sidebar.id == "quiz-progress-sidebar") {
+            answeredPercentageEl.textContent = progress.percentage + "%";
+          }
+
+          // Update all .quiz-progress-total elements
+          const totalElements = sidebar.querySelectorAll(".quiz-progress-total");
+          totalElements.forEach((el) => {
+            el.textContent = progress.total;
+          });
+
+          // Update correct count
+          const scoreEl = sidebar.querySelector(".quiz-progress-score");
+          if (scoreEl) {
+            scoreEl.textContent = progress.correct;
+          }
+
+          // Update correct denominator (answered count)
+          const scoreTotalEl = sidebar.querySelector(".quiz-progress-score-total");
+          if (scoreTotalEl) {
+            scoreTotalEl.textContent = progress.answered;
+          }
+
+          // Update correct percentage (based on answered quizzes, not total) - desktop only
+          const scorePercentageEl = sidebar.querySelector(".quiz-progress-score-percentage");
+          if (scorePercentageEl && sidebar.id == "quiz-progress-sidebar") {
+            const scorePercentage =
+              progress.answered > 0 ? Math.round((progress.correct / progress.answered) * 100) : 0;
+            scorePercentageEl.textContent = scorePercentage + "%";
+          }
+
+          // Update progress bars (incorrect and correct)
+          const correctBar = sidebar.querySelector(".quiz-progress-bar-correct");
+          const incorrectBar = sidebar.querySelector(".quiz-progress-bar-incorrect");
+
+          if (correctBar && incorrectBar) {
+            const incorrectCount = progress.answered - progress.correct;
+            const correctPercentage = progress.total > 0 ? (progress.correct / progress.total) * 100 : 0;
+            const incorrectPercentage = progress.total > 0 ? (incorrectCount / progress.total) * 100 : 0;
+
+            incorrectBar.style.width = incorrectPercentage + "%";
+            correctBar.style.width = correctPercentage + "%";
+          }
+        }
+      });
+    },
+
+    createSidebar: function () {
+      // Check if progress tracking is enabled
+      const showProgress = window.mkdocsQuizConfig && window.mkdocsQuizConfig.showProgress !== false;
+
+      // Only show sidebar if progress tracking is enabled and there are quizzes
+      if (!showProgress || this.totalQuizzes === 0) {
+        return;
+      }
+
+      // Show both desktop and mobile sidebars
+      const desktopSidebar = document.getElementById("quiz-progress-sidebar");
+      const mobileSidebar = document.getElementById("quiz-progress-mobile");
+
+      if (desktopSidebar) {
+        desktopSidebar.style.display = "";
+      }
+      if (mobileSidebar) {
+        mobileSidebar.style.display = "";
+      }
+
+      // Initialize reset button event listeners
+      const resetLinks = document.querySelectorAll(".quiz-reset-all-link");
+      resetLinks.forEach((resetLink) => {
+        const handler = (e) => {
+          e.preventDefault();
+          if (confirm(t("Are you sure you want to reset the quiz? This will clear your progress."))) {
+            quizTracker.resetAllQuiz();
+          }
+        };
+        addTrackedEventListener(resetLink, "click", handler);
+      });
+
+      // Update the sidebar with initial values
+      this.updateSidebar();
+    },
+
+    showStorageWarning: function (message) {
+      // Show a warning banner in the progress tracker if it exists
+      const progressSidebar = document.getElementById("quiz-progress-sidebar");
+      if (progressSidebar) {
+        // Check if warning already exists
+        let warningEl = progressSidebar.querySelector(".quiz-storage-warning");
+        if (!warningEl) {
+          warningEl = document.createElement("div");
+          warningEl.className = "quiz-storage-warning";
+          warningEl.style.cssText =
+            "background: #fff3cd; color: #856404; padding: 8px; margin: 8px 0; border-radius: 4px; font-size: 12px; border: 1px solid #ffeaa7;";
+          progressSidebar.insertBefore(warningEl, progressSidebar.firstChild);
+        }
+        warningEl.textContent = message;
+      }
+    },
+  };
+
+  // Translate template elements with data-quiz-translate attributes
+  function translateTemplateElements() {
+    document.querySelectorAll("[data-quiz-translate]").forEach((element) => {
+      const key = element.getAttribute("data-quiz-translate");
+      if (key) {
+        element.textContent = t(key);
+      }
+    });
+  }
+
+  // Initialize results div reset button
+  function initializeResultsDiv() {
+    const resultsDiv = document.getElementById("quiz-results");
+    if (!resultsDiv) return;
+
+    const resetButton = resultsDiv.querySelector(".quiz-results-reset");
+    if (resetButton) {
+      const handler = () => {
+        if (confirm(t("Are you sure you want to reset the quiz? This will clear your progress."))) {
+          quizTracker.resetAllQuiz();
+        }
+      };
+      addTrackedEventListener(resetButton, "click", handler);
+    }
+  }
+
+  // Initialize intro reset buttons
+  function initializeIntroResetButtons() {
+    const introResetButtons = document.querySelectorAll(".quiz-intro-reset");
+    introResetButtons.forEach((button) => {
+      const handler = () => {
+        if (confirm(t("Are you sure you want to reset the quiz? This will clear your progress."))) {
+          quizTracker.resetAllQuiz();
+        }
+      };
+      addTrackedEventListener(button, "click", handler);
+    });
+  }
+
+  // Initialize all quiz elements on the page
+  function initializeQuizzes() {
+    document.querySelectorAll(".quiz").forEach((quiz) => {
+      let form = quiz.querySelector("form");
+      let fieldset = form.querySelector("fieldset");
+      let submitButton = form.querySelector('button[type="submit"]');
+      let feedbackDiv = form.querySelector(".quiz-feedback");
+
+      // Get quiz ID from the quiz div itself
+      const quizId = quiz.id;
+
+      // Prevent anchor link from triggering page navigation/reload
+      const headerLink = quiz.querySelector(".quiz-header-link");
+      if (headerLink) {
+        const handler = (e) => {
+          // Let the browser handle the anchor navigation normally
+          // This prevents Material for MkDocs from intercepting it as a page navigation
+          e.stopPropagation();
+        };
+        addTrackedEventListener(headerLink, "click", handler);
+      }
+
+      // Create reset button (initially hidden)
+      let resetButton = document.createElement("button");
+      resetButton.type = "button";
+      resetButton.className = "quiz-button quiz-reset-button hidden";
+      resetButton.textContent = t("Try Again");
+      if (submitButton) {
+        submitButton.parentNode.insertBefore(resetButton, submitButton.nextSibling);
+      } else {
+        form.appendChild(resetButton);
+      }
+
+      // Restore quiz state from localStorage if available
+      if (quizId && quizTracker.quizzes[quizId]) {
+        const savedState = quizTracker.quizzes[quizId];
+        const section = quiz.querySelector("section");
+        const allAnswers = fieldset.querySelectorAll('input[name="answer"]');
+        const correctAnswers = fieldset.querySelectorAll('input[name="answer"][correct]');
+
+        if (savedState.answered) {
+          // Restore selected answers based on saved values
+          if (savedState.selectedValues && savedState.selectedValues.length > 0) {
+            allAnswers.forEach((input) => {
+              if (savedState.selectedValues.includes(input.value)) {
+                input.checked = true;
+              }
+            });
+          }
+
+          if (savedState.correct) {
+            // Show the content section
+            section.classList.remove("hidden");
+
+            // Only mark the correct answers in green (don't highlight wrong answers)
+            allAnswers.forEach((input) => {
+              if (input.hasAttribute("correct")) {
+                input.parentElement.classList.add("correct");
+              }
+            });
+
+            // Show correct feedback
+            feedbackDiv.classList.remove("hidden", "incorrect");
+            feedbackDiv.classList.add("correct");
+            feedbackDiv.textContent = t("Correct answer!");
+
+            // Disable inputs if disable-after-submit is enabled
+            if (quiz.hasAttribute("data-disable-after-submit")) {
+              allAnswers.forEach((input) => {
+                input.disabled = true;
+              });
+              if (submitButton) {
+                submitButton.disabled = true;
+              }
+              resetButton.classList.add("hidden");
+            } else {
+              // Show reset button, hide submit button
+              resetButton.classList.remove("hidden");
+              if (submitButton) {
+                submitButton.classList.add("hidden");
+              }
+            }
+          } else {
+            // Restore incorrect answer state
+            const selectedInputs = Array.from(allAnswers).filter((input) =>
+              savedState.selectedValues.includes(input.value),
+            );
+
+            // Show the content section for incorrect answers too
+            section.classList.remove("hidden");
+
+            // Mark selected answers
+            selectedInputs.forEach((input) => {
+              if (input.hasAttribute("correct")) {
+                input.parentElement.classList.add("correct");
+              } else {
+                input.parentElement.classList.add("wrong");
+              }
+            });
+
+            // Show correct answers if show-correct is enabled
+            if (quiz.hasAttribute("data-show-correct")) {
+              correctAnswers.forEach((input) => {
+                input.parentElement.classList.add("correct");
+              });
+            }
+
+            // Show incorrect feedback
+            feedbackDiv.classList.remove("hidden", "correct");
+            feedbackDiv.classList.add("incorrect");
+            const canRetry = !quiz.hasAttribute("data-disable-after-submit");
+            feedbackDiv.textContent = canRetry ? t("Incorrect answer. Please try again.") : t("Incorrect answer.");
+
+            // Disable inputs if disable-after-submit is enabled
+            if (quiz.hasAttribute("data-disable-after-submit")) {
+              allAnswers.forEach((input) => {
+                input.disabled = true;
+              });
+              if (submitButton) {
+                submitButton.disabled = true;
+              }
+              resetButton.classList.add("hidden");
+            } else {
+              // Show reset button, hide submit button
+              resetButton.classList.remove("hidden");
+              if (submitButton) {
+                submitButton.classList.add("hidden");
+              }
+            }
+          }
+        }
+      }
+
+      // Auto-submit on radio button change if enabled
+      if (quiz.hasAttribute("data-auto-submit")) {
+        let radioButtons = fieldset.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach((radio) => {
+          const handler = (e) => {
+            // Prevent any default behavior that might cause page scroll
+            e.preventDefault();
+            // Trigger form submission with a properly configured event
+            // cancelable: true allows preventDefault to work
+            // bubbles: true ensures proper event propagation
+            form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+          };
+          addTrackedEventListener(radio, "change", handler);
+        });
+      }
+
+      // Reset button handler
+      const resetHandler = () => {
+        // Clear all selections
+        const allInputs = fieldset.querySelectorAll('input[name="answer"]');
+        allInputs.forEach((input) => {
+          input.checked = false;
+          input.disabled = false;
+        });
+        // Reset colors
+        resetFieldset(fieldset);
+        // Hide content section
+        let section = quiz.querySelector("section");
+        section.classList.add("hidden");
+        // Hide feedback message
+        feedbackDiv.classList.add("hidden");
+        feedbackDiv.classList.remove("correct", "incorrect");
+        feedbackDiv.textContent = "";
+        // Show submit button, hide reset button
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.classList.remove("hidden");
+        }
+        resetButton.classList.add("hidden");
+        // Update tracker
+        if (quizId) {
+          quizTracker.resetQuiz(quizId);
+        }
+      };
+      addTrackedEventListener(resetButton, "click", resetHandler);
+
+      const submitHandler = (event) => {
+        // Prevent default form submission behavior
+        event.preventDefault();
+        // Stop propagation to prevent Material for MkDocs instant navigation from intercepting
+        event.stopPropagation();
+        let selectedAnswers = form.querySelectorAll('input[name="answer"]:checked');
+        let correctAnswers = fieldset.querySelectorAll('input[name="answer"][correct]');
+        // Check if all correct answers are selected
+        let is_correct = selectedAnswers.length === correctAnswers.length;
+        Array.from(selectedAnswers).forEach((answer) => {
+          if (!answer.hasAttribute("correct")) {
+            is_correct = false;
+          }
+        });
+        let section = quiz.querySelector("section");
+        // Always show the content section after submission
+        section.classList.remove("hidden");
+
+        if (is_correct) {
+          resetFieldset(fieldset);
+          // Only mark the correct answers in green (don't highlight wrong answers)
+          const allAnswers = fieldset.querySelectorAll('input[name="answer"]');
+          allAnswers.forEach((answer) => {
+            if (answer.hasAttribute("correct")) {
+              answer.parentElement.classList.add("correct");
+            }
+          });
+          // Show correct feedback
+          feedbackDiv.classList.remove("hidden", "incorrect");
+          feedbackDiv.classList.add("correct");
+          feedbackDiv.textContent = t("Correct answer!");
+        } else {
+          resetFieldset(fieldset);
+          // Mark wrong fields with colors
+          Array.from(selectedAnswers).forEach((answer) => {
+            if (!answer.hasAttribute("correct")) {
+              answer.parentElement.classList.add("wrong");
+            } else {
+              answer.parentElement.classList.add("correct");
+            }
+          });
+          // If show-correct is enabled, also show all correct answers
+          if (quiz.hasAttribute("data-show-correct")) {
+            correctAnswers.forEach((answer) => {
+              answer.parentElement.classList.add("correct");
+            });
+          }
+          // Show incorrect feedback
+          feedbackDiv.classList.remove("hidden", "correct");
+          feedbackDiv.classList.add("incorrect");
+          // Only show "Please try again" if the quiz is not disabled after submission
+          const canRetry = !quiz.hasAttribute("data-disable-after-submit");
+          feedbackDiv.textContent = canRetry ? t("Incorrect answer. Please try again.") : t("Incorrect answer.");
+        }
+
+        // Update tracker
+        if (quizId) {
+          // Get selected values to save
+          const selectedValues = Array.from(selectedAnswers).map((input) => input.value);
+          quizTracker.markQuiz(quizId, is_correct, selectedValues);
+        }
+
+        // Disable quiz after submission if option is enabled
+        if (quiz.hasAttribute("data-disable-after-submit")) {
+          const allInputs = fieldset.querySelectorAll('input[name="answer"]');
+          allInputs.forEach((input) => {
+            input.disabled = true;
+          });
+          if (submitButton) {
+            submitButton.disabled = true;
+          }
+          // Hide reset button if disable-after-submit is enabled
+          resetButton.classList.add("hidden");
+        } else {
+          // Show reset button and hide submit button
+          resetButton.classList.remove("hidden");
+          if (submitButton) {
+            submitButton.classList.add("hidden");
+          }
+        }
+      };
+      addTrackedEventListener(form, "submit", submitHandler);
+    });
+  }
+
+  function resetFieldset(fieldset) {
+    Array.from(fieldset.children).forEach((child) => {
+      child.classList.remove("wrong", "correct");
+    });
+  }
+
+  // Main initialization function that sets up everything on a page
+  function initializePage() {
+    // Initialize tracker
+    quizTracker.init();
+
+    // Translate template elements
+    translateTemplateElements();
+
+    // Reposition sidebar for Material theme TOC integration
+    repositionSidebar();
+
+    // Create sidebar
+    quizTracker.createSidebar();
+
+    // Initialize results div and intro buttons
+    initializeResultsDiv();
+    initializeIntroResetButtons();
+
+    // Initialize all quiz elements
+    initializeQuizzes();
+  }
+
+  // Run initialization when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePage);
+  } else {
+    initializePage();
+  }
+
+  // Material for MkDocs instant navigation support
+  // Cleanup and reinitialize when navigating between pages
+  if (typeof document$ !== "undefined") {
+    // Unsubscribe from any previous subscription to prevent duplicate handlers
+    // This is needed because the script re-runs on each page navigation,
+    // which would otherwise accumulate subscriptions
+    if (window._mkdocsQuizSubscription) {
+      window._mkdocsQuizSubscription.unsubscribe();
+    }
+
+    // Material theme with instant navigation is active
+    window._mkdocsQuizSubscription = document$.subscribe(() => {
+      cleanup(); // Remove old event listeners to prevent memory leaks
+      // Reinitialize everything for the new page
+      initializePage();
+    });
+  }
+})(); // End of IIFE
+</script><script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var article = document.querySelector("article") || document.querySelector("main") || document.body;
+  article.classList.add("quiz-auto-number");
+});
 </script>
 
 
@@ -2566,7 +3708,7 @@ function resetFieldset(fieldset) {
       
   
   <span class="md-source-file__fact">
-    <span class="md-icon" title="Colaboradores">
+    <span class="md-icon" title="Contribuidores">
       
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
       
@@ -2716,7 +3858,7 @@ function resetFieldset(fieldset) {
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
