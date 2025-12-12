@@ -61,7 +61,7 @@ plugins:
   - glightbox
   - mkdocs-video
   - search:
-      lang: pt-BR
+      lang: pt
   - git-authors:
       show_email_address: false
       show_line_count: true

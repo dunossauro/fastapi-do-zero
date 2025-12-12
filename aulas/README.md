@@ -160,6 +160,8 @@ Esse material contou com a revisão e contribuições inestimáveis de pessoas i
 
 {++**Muito obrigado!**++} :heart:
 
+Caso tenha interesse em contribuir também, você pode ler o [guia de contribuição](contribua/contribua.md).
+
 ## 📖 Licença
 
 Todo esse curso foi escrito e produzido por Eduardo Mendes ([@dunossauro](https://dunossauro.com/){:target="_blank"}).
