@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
     "mkdocs (>=1.6.1,<2.0.0)",
-    "mkdocs-material (>=9.7.0,<10.0.0)",
+    "mkdocs-material (>=9.7.1,<10.0.0)",
     "mkdocs-glightbox (>=0.5.2,<0.6.0)",
     "mkdocs-video (>=1.5.0,<2.0.0)",
     "mkdocs-git-authors-plugin (>=0.10.0,<0.11.0)",
@@ -19,7 +19,7 @@ dependencies = [
     "mkdocs-exclude (>=1.0.2,<2.0.0)",
     "mkdocs-exclude-unused-files (>=1.4.1,<2.0.0)",
     "mkdocs-macros-plugin (>=1.5.0,<2.0.0)",
-    "mkdocs-quiz (>=1.2.2,<2.0.0)",
+    "mkdocs-quiz (>=1.3.0,<2.0.0)",
     "towncrier (>=25.8.0,<26.0.0)",
     "mkdocs-towncrier (>=0.1.5,<0.2.0)",
     "markdown-exec[ansi] (>=1.12.1,<2.0.0)",
@@ -33,7 +33,7 @@ dev = [
   "invoke (>=2.2.1,<3.0.0)",
   "rich (>=14.2.0,<15.0.0)",
   "typos (>=1.40.0,<2.0.0)",
-  "ruff (>=0.14.9,<0.15.0)",
+  "ruff (>=0.14.10,<0.15.0)",
   "taskipy (>=1.14.1,<2.0.0)",
 ]
 
