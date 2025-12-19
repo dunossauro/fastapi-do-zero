@@ -73,6 +73,7 @@ plugins:
   - exclude-unused-files
   - mkdocs_quiz:
       auto_number: true
+      shuffle_answers: true
   - towncrier
   - markdown-exec
   - mkdocs-simple-hooks:
