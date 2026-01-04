@@ -1,9 +1,9 @@
 from contextlib import contextmanager
 from pathlib import Path
+from tomllib import loads
 
 from invoke import task
 from rich import print
-from tomllib import loads
 
 migration_04 = """CREATE TABLE alembic_version (
 	version_num VARCHAR(32) NOT NULL, 
@@ -48,8 +48,8 @@ migration_10 = (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(user_id) REFERENCES users (id)
 );
-"""
-)  # noqa
+"""  # noqa
+)
 
 dotenv = """DATABASE_URL="postgresql+psycopg://app_user:app_password@localhost:5432/app_db"
 SECRET_KEY="your-secret-key"
@@ -132,14 +132,14 @@ def update_project(c):
         c.run('rm poetry.lock')
 
     for dep in sorted(dependencies):
-        if not '(==' in dep:
-            dep = dep.split()[0]
-            c.run(f'poetry add {dep}@latest')
+        if '(==' not in dep:
+            _dep = dep.split()[0]
+            c.run(f'poetry add {_dep}@latest')
 
     for dep in sorted(dev_dependencies):
-        if not '(==' in dep:
-            dep = dep.split()[0]
-            c.run(f'poetry add --group dev {dep}@latest')
+        if '(==' not in dep:
+            _dep = dep.split()[0]
+            c.run(f'poetry add --group dev {_dep}@latest')
 
 
 @task
@@ -171,7 +171,7 @@ def test_act(c):
 
 
 @task
-def test_docker_build(c, python_version='3.12'):
+def test_docker_build(c, python_version='3.12'):  # noqa: PT028
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
         print('test_docker_build: ', path)
@@ -179,7 +179,7 @@ def test_docker_build(c, python_version='3.12'):
         with c.cd(str(path)):
             if (path / 'Dockerfile').exists():
                 c.run(
-                    f"sed -i 's/FROM python:.*$/FROM python:{python_version}/' Dockerfile"
+                    f"sed -i 's/FROM python:.*$/FROM python:{python_version}/' Dockerfile"  # noqa
                 )
 
             if (path / 'compose.yaml').exists():
@@ -203,6 +203,7 @@ def win_test_last_class(c):
         print('Current path: ', code_path)
         c.run('poetry install')
         c.run('poetry run task test')
+
 
 @task
 def win_test_migration(c):
@@ -240,26 +241,26 @@ def update_sub(c):
                 c.run('rm poetry.lock')
 
             for dep in sorted(dependencies):
-                dep = dep.split()[0]
-                print(dep, path)
+                _dep = dep.split()[0]
+                print(_dep, path)
 
-                if dep in 'fastapi':
+                if _dep in 'fastapi':
                     c.run('poetry add "fastapi[standard]@latest"')
 
-                elif dep in 'pydantic':
+                elif _dep in 'pydantic':
                     c.run('poetry add "pydantic[email]@latest"')
 
-                elif dep in 'pwdlib':
+                elif _dep in 'pwdlib':
                     c.run('poetry add "pwdlib[argon2]@latest"')
 
-                elif dep in 'psycopg':
+                elif _dep in 'psycopg':
                     c.run('poetry add "psycopg[binary]@latest"')
 
                 else:
-                    c.run(f'poetry add {dep}@latest')
+                    c.run(f'poetry add {_dep}@latest')
 
             for dep in dev_dependencies:
-                dep = dep.split()[0]
-                c.run(f'poetry add --group dev {dep}@latest')
+                _dep = dep.split()[0]
+                c.run(f'poetry add --group dev {_dep}@latest')
 
             c.run('poetry install')
