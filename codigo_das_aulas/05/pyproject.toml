@@ -10,7 +10,7 @@ requires-python = ">=3.11,<4.0"
 dependencies = [
     "alembic (>=1.18.4,<2.0.0)",
     "fastapi[standard] (>=0.129.0,<0.130.0)",
-    "pydantic-settings (>=2.12.0,<3.0.0)",
+    "pydantic-settings (>=2.13.0,<3.0.0)",
     "sqlalchemy (>=2.0.46,<3.0.0)",
 ]
 
