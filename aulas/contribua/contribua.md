@@ -108,4 +108,4 @@ Algumas coisas são importantes para geração do changelog
   Correções gramaticais na aula 01, por [@dunossauro](https://github.com/dunossauro){:target="_blank"}
   ```
 
-Após o Pull Request ser aceito, essas mensagens são exibidas na página de [alterações](/alteracoes){:target="_blank"}.
+Após o Pull Request ser aceito, essas mensagens são exibidas na página de [alterações](../alteracoes.md){:target="_blank"}.
