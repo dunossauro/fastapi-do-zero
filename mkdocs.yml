@@ -55,6 +55,8 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
 
 plugins:
   - macros
@@ -93,6 +95,7 @@ fonts:
 extra_javascript:
   - assets/javascripts/extra.js
   - https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/extra.css
