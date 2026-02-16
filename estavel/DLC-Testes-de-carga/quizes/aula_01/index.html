@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://fastapidozero.dunossauro.com/estavel/apendices/c_versoes_usadas/">
+        <link rel="canonical" href="https://fastapidozero.dunossauro.com/estavel/DLC-Testes-de-carga/quizes/aula_01/">
       
       
-        <link rel="prev" href="../b_proximos_passos/">
+        <link rel="prev" href="../../01/">
       
       
-        <link rel="next" href="../../aulas/2024/">
+        <link rel="next" href="../../../apendices/a_instalacoes/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../../assets/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>C - Versões das bibliotecas - FastAPI do Zero</title>
+        <title>Uma introdução a testes de carga com Locust - FastAPI do Zero</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_markdown_exec_pyodide.css">
+      <link rel="stylesheet" href="../../../assets/_markdown_exec_pyodide.css">
     
-      <link rel="stylesheet" href="../../assets/_markdown_exec_ansi.css">
+      <link rel="stylesheet" href="../../../assets/_markdown_exec_ansi.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,16 +62,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="C - Versões das bibliotecas - FastAPI do Zero">
-<meta property="og:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/apendices/c_versoes_usadas.png">
+<meta property="og:title" content="Uma introdução a testes de carga com Locust - FastAPI do Zero">
+<meta property="og:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/DLC-Testes-de-carga/quizes/aula_01.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://fastapidozero.dunossauro.com/estavel/apendices/c_versoes_usadas/">
+<meta property="og:url" content="https://fastapidozero.dunossauro.com/estavel/DLC-Testes-de-carga/quizes/aula_01/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="C - Versões das bibliotecas - FastAPI do Zero">
-<meta property="twitter:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/apendices/c_versoes_usadas.png">
-<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+<meta property="twitter:title" content="Uma introdução a testes de carga com Locust - FastAPI do Zero">
+<meta property="twitter:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/DLC-Testes-de-carga/quizes/aula_01.png">
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -100,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#c-versoes-das-bibliotecas" class="md-skip">
+        <a href="#uma-introducao-a-testes-de-carga-com-locust" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -120,9 +120,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
     <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-	<a href="../.." title="FastAPI do Zero" class="md-header__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+	<a href="../../.." title="FastAPI do Zero" class="md-header__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
 	    
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
 	</a>
 	<label class="md-header__button md-icon" for="__drawer">
@@ -139,7 +139,7 @@
 		<div class="md-header__topic" data-md-component="header-topic">
 		    <span class="md-ellipsis">
 			
-			C - Versões das bibliotecas
+			Uma introdução a testes de carga com Locust
 			
 		    </span>
 		</div>
@@ -319,9 +319,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="FastAPI do Zero" class="md-nav__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
+    <a href="../../.." title="FastAPI do Zero" class="md-nav__button md-logo" aria-label="FastAPI do Zero" data-md-component="logo">
       
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
     </a>
     FastAPI do Zero
@@ -348,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -375,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01/" class="md-nav__link">
+      <a href="../../../01/" class="md-nav__link">
         
   
   
@@ -402,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02/" class="md-nav__link">
+      <a href="../../../02/" class="md-nav__link">
         
   
   
@@ -429,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03/" class="md-nav__link">
+      <a href="../../../03/" class="md-nav__link">
         
   
   
@@ -456,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04/" class="md-nav__link">
+      <a href="../../../04/" class="md-nav__link">
         
   
   
@@ -483,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05/" class="md-nav__link">
+      <a href="../../../05/" class="md-nav__link">
         
   
   
@@ -510,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../06/" class="md-nav__link">
+      <a href="../../../06/" class="md-nav__link">
         
   
   
@@ -537,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07/" class="md-nav__link">
+      <a href="../../../07/" class="md-nav__link">
         
   
   
@@ -564,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08/" class="md-nav__link">
+      <a href="../../../08/" class="md-nav__link">
         
   
   
@@ -591,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09/" class="md-nav__link">
+      <a href="../../../09/" class="md-nav__link">
         
   
   
@@ -618,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10/" class="md-nav__link">
+      <a href="../../../10/" class="md-nav__link">
         
   
   
@@ -645,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../11/" class="md-nav__link">
+      <a href="../../../11/" class="md-nav__link">
         
   
   
@@ -672,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../12/" class="md-nav__link">
+      <a href="../../../12/" class="md-nav__link">
         
   
   
@@ -699,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../13/" class="md-nav__link">
+      <a href="../../../13/" class="md-nav__link">
         
   
   
@@ -726,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../14/" class="md-nav__link">
+      <a href="../../../14/" class="md-nav__link">
         
   
   
@@ -753,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../15/" class="md-nav__link">
+      <a href="../../../15/" class="md-nav__link">
         
   
   
@@ -780,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../alteracoes/" class="md-nav__link">
+      <a href="../../../alteracoes/" class="md-nav__link">
         
   
   
@@ -804,18 +804,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
         
           
           <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
@@ -836,7 +838,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             
@@ -854,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DLC-Testes-de-carga/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -882,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DLC-Testes-de-carga/01/" class="md-nav__link">
+      <a href="../../01/" class="md-nav__link">
         
   
   
@@ -907,18 +909,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_3" checked>
         
           
           <label class="md-nav__link" for="__nav_18_3" id="__nav_18_3_label" tabindex="0">
@@ -939,7 +943,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_18_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -954,10 +958,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../DLC-Testes-de-carga/quizes/aula_01/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -973,13 +986,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -992,25 +998,31 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19">
         
           
           <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
@@ -1031,7 +1043,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_19">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1049,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a_instalacoes/" class="md-nav__link">
+      <a href="../../../apendices/a_instalacoes/" class="md-nav__link">
         
   
   
@@ -1077,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../b_proximos_passos/" class="md-nav__link">
+      <a href="../../../apendices/b_proximos_passos/" class="md-nav__link">
         
   
   
@@ -1102,37 +1114,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    C - Versões das bibliotecas
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../apendices/c_versoes_usadas/" class="md-nav__link">
         
   
   
@@ -1148,76 +1133,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#bibliotecas-do-projeto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bibliotecas do projeto
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bibliotecas-de-desenvolvimento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bibliotecas de desenvolvimento
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bibliotecas de desenvolvimento">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lock-de-todo-o-ambiente" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lock de todo o ambiente
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ferramentas-instaladas-do-ambiente" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ferramentas instaladas do ambiente
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1284,7 +1199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../aulas/2024/" class="md-nav__link">
+      <a href="../../../aulas/2024/" class="md-nav__link">
         
   
   
@@ -1312,7 +1227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../aulas/2025/" class="md-nav__link">
+      <a href="../../../aulas/2025/" class="md-nav__link">
         
   
   
@@ -1394,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contribua/contribua/" class="md-nav__link">
+      <a href="../../../contribua/contribua/" class="md-nav__link">
         
   
   
@@ -1476,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_01/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_01/" class="md-nav__link">
         
   
   
@@ -1504,7 +1419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_02/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_02/" class="md-nav__link">
         
   
   
@@ -1532,7 +1447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_03/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_03/" class="md-nav__link">
         
   
   
@@ -1560,7 +1475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_04/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_04/" class="md-nav__link">
         
   
   
@@ -1588,7 +1503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_05/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_05/" class="md-nav__link">
         
   
   
@@ -1616,7 +1531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_06/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_06/" class="md-nav__link">
         
   
   
@@ -1644,7 +1559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_08/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_08/" class="md-nav__link">
         
   
   
@@ -1672,7 +1587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_09/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_09/" class="md-nav__link">
         
   
   
@@ -1700,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exercicios_resolvidos/aula_10/" class="md-nav__link">
+      <a href="../../../exercicios_resolvidos/aula_10/" class="md-nav__link">
         
   
   
@@ -1782,7 +1697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../projetos/projetos_finais/" class="md-nav__link">
+      <a href="../../../projetos/projetos_finais/" class="md-nav__link">
         
   
   
@@ -1810,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../projetos/repositorios/" class="md-nav__link">
+      <a href="../../../projetos/repositorios/" class="md-nav__link">
         
   
   
@@ -1892,7 +1807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_01/" class="md-nav__link">
+      <a href="../../../quizes/aula_01/" class="md-nav__link">
         
   
   
@@ -1920,7 +1835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_02/" class="md-nav__link">
+      <a href="../../../quizes/aula_02/" class="md-nav__link">
         
   
   
@@ -1948,7 +1863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_03/" class="md-nav__link">
+      <a href="../../../quizes/aula_03/" class="md-nav__link">
         
   
   
@@ -1976,7 +1891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_04/" class="md-nav__link">
+      <a href="../../../quizes/aula_04/" class="md-nav__link">
         
   
   
@@ -2004,7 +1919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_05/" class="md-nav__link">
+      <a href="../../../quizes/aula_05/" class="md-nav__link">
         
   
   
@@ -2032,7 +1947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_06/" class="md-nav__link">
+      <a href="../../../quizes/aula_06/" class="md-nav__link">
         
   
   
@@ -2060,7 +1975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_07/" class="md-nav__link">
+      <a href="../../../quizes/aula_07/" class="md-nav__link">
         
   
   
@@ -2088,7 +2003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_08/" class="md-nav__link">
+      <a href="../../../quizes/aula_08/" class="md-nav__link">
         
   
   
@@ -2116,7 +2031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_09/" class="md-nav__link">
+      <a href="../../../quizes/aula_09/" class="md-nav__link">
         
   
   
@@ -2144,7 +2059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_10/" class="md-nav__link">
+      <a href="../../../quizes/aula_10/" class="md-nav__link">
         
   
   
@@ -2172,7 +2087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_11/" class="md-nav__link">
+      <a href="../../../quizes/aula_11/" class="md-nav__link">
         
   
   
@@ -2200,7 +2115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_12/" class="md-nav__link">
+      <a href="../../../quizes/aula_12/" class="md-nav__link">
         
   
   
@@ -2228,7 +2143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quizes/aula_13/" class="md-nav__link">
+      <a href="../../../quizes/aula_13/" class="md-nav__link">
         
   
   
@@ -2275,64 +2190,6 @@
   
     
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#bibliotecas-do-projeto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bibliotecas do projeto
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bibliotecas-de-desenvolvimento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bibliotecas de desenvolvimento
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bibliotecas de desenvolvimento">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lock-de-todo-o-ambiente" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lock de todo o ambiente
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ferramentas-instaladas-do-ambiente" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ferramentas instaladas do ambiente
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2389,47 +2246,245 @@
   
 
 
-<h1 id="c-versoes-das-bibliotecas">C - Versões das bibliotecas</h1>
-<details class="danger" open="open">
-<summary>Sobre as versões das bibliotecas instaladas</summary>
-<p>A última atualização dos pacotes deste material foi feita em: <strong>16/02/2026 às 13:54</strong>.</p>
-</details>
-<h2 id="bibliotecas-do-projeto">Bibliotecas do projeto</h2>
-<div class="language-toml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s2">"alembic (&gt;=1.18.4,&lt;2.0.0)"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="s2">"fastapi[standard] (&gt;=0.129.0,&lt;0.130.0)"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="s2">"pwdlib[argon2] (&gt;=0.3.0,&lt;0.4.0)"</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="s2">"pydantic-settings (&gt;=2.13.0,&lt;3.0.0)"</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="s2">"pyjwt (&gt;=2.11.0,&lt;3.0.0)"</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="s2">"aiosqlite (&gt;=0.22.1,&lt;0.23.0)"</span><span class="p">,</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="s2">"sqlalchemy[asyncio] (&gt;=2.0.46,&lt;3.0.0)"</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="s2">"psycopg[binary] (&gt;=3.3.2,&lt;4.0.0)"</span><span class="p">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="s2">"tzdata (&gt;=2025.3,&lt;2026.0)"</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">]</span>
-</span></code></pre></div>
-<h2 id="bibliotecas-de-desenvolvimento">Bibliotecas de desenvolvimento</h2>
-<div class="language-toml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="s2">"pytest (&gt;=9.0.2,&lt;10.0.0)"</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s2">"pytest-cov (&gt;=7.0.0,&lt;8.0.0)"</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s2">"taskipy (&gt;=1.14.1,&lt;2.0.0)"</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="s2">"ruff (&gt;=0.15.1,&lt;0.16.0)"</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="s2">"pytest-asyncio (&gt;=1.3.0,&lt;2.0.0)"</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="s2">"factory-boy (&gt;=3.3.3,&lt;4.0.0)"</span><span class="p">,</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="s2">"freezegun (&gt;=1.5.5,&lt;2.0.0)"</span><span class="p">,</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="s2">"testcontainers (&gt;=4.14.1,&lt;5.0.0)"</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">]</span>
-</span></code></pre></div>
-<h3 id="lock-de-todo-o-ambiente">Lock de todo o ambiente</h3>
-<p>O lock do projeto final pode ser encontrado <a href="https://github.com/dunossauro/fastapi-do-zero/blob/v4.3/codigo_das_aulas/13/poetry.lock" target="_blank">aqui!</a></p>
-<h2 id="ferramentas-instaladas-do-ambiente">Ferramentas instaladas do ambiente</h2>
-<p>Aqui estão listadas as versões que foram usadas das ferramentas instaladas no meu sistema de forma determinística:</p>
-<ul>
-<li><strong>Poetry</strong>: Poetry (version 2.3.2)</li>
-<li><strong>Pipx</strong>: 1.8.0</li>
-<li><strong>Docker</strong>: Docker version 29.2.1, build a5c7197d72</li>
-<li><strong>Docker-compose</strong>: Docker Compose version 5.0.2</li>
-<li><strong>Flyctl</strong>: flyctl v0.4.11 linux/amd64 Commit: 91387baeaffe8a6a65fd0c312de6b200b40c0860 BuildDate: 2026-02-12T11:43:44Z</li>
-</ul><style type="text/css">.quiz {
+<h1 id="uma-introducao-a-testes-de-carga-com-locust">Uma introdução a testes de carga com Locust</h1>
+<!-- mkdocs-quiz-source
+<quiz>
+Qual é o principal objetivo de um teste de carga em uma aplicação?
+- [x] Medir quantos usuários simultâneos a aplicação suporta
+- [ ] Testar se a aplicação funciona corretamente
+- [ ] Verificar a cobertura de testes unitários
+- [ ] Garantir que o código está bem documentado
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
+    <a href="#quiz-0" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 1</h4>
+    <div class="quiz-question">
+        <p>Qual é o principal objetivo de um teste de carga em uma aplicação?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Medir quantos usuários simultâneos a aplicação suporta</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1"><label for="quiz-0-1">Testar se a aplicação funciona corretamente</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2"><label for="quiz-0-2">Verificar a cobertura de testes unitários</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3"><label for="quiz-0-3">Garantir que o código está bem documentado</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+O que o Locust utiliza para representar um usuário da aplicação?
+- [x] HttpUser
+- [ ] FastAPIUser
+- [ ] TestClient
+- [ ] Worker
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
+    <a href="#quiz-1" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 2</h4>
+    <div class="quiz-question">
+        <p>O que o Locust utiliza para representar um usuário da aplicação?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">HttpUser</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1"><label for="quiz-1-1">FastAPIUser</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2"><label for="quiz-1-2">TestClient</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3"><label for="quiz-1-3">Worker</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+No Locust, o que representa a anotação `@task` dentro de uma classe `HttpUser`?
+- [ ] Um teste unitário
+- [x] Uma ação ou endpoint que o usuário irá acessar
+- [ ] Um comando para iniciar o servidor
+- [ ] Um tipo de requisição GET
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
+    <a href="#quiz-2" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 3</h4>
+    <div class="quiz-question">
+        <p>No Locust, o que representa a anotação <code>@task</code> dentro de uma classe <code>HttpUser</code>?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0"><label for="quiz-2-0">Um teste unitário</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" correct><label for="quiz-2-1">Uma ação ou endpoint que o usuário irá acessar</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2"><label for="quiz-2-2">Um comando para iniciar o servidor</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3"><label for="quiz-2-3">Um tipo de requisição GET</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+Qual das métricas abaixo indica o número de requisições processadas por segundo em tempo real?
+- [ ] Median (ms)
+- [ ] Average (ms)
+- [x] Current RPS
+- [ ] Requests
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
+    <a href="#quiz-3" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 4</h4>
+    <div class="quiz-question">
+        <p>Qual das métricas abaixo indica o número de requisições processadas por segundo em tempo real?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0"><label for="quiz-3-0">Median (ms)</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1"><label for="quiz-3-1">Average (ms)</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" correct><label for="quiz-3-2">Current RPS</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3"><label for="quiz-3-3">Requests</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+Se o `Current Failures/s` começa a subir, o que isso geralmente indica?
+- [ ] A aplicação está estável
+- [x] Que o sistema está atingindo algum limite ou gargalo
+- [ ] Que os testes unitários falharam
+- [ ] Que o banco de dados não está configurado
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
+    <a href="#quiz-4" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 5</h4>
+    <div class="quiz-question">
+        <p>Se o <code>Current Failures/s</code> começa a subir, o que isso geralmente indica?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0"><label for="quiz-4-0">A aplicação está estável</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">Que o sistema está atingindo algum limite ou gargalo</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2"><label for="quiz-4-2">Que os testes unitários falharam</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3"><label for="quiz-4-3">Que o banco de dados não está configurado</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+Qual métrica é mais útil para entender o comportamento típico da aplicação, ignorando picos extremos?
+- [ ] Average (ms)
+- [ ] Max (ms)
+- [x] Median (ms)
+- [ ] Min (ms)
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
+    <a href="#quiz-5" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 6</h4>
+    <div class="quiz-question">
+        <p>Qual métrica é mais útil para entender o comportamento típico da aplicação, ignorando picos extremos?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0"><label for="quiz-5-0">Average (ms)</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1"><label for="quiz-5-1">Max (ms)</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" correct><label for="quiz-5-2">Median (ms)</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3"><label for="quiz-5-3">Min (ms)</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+O que o percentil 95 (p95) indica em um teste de carga?
+- [ ] O tempo médio de todas as requisições
+- [ ] O tempo mínimo de resposta
+- [x] Que 95% das requisições responderam em até aquele tempo
+- [ ] Que 5% das requisições falharam
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+    <a href="#quiz-6" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 7</h4>
+    <div class="quiz-question">
+        <p>O que o percentil 95 (p95) indica em um teste de carga?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0"><label for="quiz-6-0">O tempo médio de todas as requisições</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1"><label for="quiz-6-1">O tempo mínimo de resposta</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" correct><label for="quiz-6-2">Que 95% das requisições responderam em até aquele tempo</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3"><label for="quiz-6-3">Que 5% das requisições falharam</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+Durante um teste de carga, se a média (`Average`) está muito maior que a mediana (`Median`) e o p99 dispara, isso indica:
+- [ ] Sistema rápido e estável
+- [x] Degradação na aplicação, geralmente nos casos extremos
+- [ ] Que o teste falhou
+- [ ] Que mais usuários precisam ser adicionados
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-7">
+    <a href="#quiz-7" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 8</h4>
+    <div class="quiz-question">
+        <p>Durante um teste de carga, se a média (<code>Average</code>) está muito maior que a mediana (<code>Median</code>) e o p99 dispara, isso indica:</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-7-0"><label for="quiz-7-0">Sistema rápido e estável</label></div><div><input type="radio" name="answer" value="1" id="quiz-7-1" correct><label for="quiz-7-1">Degradação na aplicação, geralmente nos casos extremos</label></div><div><input type="radio" name="answer" value="2" id="quiz-7-2"><label for="quiz-7-2">Que o teste falhou</label></div><div><input type="radio" name="answer" value="3" id="quiz-7-3"><label for="quiz-7-3">Que mais usuários precisam ser adicionados</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+Qual a principal diferença entre testes funcionais (pytest) e testes de carga (Locust)?
+- [x] Testes funcionais verificam se a aplicação funciona; testes de carga verificam a performance sob múltiplos usuários
+- [ ] Testes funcionais usam Docker; testes de carga não
+- [ ] Testes de carga são feitos apenas em produção
+- [ ] Testes funcionais medem RPS e latência
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-8">
+    <a href="#quiz-8" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 9</h4>
+    <div class="quiz-question">
+        <p>Qual a principal diferença entre testes funcionais (pytest) e testes de carga (Locust)?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-8-0" correct><label for="quiz-8-0">Testes funcionais verificam se a aplicação funciona; testes de carga verificam a performance sob múltiplos usuários</label></div><div><input type="radio" name="answer" value="1" id="quiz-8-1"><label for="quiz-8-1">Testes funcionais usam Docker; testes de carga não</label></div><div><input type="radio" name="answer" value="2" id="quiz-8-2"><label for="quiz-8-2">Testes de carga são feitos apenas em produção</label></div><div><input type="radio" name="answer" value="3" id="quiz-8-3"><label for="quiz-8-3">Testes funcionais medem RPS e latência</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<hr>
+<!-- mkdocs-quiz-source
+<quiz>
+Por que é importante analisar os percentis (p95, p99) ao invés de apenas a média em um teste de carga?
+- [ ] Percentis indicam erros de código
+- [x] Porque eles mostram os extremos e a experiência de usuários afetados por picos de latência
+- [ ] Percentis substituem a necessidade de olhar para o RPS
+- [ ] Porque a mediana ignora totalmente a performance
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-9">
+    <a href="#quiz-9" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Questão 10</h4>
+    <div class="quiz-question">
+        <p>Por que é importante analisar os percentis (p95, p99) ao invés de apenas a média em um teste de carga?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-9-0"><label for="quiz-9-0">Percentis indicam erros de código</label></div><div><input type="radio" name="answer" value="1" id="quiz-9-1" correct><label for="quiz-9-1">Porque eles mostram os extremos e a experiência de usuários afetados por picos de latência</label></div><div><input type="radio" name="answer" value="2" id="quiz-9-2"><label for="quiz-9-2">Percentis substituem a necessidade de olhar para o RPS</label></div><div><input type="radio" name="answer" value="3" id="quiz-9-3"><label for="quiz-9-3">Porque a mediana ignora totalmente a performance</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
@@ -3964,7 +4019,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 de junho de 2025 17:51:36 UTC">24 de junho de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de fevereiro de 2026 22:46:57 UTC">16 de fevereiro de 2026</span>
   </span>
 
     
@@ -3975,11 +4030,11 @@ document.addEventListener("DOMContentLoaded", function() {
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contribuidores">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
       
     </span>
     <nav>
-      dunossauro
+      
     </nav>
   </span>
 
@@ -4123,14 +4178,14 @@ document.addEventListener("DOMContentLoaded", function() {
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../assets/_markdown_exec_pyodide.js"></script>
+        <script src="../../../assets/_markdown_exec_pyodide.js"></script>
       
-        <script src="../../assets/javascripts/extra.js"></script>
+        <script src="../../../assets/javascripts/extra.js"></script>
       
         <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
       

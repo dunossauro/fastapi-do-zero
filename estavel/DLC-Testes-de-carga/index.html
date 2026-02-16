@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://fastapidozero.dunossauro.com/estavel/02/">
+        <link rel="canonical" href="https://fastapidozero.dunossauro.com/estavel/DLC-Testes-de-carga/">
       
       
-        <link rel="prev" href="../01/">
+        <link rel="prev" href="../alteracoes/">
       
       
-        <link rel="next" href="../03/">
+        <link rel="next" href="01/">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Introdução ao desenvolvimento WEB - FastAPI do Zero</title>
+        <title>Testes de carga - FastAPI do Zero</title>
       
     
     
@@ -62,15 +62,15 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Introdução ao desenvolvimento WEB - FastAPI do Zero">
-<meta property="og:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/02.png">
+<meta property="og:title" content="Testes de carga - FastAPI do Zero">
+<meta property="og:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/DLC-Testes-de-carga/index.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://fastapidozero.dunossauro.com/estavel/02/">
+<meta property="og:url" content="https://fastapidozero.dunossauro.com/estavel/DLC-Testes-de-carga/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Introdução ao desenvolvimento WEB - FastAPI do Zero">
-<meta property="twitter:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/02.png">
+<meta property="twitter:title" content="Testes de carga - FastAPI do Zero">
+<meta property="twitter:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/DLC-Testes-de-carga/index.png">
 <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -100,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introducao-ao-desenvolvimento-web" class="md-skip">
+        <a href="#testes-de-carga" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -139,7 +139,7 @@
 		<div class="md-header__topic" data-md-component="header-topic">
 		    <span class="md-ellipsis">
 			
-			Introdução ao desenvolvimento WEB
+			Testes de carga
 			
 		    </span>
 		</div>
@@ -399,37 +399,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Introdução ao desenvolvimento WEB
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../02/" class="md-nav__link">
         
   
   
@@ -445,372 +418,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A web
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="A web">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#o-modelo-cliente-servidor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        O modelo cliente-servidor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="O modelo cliente-servidor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#usando-o-fastapi-na-rede-local" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usando o fastapi na rede local
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#o-modelo-padrao-da-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        O modelo padrão da web
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="O modelo padrão da web">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        URL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mensagens" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mensagens
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Mensagens">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cabecalho" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cabeçalho
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#corpo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Corpo
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verbos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verbos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#codigos-de-resposta" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Códigos de resposta
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Códigos de resposta">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#boas-praticas-para-constantes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Boas práticas para constantes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#o-lado-do-servidor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        O lado do servidor
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#html" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HTML
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        APIs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="APIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endpoint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Endpoint
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#documentacao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documentação
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Documentação">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#openapi-e-documentacao-automatica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenAPI e documentação automática
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#swagger-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Swagger UI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Redoc
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trafegando-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trafegando JSON
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Trafegando JSON">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#contratos-em-apis-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contratos em APIs JSON
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pydantic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pydantic
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pydantic">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#integrando-o-pydantic-com-o-fastapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integrando o Pydantic com o FastAPI
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercicio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercício
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusão
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1197,18 +804,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
         
           
           <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
@@ -1229,7 +838,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1244,10 +853,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../DLC-Testes-de-carga/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1263,6 +881,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1275,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DLC-Testes-de-carga/01/" class="md-nav__link">
+      <a href="01/" class="md-nav__link">
         
   
   
@@ -1350,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DLC-Testes-de-carga/quizes/aula_01/" class="md-nav__link">
+      <a href="quizes/aula_01/" class="md-nav__link">
         
   
   
@@ -2570,360 +2189,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A web
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="A web">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#o-modelo-cliente-servidor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        O modelo cliente-servidor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="O modelo cliente-servidor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#usando-o-fastapi-na-rede-local" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usando o fastapi na rede local
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#o-modelo-padrao-da-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        O modelo padrão da web
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="O modelo padrão da web">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        URL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mensagens" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mensagens
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Mensagens">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cabecalho" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cabeçalho
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#corpo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Corpo
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verbos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verbos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#codigos-de-resposta" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Códigos de resposta
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Códigos de resposta">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#boas-praticas-para-constantes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Boas práticas para constantes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#o-lado-do-servidor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        O lado do servidor
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#html" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HTML
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        APIs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="APIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endpoint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Endpoint
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#documentacao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documentação
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Documentação">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#openapi-e-documentacao-automatica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenAPI e documentação automática
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#swagger-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Swagger UI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Redoc
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trafegando-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trafegando JSON
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Trafegando JSON">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#contratos-em-apis-json" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contratos em APIs JSON
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pydantic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pydantic
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pydantic">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#integrando-o-pydantic-com-o-fastapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integrando o Pydantic com o FastAPI
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercicio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercício
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusão
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2979,528 +2244,15 @@
   
 
 
-<h1 id="introducao-ao-desenvolvimento-web">Introdução ao desenvolvimento WEB</h1>
-<hr>
-<p>Objetivos dessa aula:</p>
-<ul>
-<li>Criar uma base teórica sobre desenvolvimento web</li>
-<li>Apresentar o protocolo HTTP</li>
-<li>Introduzir os conceitos de APIs JSON</li>
-<li>Apresentar o OpenAPI</li>
-<li>Introduzir os schemas usando Pydantic</li>
-</ul>
-<details class="tip">
-<summary>Caso prefira ver a aula em vídeo</summary>
-<p>Essa aula ainda não está disponível em formato de vídeo, somente em texto ou live!
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://www.youtube.com/embed/JFJErxis_ZM" data-desc-position="bottom"></a></p><div class="video-container"><iframe src="https://www.youtube.com/embed/JFJErxis_ZM" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div><p></p>
-</details>
-<p><a class="md-button" href="https://youtu.be/JFJErxis_ZM?list=PLOQgLBuj2-3IuFbt-wJw2p2NiV9WTRzIP">Aula <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg></span></a>
-<a class="md-button" href="https://fastapidozero.dunossauro.com/estavel/slides/aula_02.html">Slides <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0h149.5c17 0 33.3 6.7 45.3 18.7l106.5 106.6c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm208-5.5V152c0 13.3 10.7 24 24 24h93.5zM152 256c-13.3 0-24 10.7-24 24v144c0 13.3 10.7 24 24 24s24-10.7 24-24v-24h24c39.8 0 72-32.2 72-72s-32.2-72-72-72zm48 96h-24v-48h24c13.3 0 24 10.7 24 24s-10.7 24-24 24"></path></svg></span></a>
-<a class="md-button" href="https://github.com/dunossauro/fastapi-do-zero/tree/v4.3/codigo_das_aulas/02">Código <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span></a>
-<a class="md-button" href="../quizes/aula_02/">Quiz <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m8.19 3.5c-.89 0-1.6.18-2.14.54-.55.36-.83.96-.78 1.65h1.97c0-.28.1-.49.26-.63.2-.14.42-.21.69-.21.31 0 .58.08.76.26.18.17.27.39.27.69 0 .28-.08.53-.22.74-.17.22-.38.4-.64.54-.52.32-.86.6-1.07.84-.19.24-.29.58-.29 1.08h2c0-.28.05-.5.14-.68.09-.17.26-.32.52-.47.46-.21.84-.49 1.13-.85.29-.37.44-.76.44-1.2q0-1.05-.81-1.68c-.54-.41-1.29-.62-2.23-.62M11 12v2h2v-2z"></path></svg></span></a>
-<a class="md-button" href="../exercicios_resolvidos/aula_02/">Exercícios <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg></span></a></p>
-<hr>
-<p>Boas-vindas à segunda aula do nosso curso de FastAPI. Agora que já temos o ambiente preparado, com algum código escrito e testado, é o momento ideal para entendermos o que viemos fazer aqui. Até este ponto, você já deve saber que o FastAPI é um framework para desenvolvimento de aplicações web, mais especificamente para o desenvolvimento de APIs web. É aqui que ter um bom referencial teórico se torna importante para compreendermos exatamente o que o framework é capaz de fazer.</p>
-<h2 id="a-web">A web</h2>
-<p>Sempre que nos referimos a aplicações web, estamos falando de aplicações que funcionam em rede. Essa rede pode ser privativa, como a sua rede doméstica ou uma rede empresarial, ou podemos estar nos referindo à <a href="https://pt.wikipedia.org/wiki/World_Wide_Web" target="_blank">World Wide Web</a> (WWW), comumente conhecida como "internet". A internet, que tem uma longa história iniciada na década de 1960, possui diversos padrões definidos e vem se aperfeiçoando desde então. Compreender completamente sua complexidade é um desafio, especialmente 6 décadas após seu início.</p>
-<p>Quando falamos em comunicação em rede, geralmente nos referimos à comunicação entre dois ou mais dispositivos interconectados. A ideia é que possamos nos comunicar com outros dispositivos usando a rede.</p>
-<h3 id="o-modelo-cliente-servidor">O modelo cliente-servidor</h3>
-<p>No contexto de aplicações web, geralmente nos referimos a um modelo específico de comunicação: o cliente-servidor. Neste modelo, temos clientes, como aplicativos móveis, terminais de comando, navegadores, etc., acessando recursos fornecidos por outro computador, conhecido como servidor.</p>
-<p>Neste modelo, fazemos chamadas de um cliente, via rede, <a href="#o-modelo-padrao-da-web">seguindo alguns padrões</a>, e recebemos respostas da nossa aplicação, o servidor. Por exemplo, podemos enviar um comando ao servidor: "Crie um usuário para mim". Em resposta, ele nos fornece um retorno, seja uma confirmação de sucesso ou uma mensagem de erro.</p>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Cliente
-    participant Servidor
-    Note left of Cliente: Fazendo a requisição
-    Cliente-&gt;&gt;Servidor: Crie um usuário
-    activate Servidor
-    Note right of Servidor: Processa a requisição
-    Servidor--&gt;&gt;Cliente: Sucesso na requisição: Usuário criado com sucesso
-    deactivate Servidor
-    Note left of Cliente: Obtivemos a resposta desejada
-
-    Cliente-&gt;&gt;Servidor: Crie o mesmo usuário
-    activate Servidor
-    Note left of Cliente: Fazendo uma nova requisição
-    Note right of Servidor: Processa a requisição
-    Servidor--&gt;&gt;Cliente: Erro na requisição: Usuário já existe
-    deactivate Servidor
-    Note left of Cliente: Obtivemos a resposta de erro</code></pre>
-<p>A comunicação é bidirecional: um cliente faz uma requisição ao servidor, que por sua vez emite uma resposta.</p>
-<p>Por exemplo, ao construir um servidor, precisamos de uma biblioteca que consiga "servir" nossa aplicação. É aí que entra o Uvicorn, responsável por servir nossa aplicação com FastAPI.</p>
-<p>Quando executamos:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>fastapi<span class="w"> </span>dev<span class="w"> </span>fast_zero/app.py
-</span></code></pre></div>
-<p>Quando executamos esse comando. O FastAPI faz uma chamada ao <code>uvicorn</code> e iniciamos um servidor em loopback, acessível apenas internamente no nosso computador. Por isso, ao acessarmos <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> no navegador, estamos fazendo uma requisição ao servidor em <code>127.0.0.1:8000</code>.</p>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Cliente
-    participant Servidor
-    Note left of Cliente: Fazendo a requisição
-    Cliente-&gt;&gt;Servidor: 
-    activate Servidor
-    Note right of Servidor: Processa a requisição
-    Servidor--&gt;&gt;Cliente: Sucesso na requisição: {"message":"Olá Mundo!"}
-    deactivate Servidor
-    Note left of Cliente: Obtivemos a resposta desejada</code></pre>
-<h4 id="usando-o-fastapi-na-rede-local">Usando o fastapi na rede local</h4>
-<p>Falando em redes, o Uvicorn no seu PC também pode servir o FastAPI na sua rede local:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>fastapi<span class="w"> </span>dev<span class="w"> </span>fast_zero/app.py<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0
-</span></code></pre></div>
-<details class="tip">
-<summary>Esse comando também poderia ser executado com <code>taskipy</code></summary>
-<p>Uma característica interessante do taskipy é que qualquer continuação após o comando da task é passado para o comando original. Poderíamos então executar dessa forma também:
-</p><div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>task<span class="w"> </span>run<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0
-</span></code></pre></div><p></p>
-</details>
-<p>Assim, você pode acessar a aplicação de outro computador na sua rede usando o endereço IP da sua máquina.</p>
-<details class="tip">
-<summary>Descobrindo o seu endereço local usando python</summary>
-<p>Caso não esteja familiarizado com o terminal ou ferramentas para descobrir seu endereço IP:</p>
-<div class="language-py highlight"><span class="filename">&gt;&gt;&gt; Terminal interativo!</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s2">"8.8.8.8"</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s1">'192.168.0.100'</span><span class="c1"># (1)!</span>
-</span></code></pre></div>
-<ol>
-<li>O endereço do meu computador na rede local</li>
-</ol>
-</details>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/acesso_do_uvicorn_na_rede.jpg" data-desc-position="bottom"><img alt="imagem do navegador do celular acessando o servidor via rede" class="center shadow" src="../assets/02/acesso_do_uvicorn_na_rede.jpg"></a></p>
-<h3 id="o-modelo-padrao-da-web">O modelo padrão da web</h3>
-<p>Ignorando muita história e diversas camadas de padrões, podemos nos concentrar nos três padrões principais que serão mais importantes para nós agora:</p>
-<pre class="mermaid"><code>graph
-    A[Web] --&gt; B[URL]
-    A --&gt; C[HTTP]
-    A --&gt; D[HTML]</code></pre>
-<ul>
-<li><a href="https://pt.wikipedia.org/wiki/URL" target="_blank">URL</a>: <em>Localizador Uniforme de Recursos</em>. Um endereço de rede pelo qual podemos nos comunicar com um computador na rede.</li>
-<li><a href="https://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol" target="_blank">HTTP</a>: um protocolo que especifica como deve ocorrer a comunicação entre dispositivos.</li>
-<li><a href="https://pt.wikipedia.org/wiki/HTML" target="_blank">HTML</a>: a linguagem usada para criar e estruturar páginas na web.</li>
-</ul>
-<h4 id="url">URL</h4>
-<p>Uma URL (Uniform Resource Locator) é como um endereço que nos ajuda a encontrar um recurso específico em uma rede, como a URL <code>http://127.0.0.1:8000</code> que usamos para acessar nossa aplicação.</p>
-<p>Uma URL é composta por várias partes, como neste exemplo: <code>protocolo://endereço:porta/caminho/recurso?query_string#fragmento</code>. Neste primeiro momento, focaremos nos primeiros quatro componentes, essenciais para o andamento da aula:</p>
-<ol>
-<li>
-<p><strong>Protocolo</strong>: A primeira parte da URL, terminando com "://". Os mais comuns são "http://" e "https://". Este protocolo define como os dados são trocados entre seu computador e o local onde o recurso está armazenado, seja na internet ou numa rede local.</p>
-</li>
-<li>
-<p><strong>Endereço do Host</strong>: Pode ser um endereço IP (como "192.168.1.10") ou um endereço de <a href="https://pt.wikipedia.org/wiki/Sistema_de_Nomes_de_Dom%C3%ADnio" target="_blank">DNS</a> (como "youtube.com"). Ele identifica o dispositivo na rede que contém o recurso desejado.</p>
-</li>
-<li>
-<p><strong>Porta (opcional)</strong>: Após o endereço do host, pode haver um número após dois pontos, como em "192.168.1.10:8080". Este número é a porta, usada para direcionar sua solicitação ao serviço específico no dispositivo. Por padrão, as portas são <code>80</code> para HTTP e <code>443</code> para HTTPS, quando não especificadas.</p>
-</li>
-<li>
-<p><strong>Caminho</strong>: Indica a localização exata do recurso no servidor ou dispositivo. Por exemplo, em "192.168.1.10:8000/busca", <code>/busca</code> é o nome do recurso. Quando não especificado, o servidor responde com o recurso na raiz (<code>/</code>).</p>
-</li>
-</ol>
-<p>Ao acessarmos via navegador a URL <code>http://127.0.0.1:8000</code>, estamos acessando o servidor via protocolo <code>HTTP</code>, no endereço do nosso próprio computador, na porta <code>8000</code>, solicitando o recurso <code>/</code>.</p>
-<h4 id="http">HTTP</h4>
-<p>Quando o cliente inicia uma requisição para um endereço na rede, isso é feito via um protocolo e direcionado ao servidor do recurso. Em aplicações web, a maioria da comunicação ocorre via protocolo HTTP ou sua versão segura, o HTTPS.</p>
-<p>HTTP, ou <em>Hypertext Transfer Protocol</em> (Protocolo de Transferência de Hipertexto), é o protocolo fundamental na web para a transferência de dados e comunicação entre clientes e servidores. Ele baseia-se no modelo de requisição-resposta: onde o cliente faz uma requisição ao servidor, que responde a essa requisição. Essas requisições e respostas são formatadas conforme as regras do protocolo HTTP.</p>
-<h5 id="mensagens">Mensagens</h5>
-<p>No contexto do HTTP, tanto requisições quanto respostas são referidas como <strong>mensagens</strong>. As mensagens HTTP na versão 1 têm uma estrutura textual semelhante ao seguinte exemplo.</p>
-<p>Um exemplo de mensagem HTTP enviada pelo cliente:</p>
-<div class="language-http highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Exemplo da mensagem emitada pelo cliente</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span>
-<span class="normal"><a href="#__codelineno-4-5">5</a></span>
-<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nf">GET</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="na">Host</span><span class="o">:</span> <span class="l">127.0.0.1:8000</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="na">User-Agent</span><span class="o">:</span> <span class="l">HTTPie/3.2.2</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<p>Na primeira linha, temos o <a href="#verbos">verbo</a> GET, que solicita um recurso, neste caso, o recurso é <code>/</code>. As linhas seguintes compõem o <a href="#cabecalho">cabeçalho</a> da mensagem. Elas informam que o cliente aceita qualquer tipo de resposta (<code>Accept: */*</code>), indicam a URL destino (<code>Host: 127.0.0.1:8000</code>) e identificam o cliente que gerou a requisição (<code>User-Agent: HTTPie/3.2.2</code>), que neste caso foi o cliente <a href="https://httpie.io/cli" target="_blank">HTTPie</a>.</p>
-<p>Em resposta a esta mensagem, o servidor enviou o seguinte:</p>
-<div class="language-http highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Exemplo da mensagem de resposta do servidor</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span>
-<span class="normal"><a href="#__codelineno-5-5">5</a></span>
-<span class="normal"><a href="#__codelineno-5-6">6</a></span>
-<span class="normal"><a href="#__codelineno-5-7">7</a></span>
-<span class="normal"><a href="#__codelineno-5-8">8</a></span>
-<span class="normal"><a href="#__codelineno-5-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="na">content-length</span><span class="o">:</span> <span class="l">24</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="na">content-type</span><span class="o">:</span> <span class="l">application/json</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="na">date</span><span class="o">:</span> <span class="l">Fri, 19 Jan 2024 04:05:50 GMT</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="na">server</span><span class="o">:</span> <span class="l">uvicorn</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="p">{</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Olá mundo"</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="p">}</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<p>Aqui, na primeira linha da resposta, temos a versão do protocolo HTTP utilizada e o <a href="#codigos-de-resposta">código de resposta</a> <code>200 OK</code>, indicando que a requisição foi bem-sucedida. O cabeçalho da resposta inclui informações como o <code>content-length</code> e <code>content-type</code>, que especificam o tamanho e o tipo do conteúdo da resposta, respectivamente. A data e o servidor que processou a requisição também são indicados. Finalmente, o <a href="#corpo">corpo da resposta</a>, formatado em JSON, contém a mensagem <code>"Olá mundo"</code>.</p>
-<details class="example">
-<summary>Como as mensagens do HTTP foram geradas?</summary>
-<p>A visualização das mensagens foram geradas com o cliente CLI do HTTPie: <code>http GET http://127.0.0.1:8000 -v</code></p>
-<div class="language-http highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">GET</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="na">Host</span><span class="o">:</span> <span class="l">127.0.0.1:8000</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="na">User-Agent</span><span class="o">:</span> <span class="l">HTTPie/3.2.2</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>HTTP/1.1 200 OK
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>content-length: 24
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>content-type: application/json
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>date: Fri, 19 Jan 2024 04:05:50 GMT
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>server: uvicorn
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>{
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    "message": "Olá mundo"
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>}
-</span></code></pre></div>
-</details>
-<h6 id="cabecalho">Cabeçalho</h6>
-<p>O cabeçalho de uma mensagem HTTP contém metadados essenciais sobre a requisição ou resposta. Alguns elementos comuns que podem ser incluídos no cabeçalho são:</p>
-<ul>
-<li><strong>Content-Type</strong>: Especifica o tipo de mídia no corpo da mensagem. Por exemplo, <code>Content-Type: application/json</code> indica que o corpo da mensagem está em formato JSON. Ou <code>Content-Type: text/html</code>, para mensagens que contém <a href="#html">HTML</a>.</li>
-<li><strong>Authorization</strong>: Usado para autenticação, como tokens ou credenciais. (veremos mais disso nas aulas seguintes)</li>
-<li><strong>Accept</strong>: Especifica o tipo de mídia que o cliente aceita, como <code>application/json</code>.</li>
-<li><strong>Server</strong>: Fornece informações sobre o software do servidor.</li>
-</ul>
-<h6 id="corpo">Corpo</h6>
-<p>O corpo da mensagem contém os dados propriamente ditos, variando conforme o tipo de mídia. Exemplos podem incluir um objeto JSON ou uma estrutura HTML.</p>
-<h5 id="verbos">Verbos</h5>
-<p>Quando um cliente faz uma requisição HTTP, ele indica sua intenção ao servidor utilizando verbos. Estes verbos sinalizam diferentes ações no protocolo HTTP. Vejamos alguns exemplos:</p>
-<ul>
-<li><strong>GET</strong>: utilizado para recuperar recursos. Empregamos este verbo quando queremos solicitar um dado já existente no servidor.</li>
-<li><strong>POST</strong>: permite criar um novo recurso. Por exemplo, enviar dados para registrar um novo usuário.</li>
-<li><strong>PUT</strong>: Atualiza um recurso existente. Como, por exemplo, atualizar as informações de um usuário existente.</li>
-<li><strong>DELETE</strong>: Exclui um recurso. Por exemplo, remover um usuário específico do sistema.</li>
-</ul>
-<p>Na nossa aplicação FastAPI, definimos que a função <code>read_root</code> que  será executada quando uma requisição GET for feita por um cliente no caminho <code>/</code>:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-5">5</a></span>
-<span class="normal"><a href="#__codelineno-7-6">6</a></span>
-<span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-</span></span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<p>Quando realizamos a requisição via navegador, o verbo padrão é o GET. Por isso, obtemos na tela a mensagem <code class="language-python highlight"><span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span></code>.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/nagevador_com_localhost.png" data-desc-position="bottom"><img alt="Captura de tela do navegador acessando &quot;http://127.0.0.1&quot;" class="center shadow" src="../assets/02/nagevador_com_localhost.png"></a></p>
-<p>Essa é exatamente a resposta fornecida pela execução da função <code>read_root</code>. No futuro, criaremos funções para lidar com os outros verbos HTTP.</p>
-<h5 id="codigos-de-resposta">Códigos de resposta</h5>
-<p>No mundo das requisições usando o protocolo HTTP, além da resposta obtida quando nos comunicamos com o servidor, também recebemos um código de resposta (<em>status code</em>). Os códigos são formas de mostrar ao cliente como o servidor lidou com a sua requisição. Os códigos são divididos em classes e as classes são distribuídas por centenas:</p>
-<ul>
-<li>1xx: informativo — utilizada para enviar informações para o cliente de que sua requisição foi recebida e está sendo processada.</li>
-<li>2xx: sucesso — Indica que a requisição foi bem-sucedida (por exemplo, 200 OK, 201 Created).</li>
-<li>3xx: redirecionamento — Informa que mais ações são necessárias para completar a requisição (por exemplo, 301 Moved Permanently, 302 Found).</li>
-<li>4xx: erro no <strong>cliente</strong> — Significa que houve um erro na requisição feita pelo cliente (por exemplo, 400 Bad Request, 404 Not Found).</li>
-<li>5xx: erro no <strong>servidor</strong> — Indica um erro no servidor ao processar a requisição válida do cliente (por exemplo, 500 Internal Server Error, 503 Service Unavailable).</li>
-</ul>
+<h1 id="testes-de-carga">Testes de carga</h1>
 <blockquote>
-<p>Para mais informações a cerca do <em>status code</em> acesse a documentação do <a href="https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml" target="_blank">iana</a></p>
+<p>Esse conteúdo é um conteúdo transversal do curso de FastAPI original. Ele presume que você tenha experiências prévias com desenvolvimento web ou que tenha completado o curso.</p>
 </blockquote>
-<p>Sempre que fazemos uma requisição, obtemos um código de resposta. Por exemplo, em nosso arquivo de teste, quando efetuamos a requisição, fazemos a checagem para ver se recebemos um código de sucesso, o código <code class="language-python highlight"><span class="mi">200</span> <span class="n">OK</span></code>:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">tests/test_app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-8-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="hll">    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
-</span></span></code></pre></div></td></tr></tbody></table></div>
-<h6 id="boas-praticas-para-constantes"><strong>Boas práticas para constantes</strong></h6>
-<p>Quando comparamos valores, a boa prática é que eles nunca sejam explícitos no código como <code class="language-python highlight"><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></code>. Neste caso em específico é fácil saber o que <code class="language-python highlight"><span class="mi">200</span></code> significa pois estamos estudando exatamente essa parte. Mas, em alguns momentos podemos nos deparar com códigos que não sabemos o significado. Por exemplo um código <code class="language-python highlight"><span class="mi">209</span></code>. O que ele significa?<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
-<p>Quando trabalhamos com "valores mágicos" no código, a <a href="https://peps.python.org/pep-0008/#constants" target="_blank">PEP-8</a> recomenda que criemos constantes que representem esses valores. Como por exemplo <code class="language-python highlight"><span class="n">OK</span> <span class="o">=</span> <span class="mi">200</span></code>.</p>
-<p>A boa prática para lidar com códigos de status é usar a classe <code class="language-python highlight"><span class="n">http</span><span class="o">.</span><span class="n">HTTPStatus</span></code>, que já mapeia todos os status code em um único objeto. Fazendo que a comparação seja feita de forma simples, como:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">tests/test_app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-9-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_root_deve_retornar_ok_e_ola_mundo</span><span class="p">():</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="hll">    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span>
-</span></span></code></pre></div></td></tr></tbody></table></div>
-<h6 id="o-lado-do-servidor">O lado do servidor</h6>
-<p>Para garantir que a resposta obtida pelo cliente seja considerada um sucesso, o FastAPI, por padrão, envia o código de sucesso <code>200</code> para o método GET. No entanto, também podemos deixar isso explícito na definição da rota:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Apenas o dígito</label><label for="__tabbed_1_2">Usando HTTPStatus</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-5">5</a></span>
-<span class="normal"><a href="#__codelineno-10-6">6</a></span>
-<span class="normal"><a href="#__codelineno-10-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-</span></span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-</div>
-<div class="tabbed-block">
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-5">5</a></span>
-<span class="normal"><a href="#__codelineno-11-6">6</a></span>
-<span class="normal"><a href="#__codelineno-11-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
-</span></span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-</div>
-</div>
-</div>
-<p>Temos diversos códigos a explorar durante nossa jornada, mas gostaria de listar os mais comuns dentro do nosso escopo:</p>
 <ul>
-<li><strong>200 OK</strong>: a solicitação foi bem-sucedida. O significado exato depende do método HTTP utilizado na solicitação.</li>
-<li><strong>201 Created</strong>: a solicitação foi bem-sucedida e um novo recurso foi criado como resultado.</li>
-<li><strong>404 Not Found</strong>: o recurso solicitado não pôde ser encontrado, sendo frequentemente usado quando o recurso é inexistente.</li>
-<li><strong>422 Unprocessable Entity</strong>: usado quando a requisição está bem-formada, mas não pode ser seguida devido a erros semânticos. É comum em APIs ao validar dados de entrada.</li>
-</ul>
-<p>Assim, podemos ir ao terceiro pilar do desenvolvimento web que são os conteúdos relacionados as respostas.</p>
-<h4 id="html">HTML</h4>
-<div class="admonition example">
-<p class="admonition-title">Sobre o código apresentado nesse tópico!</p>
-<p>Todo o código apresentado neste tópico é apenas um exemplo básico do uso de HTML com FastAPI e não será utilizado no curso. No entanto, é extremamente importante mencionar este tópico. <strong>Para uma visão um pouco mais aprofundada, temos um <a href="../apendices/b_proximos_passos/#templates" target="_blank">tópico no apêndice B</a> focado em html + css.</strong></p>
-<p>Embora este tópico abranja apenas HTML puro, o FastAPI pode utilizar <a href="https://jinja.palletsprojects.com/" target="_blank">Jinja</a> como sistema de templates para uma aplicação mais eficiente.</p>
-<details class="tip">
-<summary>Interessado em aprender sobre a aplicação de templates?</summary>
-<p>Na live sobre websockets com FastAPI, discutimos bastante sobre templates. Você pode assistir ao vídeo aqui:
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://www.youtube.com/embed/EqFzY8dBWHs" data-desc-position="bottom"></a></p><div class="video-container"><iframe src="https://www.youtube.com/embed/EqFzY8dBWHs" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div><p></p>
-</details>
-<p>A documentação do FastAPI também oferece um tópico focado em <a href="https://fastapi.tiangolo.com/pt/advanced/templates/" target="_blank">Templates</a>.</p>
-</div>
-<p>O terceiro pilar fundamental da web é o HTML, sigla para <em>Hypertext Markup Language</em>. Trata-se da linguagem de marcação padrão usada para criar e estruturar páginas na internet. Quando acessamos um site, o que vemos em nossos navegadores é o resultado da interpretação do HTML. Esta linguagem utiliza uma série de 'tags' – como <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span></code>, <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span></code>, <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span></code>, <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span></code>, <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span></code> e outras – para definir a estrutura e o conteúdo de uma página web.</p>
-<p>A beleza do HTML reside em sua simplicidade e eficácia. Mais do que uma linguagem, é uma forma de organizar e apresentar informações na web. Cada tag tem um propósito específico: <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span></code> a <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">h6</span><span class="p">&gt;</span></code> são usadas para títulos e subtítulos; <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span></code> para parágrafos; <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">a</span><span class="p">&gt;</span></code> para links; enquanto <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span></code> e <code class="language-html highlight"><span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span></code> auxiliam na organização e estilo do conteúdo. Juntas, essas tags formam a espinha dorsal de quase todas as páginas da internet.</p>
-<p>Se nosso objetivo fosse apresentar um HTML simples, poderíamos usar a classe de resposta <code>HTMLResponse</code>:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-12-10">10</a></span>
-<span class="normal"><a href="#__codelineno-12-11">11</a></span>
-<span class="normal"><a href="#__codelineno-12-12">12</a></span>
-<span class="normal"><a href="#__codelineno-12-13">13</a></span>
-<span class="normal"><a href="#__codelineno-12-14">14</a></span>
-<span class="normal"><a href="#__codelineno-12-15">15</a></span>
-<span class="normal"><a href="#__codelineno-12-16">16</a></span>
-<span class="normal"><a href="#__codelineno-12-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.responses</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTMLResponse</span>
-</span></span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">HTMLResponse</span><span class="p">)</span>
-</span></span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>    <span class="k">return</span> <span class="s2">"""</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="s2">    &lt;html&gt;</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="s2">      &lt;head&gt;</span>
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="s2">        &lt;title&gt; Nosso olá mundo!&lt;/title&gt;</span>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="s2">      &lt;/head&gt;</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="s2">      &lt;body&gt;</span>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="s2">        &lt;h1&gt; Olá Mundo &lt;/h1&gt;</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="s2">      &lt;/body&gt;</span>
-</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="s2">    &lt;/html&gt;"""</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<p>Ao acessarmos nossa URL no navegador, podemos ver o HTML sendo renderizado:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/retorno_do_ola_mundo_em_html.png" data-desc-position="bottom"><img alt="descrição" class="center" src="../assets/02/retorno_do_ola_mundo_em_html.png"></a></p>
-<p>Embora o HTML seja crucial para a estruturação de páginas web, nosso curso foca em uma perspectiva diferente: a transferência de dados. Enquanto o HTML é usado para apresentar dados visualmente nos navegadores, existe outra camada focada na transferência de informações entre sistemas e servidores. Aqui entra o conceito de APIs (Application Programming Interfaces), que frequentemente utilizam JSON (JavaScript Object Notation) para a troca de dados. JSON é um formato leve de troca de dados, fácil de ler e escrever para humanos, e simples de interpretar e gerar para máquinas.</p>
-<p>Portanto, embora não aprofundemos no HTML como linguagem, é importante entender seu papel como a camada de apresentação padrão da web. Agora, direcionaremos nossa atenção para as APIs e a troca de dados em JSON, explorando como essas tecnologias permitem a comunicação eficiente entre diferentes sistemas e aplicativos.</p>
-<h2 id="apis">APIs</h2>
-<p>Quando falamos sobre aplicações web que não envolvem uma camada de visualização, como HTML, geralmente estamos nos referindo a APIs. A sigla API vem de <em>Application Programming Interface</em> (Interface de Programação de Aplicações). Uma API é projetada para ser uma interface claramente definida e documentada, que facilita a interação por meio do protocolo HTTP.</p>
-<p>A essência das APIs reside no modelo cliente-servidor, onde o cliente troca dados com o servidor através de <a href="#endpoint"><em>endpoints</em></a>, respeitando as regras estabelecidas pelo protocolo HTTP. Por exemplo, para solicitar dados ao servidor, usamos o verbo GET, direcionando a requisição a um endpoint específico do servidor, que em resposta nos fornece o dado ou recurso solicitado.</p>
-<h3 id="endpoint">Endpoint</h3>
-<p>O termo "endpoint" refere-se a um ponto específico em uma API para onde as requisições são enviadas. Basicamente, é um endereço na web (URL) onde o servidor ou a API está ativo e pronto para responder a requisições dos clientes. Cada endpoint está associado a uma função específica da API, como recuperar dados, criar novos registros, atualizar ou deletar dados existentes.</p>
-<p>A localização e estrutura de um endpoint, que incluem o caminho na URL e os métodos HTTP permitidos, definem como os clientes devem formatar suas requisições para serem compreendidas e processadas pelo servidor. Por exemplo, um endpoint para recuperar informações de um usuário pode ter um endereço como <code>https://api.exemplo.com/usuarios/{id}</code>, onde <code>{id}</code> é o identificador único do usuário desejado.</p>
-<p>Atualmente, em nossa aplicação, temos apenas um endpoint disponível: o <code>/</code>. Vejamos o exemplo:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Código de Exemplo</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-</span></span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<p>Quando utilizamos o decorador <code class="language-python highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code>, estamos instruindo nossa API que, para chamadas de método <code>GET</code> no endpoint <code>/</code>, a função <code>read_root</code> será executada. O resultado dessa função, neste caso <code>{'message': 'Olá Mundo!'}</code>, é o que será retornado ao cliente.</p>
-<h3 id="documentacao">Documentação</h3>
-<p>Uma pergunta comum nesse estágio é: "Ok, mas como descobrir ou conhecer os endpoints disponíveis em uma API?". A resposta reside na documentação. Uma documentação eficaz é essencial em APIs, especialmente quando muitos clientes diferentes precisam se comunicar com o servidor. A melhor prática é fornecer uma documentação detalhada, clara e acessível sobre os endpoints disponíveis, incluindo informações sobre o formato e a estrutura dos dados que podem ser enviados e recebidos.</p>
-<p>A documentação de uma API serve como um guia ou um manual, facilitando o entendimento e a utilização por desenvolvedores e usuários finais. Ela desempenha um papel crucial ao:</p>
-<ul>
-<li>Definir claramente os endpoints e suas funcionalidades.</li>
-<li>Especificar os métodos HTTP suportados (GET, POST, PUT, DELETE, etc.).</li>
-<li>Descrever os parâmetros esperados em requisições e respostas.</li>
-<li>Fornecer exemplos de requisições e respostas para facilitar o entendimento.</li>
-</ul>
-<h4 id="openapi-e-documentacao-automatica">OpenAPI e documentação automática</h4>
-<p>Uma das soluções mais eficazes para a documentação de APIs é a utilização da especificação OpenAPI, disponível em <a href="https://swagger.io/specification/" target="_blank">OpenAPI Specification</a>. Essa especificação fornece um padrão robusto para descrever APIs, permitindo aos desenvolvedores criar documentações precisas e testáveis de forma automática. Esta abordagem não apenas simplifica o processo de documentação, mas também garante que a documentação seja consistentemente atualizada e precisa.</p>
-<p>Para visualizar e interagir com essa documentação, ferramentas como <a href="https://swagger.io/tools/swagger-ui/" target="_blank">Swagger UI</a> e <a href="https://redocly.github.io/redoc/" target="_blank">Redoc</a> são amplamente utilizadas. Elas transformam a especificação OpenAPI em visualizações interativas, fornecendo uma interface fácil de navegar onde os usuários podem não apenas ler a documentação, mas também experimentar a API diretamente na interface. Esta funcionalidade interativa é fundamental para uma compreensão prática de como a API funciona, além de oferecer uma maneira eficiente de testar suas funcionalidades em tempo real.</p>
-<p>No contexto do FastAPI, há suporte automático tanto para Swagger UI quanto para Redoc. Para explorar a documentação atual da nossa aplicação, basta iniciar o servidor com o seguinte comando:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>task<span class="w"> </span>run
-</span></code></pre></div>
-<h4 id="swagger-ui">Swagger UI</h4>
-<p>Ao acessarmos o endereço <a href="http://127.0.0.1:8000/docs" target="_blank">http://127.0.0.1:8000/docs</a>, nos deparamos com a interface do Swagger UI:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/captura_de_tela_swagger_ui.png" data-desc-position="bottom"><img alt="Captura de tela da página inicial do swagger UI" class="center shadow" src="../assets/02/captura_de_tela_swagger_ui.png"></a></p>
-<p>Esta imagem nos dá uma visão geral dos endpoints disponíveis na nossa aplicação, neste caso, o endpoint <code>/</code> que aceita o verbo HTTP <code>GET</code>. Ao explorar mais a fundo e clicar nesse método:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/documenta%C3%A7%C3%A3o_do_swagger_ui_do_endpoint_GET.png" data-desc-position="bottom"><img alt="Captura de tela da documentação do / no swagger UI" class="center shadow" src="../assets/02/documenta%C3%A7%C3%A3o_do_swagger_ui_do_endpoint_GET.png"></a></p>
-<p>Na documentação, é possível observar diversas informações cruciais, como o <a href="#codigos-de-resposta">código de resposta</a> <code>200</code>, que indica sucesso, o tipo de dado retornado pelo <a href="#cabecalho">cabeçalho</a> (<code>application/json</code>) e um exemplo do valor de retorno. Contudo, a documentação atual sugere, incorretamente, que o retorno é uma <code>string</code>, quando, na verdade, nossa aplicação retorna um objeto <a href="#trafegando-json" target="_blank">JSON</a>. Essa diferença será abordada em breve.</p>
-<p>Um aspecto interessante do Swagger UI é a possibilidade de interagir diretamente com a API através da interface. Ao clicar em <code>Try it out</code>, um botão <code>Execute</code> se torna disponível:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/captura_de_tela_do_botao_execute_na_swagger_ui.png" data-desc-position="bottom"><img alt="Captura de tela do clique no botão try it out do swagger, apresentando o botão execute." class="center shadow" src="../assets/02/captura_de_tela_do_botao_execute_na_swagger_ui.png"></a></p>
-<p>Clicar em <code>Execute</code> faz do Swagger um cliente temporário da nossa API, enviando uma requisição ao servidor e exibindo a resposta:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/captura_de_tela_do_swagger_com_a_reposta_do_endpoint_root.png" data-desc-position="bottom"><img alt="descrição" class="center shadow" src="../assets/02/captura_de_tela_do_swagger_com_a_reposta_do_endpoint_root.png"></a></p>
-<p>A resposta ilustra como fazer a chamada usando o <a href="https://curl.se/docs/manpage.html" target="_blank">Curl</a>, a <a href="#url" target="_blank">URL</a> utilizada, o <a href="#codigos-de-resposta">código de resposta</a> 200, e detalhes da resposta do servidor, incluindo o corpo da mensagem (<a href="#corpo" target="_blank">body</a>) e os cabeçalhos (<a href="#cabecalho" target="_blank">headers</a>).</p>
-<details class="tip">
-<summary>Caso queira saber mais sobre OpenAPI e Swagger</summary>
-<p>Temos uma live focada em OpenAPI, que são as especificações do Swagger:
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://www.youtube.com/embed/TfGHNBaK9a0" data-desc-position="bottom"></a></p><div class="video-container"><iframe src="https://www.youtube.com/embed/TfGHNBaK9a0" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div><p></p>
-</details>
-<h4 id="redoc">Redoc</h4>
-<p>Assim como o Swagger UI, o <a href="https://redocly.github.io/redoc/" target="_blank">Redoc</a> é outra ferramenta popular para visualizar a documentação de APIs OpenAPI, mas com um foco em uma apresentação mais limpa e legível. Para acessar a documentação Redoc da nossa aplicação, podemos visitar o endereço <a href="http://127.0.0.1:8000/redoc" target="_blank">http://127.0.0.1:8000/redoc</a>. O Redoc organiza a documentação de uma maneira mais linear e de fácil leitura, destacando as descrições dos endpoints, os métodos HTTP disponíveis, os schemas dos dados de entrada e saída, além de exemplos de requisições e respostas.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/captura_de_tela_do_redoc.png" data-desc-position="bottom"><img alt="Captura de tela da página inicial do Redoc" class="center shadow" src="../assets/02/captura_de_tela_do_redoc.png"></a></p>
-<h2 id="trafegando-json">Trafegando JSON</h2>
-<p>Quando discutimos APIs "modernas"<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, nos referimos a APIs que priorizam o tráfego de dados, deixando de lado a camada de apresentação, como o <a href="#html">HTML</a>. O objetivo é transmitir dados de forma agnóstica para diferentes tipos de clientes. Nesse contexto, o JSON (JavaScript Object Notation) se tornou a mídia padrão, graças à sua leveza e facilidade de leitura tanto por humanos quanto por máquinas.</p>
-<p>O JSON é apreciado por sua simplicidade, apresentando dados em estruturas de documento chave-valor, onde os valores podem ser strings, números, booleanos, arrays, entre outros.</p>
-<p>Abaixo, um exemplo ilustra o formato JSON:</p>
-<div class="language-json highlight"><span class="filename">Exemplo de um JSON</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">            </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O apanhador no campo de centeio"</span><span class="p">,</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">            </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.D. Salinger"</span><span class="p">,</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">            </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1945</span><span class="p">,</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">            </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="p">},</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O mestre e a margarida"</span><span class="p">,</span>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">            </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mikhail Bulgákov"</span><span class="p">,</span>
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">            </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1966</span><span class="p">,</span>
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">            </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>Este exemplo demonstra como o JSON organiza dados de forma intuitiva e acessível, tornando-o ideal para a comunicação de dados em uma ampla variedade de aplicações.</p>
-<h3 id="contratos-em-apis-json">Contratos em APIs JSON</h3>
-<p>Quando falamos sobre o compartilhamento de JSON entre cliente e servidor, é crucial estabelecer um entendimento mútuo sobre a estrutura dos dados que serão trocados. A este entendimento, denominamos <em>schema</em>, que atua como um contrato definindo a forma e o conteúdo dos dados trafegados.</p>
-<p>O schema de uma API desempenha um papel fundamental ao assegurar que ambos, cliente e servidor, estejam alinhados quanto à estrutura dos dados. Este "contrato" especifica:</p>
-<ul>
-<li>Campos de Dados Esperados: quais campos são esperados na mensagem JSON, incluindo nomes de campos e tipos de dados (como strings, números, booleanos).</li>
-<li>Restrições Adicionais: como validações para tamanhos de strings, formatos de números e outros tipos de validação de dados.</li>
-<li>Estrutura de Objetos Aninhados: como os objetos são estruturados dentro do JSON, incluindo arrays e sub-objetos.</li>
-</ul>
-<p>Por exemplo, para nossa mensagem simples retornada por <code>read_root</code> (<code class="language-python highlight"><span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá mundo!'</span><span class="p">}</span></code>), teríamos um schema assim:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>Onde estamos dizendo ao cliente que ao chamar a API, será retornado um objeto, esse objeto contém a propriedade <code class="language-python highlight"><span class="s2">"message"</span></code>, a mensagem será do tipo <code>string</code>. Ao final, vemos que o campo <code>message</code> é requerido. Isso quer dizer que ele sempre será enviado na resposta.</p>
-<details class="example">
-<summary>E em casos mais complicados, como ficaria o schema?</summary>
-<p>Para o exemplo que fizemos antes, sobre os livros, o schema seria assim:
-</p><div class="language-json highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">          </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
-</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">          </span><span class="p">},</span>
-</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">          </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
-</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">          </span><span class="p">},</span>
-</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">          </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
-</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">          </span><span class="p">},</span>
-</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">          </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span>
-</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="w">          </span><span class="p">}</span>
-</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">        </span><span class="p">},</span>
-</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="w">        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"titulo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"autor"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ano"</span><span class="p">,</span><span class="w"> </span><span class="s2">"disponivel"</span><span class="p">]</span>
-</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"livros"</span><span class="p">]</span>
-</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="p">}</span>
-</span></code></pre></div><p></p>
-</details>
-<h3 id="pydantic">Pydantic</h3>
-<p>No universo de APIs e contratos de dados, especialmente ao trabalhar com Python, o <a href="https://docs.pydantic.dev/latest/" target="_blank">Pydantic</a> se destaca como uma ferramenta poderosa e versátil. Essa biblioteca, altamente integrada ao ecossistema Python, especializa-se na criação de schemas de dados e na validação de tipos. Com o Pydantic, é possível expressar schemas JSON de maneira elegante e eficiente através de classes Python, proporcionando uma ponte robusta entre a flexibilidade do JSON e a segurança de tipos do Python.</p>
-<div class="admonition note">
-<p class="admonition-title">Sobre a terminologia</p>
-<p>Embora o termo <code>schema</code> seja bastante utilizado em python para se referir ao formato dos objetos transferidos, em alguns outros contextos e linguagens podemos nos referir a esses modelos com <a href="https://pt.wikipedia.org/wiki/Objeto_de_Transfer%C3%AAncia_de_Dados" target="_blank">DTOs</a> (objetos de transferência de dados). Pode ser que você já tenha ouvido esse termo antes.</p>
-</div>
-<p>Por exemplo, o schema JSON <code>{'message': 'Olá mundo!'}</code>. Com o Pydantic, podemos representar esse schema na forma de uma classe Python chamada <code>Message</code>. Isso é feito de maneira intuitiva e direta:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/schemas.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
-<span class="normal"><a href="#__codelineno-18-2">2</a></span>
-<span class="normal"><a href="#__codelineno-18-3">3</a></span>
-<span class="normal"><a href="#__codelineno-18-4">4</a></span>
-<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Message</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<p>Para iniciar o desenvolvimento com schemas no contexto do FastAPI, podemos criar um arquivo chamado <code>fast_zero/schemas.py</code> e definir a classe <code>Message</code>. Vale ressaltar que o Pydantic é uma dependência integrada do FastAPI (não precisa ser instalado), refletindo a importância dessa biblioteca no processo de validação de dados e na geração de documentação automática para APIs, como a documentação OpenAPI.</p>
-<h4 id="integrando-o-pydantic-com-o-fastapi">Integrando o Pydantic com o FastAPI</h4>
-<p>A integração do modelo Pydantic (ou schema JSON) com o FastAPI é feita ao especificar o modelo no campo <code>response_model</code> do decorador do endpoint. Isso garante que a resposta da API esteja alinhada com o schema definido, além de auxiliar na validação dos dados retornados:</p>
-<div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-19-10">10</a></span>
-<span class="normal"><a href="#__codelineno-19-11">11</a></span>
-<span class="normal"><a href="#__codelineno-19-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a>
-</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a>
-</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Message</span><span class="p">)</span>
-</span></span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
-</span></code></pre></div></td></tr></tbody></table></div>
-<p>Com essa abordagem, ao iniciar o servidor (<code>task run</code>) e acessar a Swagger UI em <a href="http://127.0.0.1:8000/docs" target="_blank">http://127.0.0.1:8000/docs</a>, observamos uma evolução significativa na documentação. Um novo campo <code>Schemas</code> é exibido, destacando a estrutura do modelo <code>Message</code> que definimos:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/captura_de_tela_do_swagger_mostrando_o_schema_de_message.png" data-desc-position="bottom"><img alt="Captura de tele do Swagger UI mostrando o json schema de &quot;Message&quot; que definimos no FastAPI" class="center shadow" src="../assets/02/captura_de_tela_do_swagger_mostrando_o_schema_de_message.png"></a></p>
-<p>Além disso, na seção de <code>Responses</code>, temos um exemplo claro da saída esperada do endpoint: <code class="language-python highlight"><span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">}</span></code>. Isso ilustra como a API irá responder, especificando que o campo obrigatório <code>"message"</code> será retornado com um valor do tipo <code>"string"</code>.</p>
-<h2 id="exercicio">Exercício</h2>
-<p>1.Crie um novo endpoint em <code>fast_zero/app.py</code> que retorne "olá mundo" usando HTML e escreva seu teste em <code>tests/test_app.py</code>.</p>
-<blockquote>
-<p>Dica: para capturar a resposta do HTML do cliente de testes, você pode usar <code class="language-python highlight"><span class="n">response</span><span class="o">.</span><span class="n">text</span></code></p>
-</blockquote>
-<p><a class="md-button" href="../exercicios_resolvidos/aula_02/">Exercícios resolvidos <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg></span></a></p>
-<h2 id="conclusao">Conclusão</h2>
-<p>Nesta aula, navegamos brevemente pelo vasto mundo do desenvolvimento web com foco em APIs, abraçando desde os fundamentos da comunicação na web até as práticas de troca de dados. Exploramos o modelo cliente-servidor, entendemos algumas das nuances das mensagens HTTP e tivemos uma introdução sobre URLs e HTML. Embora o HTML desempenhe um papel central na camada de apresentação, o nosso foco recaiu sobre as APIs, particularmente aquelas que trafegam JSON, um formato de dados.</p>
-<p>Aprofundamos no uso de ferramentas e conceitos vitais para a criação de APIs, como o FastAPI e o Pydantic, que juntos oferecem uma poderosa combinação para a validação de dados e a geração automática de documentação. A exploração do Swagger UI e do Redoc enriqueceu nosso entendimento sobre a importância da documentação acessível e clara para APIs, facilitando tanto o desenvolvimento quanto a usabilidade.</p>
-<p>Essa aula nos deu uma fundamentação básica para avançarmos na construção de APIs. Embora tenhamos exemplificado os conceitos com FastAPI, esses conceitos teóricos podem ajudar você a desenvolver ferramentas web em qualquer tecnologia ou linguagem.</p>
-<p>Nos vemos nas próximas aulas para aplicar todos esses conceitos de forma mais aprofundada!</p>
-<hr>
-<p>Agora que a aula acabou, é um bom momento para você relembrar alguns conceitos e fixar melhor o conteúdo respondendo ao questionário referente a ela.</p>
-<p><a class="md-button" href="../quizes/aula_02/">Quiz <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m8.19 3.5c-.89 0-1.6.18-2.14.54-.55.36-.83.96-.78 1.65h1.97c0-.28.1-.49.26-.63.2-.14.42-.21.69-.21.31 0 .58.08.76.26.18.17.27.39.27.69 0 .28-.08.53-.22.74-.17.22-.38.4-.64.54-.52.32-.86.6-1.07.84-.19.24-.29.58-.29 1.08h2c0-.28.05-.5.14-.68.09-.17.26-.32.52-.47.46-.21.84-.49 1.13-.85.29-.37.44-.76.44-1.2q0-1.05-.81-1.68c-.54-.41-1.29-.62-2.23-.62M11 12v2h2v-2z"></path></svg></span></a></p>
-<div class="footnote">
-<hr>
-<ol>
-<li id="fn:1">
-<p>O código 209 não é um status code válido no http, por isso o usei como exemplo.&nbsp;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
-</li>
-<li id="fn:2">
-<p>Apesar da noção comum de que APIs modernas são projetadas para trafegar JSON, existem debates intensos sobre as melhores práticas para a transferência de dados em APIs. Uma leitura recomendada é o livro <a href="https://hypermedia.systems/" target="_blank">hypermedia systems</a>, que é gratuito e oferece percepções valiosas.&nbsp;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
-</li>
-</ol>
-</div><style type="text/css">.quiz {
+<li>Aula 01: Uma introdução a testes de carga com Locust</li>
+<li>Aula 02: Nos aprofundando nas métricas da nossa aplicação</li>
+<li>Aula 03: Tentando obter resultados melhores</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
@@ -5035,7 +3787,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de junho de 2025 13:50:44 UTC">8 de junho de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de fevereiro de 2026 22:46:57 UTC">16 de fevereiro de 2026</span>
   </span>
 
     
@@ -5050,7 +3802,7 @@ document.addEventListener("DOMContentLoaded", function() {
       
     </span>
     <nav>
-      dunossauro, Marcelo Machado, Rodrigo Vieira, azevedo, Julio Formiga, Rodrigo Barretos, Lucas Mendes
+      
     </nav>
   </span>
 
