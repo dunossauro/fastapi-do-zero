@@ -43,6 +43,7 @@ mserve = {cmd="mike serve --dev-addr localhost:8080", help="Executa o servidor l
 deploy = {cmd="mike deploy estavel --push --allow-empty", help="Faz o deploy da página em produção usando mike"}
 slides = {cmd="marp -I slides/brutos --html --theme slides/brutos/rose-pine.css --allow-local-files -o slides/html", help="Gera os slides em html"}
 ruff = 'ruff check'
+test = {cmd="poetry run invoke test-sub", help="Executa os testes em todos os subdiretórios de aulas"}
 
 [tool.ruff]
 line-length = 79
