@@ -53,7 +53,7 @@ poetry run task test #(1)!
 
 1. executa os testes de todas as aulas do curso
 
-> :warning: Após a aula 10, os testes dependem do testcontainer para serem executados. Logo, seu docker precisa estar aquivo aqui! :warning:
+> :warning: Após a aula 10, os testes dependem do testcontainer para serem executados. Logo, seu docker precisa estar ativo para poder executar! :warning:
 
 Adicione um changelog:
 
