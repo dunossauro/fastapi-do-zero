@@ -2193,6 +2193,26 @@ files = [
 typing-extensions = ">=4.12.0"
 
 [[package]]
+name = "typos"
+version = "1.43.5"
+description = "Source Code Spelling Correction"
+optional = false
+python-versions = ">=3.8"
+groups = ["dev"]
+files = [
+    {file = "typos-1.43.5-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:733221c09d6914c001d2ac16f630773dc36ff384df9ab128c9e93b019eeedf2f"},
+    {file = "typos-1.43.5-py3-none-macosx_11_0_arm64.whl", hash = "sha256:b1d2f86b458917fdc91b89f47101498adc7338361e1ed0bed6e4325d0e674aca"},
+    {file = "typos-1.43.5-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4d75091c9519224f2f74964b6ca5133abfba9be44ce49f12a981e27c29bcef97"},
+    {file = "typos-1.43.5-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:839dfa2bc802b02460097b21f7d93d0fa87d5f76adb83049072211a7279f5ebe"},
+    {file = "typos-1.43.5-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a0825a4d77d66726e86fac03c6cf2efc11b0a5c112b2156dcaeb61a24a807166"},
+    {file = "typos-1.43.5-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:7ee0a71ac21820868686ad52cb26a3e08197b09ceedf04d1736cb8472061665b"},
+    {file = "typos-1.43.5-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:09615c8f64e656940533aa025a9e8dc5c93e5cf6bfbedb059cdcafde75cb6d72"},
+    {file = "typos-1.43.5-py3-none-win32.whl", hash = "sha256:4c865b1b6149acbdaed9d548282ccfad526e1380de19d189e7ac675cd4869156"},
+    {file = "typos-1.43.5-py3-none-win_amd64.whl", hash = "sha256:10009e9a3702da037803b075efc94fa5328bd93af357fb6a2f284c0dbcc77f30"},
+    {file = "typos-1.43.5.tar.gz", hash = "sha256:aa445c5eaf0e32095c3183dda96e0fa8ffcabbfd796721c75d7a8a68e9cd0d75"},
+]
+
+[[package]]
 name = "tzdata"
 version = "2025.3"
 description = "Provider of IANA time zone data"
@@ -2510,4 +2530,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "1e510401b55a61d8b3dae95cc7e4151b5689c8d23a2fc0736ca0ada379cdd47b"
+content-hash = "9abe638cb73747e7a1acbb20bde5fa202b5280e505c2597435cdc56ddca35927"

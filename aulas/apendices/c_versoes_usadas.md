@@ -11,7 +11,7 @@
 ## Bibliotecas de desenvolvimento
 
 ```toml
---8<-- "codigo_das_aulas/13/pyproject.toml:23:32"
+--8<-- "codigo_das_aulas/13/pyproject.toml:23:34"
 ```
 
 ### Lock de todo o ambiente
