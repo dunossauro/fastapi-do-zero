@@ -283,8 +283,9 @@ def test_compose(c):
                     hide=True
                 )
 
-                if result.stdout.strip():
+                if len(result.stdout.split('\n')) > 2:
                     print('Alguns containers falharam ao iniciar')
+                    print(result.stdout)
                     c.run('docker compose ps')
                     c.run('docker compose logs')
                     c.run('docker compose down', warn=True)
