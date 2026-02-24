@@ -273,7 +273,7 @@ docker run -it --name fastzeroapp -p 8000:8000 fast_zero:latest
   <span class="hljs-attr">fastzero_database:</span>
     <span class="hljs-attr">image:</span> <span class="hljs-string">postgres</span>
     <span class="hljs-attr">volumes:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">pgdata:/var/lib/postgresql/</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">pgdata:/var/lib/postgresql/data</span>
     <span class="hljs-attr">environment:</span>
       <span class="hljs-attr">POSTGRES_USER:</span> <span class="hljs-string">app_user</span>
       <span class="hljs-attr">POSTGRES_DB:</span> <span class="hljs-string">app_db</span>
