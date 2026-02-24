@@ -56,7 +56,7 @@ jobs:
         run: poetry install --only dev
 
       - name: Rodar task de teste do compose
-        run: poetry run invoke test_compose
+        run: poetry run invoke test-compose
 
   windows-hell:
     runs-on: windows-latest
