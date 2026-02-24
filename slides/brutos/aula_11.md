@@ -343,7 +343,7 @@ services:
   fastzero_database:
     image: postgres
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/
     environment:
       POSTGRES_USER: app_user
       POSTGRES_DB: app_db
