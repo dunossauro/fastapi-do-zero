@@ -37,6 +37,26 @@ jobs:
       - name: Rodar os dockers dos códigos de aulas
         run: poetry run invoke test-docker-build --python-version=${{ matrix.python-version }}
 
+  test-compose:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v5
+
+      - name: Instalar Python 3.14
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.14
+
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Instalar dependências do projeto
+        run: poetry install --only dev
+
+      - name: Rodar task de teste do compose
+        run: poetry run invoke test-compose
 
   windows-hell:
     runs-on: windows-latest

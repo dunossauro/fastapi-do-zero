@@ -264,3 +264,31 @@ def update_sub(c):
                 c.run(f'poetry add --group dev {_dep}@latest')
 
             c.run('poetry install')
+
+
+@task
+def test_compose(c):
+    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
+    for path in sorted(code_path):
+        compose_file = path / 'compose.yaml'
+        if compose_file.exists():
+            print(f'Testando compose em: {path}')
+            with c.cd(str(path)):
+                c.run('docker compose up -d', warn=True)
+
+                c.run('sleep 10', warn=True)
+
+                result = c.run(
+                    'docker compose ps --status exited',
+                    hide=True
+                )
+
+                if result.stdout.strip():
+                    print('Alguns containers falharam ao iniciar')
+                    c.run('docker compose ps')
+                    c.run('docker compose logs')
+                    c.run('docker compose down', warn=True)
+                    raise SystemExit(1)
+
+                print('Todos os containers iniciaram corretamente')
+                c.run('docker compose down', warn=True)
