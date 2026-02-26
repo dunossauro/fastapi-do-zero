@@ -43,14 +43,17 @@ O projeto central do curso será a construção de um gerenciador de tarefas (um
 
 ```python exec="1"
 import tomllib
+from datetime import date
+
+year = date.today().year
 
 with open("codigo_das_aulas/13/poetry.lock", "rb") as f:
     packages = {pkg["name"]: pkg["version"] for pkg in tomllib.load(f)["package"]}
 
 print(
-    f"Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em 2025, como a versão do {packages['fastapi']} FastAPI, "
+    f"Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em {year}, como a versão do {packages['fastapi']} FastAPI, "
     f"a versão {packages['pydantic']} do Pydantic, a versão {packages['sqlalchemy']} do SQLAlchemy ORM, "
-    f"além do Python 3.11/3.12/3.13, e do Alembic {packages['alembic']} para gerenciamento de migrações."
+    f"além do suporte ao Python 3.11/3.12/3.13/3.14, e do Alembic {packages['alembic']} para gerenciamento de migrações."
 )
 ```
 
