@@ -261,14 +261,14 @@ idna = ">=2.0.0"
 
 [[package]]
 name = "fastapi"
-version = "0.133.1"
+version = "0.134.0"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "fastapi-0.133.1-py3-none-any.whl", hash = "sha256:658f34ba334605b1617a65adf2ea6461901bdb9af3a3080d63ff791ecf7dc2e2"},
-    {file = "fastapi-0.133.1.tar.gz", hash = "sha256:ed152a45912f102592976fde6cbce7dae1a8a1053da94202e51dd35d184fadd6"},
+    {file = "fastapi-0.134.0-py3-none-any.whl", hash = "sha256:f4e7214f24b2262258492e05c48cf21125e4ffc427e30dd32fb4f74049a3d56a"},
+    {file = "fastapi-0.134.0.tar.gz", hash = "sha256:3122b1ea0dbeaab48b5976e80b99ca7eda02be154bf03e126a33220e73255a9a"},
 ]
 
 [package.dependencies]
@@ -281,7 +281,7 @@ pydantic = ">=2.7.0"
 pydantic-extra-types = {version = ">=2.0.0", optional = true, markers = "extra == \"standard\""}
 pydantic-settings = {version = ">=2.0.0", optional = true, markers = "extra == \"standard\""}
 python-multipart = {version = ">=0.0.18", optional = true, markers = "extra == \"standard\""}
-starlette = ">=0.40.0"
+starlette = ">=0.46.0"
 typing-extensions = ">=4.8.0"
 typing-inspection = ">=0.4.2"
 uvicorn = {version = ">=0.12.0", extras = ["standard"], optional = true, markers = "extra == \"standard\""}
@@ -2201,4 +2201,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "9ef91383783064147632580e8e45463814505998b7bd3782ad4b8c9affb26017"
+content-hash = "692990aadaa926da096433a973f6077629089c839c9c8b9ca4984571c58e32dc"
