@@ -26,7 +26,7 @@ git branch -m fix/aula-01-gramatica
 
 ??? warning "Esse projeto é gerenciado pelo poetry"
 	Caso você não o tenha instalado, pode instalar via `pipx`:
-	
+
 	```shell title="$ Execução no terminal!"
 	pipx install poetry
 	```
@@ -60,10 +60,10 @@ Adicione um changelog:
 ```shell title="$ Execução no terminal!"
 towncrier create #(1)!
 Issue number (`+` if none): + #(2)!
-Fragment type (adicionado, correcoes, alterado, ...): #(3)!
+Fragment type (adicionado, correcoes, alterado, slides, ...): #(3)!
 ```
 
-1. Esse é o comando. Após isso o o cli exibirá uma opção.
+1. Esse é o comando. Após isso o cli exibirá uma opção.
 2. Aqui você deve adicionar o número da issue, caso houver
 3. Aqui você deve escolher um dos tipos, o que mais se aproxima da contribuição que fizer. Após isso o editor se abrirá em modo de texto.
 
@@ -82,6 +82,17 @@ Abra um pull request:
 
 ![captura de tela exibindo o botão de Pull Request da tela do repositório no github](./contribua_pr.png){: .center .shadow }
 
+## Slides
+
+Caso sua alteração envolva o conteúdo de um slide (`slides/brutos/*.md`) é importante gerar a versão HTML do mesmo.
+
+```bash
+poetry run task slides
+```
+
+Os slides têm uma marcação especial de [changelog](#changelogs), logo não se esqueça de adicionar um changelog para isso também, além do changelog da modificação.
+
+> Esse passo é importante pois algumas modificações ficam somente no texto e para conferir se foram atualizadas nos slides, a forma mais simples de ver é nos changelogs.
 
 ## Changelogs
 
@@ -92,7 +103,7 @@ Uso básico:
 ```shell title="$ Execução no terminal!"
 towncrier create #(1)!
 Issue number (`+` if none): + #(2)!
-Fragment type (adicionado, correcoes, alterado, ...): #(3)!
+Fragment type (adicionado, correcoes, alterado, slides, ...): #(3)!
 ```
 
 1. Esse é o comando. Após isso o o cli exibirá uma opção.
