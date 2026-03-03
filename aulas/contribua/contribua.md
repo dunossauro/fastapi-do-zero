@@ -82,9 +82,17 @@ Abra um pull request:
 
 ![captura de tela exibindo o botão de Pull Request da tela do repositório no github](./contribua_pr.png){: .center .shadow }
 
+Lembre-se de que se seu Pull Request for associado a resolução de alguma issue, é importante que no corpo da mensagem do PR esteja:
+
+```text
+closes #numero
+```
+
+Dessa forma, quem acompanha as issues sabe que o problema está sendo ou foi resolvido. E, quando a solicitação de PR for aceita, a issue é fechada automaticamente.
+
 ## Slides
 
-Caso sua alteração envolva o conteúdo de um slide (`slides/brutos/*.md`) é importante gerar a versão HTML do mesmo.
+Caso sua alteração envolva o conteúdo de um slide (`slides/brutos/*.md`), é importante gerar a versão HTML do mesmo.
 
 ```bash
 poetry run task slides
@@ -92,7 +100,7 @@ poetry run task slides
 
 Os slides têm uma marcação especial de [changelog](#changelogs), logo não se esqueça de adicionar um changelog para isso também, além do changelog da modificação.
 
-> Esse passo é importante pois algumas modificações ficam somente no texto e para conferir se foram atualizadas nos slides, a forma mais simples de ver é nos changelogs.
+> Esse passo é importante, pois algumas modificações ficam somente no texto e, para conferir se foram atualizadas nos slides, a forma mais simples de ver é nos changelogs.
 
 ## Changelogs
 
@@ -110,15 +118,15 @@ Fragment type (adicionado, correcoes, alterado, slides, ...): #(3)!
 2. Aqui você deve adicionar o número da issue, caso houver
 3. Aqui você deve escolher um dos tipos, o que mais se aproxima da contribuição que fizer. Após isso o editor se abrirá em modo de texto.
 
-
 > As entradas vão automaticamente para o diretório `changelogs`, caso isso apareça no seu diff.
 
-Algumas coisas são importantes para geração do changelog
+Algumas coisas são importantes para geração do changelog:
 
 - É importante que sua mensagem de mudança não tenha mais de uma linha.
 - Após o texto da alteração, adicione o seu @ do git:
   ```md
   Correções gramaticais na aula 01, por [@dunossauro](https://github.com/dunossauro){:target="_blank"}
   ```
+- Sempre adicione o número da issue, caso ela exista, no campo `Issue number`, isso fará com que seu changelog seja associado à issue que foi discutida.
 
 Após o Pull Request ser aceito, essas mensagens são exibidas na página de [alterações](../alteracoes.md){:target="_blank"}.
