@@ -27,58 +27,18 @@ um projeto final](https://fastapidozero.dunossauro.com/estavel/15/) para avaliar
 
 ---
 
-### Caso precise reconstruir o ambiente para as páginas
+## Quer se envolver?
 
-#### Sobre o ambiente
+Aqui temos alguns guias na documentação para quem quer contribuir.
 
-Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.2.1`:
-
-```bash
-pipx install poetry==2.2
-pipx inject poetry poetry-plugin-shell
-```
-
-A versão usada do python é a versão 3.13.2:
-
-```
-poetry python install 3.13
-```
-
-para configurar todo o ambiente basta executar:
-
-```bash
-poetry install
-```
-
-para ativar o ambiente virtual:
-
-```bash
-poetry shell
-```
-
-#### Sobre os comandos
-
-Os comandos para executar funções como deploy, servidor local, geração de slides, etc. Estão todas sendo feitas pelo `taskipy`:
-
-```bash
-task --list
-serve       Executa o servidor local do mkdocs
-mserve      Executa o servidor local do mkdocs via mike
-deploy      Faz o deploy da página em produção usando mike
-slides      Gera os slides em html
-ruff        ruff check
-```
-
-Para executar qualquer comando, basta usar: `task <comando>`, como por exemplo `task serve`.
-
-#### Sobre os slides
-
-Todos os slides foram feitos usando marp. Versão do marp usada: `4.0.3`. O tema `rose-pine`, com algumas modificações, está dentro da pasta dos slides brutos.
+- [Guia de contribuição](https://fastapidozero.dunossauro.com/estavel/contribua/contribua/)
+- [Reconstrução do ambiente](https://fastapidozero.dunossauro.com/estavel/contribua/como_fazer/#reconstruir-o-ambiente)
+- [Bump de dependências](https://fastapidozero.dunossauro.com/estavel/contribua/como_fazer/#bumb-de-dependencias)
 
 
 ## Passos para gerar nova release
 
-> TODO: Deixar isso melhor documentado
+> TODO: Isso deve ser mudado para o "Como fazer" na documentação
 
 ### 1. Fazer o build dos changelogs
 

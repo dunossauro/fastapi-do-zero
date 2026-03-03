@@ -81,3 +81,54 @@ changelogs/+52b01b9d.atualizacoes.md:`fastapi` 0.120 -> 0.134
 Isso quer dizer que já existe um fragmento. Caso não exista, neste caso, crie um novo.
 
 Caso a atualização seja de uma dependência indireta, isso não deve gerar um changelog.
+
+## Reconstruir o ambiente
+
+
+Caso precise reconstruir o ambiente para as páginas
+
+### Sobre o ambiente
+
+Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.3`:
+
+```bash
+pipx install poetry==2.3
+pipx inject poetry poetry-plugin-shell
+```
+
+A versão usada do python é a versão 3.13:
+
+```
+poetry python install 3.13
+```
+
+para configurar todo o ambiente basta executar:
+
+```bash
+poetry install
+```
+
+para ativar o ambiente virtual:
+
+```bash
+poetry shell
+```
+
+### Sobre os comandos
+
+Os comandos para executar funções como deploy, servidor local, geração de slides, etc. Estão todas sendo feitas pelo `taskipy`:
+
+```bash
+task --list
+serve       Executa o servidor local do mkdocs
+mserve      Executa o servidor local do mkdocs via mike
+deploy      Faz o deploy da página em produção usando mike
+slides      Gera os slides em html
+ruff        ruff check
+```
+
+Para executar qualquer comando, basta usar: `task <comando>`, como, por exemplo, `task serve`.
+
+#### Sobre os slides
+
+Todos os slides foram feitos usando marp. Versão do marp usada: `4.2`. O tema `rose-pine`, com algumas modificações, está dentro da pasta dos slides brutos.
