@@ -102,7 +102,7 @@ A versão usada do python é a versão 3.13:
 poetry python install 3.13
 ```
 
-para configurar todo o ambiente basta executar:
+para configurar todo o ambiente, basta executar:
 
 ```bash
 poetry install
@@ -116,7 +116,7 @@ poetry shell
 
 ### Sobre os comandos
 
-Os comandos para executar funções como deploy, servidor local, geração de slides, etc. Estão todas sendo feitas pelo `taskipy`:
+Os comandos para executar funções como deploy, servidor local, geração de slides, etc. estão todos sendo feitos [taskipy](https://github.com/taskipy/taskipy):
 
 ```bash
 task --list
@@ -131,4 +131,4 @@ Para executar qualquer comando, basta usar: `task <comando>`, como, por exemplo,
 
 #### Sobre os slides
 
-Todos os slides foram feitos usando marp. Versão do marp usada: `4.2`. O tema `rose-pine`, com algumas modificações, está dentro da pasta dos slides brutos.
+Todos os slides foram feitos usando [marp](https://marp.app/). Versão do marp usada: `4.2`. O tema `rose-pine`, com algumas modificações, está na pasta dos slides brutos.
