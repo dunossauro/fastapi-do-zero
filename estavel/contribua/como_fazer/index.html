@@ -1196,6 +1196,62 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reconstruir-o-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruir o ambiente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reconstruir o ambiente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sobre-o-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sobre o ambiente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sobre-os-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sobre os comandos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sobre os comandos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sobre-os-slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sobre os slides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2133,6 +2189,62 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reconstruir-o-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruir o ambiente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reconstruir o ambiente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sobre-o-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sobre o ambiente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sobre-os-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sobre os comandos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sobre os comandos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sobre-os-slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sobre os slides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2245,7 +2357,35 @@
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>changelogs/+52b01b9d.atualizacoes.md:<span class="sb">`</span>fastapi<span class="sb">`</span><span class="w"> </span><span class="m">0</span>.120<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">0</span>.134
 </span></code></pre></div>
 <p>Isso quer dizer que já existe um fragmento. Caso não exista, neste caso, crie um novo.</p>
-<p>Caso a atualização seja de uma dependência indireta, isso não deve gerar um changelog.</p><style type="text/css">.quiz {
+<p>Caso a atualização seja de uma dependência indireta, isso não deve gerar um changelog.</p>
+<h2 id="reconstruir-o-ambiente">Reconstruir o ambiente</h2>
+<p>Caso precise reconstruir o ambiente para as páginas</p>
+<h3 id="sobre-o-ambiente">Sobre o ambiente</h3>
+<p>Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é <code>2.3</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pipx<span class="w"> </span>install<span class="w"> </span><span class="nv">poetry</span><span class="o">==</span><span class="m">2</span>.3
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>pipx<span class="w"> </span>inject<span class="w"> </span>poetry<span class="w"> </span>poetry-plugin-shell
+</span></code></pre></div>
+<p>A versão usada do python é a versão 3.13:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>poetry python install 3.13
+</span></code></pre></div>
+<p>para configurar todo o ambiente, basta executar:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>poetry<span class="w"> </span>install
+</span></code></pre></div>
+<p>para ativar o ambiente virtual:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>poetry<span class="w"> </span>shell
+</span></code></pre></div>
+<h3 id="sobre-os-comandos">Sobre os comandos</h3>
+<p>Os comandos para executar funções como deploy, servidor local, geração de slides, etc. estão todos sendo feitos <a href="https://github.com/taskipy/taskipy">taskipy</a>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>task<span class="w"> </span>--list
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>serve<span class="w">       </span>Executa<span class="w"> </span>o<span class="w"> </span>servidor<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>mkdocs
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>mserve<span class="w">      </span>Executa<span class="w"> </span>o<span class="w"> </span>servidor<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>mkdocs<span class="w"> </span>via<span class="w"> </span>mike
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>deploy<span class="w">      </span>Faz<span class="w"> </span>o<span class="w"> </span>deploy<span class="w"> </span>da<span class="w"> </span>página<span class="w"> </span>em<span class="w"> </span>produção<span class="w"> </span>usando<span class="w"> </span>mike
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>slides<span class="w">      </span>Gera<span class="w"> </span>os<span class="w"> </span>slides<span class="w"> </span>em<span class="w"> </span>html
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>ruff<span class="w">        </span>ruff<span class="w"> </span>check
+</span></code></pre></div>
+<p>Para executar qualquer comando, basta usar: <code>task &lt;comando&gt;</code>, como, por exemplo, <code>task serve</code>.</p>
+<h4 id="sobre-os-slides">Sobre os slides</h4>
+<p>Todos os slides foram feitos usando <a href="https://marp.app/">marp</a>. Versão do marp usada: <code>4.2</code>. O tema <code>rose-pine</code>, com algumas modificações, está na pasta dos slides brutos.</p><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
@@ -3780,7 +3920,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 de março de 2026 16:31:24 UTC">1 de março de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 de março de 2026 22:51:00 UTC">3 de março de 2026</span>
   </span>
 
     
