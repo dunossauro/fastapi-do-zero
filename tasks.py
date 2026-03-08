@@ -171,15 +171,15 @@ def type_check_sub(c, ci=False):
                 c.run('poetry add zuban')
 
                 print('Normal check: ', path)
-                c.run('poetry run zuban check . --pretty fast_zero', warn=True)
+                c.run('poetry run zuban check --pretty fast_zero', warn=True)
 
                 print('Strict check: ', path)
                 c.run(
-                    'poetry run zuban check . --pretty --strict fast_zero',
+                    'poetry run zuban check --pretty --strict fast_zero',
                     warn=True
                 )
             else:
-                c.run('zuban check . --pretty fast_zero', warn=True)
+                c.run('zuban check --pretty fast_zero', warn=True)
 
 
 @task
