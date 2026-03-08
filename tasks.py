@@ -161,6 +161,28 @@ def lint_sub(c):
 
 
 @task
+def type_check_sub(c, ci=False):
+    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
+    for path in sorted(code_path):
+        print('type_check_sub: ', path)
+        with c.cd(str(path)):
+            if ci:
+                c.run('poetry install')
+                c.run('poetry add zuban')
+
+                print('Normal check: ', path)
+                c.run('poetry run zuban check --pretty fast_zero', warn=True)
+
+                print('Strict check: ', path)
+                c.run(
+                    'poetry run zuban check --pretty --strict fast_zero',
+                    warn=True
+                )
+            else:
+                c.run('zuban check --pretty fast_zero', warn=True)
+
+
+@task
 def test_act(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
