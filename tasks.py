@@ -161,6 +161,15 @@ def lint_sub(c):
 
 
 @task
+def type_check_sub(c):
+    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
+    for path in sorted(code_path):
+        print('lint_sub: ', path)
+        with c.cd(str(path)):
+            c.run('zuban check . --pretty', warn=True)
+
+
+@task
 def test_act(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
