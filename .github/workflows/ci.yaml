@@ -174,7 +174,7 @@ jobs:
         run: poetry run invoke typos-sub
 
       - name: Roda o type-checker co código de aulas
-        run: poetry run invoke type-check-sub
+        run: poetry run invoke type-check-sub --ci
 
       - name: Testa as migrações
         run: poetry run invoke test-migrations
