@@ -28,7 +28,7 @@ Available tasks:
   win-test-migration
 ```
 
-Quase todas essas tarefas são destinadas ao CI, por conta das peculiaridades de rodar em 13 subdiretórios. Duas são referentes ao bump: `update-project` e `typos-sub`.
+Quase todas essas tarefas são destinadas ao CI, por conta das peculiaridades de rodar em 13 subdiretórios. Duas são referentes ao bump: `update-project` e `update-sub`.
 
 > No passado, eu fazia isso via poetry-plugin-up, que ficou sem funcionar durante a atualização para a versão 2+ do poetry. Isso foi corrigido, portanto, pode ser que facilite bastante as tasks no futuro.
 
@@ -40,7 +40,7 @@ poetry run invoke update-project
 
 Esse comando vai atualizar as dependências usadas pelo mkdocs da página.
 
-Caso alguma alteração seja algo que impacte a página ou seja uma mudança radical durante essa alteração. É importante gerar um changelog para `interno`:
+Caso alguma alteração seja algo que impacte a página ou uma mudança radical durante essa alteração. É importante gerar um changelog para `interno`:
 
 ```bash
 poetry run towncrier create
@@ -78,7 +78,13 @@ grep -H "fastapi" changelogs/*
 changelogs/+52b01b9d.atualizacoes.md:`fastapi` 0.120 -> 0.134
 ```
 
-Isso quer dizer que já existe um fragmento. Caso não exista, neste caso, crie um novo.
+Isso quer dizer que já existe um fragmento. Caso não exista, neste caso, crie um novo fragmento de `atualizacoes`:
+
+```bash
+poetry run towncrier create
+Issue number (`+` if none): +
+Fragment type (adicionado, correcoes, alterado, removido, {++atualizacoes++}, interno, slides):
+```
 
 Caso a atualização seja de uma dependência indireta, isso não deve gerar um changelog.
 
