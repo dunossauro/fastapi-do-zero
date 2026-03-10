@@ -389,7 +389,7 @@ Movendo as constantes para variáveis de ambiente
 ### O problema com os 12 fatores
 
 ```python
-SECRET_KEY = 'your-secret-key'
+SECRET_KEY = 'your-very-secret-and-exclusive-key'
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 ```

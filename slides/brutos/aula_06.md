@@ -323,7 +323,7 @@ from zoneinfo import ZoneInfo
 
 from jwt import encode
 
-SECRET_KEY = 'your-secret-key'  # Isso é privisório, vamos ajustar!
+SECRET_KEY = 'your-very-secret-and-exclusive-key'  # Isso é privisório
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
