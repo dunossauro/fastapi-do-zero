@@ -8,34 +8,39 @@ Esta página é destinada a algumas coisas bastante específicas para contribuir
 
 Rotineiramente, as dependências usadas tanto no projeto que gera esse site quanto as dependências do código das aulas precisam ser atualizadas.
 
-Na raiz do projeto temos um arquivo de tasks do [invoke](https://www.pyinvoke.org/) o `tasks.py`:
+Forma simples: Usar as tasks do [taskpy](https://github.com/taskipy/taskipy) que estão no pyproject:
+
+```bash
+poetry run task --list
+# ... outras resposta
+bump         Atualiza todas as dependências do projeto
+bump_classes Atualiza todas as dependências das aulas
+```
+
+Forma mais complicada: na raiz do projeto temos um arquivo de tasks do [invoke](https://www.pyinvoke.org/) o `tasks.py`:
 
 ```bash
 poetry run invoke --list
 Available tasks:
-
-  command-sub
-  lint-sub
-  test-act
-  test-compose
-  test-docker-build
-  test-migrations
-  test-sub
-  typos-sub
-  update-project
+  
+  # outras respostas:
   update-sub
   win-test-last-class
   win-test-migration
 ```
 
-Quase todas essas tarefas são destinadas ao CI, por conta das peculiaridades de rodar em 13 subdiretórios. Duas são referentes ao bump: `update-project` e `update-sub`.
+O `update-sub` é referente à atualização das dependências no código das aulas. Você pode chamá-lo diretamente pelo taskipy, ou chamá-lo pelo invoke:
+
+```bash
+poetry run invoke update-sub
+```
 
 > No passado, eu fazia isso via poetry-plugin-up, que ficou sem funcionar durante a atualização para a versão 2+ do poetry. Isso foi corrigido, portanto, pode ser que facilite bastante as tasks no futuro.
 
 ## Bumb do projeto da página
 
 ```bash
-poetry run invoke update-project
+poetry run task bump
 ```
 
 Esse comando vai atualizar as dependências usadas pelo mkdocs da página.
@@ -52,7 +57,7 @@ Fragment type (adicionado, correcoes, alterado, removido, atualizacoes, {++inter
 ## Bumb das dependências usadas em aula
 
 ```bash
-poetry run invoke update-sub
+poetry run task bump_classes
 ```
 
 Esse comando vai iterar entre todos os diretórios de `codigo_das_aulas` e vai atualizar as dependências usadas.
@@ -100,6 +105,7 @@ Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento d
 ```bash
 pipx install poetry==2.3
 pipx inject poetry poetry-plugin-shell
+pipx inject poetry poetry-plugin-up
 ```
 
 A versão usada do python é a versão 3.13:
@@ -122,7 +128,7 @@ poetry shell
 
 ### Sobre os comandos
 
-Os comandos para executar funções como deploy, servidor local, geração de slides, etc. estão todos sendo feitos [taskipy](https://github.com/taskipy/taskipy):
+Os comandos para executar funções como deploy, servidor local, geração de slides, etc. estão todos sendo feitos com o [taskipy](https://github.com/taskipy/taskipy):
 
 ```bash
 task --list

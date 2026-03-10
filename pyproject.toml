@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
     "mkdocs (>=1.6.1,<2.0.0)",
-    "mkdocs-material (>=9.7.4,<10.0.0)",
+    "mkdocs-material (>=9.7.5,<10.0.0)",
     "mkdocs-glightbox (>=0.5.2,<0.6.0)",
     "mkdocs-video (>=1.5.0,<2.0.0)",
     "mkdocs-git-authors-plugin (>=0.10.0,<0.11.0)",
@@ -19,7 +19,7 @@ dependencies = [
     "mkdocs-exclude (>=1.0.2,<2.0.0)",
     "mkdocs-exclude-unused-files (>=1.4.1,<2.0.0)",
     "mkdocs-macros-plugin (>=1.5.0,<2.0.0)",
-    "mkdocs-quiz (>=1.6.1,<2.0.0)",
+    "mkdocs-quiz (>=1.6.2,<2.0.0)",
     "towncrier (>=25.8.0,<26.0.0)",
     "mkdocs-towncrier (>=0.1.5,<0.2.0)",
     "markdown-exec[ansi] (>=1.12.1,<2.0.0)",
@@ -45,6 +45,8 @@ deploy = {cmd="mike deploy estavel --push --allow-empty", help="Faz o deploy da 
 slides = {cmd="marp -I slides/brutos --html --theme slides/brutos/rose-pine.css --allow-local-files -o slides/html", help="Gera os slides em html"}
 ruff = 'ruff check'
 test = {cmd="poetry run invoke test-sub", help="Executa os testes em todos os subdiretórios de aulas"}
+bump = {cmd="poetry up --latest", help="Atualiza todas as dependências do projeto"}
+bump_classes = {cmd="poetry run invoke update-sub", help="Atualiza todas as dependências das aulas"}
 
 [tool.ruff]
 line-length = 79

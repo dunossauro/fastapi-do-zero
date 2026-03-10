@@ -926,14 +926,14 @@ mkdocs = ">=1.5.3,<2.0.0"
 
 [[package]]
 name = "mkdocs-get-deps"
-version = "0.2.0"
-description = "MkDocs extension that lists all dependencies according to a mkdocs.yml file"
+version = "0.2.2"
+description = "An extra command for MkDocs that infers required PyPI packages from `plugins` in mkdocs.yml"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "mkdocs_get_deps-0.2.0-py3-none-any.whl", hash = "sha256:2bf11d0b133e77a0dd036abeeb06dec8775e46efa526dc70667d8863eefc6134"},
-    {file = "mkdocs_get_deps-0.2.0.tar.gz", hash = "sha256:162b3d129c7fad9b19abfdcb9c1458a651628e4b1dea628ac68790fb3061c60c"},
+    {file = "mkdocs_get_deps-0.2.2-py3-none-any.whl", hash = "sha256:e7878cbeac04860b8b5e0ca31d3abad3df9411a75a32cde82f8e44b6c16ff650"},
+    {file = "mkdocs_get_deps-0.2.2.tar.gz", hash = "sha256:8ee8d5f316cdbbb2834bc1df6e69c08fe769a83e040060de26d3c19fad3599a1"},
 ]
 
 [package.dependencies]
@@ -1019,14 +1019,14 @@ test = ["mkdocs-d2-plugin", "mkdocs-include-markdown-plugin", "mkdocs-macros-tes
 
 [[package]]
 name = "mkdocs-material"
-version = "9.7.4"
+version = "9.7.5"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "mkdocs_material-9.7.4-py3-none-any.whl", hash = "sha256:6549ad95e4d130ed5099759dfa76ea34c593eefdb9c18c97273605518e99cfbf"},
-    {file = "mkdocs_material-9.7.4.tar.gz", hash = "sha256:711b0ee63aca9a8c7124d4c73e83a25aa996e27e814767c3a3967df1b9e56f32"},
+    {file = "mkdocs_material-9.7.5-py3-none-any.whl", hash = "sha256:7cf9df2ff121fd098ff6e05c732b0be3699afca9642e2dfe4926c40eb5873eec"},
+    {file = "mkdocs_material-9.7.5.tar.gz", hash = "sha256:f76bdab532bad1d9c57ca7187b37eccf64dd12e1586909307f8856db3be384ea"},
 ]
 
 [package.dependencies]
@@ -1035,7 +1035,7 @@ backrefs = ">=5.7.post1"
 colorama = ">=0.4"
 jinja2 = ">=3.1"
 markdown = ">=3.2"
-mkdocs = ">=1.6"
+mkdocs = ">=1.6,<2"
 mkdocs-material-extensions = ">=1.3"
 paginate = ">=0.5"
 pygments = ">=2.16"
@@ -1061,14 +1061,14 @@ files = [
 
 [[package]]
 name = "mkdocs-quiz"
-version = "1.6.1"
+version = "1.6.2"
 description = "A MkDocs plugin to create interactive quizzes in your markdown."
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "mkdocs_quiz-1.6.1-py3-none-any.whl", hash = "sha256:87e6816d563f5dbc8cc7aef675a2696eb60540b776d44c62241d04c31a2e5609"},
-    {file = "mkdocs_quiz-1.6.1.tar.gz", hash = "sha256:69e4bc6cfffdaf15ae05849b590a5df7e583ee63fbae2c11cefe1869dd1622d8"},
+    {file = "mkdocs_quiz-1.6.2-py3-none-any.whl", hash = "sha256:cd95f1926c2594f1a359c3cb6c60731fddae5c6a335189cd3820075139d7ddf9"},
+    {file = "mkdocs_quiz-1.6.2.tar.gz", hash = "sha256:5690cd5342fdce7418e934465bc3bd3d4837aaecbaebc8ebb8ad443d27084c7f"},
 ]
 
 [package.dependencies]
@@ -1756,14 +1756,14 @@ files = [
 
 [[package]]
 name = "smmap"
-version = "5.0.2"
+version = "5.0.3"
 description = "A pure Python implementation of a sliding window memory map manager"
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "smmap-5.0.2-py3-none-any.whl", hash = "sha256:b30115f0def7d7531d22a0fb6502488d879e75b260a9db4d0819cfb25403af5e"},
-    {file = "smmap-5.0.2.tar.gz", hash = "sha256:26ea65a03958fa0c8a1c7e8c7a58fdc77221b8910f6be2131affade476898ad5"},
+    {file = "smmap-5.0.3-py3-none-any.whl", hash = "sha256:c106e05d5a61449cf6ba9a1e650227ecfb141590d2a98412103ff35d89fc7b2f"},
+    {file = "smmap-5.0.3.tar.gz", hash = "sha256:4d9debb8b99007ae47165abc08670bd74cb74b5227dda7f643eccc4e9eb5642c"},
 ]
 
 [[package]]
@@ -2094,4 +2094,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "5dfdb601660163d056668edad9b60b0cfa1e0e7e5737897aa8961725e12d4df1"
+content-hash = "0d39b7a98883cdcb21ce7b1f88dcc0b42119d2755f11ce13f8e32d7bc58259c3"

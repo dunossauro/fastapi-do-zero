@@ -118,30 +118,6 @@ def test_migrations(c):
                 schema = c.run('sqlite3 database.db ".schema"')
                 assert schema.stdout == migration_05
 
-
-@task
-def update_project(c):
-    c.run('rm -rf .venv')
-    toml = Path('.') / 'pyproject.toml'
-    toml_tables = loads(toml.read_text())
-    toml_project = toml_tables['project']
-    dependencies = toml_project['dependencies']
-    dev_dependencies = toml_tables['dependency-groups']['dev']
-
-    if (Path('.') / 'poetry.lock').exists():
-        c.run('rm poetry.lock')
-
-    for dep in sorted(dependencies):
-        if '(==' not in dep:
-            _dep = dep.split()[0]
-            c.run(f'poetry add {_dep}@latest')
-
-    for dep in sorted(dev_dependencies):
-        if '(==' not in dep:
-            _dep = dep.split()[0]
-            c.run(f'poetry add --group dev {_dep}@latest')
-
-
 @task
 def typos_sub(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
