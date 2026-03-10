@@ -109,7 +109,7 @@ Responda um absoluto Y aqui:
 flyctl secrets list
 flyctl secrets set DATABASE_URL=???
 flyctl secrets set ALGORITHM="HS256"
-flyctl secrets set SECRET_KEY="your-secret-key"
+flyctl secrets set SECRET_KEY="your-very-secret-and-exclusive-key"
 flyctl secrets set ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
 

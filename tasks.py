@@ -52,19 +52,19 @@ migration_10 = (
 )
 
 dotenv = """DATABASE_URL="postgresql+psycopg://app_user:app_password@localhost:5432/app_db"
-SECRET_KEY="your-secret-key"
+SECRET_KEY="your-very-secret-and-exclusive-key"
 ALGORITHM="HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 """
 
 fake_dotenv = """DATABASE_URL="sqlite:///database.db"
-SECRET_KEY="your-secret-key"
+SECRET_KEY="your-very-secret-and-exclusive-key"
 ALGORITHM="HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 """
 
 fake_dotenv_async = """DATABASE_URL="sqlite+aiosqlite:///database.db"
-SECRET_KEY="your-secret-key"
+SECRET_KEY="your-very-secret-and-exclusive-key"
 ALGORITHM="HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 """

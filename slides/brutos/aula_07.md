@@ -422,7 +422,7 @@ class Settings(BaseSettings):
 
 ```shell
 DATABASE_URL="sqlite:///database.db"
-SECRET_KEY="your-secret-key"
+SECRET_KEY="your-very-secret-and-exclusive-key"
 ALGORITHM="HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
