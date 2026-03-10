@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from fast_zero.database import get_session
 from fast_zero.models import User
 
-SECRET_KEY = 'your-secret-key'  # Isso é provisório, vamos ajustar!
+SECRET_KEY = 'your-very-secret-and-exclusive-key'  # Isso é provisório
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 pwd_context = PasswordHash.recommended()
