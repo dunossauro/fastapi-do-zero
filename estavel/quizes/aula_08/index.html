@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -2089,7 +2089,7 @@ Escalonamento no asyncio é a capacidade do código de:
 - [x] Alternar entre a execução de corrotinas
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 1</h4>
     <div class="quiz-question" id="quiz-0-question">
@@ -2098,7 +2098,7 @@ Escalonamento no asyncio é a capacidade do código de:
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-0-question"><div><input type="radio" name="answer" value="0" id="quiz-0-0"><label for="quiz-0-0">Executar tarefas simultaneamente</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1"><label for="quiz-0-1">Alternar entre a execução de funções</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2"><label for="quiz-0-2">Fazer com que o código seja bloqueante</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" data-correct="true"><label for="quiz-0-3">Alternar entre a execução de corrotinas</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div>
@@ -2112,7 +2112,7 @@ Dizemos que um código é cooperativo quando:
 - [ ] Quando ele usa async def
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 2</h4>
     <div class="quiz-question" id="quiz-1-question">
@@ -2147,7 +2147,7 @@ async def test_create_user(session, mock_db_time):
 - [ ] Faz cooperação com o banco de dados
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
                 <a href="#quiz-2" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 3</h4>
                 <div class="quiz-question" id="quiz-2-question">
@@ -2165,7 +2165,7 @@ async def test_create_user(session, mock_db_time):
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-2-question"><div><input type="radio" name="answer" value="0" id="quiz-2-0" data-correct="true"><label for="quiz-2-0">Permite escalonamento durante a comunicação com o banco de dados</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1"><label for="quiz-2-1">Bloqueia a execução até que o commit seja concluído</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2"><label for="quiz-2-2">Cria uma nova corrotina</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3"><label for="quiz-2-3">Faz cooperação com o banco de dados</label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2179,7 +2179,7 @@ Qual a função do loop de eventos?
 - [x] Tornar a execução não bloqueante
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 4</h4>
     <div class="quiz-question" id="quiz-3-question">
@@ -2206,7 +2206,7 @@ run(corrotina())
 - [ ] Tonar a execução de funções síncronas em assíncronas
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
                 <a href="#quiz-4" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 5</h4>
                 <div class="quiz-question" id="quiz-4-question">
@@ -2217,7 +2217,7 @@ run(corrotina())
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-4-question"><div><input type="radio" name="answer" value="0" id="quiz-4-0" data-correct="true"><label for="quiz-4-0">Executar tarefas não bloqueantes de forma bloqueante</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1"><label for="quiz-4-1">Bloquear o código durante execuções não bloqueantes</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2"><label for="quiz-4-2">Tonar a execução de funções síncronas em assíncronas</label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2231,7 +2231,7 @@ Qual a função do greenlet no projeto?
 - [ ] Criar loops de eventos
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 6</h4>
     <div class="quiz-question" id="quiz-5-question">
@@ -2240,7 +2240,7 @@ Qual a função do greenlet no projeto?
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-5-question"><div><input type="radio" name="answer" value="0" id="quiz-5-0" data-correct="true"><label for="quiz-5-0">Permitir que o SQLAlchemy faça programação assíncrona</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1"><label for="quiz-5-1">Permitir que o coverage cubra funções async</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2"><label for="quiz-5-2">Substituir o asyncio</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3"><label for="quiz-5-3">Criar loops de eventos</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div>
@@ -2254,7 +2254,7 @@ Qual a função da flag `-k` no pytest?
 - [ ] Pausar a execução dos testes caso um falhe
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
     <a href="#quiz-6" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 7</h4>
     <div class="quiz-question" id="quiz-6-question">
@@ -2263,7 +2263,7 @@ Qual a função da flag `-k` no pytest?
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-6-question"><div><input type="radio" name="answer" value="0" id="quiz-6-0" data-correct="true"><label for="quiz-6-0">Executar todos os testes com nomes correspondentes a flag</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1"><label for="quiz-6-1">Listar todos os testes que podem ser executados</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2"><label for="quiz-6-2">Matar (kill) todos os testes que não funcionarem</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3"><label for="quiz-6-3">Pausar a execução dos testes caso um falhe</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div>
@@ -2283,7 +2283,7 @@ async def session():
 - [x] Cria uma fixture executada pelo loop de eventos
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-7">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-7">
                 <a href="#quiz-7" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 8</h4>
                 <div class="quiz-question" id="quiz-7-question">
@@ -2296,7 +2296,7 @@ async def session():
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-7-question"><div><input type="radio" name="answer" value="0" id="quiz-7-0"><label for="quiz-7-0">Cria uma fixture bloqueante</label></div><div><input type="radio" name="answer" value="1" id="quiz-7-1"><label for="quiz-7-1">Cria uma fixture que só pode ser usada em testes assíncronos</label></div><div><input type="radio" name="answer" value="2" id="quiz-7-2" data-correct="true"><label for="quiz-7-2">Cria uma fixture executada pelo loop de eventos</label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2316,7 +2316,7 @@ async def get_session():
 - [ ] Cria uma sessão com tempo de vida
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-8">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-8">
                 <a href="#quiz-8" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 9</h4>
                 <div class="quiz-question" id="quiz-8-question">
@@ -2329,7 +2329,7 @@ async def get_session():
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-8-question"><div><input type="radio" name="answer" value="0" id="quiz-8-0"><label for="quiz-8-0">Expira os dados não commitados</label></div><div><input type="radio" name="answer" value="1" id="quiz-8-1" data-correct="true"><label for="quiz-8-1">Não limpa a sessão após o commit</label></div><div><input type="radio" name="answer" value="2" id="quiz-8-2"><label for="quiz-8-2">Cria uma sessão com tempo de vida</label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2343,7 +2343,7 @@ Adicionar `async def` ao código cria:
 - [ ] Um código bloqueante
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-9">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-9">
     <a href="#quiz-9" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 10</h4>
     <div class="quiz-question" id="quiz-9-question">
@@ -2352,7 +2352,7 @@ Adicionar `async def` ao código cria:
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-9-question"><div><input type="radio" name="answer" value="0" id="quiz-9-0"><label for="quiz-9-0">Uma função assíncrona</label></div><div><input type="radio" name="answer" value="1" id="quiz-9-1" data-correct="true"><label for="quiz-9-1">Uma corrotina</label></div><div><input type="radio" name="answer" value="2" id="quiz-9-2"><label for="quiz-9-2">Um loop de eventos</label></div><div><input type="radio" name="answer" value="3" id="quiz-9-3"><label for="quiz-9-3">Um código bloqueante</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div><style type="text/css">.quiz {
@@ -3762,38 +3762,16 @@ window.mkdocsQuizConfig = {
         }
       }
 
-      // Auto-submit on radio button selection if enabled (not for fill-in-blank)
-      // Arrow keys on radio buttons fire both "click" and "change" events, so we
-      // can't use either directly. Instead, use "mouseup" for pointer interactions
-      // and handle keyboard submission from the keydown handler below.
-      let autoSubmit = !isFillBlank && quiz.hasAttribute("data-auto-submit");
-      if (autoSubmit) {
+      // Auto-submit on radio button change if enabled (not for fill-in-blank)
+      if (!isFillBlank && quiz.hasAttribute("data-auto-submit")) {
         let radioButtons = fieldset.querySelectorAll('input[type="radio"]');
         radioButtons.forEach((radio) => {
-          const handler = () => {
+          const handler = (e) => {
+            e.preventDefault(); // Prevent page scroll to top
+            // Trigger form submission with proper event options
             form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
           };
-          addTrackedEventListener(radio, "mouseup", handler);
-        });
-      }
-
-      // Keyboard handling for quiz inputs:
-      // - Space: prevent page scroll, toggle input, auto-submit radios if enabled
-      // - Enter: auto-submit radios if enabled (consistent with Space)
-      if (!isFillBlank && fieldset) {
-        addTrackedEventListener(fieldset, "keydown", (e) => {
-          if (!e.target.matches("input[type='radio'], input[type='checkbox']")) return;
-
-          if (e.key === " ") {
-            e.preventDefault();
-            e.target.click();
-            if (autoSubmit && e.target.matches("input[type='radio']")) {
-              form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-            }
-          } else if (e.key === "Enter" && autoSubmit && e.target.matches("input[type='radio']")) {
-            e.preventDefault();
-            form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-          }
+          addTrackedEventListener(radio, "change", handler);
         });
       }
 

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -2309,38 +2309,38 @@
 </blockquote>
 <h2 id="bumb-de-dependencias">Bumb de dependências</h2>
 <p>Rotineiramente, as dependências usadas tanto no projeto que gera esse site quanto as dependências do código das aulas precisam ser atualizadas.</p>
-<p>Na raiz do projeto temos um arquivo de tasks do <a href="https://www.pyinvoke.org/">invoke</a> o <code>tasks.py</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>invoke<span class="w"> </span>--list
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Available<span class="w"> </span>tasks:
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>command-sub
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>lint-sub
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>test-act
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>test-compose
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span>test-docker-build
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span>test-migrations
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span>test-sub
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span>typos-sub
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span>update-project
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span>update-sub
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span>win-test-last-class
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span>win-test-migration
+<p>Forma simples: Usar as tasks do <a href="https://github.com/taskipy/taskipy">taskpy</a> que estão no pyproject:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>--list
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># ... outras resposta</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>bump<span class="w">         </span>Atualiza<span class="w"> </span>todas<span class="w"> </span>as<span class="w"> </span>dependências<span class="w"> </span><span class="k">do</span><span class="w"> </span>projeto
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>bump_classes<span class="w"> </span>Atualiza<span class="w"> </span>todas<span class="w"> </span>as<span class="w"> </span>dependências<span class="w"> </span>das<span class="w"> </span>aulas
 </span></code></pre></div>
-<p>Quase todas essas tarefas são destinadas ao CI, por conta das peculiaridades de rodar em 13 subdiretórios. Duas são referentes ao bump: <code>update-project</code> e <code>typos-sub</code>.</p>
+<p>Forma mais complicada: na raiz do projeto temos um arquivo de tasks do <a href="https://www.pyinvoke.org/">invoke</a> o <code>tasks.py</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>invoke<span class="w"> </span>--list
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Available<span class="w"> </span>tasks:
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="c1"># outras respostas:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>update-sub
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>win-test-last-class
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>win-test-migration
+</span></code></pre></div>
+<p>O <code>update-sub</code> é referente à atualização das dependências no código das aulas. Você pode chamá-lo diretamente pelo taskipy, ou chamá-lo pelo invoke:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>invoke<span class="w"> </span>update-sub
+</span></code></pre></div>
 <blockquote>
 <p>No passado, eu fazia isso via poetry-plugin-up, que ficou sem funcionar durante a atualização para a versão 2+ do poetry. Isso foi corrigido, portanto, pode ser que facilite bastante as tasks no futuro.</p>
 </blockquote>
 <h2 id="bumb-do-projeto-da-pagina">Bumb do projeto da página</h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>invoke<span class="w"> </span>update-project
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>bump
 </span></code></pre></div>
 <p>Esse comando vai atualizar as dependências usadas pelo mkdocs da página.</p>
-<p>Caso alguma alteração seja algo que impacte a página ou seja uma mudança radical durante essa alteração. É importante gerar um changelog para <code>interno</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>towncrier<span class="w"> </span>create
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Issue<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="sb">`</span>+<span class="sb">`</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>none<span class="o">)</span>:<span class="w"> </span>+
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Fragment<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">(</span>adicionado,<span class="w"> </span>correcoes,<span class="w"> </span>alterado,<span class="w"> </span>removido,<span class="w"> </span>atualizacoes,<span class="w"> </span><ins class="critic">interno</ins>,<span class="w"> </span>slides<span class="o">)</span>:
+<p>Caso alguma alteração seja algo que impacte a página ou uma mudança radical durante essa alteração. É importante gerar um changelog para <code>interno</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>towncrier<span class="w"> </span>create
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Issue<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="sb">`</span>+<span class="sb">`</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>none<span class="o">)</span>:<span class="w"> </span>+
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Fragment<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">(</span>adicionado,<span class="w"> </span>correcoes,<span class="w"> </span>alterado,<span class="w"> </span>removido,<span class="w"> </span>atualizacoes,<span class="w"> </span><ins class="critic">interno</ins>,<span class="w"> </span>slides<span class="o">)</span>:
 </span></code></pre></div>
 <h2 id="bumb-das-dependencias-usadas-em-aula">Bumb das dependências usadas em aula</h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>invoke<span class="w"> </span>update-sub
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span>bump_classes
 </span></code></pre></div>
 <p>Esse comando vai iterar entre todos os diretórios de <code>codigo_das_aulas</code> e vai atualizar as dependências usadas.</p>
 <p>Isso pode resultar em atualizações de dois grupos de dependências:</p>
@@ -2350,38 +2350,43 @@
 </ol>
 <p>Caso exista alguma alteração no primeiro grupo, deve ser gerado um changelog dela com <code>atualizacoes</code>.</p>
 <p>Para ver se alguma dependência direta foi atualizada?</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>diff<span class="w"> </span>codigo_das_aulas/13/pyproject.toml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>diff<span class="w"> </span>codigo_das_aulas/13/pyproject.toml
 </span></code></pre></div>
 <p>Se algo foi alterado nesse arquivo, deve ser gerado um changelog. Mas, antes, veja se já não existe um fragmento para ele. Por exemplo, uma nova atualização do fastapi:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>grep<span class="w"> </span>-H<span class="w"> </span><span class="s2">"fastapi"</span><span class="w"> </span>changelogs/*
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>changelogs/+52b01b9d.atualizacoes.md:<span class="sb">`</span>fastapi<span class="sb">`</span><span class="w"> </span><span class="m">0</span>.120<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">0</span>.134
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>grep<span class="w"> </span>-H<span class="w"> </span><span class="s2">"fastapi"</span><span class="w"> </span>changelogs/*
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>changelogs/+52b01b9d.atualizacoes.md:<span class="sb">`</span>fastapi<span class="sb">`</span><span class="w"> </span><span class="m">0</span>.120<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">0</span>.134
 </span></code></pre></div>
-<p>Isso quer dizer que já existe um fragmento. Caso não exista, neste caso, crie um novo.</p>
+<p>Isso quer dizer que já existe um fragmento. Caso não exista, neste caso, crie um novo fragmento de <code>atualizacoes</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>towncrier<span class="w"> </span>create
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Issue<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="sb">`</span>+<span class="sb">`</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>none<span class="o">)</span>:<span class="w"> </span>+
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Fragment<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">(</span>adicionado,<span class="w"> </span>correcoes,<span class="w"> </span>alterado,<span class="w"> </span>removido,<span class="w"> </span><ins class="critic">atualizacoes</ins>,<span class="w"> </span>interno,<span class="w"> </span>slides<span class="o">)</span>:
+</span></code></pre></div>
 <p>Caso a atualização seja de uma dependência indireta, isso não deve gerar um changelog.</p>
 <h2 id="reconstruir-o-ambiente">Reconstruir o ambiente</h2>
 <p>Caso precise reconstruir o ambiente para as páginas</p>
 <h3 id="sobre-o-ambiente">Sobre o ambiente</h3>
 <p>Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é <code>2.3</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pipx<span class="w"> </span>install<span class="w"> </span><span class="nv">poetry</span><span class="o">==</span><span class="m">2</span>.3
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>pipx<span class="w"> </span>inject<span class="w"> </span>poetry<span class="w"> </span>poetry-plugin-shell
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pipx<span class="w"> </span>install<span class="w"> </span><span class="nv">poetry</span><span class="o">==</span><span class="m">2</span>.3
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>pipx<span class="w"> </span>inject<span class="w"> </span>poetry<span class="w"> </span>poetry-plugin-shell
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>pipx<span class="w"> </span>inject<span class="w"> </span>poetry<span class="w"> </span>poetry-plugin-up
 </span></code></pre></div>
 <p>A versão usada do python é a versão 3.13:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>poetry python install 3.13
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>poetry python install 3.13
 </span></code></pre></div>
 <p>para configurar todo o ambiente, basta executar:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>poetry<span class="w"> </span>install
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>poetry<span class="w"> </span>install
 </span></code></pre></div>
 <p>para ativar o ambiente virtual:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>poetry<span class="w"> </span>shell
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>poetry<span class="w"> </span>shell
 </span></code></pre></div>
 <h3 id="sobre-os-comandos">Sobre os comandos</h3>
-<p>Os comandos para executar funções como deploy, servidor local, geração de slides, etc. estão todos sendo feitos <a href="https://github.com/taskipy/taskipy">taskipy</a>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>task<span class="w"> </span>--list
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>serve<span class="w">       </span>Executa<span class="w"> </span>o<span class="w"> </span>servidor<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>mkdocs
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>mserve<span class="w">      </span>Executa<span class="w"> </span>o<span class="w"> </span>servidor<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>mkdocs<span class="w"> </span>via<span class="w"> </span>mike
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>deploy<span class="w">      </span>Faz<span class="w"> </span>o<span class="w"> </span>deploy<span class="w"> </span>da<span class="w"> </span>página<span class="w"> </span>em<span class="w"> </span>produção<span class="w"> </span>usando<span class="w"> </span>mike
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>slides<span class="w">      </span>Gera<span class="w"> </span>os<span class="w"> </span>slides<span class="w"> </span>em<span class="w"> </span>html
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>ruff<span class="w">        </span>ruff<span class="w"> </span>check
+<p>Os comandos para executar funções como deploy, servidor local, geração de slides, etc. estão todos sendo feitos com o <a href="https://github.com/taskipy/taskipy">taskipy</a>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>task<span class="w"> </span>--list
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>serve<span class="w">       </span>Executa<span class="w"> </span>o<span class="w"> </span>servidor<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>mkdocs
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>mserve<span class="w">      </span>Executa<span class="w"> </span>o<span class="w"> </span>servidor<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>mkdocs<span class="w"> </span>via<span class="w"> </span>mike
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>deploy<span class="w">      </span>Faz<span class="w"> </span>o<span class="w"> </span>deploy<span class="w"> </span>da<span class="w"> </span>página<span class="w"> </span>em<span class="w"> </span>produção<span class="w"> </span>usando<span class="w"> </span>mike
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>slides<span class="w">      </span>Gera<span class="w"> </span>os<span class="w"> </span>slides<span class="w"> </span>em<span class="w"> </span>html
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>ruff<span class="w">        </span>ruff<span class="w"> </span>check
 </span></code></pre></div>
 <p>Para executar qualquer comando, basta usar: <code>task &lt;comando&gt;</code>, como, por exemplo, <code>task serve</code>.</p>
 <h4 id="sobre-os-slides">Sobre os slides</h4>
@@ -3792,38 +3797,16 @@ window.mkdocsQuizConfig = {
         }
       }
 
-      // Auto-submit on radio button selection if enabled (not for fill-in-blank)
-      // Arrow keys on radio buttons fire both "click" and "change" events, so we
-      // can't use either directly. Instead, use "mouseup" for pointer interactions
-      // and handle keyboard submission from the keydown handler below.
-      let autoSubmit = !isFillBlank && quiz.hasAttribute("data-auto-submit");
-      if (autoSubmit) {
+      // Auto-submit on radio button change if enabled (not for fill-in-blank)
+      if (!isFillBlank && quiz.hasAttribute("data-auto-submit")) {
         let radioButtons = fieldset.querySelectorAll('input[type="radio"]');
         radioButtons.forEach((radio) => {
-          const handler = () => {
+          const handler = (e) => {
+            e.preventDefault(); // Prevent page scroll to top
+            // Trigger form submission with proper event options
             form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
           };
-          addTrackedEventListener(radio, "mouseup", handler);
-        });
-      }
-
-      // Keyboard handling for quiz inputs:
-      // - Space: prevent page scroll, toggle input, auto-submit radios if enabled
-      // - Enter: auto-submit radios if enabled (consistent with Space)
-      if (!isFillBlank && fieldset) {
-        addTrackedEventListener(fieldset, "keydown", (e) => {
-          if (!e.target.matches("input[type='radio'], input[type='checkbox']")) return;
-
-          if (e.key === " ") {
-            e.preventDefault();
-            e.target.click();
-            if (autoSubmit && e.target.matches("input[type='radio']")) {
-              form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-            }
-          } else if (e.key === "Enter" && autoSubmit && e.target.matches("input[type='radio']")) {
-            e.preventDefault();
-            form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-          }
+          addTrackedEventListener(radio, "change", handler);
         });
       }
 
@@ -4090,7 +4073,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 de março de 2026 22:51:00 UTC">3 de março de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="10 de março de 2026 23:03:11 UTC">10 de março de 2026</span>
   </span>
 
     

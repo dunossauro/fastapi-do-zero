@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -2098,7 +2098,7 @@ def create_user(
 - [ ] Indicar que a função `get_session` tem que ser executada antes da `create_user`
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
                 <a href="#quiz-0" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 1</h4>
                 <div class="quiz-question" id="quiz-0-question">
@@ -2113,7 +2113,7 @@ def create_user(
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-0-question"><div><input type="radio" name="answer" value="0" id="quiz-0-0"><label for="quiz-0-0">Indicar que a função depende de algo</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1"><label for="quiz-0-1">Documentar no schema os dados que são requeridos para chamar o endpoint</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" data-correct="true"><label for="quiz-0-2">Executar a função <code>get_session</code> e passar seu resultado para função</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3"><label for="quiz-0-3">Indicar que a função <code>get_session</code> tem que ser executada antes da <code>create_user</code></label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2135,7 +2135,7 @@ app.dependency_overrides.clear()
 - [ ] A dependência `get_session` será forçada durante o teste
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
                 <a href="#quiz-1" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 2</h4>
                 <div class="quiz-question" id="quiz-1-question">
@@ -2150,7 +2150,7 @@ app.dependency_overrides.clear()
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-1-question"><div><input type="radio" name="answer" value="0" id="quiz-1-0"><label for="quiz-1-0">Ela removerá dependência do código durante a execução do teste</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" data-correct="true"><label for="quiz-1-1">Será feita a sobreescrita de uma dependencia por outra durante o teste</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2"><label for="quiz-1-2">A dependência <code>get_session</code> será forçada durante o teste</label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2176,7 +2176,7 @@ def session():
 - [x] Todas as alternativas anteriores
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
                 <a href="#quiz-2" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 3</h4>
                 <div class="quiz-question" id="quiz-2-question">
@@ -2193,7 +2193,7 @@ def session():
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-2-question"><div><input type="radio" name="answer" value="0" id="quiz-2-0"><label for="quiz-2-0">O banco de dados estará em memória</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1"><label for="quiz-2-1">Não será executada a verificação entre a thread do banco e do teste</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2"><label for="quiz-2-2">Será usado um pool de tamanho fixo</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3"><label for="quiz-2-3">Criará uma conexão com o banco de dados para usar nos testes</label></div><div><input type="radio" name="answer" value="4" id="quiz-2-4" data-correct="true"><label for="quiz-2-4">Todas as alternativas anteriores</label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2215,7 +2215,7 @@ def read_users(
 - [ ] `/users/&limit=10`
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
                 <a href="#quiz-3" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 4</h4>
                 <div class="quiz-question" id="quiz-3-question">
@@ -2229,7 +2229,7 @@ def read_users(
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-3-question"><div><input type="radio" name="answer" value="0" id="quiz-3-0" data-correct="true"><label for="quiz-3-0"><code>/users/?limit=10</code></label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1"><label for="quiz-3-1"><code>/users/limit/10</code></label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2"><label for="quiz-3-2"><code>/users/limit=10?</code></label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3"><label for="quiz-3-3"><code>/users/&amp;limit=10</code></label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2243,7 +2243,7 @@ Quais os padrões de projeto implementados pela `Session`?
 - [ ] Proxy
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 5</h4>
     <div class="quiz-question" id="quiz-4-question">
@@ -2266,7 +2266,7 @@ O que faz o método `session.commit()`?
 - [ ] Abre uma conexão com o banco de dados
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 6</h4>
     <div class="quiz-question" id="quiz-5-question">
@@ -2275,7 +2275,7 @@ O que faz o método `session.commit()`?
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-5-question"><div><input type="radio" name="answer" value="0" id="quiz-5-0"><label for="quiz-5-0">Faz um commit no git</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1"><label for="quiz-5-1">Persiste os dados no banco de dados</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" data-correct="true"><label for="quiz-5-2">Executa as transações na sessão</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3"><label for="quiz-5-3">Abre uma conexão com o banco de dados</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div>
@@ -2289,7 +2289,7 @@ O que faz o método `session.refresh(obj)`?
 - [ ] Sincroniza a sessão com o banco de dados
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
     <a href="#quiz-6" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 7</h4>
     <div class="quiz-question" id="quiz-6-question">
@@ -2298,7 +2298,7 @@ O que faz o método `session.refresh(obj)`?
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-6-question"><div><input type="radio" name="answer" value="0" id="quiz-6-0"><label for="quiz-6-0">Atualiza a conexão com o banco de dados</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1"><label for="quiz-6-1">Atualiza dos dados da sessão</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" data-correct="true"><label for="quiz-6-2">Sincroniza o objeto do ORM com o banco de dados</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3"><label for="quiz-6-3">Sincroniza a sessão com o banco de dados</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div>
@@ -2321,7 +2321,7 @@ session.scalar(
 - [ ] `user.username` COM `user.email`
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-7">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-7">
                 <a href="#quiz-7" class="quiz-header-link">#</a>
                 <h4 class="quiz-number">Questão 8</h4>
                 <div class="quiz-question" id="quiz-7-question">
@@ -2336,7 +2336,7 @@ session.scalar(
                 <form action="javascript:void(0);" onsubmit="return false;">
                     <fieldset aria-labelledby="quiz-7-question"><div><input type="radio" name="answer" value="0" id="quiz-7-0"><label for="quiz-7-0"><code>user.username</code> E <code>user.email</code></label></div><div><input type="radio" name="answer" value="1" id="quiz-7-1"><label for="quiz-7-1"><code>user.username</code> SEM <code>user.email</code></label></div><div><input type="radio" name="answer" value="2" id="quiz-7-2" data-correct="true"><label for="quiz-7-2"><code>user.username</code> OU <code>user.email</code></label></div><div><input type="radio" name="answer" value="3" id="quiz-7-3"><label for="quiz-7-3"><code>user.username</code> COM <code>user.email</code></label></div></fieldset>
                     <div class="quiz-feedback hidden"></div>
-
+                    <button type="submit" class="quiz-button">Enviar</button>
                 </form>
                 <section class="content hidden"></section>
             </div>
@@ -2350,7 +2350,7 @@ Quando usamos o método `model_validate` de um schema do Pydantic estamos:
 - [ ] Coverte um objeto em JSON
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-8">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-8">
     <a href="#quiz-8" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 9</h4>
     <div class="quiz-question" id="quiz-8-question">
@@ -2359,7 +2359,7 @@ Quando usamos o método `model_validate` de um schema do Pydantic estamos:
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-8-question"><div><input type="radio" name="answer" value="0" id="quiz-8-0"><label for="quiz-8-0">Validando um JSON com o modelo</label></div><div><input type="radio" name="answer" value="1" id="quiz-8-1"><label for="quiz-8-1">Validando um request com o modelo</label></div><div><input type="radio" name="answer" value="2" id="quiz-8-2" data-correct="true"><label for="quiz-8-2">Converte um objeto em um schema</label></div><div><input type="radio" name="answer" value="3" id="quiz-8-3"><label for="quiz-8-3">Coverte um objeto em JSON</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div>
@@ -2372,7 +2372,7 @@ Quando usamos `model_config` em um schema do Pydantic estamos:
 - [ ] Alterando a estrutura do modelo
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-9">
+<div class="quiz" data-show-correct="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-9">
     <a href="#quiz-9" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Questão 10</h4>
     <div class="quiz-question" id="quiz-9-question">
@@ -2381,7 +2381,7 @@ Quando usamos `model_config` em um schema do Pydantic estamos:
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset aria-labelledby="quiz-9-question"><div><input type="radio" name="answer" value="0" id="quiz-9-0" data-correct="true"><label for="quiz-9-0">Alterando o comportamento de 'model_validate'</label></div><div><input type="radio" name="answer" value="1" id="quiz-9-1"><label for="quiz-9-1">Adicionando mais um campo de validação</label></div><div><input type="radio" name="answer" value="2" id="quiz-9-2"><label for="quiz-9-2">Alterando a estrutura do modelo</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Enviar</button>
     </form>
     <section class="content hidden"></section>
 </div><style type="text/css">.quiz {
@@ -3791,38 +3791,16 @@ window.mkdocsQuizConfig = {
         }
       }
 
-      // Auto-submit on radio button selection if enabled (not for fill-in-blank)
-      // Arrow keys on radio buttons fire both "click" and "change" events, so we
-      // can't use either directly. Instead, use "mouseup" for pointer interactions
-      // and handle keyboard submission from the keydown handler below.
-      let autoSubmit = !isFillBlank && quiz.hasAttribute("data-auto-submit");
-      if (autoSubmit) {
+      // Auto-submit on radio button change if enabled (not for fill-in-blank)
+      if (!isFillBlank && quiz.hasAttribute("data-auto-submit")) {
         let radioButtons = fieldset.querySelectorAll('input[type="radio"]');
         radioButtons.forEach((radio) => {
-          const handler = () => {
+          const handler = (e) => {
+            e.preventDefault(); // Prevent page scroll to top
+            // Trigger form submission with proper event options
             form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
           };
-          addTrackedEventListener(radio, "mouseup", handler);
-        });
-      }
-
-      // Keyboard handling for quiz inputs:
-      // - Space: prevent page scroll, toggle input, auto-submit radios if enabled
-      // - Enter: auto-submit radios if enabled (consistent with Space)
-      if (!isFillBlank && fieldset) {
-        addTrackedEventListener(fieldset, "keydown", (e) => {
-          if (!e.target.matches("input[type='radio'], input[type='checkbox']")) return;
-
-          if (e.key === " ") {
-            e.preventDefault();
-            e.target.click();
-            if (autoSubmit && e.target.matches("input[type='radio']")) {
-              form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-            }
-          } else if (e.key === "Enter" && autoSubmit && e.target.matches("input[type='radio']")) {
-            e.preventDefault();
-            form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-          }
+          addTrackedEventListener(radio, "change", handler);
         });
       }
 

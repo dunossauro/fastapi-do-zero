@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -2396,7 +2396,7 @@
 <div class="language-bash highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flyctl<span class="w"> </span>version
 </span></code></pre></div>
 <div class="result">
-<p>flyctl v0.4.19 linux/amd64 Commit: c12bb496234c8402a0387821367be315a506e54a BuildDate: 2026-03-05T14:06:03Z</p>
+<p>flyctl v0.4.21 linux/amd64 Commit: bf1a8dbde46df63bf1e686eaec07f8eb15341d4d BuildDate: 2026-03-11T15:31:01Z</p>
 </div>
 <p>No momento da sua instalação, você pode se deparar com uma versão mais recente do que a minha no momento, mas os comandos devem funcionar da mesma forma em qualquer versão menor que <code>1.0.0</code>.</p>
 <h4 id="fazendo-login-via-terminal">Fazendo login via terminal</h4>
@@ -4042,38 +4042,16 @@ window.mkdocsQuizConfig = {
         }
       }
 
-      // Auto-submit on radio button selection if enabled (not for fill-in-blank)
-      // Arrow keys on radio buttons fire both "click" and "change" events, so we
-      // can't use either directly. Instead, use "mouseup" for pointer interactions
-      // and handle keyboard submission from the keydown handler below.
-      let autoSubmit = !isFillBlank && quiz.hasAttribute("data-auto-submit");
-      if (autoSubmit) {
+      // Auto-submit on radio button change if enabled (not for fill-in-blank)
+      if (!isFillBlank && quiz.hasAttribute("data-auto-submit")) {
         let radioButtons = fieldset.querySelectorAll('input[type="radio"]');
         radioButtons.forEach((radio) => {
-          const handler = () => {
+          const handler = (e) => {
+            e.preventDefault(); // Prevent page scroll to top
+            // Trigger form submission with proper event options
             form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
           };
-          addTrackedEventListener(radio, "mouseup", handler);
-        });
-      }
-
-      // Keyboard handling for quiz inputs:
-      // - Space: prevent page scroll, toggle input, auto-submit radios if enabled
-      // - Enter: auto-submit radios if enabled (consistent with Space)
-      if (!isFillBlank && fieldset) {
-        addTrackedEventListener(fieldset, "keydown", (e) => {
-          if (!e.target.matches("input[type='radio'], input[type='checkbox']")) return;
-
-          if (e.key === " ") {
-            e.preventDefault();
-            e.target.click();
-            if (autoSubmit && e.target.matches("input[type='radio']")) {
-              form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-            }
-          } else if (e.key === "Enter" && autoSubmit && e.target.matches("input[type='radio']")) {
-            e.preventDefault();
-            form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-          }
+          addTrackedEventListener(radio, "change", handler);
         });
       }
 

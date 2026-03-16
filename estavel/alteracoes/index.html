@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -2078,12 +2078,10 @@
 
 
 <h1 id="alteracoes">Alterações</h1>
-<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-03-08">fastapi-do-zero Alterações ainda sem release (2026-03-08)</h1>
+<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-03-16">fastapi-do-zero Alterações ainda sem release (2026-03-16)</h1>
 <h2 id="adicionado">Adicionado</h2>
 <ul>
-<li>Material sobre como fazer o bumb de dependências do projeto (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/488">#488</a>)</li>
 <li>Analizador estático para erros de grafia <code>typos</code>. Alterações nas aulas 01 e 10.</li>
-<li>Guia de contribuição no material (<a href="https://fastapidozero.dunossauro.com/estavel/contribua/contribua/" target="_blank">link para página</a>)</li>
 </ul>
 <h2 id="correcoes">Correções</h2>
 <ul>
@@ -2115,6 +2113,8 @@
 </ul>
 <h2 id="interno">Interno</h2>
 <ul>
+<li>Material sobre como fazer o bumb de dependências do projeto (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/488">#488</a>)</li>
+<li>Guia de contribuição no material (<a href="https://fastapidozero.dunossauro.com/estavel/contribua/contribua/" target="_blank">link para página</a>)</li>
 <li><code>mkdocs-material</code>, update para versão 9.7 a última versão que será lançada com funcionalidades novas.</li>
 </ul>
 <h1 id="fastapi-do-zero-43-2025-10-29">fastapi-do-zero 4.3 (2025-10-29)</h1>
@@ -3914,38 +3914,16 @@ window.mkdocsQuizConfig = {
         }
       }
 
-      // Auto-submit on radio button selection if enabled (not for fill-in-blank)
-      // Arrow keys on radio buttons fire both "click" and "change" events, so we
-      // can't use either directly. Instead, use "mouseup" for pointer interactions
-      // and handle keyboard submission from the keydown handler below.
-      let autoSubmit = !isFillBlank && quiz.hasAttribute("data-auto-submit");
-      if (autoSubmit) {
+      // Auto-submit on radio button change if enabled (not for fill-in-blank)
+      if (!isFillBlank && quiz.hasAttribute("data-auto-submit")) {
         let radioButtons = fieldset.querySelectorAll('input[type="radio"]');
         radioButtons.forEach((radio) => {
-          const handler = () => {
+          const handler = (e) => {
+            e.preventDefault(); // Prevent page scroll to top
+            // Trigger form submission with proper event options
             form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
           };
-          addTrackedEventListener(radio, "mouseup", handler);
-        });
-      }
-
-      // Keyboard handling for quiz inputs:
-      // - Space: prevent page scroll, toggle input, auto-submit radios if enabled
-      // - Enter: auto-submit radios if enabled (consistent with Space)
-      if (!isFillBlank && fieldset) {
-        addTrackedEventListener(fieldset, "keydown", (e) => {
-          if (!e.target.matches("input[type='radio'], input[type='checkbox']")) return;
-
-          if (e.key === " ") {
-            e.preventDefault();
-            e.target.click();
-            if (autoSubmit && e.target.matches("input[type='radio']")) {
-              form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-            }
-          } else if (e.key === "Enter" && autoSubmit && e.target.matches("input[type='radio']")) {
-            e.preventDefault();
-            form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-          }
+          addTrackedEventListener(radio, "change", handler);
         });
       }
 
