@@ -19,7 +19,7 @@ dev = [
     "pytest (>=9.0.2,<10.0.0)",
     "pytest-cov (>=7.0.0,<8.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
-    "ruff (>=0.15.5,<0.16.0)",
+    "ruff (>=0.15.7,<0.16.0)",
     "typos (>=1.44.0,<2.0.0)"
 ]
 
@@ -48,6 +48,9 @@ run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
+
+[tool.typos.files]
+extend-exclude = ["*.md"]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

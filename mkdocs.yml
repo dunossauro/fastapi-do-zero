@@ -76,6 +76,7 @@ plugins:
   - mkdocs_quiz:
       auto_number: true
       shuffle_answers: true
+      auto_submit: false
   - towncrier
   - markdown-exec
   - mkdocs-simple-hooks:
