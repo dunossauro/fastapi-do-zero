@@ -489,14 +489,14 @@ all = ["flake8 (>=7.1.1)", "mypy (>=1.11.2)", "pytest (>=8.3.2)", "ruff (>=0.6.2
 
 [[package]]
 name = "invoke"
-version = "2.2.1"
+version = "3.0.3"
 description = "Pythonic task execution"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.9"
 groups = ["dev"]
 files = [
-    {file = "invoke-2.2.1-py3-none-any.whl", hash = "sha256:2413bc441b376e5cd3f55bb5d364f973ad8bdd7bf87e53c79de3c11bf3feecc8"},
-    {file = "invoke-2.2.1.tar.gz", hash = "sha256:515bf49b4a48932b79b024590348da22f39c4942dff991ad1fb8b8baea1be707"},
+    {file = "invoke-3.0.3-py3-none-any.whl", hash = "sha256:f11327165e5cbb89b2ad1d88d3292b5113332c43b8553b494da435d6ec6f5053"},
+    {file = "invoke-3.0.3.tar.gz", hash = "sha256:437b6a622223824380bfb4e64f612711a6b648c795f565efc8625af66fb57f0c"},
 ]
 
 [[package]]
@@ -1077,14 +1077,14 @@ files = [
 
 [[package]]
 name = "mkdocs-quiz"
-version = "1.6.2"
+version = "1.6.3"
 description = "A MkDocs plugin to create interactive quizzes in your markdown."
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "mkdocs_quiz-1.6.2-py3-none-any.whl", hash = "sha256:cd95f1926c2594f1a359c3cb6c60731fddae5c6a335189cd3820075139d7ddf9"},
-    {file = "mkdocs_quiz-1.6.2.tar.gz", hash = "sha256:5690cd5342fdce7418e934465bc3bd3d4837aaecbaebc8ebb8ad443d27084c7f"},
+    {file = "mkdocs_quiz-1.6.3-py3-none-any.whl", hash = "sha256:e690bf792993acb992ed9b303d753ad6c8be0d0f6a03daef3085e6409fbe4980"},
+    {file = "mkdocs_quiz-1.6.3.tar.gz", hash = "sha256:f4bf31f04ba98b772b22fc1b9f72103a8382b5ce0b5844e757a7c6d249eb51c5"},
 ]
 
 [package.dependencies]
@@ -2087,27 +2087,27 @@ files = [
 
 [[package]]
 name = "zuban"
-version = "0.6.2"
+version = "0.7.0"
 description = "Zuban - The Zuban Language Server"
 optional = false
 python-versions = ">=3.7"
 groups = ["dev"]
 files = [
-    {file = "zuban-0.6.2-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:392a24f4542b36e06b6ea8ff8a66b9bcf073fac380f6fedf5ead6d239a089b1b"},
-    {file = "zuban-0.6.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:5637981d19c503325bc2fd24b92af218733ee618de2f5217fa2523ca918b3a88"},
-    {file = "zuban-0.6.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8097a716499ff7b3ac927b8e4c5425b9cfff5cd0b4e644a03e24d1a7c625d048"},
-    {file = "zuban-0.6.2-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:ecf4b0c0e682f76f6403d68457d9085cc01dbbc56d402d925d931e82b36d9b5f"},
-    {file = "zuban-0.6.2-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:2b1488ed63733d813d9be81b0c2bc888a329b31c4a03cb2cf462c7f0db052fef"},
-    {file = "zuban-0.6.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e5b48be20d805b41ac224feeabd1b421a53e55b6cc10f2f3011139c1f625c583"},
-    {file = "zuban-0.6.2-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:14d30ece874c9ca5b99ef57064b778edc834404e9d350af0c54eaf36d7eb6396"},
-    {file = "zuban-0.6.2-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:3c144cd9436d39a3bebe50302c2eb600be403d22a85ae3ef41f061768e96d17e"},
-    {file = "zuban-0.6.2-py3-none-musllinux_1_2_i686.whl", hash = "sha256:ff52b183e752646baea76c0fb1e06e247c47e437d0d37f1386e07504dc2e4c29"},
-    {file = "zuban-0.6.2-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:0e265fb4c38efc78e4ed79dc1b9b7adb034d70fa51f963c9ac609af1fbe2f855"},
-    {file = "zuban-0.6.2-py3-none-win32.whl", hash = "sha256:4a129511f9f6080ba7d4153f111b5e6c2214a3eef945730ce466658903c324b8"},
-    {file = "zuban-0.6.2-py3-none-win_amd64.whl", hash = "sha256:7db193c8b1456977ca2dfa2291c93a376e17f465a69018a06d0ecc8655464fff"},
+    {file = "zuban-0.7.0-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:743bfa4570dae9e70ef3a4a1804536dae7e227baee6710cd8d186d912a457ce5"},
+    {file = "zuban-0.7.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:13c73dfae2b7541cca73d00e536f56c05a8902418417cb525561d95f9138835c"},
+    {file = "zuban-0.7.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a13e017e58ec8819e1b180fe1432d42bd0d78b551de6885685ffcfdd42d81d64"},
+    {file = "zuban-0.7.0-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:3521f9403ce7e6a21203ccbc57e53f58928265010df048bc4ac41be63bf3747a"},
+    {file = "zuban-0.7.0-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:d207872861447fb4a7f246341b4499610d2b4008fd10445ab33e9a8831ede36b"},
+    {file = "zuban-0.7.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:dc664e4036351aa0239876c4049a4b4316a9958c36a115cce1e3a9a3b5b3fca7"},
+    {file = "zuban-0.7.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:16f9c4e06e6693e61767bcb38957748f316af7351dd85f926c6ed92424ae67ae"},
+    {file = "zuban-0.7.0-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:7c483afa9c6f097b761a7141b5a21c675cac1634dd9746cb52020c34334d207c"},
+    {file = "zuban-0.7.0-py3-none-musllinux_1_2_i686.whl", hash = "sha256:c0b58dc6c64ce954bb991b121b3ccdd8c63e2c43ba577457223a7418e259532d"},
+    {file = "zuban-0.7.0-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:6148578b75fbc149ae5844e8b9acc54fa7e60fdd3bb5f75dd5b588754a38d4df"},
+    {file = "zuban-0.7.0-py3-none-win32.whl", hash = "sha256:9cde2f8aaf9fc7d1afbe78ac66afc34f99fc28aedc201897b6fd4336c4c96ec2"},
+    {file = "zuban-0.7.0-py3-none-win_amd64.whl", hash = "sha256:8120092828389ee6cb328c513f3219971656837bed9c6837afd81076b31b7d98"},
 ]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "6b8ef9bae6cfe7bca655d108c218c1e8a2b3972c02f5f1474d7aa423e2a75f86"
+content-hash = "120129ad531db69e5a42a9105deb1694ca978485e76338af41eb2206b0e92cc1"
