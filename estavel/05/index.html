@@ -746,6 +746,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#randomizacaoisolamento-de-testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Randomização/Isolamento de testes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Randomização/Isolamento de testes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurando-a-randomizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurando a randomização
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#commit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2497,6 +2525,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#randomizacaoisolamento-de-testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Randomização/Isolamento de testes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Randomização/Isolamento de testes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurando-a-randomizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurando a randomização
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#commit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3191,11 +3247,46 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/05/coverage_mostrando_casos_nao_testados_de_erro.png" data-desc-position="bottom"><img alt="descrição" class="center shadow" src="../assets/05/coverage_mostrando_casos_nao_testados_de_erro.png" width="600"></a></p>
 <p>Esses três casos ficam como <a href="#exercicios" target="_blank">exercícios</a> para quem está acompanhando este curso.</p>
 <p>Além disso, não devemos esquecer de remover a implementação do banco de dados falso <code>database = []</code> que usamos inicialmente e remover também as definições de <code>TestClient</code> em <code>test_app.py</code>, pois tudo está usando as fixtures agora!</p>
+<h2 id="randomizacaoisolamento-de-testes">Randomização/Isolamento de testes</h2>
+<p>Agora que temos toda essa estrutura construída via fixture <code>session</code>, garantindo que o banco de dados sempre está limpo entre os testes, é um bom momento para retomarmos a conversa sobre os isolamentos dos testes que começamos na <a href="../03/#isolamento-dos-testes">aula 03</a>, o real motivo de termos construído essa fixture dessa forma.</p>
+<p>É esperado agora que os testes passem independentemente da ordem, mas precisamos garantir isso. Vamos lá:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--random-order
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>tests/test_app.py::test_root_deve_retornar_ok_e_ola_mundo<span class="w"> </span>PASSED
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>tests/test_app.py::test_read_users_with_users<span class="w"> </span>PASSED
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>tests/test_app.py::test_update_integrity_error<span class="w"> </span>PASSED
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>tests/test_app.py::test_update_user<span class="w"> </span>PASSED
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>tests/test_app.py::test_read_users<span class="w"> </span>PASSED
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>tests/test_app.py::test_delete_user<span class="w"> </span>PASSED
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>tests/test_app.py::test_create_user<span class="w"> </span>PASSED
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>tests/test_db.py::test_create_user<span class="w"> </span>PASSED
+</span></code></pre></div>
+<p>Isso mostra que os testes estão isolados uns dos outros, embora você possa querer executá-los mais uma vez, só para ter certeza (claro que não é necessário, mas é divertido).</p>
+<h3 id="configurando-a-randomizacao">Configurando a randomização</h3>
+<p>Se quisermos que os testes rodem em ordem randômica todas as vezes, poderíamos adicionar isso na configuração em <code>pyproject.toml</code>. Isso poderia ser feito tanto na configuração <code>pytest</code> quando no <code>taskipy</code>. Vou adicionar a do pytest que está um pouco mais simples:</p>
+<div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">[tool.pytest.ini_options]</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings --random-order'</span>
+</span></code></pre></div>
+<p>Assim, toda vez que o pytest for chamado, pelo <code>task</code> ou somente via <code>pytest</code>, os testes serão randomizados:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>task<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="o">==========</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>session<span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="o">==========</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>Using<span class="w"> </span>--random-order-bucket<span class="o">=</span>module
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>Using<span class="w"> </span>--random-order-seed<span class="o">=</span><span class="m">941419</span><span class="w"> </span><span class="c1">#(1)!</span>
+</span></code></pre></div>
+<ol>
+<li>Seed gerado por essa execução.</li>
+</ol>
+<p>Uma coisa importante de notar na randomização é que um novo valor de <code>seed</code> é sempre apresentado quando o teste é executado. Isso pode nos ajudar a rodar a mesma ordem no futuro. Caso exista alguma interferência gerada pela randomização. É uma camada a mais de prevenção.</p>
+<hr>
+<p>Desta forma, é possível confirmar que a ordem dos testes não importa, pois eles estão de fato isolados. A execução de cada teste é independente uma da outra.</p>
 <h2 id="commit">Commit</h2>
 <p>Agora que terminamos a atualização dos nossos endpoints, faremos o commit das nossas alterações. O processo é o seguinte:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Atualizando endpoints para usar o banco de dados real"</span>
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>git<span class="w"> </span>push
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Atualizando endpoints para usar o banco de dados real"</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>git<span class="w"> </span>push
 </span></code></pre></div>
 <p>Com isso, terminamos a atualização dos nossos endpoints para usar o nosso banco de dados real.</p>
 <h2 id="exercicios">Exercícios</h2>
@@ -4938,7 +5029,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 de outubro de 2025 22:48:50 UTC">18 de outubro de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="27 de abril de 2026 20:30:58 UTC">27 de abril de 2026</span>
   </span>
 
     
