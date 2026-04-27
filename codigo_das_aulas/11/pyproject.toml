@@ -29,7 +29,8 @@ dev = [
     "factory-boy (>=3.3.3,<4.0.0)",
     "freezegun (>=1.5.5,<2.0.0)",
     "testcontainers (>=4.14.2,<5.0.0)",
-    "typos (>=1.45.1,<2.0.0)"
+    "typos (>=1.45.1,<2.0.0)",
+    "pytest-random-order (>=1.2.0,<2.0.0)"
 ]
 
 [tool.ruff]
