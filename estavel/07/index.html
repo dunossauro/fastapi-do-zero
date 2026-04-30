@@ -3632,7 +3632,7 @@
 <h2 id="movendo-as-constantes-para-variaveis-de-ambiente">Movendo as constantes para variáveis de ambiente</h2>
 <p>Conforme mencionamos na aula sobre os 12 fatores, é uma boa prática manter as constantes que podem mudar dependendo do ambiente em variáveis de ambiente. Isso torna o seu projeto mais seguro e modular, pois você pode alterar essas constantes sem ter que modificar o código-fonte.</p>
 <p>Por exemplo, temos estas constantes em nosso módulo <code>security.py</code>:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s1">'your-secret-key'</span>  <span class="c1"># Isso é provisório, vamos ajustar!</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s1">'your-very-secret-and-exclusive-key'</span>
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">ALGORITHM</span> <span class="o">=</span> <span class="s1">'HS256'</span>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span> <span class="o">=</span> <span class="mi">30</span>
 </span></code></pre></div>
@@ -3670,86 +3670,133 @@
 <span class="normal"><a href="#__codelineno-31-2">2</a></span>
 <span class="normal"><a href="#__codelineno-31-3">3</a></span>
 <span class="normal"><a href="#__codelineno-31-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s2">"sqlite:///database.db"</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="nv">SECRET_KEY</span><span class="o">=</span><span class="s2">"your-secret-key"</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="nv">SECRET_KEY</span><span class="o">=</span><span class="s2">"your-very-secret-and-exclusive-key"</span>
 </span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="nv">ALGORITHM</span><span class="o">=</span><span class="s2">"HS256"</span>
 </span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="nv">ACCESS_TOKEN_EXPIRE_MINUTES</span><span class="o">=</span><span class="m">30</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Com isso, podemos alterar o nosso código em <code>fast_zero/security.py</code> para ler as constantes a partir da classe <code>Settings</code>.</p>
+<p>Como conversamos na <a href="../06/#gerando-tokens-jwt" target="_blank">aula 06</a>, precisamos de uma <code>SECRET_KEY</code> que realmente seja um segredo, então agora pode ser uma boa hora para gerar uma usando <code>secrets</code>:</p>
+<div class="language-python highlight"><span class="filename">&gt;&gt;&gt; Terminal interativo!</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+</span></code></pre></div>
+<details class="example" open="open">
+<summary>Caso queira gerar sem sair da página da aula</summary>
+<p>Se quiser, você pode só criar no <code>run</code> aqui mesmo e receber uma secret aleatória:</p>
+<p>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.16.0/ace.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<link title="light" rel="alternate stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow.min.css" disabled>
+<link title="dark" rel="alternate stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.min.css" disabled>
+
+</p><div class="pyodide">
+<div class="pyodide-editor-bar">
+<span class="pyodide-bar-item">Editor (session: default)</span><span id="exec-2--run" title="Run: press Ctrl-Enter" class="pyodide-bar-item pyodide-clickable"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5.14v14l11-7-11-7Z"></path></svg></span> Run</span>
+</div>
+<div><pre id="exec-2--editor" class="pyodide-editor">import secrets
+print(secrets.token_hex(32))</pre></div>
+<div class="pyodide-editor-bar">
+<span class="pyodide-bar-item">Output</span><span id="exec-2--clear" class="pyodide-bar-item pyodide-clickable"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.14 3c-.51 0-1.02.2-1.41.59L2.59 14.73c-.78.77-.78 2.04 0 2.83L5.03 20h7.66l8.72-8.73c.79-.77.79-2.04 0-2.83l-4.85-4.85c-.39-.39-.91-.59-1.42-.59M17 18l-2 2h7v-2"></path></svg></span> Clear</span>
+</div>
+<pre><code id="exec-2--output" class="pyodide-output"></code></pre>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    setupPyodide(
+        'exec-2--',
+        install=[],
+        themeLight='tomorrow',
+        themeDark='tomorrow_night',
+        session='default',
+        minLines=2,
+        maxLines=2,
+    );
+});
+</script>
+<p></p>
+</details>
+<p>Dessa forma, alterando a chave <code>SECRET_KEY</code> para uma um pouco mais segura e que não será commitada no repositório:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">.env</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="nv">SECRET_KEY</span><span class="o">=</span><span class="s2">"9ec03f2fa8103aefd3dcebe0790588d264b33c729e2b2110f439d20994adfd74"</span>
+</span></code></pre></div></td></tr></tbody></table></div>
+<blockquote>
+<p>Essa chave é um exemplo, evite utilizar essa. Você pode gerar a sua até mesmo aqui na página, mas lembre-se de que deve ser uma chave sua.</p>
+</blockquote>
 <h3 id="removendo-as-constantes-do-codigo">Removendo as constantes do código</h3>
 <p>Primeiramente, carregaremos as configurações da classe <code>Settings</code> no início do módulo <code>security.py</code>.</p>
-<div class="language-python highlight"><span class="filename">fast_zero/security.py</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">Settings</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+<div class="language-python highlight"><span class="filename">fast_zero/security.py</span><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">Settings</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
 </span></code></pre></div>
 <p>Com isso, todos os lugares onde as constantes eram usadas devem ser substituídos por <code>settings.CONSTANTE</code>. Por exemplo, na função <code>create_access_token</code>, alteraremos para usar as constantes da classe <code>Settings</code>:</p>
-<div class="language-python highlight"><span class="filename">fast_zero/security.py</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="n">to_encode</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="n">expire</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s1">'UTC'</span><span class="p">))</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span>
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>        <span class="n">minutes</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span>
-</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="p">)</span>
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    <span class="n">to_encode</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'exp'</span><span class="p">:</span> <span class="n">expire</span><span class="p">})</span>
-</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>    <span class="n">encoded_jwt</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span>
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>        <span class="n">to_encode</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">ALGORITHM</span>
-</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    <span class="p">)</span>
-</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="k">return</span> <span class="n">encoded_jwt</span>
+<div class="language-python highlight"><span class="filename">fast_zero/security.py</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="n">to_encode</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="n">expire</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s1">'UTC'</span><span class="p">))</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>        <span class="n">minutes</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">ACCESS_TOKEN_EXPIRE_MINUTES</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="p">)</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>    <span class="n">to_encode</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'exp'</span><span class="p">:</span> <span class="n">expire</span><span class="p">})</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>    <span class="n">encoded_jwt</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>        <span class="n">to_encode</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">ALGORITHM</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>    <span class="p">)</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>    <span class="k">return</span> <span class="n">encoded_jwt</span>
 </span></code></pre></div>
 <p>Desta forma, eliminamos todas as constantes do código-fonte e passamos a usar as configurações a partir da classe <code>Settings</code>. Isso torna nosso código mais seguro, pois as constantes sensíveis, como a chave secreta, estão agora seguras em nosso arquivo <code>.env</code>, e nosso código fica mais modular, pois podemos facilmente alterar estas constantes simplesmente mudando os valores no arquivo <code>.env</code>. Além disso, essa abordagem facilita o gerenciamento de diferentes ambientes (como desenvolvimento, teste e produção) pois cada ambiente pode ter seu próprio arquivo <code>.env</code> com suas configurações específicas.</p>
 <p>Precisamos alterar o teste para usar as mesmas variáveis de ambiente do código:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/tests/test_security.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-34-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-34-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-34-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-34-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-34-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-34-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-34-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-34-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-34-10">10</a></span>
-<span class="normal"><a href="#__codelineno-34-11">11</a></span>
-<span class="normal"><a href="#__codelineno-34-12">12</a></span>
-<span class="normal"><a href="#__codelineno-34-13">13</a></span>
-<span class="normal"><a href="#__codelineno-34-14">14</a></span>
-<span class="normal"><a href="#__codelineno-34-15">15</a></span>
-<span class="normal"><a href="#__codelineno-34-16">16</a></span>
-<span class="normal"><a href="#__codelineno-34-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
-</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2"></a>
-</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">jwt</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode</span>
-</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4"></a>
-</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_access_token</span><span class="p">,</span> <span class="n">settings</span>
-</span></span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6"></a>
-</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7"></a>
-</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_jwt</span><span class="p">():</span>
-</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9"></a>    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'test'</span><span class="p">:</span> <span class="s1">'test'</span><span class="p">}</span>
-</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10"></a>    <span class="n">token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11"></a>
-</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12"></a>    <span class="n">decoded</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span>
-</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13"></a><span class="hll">        <span class="n">token</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">settings</span><span class="o">.</span><span class="n">ALGORITHM</span><span class="p">]</span>
-</span></span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14"></a>    <span class="p">)</span>
-</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15"></a>
-</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16"></a>    <span class="k">assert</span> <span class="n">decoded</span><span class="p">[</span><span class="s1">'test'</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">'test'</span><span class="p">]</span>
-</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17"></a>    <span class="k">assert</span> <span class="s1">'exp'</span> <span class="ow">in</span> <span class="n">decoded</span>
+<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">/tests/test_security.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-36-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-36-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-36-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-36-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-36-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-36-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-36-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-36-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-36-10">10</a></span>
+<span class="normal"><a href="#__codelineno-36-11">11</a></span>
+<span class="normal"><a href="#__codelineno-36-12">12</a></span>
+<span class="normal"><a href="#__codelineno-36-13">13</a></span>
+<span class="normal"><a href="#__codelineno-36-14">14</a></span>
+<span class="normal"><a href="#__codelineno-36-15">15</a></span>
+<span class="normal"><a href="#__codelineno-36-16">16</a></span>
+<span class="normal"><a href="#__codelineno-36-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2"></a>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">jwt</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4"></a>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_access_token</span><span class="p">,</span> <span class="n">settings</span>
+</span></span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6"></a>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7"></a>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_jwt</span><span class="p">():</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9"></a>    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'test'</span><span class="p">:</span> <span class="s1">'test'</span><span class="p">}</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10"></a>    <span class="n">token</span> <span class="o">=</span> <span class="n">create_access_token</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11"></a>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12"></a>    <span class="n">decoded</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13"></a><span class="hll">        <span class="n">token</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">settings</span><span class="o">.</span><span class="n">ALGORITHM</span><span class="p">]</span>
+</span></span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14"></a>    <span class="p">)</span>
+</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15"></a>
+</span><span id="__span-36-16"><a id="__codelineno-36-16" name="__codelineno-36-16"></a>    <span class="k">assert</span> <span class="n">decoded</span><span class="p">[</span><span class="s1">'test'</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">'test'</span><span class="p">]</span>
+</span><span id="__span-36-17"><a id="__codelineno-36-17" name="__codelineno-36-17"></a>    <span class="k">assert</span> <span class="s1">'exp'</span> <span class="ow">in</span> <span class="n">decoded</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <h3 id="testando-se-tudo-funciona">Testando se tudo funciona</h3>
 <p>Depois de todas essas mudanças, é muito importante garantir que tudo ainda está funcionando corretamente. Para isso, executaremos todos os testes que temos até agora.</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>task<span class="w"> </span><span class="nb">test</span>
-</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
-</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1"># ...</span>
-</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>
-</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>tests/test_app.py::test_root_deve_retornar_ok_e_ola_mundo<span class="w"> </span>PASSED
-</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>tests/test_auth.py::test_get_token<span class="w"> </span>PASSED
-</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>tests/test_db.py::test_create_user<span class="w"> </span>PASSED
-</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>tests/test_users.py::test_create_user<span class="w"> </span>PASSED
-</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>tests/test_users.py::test_read_users<span class="w"> </span>PASSED
-</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>tests/test_users.py::test_read_users_with_users<span class="w"> </span>PASSED
-</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>tests/test_users.py::test_update_user<span class="w"> </span>PASSED
-</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>tests/test_users.py::test_update_integrity_error<span class="w"> </span>PASSED
-</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>tests/test_users.py::test_delete_user<span class="w"> </span>PASSED
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>task<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="c1"># ...</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>tests/test_app.py::test_root_deve_retornar_ok_e_ola_mundo<span class="w"> </span>PASSED
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>tests/test_auth.py::test_get_token<span class="w"> </span>PASSED
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>tests/test_db.py::test_create_user<span class="w"> </span>PASSED
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>tests/test_users.py::test_create_user<span class="w"> </span>PASSED
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>tests/test_users.py::test_read_users<span class="w"> </span>PASSED
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>tests/test_users.py::test_read_users_with_users<span class="w"> </span>PASSED
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>tests/test_users.py::test_update_user<span class="w"> </span>PASSED
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>tests/test_users.py::test_update_integrity_error<span class="w"> </span>PASSED
+</span><span id="__span-37-13"><a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>tests/test_users.py::test_delete_user<span class="w"> </span>PASSED
 </span></code></pre></div>
 <p>Se tudo estiver certo, todos os testes devem passar. Lembre-se de que a refatoração não deve alterar a funcionalidade do nosso código - apenas torná-lo mais fácil de ler e manter.</p>
 <h2 id="commit">Commit</h2>
 <p>Para finalizar, criaremos um commit para registrar todas as alterações que fizemos na nossa aplicação. Como essa é uma grande mudança que envolve reestruturar a forma como lidamos com as rotas e mover as constantes para variáveis de ambiente, podemos usar uma mensagem de commit descritiva que explique todas as principais alterações:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Refatorando estrutura do projeto: Criado routers para Users e Auth; movido constantes para variáveis de ambiente."</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Refatorando estrutura do projeto: Criado routers para Users e Auth; movido constantes para variáveis de ambiente."</span>
 </span></code></pre></div>
 <h2 id="suplementar-para-proxima-aula">Suplementar / Para próxima aula</h2>
 <p>Na próxima aula, vamos adicionar o suporte a programação assíncrona em nossa aplicação. Caso esse assunto seja um novidade para você, temos uma live introdutória sobre o assunto:</p>
@@ -5489,7 +5536,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de março de 2026 17:38:33 UTC">8 de março de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 de abril de 2026 19:51:03 UTC">30 de abril de 2026</span>
   </span>
 
     
