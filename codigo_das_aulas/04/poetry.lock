@@ -1841,14 +1841,14 @@ files = [
 
 [[package]]
 name = "typer"
-version = "0.25.0"
+version = "0.25.1"
 description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "typer-0.25.0-py3-none-any.whl", hash = "sha256:ac01b48823d3db9a83c9e164338057eadbb1c9957a2a6b4eeb486669c560b5dc"},
-    {file = "typer-0.25.0.tar.gz", hash = "sha256:123eaf9f19bb40fd268310e12a542c0c6b4fab9c98d9d23342a01ff95e3ce930"},
+    {file = "typer-0.25.1-py3-none-any.whl", hash = "sha256:75caa44ed46a03fb2dab8808753ffacdbfea88495e74c85a28c5eefcf5f39c89"},
+    {file = "typer-0.25.1.tar.gz", hash = "sha256:9616eb8853a09ffeabab1698952f33c6f29ffdbceb4eaeecf571880e8d7664cc"},
 ]
 
 [package.dependencies]
@@ -1886,22 +1886,22 @@ typing-extensions = ">=4.12.0"
 
 [[package]]
 name = "typos"
-version = "1.45.2"
+version = "1.46.0"
 description = "Source Code Spelling Correction"
 optional = false
 python-versions = ">=3.8"
 groups = ["dev"]
 files = [
-    {file = "typos-1.45.2-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:28b98456941c9862f72c4993c1c1cd272291a2c8a7dee98fa85393a500034e01"},
-    {file = "typos-1.45.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:7a46fba84e87ca8e23e267b7c541dc3cf6cb1b426946b5269e9ae11e1e6bb4b1"},
-    {file = "typos-1.45.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:401c681815cd1fe3599525b8e94aed014efe33b34f224a643a2d0b9a81b9c07e"},
-    {file = "typos-1.45.2-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:4258e0d0b5e3cf3d291f42ff2bd9f92c7823a6b6c347f063b63d77fad088e7f6"},
-    {file = "typos-1.45.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7f7136775ae5b8d44281fc7076ff44c2fe3511a2b2748d1b02aa3f596f04bf77"},
-    {file = "typos-1.45.2-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:d570d19c02f44679e0cd44f8abfcddb7ece95935ca6033165c616a104531a7c8"},
-    {file = "typos-1.45.2-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:d04d569a00749b8e442a8f4132b46f2183d79b891a7bdb0001573b3f257c1b09"},
-    {file = "typos-1.45.2-py3-none-win32.whl", hash = "sha256:6140040f009536ff4aa1623671e491e6b197d2d92c03b3f4e43b9d3cf4de9560"},
-    {file = "typos-1.45.2-py3-none-win_amd64.whl", hash = "sha256:73f5c7f409f1467c48df0f63329ab68d01fcca9dbcb9042d0c9bc24873f69339"},
-    {file = "typos-1.45.2.tar.gz", hash = "sha256:baa93e3eac9eddda673ffd93af7c7de88bd82e9dfaa5080da8895acb40ef1f27"},
+    {file = "typos-1.46.0-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:21709d52d62c32010151edb1ae4b2c9278f93f6d3a57cd6ab1a5ff3425de1e1c"},
+    {file = "typos-1.46.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:7d9811d112420cb866d2ed2b23a7eb4c97ea5fecfa81f9bb6ab5b57e59bd70b6"},
+    {file = "typos-1.46.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2d612b6ace64f2219da5a18c9ac008042b37079a5fbaabcd6a20f060686205ac"},
+    {file = "typos-1.46.0-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:c3b0859517d73d13537a3f4a3662ceadb988e6bb5bdb8ba53bc6de86302d5154"},
+    {file = "typos-1.46.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:696b94e7d73cc74ee47d05d8aab1f1a3d50ee427b7e2a30337430eaa613b8f9c"},
+    {file = "typos-1.46.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:7b9b32bca025049d68f6c571baccb2dbaded8e32299b91bd184ef1b0ec2755ae"},
+    {file = "typos-1.46.0-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:7284909bd27e487de31c5eb3b53817df9e705e14b96f226315dca8a8c653363f"},
+    {file = "typos-1.46.0-py3-none-win32.whl", hash = "sha256:563c54404f253450f195e2ec1cd4ca5e0d659e78c5d23b4062cea5cf2150fc9f"},
+    {file = "typos-1.46.0-py3-none-win_amd64.whl", hash = "sha256:595e614b9b9967247a68c2cb3a4712ced7a5cc434f2cabcf945afbebaccf885b"},
+    {file = "typos-1.46.0.tar.gz", hash = "sha256:afcc399b3ef9aedc0b037de935ebdef60654a3cc616bc160aac14de7fb4d5592"},
 ]
 
 [[package]]
@@ -2209,4 +2209,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "e9d018195da682fe4854017989221a77130387ba3dbb63d62189eed689d20e57"
+content-hash = "f5374f4f083267c93733d6cd2f6c35936ddd83e1cf3f3c4cd19f166b45f56a14"
