@@ -37,8 +37,8 @@ preview = true
 quote-style = 'single'
 
 [tool.pytest]
-pythonpath = "."
-addopts = '-p no:warnings --random-order'
+pythonpath = ['.']
+addopts = ['-p', 'no:warnings', '--random-order']
 
 [tool.taskipy.tasks]
 pre_lint = 'typos'

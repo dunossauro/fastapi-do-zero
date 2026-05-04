@@ -45,8 +45,8 @@ preview = true
 quote-style = 'single'
 
 [tool.pytest]
-pythonpath = "."
-addopts = '-p no:warnings --random-order'
+pythonpath = ['.']
+addopts = ['-p', 'no:warnings', '--random-order']
 asyncio_default_fixture_loop_scope = 'function'
 
 [tool.coverage.run]

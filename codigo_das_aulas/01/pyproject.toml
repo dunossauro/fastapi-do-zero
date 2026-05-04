@@ -33,7 +33,7 @@ preview = true
 quote-style = 'single'
 
 [tool.pytest]
-pythonpath = "."
+pythonpath = ['.']
 addopts = ['-p', 'no:warnings']
 
 [tool.taskipy.tasks]
