@@ -47,7 +47,7 @@ quote-style = 'single'
 
 [tool.pytest.ini_options]
 pythonpath = "."
-addopts = '-p no:warnings'
+addopts = '-p no:warnings --random-order'
 
 [tool.coverage.run]
 core = "ctrace"
