@@ -33,7 +33,7 @@ select = ['I', 'F', 'E', 'W', 'PL', 'PT']
 preview = true
 quote-style = 'single'
 
-[tool.pytest.ini_options]
+[tool.pytest]
 pythonpath = "."
 addopts = '-p no:warnings'
 

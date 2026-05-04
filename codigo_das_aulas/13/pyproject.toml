@@ -45,7 +45,7 @@ select = ['I', 'F', 'E', 'W', 'PL', 'PT', 'FAST']
 preview = true
 quote-style = 'single'
 
-[tool.pytest.ini_options]
+[tool.pytest]
 pythonpath = "."
 addopts = '-p no:warnings --random-order'
 asyncio_default_fixture_loop_scope = 'function'
