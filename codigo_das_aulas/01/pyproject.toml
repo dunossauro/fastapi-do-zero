@@ -34,7 +34,7 @@ quote-style = 'single'
 
 [tool.pytest]
 pythonpath = "."
-addopts = '-p no:warnings'
+addopts = ['-p', 'no:warnings']
 
 [tool.taskipy.tasks]
 pre_lint = 'typos'
