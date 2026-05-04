@@ -349,9 +349,9 @@ Também vamos usar o `pytest-cov` para ver o que está ou não coberto pelos tes
 O configuraremos para reconhecer o caminho base para execução dos testes na raiz do projeto `.`:
 
 ```toml
-[tool.pytest.ini_options]
-pythonpath = "."
-addopts = '-p no:warnings'
+[tool.pytest]
+pythonpath = ['.']
+addopts = ['-p', 'no:warnings']
 ```
 
 Na segunda linha dizemos para o pytest adicionar a opção `no:warnings`. Para ter uma visualização mais limpa dos testes, caso alguma biblioteca exiba uma mensagem de warning, isso será suprimido pelo pytest.
