@@ -2796,7 +2796,7 @@
 </blockquote>
 <details class="danger" open="open">
 <summary>Sobre as versões das bibliotecas instaladas</summary>
-<p>A última atualização dos pacotes deste material foi feita em: <strong>04/05/2026 às 19:49</strong>.</p>
+<p>A última atualização dos pacotes deste material foi feita em: <strong>04/05/2026 às 21:36</strong>.</p>
 <p>Caso você esteja lendo este material em um futuro distante ou enfrente erros de instalação, o <a href="../apendices/c_versoes_usadas/">apêndice C</a> contém todas as versões usadas no ambiente de forma detalhada.</p>
 </details>
 <h2 id="pipx">pipx</h2>
@@ -3253,9 +3253,9 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <p>O <a href="https://docs.pytest.org/" target="_blank">Pytest</a> é uma framework de testes, que usaremos para escrever e executar nossos testes. O configuraremos para reconhecer o caminho base para execução dos testes na raiz do projeto <code>.</code>:</p>
 <div class="language-toml highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">pyproject.toml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-35">35</a></span>
 <span class="normal"><a href="#__codelineno-43-36">36</a></span>
-<span class="normal"><a href="#__codelineno-43-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-35"><a id="__codelineno-43-35" name="__codelineno-43-35"></a><span class="k">[tool.pytest.ini_options]</span>
-</span><span id="__span-43-36"><a id="__codelineno-43-36" name="__codelineno-43-36"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
-</span><span id="__span-43-37"><a id="__codelineno-43-37" name="__codelineno-43-37"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings'</span>
+<span class="normal"><a href="#__codelineno-43-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-35"><a id="__codelineno-43-35" name="__codelineno-43-35"></a><span class="k">[tool.pytest]</span>
+</span><span id="__span-43-36"><a id="__codelineno-43-36" name="__codelineno-43-36"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'.'</span><span class="p">]</span>
+</span><span id="__span-43-37"><a id="__codelineno-43-37" name="__codelineno-43-37"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'-p'</span><span class="p">,</span><span class="w"> </span><span class="s1">'no:warnings'</span><span class="p">]</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Na segunda linha, dizemos para o pytest adicionar a opção <code>no:warnings</code>. Para ter uma visualização mais limpa dos testes, caso alguma biblioteca exiba uma mensagem de warning, isso será suprimido pelo pytest.</p>
 <h3 id="typos">Typos</h3>
@@ -3427,9 +3427,9 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </span><span id="__span-49-32"><a id="__codelineno-49-32" name="__codelineno-49-32"></a><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 </span><span id="__span-49-33"><a id="__codelineno-49-33" name="__codelineno-49-33"></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'single'</span>
 </span><span id="__span-49-34"><a id="__codelineno-49-34" name="__codelineno-49-34"></a>
-</span><span id="__span-49-35"><a id="__codelineno-49-35" name="__codelineno-49-35"></a><span class="k">[tool.pytest.ini_options]</span>
-</span><span id="__span-49-36"><a id="__codelineno-49-36" name="__codelineno-49-36"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
-</span><span id="__span-49-37"><a id="__codelineno-49-37" name="__codelineno-49-37"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'-p no:warnings'</span>
+</span><span id="__span-49-35"><a id="__codelineno-49-35" name="__codelineno-49-35"></a><span class="k">[tool.pytest]</span>
+</span><span id="__span-49-36"><a id="__codelineno-49-36" name="__codelineno-49-36"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'.'</span><span class="p">]</span>
+</span><span id="__span-49-37"><a id="__codelineno-49-37" name="__codelineno-49-37"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'-p'</span><span class="p">,</span><span class="w"> </span><span class="s1">'no:warnings'</span><span class="p">]</span>
 </span><span id="__span-49-38"><a id="__codelineno-49-38" name="__codelineno-49-38"></a>
 </span><span id="__span-49-39"><a id="__codelineno-49-39" name="__codelineno-49-39"></a><span class="k">[tool.taskipy.tasks]</span>
 </span><span id="__span-49-40"><a id="__codelineno-49-40" name="__codelineno-49-40"></a><span class="n">pre_lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'typos'</span>
