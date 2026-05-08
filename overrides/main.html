@@ -2,6 +2,16 @@
 
 {% block extrahead %}
 {{ super() }}
+
+<style>
+[vw] {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 999999 !important;
+}
+</style>
+
 <script>
     const preferencesKey = "fonts-preferences";
     const preferencesId = "md-fonts-style";
@@ -31,4 +41,39 @@
     };
     loadSetPreferences();
 </script>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+
+  function initVLibras() {
+
+    if (!window.VLibras) return;
+
+    if (window.__vlibras_initialized__) return;
+
+    window.__vlibras_initialized__ = true;
+
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  }
+
+  window.addEventListener("load", initVLibras);
+
+  if (typeof document$ !== "undefined") {
+    document$.subscribe(initVLibras);
+  }
+
+})();
+</script>
+
 {% endblock %}

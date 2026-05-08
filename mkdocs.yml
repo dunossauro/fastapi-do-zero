@@ -97,6 +97,7 @@ extra_javascript:
   - assets/javascripts/extra.js
   - https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://vlibras.gov.br/app/vlibras-plugin.js
 
 extra_css:
   - stylesheets/extra.css
