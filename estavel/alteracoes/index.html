@@ -61,6 +61,16 @@
     
     
 
+
+<style>
+[vw] {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 999999 !important;
+}
+</style>
+
 <script>
     const preferencesKey = "fonts-preferences";
     const preferencesId = "md-fonts-style";
@@ -2045,12 +2055,13 @@
 
 
 <h1 id="alteracoes">Alterações</h1>
-<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-05-04">fastapi-do-zero Alterações ainda sem release (2026-05-04)</h1>
+<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-05-07">fastapi-do-zero Alterações ainda sem release (2026-05-07)</h1>
 <h2 id="adicionado">Adicionado</h2>
 <ul>
 <li>Instruções para gerar <code>secret_keys</code> usando <code>secrets</code> para maior segurança (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/473">#473</a>)</li>
 <li>Randomização na ordem de execução nos testes via <code>pytest-random-order</code>. Aulas 03 e 05. (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/513">#513</a>)</li>
 <li>Analizador estático para erros de grafia <code>typos</code>. Alterações nas aulas 01 e 10.</li>
+<li>Suporte a libras nas páginas via <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/vlibras">VLibras</a></li>
 </ul>
 <h2 id="correcoes">Correções</h2>
 <ul>
@@ -4368,6 +4379,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
     
     
+  
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../assets/_markdown_exec_pyodide.js"></script>
@@ -4378,7 +4390,41 @@ document.addEventListener("DOMContentLoaded", function() {
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      
     
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+
+  function initVLibras() {
+
+    if (!window.VLibras) return;
+
+    if (window.__vlibras_initialized__) return;
+
+    window.__vlibras_initialized__ = true;
+
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  }
+
+  window.addEventListener("load", initVLibras);
+
+  if (typeof document$ !== "undefined") {
+    document$.subscribe(initVLibras);
+  }
+
+})();
+</script>
+
+
   
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

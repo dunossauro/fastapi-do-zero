@@ -63,6 +63,16 @@
     
     
 
+
+<style>
+[vw] {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 999999 !important;
+}
+</style>
+
 <script>
     const preferencesKey = "fonts-preferences";
     const preferencesId = "md-fonts-style";
@@ -5495,6 +5505,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"default": "estavel", "provider": "mike"}}</script>
     
     
+  
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../assets/_markdown_exec_pyodide.js"></script>
@@ -5505,7 +5516,41 @@ document.addEventListener("DOMContentLoaded", function() {
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      
     
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+
+  function initVLibras() {
+
+    if (!window.VLibras) return;
+
+    if (window.__vlibras_initialized__) return;
+
+    window.__vlibras_initialized__ = true;
+
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  }
+
+  window.addEventListener("load", initVLibras);
+
+  if (typeof document$ !== "undefined") {
+    document$.subscribe(initVLibras);
+  }
+
+})();
+</script>
+
+
   
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });
