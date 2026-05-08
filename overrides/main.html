@@ -1,79 +1,100 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
-{{ super() }}
+  {{ super() }}
 
-<style>
-[vw] {
-  position: fixed !important;
-  bottom: 24px !important;
-  right: 24px !important;
-  z-index: 999999 !important;
-}
-</style>
+  <style>
+    [vw] {
+      position: fixed !important;
+      bottom: 24px !important;
+      right: 24px !important;
+      z-index: 999999 !important;
+    }
 
-<script>
+    [vw-access-button] {
+      display: none !important;
+    }
+  </style>
+
+  <script>
     const preferencesKey = "fonts-preferences";
     const preferencesId = "md-fonts-style";
+
     const loadSetPreferences = () => {
-	let prefStyles = document.querySelector(`#${preferencesId}`);
+      let prefStyles = document.querySelector(`#${preferencesId}`);
 
-	if (!prefStyles) {
-	    prefStyles = document.createElement("style");
-	    prefStyles.id = preferencesId;
-	    document.head.insertAdjacentElement("beforeend", prefStyles);
-	}
+      if (!prefStyles) {
+        prefStyles = document.createElement("style");
+        prefStyles.id = preferencesId;
+        document.head.appendChild(prefStyles);
+      }
 
-	prefStyles.innerHTML = "";
+      prefStyles.innerHTML = "";
 
-	const loadedPreferences = __md_get(preferencesKey);
+      const loadedPreferences = __md_get(preferencesKey);
 
-	if (!loadedPreferences) {
-	    __md_set(preferencesKey, {
-		"__global": {
-		    "cssRaw": ""
-		}
-	    });
-	    return;
-	}
+      if (!loadedPreferences) {
+        __md_set(preferencesKey, {
+          "__global": { "cssRaw": "" }
+        });
+        return;
+      }
 
-	prefStyles.innerHTML = loadedPreferences["__global"]["cssRaw"];
+      prefStyles.innerHTML = loadedPreferences["__global"]["cssRaw"];
     };
+
     loadSetPreferences();
-</script>
+  </script>
 {% endblock %}
 
 {% block scripts %}
   {{ super() }}
 
-<div vw class="enabled">
-  <div vw-access-button class="active"></div>
-  <div vw-plugin-wrapper>
-    <div class="vw-plugin-top-wrapper"></div>
-  </div>
-</div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 
-<script>
-(function () {
+  <script>
+    (function () {
 
-  function initVLibras() {
+      let accessButton = null;
 
-    if (!window.VLibras) return;
+      function initVLibras() {
 
-    if (window.__vlibras_initialized__) return;
+        if (!window.VLibras) return;
+        if (window.__vlibras_initialized__) return;
 
-    window.__vlibras_initialized__ = true;
+        window.__vlibras_initialized__ = true;
 
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  }
+        const container = document.createElement("div");
 
-  window.addEventListener("load", initVLibras);
+        container.innerHTML = `
+          <div vw class="enabled">
+            <div vw-access-button></div>
 
-  if (typeof document$ !== "undefined") {
-    document$.subscribe(initVLibras);
-  }
+            <div vw-plugin-wrapper>
+              <div class="vw-plugin-top-wrapper"></div>
+            </div>
+          </div>
+        `;
 
-})();
-</script>
+        document.body.appendChild(container);
+
+        new window.VLibras.Widget("https://vlibras.gov.br/app");
+
+        accessButton = document.querySelector("[vw-access-button]");
+
+        window.addEventListener("vlibras-toggle", () => {
+          if (!accessButton) return;
+          accessButton.click();
+        });
+      }
+
+      window.addEventListener("load", initVLibras);
+
+      if (typeof document$ !== "undefined") {
+        document$.subscribe(initVLibras);
+      }
+
+    })();
+  </script>
 
 {% endblock %}
