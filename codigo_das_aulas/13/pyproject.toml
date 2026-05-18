@@ -47,7 +47,7 @@ quote-style = 'single'
 
 [tool.pytest]
 pythonpath = ['.']
-addopts = ['-p', 'no:warnings', '--cov=fast_zero', '--cov-context=test', '--random-order']
+addopts = ['-p', 'no:warnings', '--cov=fast_zero', '--cov-context=test', '--cov-branch', '--random-order']
 asyncio_default_fixture_loop_scope = 'function'
 
 [tool.coverage.run]
