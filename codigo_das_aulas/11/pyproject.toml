@@ -47,7 +47,7 @@ quote-style = 'single'
 
 [tool.pytest]
 pythonpath = ['.']
-addopts = ['-p', 'no:warnings', '--random-order']
+addopts = ['-p', 'no:warnings', '--cov=fast_zero', '--cov-context=test', '--random-order']
 asyncio_default_fixture_loop_scope = 'function'
 
 [tool.coverage.run]
@@ -61,8 +61,8 @@ pre_format = 'ruff check --fix'
 format = 'ruff format'
 run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
-test = 'pytest -s -x --cov=fast_zero -vv'
-post_test = 'coverage html'
+test = 'pytest -s -x -vv'
+post_test = 'coverage html --show-contexts'
 
 [tool.typos.default]
 extend-ignore-identifiers-re = ["selectin"]

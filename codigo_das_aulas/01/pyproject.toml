@@ -34,7 +34,7 @@ quote-style = 'single'
 
 [tool.pytest]
 pythonpath = ['.']
-addopts = ['-p', 'no:warnings']
+addopts = ['-p', 'no:warnings', '--cov=fast_zero', '--cov-context=test']
 
 [tool.taskipy.tasks]
 pre_lint = 'typos'
@@ -43,8 +43,8 @@ pre_format = 'ruff check --fix'
 format = 'ruff format'
 run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
-test = 'pytest -s -x --cov=fast_zero -vv'
-post_test = 'coverage html'
+test = 'pytest -s -x -vv'
+post_test = 'coverage html --show-contexts'
 
 [tool.typos.files]
 extend-exclude = ["*.md"]
