@@ -177,6 +177,7 @@ Esse material contou com a revisão e contribuições inestimáveis de pessoas i
 [@andrespp](https://github.com/andrespp){:target="_blank"},
 [@azmovi](https://github.com/azmovi){:target="_blank"},
 [@bugelseif](https://github.com/bugelseif){:target="_blank"},
+[@dias-gxstavo](https://github.com/dias-gxstavo){:target="_blank"},
 [@EvandroNetoo](https://github.com/EvandroNetoo){:target="_blank"},
 [@Felipe-Paschoal](https://github.com/Felipe-Paschoal){:target="_blank"},
 [@FtxDante](https://github.com/FtxDante){:target="_blank"},
