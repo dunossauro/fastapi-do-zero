@@ -427,14 +427,14 @@ idna = ">=2.0.0"
 
 [[package]]
 name = "fastapi"
-version = "0.136.1"
+version = "0.136.3"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "fastapi-0.136.1-py3-none-any.whl", hash = "sha256:a6e9d7eeada96c93a4d69cb03836b44fa34e2854accb7244a1ece36cd4781c3f"},
-    {file = "fastapi-0.136.1.tar.gz", hash = "sha256:7af665ad7acfa0a3baf8983d393b6b471b9da10ede59c60045f49fbc89a0fa7f"},
+    {file = "fastapi-0.136.3-py3-none-any.whl", hash = "sha256:3d2a69bdf04b7e9f3afa292c3bc7a98816bbfafa10bc9b45f3f3700d2f761620"},
+    {file = "fastapi-0.136.3.tar.gz", hash = "sha256:e487fae93ad408e6f47641ee4dfe389864fd7bec92e547ea8498fc13f43e83ab"},
 ]
 
 [package.dependencies]
@@ -1981,14 +1981,14 @@ sqlcipher = ["sqlcipher3_binary"]
 
 [[package]]
 name = "starlette"
-version = "1.0.1"
+version = "1.1.0"
 description = "The little ASGI library that shines."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "starlette-1.0.1-py3-none-any.whl", hash = "sha256:7c0e69b2ee1c848bd54669d908500117a3ee13de603a21427e5c6fc1adf98dcd"},
-    {file = "starlette-1.0.1.tar.gz", hash = "sha256:512399c5f1de7fac99c88572212ded9ddeddef2fb32afa82d724000e88b38f4f"},
+    {file = "starlette-1.1.0-py3-none-any.whl", hash = "sha256:7f0dfd38e428aad5cb6f9f667f0ca1d2d8ca3f3385dccac8305f79ec98458382"},
+    {file = "starlette-1.1.0.tar.gz", hash = "sha256:e83c7fe0ddecd8719c5b840080325aec0260acec86e9832899e377b91d65e90f"},
 ]
 
 [package.dependencies]
@@ -2120,21 +2120,22 @@ typing-extensions = ">=4.12.0"
 
 [[package]]
 name = "typos"
-version = "1.46.2"
+version = "1.46.3"
 description = "Source Code Spelling Correction"
 optional = false
 python-versions = ">=3.8"
 groups = ["dev"]
 files = [
-    {file = "typos-1.46.2-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:345977d2ee671ab53e8dd4bbed41c81f63849a6b7f114c99a9dd40584045007c"},
-    {file = "typos-1.46.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:426a899fa041457ff2b2cc83889ae17549cf8b1150646bb5f4d62a87e3cd2a5f"},
-    {file = "typos-1.46.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c4c48409f04212d9ab4cd2f5cef19a553422a7953d32e3de8cbe9e4cb9e502e0"},
-    {file = "typos-1.46.2-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:443d2ebde8157397277d7b61652521b0982d15717a75be151a84d6a21b2603e4"},
-    {file = "typos-1.46.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e4612b8e93d4c3be490135c34f0341ee6ac271be569aa2803c8d52a4e2392244"},
-    {file = "typos-1.46.2-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:af01d1c00f5245c25dfd0127c7fbe824e26fedd4826a0042a247be62d1dc2e91"},
-    {file = "typos-1.46.2-py3-none-win32.whl", hash = "sha256:11c3c1a7bd8606c690ee0fcac8620af9c7fe59b919fed664f98f0140f8de9881"},
-    {file = "typos-1.46.2-py3-none-win_amd64.whl", hash = "sha256:b10a771378b7ccd25a856db6ae2291d1b79293007ce322fcb7c576d73db00231"},
-    {file = "typos-1.46.2.tar.gz", hash = "sha256:23e73e079e3a3b01f27b8239b36aa9eb03bcf7b98c87dbc984266c2e25f1dae9"},
+    {file = "typos-1.46.3-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:193d68afca7ae256f05ee9258eda2f041734952477d1f6aa32d439643ccb38db"},
+    {file = "typos-1.46.3-py3-none-macosx_11_0_arm64.whl", hash = "sha256:9acbe779c08baef59d08fc0366d0ae7a35190c8e4f57ad6dc121ca9b3a583344"},
+    {file = "typos-1.46.3-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bf8897f3945530a83c213b759e915648eeba2e4eaa798455f565f78f2c12035b"},
+    {file = "typos-1.46.3-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:922452006c37ca4f4760761a2ddcad02276a642a69c841f96136c3f17a59debf"},
+    {file = "typos-1.46.3-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3baf33ff3bc21feb254e83f8dbbbbf34eb339b47b3582508cfdc59609081d069"},
+    {file = "typos-1.46.3-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:abf65f93de75317eab8fd44a3790f272d04b6a7e6b6a006365f3a9ef323a7991"},
+    {file = "typos-1.46.3-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:b17069c36a54358ead62cc6016ab547d9ae7dc44415dcfbcf4472bee5f099f54"},
+    {file = "typos-1.46.3-py3-none-win32.whl", hash = "sha256:e73e39b46eef13947b58be1a7770fe46268b57e1575db56f7934f2f9959bda68"},
+    {file = "typos-1.46.3-py3-none-win_amd64.whl", hash = "sha256:9646c7cce10a0cd628b1e3b543135e013d9db71a6aeab8f0b0a1f77128a8e63e"},
+    {file = "typos-1.46.3.tar.gz", hash = "sha256:f4e870d8bd4ebb699a2a08c25d62e0a059f707be65cb4d5025272fe2e78871a5"},
 ]
 
 [[package]]
@@ -2452,4 +2453,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "4b5622c704512f04635714fdecd5133843210e73f88180b0c5b661217cd72181"
+content-hash = "2210599cd3543ad5d4900e74c730528d3ff96c1d4a73e5dcaa3ad8cdfa97cb69"
