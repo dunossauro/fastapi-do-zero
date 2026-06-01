@@ -3131,7 +3131,7 @@
 <p>Uma exigência formal do <code>pytest-asyncio</code> é que seja configurado o escopo padrão das fixtures:</p>
 <div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">[tool.pytest]</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'.'</span><span class="p">]</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'-p'</span><span class="p">,</span><span class="w"> </span><span class="s1">'no:warnings'</span><span class="p">,</span><span class="w"> </span><span class="s1">'--random-order'</span><span class="p">]</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'-p'</span><span class="p">,</span><span class="w"> </span><span class="s1">'no:warnings'</span><span class="p">,</span><span class="w"> </span><span class="s1">'--cov=fast_zero'</span><span class="p">,</span><span class="w"> </span><span class="s1">'--cov-context=test'</span><span class="p">,</span><span class="w"> </span><span class="s1">'--cov-branch'</span><span class="p">,</span><span class="w"> </span><span class="s1">'--random-order'</span><span class="p">]</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="hll"><span class="n">asyncio_default_fixture_loop_scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'function'</span>
 </span></span></code></pre></div>
 <blockquote>
@@ -3546,6 +3546,10 @@
 </span></code></pre></div>
 <p>Com isso temos todos os endpoints funcionando de forma correta e assíncrona!</p>
 <h2 id="cobertura-de-testes-assincrona">Cobertura de testes assíncrona</h2>
+<div class="admonition warning">
+<p class="admonition-title">Comportamentos estranhos</p>
+<p>Esse é um comportamento que foi resolvido via <a href="https://coverage.readthedocs.io/en/latest/config.html#run-core"><code>sysmon</code></a> na versão 3.14 do Python. Caso esteja no 3.14, esse comportamento estranho não ocorrerá e a cobertura será a mesma tanto async, quanto sync. Contudo, se estiver usando uma versão menor, provavelmente terá que lidar com a correção desse comportamento descrita nesse tópico.</p>
+</div>
 <p>Como o fluxo de execução deixa de ser linear, algumas coisas costumam aparecer não cobertas, mesmo quando executadas. Se você prestou atenção durante a execução dos testes, parece que temos coisas substancialmente erradas:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/08/cobertura_errada.png" data-desc-position="bottom"><img alt="descrição" class="center shadow" src="../assets/08/cobertura_errada.png"></a></p>
 <p>Um exemplo disso é o <a href="#endpoint-de-get" target="_blank">endpoint GET</a>, devidamente testado, mas ao olhar a cobertura:</p>
@@ -3564,7 +3568,7 @@
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>task<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="c1"># ...</span>
 </span></code></pre></div>
-<p>Assim, voltamos aos 93% que tínamos antes desta aula:</p>
+<p>Assim, voltamos aos 88% que tínhamos antes desta aula:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/08/cobertura_pos_coverage.png" data-desc-position="bottom"><img alt="descrição" class="center shadow" src="../assets/08/cobertura_pos_coverage.png"></a></p>
 <h2 id="migracoes-assincronas">Migrações assíncronas</h2>
 <p>As migrações com alembic em teoria devem ser sempre síncronas. Afinal, você não gostaria que ele fizesse escalonamento na hora de aplicar as migrações e aplicasse um pedaço de cada em pedaços diferentes de migrações de arquivos diferentes.</p>
@@ -5396,7 +5400,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="27 de maio de 2026 00:32:00 UTC">27 de maio de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 de junho de 2026 23:52:19 UTC">1 de junho de 2026</span>
   </span>
 
     

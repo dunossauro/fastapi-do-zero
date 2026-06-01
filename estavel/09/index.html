@@ -2475,6 +2475,9 @@
 <p>Antes de mergulharmos nos testes, conversaremos um pouco sobre por que eles são tão importantes. Na programação, é fácil cair na armadilha de pensar que, se algo funciona na maioria das vezes, então está tudo bem. Mas a verdade é que é nos casos marginais que os bugs mais difíceis de encontrar e corrigir costumam se esconder.</p>
 <p>Por exemplo, o que acontece se tentarmos autenticar um usuário que não existe? Ou se tentarmos autenticar com as credenciais erradas? Se não testarmos esses cenários, podemos acabar com um sistema que parece funcionar na superfície, mas que, na verdade, está cheio de falhas de segurança.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/09/coverage_mostrando_que_o_put_n%C3%A3o_foi_testado_com_usuario_errado.png" data-desc-position="bottom"><img alt="descrição" class="center shadow" src="../assets/09/coverage_mostrando_que_o_put_n%C3%A3o_foi_testado_com_usuario_errado.png" width="700"></a></p>
+<blockquote>
+<p>TODO: Alterar essa imagem</p>
+</blockquote>
 <p>No código apresentado, se observarmos atentamente, vemos que o erro <code class="language-python highlight"><span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">FORBIDDEN</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s1">'Not enough permissions'</span><span class="p">)</span></code> em <code>users.py</code> na rota <code>/{user_id}</code> não está sendo coberto por nossos testes. Essa exceção é lançada quando um usuário não autenticado ou um usuário sem permissões adequadas tenta acessar, ou alterar um recurso que não deveria.</p>
 <p>Essa lacuna em nossos testes representa um risco potencial, pois não estamos verificando como nosso sistema se comporta quando alguém tenta, por exemplo, alterar os detalhes de um usuário sem ter permissões adequadas. Embora possamos assumir que nosso sistema se comportará corretamente, a falta de testes nos deixa sem uma confirmação concreta.</p>
 <h3 id="testando-a-alteracao-de-um-usuario-nao-autorizado">Testando a alteração de um usuário não autorizado</h3>
@@ -4628,7 +4631,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="27 de maio de 2026 00:32:00 UTC">27 de maio de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 de junho de 2026 23:52:19 UTC">1 de junho de 2026</span>
   </span>
 
     

@@ -2066,13 +2066,15 @@
 
 
 <h1 id="alteracoes">Alterações</h1>
-<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-05-26">fastapi-do-zero Alterações ainda sem release (2026-05-26)</h1>
+<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-06-01">fastapi-do-zero Alterações ainda sem release (2026-06-01)</h1>
 <h2 id="adicionado">Adicionado</h2>
 <ul>
 <li>Instruções para gerar <code>secret_keys</code> usando <code>secrets</code> para maior segurança (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/473">#473</a>)</li>
 <li>Commits no formato <a href="https://www.conventionalcommits.org/pt-br/v1.0.0/">Conventional Commits</a> (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/493">#493</a>)</li>
 <li>Randomização na ordem de execução nos testes via <code>pytest-random-order</code>. Aulas 03 e 05. (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/513">#513</a>)</li>
 <li>Configuração do virtualenv local via poetry como opcional na aula. Após relatos de "minhoquinhas vermelhas" abaixo dos imports. (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/515">#515</a>)</li>
+<li>Cobertura de testes agora conta com contextos, ou seja, mostra qual teste testa qual linha de código (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/523">#523</a>)</li>
+<li>Cobertura de testes agora usa branches, uma melhoria significativa e mais realista da cobertura de código (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/523">#523</a>)</li>
 <li>Analizador estático para erros de grafia <code>typos</code>. Alterações nas aulas 01 e 10.</li>
 <li>Suporte a libras nas páginas via <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/vlibras">VLibras</a></li>
 </ul>
@@ -2091,6 +2093,7 @@
 <ul>
 <li>Pydantic BaseSettings agora usa <code>init=false</code> por padrão (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/486">#486</a>)</li>
 <li>Configurações da versão 9 do <code>pytest</code> no <code>pyproject.toml</code> (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/517">#517</a>)</li>
+<li>Aula 08: adicionado um bloco que torna o ctrace de cobertura opcional no 3.14+ (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/523">#523</a>)</li>
 <li>Quizes: Agora contam com progresso, respostas ficam salvas em cache e tem links compartilhaveis. Melhorias possíveis graças a paciência do <a href="https://github.com/ewels">@ewels</a> em aceitar minhas propostas me de melhoria no <code>mkdocs-quiz</code></li>
 </ul>
 <h2 id="removido">Removido</h2>
@@ -2107,7 +2110,7 @@
 <li><code>pytest-asyncio</code> 1.2.0 -&gt; 1.3.0</li>
 <li><code>pytest</code> 8.4 -&gt; 9.0</li>
 <li><code>ruff</code> 0.14 -&gt; 0.15</li>
-<li><code>sqlalchemy[asyncio]</code> 2.0.44 -&gt; 2.0.49</li>
+<li><code>sqlalchemy[asyncio]</code> 2.0.44 -&gt; 2.0.50</li>
 <li><code>testcontainers</code> 4.13 -&gt; 4.14</li>
 </ul>
 <h2 id="interno">Interno</h2>
