@@ -1309,6 +1309,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#exercicio-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 02
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercício 02">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2114,6 +2142,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#exercicio-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 02
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercício 02">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solução
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2136,7 +2192,30 @@
 
 <h1 id="exercicios-da-aula-01">Exercícios da aula 01</h1>
 <h2 id="exercicio-01">Exercício 01</h2>
-<p>Crie um repositório para acompanhar o curso e suba em alguma plataforma, como <a href="https://github.com/">Github</a>, <a href="https://gitlab.com/">gitlab</a>, <a href="https://codeberg.org/">codeberg</a>, etc. E compartilhe o link no <a href="https://github.com/dunossauro/fastapi-do-zero/issues/91">repositório do curso</a> para podermos aprender juntos.</p><div id="quiz-progress-sidebar" aria-label="Progresso do quiz" style="display: none;">
+<p>Crie um repositório para acompanhar o curso e suba em alguma plataforma, como <a href="https://github.com/">Github</a>, <a href="https://gitlab.com/">gitlab</a>, <a href="https://codeberg.org/">codeberg</a>, etc. E compartilhe o link no <a href="https://github.com/dunossauro/fastapi-do-zero/issues/91">repositório do curso</a> para podermos aprender juntos.</p>
+<h2 id="exercicio-02">Exercício 02</h2>
+<p>Adicione o <code>typos</code> para análisar gramática em inglês para ser executado antes da etapa de <code>lint</code> (<code>pre_lint</code>) no <code>pyproject.toml</code>.</p>
+<h3 id="solucao">Solução</h3>
+<p>O objetivo aqui é automatizar a verificação ortográfica para que ela rode sempre de forma automática antes do <code>ruff check</code>. Para fazer isso, vamos usar o sistema de ganchos (hooks) em cadeia do Taskipy.</p>
+<p>Abra o seu arquivo <code>pyproject.toml</code> e navegue até a tabela <code>[tool.taskipy.tasks]</code>.</p>
+<p>Basta adicionar a tarefa <code>pre_lint</code> apontando para o comando <code>typos</code>. O Taskipy vai entender automaticamente que, por causa do prefixo <code>pre_</code>, ele deve rodar o typos antes do comando <code>lint</code>.</p>
+<p>O seu bloco de tarefas deve ficar exatamente assim:</p>
+<div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.taskipy.tasks]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">pre_lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"typos"</span><span class="w">               </span><span class="c1"># (1)!</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ruff check"</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">pre_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ruff check --fix"</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ruff format"</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fastapi dev fast_zero/app.py"</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"task lint"</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pytest -v"</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"coverage html"</span>
+</span></code></pre></div>
+<ol>
+<li>Nova tarefa adicionada. Agora, sempre que você digitar <code>task lint</code>, o <code>typos</code> será executado primeiro.</li>
+</ol>
+<p>Para garantir que está funcionando, execute o linter no seu terminal:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>task<span class="w"> </span>lint
+</span></code></pre></div><div id="quiz-progress-sidebar" aria-label="Progresso do quiz" style="display: none;">
   <!-- mkdocs-quiz progress sidebar (desktop) -->
   <label class="md-nav__title">
     <span class="md-nav__icon md-icon"></span>
@@ -3861,7 +3940,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de setembro de 2024 20:03:56 UTC">6 de setembro de 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2 de junho de 2026 00:14:09 UTC">2 de junho de 2026</span>
   </span>
 
     

@@ -803,10 +803,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercicio" class="md-nav__link">
+  <a href="#exercicios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercício
+        Exercícios
       
     </span>
   </a>
@@ -2795,10 +2795,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercicio" class="md-nav__link">
+  <a href="#exercicios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercício
+        Exercícios
       
     </span>
   </a>
@@ -3416,20 +3416,17 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <span class="normal"><a href="#__codelineno-50-43">43</a></span>
 <span class="normal"><a href="#__codelineno-50-44">44</a></span>
 <span class="normal"><a href="#__codelineno-50-45">45</a></span>
-<span class="normal"><a href="#__codelineno-50-46">46</a></span>
-<span class="normal"><a href="#__codelineno-50-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-39"><a id="__codelineno-50-39" name="__codelineno-50-39"></a><span class="k">[tool.taskipy.tasks]</span>
-</span><span id="__span-50-40"><a id="__codelineno-50-40" name="__codelineno-50-40"></a><span class="n">pre_lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'typos'</span>
-</span><span id="__span-50-41"><a id="__codelineno-50-41" name="__codelineno-50-41"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check'</span>
-</span><span id="__span-50-42"><a id="__codelineno-50-42" name="__codelineno-50-42"></a><span class="n">pre_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check --fix'</span>
-</span><span id="__span-50-43"><a id="__codelineno-50-43" name="__codelineno-50-43"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff format'</span>
-</span><span id="__span-50-44"><a id="__codelineno-50-44" name="__codelineno-50-44"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
-</span><span id="__span-50-45"><a id="__codelineno-50-45" name="__codelineno-50-45"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
-</span><span id="__span-50-46"><a id="__codelineno-50-46" name="__codelineno-50-46"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x -vv'</span>
-</span><span id="__span-50-47"><a id="__codelineno-50-47" name="__codelineno-50-47"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html --show-contexts'</span>
+<span class="normal"><a href="#__codelineno-50-46">46</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-39"><a id="__codelineno-50-39" name="__codelineno-50-39"></a><span class="k">[tool.taskipy.tasks]</span>
+</span><span id="__span-50-40"><a id="__codelineno-50-40" name="__codelineno-50-40"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check'</span>
+</span><span id="__span-50-41"><a id="__codelineno-50-41" name="__codelineno-50-41"></a><span class="n">pre_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check --fix'</span>
+</span><span id="__span-50-42"><a id="__codelineno-50-42" name="__codelineno-50-42"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff format'</span>
+</span><span id="__span-50-43"><a id="__codelineno-50-43" name="__codelineno-50-43"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
+</span><span id="__span-50-44"><a id="__codelineno-50-44" name="__codelineno-50-44"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
+</span><span id="__span-50-45"><a id="__codelineno-50-45" name="__codelineno-50-45"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x -vv'</span>
+</span><span id="__span-50-46"><a id="__codelineno-50-46" name="__codelineno-50-46"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html --show-contexts'</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Os comandos definidos fazem o seguinte:</p>
 <ul>
-<li><code>pre_lint</code>: faz a busca por <em>typos</em> de inglês</li>
 <li><code>lint</code>: faz a checagem de boas práticas do código python</li>
 <li><code>pre_format</code>: faz algumas correções de boas práticas automaticamente</li>
 <li><code>format</code>: executa a formatação do código em relação às convenções de estilo de código</li>
@@ -3495,8 +3492,7 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <span class="normal"><a href="#__codelineno-51-47">47</a></span>
 <span class="normal"><a href="#__codelineno-51-48">48</a></span>
 <span class="normal"><a href="#__codelineno-51-49">49</a></span>
-<span class="normal"><a href="#__codelineno-51-50">50</a></span>
-<span class="normal"><a href="#__codelineno-51-51">51</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="k">[project]</span>
+<span class="normal"><a href="#__codelineno-51-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="k">[project]</span>
 </span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fast_zero"</span>
 </span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.1.0"</span>
 </span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4"></a><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
@@ -3535,18 +3531,17 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 </span><span id="__span-51-37"><a id="__codelineno-51-37" name="__codelineno-51-37"></a><span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'-p'</span><span class="p">,</span><span class="w"> </span><span class="s1">'no:warnings'</span><span class="p">,</span><span class="w"> </span><span class="s1">'--cov=fast_zero'</span><span class="p">,</span><span class="w"> </span><span class="s1">'--cov-context=test'</span><span class="p">]</span>
 </span><span id="__span-51-38"><a id="__codelineno-51-38" name="__codelineno-51-38"></a>
 </span><span id="__span-51-39"><a id="__codelineno-51-39" name="__codelineno-51-39"></a><span class="k">[tool.taskipy.tasks]</span>
-</span><span id="__span-51-40"><a id="__codelineno-51-40" name="__codelineno-51-40"></a><span class="n">pre_lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'typos'</span>
-</span><span id="__span-51-41"><a id="__codelineno-51-41" name="__codelineno-51-41"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check'</span>
-</span><span id="__span-51-42"><a id="__codelineno-51-42" name="__codelineno-51-42"></a><span class="n">pre_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check --fix'</span>
-</span><span id="__span-51-43"><a id="__codelineno-51-43" name="__codelineno-51-43"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff format'</span>
-</span><span id="__span-51-44"><a id="__codelineno-51-44" name="__codelineno-51-44"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
-</span><span id="__span-51-45"><a id="__codelineno-51-45" name="__codelineno-51-45"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
-</span><span id="__span-51-46"><a id="__codelineno-51-46" name="__codelineno-51-46"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x -vv'</span>
-</span><span id="__span-51-47"><a id="__codelineno-51-47" name="__codelineno-51-47"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html --show-contexts'</span>
-</span><span id="__span-51-48"><a id="__codelineno-51-48" name="__codelineno-51-48"></a>
-</span><span id="__span-51-49"><a id="__codelineno-51-49" name="__codelineno-51-49"></a><span class="k">[build-system]</span>
-</span><span id="__span-51-50"><a id="__codelineno-51-50" name="__codelineno-51-50"></a><span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"poetry-core&gt;=2.0.0,&lt;3.0.0"</span><span class="p">]</span>
-</span><span id="__span-51-51"><a id="__codelineno-51-51" name="__codelineno-51-51"></a><span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"poetry.core.masonry.api"</span>
+</span><span id="__span-51-40"><a id="__codelineno-51-40" name="__codelineno-51-40"></a><span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check'</span>
+</span><span id="__span-51-41"><a id="__codelineno-51-41" name="__codelineno-51-41"></a><span class="n">pre_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff check --fix'</span>
+</span><span id="__span-51-42"><a id="__codelineno-51-42" name="__codelineno-51-42"></a><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ruff format'</span>
+</span><span id="__span-51-43"><a id="__codelineno-51-43" name="__codelineno-51-43"></a><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'fastapi dev fast_zero/app.py'</span>
+</span><span id="__span-51-44"><a id="__codelineno-51-44" name="__codelineno-51-44"></a><span class="n">pre_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'task lint'</span>
+</span><span id="__span-51-45"><a id="__codelineno-51-45" name="__codelineno-51-45"></a><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pytest -s -x -vv'</span>
+</span><span id="__span-51-46"><a id="__codelineno-51-46" name="__codelineno-51-46"></a><span class="n">post_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'coverage html --show-contexts'</span>
+</span><span id="__span-51-47"><a id="__codelineno-51-47" name="__codelineno-51-47"></a>
+</span><span id="__span-51-48"><a id="__codelineno-51-48" name="__codelineno-51-48"></a><span class="k">[build-system]</span>
+</span><span id="__span-51-49"><a id="__codelineno-51-49" name="__codelineno-51-49"></a><span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"poetry-core&gt;=2.0.0,&lt;3.0.0"</span><span class="p">]</span>
+</span><span id="__span-51-50"><a id="__codelineno-51-50" name="__codelineno-51-50"></a><span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"poetry.core.masonry.api"</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Um ponto importante é que as versões dos pacotes podem variar dependendo da data em que você fizer a instalação dos pacotes. Esse arquivo é somente um exemplo.</p>
 </details>
@@ -3859,9 +3854,14 @@ Esse comando diz ao uvicorn o seguinte: na pasta fast_zero existe um arquivo cha
 <li><a href="https://youtu.be/MjQCvJmc31A" target="_blank">Pytest: Uma introdução - Live de Python #167</a></li>
 <li><a href="https://youtu.be/sidi9Z_IkLU" target="_blank">Pytest Fixtures - Live de Python #168</a></li>
 </ul>
-<h2 id="exercicio">Exercício</h2>
+<h2 id="exercicios">Exercícios</h2>
 <ol>
-<li>Crie um repositório para acompanhar o curso e suba em alguma plataforma, como <a href="https://github.com/" target="_blank">Github</a>, <a href="https://gitlab.com/" target="_blank">gitlab</a>, <a href="https://codeberg.org/" target="_blank">codeberg</a>, etc. E compartilhe o link no <a href="https://github.com/dunossauro/fastapi-do-zero/issues/91" target="_blank">repositório do curso</a> para podermos aprender juntos.</li>
+<li>
+<p>Crie um repositório para acompanhar o curso e suba em alguma plataforma, como <a href="https://github.com/" target="_blank">Github</a>, <a href="https://gitlab.com/" target="_blank">gitlab</a>, <a href="https://codeberg.org/" target="_blank">codeberg</a>, etc. E compartilhe o link no <a href="https://github.com/dunossauro/fastapi-do-zero/issues/91" target="_blank">repositório do curso</a> para podermos aprender juntos.</p>
+</li>
+<li>
+<p>Adicione o <code>typos</code> para análisar gramática em inglês para ser executado antes da etapa de lint (<code>pre_lint</code>) no <code>pyproject.toml</code>.</p>
+</li>
 </ol>
 <p><a class="md-button" href="../exercicios_resolvidos/aula_01/">Exercícios resolvidos <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z"></path></svg></span></a></p>
 <h2 id="conclusao">Conclusão</h2>
@@ -5610,7 +5610,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 de junho de 2026 23:52:19 UTC">1 de junho de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2 de junho de 2026 00:14:09 UTC">2 de junho de 2026</span>
   </span>
 
     
