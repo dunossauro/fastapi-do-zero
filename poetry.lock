@@ -36,14 +36,14 @@ extras = ["regex"]
 
 [[package]]
 name = "beautifulsoup4"
-version = "4.14.3"
+version = "4.15.0"
 description = "Screen-scraping library"
 optional = false
 python-versions = ">=3.7.0"
 groups = ["main"]
 files = [
-    {file = "beautifulsoup4-4.14.3-py3-none-any.whl", hash = "sha256:0918bfe44902e6ad8d57732ba310582e98da931428d231a5ecb9e7c703a735bb"},
-    {file = "beautifulsoup4-4.14.3.tar.gz", hash = "sha256:6292b1c5186d356bba669ef9f7f051757099565ad9ada5dd630bd9de5fa7fb86"},
+    {file = "beautifulsoup4-4.15.0-py3-none-any.whl", hash = "sha256:d6f88de62e1d4e38ecb1077eb9724cd0eff29d2a08ca16a401e9b9e93f117cf9"},
+    {file = "beautifulsoup4-4.15.0.tar.gz", hash = "sha256:288e3ca7d54b06f2ac191970bc275c1939cb46d450b255bf6718b04aa37ab4f7"},
 ]
 
 [package.dependencies]
@@ -2055,14 +2055,14 @@ watchmedo = ["PyYAML (>=3.10)"]
 
 [[package]]
 name = "wcwidth"
-version = "0.8.0"
+version = "0.8.1"
 description = "Measures the displayed width of unicode strings in a terminal"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "wcwidth-0.8.0-py3-none-any.whl", hash = "sha256:8c75e6099cefd197c4bcc67a486f70b5dbc68f997c05f34a811d853910450d64"},
-    {file = "wcwidth-0.8.0.tar.gz", hash = "sha256:68a882ff6d14e3d14e0cae590b96a0551be64ce4905408112a8254434a1bdf69"},
+    {file = "wcwidth-0.8.1-py3-none-any.whl", hash = "sha256:f453740b1e4a4f3291faa37944c555d71056c4da08d59809b307ef4feba695c8"},
+    {file = "wcwidth-0.8.1.tar.gz", hash = "sha256:faf5b4a5366a72dc49cad48cdf21f52bdf63bdda995178e483ba247ff79089b9"},
 ]
 
 [[package]]
@@ -2079,27 +2079,27 @@ files = [
 
 [[package]]
 name = "zuban"
-version = "0.8.0"
+version = "0.8.2"
 description = "Zuban - The Zuban Language Server"
 optional = false
 python-versions = ">=3.7"
 groups = ["dev"]
 files = [
-    {file = "zuban-0.8.0-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:7bdfee5f25de73596d33b52c4a70bf8e898d58025f137d46e1e58141214e9ef0"},
-    {file = "zuban-0.8.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:a94c9b543ded09323a6e7a3a084d8517394efb640fa1d5f26d7a72602f3b3d78"},
-    {file = "zuban-0.8.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:55c918165f925ca4b512f2bc640c73a9cc0d9e047d504778ae54d29d232e0d87"},
-    {file = "zuban-0.8.0-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:4b1ea2dec9c08802917f8598921bcbccfa8d6813fc67c5c64f0c6ade2acf2611"},
-    {file = "zuban-0.8.0-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:05d2d864c173734f5fa35a0401fe115f795eefb0b76d81ea321cfac8ac20aafc"},
-    {file = "zuban-0.8.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:660e24fb6e303576d792b7ad35cb7219225714e508a5d98deedfb5fe819eb06e"},
-    {file = "zuban-0.8.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:541176e4d6189b9820f4c2a07aa8ecc1bd2c1c08f7476e6fb9f1817b7e0a2698"},
-    {file = "zuban-0.8.0-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:689b9bfc1ace6f860d92bf76dcf8f503ebc6e435ff338a040b5bd1053ef04d3e"},
-    {file = "zuban-0.8.0-py3-none-musllinux_1_2_i686.whl", hash = "sha256:39a354a6de27940c6fe018c41cce5c125acd94b54ce506400c014d9cde8cca12"},
-    {file = "zuban-0.8.0-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:17cf4696f3ec9ae94ba22dcf2d81f68414461e056eb53c4a6b24c55d85bab528"},
-    {file = "zuban-0.8.0-py3-none-win32.whl", hash = "sha256:b8a352ce1fe9f2d5b1912d45d84c4641de342222f64bb4c387c9bb514da3e22c"},
-    {file = "zuban-0.8.0-py3-none-win_amd64.whl", hash = "sha256:a2d6d912b2c20d77ebd888a5abd354d55c99972ac36de6e36a74f1c8029ec40b"},
+    {file = "zuban-0.8.2-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:07d3a498c514cb51ec881987b0e841043ea466674a9b3bed8411890bacb4d0e3"},
+    {file = "zuban-0.8.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:64ed57aea375c74671d81e4d4655328a47b2157c7827e2c50cc90f80b29e8417"},
+    {file = "zuban-0.8.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8bc47f343a939407ff881b0e9f0da36c7a3a509b3e6ca237512aadf30d02053b"},
+    {file = "zuban-0.8.2-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:26ede2418f48affde0e9092108ec0be344b1323d7e87d11ecac8e5e89d383d7e"},
+    {file = "zuban-0.8.2-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:b83e0cc35cccb2f60b50d8c6658ca3ac332914ad58d8e3d3d5886a13f761771b"},
+    {file = "zuban-0.8.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8c4b26c1a383234c340d4956c04d8528e5e1654a08571d9d3eaced4973d21f87"},
+    {file = "zuban-0.8.2-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:32699e64acdb7d8984eddc3095b8f6fcf37fa00c52d54e74fed920440fe36ebe"},
+    {file = "zuban-0.8.2-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:f2ada854ceddeae6f7a8ecf709577235f5845770ebd6d51b26dde4358e78b645"},
+    {file = "zuban-0.8.2-py3-none-musllinux_1_2_i686.whl", hash = "sha256:dd6c2be104e6e9e1693e15d0a7775c5841a9793534351738c24b7377c58b487c"},
+    {file = "zuban-0.8.2-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:299debc250b729abb0ebecd0bd53cac3c6b26cdb32dc4e79e601f9a1f584d3cd"},
+    {file = "zuban-0.8.2-py3-none-win32.whl", hash = "sha256:3521196b132c2650e01a085d211dfcd849de9e9409e193e8f8ad85629c60fa42"},
+    {file = "zuban-0.8.2-py3-none-win_amd64.whl", hash = "sha256:07463d337d293efb918990900c52b976646810b8f741999e8f288fb3da6e6594"},
 ]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "4b3f394b4d1083786e38d84d748f097ba6ed1df84d28f7ec2993f5783ad22040"
+content-hash = "c6be26667463a7e9ac6609fe992d58590dd295dcb4f6b602f9d93c2ee8aa2ffd"
