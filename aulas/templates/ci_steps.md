@@ -12,5 +12,5 @@
             run: poetry install
      
           - name: Executar testes
-            run: poetry run task test
+            run: poetry test
     ```
