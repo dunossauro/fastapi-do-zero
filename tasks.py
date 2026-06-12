@@ -124,6 +124,7 @@ def typos_sub(c):
     for path in sorted(code_path):
         print('typos_sub: ', path)
         with c.cd(str(path)):
+            c.run('poetry install')
             c.run('poetry typos')
 
 
@@ -133,6 +134,7 @@ def lint_sub(c):
     for path in sorted(code_path):
         print('lint_sub: ', path)
         with c.cd(str(path)):
+            c.run('poetry install')
             c.run('poetry lint')
 
 
