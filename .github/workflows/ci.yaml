@@ -21,10 +21,10 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.3
 
       - name: Instalar o Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -42,10 +42,10 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6.0.3
 
       - name: Instalar Python 3.14
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: 3.14
 
@@ -99,10 +99,10 @@ jobs:
           createdb --owner="$PGUSERNAME" --username="postgres" "$PGDATABASE"
 
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6.0.3
 
       - name: Instalar o python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: 3.14
 
@@ -126,7 +126,7 @@ jobs:
 
     steps:
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6.0.3
 
       - name: Atualização do sistema
         run: sudo apt update
@@ -135,7 +135,7 @@ jobs:
         run: sudo apt install sqlite3 -y
 
       - name: Instalar o python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -154,10 +154,10 @@ jobs:
 
     steps:
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6.0.3
 
       - name: Instalar o python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: 3.14
 
