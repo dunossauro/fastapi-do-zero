@@ -19,7 +19,7 @@ dependencies = [
     "mkdocs-exclude (>=1.0.2,<2.0.0)",
     "mkdocs-exclude-unused-files (>=1.4.1,<2.0.0)",
     "mkdocs-macros-plugin (>=1.5.0,<2.0.0)",
-    "mkdocs-quiz (>=1.6.4,<2.0.0)",
+    "mkdocs-quiz (>=1.6.5,<2.0.0)",
     "towncrier (>=25.8.0,<26.0.0)",
     "mkdocs-towncrier (>=0.1.5,<0.2.0)",
     "markdown-exec[ansi] (>=1.12.1,<2.0.0)",
@@ -33,7 +33,7 @@ dev = [
   "invoke (>=3.0.3,<4.0.0)",
   "rich (>=15.0.0,<16.0.0)",
   "typos (>=1.47.2,<2.0.0)",
-  "ruff (>=0.15.17,<0.16.0)",
+  "ruff (>=0.15.18,<0.16.0)",
   "taskipy (>=1.14.1,<2.0.0)",
   "zuban (>=0.8.2,<0.9.0)",
 ]
