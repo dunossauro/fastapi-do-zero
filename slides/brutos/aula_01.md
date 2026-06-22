@@ -233,11 +233,12 @@ Se acessarmos http://localhost:8000/redoc podemos ver os endpoinds e suas respos
 
 ## Para nosso ambiente vamos usar algumas ferramentas diferentes
 
-Ferramentas de desenvolvimento são bastante pessoais. Selecionei 3 que representam bem o que esperamos de um ambiente de desenvolvimento:
+Ferramentas de desenvolvimento são bastante pessoais. Selecionei 4 que representam bem o que esperamos de um ambiente de desenvolvimento:
 
 - `Ruff`: Um linter e formatador bem poderoso e rápido
 - `Pytest`: Para escrevermos os testes
 - `Taskipy`: Para não termos que lembrar todos os comandos da aplicação
+- `Typos`: Checagem de grafia em inglês
 
 ---
 
@@ -369,6 +370,24 @@ Queremos ver a cobertura do código e os erros de forma verbosa
 
 ---
 
+# Typos
+
+O typos vai nos ajudar com alguns errinhos que acabam acontecendo enquanto escrevemos código em inglês.
+
+Vamos supor que nosso código esteja assim:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get('/')
+def read_root():
+    return {'messsage': 'Olá Mundo!'}  # olhe o erro aqui!
+```
+
+---
+
 <style scoped>
 blockquote {
     font-size: 20px;
@@ -381,6 +400,7 @@ Bom, esses comandos são bem difíceis de lembrar e mais chatos ainda de digitar
 
 
 ```bash
+typos                               # para grafia
 ruff check .                        # para checar
 ruff format .                       # para formatar
 fastapi dev fast_zero/app.py        # para rodar a aplicação
@@ -428,6 +448,7 @@ Alguns comandos fazem mais sentido quando compostos. Queremos fazer mais, com me
 
 ```toml
 [tool.taskipy.tasks]
+pre_lint = 'typos'
 pre_format = 'ruff check --fix'
 pre_test = 'task lint'
 post_test = 'coverage html'
@@ -459,6 +480,7 @@ primeiro a task de lint, se der certo, test, se der certo, coverage :)
 
 ```toml
 [tool.taskipy.tasks]
+pre_lint = 'typos'
 lint = 'ruff check'
 pre_format = 'ruff check --fix'
 format = 'ruff format'
