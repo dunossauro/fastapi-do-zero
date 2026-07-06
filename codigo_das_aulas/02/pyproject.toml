@@ -8,15 +8,15 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "fastapi[standard] (>=0.138.0,<0.139.0)"
+    "fastapi[standard] (>=0.139.0,<0.140.0)"
 ]
 
 [dependency-groups]
 dev = [
     "pytest (>=9.1.1,<10.0.0)",
     "pytest-cov (>=7.1.0,<8.0.0)",
-    "ruff (>=0.15.18,<0.16.0)",
-    "typos (>=1.47.2,<2.0.0)"
+    "ruff (>=0.15.20,<0.16.0)",
+    "typos (>=1.48.0,<2.0.0)"
 ]
 
 [tool.ruff]
