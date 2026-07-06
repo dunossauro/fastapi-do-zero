@@ -744,6 +744,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#qual-escolher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qual escolher?
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2694,6 +2705,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#qual-escolher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qual escolher?
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3178,26 +3200,46 @@
 <h4 id="redoc">Redoc</h4>
 <p>Assim como o Swagger UI, o <a href="https://redocly.github.io/redoc/" target="_blank">Redoc</a> é outra ferramenta popular para visualizar a documentação de APIs OpenAPI, mas com um foco em uma apresentação mais limpa e legível. Para acessar a documentação Redoc da nossa aplicação, podemos visitar o endereço <a href="http://127.0.0.1:8000/redoc" target="_blank">http://127.0.0.1:8000/redoc</a>. O Redoc organiza a documentação de uma maneira mais linear e de fácil leitura, destacando as descrições dos endpoints, os métodos HTTP disponíveis, os schemas dos dados de entrada e saída, além de exemplos de requisições e respostas.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/captura_de_tela_do_redoc.png" data-desc-position="bottom"><img alt="Captura de tela da página inicial do Redoc" class="center shadow" src="../assets/02/captura_de_tela_do_redoc.png"></a></p>
+<h4 id="qual-escolher">Qual escolher?</h4>
+<p>Com duas opções nativas e automáticas no FastAPI, surge a dúvida: qual delas utilizar? A escolha entre o Swagger UI e o Redoc depende principalmente do seu objetivo no momento:</p>
+<ul>
+<li>
+<p>Swagger UI e testes rápidos: como ele possui o botão <em>Try it out</em>, é a ferramenta perfeita durante a fase de desenvolvimento. Ele funciona como um "playground", permitindo que você teste os endpoints em tempo real sem precisar de ferramentas externas para enviar as requisições.</p>
+</li>
+<li>
+<p>Redoc, foco em leitura: é interessante quando a API já está madura e você precisa disponibilizar uma documentação para clientes externos ou parceiros de negócios. Sua interface de três colunas é amplamente considerada mais profissional, elegante e fácil de ler para quem precisa apenas entender a arquitetura e os schemas da API, sem necessariamente disparar requisições ali na hora.</p>
+</li>
+</ul>
+<p>Na prática, você não precisa abrir mão de nenhum dos dois. Como o framework gera ambos automaticamente, você pode usar, por exemplo, o Swagger UI no seu dia a dia de desenvolvimento e disponibilizar o link do Redoc na documentação final do produto</p>
+<details class="tip" open="open">
+<summary>Desativar documentação automática</summary>
+<p>Caso você acredite que para sua aplicação faça sentido desativar a documentação pública automática, você poderia desativar na instância do fastAPI na aplicação:</p>
+<div class="language-python highlight"><span class="filename">Código de exemplo</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">docs_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">redoc_url</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Dessa forma você poderia desativar os dois, um ou outro. Esse é um código de exemplo, caso você queira fazer isso. Vamos usar bastante o swagger durante o desenvolvimento do curso, então é importante que você não desative.</p>
+</details>
 <h2 id="trafegando-json">Trafegando JSON</h2>
 <p>Quando discutimos APIs "modernas"<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, nos referimos a APIs que priorizam o tráfego de dados, deixando de lado a camada de apresentação, como o <a href="#html">HTML</a>. O objetivo é transmitir dados de forma agnóstica para diferentes tipos de clientes. Nesse contexto, o JSON (JavaScript Object Notation) se tornou a mídia padrão, graças à sua leveza e facilidade de leitura tanto por humanos quanto por máquinas.</p>
 <p>O JSON é apreciado por sua simplicidade, apresentando dados em estruturas de documento chave-valor, onde os valores podem ser strings, números, booleanos, arrays, entre outros.</p>
 <p>Abaixo, um exemplo ilustra o formato JSON:</p>
-<div class="language-json highlight"><span class="filename">Exemplo de um JSON</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">            </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O apanhador no campo de centeio"</span><span class="p">,</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">            </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.D. Salinger"</span><span class="p">,</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">            </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1945</span><span class="p">,</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">            </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="p">},</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O mestre e a margarida"</span><span class="p">,</span>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">            </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mikhail Bulgákov"</span><span class="p">,</span>
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">            </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1966</span><span class="p">,</span>
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">            </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="p">}</span>
+<div class="language-json highlight"><span class="filename">Exemplo de um JSON</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">            </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O apanhador no campo de centeio"</span><span class="p">,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">            </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.D. Salinger"</span><span class="p">,</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">            </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1945</span><span class="p">,</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">            </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">            </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O mestre e a margarida"</span><span class="p">,</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">            </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mikhail Bulgákov"</span><span class="p">,</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">            </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">1966</span><span class="p">,</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">            </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Este exemplo demonstra como o JSON organiza dados de forma intuitiva e acessível, tornando-o ideal para a comunicação de dados em uma ampla variedade de aplicações.</p>
 <h3 id="contratos-em-apis-json">Contratos em APIs JSON</h3>
@@ -3209,47 +3251,47 @@
 <li>Estrutura de Objetos Aninhados: como os objetos são estruturados dentro do JSON, incluindo arrays e sub-objetos.</li>
 </ul>
 <p>Por exemplo, para nossa mensagem simples retornada por <code>read_root</code> (<code class="language-python highlight"><span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá mundo!'</span><span class="p">}</span></code>), teríamos um schema assim:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Onde estamos dizendo ao cliente que ao chamar a API, será retornado um objeto, esse objeto contém a propriedade <code class="language-python highlight"><span class="s2">"message"</span></code>, a mensagem será do tipo <code>string</code>. Ao final, vemos que o campo <code>message</code> é requerido. Isso quer dizer que ele sempre será enviado na resposta.</p>
 <details class="example">
 <summary>E em casos mais complicados, como ficaria o schema?</summary>
 <p>Para o exemplo que fizemos antes, sobre os livros, o schema seria assim:
-</p><div class="language-json highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">          </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
-</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">          </span><span class="p">},</span>
-</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">          </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
-</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">          </span><span class="p">},</span>
-</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">          </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
-</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">          </span><span class="p">},</span>
-</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">          </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span>
-</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="w">          </span><span class="p">}</span>
-</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">        </span><span class="p">},</span>
-</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="w">        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"titulo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"autor"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ano"</span><span class="p">,</span><span class="w"> </span><span class="s2">"disponivel"</span><span class="p">]</span>
-</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"livros"</span><span class="p">]</span>
-</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="p">}</span>
+</p><div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="nt">"livros"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">          </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">          </span><span class="p">},</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">          </span><span class="nt">"autor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">          </span><span class="p">},</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">          </span><span class="nt">"ano"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">          </span><span class="p">},</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">          </span><span class="nt">"disponivel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="w">        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"titulo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"autor"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ano"</span><span class="p">,</span><span class="w"> </span><span class="s2">"disponivel"</span><span class="p">]</span>
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-25"><a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-18-26"><a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"livros"</span><span class="p">]</span>
+</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="p">}</span>
 </span></code></pre></div><p></p>
 </details>
 <h3 id="pydantic">Pydantic</h3>
@@ -3259,42 +3301,42 @@
 <p>Embora o termo <code>schema</code> seja bastante utilizado em python para se referir ao formato dos objetos transferidos, em alguns outros contextos e linguagens podemos nos referir a esses modelos com <a href="https://pt.wikipedia.org/wiki/Objeto_de_Transfer%C3%AAncia_de_Dados" target="_blank">DTOs</a> (objetos de transferência de dados). Pode ser que você já tenha ouvido esse termo antes.</p>
 </div>
 <p>Por exemplo, o schema JSON <code>{'message': 'Olá mundo!'}</code>. Com o Pydantic, podemos representar esse schema na forma de uma classe Python chamada <code>Message</code>. Isso é feito de maneira intuitiva e direta:</p>
-<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/schemas.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
-<span class="normal"><a href="#__codelineno-18-2">2</a></span>
-<span class="normal"><a href="#__codelineno-18-3">3</a></span>
-<span class="normal"><a href="#__codelineno-18-4">4</a></span>
-<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Message</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+<div class="language-py highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/schemas.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Message</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Para iniciar o desenvolvimento com schemas no contexto do FastAPI, podemos criar um arquivo chamado <code>fast_zero/schemas.py</code> e definir a classe <code>Message</code>. Vale ressaltar que o Pydantic é uma dependência integrada do FastAPI (não precisa ser instalado), refletindo a importância dessa biblioteca no processo de validação de dados e na geração de documentação automática para APIs, como a documentação OpenAPI.</p>
 <h4 id="integrando-o-pydantic-com-o-fastapi">Integrando o Pydantic com o FastAPI</h4>
 <p>A integração do modelo Pydantic (ou schema JSON) com o FastAPI é feita ao especificar o modelo no campo <code>response_model</code> do decorador do endpoint. Isso garante que a resposta da API esteja alinhada com o schema definido, além de auxiliar na validação dos dados retornados:</p>
-<div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-19-10">10</a></span>
-<span class="normal"><a href="#__codelineno-19-11">11</a></span>
-<span class="normal"><a href="#__codelineno-19-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a>
-</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a>
-</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Message</span><span class="p">)</span>
-</span></span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
+<div class="language-python highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">fast_zero/app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fast_zero.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Message</span><span class="p">)</span>
+</span></span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'Olá Mundo!'</span><span class="p">}</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Com essa abordagem, ao iniciar o servidor (<code>task run</code>) e acessar a Swagger UI em <a href="http://127.0.0.1:8000/docs" target="_blank">http://127.0.0.1:8000/docs</a>, observamos uma evolução significativa na documentação. Um novo campo <code>Schemas</code> é exibido, destacando a estrutura do modelo <code>Message</code> que definimos:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/02/captura_de_tela_do_swagger_mostrando_o_schema_de_message.png" data-desc-position="bottom"><img alt="Captura de tele do Swagger UI mostrando o json schema de &quot;Message&quot; que definimos no FastAPI" class="center shadow" src="../assets/02/captura_de_tela_do_swagger_mostrando_o_schema_de_message.png"></a></p>
@@ -5048,7 +5090,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de junho de 2025 13:50:44 UTC">8 de junho de 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de julho de 2026 22:09:22 UTC">6 de julho de 2026</span>
   </span>
 
     
