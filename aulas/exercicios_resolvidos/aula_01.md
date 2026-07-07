@@ -22,7 +22,7 @@ Como o `lint` antes era apenas uma string simples (`lint = { cmd = "ruff check" 
 ```toml title="pyproject.toml" hl_lines="2-5"
 [tool.poe.tasks]
 lint.sequence = [
-  "typos", # (1)!
+  { cmd = "typos" },, # (1)!
   { cmd = "ruff check" },
 ]
 format.sequence = [

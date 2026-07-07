@@ -41,7 +41,7 @@ addopts = ['-p', 'no:warnings', '--cov=fast_zero', '--cov-context=test', '--cov-
 
 [tool.poe.tasks]
 lint.sequence = [
-  "typos",
+  { cmd = "typos" },
   { cmd = "ruff check" },
 ]
 format.sequence = [
