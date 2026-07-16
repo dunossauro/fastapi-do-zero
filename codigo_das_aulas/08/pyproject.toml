@@ -15,14 +15,14 @@ dependencies = [
     "pyjwt (>=2.13.0,<3.0.0)",
     "sqlalchemy[asyncio] (>=2.0.51,<3.0.0)",
     "aiosqlite (>=0.22.1,<0.23.0)",
-    "tzdata (>=2026.2,<2027.0)"
+    "tzdata (>=2026.3,<2027.0)"
 ]
 
 [dependency-groups]
 dev = [
     "pytest (>=9.1.1,<10.0.0)",
     "pytest-cov (>=7.1.0,<8.0.0)",
-    "ruff (>=0.15.20,<0.16.0)",
+    "ruff (>=0.15.21,<0.16.0)",
     "pytest-asyncio (>=1.4.0,<2.0.0)",
     "factory-boy (>=3.3.3,<4.0.0)",
     "freezegun (>=1.5.5,<2.0.0)",
