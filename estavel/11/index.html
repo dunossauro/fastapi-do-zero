@@ -3354,7 +3354,7 @@
 </blockquote>
 <p>Partindo desse exemplo, para os testes serem executados, o banco de dados precisaria estar de pé. O que nos cobraria um container em execução para os testes poderem rodar.</p>
 <p>Por exemplo:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span></code></pre></div>
 <p>Isso originaria esse erro:</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="o">=============================</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>session<span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="o">==============================</span>
@@ -3392,7 +3392,7 @@
 <li>Inicia somente o container no banco de dados via docker compose</li>
 </ol>
 <p>E em seguida executar os testes:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span></code></pre></div>
 <p>Agora, sucesso. O resultado é exatamente o que esperávamos:</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>All<span class="w"> </span>checks<span class="w"> </span>passed!
@@ -3490,7 +3490,7 @@
 <p>Existe um tutorial <a href="https://podman-desktop.io/tutorial/testcontainers-with-podman">oficial do podman</a> ensinando a ativar a compatibilidade.</p>
 </details>
 <p>Tudo pronto para execução dos testes:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span></code></pre></div>
 <p>Os testes devem ser executados com sucesso, mas algumas mensagens estranhas podem começar a aparecer entre o nome dos testes. Algo como:</p>
 <div class="language-shell highlight"><span class="filename">$ Parte da resposta do comando de testes</span><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>tests/test_users.py::test_delete_user_wrong_user<span class="w"> </span>Pulling<span class="w"> </span>image<span class="w"> </span>postgres:16
@@ -3564,7 +3564,7 @@
 <li><code>engine</code> agora é definida pela fixture de <code>engine</code>.</li>
 </ol>
 <p>Com isso, podemos executar os testes novamente e devemos ver uma diferença significativa de tempo:</p>
-<div class="language-shell no-copy highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell no-copy highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>
 </span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="c1"># ...</span>
 </span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="o">=========</span><span class="w"> </span><span class="m">28</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">7</span>.96s<span class="w"> </span><span class="o">=========</span>
@@ -5311,7 +5311,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 de junho de 2026 23:52:19 UTC">1 de junho de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de julho de 2026 01:10:18 UTC">16 de julho de 2026</span>
   </span>
 
     

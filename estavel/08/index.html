@@ -3216,7 +3216,7 @@
 <li><code>session.scalar()</code>: Que pede uma busca de dados ao banco e aguarda o seu resultado.</li>
 </ul>
 <p>Isso deve ser o suficiente para o teste ser executado com sucesso:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>tests/test_db.py
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>tests/test_db.py
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># ...</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>tests/test_db.py::test_create_user<span class="w"> </span>PASSED
@@ -3224,15 +3224,15 @@
 <p>Agora que temos certeza de que o banco e as fixtures estão funcionando. Podemos passar à refatoração do projeto de fato.</p>
 <h2 id="tecnica-de-refatoracao-usando-testes">Técnica de refatoração usando testes</h2>
 <p>Uma das grandes vantagens de termos uma boa cobertura de testes é que podemos fazer mudanças estruturais no projeto e garantir que tudo funcione da forma como já estava antes. Os testes nos trazem uma <strong>segurança</strong> para que tudo possa mudar internamente sem alterar os resultados da API. Para isso, a estratégia que vamos usar aqui é a de caminhar executando um teste por vez.</p>
-<p>Uma das funcionalidades legais do <code>pytest</code> é poder executar somente um único teste, ou um grupo deles, usando o nome do teste como base. Para isso, podemos chamar <code>task test</code> passando a flag <code>-k</code> seguida do nome do teste. Algo como:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_create_user
+<p>Uma das funcionalidades legais do <code>pytest</code> é poder executar somente um único teste, ou um grupo deles, usando o nome do teste como base. Para isso, podemos chamar <code>poetry test</code> passando a flag <code>-k</code> seguida do nome do teste. Algo como:</p>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_create_user
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># ...</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>tests/test_users.py::test_create_user<span class="w"> </span>FAILED
 </span></code></pre></div>
 <p>Para cada teste que falhar, vamos nos organizando para fazer a conversão do código para assíncrono.</p>
 <p>Para listar todos os testes presentes no nosso projeto, podemos usar a flag <code>--collect-only</code> do pytest:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--collect-only
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--collect-only
 </span></code></pre></div>
 <p>Que nos retornará algo parecido com isso:</p>
 <div class="language-shell highlight"><span class="filename">Saída do --colect-pnly</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;Dir<span class="w"> </span>fast_zero&gt;
@@ -3260,7 +3260,7 @@
 <h3 id="router-auth">Router <code>auth</code></h3>
 <p>Acredito que começar pelo router <code>auth</code> pode ser menos assustador, já que até o momento ele tem somente um endpoint (<code>login_for_access_token</code>) e um teste (<code>test_get_token</code>).</p>
 <p>Vamos iniciar executando o teste e coletando o que está acontecendo de errado:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_get_token
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_get_token
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># ...</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>FAILED<span class="w"> </span>tests/test_auth.py::test_get_token<span class="w"> </span>-<span class="w"> </span>AttributeError:<span class="w"> </span><span class="s1">'coroutine'</span><span class="w"> </span>object<span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>attribute<span class="w"> </span><span class="s1">'password'</span>
 </span></code></pre></div>
@@ -3284,7 +3284,7 @@
 </span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="c1"># ...</span>
 </span></code></pre></div>
 <p>Essa simples alteração já deve ser o suficiente para o código passar no teste:</p>
-<div class="language-python highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">task</span> <span class="n">test</span> <span class="o">-</span><span class="n">k</span> <span class="n">test_get_token</span>
+<div class="language-python highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">poetry</span> <span class="n">test</span> <span class="o">-</span><span class="n">k</span> <span class="n">test_get_token</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="c1"># ...</span>
 </span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
@@ -3336,7 +3336,7 @@
 </ol>
 <p>Como temos duas interações de I/O com o banco nesse fixture <code>.commit</code> e <code>.refresh</code>, devemos aguardar as duas.</p>
 <p>Desta forma, devemos ter um teste passando com sucesso e sem avisos:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_get_token
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_get_token
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># ...</span>
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>tests/test_auth.py::test_get_token<span class="w"> </span>PASSED
 </span></code></pre></div>
@@ -3371,7 +3371,7 @@
 </span></code></pre></div>
 <h4 id="endpoint-de-post">Endpoint de POST</h4>
 <p>Vamos começar pelo teste <code>test_create_user</code>:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_create_user
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_create_user
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1"># ...</span>
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>FAILED<span class="w"> </span>tests/test_users.py::test_create_user<span class="w"> </span>-<span class="w"> </span>AttributeError:<span class="w"> </span><span class="s1">'coroutine'</span><span class="w"> </span>object<span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>attribute<span class="w"> </span><span class="s1">'username'</span>
 </span></code></pre></div>
@@ -3391,17 +3391,17 @@
 </span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>    <span class="k">return</span> <span class="n">db_user</span>
 </span></code></pre></div>
 <p>Dessa forma, já podemos executar os testes com sucesso:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_create_user
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_create_user
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1"># ...</span>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>tests/test_users.py::test_create_user<span class="w"> </span>PASSED
 </span></code></pre></div>
 <h4 id="endpoint-de-get">Endpoint de GET</h4>
 <p>Para o endpoint de get, temos dois testes, chegou a hora de aprender mais um truque da flag <code>-k</code> do pytest. Usando um pedaço do nome do teste, podemos selecionar todos que têm parte desse nome. Algo como:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_read
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_read
 </span></code></pre></div>
 <p>Deve ser capaz de executar os testes <code>test_read_users</code> e também <code>test_read_users_with_users</code>.</p>
 <p>Não temos, no entanto, um resultado favorável:</p>
-<div class="language-text highlight"><span class="filename">resposta de task test -k test_read</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>FAILED tests/test_users.py::test_read_users - AttributeError: 'coroutine' object has no attribute 'all'
+<div class="language-text highlight"><span class="filename">resposta de poetry test -k test_read</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>FAILED tests/test_users.py::test_read_users - AttributeError: 'coroutine' object has no attribute 'all'
 </span></code></pre></div>
 <p>Embora esse erro seja quase que idêntico ao que obtivemos até agora, por falta de <code>await</code>. A forma como o código está escrita depende de um fator um pouco diferente de refatoração. Vamos olhar o estado atual do código com atenção:</p>
 <div class="language-python highlight"><span class="filename">fast_zero/routers/users.py</span><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserList</span><span class="p">)</span>
@@ -3424,14 +3424,14 @@
 </span></code></pre></div>
 <p>Pois precisamos obter o resultado de <code>await</code> antes de chamar o método <code>.all()</code>.</p>
 <p>Dessa forma, temos os dois testes envolvendo GET passando:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_read
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_read
 </span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="c1"># ...</span>
 </span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>tests/test_users.py::test_read_users<span class="w"> </span>PASSED
 </span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>tests/test_users.py::test_read_users_with_users<span class="w"> </span>PASSED
 </span></code></pre></div>
 <h4 id="endpoint-de-put">Endpoint de PUT</h4>
 <p>Também temos mais de um teste envolvendo o PUT e ambos têm o mesmo prefixo, dessa forma podemos executar os dois em conjunto:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_update
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_update
 </span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># ...</span>
 </span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>FAILED<span class="w"> </span>tests/test_users.py::test_update_user<span class="w"> </span>-<span class="w"> </span>AttributeError:<span class="w"> </span><span class="s1">'coroutine'</span><span class="w"> </span>object<span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>attribute<span class="w"> </span><span class="s1">'id'</span>
 </span></code></pre></div>
@@ -3473,7 +3473,7 @@
 </span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>    <span class="c1"># ...</span>
 </span></code></pre></div>
 <p>Agora podemos voltar aos testes</p>
-<div class="language-python highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">task</span> <span class="n">test</span> <span class="o">-</span><span class="n">k</span> <span class="n">test_update</span>
+<div class="language-python highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">poetry</span> <span class="n">test</span> <span class="o">-</span><span class="n">k</span> <span class="n">test_update</span>
 </span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="c1"># ...</span>
 </span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="n">tests</span><span class="o">/</span><span class="n">test_users</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_update_user</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">dunossauro</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">fast_zero</span><span class="o">/</span><span class="n">routers</span><span class="o">/</span><span class="n">users</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">91</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">coroutine</span> <span class="s1">'AsyncSession.commit'</span> <span class="n">was</span> <span class="n">never</span> <span class="n">awaited</span>
 </span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>  <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -3505,7 +3505,7 @@
 </span><span id="__span-41-17"><a id="__codelineno-41-17" name="__codelineno-41-17" href="#__codelineno-41-17"></a>    <span class="c1"># ...</span>
 </span></code></pre></div>
 <p>Desta forma temos os testes passando de volta:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_update
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_update
 </span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="c1"># ...</span>
 </span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>
 </span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>tests/test_users.py::test_update_user<span class="w"> </span>PASSED
@@ -3524,13 +3524,13 @@
 </span><span id="__span-43-9"><a id="__codelineno-43-9" name="__codelineno-43-9" href="#__codelineno-43-9"></a>    <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></code></pre></div>
 <p>Executando o teste para ver se tudo ocorre bem:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>task<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_delete
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>poetry<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-k<span class="w"> </span>test_delete
 </span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="c1"># ...</span>
 </span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>tests/test_users.py::test_delete_user<span class="w"> </span>PASSED
 </span></code></pre></div>
 <hr>
 <p>Pra finalizar, gostaria de executar todos os testes. Para garantir que todo o projeto está funcionando como deveria de maneira assíncrona:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="c1"># ...</span>
 </span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>tests/test_app.py::test_root_deve_retornar_ok_e_ola_mundo<span class="w"> </span>PASSED
 </span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>tests/test_auth.py::test_get_token<span class="w"> </span>PASSED
@@ -3565,7 +3565,7 @@
 </ol>
 <p>Precisamos ativar a concorrência no coverage em dois casos, para threads (conversamos sobre isso <a href="../05/#threads-e-conexoes" target="_blank">na aula 05</a>) e para o <a href="#configuracao-para-o-sqlalchemy-assincrono" target="_blank">greenlet</a> adicionado pela conexão assíncrona do SQLAlchemy.</p>
 <p>Com essa pequena alteração, podemos executar os testes novamente e olhar a cobertura:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="c1"># ...</span>
 </span></code></pre></div>
 <p>Assim, voltamos aos 88% que tínhamos antes desta aula:</p>
@@ -5400,7 +5400,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="1 de junho de 2026 23:52:19 UTC">1 de junho de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de julho de 2026 01:10:18 UTC">16 de julho de 2026</span>
   </span>
 
     

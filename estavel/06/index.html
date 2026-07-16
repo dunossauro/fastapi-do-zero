@@ -2807,11 +2807,11 @@
 <p>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.16.0/ace.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v314.0.2/full/pyodide.js"></script>
 <link title="light" rel="alternate stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow.min.css" disabled>
 <link title="dark" rel="alternate stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.min.css" disabled>
 
-</p><div class="pyodide">
+</p><div class="pyodide" data-install="[]" data-session="default" data-minlines="2" data-maxlines="2">
 <div class="pyodide-editor-bar">
 <span class="pyodide-bar-item">Editor (session: default)</span><span id="exec-1--run" title="Run: press Ctrl-Enter" class="pyodide-bar-item pyodide-clickable"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5.14v14l11-7-11-7Z"></path></svg></span> Run</span>
 </div>
@@ -2874,7 +2874,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 <li>Checa somente se existe a claim de exp no token decodado.</li>
 </ol>
 <p>Agora podemos executar nosso teste e ver se tudo funciona como o esperado:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># ...</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
@@ -2974,7 +2974,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 <p>Desta forma, a senha não será mais criada em texto plano no objeto <code>User</code>. Fazendo com que caso exista algum problema relacionado a vazamento de dados, as senhas das pessoas nunca sejam expostas.</p>
 <h4 id="sobre-o-teste-da-post-users">Sobre o teste da POST /users/</h4>
 <p>Por não validar o password, usando o retorno <code>UserPublic</code>, o teste já escrito deve passar normalmente:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># ...</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
@@ -3008,7 +3008,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 <p>Assim, a atualização de um <code>User</code>, via método <code>PUT</code>, também criará o hash da senha no momento da atualização. Pois, nesse caso em específico, existe a possibilidade de alterar qualquer coluna da tabela, inclusive o campo <code>password</code>.</p>
 <h4 id="sobre-os-testes-da-put-usersuser_id">Sobre os testes da PUT /users/{user_id}</h4>
 <p>Assim como no teste da rota de criação, os testes também passam normalmente por não validarem o campo password.</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># ...</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
@@ -3090,7 +3090,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Nesse teste, nós enviamos uma requisição POST para o endpoint "/token" com um username e uma senha válidos. Então, nós verificamos que a resposta contém um "access_token" e um "token_type", que são os campos que esperamos de um JWT válido.</p>
 <p>No entanto, há um problema. Agora que a senha está sendo criptografada, nosso teste falhará:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># ...</span>
 </span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>tests/test_app.py::test_get_token<span class="w"> </span>FAILED
@@ -3114,7 +3114,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 </span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>    <span class="k">return</span> <span class="n">user</span>
 </span></code></pre></div>
 <p>Rodaremos o teste novamente. No entanto, ainda teremos um problema. Agora só temos a versão criptografada da senha, que não é útil para fazer o login, já que o login exige a senha em texto puro:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="c1"># ...</span>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>tests/test_app.py::test_get_token<span class="w"> </span>FAILED
@@ -3173,7 +3173,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 </span><span id="__span-25-76"><a id="__codelineno-25-76" name="__codelineno-25-76"></a>    <span class="k">assert</span> <span class="s1">'token_type'</span> <span class="ow">in</span> <span class="n">token</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>E agora todos os testes devem passar normalmente:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="c1"># ...</span>
 </span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
@@ -3373,7 +3373,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 </span><span id="__span-31-42"><a id="__codelineno-31-42" name="__codelineno-31-42" href="#__codelineno-31-42"></a>    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="o">==</span> <span class="p">{</span><span class="s1">'message'</span><span class="p">:</span> <span class="s1">'User deleted'</span><span class="p">}</span>
 </span></code></pre></div>
 <p>Finalmente, podemos rodar todos os testes para garantir que tudo esteja funcionando corretamente.</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
 </span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="c1"># ...</span>
 </span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
@@ -3418,7 +3418,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 </span></code></pre></div>
 <p>Usamos um <code class="language-python highlight"><span class="k">assert</span></code> para validar se o código é mesmo <code>401</code> e outro para validar nossa mensagem de erro. Assim, temos uma garantia que, caso alguém envie um token inválido, a resposta seguirá como esperado.</p>
 <p>Antes de finalizar, o ideal é executarmos os testes:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>task<span class="w"> </span><span class="nb">test</span>
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>poetry<span class="w"> </span><span class="nb">test</span>
 </span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
 </span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1"># ...</span>
 </span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>
@@ -5175,7 +5175,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="27 de maio de 2026 00:32:00 UTC">27 de maio de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de julho de 2026 01:10:18 UTC">16 de julho de 2026</span>
   </span>
 
     
