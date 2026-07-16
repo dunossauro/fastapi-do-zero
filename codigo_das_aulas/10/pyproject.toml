@@ -15,15 +15,14 @@ dependencies = [
     "pyjwt (>=2.13.0,<3.0.0)",
     "aiosqlite (>=0.22.1,<0.23.0)",
     "sqlalchemy[asyncio] (>=2.0.51,<3.0.0)",
-    "tzdata (>=2026.2,<2027.0)"
+    "tzdata (>=2026.3,<2027.0)"
 ]
 
 [dependency-groups]
 dev = [
     "pytest (>=9.1.1,<10.0.0)",
     "pytest-cov (>=7.1.0,<8.0.0)",
-    "taskipy (>=1.14.1,<2.0.0)",
-    "ruff (>=0.15.20,<0.16.0)",
+    "ruff (>=0.15.21,<0.16.0)",
     "pytest-asyncio (>=1.4.0,<2.0.0)",
     "factory-boy (>=3.3.3,<4.0.0)",
     "freezegun (>=1.5.5,<2.0.0)",
@@ -53,15 +52,27 @@ asyncio_default_fixture_loop_scope = 'function'
 core = "ctrace"
 concurrency = ["thread", "greenlet"]
 
-[tool.taskipy.tasks]
-pre_lint = 'typos'
-lint = 'ruff check'
-pre_format = 'ruff check --fix'
-format = 'ruff format'
-run = 'fastapi dev fast_zero/app.py'
-pre_test = 'task lint'
-test = 'pytest -s -x -vv'
-post_test = 'coverage html --show-contexts'
+[tool.poe.tasks]
+lint.sequence = [
+  { cmd = "typos" },
+  { cmd = "ruff check" },
+]
+format.sequence = [
+  { cmd = "ruff check --fix" },
+  { cmd = "ruff format" },
+]
+serve = "fastapi dev fast_zero/app.py"
+test.sequence = [
+  "lint",
+  { cmd = "pytest -s -x -vv $POE_EXTRA_ARGS" },
+  { cmd = "coverage html --show-contexts" },
+]
+
+[tool.poetry.requires-plugins]
+poethepoet = { version = "~0.48.0", extras = ["poetry_plugin"]}
+
+[tool.poe]
+poetry_command = ""
 
 [tool.typos.default]
 extend-ignore-identifiers-re = ["selectin"]

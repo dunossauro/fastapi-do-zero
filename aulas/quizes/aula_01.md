@@ -38,7 +38,7 @@ A flag do poetry `--group dev` instala os pacotes
 </quiz>
 
 <quiz>
-Qual a função do taskipy?
+Qual a função do `poe` (Poe the Poet) no nosso projeto?
 - [x] Criar "atalhos" para comandos mais simples
 - [x] Facilitar o manuseio das operações de terminal
 - [ ] Instalar ferramentas de desenvolvimento
