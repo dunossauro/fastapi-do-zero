@@ -16,13 +16,13 @@ O objetivo aqui é automatizar a verificação ortográfica para que ela rode se
 Abra o seu arquivo `pyproject.toml` e navegue até a tabela `[tool.poe.tasks]`.
 
 Como o `lint` antes era apenas uma string simples (`lint = { cmd = "ruff check" }`), precisamos alterá-lo para usar a propriedade `.sequence`, passando uma lista com o `typos` primeiro e o `ruff check` logo em seguida.
- 
+
  O seu bloco de tarefas deve ficar exatamente assim:
 
 ```toml title="pyproject.toml" hl_lines="2-5"
 [tool.poe.tasks]
 lint.sequence = [
-  { cmd = "typos" },, # (1)!
+  { cmd = "typos" }, # (1)!
   { cmd = "ruff check" },
 ]
 format.sequence = [
