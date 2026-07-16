@@ -118,14 +118,6 @@ def test_migrations(c):
                 schema = c.run('sqlite3 database.db ".schema"')
                 assert schema.stdout == migration_05
 
-@task
-def typos_sub(c):
-    code_path = Path('./codigo_das_aulas/').resolve().glob('*')
-    for path in sorted(code_path):
-        print('typos_sub: ', path)
-        with c.cd(str(path)):
-            c.run('poetry run typos .')
-
 
 @task
 def lint_sub(c):
@@ -133,7 +125,8 @@ def lint_sub(c):
     for path in sorted(code_path):
         print('lint_sub: ', path)
         with c.cd(str(path)):
-            c.run('poetry run task lint')
+            c.run('poetry install')
+            c.run('poetry lint')
 
 
 @task
@@ -191,7 +184,7 @@ def test_sub(c):
         print('test_sub: ', path)
         with c.cd(str(path)):
             c.run('poetry install')
-            c.run('poetry run task test')
+            c.run('poetry test')
 
 
 @task
@@ -200,7 +193,7 @@ def win_test_last_class(c):
     with c.cd(str(code_path)):
         print('Current path: ', code_path)
         c.run('poetry install')
-        c.run('poetry run task test')
+        c.run('poetry test')
 
 
 @task

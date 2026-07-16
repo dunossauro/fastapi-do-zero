@@ -7,35 +7,40 @@ Crie um repositório para acompanhar o curso e suba em alguma plataforma, como [
 
 ## Exercício 02
 
-Adicione o `typos` para análisar gramática em inglês para ser executado antes da etapa de `lint` (`pre_lint`) no `pyproject.toml`.
+Adicione o `typos` para analisar gramática em inglês para ser executado antes da etapa de lint, transformando ela em uma sequência que rode o `typos` e o `ruff check` na tabela `[tool.poe.tasks]` do seu arquivo `pyproject.toml`.
 
 ### Solução
 
-O objetivo aqui é automatizar a verificação ortográfica para que ela rode sempre de forma automática antes do `ruff check`. Para fazer isso, vamos usar o sistema de ganchos (hooks) em cadeia do Taskipy.
+O objetivo aqui é automatizar a verificação ortográfica para que ela rode sempre de forma automática antes do `ruff check`. Para fazer isso, vamos transformar o nosso comando `lint` em uma sequência no Poe.
 
+Abra o seu arquivo `pyproject.toml` e navegue até a tabela `[tool.poe.tasks]`.
 
-Abra o seu arquivo `pyproject.toml` e navegue até a tabela `[tool.taskipy.tasks]`.
+Como o `lint` antes era apenas uma string simples (`lint = { cmd = "ruff check" }`), precisamos alterá-lo para usar a propriedade `.sequence`, passando uma lista com o `typos` primeiro e o `ruff check` logo em seguida.
 
-Basta adicionar a tarefa `pre_lint` apontando para o comando `typos`. O Taskipy vai entender automaticamente que, por causa do prefixo `pre_`, ele deve rodar o typos antes do comando `lint`.
+ O seu bloco de tarefas deve ficar exatamente assim:
 
-O seu bloco de tarefas deve ficar exatamente assim:
-
-```toml title="pyproject.toml"
-[tool.taskipy.tasks]
-pre_lint = "typos"               # (1)!
-lint = "ruff check"
-pre_format = "ruff check --fix"
-format = "ruff format"
-run = "fastapi dev fast_zero/app.py"
-pre_test = "task lint"
-test = "pytest -v"
-post_test = "coverage html"
+```toml title="pyproject.toml" hl_lines="2-5"
+[tool.poe.tasks]
+lint.sequence = [
+  { cmd = "typos" }, # (1)!
+  { cmd = "ruff check" },
+]
+format.sequence = [
+  { cmd = "ruff check --fix" },
+  { cmd = "ruff format" },
+]
+serve = "fastapi dev fast_zero/app.py"
+test.sequence = [
+  "lint",
+  { cmd = "pytest -s -x -vv $POE_EXTRA_ARGS" },
+  { cmd = "coverage html --show-contexts" },
+]
 ```
 
-1. Nova tarefa adicionada. Agora, sempre que você digitar `task lint`, o `typos` será executado primeiro.
+1. O comando `typos` foi adicionado como o primeiro passo da sequência. Agora, sempre que você rodar o lint, ele verificará a ortografia antes de passar para as regras do ruff.
 
 Para garantir que está funcionando, execute o linter no seu terminal:
 
 ```shell title="$ Execução no terminal!"
-task lint
+poetry lint
 ```

@@ -91,7 +91,7 @@ poetry add jinja2
 E executar nosso projeto com:
 
 ```shell title="$ Execução no terminal!"
-task run
+poetry serve
 ```
 
 Desta forma, ao acessar o endpoint pela API, temos a junção de templates e estáticos acontecendo:
