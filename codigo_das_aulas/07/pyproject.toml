@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
     "alembic (>=1.18.5,<2.0.0)",
-    "fastapi[standard] (>=0.139.0,<0.140.0)",
+    "fastapi[standard] (>=0.139.2,<0.140.0)",
     "pwdlib[argon2] (>=0.3.0,<0.4.0)",
     "pydantic-settings (>=2.14.2,<3.0.0)",
     "pyjwt (>=2.13.0,<3.0.0)",
@@ -21,7 +21,7 @@ dependencies = [
 dev = [
     "pytest (>=9.1.1,<10.0.0)",
     "pytest-cov (>=7.1.0,<8.0.0)",
-    "ruff (>=0.15.21,<0.16.0)",
+    "ruff (>=0.15.22,<0.16.0)",
     "typos (>=1.48.0,<2.0.0)",
     "pytest-random-order (>=1.2.0,<2.0.0)"
 ]
