@@ -1,4 +1,4 @@
-# 11 - Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+# 11 - Containerizando a nossa aplicação e introduzindo o PostgreSQL
 
 
 <quiz>
