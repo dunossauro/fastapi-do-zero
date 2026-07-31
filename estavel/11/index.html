@@ -24,7 +24,7 @@
     
     
       
-        <title>Dockerizando a nossa aplicação e introduzindo o PostgreSQL - FastAPI do Zero</title>
+        <title>Containerizando a nossa aplicação e introduzindo o PostgreSQL - FastAPI do Zero</title>
       
     
     
@@ -109,7 +109,7 @@
 
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Dockerizando a nossa aplicação e introduzindo o PostgreSQL - FastAPI do Zero">
+<meta property="og:title" content="Containerizando a nossa aplicação e introduzindo o PostgreSQL - FastAPI do Zero">
 <meta property="og:description" content="Nossa aplicação um passo mais próximo do deploy">
 <meta property="og:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/11.png">
 <meta property="og:image:type" content="image/png">
@@ -117,7 +117,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://fastapidozero.dunossauro.com/estavel/11/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Dockerizando a nossa aplicação e introduzindo o PostgreSQL - FastAPI do Zero">
+<meta property="twitter:title" content="Containerizando a nossa aplicação e introduzindo o PostgreSQL - FastAPI do Zero">
 <meta property="twitter:description" content="Nossa aplicação um passo mais próximo do deploy">
 <meta property="twitter:image" content="https://fastapidozero.dunossauro.com/estavel/assets/images/social/11.png">
 <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -149,7 +149,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dockerizando-a-nossa-aplicacao-e-introduzindo-o-postgresql" class="md-skip">
+        <a href="#containerizando-a-nossa-aplicacao-e-introduzindo-o-postgresql" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -188,7 +188,7 @@
 		<div class="md-header__topic" data-md-component="header-topic">
 		    <span class="md-ellipsis">
 			
-			Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+			Containerizando a nossa aplicação e introduzindo o PostgreSQL
 			
 		    </span>
 		</div>
@@ -690,7 +690,7 @@
   <span class="md-ellipsis">
     
   
-    Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    Containerizando a nossa aplicação e introduzindo o PostgreSQL
   
 
     
@@ -708,7 +708,7 @@
   <span class="md-ellipsis">
     
   
-    Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    Containerizando a nossa aplicação e introduzindo o PostgreSQL
   
 
     
@@ -734,22 +734,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#o-docker-e-a-nossa-aplicacao" class="md-nav__link">
+  <a href="#containers-e-nossa-aplicacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O Docker e a nossa aplicação
+        Containers e nossa aplicação
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="O Docker e a nossa aplicação">
+    <nav class="md-nav" aria-label="Containers e nossa aplicação">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#criando-nosso-dockerfile" class="md-nav__link">
+  <a href="#conceitos-iniciais" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Criando nosso Dockerfile
+        Conceitos iniciais
       
     </span>
   </a>
@@ -757,10 +757,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#criando-a-imagem" class="md-nav__link">
+  <a href="#descrevendo-a-imagem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Criando a imagem
+        Descrevendo a imagem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Descrevendo a imagem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mas-e-o-poetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mas e o Poetry?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#construindo-a-imagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construindo a imagem
       
     </span>
   </a>
@@ -2269,7 +2297,7 @@
   <span class="md-ellipsis">
     
   
-    11 - Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    11 - Containerizando a nossa aplicação e introduzindo o PostgreSQL
   
 
     
@@ -2373,22 +2401,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#o-docker-e-a-nossa-aplicacao" class="md-nav__link">
+  <a href="#containers-e-nossa-aplicacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O Docker e a nossa aplicação
+        Containers e nossa aplicação
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="O Docker e a nossa aplicação">
+    <nav class="md-nav" aria-label="Containers e nossa aplicação">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#criando-nosso-dockerfile" class="md-nav__link">
+  <a href="#conceitos-iniciais" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Criando nosso Dockerfile
+        Conceitos iniciais
       
     </span>
   </a>
@@ -2396,10 +2424,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#criando-a-imagem" class="md-nav__link">
+  <a href="#descrevendo-a-imagem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Criando a imagem
+        Descrevendo a imagem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Descrevendo a imagem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mas-e-o-poetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mas e o Poetry?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#construindo-a-imagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construindo a imagem
       
     </span>
   </a>
@@ -2670,7 +2726,7 @@
   
 
 
-<h1 id="dockerizando-a-nossa-aplicacao-e-introduzindo-o-postgresql">Dockerizando a nossa aplicação e introduzindo o PostgreSQL</h1>
+<h1 id="containerizando-a-nossa-aplicacao-e-introduzindo-o-postgresql">Containerizando a nossa aplicação e introduzindo o PostgreSQL</h1>
 <hr>
 <p>Objetivos da aula:</p>
 <ul>
@@ -2691,9 +2747,11 @@
 <a class="md-button" href="https://github.com/dunossauro/fastapi-do-zero/tree/main/codigo_das_aulas/11">Código <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span></a>
 <a class="md-button" href="../quizes/aula_11/">Quiz <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m8.19 3.5c-.89 0-1.6.18-2.14.54-.55.36-.83.96-.78 1.65h1.97c0-.28.1-.49.26-.63.2-.14.42-.21.69-.21.31 0 .58.08.76.26.18.17.27.39.27.69 0 .28-.08.53-.22.74-.17.22-.38.4-.64.54-.52.32-.86.6-1.07.84-.19.24-.29.58-.29 1.08h2c0-.28.05-.5.14-.68.09-.17.26-.32.52-.47.46-.21.84-.49 1.13-.85.29-.37.44-.76.44-1.2q0-1.05-.81-1.68c-.54-.41-1.29-.62-2.23-.62M11 12v2h2v-2z"></path></svg></span></a></p>
 <hr>
-<p>Após a implementação do nosso gerenciador de tarefas na aula anterior, temos uma primeira versão estável da nossa aplicação. Nesta aula, além de aprendermos a "dockerizar" nossa aplicação FastAPI, também abordaremos a migração do banco de dados SQLite para o PostgreSQL.</p>
-<h2 id="o-docker-e-a-nossa-aplicacao">O Docker e a nossa aplicação</h2>
-<p><a href="https://www.docker.com/" target="_blank">Docker</a> é uma plataforma aberta que permite automatizar o processo de implantação, escalonamento e operação de aplicações dentro de contêineres. Ele serve para "empacotar" uma aplicação e suas dependências em um contêiner virtual que pode ser executado em qualquer sistema operacional que suporte Docker. Isso facilita a implantação, o desenvolvimento e o compartilhamento de aplicações, além de proporcionar um ambiente isolado e consistente.</p>
+<p>Após a implementação do nosso gerenciador de tarefas na aula anterior, temos uma primeira versão estável da nossa aplicação. Nesta aula, além de aprendermos a containerizar nossa aplicação FastAPI, também abordaremos a migração do banco de dados SQLite para o PostgreSQL.</p>
+<h2 id="containers-e-nossa-aplicacao">Containers e nossa aplicação</h2>
+<p>Sempre que pensamos em distribuir uma aplicação, precisamos garantir que ela possa ser executada da mesma forma em qualquer ambiente. Uma das formas mais comuns de fazer isso é por meio de <strong>contêineres</strong>.</p>
+<p>Um <strong>contêiner</strong> é um ambiente isolado que reúne uma aplicação com tudo o que ela precisa para funcionar, como bibliotecas, dependências e configurações. Dessa forma, a aplicação é executada da mesma maneira em qualquer computador ou servidor que possua um mecanismo de execução de contêineres instalado, independentemente do sistema operacional ou das configurações do ambiente.</p>
+<p>Para criar e gerenciar esses contêineres, utilizaremos o <a href="https://www.docker.com/" target="_blank">Docker</a>, uma plataforma que permite criar, distribuir e executar aplicações em contêineres. O Docker automatiza a criação e o gerenciamento desses ambientes, facilitando o desenvolvimento, os testes, a implantação e o compartilhamento de aplicações. Isso torna o processo mais consistente, reduz problemas de incompatibilidade entre ambientes e simplifica a distribuição de software.</p>
 <details class="warning">
 <summary>Caso não tenha o docker instalado na sua máquina</summary>
 <p>A instalação do Docker varia entre sistemas operacionais. Por esse motivo, acredito que não cabe cobrir a instalação do docker nesse material.</p>
@@ -2714,135 +2772,122 @@
 </div>
 </div>
 </details>
-<h3 id="criando-nosso-dockerfile">Criando nosso Dockerfile</h3>
-<p>Para criar um container Docker, escrevemos uma lista de passos de como construir o ambiente para execução da nossa aplicação em um arquivo chamado <code>Dockerfile</code>. Ele define o ambiente de execução, os comandos necessários para preparar o ambiente e o comando a ser executado quando um contêiner é iniciado a partir da imagem.</p>
-<p>Uma das coisas interessantes sobre Docker é que existe um <a href="https://hub.docker.com/" target="_blank">Hub de containers</a> prontos onde a comunidade hospeda imagens "prontas", que podemos usar como ponto de partida. Por exemplo, a comunidade de python mantém um grupo de imagens com o <a href="https://hub.docker.com/_/python" target="_blank">ambiente python</a> pronto para uso. Podemos partir dessa imagem com o python já instalado adicionar os passos para que nossa aplicação seja executada.</p>
+<h3 id="conceitos-iniciais">Conceitos iniciais</h3>
+<p>Antes de começarmos, vale a pena entender alguns conceitos importantes sobre como distribuir uma aplicação em containers funciona. Normalmente seguimos três etapas:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Descrição do ambiente"] --&gt;|build| B["Imagem"]
+    B --&gt;|run| C["Contêiner em execução"]</code></pre>
+<ol>
+<li>
+<p>Descrevemos como o ambiente da aplicação deve ser construído. Essa descrição inclui o sistema operacional base, as dependências da aplicação e o comando que deverá ser executado quando ela iniciar.</p>
+</li>
+<li>
+<p>A partir dessa descrição, uma ferramenta de conteinerização gera uma <strong>imagem</strong>. A imagem é um pacote imutável contendo os arquivos, dependências e configurações necessárias para criar contêineres.</p>
+</li>
+<li>
+<p>Quando essa imagem é iniciada, ela dá origem a um <strong>contêiner</strong>. O contêiner é a instância em execução da imagem, onde a aplicação realmente roda.</p>
+</li>
+</ol>
+<p>Uma mesma imagem pode ser utilizada para criar vários contêineres independentes entre si, todos executando exatamente o mesmo ambiente.</p>
+<p>Usaremos o Docker para realizar essas etapas. Com ele, a descrição do ambiente é feita em um arquivo chamado <code>Dockerfile</code>, a imagem é construída com o comando <code>docker build</code> e um contêiner é iniciado com <code>docker run</code>.</p>
+<h3 id="descrevendo-a-imagem">Descrevendo a imagem</h3>
+<p>Para construir uma imagem de contêiner, descrevemos uma lista de passos no <code>Dockerfile</code>. Ele define o ambiente de execução, os comandos necessários para prepará-lo e o comando que será executado quando o contêiner for iniciado a partir da imagem.</p>
+<p>Uma das coisas interessantes sobre Docker é que existe um <a href="https://hub.docker.com/" target="_blank">registro de imagens</a> onde a comunidade publica imagens prontas para uso, que podemos usar como ponto de partida. Por exemplo, a comunidade de python mantém um grupo de imagens com o <a href="https://hub.docker.com/_/python" target="_blank">ambiente python</a> pronto para uso. Podemos partir dessa imagem com o python já instalado e adicionar os passos para que nossa aplicação seja executada.</p>
 <p>Aqui está um exemplo de <code>Dockerfile</code> para executar nossa aplicação:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Versão 3.14</label><label for="__tabbed_2_2">Versão 3.13</label><label for="__tabbed_2_3">Versão 3.12</label><label for="__tabbed_2_4">Versão 3.11</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-docker highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.14-slim</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">POETRY_VIRTUALENVS_CREATE</span><span class="o">=</span><span class="nb">false</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>poetry
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>config<span class="w"> </span>installer.max-workers<span class="w"> </span><span class="m">10</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>install<span class="w"> </span>--no-interaction<span class="w"> </span>--no-ansi<span class="w"> </span>--without<span class="w"> </span>dev
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">CMD</span><span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">CMD</span><span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
 </span></code></pre></div>
 <p>Aqui está o que cada linha faz:</p>
 <ol>
 <li><code>FROM python:3.14-slim</code>: define a imagem base para nosso contêiner. Estamos usando a versão slim da imagem do Python 3.14, que tem tudo que precisamos para rodar nossa aplicação.</li>
-<li><code>ENV POETRY_VIRTUALENVS_CREATE=false</code>: define uma variável de ambiente que diz ao Poetry para não criar um ambiente virtual. (O container já é um ambiente isolado)</li>
-<li><code>RUN pip install poetry</code>: instala o Poetry, nosso gerenciador de pacotes.</li>
 <li><code>WORKDIR app/</code>: define o diretório em que executaremos os comandos a seguir.</li>
 <li><code>COPY . .</code>: copia todos os arquivos do diretório atual para o contêiner.</li>
-<li><code>RUN poetry config installer.max-workers 10</code>: configura o Poetry para usar até 10 workers ao instalar pacotes.</li>
-<li><code>RUN poetry install --no-interaction --no-ansi --without dev</code>: instala as dependências do nosso projeto sem interação e sem cores no output. O parâmetro <code>--without dev</code> diz ao poetry que não queremos as bibliotecas de desenvolvimento. Pois, no docker não executaremos os testes.</li>
+<li><code>RUN pip install .</code>: instala as dependências do nosso projeto. Somente as de <code>project.dependencies</code>, sem os grupos de opcionais.</li>
 <li><code>EXPOSE 8000</code>: informa ao Docker que o contêiner escutará na porta 8000.</li>
-<li><code>CMD poetry run uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
+<li><code>CMD uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
 </ol>
 </div>
 <div class="tabbed-block">
 <div class="language-docker highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.13-slim</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">POETRY_VIRTUALENVS_CREATE</span><span class="o">=</span><span class="nb">false</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>poetry
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>config<span class="w"> </span>installer.max-workers<span class="w"> </span><span class="m">10</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>install<span class="w"> </span>--no-interaction<span class="w"> </span>--no-ansi<span class="w"> </span>--without<span class="w"> </span>dev
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">CMD</span><span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">CMD</span><span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
 </span></code></pre></div>
 <p>Aqui está o que cada linha faz:</p>
 <ol>
 <li><code>FROM python:3.13-slim</code>: define a imagem base para nosso contêiner. Estamos usando a versão slim da imagem do Python 3.13, que tem tudo que precisamos para rodar nossa aplicação.</li>
-<li><code>ENV POETRY_VIRTUALENVS_CREATE=false</code>: define uma variável de ambiente que diz ao Poetry para não criar um ambiente virtual. (O container já é um ambiente isolado)</li>
-<li><code>RUN pip install poetry</code>: instala o Poetry, nosso gerenciador de pacotes.</li>
 <li><code>WORKDIR app/</code>: define o diretório em que executaremos os comandos a seguir.</li>
 <li><code>COPY . .</code>: copia todos os arquivos do diretório atual para o contêiner.</li>
-<li><code>RUN poetry config installer.max-workers 10</code>: configura o Poetry para usar até 10 workers ao instalar pacotes.</li>
-<li><code>RUN poetry install --no-interaction --no-ansi --without dev</code>: instala as dependências do nosso projeto sem interação e sem cores no output. O parâmetro <code>--without dev</code> diz ao poetry que não queremos as bibliotecas de desenvolvimento. Pois, no docker não executaremos os testes.</li>
+<li><code>RUN pip install .</code>: instala as dependências do nosso projeto. Somente as de <code>project.dependencies</code>, sem os grupos de opcionais.</li>
 <li><code>EXPOSE 8000</code>: informa ao Docker que o contêiner escutará na porta 8000.</li>
-<li><code>CMD poetry run uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
+<li><code>CMD uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
 </ol>
 </div>
 <div class="tabbed-block">
 <div class="language-docker highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">POETRY_VIRTUALENVS_CREATE</span><span class="o">=</span><span class="nb">false</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>poetry
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>config<span class="w"> </span>installer.max-workers<span class="w"> </span><span class="m">10</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>install<span class="w"> </span>--no-interaction<span class="w"> </span>--no-ansi<span class="w"> </span>--without<span class="w"> </span>dev
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">CMD</span><span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">CMD</span><span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
 </span></code></pre></div>
 <p>Aqui está o que cada linha faz:</p>
 <ol>
 <li><code>FROM python:3.12-slim</code>: define a imagem base para nosso contêiner. Estamos usando a versão slim da imagem do Python 3.12, que tem tudo que precisamos para rodar nossa aplicação.</li>
-<li><code>ENV POETRY_VIRTUALENVS_CREATE=false</code>: define uma variável de ambiente que diz ao Poetry para não criar um ambiente virtual. (O container já é um ambiente isolado)</li>
-<li><code>RUN pip install poetry</code>: instala o Poetry, nosso gerenciador de pacotes.</li>
 <li><code>WORKDIR app/</code>: define o diretório em que executaremos os comandos a seguir.</li>
 <li><code>COPY . .</code>: copia todos os arquivos do diretório atual para o contêiner.</li>
-<li><code>RUN poetry config installer.max-workers 10</code>: configura o Poetry para usar até 10 workers ao instalar pacotes.</li>
-<li><code>RUN poetry install --no-interaction --no-ansi --without dev</code>: instala as dependências do nosso projeto sem interação e sem cores no output. O parâmetro <code>--without dev</code> diz ao poetry que não queremos as bibliotecas de desenvolvimento. Pois, no docker não executaremos os testes.</li>
+<li><code>RUN pip install .</code>: instala as dependências do nosso projeto. Somente as de <code>project.dependencies</code>, sem os grupos de opcionais.</li>
 <li><code>EXPOSE 8000</code>: informa ao Docker que o contêiner escutará na porta 8000.</li>
-<li><code>CMD poetry run uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
+<li><code>CMD uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
 </ol>
 </div>
 <div class="tabbed-block">
 <div class="language-docker highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">POETRY_VIRTUALENVS_CREATE</span><span class="o">=</span><span class="nb">false</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">app/</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>poetry
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>config<span class="w"> </span>installer.max-workers<span class="w"> </span><span class="m">10</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">RUN</span><span class="w"> </span>poetry<span class="w"> </span>install<span class="w"> </span>--no-interaction<span class="w"> </span>--no-ansi<span class="w"> </span>--without<span class="w"> </span>dev
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">CMD</span><span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">CMD</span><span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>fast_zero.app:app
 </span></code></pre></div>
 <p>Aqui está o que cada linha faz:</p>
 <ol>
 <li><code>FROM python:3.11-slim</code>: define a imagem base para nosso contêiner. Estamos usando a versão slim da imagem do Python 3.11, que tem tudo que precisamos para rodar nossa aplicação.</li>
-<li><code>ENV POETRY_VIRTUALENVS_CREATE=false</code>: define uma variável de ambiente que diz ao Poetry para não criar um ambiente virtual. (O container já é um ambiente isolado)</li>
-<li><code>RUN pip install poetry</code>: instala o Poetry, nosso gerenciador de pacotes.</li>
 <li><code>WORKDIR app/</code>: define o diretório em que executaremos os comandos a seguir.</li>
 <li><code>COPY . .</code>: copia todos os arquivos do diretório atual para o contêiner.</li>
-<li><code>RUN poetry config installer.max-workers 10</code>: configura o Poetry para usar até 10 workers ao instalar pacotes.</li>
-<li><code>RUN poetry install --no-interaction --no-ansi --without dev</code>: instala as dependências do nosso projeto sem interação e sem cores no output. O parâmetro <code>--without dev</code> diz ao poetry que não queremos as bibliotecas de desenvolvimento. Pois, no docker não executaremos os testes.</li>
+<li><code>RUN pip install .</code>: instala as dependências do nosso projeto. Somente as de <code>project.dependencies</code>, sem os grupos de opcionais.</li>
 <li><code>EXPOSE 8000</code>: informa ao Docker que o contêiner escutará na porta 8000.</li>
-<li><code>CMD poetry run uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
+<li><code>CMD uvicorn --host 0.0.0.0 fast_zero.app:app</code>: define o comando que será executado quando o contêiner for iniciado.</li>
 </ol>
 </div>
 </div>
 </div>
 <p>Vamos entender melhor esse último comando:</p>
 <ul>
-<li><code>poetry run</code> define o comando que será executado no ambiente virtual criado pelo Poetry.</li>
 <li><code>uvicorn</code> é o servidor ASGI que usamos para rodar nossa aplicação.</li>
 <li><code>--host</code> define o host que o servidor escutará. Especificamente, <code>"0.0.0.0"</code> é um endereço IP que permite que o servidor aceite conexões de qualquer endereço de rede disponível, tornando-o acessível externamente.</li>
 <li><code>fast_zero.app:app</code> define o <code>&lt;módulo python&gt;:&lt;objeto&gt;</code> que o servidor executará.</li>
 </ul>
-<h3 id="criando-a-imagem">Criando a imagem</h3>
-<p>Para criar uma imagem Docker a partir do Dockerfile, usamos o comando <code>docker build</code>. O comando a seguir cria uma imagem chamada "fast_zero":</p>
+<h4 id="mas-e-o-poetry">Mas e o Poetry?</h4>
+<p>Como a aplicação será executada <em>dentro de</em> um contêiner, já temos um ambiente isolado, descartável e reproduzível. Nesse cenário, não existe a necessidade de criar outro ambiente virtual com o Poetry. Também não precisamos instalar as dependências utilizadas apenas durante o desenvolvimento e testes, apenas as necessárias para executar a aplicação. Por isso utilizamos diretamente <code>pip install .</code>, simplificando a escrita do <code>Dockerfile</code>, reduzindo o tempo de build e produzindo imagens menores, com menos dependências.</p>
+<h3 id="construindo-a-imagem">Construindo a imagem</h3>
+<p>Para construir uma imagem de container a partir do <code>Dockerfile</code>, usamos o comando <code>docker build</code>. O comando a seguir cria uma imagem chamada "fast_zero":</p>
 <div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span><span class="s2">"fast_zero"</span><span class="w"> </span>.
 </span></code></pre></div>
 <details class="warning">
@@ -2973,7 +3018,7 @@
 </span></code></pre></div>
 </details>
 <p>Para aplicar migrações em um ambiente com contêineres, frequentemente temos comandos específicos associados ao serviço. Vejamos como executar migrações usando o Docker:</p>
-<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>fastzeroapp<span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>alembic<span class="w"> </span>upgrade<span class="w"> </span>head
+<div class="language-shell highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>fastzeroapp<span class="w"> </span>alembic<span class="w"> </span>upgrade<span class="w"> </span>head
 </span></code></pre></div>
 <p>O comando <code>docker exec</code> é usado para invocar um comando específico dentro de um contêiner em execução. A opção <code>-it</code> é uma combinação de <code>-i</code> (interativo) e <code>-t</code> (pseudo-TTY), que juntas garantem um terminal interativo, permitindo a comunicação direta com o contêiner.</p>
 <p>Após executar as migrações, você pode verificar a criação das tabelas utilizando um sistema de gerenciamento de banco de dados. A seguir, apresentamos um exemplo com o Beekeeper Studio:</p>
@@ -3111,16 +3156,16 @@
 <span class="normal"><a href="#__codelineno-22-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="ch">#!/bin/sh</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="c1"># Executa as migrações do banco de dados</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a>poetry<span class="w"> </span>run<span class="w"> </span>alembic<span class="w"> </span>upgrade<span class="w"> </span>head
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a>alembic<span class="w"> </span>upgrade<span class="w"> </span>head
 </span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a>
 </span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="c1"># Inicia a aplicação</span>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a>poetry<span class="w"> </span>run<span class="w"> </span>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span><span class="w"> </span>fast_zero.app:app
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a>uvicorn<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span><span class="w"> </span>fast_zero.app:app
 </span></code></pre></div></td></tr></tbody></table></div>
 <p><strong>Explicação Detalhada do Script</strong>:</p>
 <ul>
 <li><code>#!/bin/sh</code>: indica ao sistema operacional que o script deve ser executado no shell Unix.</li>
-<li><code>poetry run alembic upgrade head</code>: roda as migrações do banco de dados até a última versão.</li>
-<li><code>poetry run uvicorn --host 0.0.0.0 --port 8000 fast_zero.app:app</code>: inicia a aplicação. Este é o comando que normalmente estaria no <code>CMD</code> do Dockerfile, mas agora está incluído no <code>entrypoint</code> para garantir que as migrações sejam executadas antes do servidor iniciar.</li>
+<li><code>alembic upgrade head</code>: roda as migrações do banco de dados até a última versão.</li>
+<li><code>uvicorn --host 0.0.0.0 --port 8000 fast_zero.app:app</code>: inicia a aplicação. Este é o comando que normalmente estaria no <code>CMD</code> do Dockerfile, mas agora está incluído no <code>entrypoint</code> para garantir que as migrações sejam executadas antes do servidor iniciar.</li>
 </ul>
 <p><strong>Como Funciona na Prática?</strong></p>
 <p>Quando o contêiner é iniciado, o Docker executa o script de <code>entrypoint</code>, que por sua vez executa as migrações e só então inicia a aplicação. Isso garante que o banco de dados esteja atualizado com as últimas migrações antes de qualquer interação com a aplicação.</p>
@@ -5311,7 +5356,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de julho de 2026 01:10:18 UTC">16 de julho de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="31 de julho de 2026 01:24:18 UTC">31 de julho de 2026</span>
   </span>
 
     

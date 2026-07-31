@@ -677,7 +677,7 @@
   <span class="md-ellipsis">
     
   
-    Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    Containerizando a nossa aplicação e introduzindo o PostgreSQL
   
 
     
@@ -1950,7 +1950,7 @@
   <span class="md-ellipsis">
     
   
-    11 - Dockerizando a nossa aplicação e introduzindo o PostgreSQL
+    11 - Containerizando a nossa aplicação e introduzindo o PostgreSQL
   
 
     
@@ -2066,7 +2066,7 @@
 
 
 <h1 id="alteracoes">Alterações</h1>
-<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-07-24">fastapi-do-zero Alterações ainda sem release (2026-07-24)</h1>
+<h1 id="fastapi-do-zero-alteracoes-ainda-sem-release-2026-07-30">fastapi-do-zero Alterações ainda sem release (2026-07-30)</h1>
 <h2 id="adicionado">Adicionado</h2>
 <ul>
 <li>Instruções para gerar <code>secret_keys</code> usando <code>secrets</code> para maior segurança (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/473">#473</a>)</li>
@@ -2076,6 +2076,7 @@
 <li>Cobertura de testes agora conta com contextos, ou seja, mostra qual teste testa qual linha de código (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/523">#523</a>)</li>
 <li>Cobertura de testes agora usa branches, uma melhoria significativa e mais realista da cobertura de código (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/523">#523</a>)</li>
 <li>Mais informações sobre swagger e redoc e como desativar se for preciso (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/537">#537</a>)</li>
+<li>Contextos na aula de containers sobre images e arquivos de especificação (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/539">#539</a>)</li>
 <li>Analizador estático para erros de grafia <code>typos</code>. Alterações nas aulas 01 e 10.</li>
 <li>Suporte a libras nas páginas via <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/vlibras">VLibras</a></li>
 </ul>
@@ -2097,6 +2098,7 @@
 <li>Configurações da versão 9 do <code>pytest</code> no <code>pyproject.toml</code> (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/517">#517</a>)</li>
 <li>Aula 08: adicionado um bloco que torna o ctrace de cobertura opcional no 3.14+ (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/523">#523</a>)</li>
 <li>Substituição do <code>taskipy</code> pelo <code>poethepoet</code> (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/534">#534</a>)</li>
+<li>Usando pip nos containers no lugar do poetry, economiza tempo e simplifica o processo de build (<a href="https://github.com/dunossauro/fastapi-do-zero/issues/539">#539</a>)</li>
 <li>Quizes: Agora contam com progresso, respostas ficam salvas em cache e tem links compartilhaveis. Melhorias possíveis graças a paciência do <a href="https://github.com/ewels">@ewels</a> em aceitar minhas propostas me de melhoria no <code>mkdocs-quiz</code></li>
 </ul>
 <h2 id="removido">Removido</h2>
@@ -2106,7 +2108,7 @@
 <h2 id="atualizacoes">Atualizações</h2>
 <ul>
 <li><code>alembic</code> 1.17 -&gt; 1.18</li>
-<li><code>fastapi</code> 0.120 -&gt; 0.138</li>
+<li><code>fastapi</code> 0.120 -&gt; 0.141</li>
 <li><code>psycopg[binary]</code> 3.2 -&gt; 3.3</li>
 <li><code>pydantic-settings</code> 2.11 -&gt; 2.13</li>
 <li><code>pyjwt</code> 2.10.1 -&gt; 2.12.0</li>
@@ -2114,7 +2116,7 @@
 <li><code>pytest</code> 8.4 -&gt; 9.1</li>
 <li><code>ruff</code> 0.14 -&gt; 0.16</li>
 <li><code>sqlalchemy[asyncio]</code> 2.0.44 -&gt; 2.0.51</li>
-<li><code>testcontainers</code> 4.13 -&gt; 4.14</li>
+<li><code>testcontainers</code> 4.13 -&gt; 4.15</li>
 </ul>
 <h2 id="interno">Interno</h2>
 <ul>
