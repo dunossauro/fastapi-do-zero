@@ -8,7 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "alembic (>=1.18.5,<2.0.0)",
+    "alembic (>=1.19.0,<2.0.0)",
     "fastapi[standard] (>=0.141.1,<0.142.0)",
     "pwdlib[argon2] (>=0.3.0,<0.4.0)",
     "pydantic-settings (>=2.14.2,<3.0.0)",
@@ -22,7 +22,7 @@ dev = [
     "pytest (>=9.1.1,<10.0.0)",
     "pytest-cov (>=7.1.0,<8.0.0)",
     "ruff (>=0.16.1,<0.17.0)",
-    "typos (>=1.48.0,<2.0.0)",
+    "typos (>=1.49.0,<2.0.0)",
     "pytest-random-order (>=1.2.0,<2.0.0)"
 ]
 
