@@ -23,32 +23,34 @@ async def test_create_user(session, mock_db_time):
         'password': 'secret',
         'email': 'teste@test',
         'created_at': time,
+        'updated_at': time,  # Exercício
         'todos': [],
-        # 'updated_at': time,  # Exercício
     }
 
 
 @pytest.mark.asyncio
-async def test_create_todo(session, user: User):
-    todo = Todo(
-        title='Test Todo',
-        description='Test Desc',
-        state='draft',
-        user_id=user.id,
+async def test_list_todos_should_return_all_expected_fields__exercicio(
+    session, client, user, token, mock_db_time
+):
+    with mock_db_time(model=Todo) as time:
+        todo = TodoFactory.create(user_id=user.id)
+        session.add(todo)
+        await session.commit()
+
+    await session.refresh(todo)
+    response = client.get(
+        '/todos/',
+        headers={'Authorization': f'Bearer {token}'},
     )
 
-    session.add(todo)
-    await session.commit()
-
-    todo = await session.scalar(select(Todo))
-
-    assert asdict(todo) == {
-        'description': 'Test Desc',
-        'id': 1,
-        'state': 'draft',
-        'title': 'Test Todo',
-        'user_id': 1,
-    }
+    assert response.json()['todos'] == [{
+        'created_at': time.isoformat(),
+        'updated_at': time.isoformat(),
+        'description': todo.description,
+        'id': todo.id,
+        'state': todo.state,
+        'title': todo.title,
+    }]
 
 
 @pytest.mark.asyncio

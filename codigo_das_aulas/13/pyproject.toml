@@ -30,6 +30,7 @@ dev = [
     "testcontainers (>=4.15.0,<5.0.0)",
     "typos (>=1.48.0,<2.0.0)",
     "pytest-random-order (>=1.2.0,<2.0.0)",
+    "pytest-alembic (>=0.12.1,<0.13.0)",
 ]
 
 [tool.ruff]
