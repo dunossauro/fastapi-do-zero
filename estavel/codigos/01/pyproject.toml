@@ -48,9 +48,6 @@ test.sequence = [
   { cmd = "coverage html --show-contexts" },
 ]
 
-[tool.poetry.requires-plugins]
-poethepoet = { version = "~0.46.0", extras = ["poetry_plugin"]}
-
 [tool.poe]
 poetry_command = ""
 
