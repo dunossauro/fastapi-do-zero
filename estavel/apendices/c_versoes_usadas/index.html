@@ -2215,7 +2215,7 @@
 <h1 id="c-versoes-das-bibliotecas">C - Versões das bibliotecas</h1>
 <details class="danger" open="open">
 <summary>Sobre as versões das bibliotecas instaladas</summary>
-<p>A última atualização dos pacotes deste material foi feita em: <strong>16/08/2026 às 10:11</strong>.</p>
+<p>A última atualização dos pacotes deste material foi feita em: <strong>21/08/2026 às 16:46</strong>.</p>
 </details>
 <h2 id="bibliotecas-do-projeto">Bibliotecas do projeto</h2>
 <div class="language-toml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -2234,7 +2234,7 @@
 <div class="language-toml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="s2">"pytest (&gt;=9.1.1,&lt;10.0.0)"</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s2">"pytest-cov (&gt;=7.1.0,&lt;8.0.0)"</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s2">"ruff (&gt;=0.16.3,&lt;0.17.0)"</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s2">"ruff (&gt;=0.16.4,&lt;0.17.0)"</span><span class="p">,</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="s2">"pytest-asyncio (&gt;=1.4.0,&lt;2.0.0)"</span><span class="p">,</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="s2">"factory-boy (&gt;=3.3.3,&lt;4.0.0)"</span><span class="p">,</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="s2">"freezegun (&gt;=1.5.5,&lt;2.0.0)"</span><span class="p">,</span>
@@ -2251,8 +2251,8 @@
 <li><strong>Poetry</strong>: Poetry (version 2.4.1)</li>
 <li><strong>Pipx</strong>: 1.15.0</li>
 <li><strong>Docker</strong>: Docker version 29.7.2, build a7dcaa6fdb</li>
-<li><strong>Docker-compose</strong>: Docker Compose version 5.4.0</li>
-<li><strong>Flyctl</strong>: flyctl v0.4.82 linux/amd64 Commit: 9656e781dd988f28bfdd358abd403084f8ef9354 BuildDate: 2026-08-11T19:04:28Z</li>
+<li><strong>Docker-compose</strong>: Docker Compose version 5.5.0</li>
+<li><strong>Flyctl</strong>: flyctl v0.4.87 linux/amd64 Commit: 3eb236fab6a9226928554243ba163e5fb13aa3a4 BuildDate: 2026-08-20T18:56:30Z</li>
 </ul><div id="quiz-progress-sidebar" aria-label="Progresso do quiz" style="display: none;">
   <!-- mkdocs-quiz progress sidebar (desktop) -->
   <label class="md-nav__title">
@@ -2550,9 +2550,10 @@ input[type="radio"].wrong {
   z-index: 3; /* Below Material header (z-index: 4) but above page content */
 }
 
-/* Show mobile tracker only on small screens (mobile/tablet) */
-/* Material breakpoint: up to 76.1875em (1219px) */
-@media screen and (max-width: 76.1875em) {
+/* Show the mobile tracker only when the secondary sidebar (and its progress
+   widget) is hidden. Material reveals .md-sidebar--secondary at min-width: 60em,
+   so the mobile tracker must stop at 60em - 1px to avoid showing both at once. */
+@media screen and (max-width: 59.9375em) {
   .quiz-progress-mobile {
     display: block;
   }
@@ -2791,7 +2792,7 @@ window.mkdocsQuizConfig = {
   progressSidebarPosition: "top"
 };
 </script><script type="text/javascript" defer>// Wrap everything in an IIFE to avoid variable redeclaration issues
-// when Material for MkDocs instant navigation reloads the page
+// when Material theme instant navigation reloads the page
 (function () {
   // Constants
   const STORAGE_KEY_PREFIX = "quiz_progress_";
@@ -3470,7 +3471,7 @@ window.mkdocsQuizConfig = {
       if (headerLink) {
         const handler = (e) => {
           // Let the browser handle the anchor navigation normally
-          // This prevents Material for MkDocs from intercepting it as a page navigation
+          // This prevents Material themes from intercepting it as a page navigation
           e.stopPropagation();
         };
         addTrackedEventListener(headerLink, "click", handler);
@@ -3762,7 +3763,7 @@ window.mkdocsQuizConfig = {
 
       const submitHandler = (event) => {
         event.preventDefault();
-        event.stopPropagation(); // Prevent Material theme from intercepting form submission
+        event.stopPropagation(); // Prevent Material themes from intercepting form submission
         let is_correct = false;
         let selectedValues = [];
         let section = quiz.querySelector("section");
@@ -3934,7 +3935,7 @@ window.mkdocsQuizConfig = {
     initializePage();
   }
 
-  // Material for MkDocs instant navigation support
+  // Material theme instant navigation support
   // Cleanup and reinitialize when navigating between pages
   if (typeof document$ !== "undefined") {
     // Unsubscribe from any previous subscription to prevent duplicate handlers
@@ -3944,7 +3945,7 @@ window.mkdocsQuizConfig = {
       window._mkdocsQuizSubscription.unsubscribe();
     }
 
-    // Material theme with instant navigation is active
+    // A Material theme with instant navigation is active
     window._mkdocsQuizSubscription = document$.subscribe(() => {
       cleanup(); // Remove old event listeners to prevent memory leaks
       // Reinitialize everything for the new page

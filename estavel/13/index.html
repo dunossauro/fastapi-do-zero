@@ -2384,8 +2384,7 @@
 <div class="language-bash highlight"><span class="filename">$ Execução no terminal!</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flyctl<span class="w"> </span>version
 </span></code></pre></div>
 <div class="result">
-<p>flyctl v0.4.82 linux/amd64 Commit: 9656e781dd988f28bfdd358abd403084f8ef9354 BuildDate: 2026-08-11T19:04:28Z
-Warning: Metrics send issue: failed to send metrics: Post "https://flyctl-metrics.fly.dev/metrics_post": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</p>
+<p>flyctl v0.4.87 linux/amd64 Commit: 3eb236fab6a9226928554243ba163e5fb13aa3a4 BuildDate: 2026-08-20T18:56:30Z</p>
 </div>
 <p>No momento da sua instalação, você pode se deparar com uma versão mais recente do que a minha no momento, mas os comandos devem funcionar da mesma forma em qualquer versão menor que <code>1.0.0</code>.</p>
 <h4 id="fazendo-login-via-terminal">Fazendo login via terminal</h4>
@@ -2921,9 +2920,10 @@ input[type="radio"].wrong {
   z-index: 3; /* Below Material header (z-index: 4) but above page content */
 }
 
-/* Show mobile tracker only on small screens (mobile/tablet) */
-/* Material breakpoint: up to 76.1875em (1219px) */
-@media screen and (max-width: 76.1875em) {
+/* Show the mobile tracker only when the secondary sidebar (and its progress
+   widget) is hidden. Material reveals .md-sidebar--secondary at min-width: 60em,
+   so the mobile tracker must stop at 60em - 1px to avoid showing both at once. */
+@media screen and (max-width: 59.9375em) {
   .quiz-progress-mobile {
     display: block;
   }
@@ -3162,7 +3162,7 @@ window.mkdocsQuizConfig = {
   progressSidebarPosition: "top"
 };
 </script><script type="text/javascript" defer>// Wrap everything in an IIFE to avoid variable redeclaration issues
-// when Material for MkDocs instant navigation reloads the page
+// when Material theme instant navigation reloads the page
 (function () {
   // Constants
   const STORAGE_KEY_PREFIX = "quiz_progress_";
@@ -3841,7 +3841,7 @@ window.mkdocsQuizConfig = {
       if (headerLink) {
         const handler = (e) => {
           // Let the browser handle the anchor navigation normally
-          // This prevents Material for MkDocs from intercepting it as a page navigation
+          // This prevents Material themes from intercepting it as a page navigation
           e.stopPropagation();
         };
         addTrackedEventListener(headerLink, "click", handler);
@@ -4133,7 +4133,7 @@ window.mkdocsQuizConfig = {
 
       const submitHandler = (event) => {
         event.preventDefault();
-        event.stopPropagation(); // Prevent Material theme from intercepting form submission
+        event.stopPropagation(); // Prevent Material themes from intercepting form submission
         let is_correct = false;
         let selectedValues = [];
         let section = quiz.querySelector("section");
@@ -4305,7 +4305,7 @@ window.mkdocsQuizConfig = {
     initializePage();
   }
 
-  // Material for MkDocs instant navigation support
+  // Material theme instant navigation support
   // Cleanup and reinitialize when navigating between pages
   if (typeof document$ !== "undefined") {
     // Unsubscribe from any previous subscription to prevent duplicate handlers
@@ -4315,7 +4315,7 @@ window.mkdocsQuizConfig = {
       window._mkdocsQuizSubscription.unsubscribe();
     }
 
-    // Material theme with instant navigation is active
+    // A Material theme with instant navigation is active
     window._mkdocsQuizSubscription = document$.subscribe(() => {
       cleanup(); // Remove old event listeners to prevent memory leaks
       // Reinitialize everything for the new page
