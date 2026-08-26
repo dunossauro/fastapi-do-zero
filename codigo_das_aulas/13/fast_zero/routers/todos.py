@@ -26,11 +26,7 @@ router = APIRouter(prefix='/todos', tags=['todos'])
 
 
 @router.post('/', response_model=TodoPublic)
-async def create_todo(
-    todo: TodoSchema,
-    user: CurrentUser,
-    session: Session,
-):
+async def create_todo(todo: TodoSchema, user: CurrentUser, session: Session):
     db_todo = Todo(
         title=todo.title,
         description=todo.description,

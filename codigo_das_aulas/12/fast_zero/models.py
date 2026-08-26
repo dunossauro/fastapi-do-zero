@@ -21,7 +21,7 @@ class TodoState(str, Enum):
     trash = 'trash'
 
 
-@mapped_as_dataclass(table_registry)
+@mapped_as_dataclass(registry=table_registry)
 class User:
     __tablename__ = 'users'
 
@@ -40,7 +40,7 @@ class User:
     )
 
 
-@mapped_as_dataclass(table_registry)
+@mapped_as_dataclass(registry=table_registry)
 class Todo:
     __tablename__ = 'todos'
 
