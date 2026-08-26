@@ -25,12 +25,12 @@ CurrentUser = Annotated[User, Depends(get_current_user)]
 router = APIRouter(prefix='/todos', tags=['todos'])
 
 
-@router.post('/', response_model=TodoPublic)
+@router.post('/')
 async def create_todo(
     todo: TodoSchema,
     user: CurrentUser,
     session: Session,
-):
+) -> TodoPublic:
     db_todo = Todo(
         title=todo.title,
         description=todo.description,

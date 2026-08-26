@@ -83,7 +83,7 @@ async def user(session):
     await session.commit()
     await session.refresh(user)
 
-    user.clean_password = password
+    setattr(user, 'clean_password', password)
 
     return user
 
@@ -97,7 +97,7 @@ async def other_user(session):
     await session.commit()
     await session.refresh(user)
 
-    user.clean_password = password
+    setattr(user, 'clean_password', password)
 
     return user
 

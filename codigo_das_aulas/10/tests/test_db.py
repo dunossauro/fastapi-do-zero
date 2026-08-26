@@ -3,7 +3,7 @@ from dataclasses import asdict
 import pytest
 from sqlalchemy import select
 
-from fast_zero.models import Todo, User
+from fast_zero.models import Todo, TodoState, User
 
 
 @pytest.mark.asyncio
@@ -33,7 +33,7 @@ async def test_create_todo(session, user: User):
     todo = Todo(
         title='Test Todo',
         description='Test Desc',
-        state='draft',
+        state=TodoState.draft,
         user_id=user.id,
     )
 
@@ -56,7 +56,7 @@ async def test_user_todo_relationship(session, user: User):
     todo = Todo(
         title='Test Todo',
         description='Test Desc',
-        state='draft',
+        state=TodoState.draft,
         user_id=user.id,
     )
 

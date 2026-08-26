@@ -67,13 +67,13 @@ def user(session):
     user = User(
         username='Teste',
         email='teste@test.com',
-        password=get_password_hash(password),
+        password=get_password_hash('testtest'),
     )
     session.add(user)
     session.commit()
     session.refresh(user)
 
-    user.clean_password = password
+    setattr(user, 'clean_password', password)
 
     return user
 
@@ -82,6 +82,9 @@ def user(session):
 def token(client, user):
     response = client.post(
         '/auth/token',
-        data={'username': user.email, 'password': user.clean_password},
+        data={
+            'username': user.email,
+            'password': getattr(user, 'clean_password'),
+        },
     )
     return response.json()['access_token']
