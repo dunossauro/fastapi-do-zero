@@ -88,6 +88,8 @@ Criar uma nova migração autogerada com alembic.
 
 Comando explicado na aula para gerar uma migração automática:
 
+TODO: `poetry run`:
+
 ```shell title="$ Execução no terminal!"
 alembic revision --autogenerate -m "exercicio 02 aula 04"
 ```
@@ -146,6 +148,8 @@ Aplicar essa migração ao banco de dados
 ### Solução
 
 Para aplicar a ultima migração devemos nos mover até a head:
+
+TODO: `poetry run`
 
 ```shell title="$ Execução no terminal!"
 alembic upgrade head
