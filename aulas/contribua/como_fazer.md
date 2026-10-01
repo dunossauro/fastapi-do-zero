@@ -22,7 +22,7 @@ Forma mais complicada: na raiz do projeto temos um arquivo de tasks do [invoke](
 ```bash
 poetry run invoke --list
 Available tasks:
-  
+
   # outras respostas:
   update-sub
   win-test-last-class
@@ -100,10 +100,10 @@ Caso precise reconstruir o ambiente para as páginas
 
 ### Sobre o ambiente
 
-Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.3`:
+Todo esse projeto é gerenciado pelo Poetry, a versão usada durante o momento da escrita é `2.5`:
 
 ```bash
-pipx install poetry==2.3
+pipx install poetry==2.5
 pipx inject poetry poetry-plugin-shell
 pipx inject poetry poetry-plugin-up
 ```
