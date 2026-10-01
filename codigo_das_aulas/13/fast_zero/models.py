@@ -4,7 +4,6 @@ from enum import Enum
 from sqlalchemy import ForeignKey, func
 from sqlalchemy.orm import (
     Mapped,
-    mapped_as_dataclass,
     mapped_column,
     registry,
     relationship,
@@ -21,7 +20,7 @@ class TodoState(str, Enum):
     trash = 'trash'
 
 
-@mapped_as_dataclass(registry=table_registry)
+@table_registry.mapped_as_dataclass()
 class User:
     __tablename__ = 'users'
 
@@ -40,7 +39,7 @@ class User:
     )
 
 
-@mapped_as_dataclass(registry=table_registry)
+@table_registry.mapped_as_dataclass()
 class Todo:
     __tablename__ = 'todos'
 
