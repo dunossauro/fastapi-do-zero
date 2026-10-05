@@ -58,12 +58,12 @@ no arquivo `fast_zero/models.py` vamos criar
 
 ```python
 from datetime import datetime
-from sqlalchemy.orm import Mapped, mapped_as_dataclass, registry
+from sqlalchemy.orm import Mapped, registry
 
 table_registry = registry()
 
 
-@mapped_as_dataclass(table_registry)
+@table_registry.mapped_as_dataclass()
 class User:
     __tablename__ = 'users'
 
@@ -79,7 +79,7 @@ class User:
 # Restrições em colunas
 
 ```python
-@mapped_as_dataclass(table_registry)
+@table_registry.mapped_as_dataclass()
 class User:
     __tablename__ = 'users'
 
