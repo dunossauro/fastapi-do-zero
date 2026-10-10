@@ -9,7 +9,7 @@ from sqlalchemy.pool import StaticPool
 
 from fast_zero.app import app
 from fast_zero.database import get_session
-from fast_zero.models import User, table_registry
+from fast_zero.models import Base, User
 
 
 @pytest.fixture
@@ -31,12 +31,12 @@ def session():
         connect_args={'check_same_thread': False},
         poolclass=StaticPool,
     )
-    table_registry.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
 
     with Session(engine) as session:
         yield session
 
-    table_registry.metadata.drop_all(engine)
+    Base.metadata.drop_all(engine)
     engine.dispose()
 
 
