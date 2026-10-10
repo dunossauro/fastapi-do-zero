@@ -37,7 +37,10 @@ O que faz o gerenciador de contexto `freeze_time`?
 with freeze_time('2023-07-14 12:00:00'):
     response = client.post(
         '/auth/token',
-        data={'username': user.email, 'password': user.clean_password},
+        data={
+            'username': user.email,
+            'password': getattr(user, 'clean_password')
+        },
     )
 ```
 
