@@ -3,13 +3,16 @@ from enum import Enum
 
 from sqlalchemy import ForeignKey, func
 from sqlalchemy.orm import (
+    DeclarativeBase,
     Mapped,
+    MappedAsDataclass,
     mapped_column,
-    registry,
     relationship,
 )
 
-table_registry = registry()
+
+class Base(DeclarativeBase, MappedAsDataclass):
+    pass
 
 
 class TodoState(str, Enum):
@@ -20,8 +23,7 @@ class TodoState(str, Enum):
     trash = 'trash'
 
 
-@table_registry.mapped_as_dataclass()
-class User:
+class User(Base):
     __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
@@ -39,8 +41,7 @@ class User:
     )
 
 
-@table_registry.mapped_as_dataclass()
-class Todo:
+class Todo(Base):
     __tablename__ = 'todos'
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)

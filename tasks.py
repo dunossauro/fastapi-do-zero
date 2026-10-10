@@ -135,7 +135,7 @@ def type_check_sub(c):
     for path in sorted(code_path):
         print('type_check_sub: ', path)
         with c.cd(str(path)):
-            c.run('poetry run zuban check --pretty .', warn=True)
+            c.run('poetry run zuban check --pretty .')
 
 
 
