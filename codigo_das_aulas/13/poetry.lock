@@ -818,7 +818,6 @@ detect-installer = ">=0.1.0"
 fastar = ">=0.10.0"
 httpx = ">=0.27.0"
 pydantic = [
-    {version = ">=2.7.4", extras = ["email"], markers = "python_version < \"3.13\""},
     {version = ">=2.8.0", extras = ["email"], markers = "python_version == \"3.13\""},
     {version = ">=2.12.0", extras = ["email"], markers = "python_version >= \"3.14\""},
 ]
@@ -1367,7 +1366,6 @@ httpcore2 = {version = "2.13.1", markers = "sys_platform != \"emscripten\""}
 httpx2-jsfetch = {version = "*", markers = "sys_platform == \"emscripten\" and python_version >= \"3.12\""}
 idna = ">=3.18"
 truststore = {version = ">=0.10", markers = "sys_platform != \"emscripten\""}
-typing-extensions = {version = ">=4.5.0", markers = "python_version < \"3.13\""}
 
 [package.extras]
 brotli = ["brotli (>=1.2.0) ; platform_python_implementation == \"CPython\"", "brotlicffi (>=1.2.0.2) ; platform_python_implementation != \"CPython\""]
@@ -1384,7 +1382,7 @@ description = "httpx2 transports for Emscripten/Pyodide, backed by the JavaScrip
 optional = false
 python-versions = ">=3.12"
 groups = ["dev"]
-markers = "sys_platform == \"emscripten\" and python_version >= \"3.12\""
+markers = "sys_platform == \"emscripten\""
 files = [
     {file = "httpx2_jsfetch-1.0-py3-none-any.whl", hash = "sha256:cb916b707601e69a07721aabc8f3f6659be3a6893bc1ff5c6f9e02241df2da32"},
     {file = "httpx2_jsfetch-1.0.tar.gz", hash = "sha256:70a0e3eabfef7cce5ad9c629f7d01ca05e418f586646f4ddf14782e4c1454c60"},
@@ -1858,7 +1856,6 @@ files = [
 
 [package.dependencies]
 psycopg-binary = {version = "3.3.6", optional = true, markers = "implementation_name != \"pypy\" and extra == \"binary\""}
-typing-extensions = {version = ">=4.6", markers = "python_version < \"3.13\""}
 tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 
 [package.extras]
@@ -2267,7 +2264,6 @@ files = [
 
 [package.dependencies]
 pytest = ">=8.4,<10"
-typing-extensions = {version = ">=4.12", markers = "python_version < \"3.13\""}
 
 [package.extras]
 docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1)", "sphinx-tabs (>=3.5)"]
@@ -2948,7 +2944,6 @@ files = [
 
 [package.dependencies]
 anyio = ">=4.0.0,<5"
-typing-extensions = {version = ">=4.10.0", markers = "python_version < \"3.13\""}
 
 [package.extras]
 full = ["httpx (>=0.27.0,<0.29.0)", "httpx2 (>=2.0.0)", "itsdangerous", "jinja2", "opentelemetry-api", "python-multipart (>=0.0.18)", "pyyaml"]
@@ -3540,5 +3535,5 @@ dev = ["pytest", "setuptools"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.11,<4.0"
-content-hash = "75b8b66075b0ad14a3a4a6aa4e550cbd8ee39989b4dde4123079b89bb4deae51"
+python-versions = ">=3.13,<4.0"
+content-hash = "20b0450f87a1ae3c3e636246fc11db479b195002de0759c029eb3a1f668ec44e"
