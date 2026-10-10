@@ -21,8 +21,9 @@ from fast_zero.security import (
 )
 
 router = APIRouter(prefix='/users', tags=['users'])
-SessionDep = Annotated[Session, Depends(get_session)]
-CurrentUser = Annotated[User, Depends(get_current_user)]
+
+type SessionDep = Annotated[Session, Depends(get_session)]
+type CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
 @router.post('/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
