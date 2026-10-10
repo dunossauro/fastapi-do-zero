@@ -138,7 +138,6 @@ def type_check_sub(c):
             c.run('poetry run zuban check --pretty .', warn=True)
 
 
-
 @task
 def test_act(c):
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
@@ -150,7 +149,7 @@ def test_act(c):
 
 
 @task
-def test_docker_build(c, python_version='3.12'):  # noqa: PT028
+def test_docker_build(c, python_version='3.13'):  # noqa: PT028
     code_path = Path('./codigo_das_aulas/').resolve().glob('*')
     for path in sorted(code_path):
         print('test_docker_build: ', path)
