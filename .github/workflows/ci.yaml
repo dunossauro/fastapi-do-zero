@@ -17,14 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.13", "3.14", "3.15"]
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
 
       - name: Instalar o Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -42,10 +42,10 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
 
       - name: Instalar Python 3.14
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v7
         with:
           python-version: 3.14
 
@@ -99,10 +99,10 @@ jobs:
           createdb --owner="$PGUSERNAME" --username="postgres" "$PGDATABASE"
 
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
 
       - name: Instalar o python
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v7
         with:
           python-version: 3.14
 
@@ -122,11 +122,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.13", "3.14", "3.15"]
 
     steps:
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
 
       - name: Atualização do sistema
         run: sudo apt update
@@ -135,7 +135,7 @@ jobs:
         run: sudo apt install sqlite3 -y
 
       - name: Instalar o python
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -154,12 +154,12 @@ jobs:
 
     steps:
       - name: Copia os arquivos do repo
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
 
       - name: Instalar o python
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.14
+          python-version: 3.15
 
       - name: Instalar Poetry
         run: pip install poetry

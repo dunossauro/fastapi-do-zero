@@ -17,9 +17,9 @@ from fast_zero.security import (
 
 router = APIRouter(prefix='/auth', tags=['auth'])
 
-OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
-Session = Annotated[AsyncSession, Depends(get_session)]
-CurrentUser = Annotated[User, Depends(get_current_user)]
+type OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
+type Session = Annotated[AsyncSession, Depends(get_session)]
+type CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
 @router.post('/token', response_model=Token)

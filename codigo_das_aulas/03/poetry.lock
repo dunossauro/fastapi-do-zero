@@ -536,7 +536,6 @@ detect-installer = ">=0.1.0"
 fastar = ">=0.10.0"
 httpx = ">=0.27.0"
 pydantic = [
-    {version = ">=2.7.4", extras = ["email"], markers = "python_version < \"3.13\""},
     {version = ">=2.8.0", extras = ["email"], markers = "python_version == \"3.13\""},
     {version = ">=2.12.0", extras = ["email"], markers = "python_version >= \"3.14\""},
 ]
@@ -977,7 +976,6 @@ httpcore2 = {version = "2.13.1", markers = "sys_platform != \"emscripten\""}
 httpx2-jsfetch = {version = "*", markers = "sys_platform == \"emscripten\" and python_version >= \"3.12\""}
 idna = ">=3.18"
 truststore = {version = ">=0.10", markers = "sys_platform != \"emscripten\""}
-typing-extensions = {version = ">=4.5.0", markers = "python_version < \"3.13\""}
 
 [package.extras]
 brotli = ["brotli (>=1.2.0) ; platform_python_implementation == \"CPython\"", "brotlicffi (>=1.2.0.2) ; platform_python_implementation != \"CPython\""]
@@ -994,7 +992,7 @@ description = "httpx2 transports for Emscripten/Pyodide, backed by the JavaScrip
 optional = false
 python-versions = ">=3.12"
 groups = ["dev"]
-markers = "sys_platform == \"emscripten\" and python_version >= \"3.12\""
+markers = "sys_platform == \"emscripten\""
 files = [
     {file = "httpx2_jsfetch-1.0-py3-none-any.whl", hash = "sha256:cb916b707601e69a07721aabc8f3f6659be3a6893bc1ff5c6f9e02241df2da32"},
     {file = "httpx2_jsfetch-1.0.tar.gz", hash = "sha256:70a0e3eabfef7cce5ad9c629f7d01ca05e418f586646f4ddf14782e4c1454c60"},
@@ -2196,7 +2194,6 @@ files = [
 
 [package.dependencies]
 anyio = ">=4.0.0,<5"
-typing-extensions = {version = ">=4.10.0", markers = "python_version < \"3.13\""}
 
 [package.extras]
 full = ["httpx (>=0.27.0,<0.29.0)", "httpx2 (>=2.0.0)", "itsdangerous", "jinja2", "opentelemetry-api", "python-multipart (>=0.0.18)", "pyyaml"]
@@ -2243,7 +2240,7 @@ files = [
     {file = "typing_extensions-4.16.0-py3-none-any.whl", hash = "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"},
     {file = "typing_extensions-4.16.0.tar.gz", hash = "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"},
 ]
-markers = {dev = "sys_platform != \"emscripten\" and python_version < \"3.15\" or python_version < \"3.13\""}
+markers = {dev = "sys_platform != \"emscripten\" and python_version < \"3.15\""}
 
 [[package]]
 name = "typing-inspection"
@@ -2606,5 +2603,5 @@ files = [
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.11,<4.0"
-content-hash = "8bae54faa34f42d77db855a4db284fdd1bd770b5ef3819d47cb87d28a970b703"
+python-versions = ">=3.13,<4.0"
+content-hash = "a84efb9cfde8c94c7514a487be8c606e349d080313fa724eb7e155a9d7826d5b"
