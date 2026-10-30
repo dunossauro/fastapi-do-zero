@@ -182,6 +182,7 @@ Esse material contou com a revisão e contribuições inestimáveis de pessoas i
 [@Felipe-Paschoal](https://github.com/Felipe-Paschoal){:target="_blank"},
 [@FtxDante](https://github.com/FtxDante){:target="_blank"},
 [@gabrielhardcore](https://github.com/gabrielhardcore){:target="_blank"},
+[@gabrii3lmao](https://github.com/gabrii3lmao){:target="_blank"},
 [@gbpagano](https://github.com/gbpagano){:target="_blank"},
 [@henriqueccda](https://github.com/henriqueccda){:target="_blank"},
 [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"},
