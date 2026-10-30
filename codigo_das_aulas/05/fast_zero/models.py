@@ -1,13 +1,19 @@
 from datetime import datetime
 
 from sqlalchemy import func
-from sqlalchemy.orm import Mapped, mapped_column, registry
+from sqlalchemy.orm import (
+    DeclarativeBase,
+    Mapped,
+    MappedAsDataclass,
+    mapped_column,
+)
 
-table_registry = registry()
+
+class Base(DeclarativeBase, MappedAsDataclass):
+    pass
 
 
-@table_registry.mapped_as_dataclass()
-class User:
+class User(Base):
     __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
