@@ -7,7 +7,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from fast_zero.models import table_registry
+from fast_zero.models import Base
 from fast_zero.settings import Settings
 
 config = context.config
@@ -16,7 +16,7 @@ config.set_main_option('sqlalchemy.url', Settings().DATABASE_URL)
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-target_metadata = table_registry.metadata
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
