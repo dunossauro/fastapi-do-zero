@@ -24,7 +24,7 @@ Qual a função do parâmetro `tag` nos routers?
 </quiz>
 
 <quiz>
-Qual a função do tipo `Annotated` no FastAPI!
+Qual a função do tipo `Annotated` no FastAPI?
 - [ ] Reduzir o tamanho das funções
 - [ ] Reutilizar anotações em N endpoints
 - [ ] Atribuir metadados aos tipos

@@ -53,7 +53,7 @@ with open("codigo_das_aulas/13/poetry.lock", "rb") as f:
 print(
     f"Para a construção do projeto, serão utilizadas as versões mais recentes das ferramentas, disponíveis em {year}, como a versão do {packages['fastapi']} FastAPI, "
     f"a versão {packages['pydantic']} do Pydantic, a versão {packages['sqlalchemy']} do SQLAlchemy ORM, "
-    f"além do suporte ao Python 3.11/3.12/3.13/3.14, e do Alembic {packages['alembic']} para gerenciamento de migrações."
+    f"além do suporte ao Python 3.13/3.14/3.15, e do Alembic {packages['alembic']} para gerenciamento de migrações."
 )
 ```
 
@@ -182,6 +182,7 @@ Esse material contou com a revisão e contribuições inestimáveis de pessoas i
 [@Felipe-Paschoal](https://github.com/Felipe-Paschoal){:target="_blank"},
 [@FtxDante](https://github.com/FtxDante){:target="_blank"},
 [@gabrielhardcore](https://github.com/gabrielhardcore){:target="_blank"},
+[@gabrii3lmao](https://github.com/gabrii3lmao){:target="_blank"},
 [@gbpagano](https://github.com/gbpagano){:target="_blank"},
 [@henriqueccda](https://github.com/henriqueccda){:target="_blank"},
 [@henriquesebastiao](https://github.com/henriquesebastiao){:target="_blank"},
