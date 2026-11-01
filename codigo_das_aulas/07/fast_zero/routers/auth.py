@@ -13,8 +13,8 @@ from fast_zero.security import create_access_token, verify_password
 
 router = APIRouter(prefix='/auth', tags=['auth'])
 
-OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
-SessionDep = Annotated[Session, Depends(get_session)]
+type OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
+type SessionDep = Annotated[Session, Depends(get_session)]
 
 
 @router.post('/token', response_model=Token)

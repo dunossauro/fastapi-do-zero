@@ -11,9 +11,9 @@ Qual a função do arquivo `Dockerfile`?
 
 
 <quiz>
-Por que usamos a instrução `FROM python:3.11-slim` no dockerfile?
+Por que usamos a instrução `FROM python:3.13-slim` no dockerfile?
 - [ ] Para criar uma imagem baseada no sistema operacional Windows
-- [x] Para definir a imagem base do Docker como uma versão do Python 3.11
+- [x] Para definir a imagem base do Docker como uma versão do Python 3.13
 - [ ] Para instalar o Python 3.11 no contêiner diretamente
 - [ ] Para baixar a versão mais recente do Python no repositório oficial
 </quiz>
