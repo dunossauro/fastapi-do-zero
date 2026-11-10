@@ -8,7 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.13,<4.0"
 dependencies = [
-    "fastapi[standard] (>=0.162.2,<0.163.0)"
+    "fastapi[standard] (>=0.162.4,<0.163.0)"
 ]
 
 [dependency-groups]
