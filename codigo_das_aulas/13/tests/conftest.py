@@ -11,7 +11,7 @@ from testcontainers.postgres import PostgresContainer
 
 from fast_zero.app import app
 from fast_zero.database import get_session
-from fast_zero.models import User, table_registry
+from fast_zero.models import Base, User
 from fast_zero.security import get_password_hash
 from fast_zero.settings import Settings
 
@@ -45,13 +45,13 @@ def engine():
 @pytest_asyncio.fixture
 async def session(engine):
     async with engine.begin() as conn:
-        await conn.run_sync(table_registry.metadata.create_all)
+        await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSession(engine, expire_on_commit=False) as session:
         yield session
 
     async with engine.begin() as conn:
-        await conn.run_sync(table_registry.metadata.drop_all)
+        await conn.run_sync(Base.metadata.drop_all)
 
 
 @contextmanager
